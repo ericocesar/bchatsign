@@ -561,7 +561,7 @@ model DocumentMeta {
   uploadSignatureEnabled Boolean @default(true)
   drawSignatureEnabled   Boolean @default(true)
 
-  language           String                     @default("en")
+  language           String                     @default("pt-BR")
   distributionMethod DocumentDistributionMethod @default(EMAIL)
 
   emailSettings Json? /// [DocumentEmailSettings] @zod.custom.use(ZDocumentEmailSettingsSchema)

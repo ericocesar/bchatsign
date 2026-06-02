@@ -2,7 +2,7 @@ import { DateTime } from 'luxon';
 
 import { DEFAULT_DOCUMENT_TIME_ZONE } from './time-zones';
 
-export const DEFAULT_DOCUMENT_DATE_FORMAT = 'yyyy-MM-dd hh:mm a';
+export const DEFAULT_DOCUMENT_DATE_FORMAT = 'dd/MM;yyyy HH:mm';
 
 export const VALID_DATE_FORMAT_VALUES = [
   DEFAULT_DOCUMENT_DATE_FORMAT,
@@ -24,6 +24,7 @@ export const VALID_DATE_FORMAT_VALUES = [
   'yyyy-MM-dd HH:mm',
   'yy-MM-dd hh:mm a',
   'yy-MM-dd HH:mm',
+  'dd/MM;yyyy HH:mm',
   'yyyy-MM-dd HH:mm:ss',
   'MMMM dd, yyyy hh:mm a',
   'MMMM dd, yyyy HH:mm',
@@ -36,8 +37,8 @@ export type ValidDateFormat = (typeof VALID_DATE_FORMAT_VALUES)[number];
 
 export const DATE_FORMATS = [
   {
-    key: 'yyyy-MM-dd_HH:mm_12H',
-    label: 'YYYY-MM-DD hh:mm AM/PM',
+    key: 'dd-MM-yyyy_HH:mm_semicolon',
+    label: 'DD/MM;YYYY HH:mm',
     value: DEFAULT_DOCUMENT_DATE_FORMAT,
   },
   {
