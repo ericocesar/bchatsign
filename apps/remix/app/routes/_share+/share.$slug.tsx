@@ -12,15 +12,15 @@ export function meta({ params: { slug } }: Route.MetaArgs) {
   }
 
   return [
-    { title: 'Documenso - Share' },
-    { description: 'I just signed a document in style with Documenso!' },
+    { title: 'BchatSign - Share' },
+    { description: 'I just signed a document in style with BchatSign!' },
     {
       property: 'og:title',
-      content: 'Documenso - Join the open source signing revolution',
+      content: 'BchatSign - Join the open source signing revolution',
     },
     {
       property: 'og:description',
-      content: 'I just signed with Documenso!',
+      content: 'I just signed with BchatSign!',
     },
     {
       property: 'og:type',
@@ -32,7 +32,7 @@ export function meta({ params: { slug } }: Route.MetaArgs) {
     },
     {
       name: 'twitter:site',
-      content: '@documenso',
+      content: '@BchatSign',
     },
     {
       name: 'twitter:card',
@@ -44,7 +44,7 @@ export function meta({ params: { slug } }: Route.MetaArgs) {
     },
     {
       name: 'twitter:description',
-      content: 'I just signed with Documenso!',
+      content: 'I just signed with BchatSign!',
     },
   ];
 }
@@ -69,8 +69,8 @@ export const loader = async ({ request, params: { slug } }: Route.LoaderArgs) =>
     return {};
   }
 
-  // Is hardcoded because this whole meta is hardcoded anyway for Documenso.
-  throw redirect('https://documenso.com');
+  // Is hardcoded because this whole meta is hardcoded anyway for BchatSign.
+  throw redirect('https://bchat-sign.com');
 };
 
 export default function SharePage() {

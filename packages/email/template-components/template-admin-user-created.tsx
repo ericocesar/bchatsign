@@ -15,11 +15,11 @@ export const TemplateAdminUserCreated = ({ resetPasswordLink, assetBaseUrl }: Te
 
       <Section className="flex-row items-center justify-center">
         <Text className="mx-auto mb-0 max-w-[80%] text-center font-semibold text-lg text-primary">
-          <Trans>Welcome to Documenso!</Trans>
+          <Trans>Welcome to BchatSign!</Trans>
         </Text>
 
         <Text className="my-1 text-center text-base text-slate-400">
-          <Trans>An administrator has created a Documenso account for you.</Trans>
+          <Trans>An administrator has created a BchatSign account for you.</Trans>
         </Text>
 
         <Text className="my-1 text-center text-base text-slate-400">

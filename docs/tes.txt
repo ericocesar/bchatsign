@@ -1,0 +1,13 @@
+Logotipo (ícone):
+- SVG (componente): apps/remix/app/components/general/branding-logo-icon.tsx
+- SVG (inline, com palavra): apps/remix/app/components/general/branding-logo.tsx
+- PNG (ícone, 512x512): packages/assets/logo_icon.png
+- PNG (completo, 1024x256): packages/assets/logo.png
+Favicon:
+- SVG: apps/remix/public/favicon.svg
+- PNG 32x32: apps/remix/public/favicon-32x32.png
+- PNG 16x16: apps/remix/public/favicon-16x16.png
+- ICO (backup): apps/remix/public/favicon.ico.bak
+- Apple touch: apps/remix/public/apple-touch-icon.png
+- Android (PWA): apps/remix/public/android-chrome-192x192.png
+- Android (PWA): apps/remix/public/android-chrome-512x512.png

@@ -76,8 +76,11 @@ export const extractLocaleData = ({ headers }: ExtractLocaleDataOptions): I18nLo
     }
   });
 
+  const detectedLang = languages[0];
+  const fallbackLang = (detectedLang || APP_I18N_OPTIONS.defaultLocale) as SupportedLanguageCodes;
+
   return {
-    lang: languages[0] || APP_I18N_OPTIONS.sourceLang,
+    lang: fallbackLang,
     locales: headerLocales,
   };
 };

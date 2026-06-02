@@ -91,6 +91,10 @@ app.use(async (c, next) => {
   await next();
 });
 
+// Silently handle browser-generated well-known probes (e.g. Chrome DevTools)
+// before they reach React Router and cause noisy 404 errors.
+app.get('/.well-known/*', (c) => c.body(null, 404));
+
 // Apply cors and rate limits to API routes.
 app.use(`/api/v1/*`, cors());
 app.use('/api/v1/*', apiV1RateLimitMiddleware);

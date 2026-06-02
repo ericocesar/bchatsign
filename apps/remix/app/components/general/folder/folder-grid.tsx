@@ -1,4 +1,3 @@
-import { useCurrentOrganisation } from '@documenso/lib/client-only/providers/organisation';
 import { formatDocumentsPath, formatTemplatesPath } from '@documenso/lib/utils/teams';
 import { trpc } from '@documenso/trpc/react';
 import type { TFolderWithSubfolders } from '@documenso/trpc/server/folder-router/schema';
@@ -13,7 +12,7 @@ import { FolderCreateDialog } from '~/components/dialogs/folder-create-dialog';
 import { FolderDeleteDialog } from '~/components/dialogs/folder-delete-dialog';
 import { FolderMoveDialog } from '~/components/dialogs/folder-move-dialog';
 import { FolderUpdateDialog } from '~/components/dialogs/folder-update-dialog';
-import { DocumentUploadButtonLegacy } from '~/components/general/document/document-upload-button-legacy';
+
 import { FolderCard, FolderCardEmpty } from '~/components/general/folder/folder-card';
 import { useCurrentTeam } from '~/providers/team';
 
@@ -26,7 +25,6 @@ export type FolderGridProps = {
 
 export const FolderGrid = ({ type, parentId }: FolderGridProps) => {
   const team = useCurrentTeam();
-  const organisation = useCurrentOrganisation();
 
   const [isMovingFolder, setIsMovingFolder] = useState(false);
   const [folderToMove, setFolderToMove] = useState<TFolderWithSubfolders | null>(null);
@@ -96,9 +94,6 @@ export const FolderGrid = ({ type, parentId }: FolderGridProps) => {
 
         <div className="flex gap-4 sm:flex-row sm:justify-end">
           <EnvelopeUploadButton type={type} folderId={parentId || undefined} />
-
-          {/* If you delete this, delete the component as well. */}
-          {organisation.organisationClaim.flags.allowLegacyEnvelopes && <DocumentUploadButtonLegacy type={type} />}
 
           <FolderCreateDialog type={type} />
         </div>

@@ -66,8 +66,8 @@ export const DocumentUploadButton = ({
   });
 
   const heading = {
-    [EnvelopeType.DOCUMENT]: internalVersion === '1' ? msg`Document (Legacy)` : msg`Upload Document`,
-    [EnvelopeType.TEMPLATE]: internalVersion === '1' ? msg`Template (Legacy)` : msg`Upload Template`,
+    [EnvelopeType.DOCUMENT]: msg`Upload Document`,
+    [EnvelopeType.TEMPLATE]: msg`Upload Template`,
   };
 
   if (disabled && IS_BILLING_ENABLED()) {

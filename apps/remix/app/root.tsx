@@ -27,7 +27,6 @@ import { GenericErrorLayout } from './components/general/generic-error-layout';
 import { langCookie } from './storage/lang-cookie.server';
 import { themeSessionResolver } from './storage/theme-session.server';
 import { appMetaTags } from './utils/meta';
-import { nonce } from './utils/nonce';
 
 export const links: Route.LinksFunction = () => [{ rel: 'stylesheet', href: stylesheet }];
 
@@ -119,23 +118,23 @@ export function LayoutContent({ children }: { children: React.ReactNode }) {
   const isRecipientRoute = matches.some((m) => m.id?.startsWith('routes/_recipient+'));
 
   return (
-    <html translate="no" lang={lang} data-theme={theme} className={theme ?? ''}>
+    <html translate="no" lang={lang} data-theme={theme} className={theme ?? ''} suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="google" content="notranslate" />
         <Meta />
-        <Links nonce={nonce(cspNonce)} />
+        <Links />
         <meta name="google" content="notranslate" />
-        <PreventFlashOnWrongTheme ssrTheme={Boolean(data.theme)} nonce={nonce(cspNonce)} />
+        <PreventFlashOnWrongTheme ssrTheme={Boolean(data.theme)} nonce={cspNonce} />
 
         {disableAnimations && (
           <style
-            nonce={nonce(cspNonce)}
+            nonce={cspNonce}
             dangerouslySetInnerHTML={{
               __html: `*, *::before, *::after { animation: none !important; transition: none !important; }`,
             }}
@@ -143,7 +142,7 @@ export function LayoutContent({ children }: { children: React.ReactNode }) {
         )}
 
         {/* Fix: https://stackoverflow.com/questions/21147149/flash-of-unstyled-content-fouc-in-firefox-only-is-ff-slow-renderer */}
-        <script nonce={nonce(cspNonce)}>0</script>
+        <script nonce={cspNonce}>0</script>
       </head>
       <body className={isRecipientRoute ? 'documenso-branded' : undefined}>
         {/* Global license banner currently disabled. Need to wait until after a few releases. */}
@@ -152,7 +151,7 @@ export function LayoutContent({ children }: { children: React.ReactNode }) {
             <div className="mx-auto flex h-auto max-w-screen-xl items-center justify-center px-4 py-3 text-sm font-medium">
               <div className="flex items-center">
                 <AlertTriangleIcon className="mr-2 h-4 w-4" />
-                <Trans>This is an expired license instance of Documenso</Trans>
+                <Trans>This is an expired license instance of BchatSign</Trans>
               </div>
             </div>
           </div>
@@ -171,14 +170,14 @@ export function LayoutContent({ children }: { children: React.ReactNode }) {
         </NuqsAdapter>
 
         <script
-          nonce={nonce(cspNonce)}
+          nonce={cspNonce}
           dangerouslySetInnerHTML={{
             __html: `window.__ENV__ = ${JSON.stringify(publicEnv)}`,
           }}
         />
 
-        <ScrollRestoration nonce={nonce(cspNonce)} />
-        <Scripts nonce={nonce(cspNonce)} />
+        <ScrollRestoration nonce={cspNonce} />
+        <Scripts nonce={cspNonce} />
       </body>
     </html>
   );

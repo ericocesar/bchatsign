@@ -46,6 +46,10 @@ export class LicenseClient {
       return;
     }
 
+    if (!LICENSE_KEY) {
+      return;
+    }
+
     const instance = new LicenseClient();
 
     globalThis.__documenso_license_client__ = instance;

@@ -33,6 +33,23 @@ const createDocumentData = async ({ documentData }: { documentData: string }) =>
 };
 
 export const seedDatabase = async () => {
+  // Ensure a local superadmin exists for development/testing
+  const superAdminEmail = 'ericocesar@webck.com.br';
+  const superAdminExists = await prisma.user.findFirst({
+    where: { email: superAdminEmail },
+  });
+
+  if (!superAdminExists) {
+    await seedUser({
+      name: 'Super Admin',
+      email: superAdminEmail,
+      password: 'App12345!',
+      verified: true,
+      isAdmin: true,
+      isPersonalOrganisation: true,
+    });
+    console.log(`Seeded superadmin: ${superAdminEmail}`);
+  }
   const examplePdf = fs.readFileSync(path.join(__dirname, '../../../assets/example.pdf')).toString('base64');
 
   const exampleUserExists = await prisma.user.findFirst({

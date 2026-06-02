@@ -1,7 +1,7 @@
 import type { TCssVarsSchema } from '@documenso/lib/types/css-vars';
 import { useEffect } from 'react';
-
 import { toNativeCssVarsString } from '~/utils/css-vars';
+import { nonce as createNonce } from '~/utils/nonce';
 
 export type RecipientBrandingPayload = {
   allowCustomBranding: boolean;
@@ -68,7 +68,10 @@ export const RecipientBranding = ({ branding, cspNonce }: RecipientBrandingProps
     }
 
     const style = document.createElement('style');
-    style.setAttribute('nonce', cspNonce ?? '');
+    const nonceValue = createNonce(cspNonce);
+    if (nonceValue) {
+      style.setAttribute('nonce', nonceValue);
+    }
     style.textContent = css;
 
     document.head.appendChild(style);
@@ -86,5 +89,5 @@ export const RecipientBranding = ({ branding, cspNonce }: RecipientBrandingProps
     return null;
   }
 
-  return <style nonce={cspNonce}>{css}</style>;
+  return <style nonce={createNonce(cspNonce)}>{css}</style>;
 };
