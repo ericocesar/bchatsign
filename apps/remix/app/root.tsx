@@ -6,7 +6,6 @@ import { extractLocaleData } from '@documenso/lib/utils/i18n';
 import { TrpcProvider } from '@documenso/trpc/react';
 import { getOrganisationSession } from '@documenso/trpc/server/organisation-router/get-organisation-session';
 import { Toaster } from '@documenso/ui/primitives/toaster';
-import { TooltipProvider } from '@documenso/ui/primitives/tooltip';
 import { NuqsAdapter } from 'nuqs/adapters/react-router/v7';
 import {
   data,
@@ -19,7 +18,7 @@ import {
   useLoaderData,
   useMatches,
 } from 'react-router';
-import { PreventFlashOnWrongTheme, ThemeProvider, useTheme } from 'remix-themes';
+import { ThemeProvider, useTheme } from 'remix-themes';
 
 import type { Route } from './+types/root';
 import stylesheet from './app.css?url';
@@ -105,14 +104,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export function LayoutContent({ children }: { children: React.ReactNode }) {
-  const {
-    publicEnv,
-    session,
-    lang,
-    disableAnimations,
-    nonce: cspNonce,
-    ...data
-  } = useLoaderData<typeof loader>() || {};
+  const { publicEnv, session, lang, disableAnimations, nonce: cspNonce } = useLoaderData<typeof loader>() || {};
 
   const [theme] = useTheme();
 
@@ -131,12 +123,10 @@ export function LayoutContent({ children }: { children: React.ReactNode }) {
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="color-scheme" content="light dark" />
         <link rel="manifest" href="/site.webmanifest" />
-        <meta name="google" content="notranslate" />
         <Meta />
         <Links />
-        <meta name="google" content="notranslate" />
-        <PreventFlashOnWrongTheme ssrTheme={Boolean(data.theme)} nonce={cspNonce} />
 
         {disableAnimations && (
           <style
@@ -146,9 +136,6 @@ export function LayoutContent({ children }: { children: React.ReactNode }) {
             }}
           />
         )}
-
-        {/* Fix: https://stackoverflow.com/questions/21147149/flash-of-unstyled-content-fouc-in-firefox-only-is-ff-slow-renderer */}
-        <script nonce={cspNonce}>0</script>
       </head>
       <body className={isRecipientRoute ? 'documenso-branded' : undefined}>
         {/* Global license banner currently disabled. Need to wait until after a few releases. */}
@@ -165,18 +152,17 @@ export function LayoutContent({ children }: { children: React.ReactNode }) {
 
         <NuqsAdapter>
           <SessionProvider initialSession={session}>
-            <TooltipProvider>
-              <TrpcProvider>
-                {children}
+            <TrpcProvider>
+              {children}
 
-                <Toaster />
-              </TrpcProvider>
-            </TooltipProvider>
+              <Toaster />
+            </TrpcProvider>
           </SessionProvider>
         </NuqsAdapter>
 
         <script
           nonce={cspNonce}
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{
             __html: `window.__ENV__ = ${JSON.stringify(publicEnv)}`,
           }}

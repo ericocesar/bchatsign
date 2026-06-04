@@ -38,7 +38,14 @@ export type CertificateRecipient = {
     emailed: BaseAuditLog | null;
     sent: BaseAuditLog | null;
     opened: BaseAuditLog | null;
-    completed: BaseAuditLog | null;
+    completed:
+      | (BaseAuditLog & {
+          geolocation?: {
+            latitude: number;
+            longitude: number;
+          } | null;
+        })
+      | null;
     rejected: BaseAuditLog | null;
   };
 };
@@ -55,6 +62,7 @@ type GenerateCertificateOptions = {
   };
   pageWidth: number;
   pageHeight: number;
+  pdfHash?: string;
 };
 
 // Helper function to get device info from user agent
@@ -402,6 +410,16 @@ const renderColumnTwo = (options: RenderColumnOptions) => {
   });
   column.add(deviceLabelAndText);
 
+  if (!isRejected && recipient.logs.completed?.geolocation) {
+    const geoLabelAndText = renderLabelAndText({
+      label: i18n._(msg`Location`),
+      text: `${recipient.logs.completed.geolocation.latitude.toFixed(4)}, ${recipient.logs.completed.geolocation.longitude.toFixed(4)}`,
+      width,
+      y: column.getClientRect().height + 6,
+    });
+    column.add(geoLabelAndText);
+  }
+
   return column;
 };
 
@@ -577,11 +595,18 @@ const renderBranding = async ({ qrToken, i18n }: { qrToken: string | null; i18n:
     height: brandingHeight,
   });
 
-  const logoPath = path.join(process.cwd(), 'public/static/logo.png');
-  const logo = fs.readFileSync(logoPath);
+  let logoPath = path.join(process.cwd(), 'packages/assets/logo.svg');
+  if (!fs.existsSync(logoPath)) {
+    logoPath = path.join(process.cwd(), '../../packages/assets/logo.svg');
+  }
+  if (!fs.existsSync(logoPath)) {
+    logoPath = path.join(process.cwd(), '../assets/logo.svg');
+  }
+  const logoSvg = fs.readFileSync(logoPath, 'utf8');
+  const logoPng = await svgToPng(logoSvg);
 
   // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-  const img = new SkiaImage(logo) as unknown as HTMLImageElement;
+  const img = new SkiaImage(logoPng) as unknown as HTMLImageElement;
 
   const documensoImage = new Konva.Image({
     image: img,
@@ -721,6 +746,7 @@ export async function renderCertificate({
   envelopeOwner,
   pageWidth,
   pageHeight,
+  pdfHash,
 }: GenerateCertificateOptions) {
   ensureFontLibrary();
 
@@ -803,7 +829,7 @@ export async function renderCertificate({
     const footerText = new Konva.Text({
       x: margin,
       y: pageHeight - textXs - 10,
-      text: `${i18n._(msg`Envelope ID`)}: ${envelopeId}`,
+      text: `${i18n._(msg`Envelope ID`)}: ${envelopeId}${pdfHash ? ` | SHA-256: ${pdfHash}` : ''}`,
       fontFamily: 'Inter',
       fontSize: textXs,
       fill: textMutedForegroundLight,
@@ -831,7 +857,7 @@ export async function renderCertificate({
     const overflowFooterText = new Konva.Text({
       x: margin,
       y: pageHeight - textXs - 10,
-      text: `${i18n._(msg`Envelope ID`)}: ${envelopeId}`,
+      text: `${i18n._(msg`Envelope ID`)}: ${envelopeId}${pdfHash ? ` | SHA-256: ${pdfHash}` : ''}`,
       fontFamily: 'Inter',
       fontSize: textXs,
       fill: textMutedForegroundLight,

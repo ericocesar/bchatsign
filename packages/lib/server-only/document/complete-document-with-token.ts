@@ -49,6 +49,10 @@ export type CompleteDocumentWithTokenOptions = {
     email?: string;
     name?: string;
   };
+  geolocation?: {
+    latitude: number;
+    longitude: number;
+  };
 };
 
 export const completeDocumentWithToken = async ({
@@ -59,6 +63,7 @@ export const completeDocumentWithToken = async ({
   requestMetadata,
   nextSigner,
   recipientOverride,
+  geolocation,
 }: CompleteDocumentWithTokenOptions) => {
   const envelope = await prisma.envelope.findFirstOrThrow({
     where: {
@@ -341,6 +346,12 @@ export const completeDocumentWithToken = async ({
           recipientId: recipient.id,
           recipientRole: recipient.role,
           actionAuth: authOptions.derivedRecipientActionAuth,
+          geolocation: geolocation
+            ? {
+                latitude: geolocation.latitude,
+                longitude: geolocation.longitude,
+              }
+            : undefined,
         },
       }),
     });

@@ -86,7 +86,7 @@ export const AddSettingsFormPartial = ({
     defaultValues: {
       title: document.title,
       externalId: document.externalId || '',
-      visibility: document.visibility || '',
+      visibility: document.visibility ?? undefined,
       globalAccessAuth: documentAuthOption?.globalAccessAuth || [],
       globalActionAuth: documentAuthOption?.globalActionAuth || [],
 
@@ -97,7 +97,7 @@ export const AddSettingsFormPartial = ({
           DATE_FORMATS.find((format) => format.value === document.documentMeta?.dateFormat)?.value ??
           DEFAULT_DOCUMENT_DATE_FORMAT,
         redirectUrl: document.documentMeta?.redirectUrl ?? '',
-        language: document.documentMeta?.language ?? 'en',
+        language: document.documentMeta?.language ?? 'pt-BR',
         signatureTypes: extractTeamSignatureSettings(document.documentMeta),
       },
     },
@@ -117,7 +117,9 @@ export const AddSettingsFormPartial = ({
     )
     .otherwise(() => false);
 
-  const onFormSubmit = form.handleSubmit(onSubmit);
+  const onFormSubmit = form.handleSubmit(onSubmit, (errors) => {
+    console.error('Validation errors:', errors);
+  });
 
   const onGoNextClick = () => {
     void onFormSubmit().catch(console.error);

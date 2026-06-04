@@ -54,6 +54,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Input } from '@documenso/ui/primitives/input';
 import { MultiSelectCombobox } from '@documenso/ui/primitives/multi-select-combobox';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@documenso/ui/primitives/select';
+import { Switch } from '@documenso/ui/primitives/switch';
 import { Textarea } from '@documenso/ui/primitives/textarea';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@documenso/ui/primitives/tooltip';
 import { useToast } from '@documenso/ui/primitives/use-toast';
@@ -61,6 +62,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { msg } from '@lingui/core/macro';
 import { Trans, useLingui } from '@lingui/react/macro';
 import {
+  AuthenticationMethod,
   DocumentDistributionMethod,
   DocumentVisibility,
   EnvelopeType,
@@ -69,13 +71,19 @@ import {
   TemplateType,
 } from '@prisma/client';
 import type * as DialogPrimitive from '@radix-ui/react-dialog';
-import { BellRingIcon, InfoIcon, MailIcon, SettingsIcon, ShieldIcon } from 'lucide-react';
+import { BadgeCheckIcon, BellRingIcon, InfoIcon, MailIcon, SettingsIcon, ShieldIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { match } from 'ts-pattern';
 import { z } from 'zod';
 
 import { useCurrentTeam } from '~/providers/team';
+
+const CERTIFICATE_POSITION = {
+  FOOTER: 'FOOTER',
+  LEFT: 'LEFT',
+  RIGHT: 'RIGHT',
+} as const;
 
 export const ZAddSettingsFormSchema = z.object({
   templateType: z.nativeEnum(TemplateType).optional(),
@@ -87,6 +95,9 @@ export const ZAddSettingsFormSchema = z.object({
     .optional()
     .default([]),
   globalActionAuth: z.array(ZDocumentActionAuthTypesSchema).optional().default([]),
+  authenticationMethods: z.array(z.nativeEnum(AuthenticationMethod)).optional().default([]),
+  certificateAllPages: z.boolean().default(false),
+  certificatePosition: z.nativeEnum(CERTIFICATE_POSITION).default(CERTIFICATE_POSITION.FOOTER),
   meta: z.object({
     subject: z.string(),
     message: z.string(),
@@ -102,7 +113,7 @@ export const ZAddSettingsFormSchema = z.object({
     language: z
       .union([z.string(), z.enum(SUPPORTED_LANGUAGE_CODES)])
       .optional()
-      .default('en'),
+      .default('pt-BR'),
     emailId: z.string().nullable(),
     emailReplyTo: z.preprocess((val) => (val === '' ? undefined : val), zEmail().optional()),
     emailSettings: ZDocumentEmailSettingsSchema,
@@ -114,7 +125,7 @@ export const ZAddSettingsFormSchema = z.object({
   }),
 });
 
-type EnvelopeEditorSettingsTabType = 'general' | 'reminders' | 'email' | 'security';
+type EnvelopeEditorSettingsTabType = 'general' | 'reminders' | 'email' | 'security' | 'certificate';
 
 const tabs = [
   {
@@ -140,6 +151,12 @@ const tabs = [
     title: msg`Security`,
     icon: ShieldIcon,
     description: msg`Configure security settings for the document.`,
+  },
+  {
+    id: 'certificate',
+    title: msg`Certificate`,
+    icon: BadgeCheckIcon,
+    description: msg`Configure certificate settings and per-page security overlay.`,
   },
 ] as const;
 
@@ -171,9 +188,12 @@ export const EnvelopeEditorSettingsDialog = ({ trigger, ...props }: EnvelopeEdit
     return {
       templateType: envelope.templateType || TemplateType.PRIVATE,
       externalId: envelope.externalId || '',
-      visibility: envelope.visibility || '',
+      visibility: envelope.visibility ?? undefined,
       globalAccessAuth: documentAuthOption?.globalAccessAuth || [],
       globalActionAuth: documentAuthOption?.globalActionAuth || [],
+      authenticationMethods: envelope.authenticationMethods || [],
+      certificateAllPages: envelope.certificateAllPages || false,
+      certificatePosition: envelope.certificatePosition || CERTIFICATE_POSITION.FOOTER,
       meta: {
         subject: envelope.documentMeta.subject ?? '',
         message: envelope.documentMeta.message ?? '',
@@ -182,7 +202,7 @@ export const EnvelopeEditorSettingsDialog = ({ trigger, ...props }: EnvelopeEdit
         dateFormat: (envelope.documentMeta.dateFormat ?? DEFAULT_DOCUMENT_DATE_FORMAT) as TDocumentMetaDateFormat,
         distributionMethod: envelope.documentMeta.distributionMethod || DocumentDistributionMethod.EMAIL,
         redirectUrl: envelope.documentMeta.redirectUrl ?? '',
-        language: envelope.documentMeta.language ?? 'en',
+        language: envelope.documentMeta.language ?? 'pt-BR',
         emailId: envelope.documentMeta.emailId ?? null,
         emailReplyTo: envelope.documentMeta.emailReplyTo ?? undefined,
         emailSettings: ZDocumentEmailSettingsSchema.parse(envelope.documentMeta.emailSettings),
@@ -248,6 +268,9 @@ export const EnvelopeEditorSettingsDialog = ({ trigger, ...props }: EnvelopeEdit
           visibility: data.visibility,
           globalAccessAuth: parsedGlobalAccessAuth.success ? parsedGlobalAccessAuth.data : [],
           globalActionAuth: data.globalActionAuth ?? [],
+          authenticationMethods: data.authenticationMethods,
+          certificateAllPages: data.certificateAllPages,
+          certificatePosition: data.certificatePosition,
         },
         meta: {
           timezone,
@@ -369,13 +392,13 @@ export const EnvelopeEditorSettingsDialog = ({ trigger, ...props }: EnvelopeEdit
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onFormSubmit)}>
               <fieldset
-                className="flex h-[45rem] max-h-[calc(100vh-14rem)] w-full flex-col space-y-6 overflow-y-auto px-6 py-6"
+                className="flex h-[45rem] max-h-[calc(100vh-14rem)] w-full flex-col overflow-y-auto px-6 py-6"
                 disabled={form.formState.isSubmitting}
                 key={activeTab}
               >
                 {match({ activeTab, settings })
                   .with({ activeTab: 'general' }, () => (
-                    <>
+                    <div className="grid grid-cols-1 gap-x-6 gap-y-6 md:grid-cols-2">
                       {settings.allowConfigureLanguage && (
                         <FormField
                           control={form.control}
@@ -421,33 +444,35 @@ export const EnvelopeEditorSettingsDialog = ({ trigger, ...props }: EnvelopeEdit
                       )}
 
                       {settings.allowConfigureSignatureTypes && (
-                        <FormField
-                          control={form.control}
-                          name="meta.signatureTypes"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel className="flex flex-row items-center">
-                                <Trans>Allowed Signature Types</Trans>
-                                <DocumentSignatureSettingsTooltip />
-                              </FormLabel>
+                        <div className="md:col-span-2">
+                          <FormField
+                            control={form.control}
+                            name="meta.signatureTypes"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel className="flex flex-row items-center">
+                                  <Trans>Allowed Signature Types</Trans>
+                                  <DocumentSignatureSettingsTooltip />
+                                </FormLabel>
 
-                              <FormControl>
-                                <MultiSelectCombobox
-                                  options={Object.values(DOCUMENT_SIGNATURE_TYPES).map((option) => ({
-                                    label: t(option.label),
-                                    value: option.value,
-                                  }))}
-                                  selectedValues={field.value}
-                                  onChange={field.onChange}
-                                  className="w-full bg-background"
-                                  emptySelectionPlaceholder="Select signature types"
-                                />
-                              </FormControl>
+                                <FormControl>
+                                  <MultiSelectCombobox
+                                    options={Object.values(DOCUMENT_SIGNATURE_TYPES).map((option) => ({
+                                      label: t(option.label),
+                                      value: option.value,
+                                    }))}
+                                    selectedValues={field.value}
+                                    onChange={field.onChange}
+                                    className="w-full bg-background"
+                                    emptySelectionPlaceholder="Select signature types"
+                                  />
+                                </FormControl>
 
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                        </div>
                       )}
 
                       {settings.allowConfigureDateFormat && (
@@ -570,26 +595,28 @@ export const EnvelopeEditorSettingsDialog = ({ trigger, ...props }: EnvelopeEdit
                       />
 
                       {envelope.type === EnvelopeType.TEMPLATE && (
-                        <FormField
-                          control={form.control}
-                          name="templateType"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel className="flex flex-row items-center">
-                                <Trans>Template type</Trans>
-                                <TemplateTypeTooltip organisationTeamCount={organisation.teams.length} />
-                              </FormLabel>
+                        <div className="md:col-span-2">
+                          <FormField
+                            control={form.control}
+                            name="templateType"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel className="flex flex-row items-center">
+                                  <Trans>Template type</Trans>
+                                  <TemplateTypeTooltip organisationTeamCount={organisation.teams.length} />
+                                </FormLabel>
 
-                              <FormControl>
-                                <TemplateTypeSelect
-                                  value={field.value}
-                                  disabled={field.disabled}
-                                  onValueChange={field.onChange}
-                                />
-                              </FormControl>
-                            </FormItem>
-                          )}
-                        />
+                                <FormControl>
+                                  <TemplateTypeSelect
+                                    value={field.value}
+                                    disabled={field.disabled}
+                                    onValueChange={field.onChange}
+                                  />
+                                </FormControl>
+                              </FormItem>
+                            )}
+                          />
+                        </div>
                       )}
 
                       {settings.allowConfigureDistribution && (
@@ -697,7 +724,7 @@ export const EnvelopeEditorSettingsDialog = ({ trigger, ...props }: EnvelopeEdit
                           )}
                         />
                       )}
-                    </>
+                    </div>
                   ))
                   .with({ activeTab: 'reminders', settings: { allowConfigureReminders: true } }, () => (
                     <FormField
@@ -915,7 +942,95 @@ export const EnvelopeEditorSettingsDialog = ({ trigger, ...props }: EnvelopeEdit
                           )}
                         />
                       )}
+
+                      <FormField
+                        control={form.control}
+                        name="authenticationMethods"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>
+                              <Trans>Authentication Methods</Trans>
+                            </FormLabel>
+                            <FormControl>
+                              <MultiSelectCombobox
+                                options={[
+                                  { label: 'SMS', value: AuthenticationMethod.SMS },
+                                  { label: 'WhatsApp', value: AuthenticationMethod.WHATSAPP },
+                                  { label: 'Caixa BChat', value: AuthenticationMethod.CAIXA_BCHAT },
+                                ]}
+                                selectedValues={field.value}
+                                onChange={field.onChange}
+                                className="w-full bg-background"
+                                emptySelectionPlaceholder={t`Select authentication methods`}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
                     </>
+                  ))
+                  .with({ activeTab: 'certificate' }, () => (
+                    <div className="grid grid-cols-1 gap-x-6 gap-y-6 md:grid-cols-2">
+                      <div className="md:col-span-2">
+                        <FormField
+                          control={form.control}
+                          name="certificateAllPages"
+                          render={({ field }) => (
+                            <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
+                              <div className="space-y-0.5">
+                                <FormLabel className="text-base">
+                                  <Trans>Show certificate overlay on all pages</Trans>
+                                </FormLabel>
+                                <CardDescription>
+                                  <Trans>
+                                    Display the certificate overlay summary on every page of the signed document.
+                                  </Trans>
+                                </CardDescription>
+                              </div>
+                              <FormControl>
+                                <Switch
+                                  checked={field.value}
+                                  onCheckedChange={field.onChange}
+                                  disabled={field.disabled}
+                                />
+                              </FormControl>
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+
+                      <FormField
+                        control={form.control}
+                        name="certificatePosition"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>
+                              <Trans>Certificate Position</Trans>
+                            </FormLabel>
+                            <FormControl>
+                              <Select value={field.value} disabled={field.disabled} onValueChange={field.onChange}>
+                                <SelectTrigger className="bg-background">
+                                  <SelectValue />
+                                </SelectTrigger>
+                                <SelectContent>
+                                  <SelectItem value={CERTIFICATE_POSITION.FOOTER}>
+                                    <Trans>Footer</Trans>
+                                  </SelectItem>
+                                  <SelectItem value={CERTIFICATE_POSITION.LEFT}>
+                                    <Trans>Left Margin</Trans>
+                                  </SelectItem>
+                                  <SelectItem value={CERTIFICATE_POSITION.RIGHT}>
+                                    <Trans>Right Margin</Trans>
+                                  </SelectItem>
+                                </SelectContent>
+                              </Select>
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
                   ))
                   .otherwise(() => null)}
               </fieldset>

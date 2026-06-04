@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "generatedAt": "2026-06-03T16:53:07.440Z",
+  "updatedAt": "2026-06-03T17:00:00.000Z",
+  "source": "bootstrap+project",
+  "stack": {
+    "primaryLanguage": "typescript",
+    "languages": ["typescript", "javascript", "mdx", "sql", "prisma"],
+    "frameworks": ["remix", "hono", "trpc", "prisma", "react", "tailwindcss"],
+    "buildTools": ["pnpm", "vite", "turborepo"],
+    "testFrameworks": ["vitest", "playwright"],
+    "packageManager": "pnpm"
+  },
+  "sensors": [
+    {
+      "id": "build",
+      "name": "Build",
+      "description": "Run the package build script (Remix + Vite).",
+      "severity": "critical",
+      "command": "pnpm build",
+      "script": "build"
+    },
+    {
+      "id": "lint",
+      "name": "Lint",
+      "description": "Run ESLint across the monorepo.",
+      "severity": "warning",
+      "command": "pnpm lint",
+      "script": "lint"
+    },
+    {
+      "id": "lint-fix",
+      "name": "Lint --fix",
+      "description": "Run ESLint with --fix and re-stage. Use only in dedicated chore commits.",
+      "severity": "info",
+      "command": "pnpm lint:fix",
+      "script": "lint:fix"
+    },
+    {
+      "id": "format",
+      "name": "Format",
+      "description": "Run Prettier on the workspace.",
+      "severity": "info",
+      "command": "pnpm format",
+      "script": "format"
+    },
+    {
+      "id": "typecheck",
+      "name": "Typecheck",
+      "description": "Run `tsc --noEmit` across the monorepo with strict mode.",
+      "severity": "critical",
+      "command": "pnpm typecheck",
+      "script": "typecheck"
+    },
+    {
+      "id": "test-unit",
+      "name": "Unit tests",
+      "description": "Run Vitest across the workspace.",
+      "severity": "critical",
+      "command": "pnpm test",
+      "script": "test"
+    },
+    {
+      "id": "test-coverage",
+      "name": "Coverage threshold",
+      "description": "Fail the build if `packages/lib` coverage drops below 70% lines / 65% branches, or critical services below 90%.",
+      "severity": "warning",
+      "command": "pnpm test -- --coverage",
+      "script": "test"
+    },
+    {
+      "id": "test-e2e",
+      "name": "E2E tests",
+      "description": "Run Playwright in `packages/app-tests`.",
+      "severity": "critical",
+      "command": "pnpm test:e2e",
+      "script": "test:e2e"
+    },
+    {
+      "id": "test-e2e-smoke",
+      "name": "E2E smoke",
+      "description": "Run only the @smoke-tagged Playwright suites for fast feedback.",
+      "severity": "warning",
+      "command": "pnpm test:e2e -- --grep \"@smoke\"",
+      "script": "test:e2e"
+    },
+    {
+      "id": "test-api-contract",
+      "name": "API contract tests",
+      "description": "Run REST v1 and tRPC contract tests under `packages/app-tests/e2e/api`.",
+      "severity": "critical",
+      "command": "pnpm test:api",
+      "script": "test:api"
+    },
+    {
+      "id": "axe-a11y",
+      "name": "Axe accessibility",
+      "description": "Run axe on the key signing pages in Playwright.",
+      "severity": "warning",
+      "command": "pnpm test:e2e -- --grep \"@a11y\"",
+      "script": "test:e2e"
+    },
+    {
+      "id": "prisma-migrate-diff",
+      "name": "Prisma migration diff",
+      "description": "Verify no uncommitted Prisma schema drift between branch and main.",
+      "severity": "critical",
+      "command": "pnpm prisma migrate diff --from-migrations ./packages/prisma/migrations --to-schema-datamodel ./packages/prisma/schema.prisma --shadow-database-url \"$SHADOW_DATABASE_URL\"",
+      "script": "prisma:migrate:diff"
+    },
+    {
+      "id": "prisma-generate",
+      "name": "Prisma generate",
+      "description": "Regenerate Prisma client and Zod models after schema changes.",
+      "severity": "warning",
+      "command": "pnpm prisma generate",
+      "script": "prisma:generate"
+    },
+    {
+      "id": "db-reset",
+      "name": "DB reset",
+      "description": "Reset the local Postgres, push schema, and re-seed. Used in CI smoke.",
+      "severity": "info",
+      "command": "pnpm db:reset",
+      "script": "db:reset"
+    },
+    {
+      "id": "db-seed",
+      "name": "DB seed",
+      "description": "Seed fixtures from `packages/prisma/seed`.",
+      "severity": "info",
+      "command": "pnpm db:seed",
+      "script": "db:seed"
+    },
+    {
+      "id": "audit-log-emit",
+      "name": "Audit log emission",
+      "description": "Grep tRPC procedures and services to confirm every state transition writes a `DocumentAuditLog` row.",
+      "severity": "critical",
+      "command": "node scripts/sensors/audit-log-emit.mjs",
+      "script": "sensor:audit-log"
+    },
+    {
+      "id": "i18n-keys-present",
+      "name": "i18n keys present",
+      "description": "Verify every new translation key exists in every locale under `packages/lib/translations/`. Diff against the base `en` catalogue.",
+      "severity": "critical",
+      "command": "node scripts/sensors/i18n-keys-present.mjs",
+      "script": "sensor:i18n"
+    },
+    {
+      "id": "ee-license-gate",
+      "name": "EE license gate",
+      "description": "Verify every code path under `packages/ee` is guarded by `LicenseClient` checks.",
+      "severity": "critical",
+      "command": "node scripts/sensors/ee-license-gate.mjs",
+      "script": "sensor:ee-license"
+    },
+    {
+      "id": "recipient-token-redaction",
+      "name": "Recipient token redaction",
+      "description": "Static check that recipient tokens are never logged in full; only the first 4 chars may appear in error responses.",
+      "severity": "critical",
+      "command": "node scripts/sensors/recipient-token-redaction.mjs",
+      "script": "sensor:token-redact"
+    },
+    {
+      "id": "webhook-hmac",
+      "name": "Webhook HMAC signing",
+      "description": "Verify outbound webhooks include an HMAC-SHA256 header and the helper signs the body.",
+      "severity": "critical",
+      "command": "node scripts/sensors/webhook-hmac.mjs",
+      "script": "sensor:webhook-hmac"
+    },
+    {
+      "id": "dangerously-set-inner-html",
+      "name": "No raw HTML for user content",
+      "description": "Fail if `dangerouslySetInnerHTML` is used on user-controlled content.",
+      "severity": "critical",
+      "command": "node scripts/sensors/no-dangerous-html.mjs",
+      "script": "sensor:no-dangerous-html"
+    },
+    {
+      "id": "dependency-audit",
+      "name": "Dependency audit",
+      "description": "Run `pnpm audit`; block release on high or critical advisories.",
+      "severity": "critical",
+      "command": "pnpm audit --prod --audit-level=high",
+      "script": "audit"
+    },
+    {
+      "id": "docs-build",
+      "name": "Docs site build",
+      "description": "Build the public docs site (`apps/docs`) and the search index.",
+      "severity": "warning",
+      "command": "pnpm --filter @documenso/docs build",
+      "script": "docs:build"
+    },
+    {
+      "id": "llms-txt",
+      "name": "LLM-friendly docs",
+      "description": "Regenerate `apps/docs/src/app/llms.txt` and `llms-full.txt` from the MDX source.",
+      "severity": "info",
+      "command": "pnpm --filter @documenso/docs llms:generate",
+      "script": "docs:llms"
+    },
+    {
+      "id": "telemetry-optin",
+      "name": "Telemetry opt-in",
+      "description": "Verify `TelemetryClient` calls are opt-in; flag any unconditional reporting.",
+      "severity": "warning",
+      "command": "node scripts/sensors/telemetry-optin.mjs",
+      "script": "sensor:telemetry"
+    },
+    {
+      "id": "date-format-locale",
+      "name": "Date format + locale",
+      "description": "Verify the default locale is `pt-BR` and date rendering goes through `formatDate` (DD/MM/YYYY HH:mm).",
+      "severity": "warning",
+      "command": "node scripts/sensors/date-format.mjs",
+      "script": "sensor:date-format"
+    },
+    {
+      "id": "smoke-routes",
+      "name": "Smoke routes",
+      "description": "Curl key Remix routes (`/`, `/signing`, `/admin`) and assert 200/302 (auth redirect).",
+      "severity": "warning",
+      "command": "node scripts/sensors/smoke-routes.mjs",
+      "script": "sensor:smoke-routes"
+    }
+  ],
+  "sensorsByPhase": {
+    "P": ["build", "typecheck", "prisma-migrate-diff", "ee-license-gate", "i18n-keys-present"],
+    "R": [
+      "lint",
+      "typecheck",
+      "code-review",
+      "security-audit",
+      "dangerously-set-inner-html",
+      "webhook-hmac",
+      "recipient-token-redaction"
+    ],
+    "E": [
+      "test-unit",
+      "test-e2e",
+      "test-api-contract",
+      "audit-log-emit",
+      "i18n-keys-present",
+      "ee-license-gate",
+      "date-format-locale"
+    ],
+    "V": ["test-unit", "test-e2e", "test-coverage", "axe-a11y", "smoke-routes", "docs-build", "dependency-audit"],
+    "C": ["build", "typecheck", "lint", "test-coverage", "test-e2e-smoke", "docs-build", "llms-txt", "dependency-audit"]
+  },
+  "notes": [
+    "Critical sensors block release; warning sensors block merge; info sensors are advisory.",
+    "Custom `node scripts/sensors/*.mjs` scripts live in the team's runbook; their paths are illustrative until implemented.",
+    "Add new sensors here when the team introduces a new gate (e.g. `sealing-job-slo`, `webhook-retry-budget`).",
+    "Sensors are executed in the order listed per phase; longer sensors run last to fail fast on quick checks."
+  ]
+}

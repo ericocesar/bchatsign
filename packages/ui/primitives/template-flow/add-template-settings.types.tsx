@@ -37,7 +37,7 @@ export const ZAddTemplateSettingsFormSchema = z.object({
     language: z
       .union([z.string(), z.enum(SUPPORTED_LANGUAGE_CODES)])
       .optional()
-      .default('en'),
+      .default('pt-BR'),
     emailId: z.string().nullable(),
     emailReplyTo: z.preprocess((val) => (val === '' ? undefined : val), zEmail().optional()),
     emailSettings: ZDocumentEmailSettingsSchema,

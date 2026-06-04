@@ -362,6 +362,9 @@ export const createDocumentFromDirectTemplate = async ({
         status: DocumentStatus.PENDING,
         externalId: directTemplateExternalId,
         visibility: settings.documentVisibility,
+        authenticationMethods: directTemplateEnvelope.authenticationMethods,
+        certificateAllPages: directTemplateEnvelope.certificateAllPages,
+        certificatePosition: directTemplateEnvelope.certificatePosition,
         envelopeItems: {
           createMany: {
             data: envelopeItemsToCreate,

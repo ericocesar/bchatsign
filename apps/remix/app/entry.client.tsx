@@ -3,27 +3,25 @@ import { dynamicActivate } from '@documenso/lib/utils/i18n';
 import { i18n } from '@lingui/core';
 import { detect, fromHtmlTag } from '@lingui/detect-locale';
 import { I18nProvider } from '@lingui/react';
-import { StrictMode, startTransition, useEffect } from 'react';
+import { startTransition } from 'react';
 import { hydrateRoot } from 'react-dom/client';
 import { HydratedRouter } from 'react-router/dom';
 
 import './utils/polyfills/promise-with-resolvers';
 
-function PosthogInit() {
+function initPosthog() {
   const postHogConfig = extractPostHogConfig();
 
-  useEffect(() => {
-    if (postHogConfig) {
-      void import('posthog-js').then(({ default: posthog }) => {
-        posthog.init(postHogConfig.key, {
-          api_host: postHogConfig.host,
-          capture_exceptions: true,
-        });
-      });
-    }
-  }, []);
+  if (!postHogConfig) {
+    return;
+  }
 
-  return null;
+  void import('posthog-js').then(({ default: posthog }) => {
+    posthog.init(postHogConfig.key, {
+      api_host: postHogConfig.host,
+      capture_exceptions: true,
+    });
+  });
 }
 
 async function main() {
@@ -34,15 +32,13 @@ async function main() {
   startTransition(() => {
     hydrateRoot(
       document,
-      <StrictMode>
-        <I18nProvider i18n={i18n}>
-          <HydratedRouter />
-        </I18nProvider>
-
-        <PosthogInit />
-      </StrictMode>,
+      <I18nProvider i18n={i18n}>
+        <HydratedRouter />
+      </I18nProvider>,
     );
   });
+
+  initPosthog();
 }
 
 // eslint-disable-next-line @typescript-eslint/no-floating-promises

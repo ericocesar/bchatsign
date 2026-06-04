@@ -417,6 +417,18 @@ model Folder {
   @@index([type])
 }
 
+enum AuthenticationMethod {
+  SMS
+  WHATSAPP
+  CAIXA_BCHAT
+}
+
+enum CertificatePosition {
+  LEFT
+  RIGHT
+  FOOTER
+}
+
 enum EnvelopeType {
   DOCUMENT
   TEMPLATE
@@ -453,6 +465,10 @@ model Envelope {
   authOptions Json? /// [DocumentAuthOptions] @zod.custom.use(ZDocumentAuthOptionsSchema)
   formValues  Json? /// [DocumentFormValues] @zod.custom.use(ZDocumentFormValuesSchema)
   visibility  DocumentVisibility @default(EVERYONE)
+
+  authenticationMethods AuthenticationMethod[] @default([])
+  certificateAllPages   Boolean                @default(false)
+  certificatePosition   CertificatePosition    @default(FOOTER)
 
   // Template specific fields.
   templateType      TemplateType        @default(PRIVATE)
@@ -552,7 +568,7 @@ model DocumentMeta {
   subject                String?
   message                String?
   timezone               String?              @default("Etc/UTC") @db.Text
-  dateFormat             String?              @default("yyyy-MM-dd hh:mm a") @db.Text
+  dateFormat             String?              @default("dd/MM/yyyy HH:mm") @db.Text
   redirectUrl            String?
   signingOrder           DocumentSigningOrder @default(PARALLEL)
   allowDictateNextSigner Boolean              @default(false)
@@ -878,12 +894,12 @@ model OrganisationGlobalSettings {
   organisation Organisation?
 
   documentVisibility        DocumentVisibility @default(EVERYONE)
-  documentLanguage          String             @default("en")
+  documentLanguage          String             @default("pt-BR")
   includeSenderDetails      Boolean            @default(true)
   includeSigningCertificate Boolean            @default(true)
   includeAuditLog           Boolean            @default(false)
   documentTimezone          String? // Nullable to allow using local timezones if not set.
-  documentDateFormat        String             @default("yyyy-MM-dd hh:mm a")
+  documentDateFormat        String             @default("dd/MM/yyyy HH:mm")
   delegateDocumentOwnership Boolean            @default(false)
 
   typedSignatureEnabled  Boolean @default(true)

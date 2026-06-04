@@ -97,7 +97,7 @@ export const AddTemplateSettingsFormPartial = ({
       title: template.title,
       externalId: template.externalId || undefined,
       templateType: template.type || TemplateType.PRIVATE,
-      visibility: template.visibility || '',
+      visibility: template.visibility ?? undefined,
       globalAccessAuth: documentAuthOption?.globalAccessAuth || [],
       globalActionAuth: documentAuthOption?.globalActionAuth || [],
       meta: {
@@ -108,7 +108,7 @@ export const AddTemplateSettingsFormPartial = ({
         dateFormat: (template.templateMeta?.dateFormat ?? DEFAULT_DOCUMENT_DATE_FORMAT) as TDocumentMetaDateFormat,
         distributionMethod: template.templateMeta?.distributionMethod || DocumentDistributionMethod.EMAIL,
         redirectUrl: template.templateMeta?.redirectUrl ?? '',
-        language: template.templateMeta?.language ?? 'en',
+        language: template.templateMeta?.language ?? 'pt-BR',
         emailId: template.templateMeta?.emailId ?? null,
         emailReplyTo: template.templateMeta?.emailReplyTo ?? undefined,
         emailSettings: ZDocumentEmailSettingsSchema.parse(template?.templateMeta?.emailSettings),

@@ -538,6 +538,13 @@ export const ZDocumentAuditLogEventDocumentRecipientCompleteSchema = z.object({
 
       return Array.isArray(unknownValue) ? unknownValue : [unknownValue];
     }, z.array(ZRecipientActionAuthTypesSchema)),
+    geolocation: z
+      .object({
+        latitude: z.number(),
+        longitude: z.number(),
+      })
+      .optional()
+      .nullable(),
   }),
 });
 

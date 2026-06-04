@@ -11,7 +11,6 @@ import { Link, Outlet, redirect } from 'react-router';
 
 import { AppBanner } from '~/components/general/app-banner';
 import { Header } from '~/components/general/app-header';
-import { AppSidebar } from '~/components/general/app-sidebar';
 import { GenericErrorLayout } from '~/components/general/generic-error-layout';
 import { OrganisationBillingBanner } from '~/components/general/organisations/organisation-billing-banner';
 import { VerifyEmailBanner } from '~/components/general/verify-email-banner';
@@ -66,6 +65,7 @@ export default function Layout({ loaderData, params, matches }: Route.ComponentP
 
   const currentTeam = teams.find((team) => team.url === teamUrl);
   const currentOrganisation = extractCurrentOrganisation() || null;
+  const fallbackTeamUrl = currentTeam?.url ?? teams[0]?.url ?? null;
 
   const orgNotFound = params.orgUrl && !currentOrganisation;
   const teamNotFound = params.teamUrl && !currentTeam;
@@ -114,27 +114,15 @@ export default function Layout({ loaderData, params, matches }: Route.ComponentP
 
         {banner && !hideHeader && <AppBanner banner={banner} />}
 
-        {!hideHeader && (
-          <div className="flex min-h-screen w-full">
-            <div className="hidden md:block">
-              <AppSidebar />
-            </div>
+        {!hideHeader ? (
+          <div className="flex min-h-screen w-full flex-col">
+            <Header teamUrl={fallbackTeamUrl} />
 
-            <div className="flex min-w-0 flex-1 flex-col">
-              <Header />
-
-              <main
-                className={cn('flex-1', {
-                  'pb-10 md:pb-16': !hideHeader,
-                })}
-              >
-                <Outlet />
-              </main>
-            </div>
+            <main className={cn('flex-1 pb-10 md:pb-16')}>
+              <Outlet />
+            </main>
           </div>
-        )}
-
-        {hideHeader && (
+        ) : (
           <main>
             <Outlet />
           </main>

@@ -3,6 +3,7 @@ import { type TRecipientAccessAuth, ZDocumentAccessAuthSchema } from '@documenso
 import { fieldsContainUnsignedRequiredField } from '@documenso/lib/utils/advanced-fields-helpers';
 import { zEmail } from '@documenso/lib/utils/zod';
 import { Button } from '@documenso/ui/primitives/button';
+import { Checkbox } from '@documenso/ui/primitives/checkbox';
 import {
   Dialog,
   DialogContent,
@@ -14,6 +15,7 @@ import {
 } from '@documenso/ui/primitives/dialog';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@documenso/ui/primitives/form/form';
 import { Input } from '@documenso/ui/primitives/input';
+import { Label } from '@documenso/ui/primitives/label';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Trans, useLingui } from '@lingui/react/macro';
 import type { Field, Recipient } from '@prisma/client';
@@ -38,6 +40,7 @@ export type DocumentSigningCompleteDialogProps = {
     nextSigner?: { name: string; email: string },
     accessAuthOptions?: TRecipientAccessAuth,
     directRecipient?: { name: string; email: string },
+    geolocation?: { latitude: number; longitude: number },
   ) => void | Promise<void>;
   recipient: Pick<Recipient, 'name' | 'email' | 'role' | 'token'>;
   disabled?: boolean;
@@ -94,6 +97,36 @@ export const DocumentSigningCompleteDialog = ({
 
   const { derivedRecipientAccessAuth } = useRequiredDocumentSigningAuthContext();
 
+  const [optInGeolocation, setOptInGeolocation] = useState(false);
+  const [geolocation, setGeolocation] = useState<{ latitude: number; longitude: number } | undefined>(undefined);
+
+  const handleGeolocationChange = (checked: boolean) => {
+    setOptInGeolocation(checked);
+    if (checked) {
+      if (typeof navigator !== 'undefined' && navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            setGeolocation({
+              latitude: position.coords.latitude,
+              longitude: position.coords.longitude,
+            });
+          },
+          (error) => {
+            console.error('Error fetching geolocation:', error);
+            setOptInGeolocation(false);
+            setGeolocation(undefined);
+          },
+        );
+      } else {
+        console.error('Geolocation is not supported by this browser.');
+        setOptInGeolocation(false);
+        setGeolocation(undefined);
+      }
+    } else {
+      setGeolocation(undefined);
+    }
+  };
+
   const { isNameLocked, isEmailLocked } = useEmbedSigningContext() || {};
 
   const form = useForm<TNextSignerFormSchema>({
@@ -129,6 +162,8 @@ export const DocumentSigningCompleteDialog = ({
         name: defaultNextSigner?.name ?? '',
         email: defaultNextSigner?.email ?? '',
       });
+      setOptInGeolocation(false);
+      setGeolocation(undefined);
     }
 
     setShowDialog(open);
@@ -161,7 +196,7 @@ export const DocumentSigningCompleteDialog = ({
       const nextSigner =
         allowDictateNextSigner && data.name && data.email ? { name: data.name, email: data.email } : undefined;
 
-      await onSignatureComplete(nextSigner, data.accessAuthOptions, recipientOverridePayload);
+      await onSignatureComplete(nextSigner, data.accessAuthOptions, recipientOverridePayload, geolocation);
     } catch (error) {
       const err = AppError.parseError(error);
 
@@ -344,6 +379,20 @@ export const DocumentSigningCompleteDialog = ({
                     </div>
                   </div>
                 )}
+
+                <div className="mb-4 flex items-center space-x-2">
+                  <Checkbox
+                    id="opt-in-geolocation"
+                    checked={optInGeolocation}
+                    onCheckedChange={handleGeolocationChange}
+                  />
+                  <Label
+                    htmlFor="opt-in-geolocation"
+                    className="cursor-pointer select-none font-normal text-muted-foreground text-xs"
+                  >
+                    <Trans>Share my geolocation on the signature certificate</Trans>
+                  </Label>
+                </div>
 
                 <DocumentSigningDisclosure />
 

@@ -3,7 +3,14 @@ import type { ApiRequestMetadata } from '@documenso/lib/universal/extract-reques
 import type { CreateDocumentAuditLogDataResponse } from '@documenso/lib/utils/document-audit-logs';
 import { createDocumentAuditLogData } from '@documenso/lib/utils/document-audit-logs';
 import { prisma } from '@documenso/prisma';
-import type { DocumentMeta, DocumentVisibility, Prisma, TemplateType } from '@prisma/client';
+import type {
+  AuthenticationMethod,
+  CertificatePosition,
+  DocumentMeta,
+  DocumentVisibility,
+  Prisma,
+  TemplateType,
+} from '@prisma/client';
 import { DocumentStatus, EnvelopeType, FolderType, WebhookTriggerEvents } from '@prisma/client';
 import { isDeepEqual } from 'remeda';
 
@@ -33,6 +40,9 @@ export type UpdateEnvelopeOptions = {
     publicDescription?: string;
     templateType?: TemplateType;
     useLegacyFieldInsertion?: boolean;
+    authenticationMethods?: AuthenticationMethod[];
+    certificateAllPages?: boolean;
+    certificatePosition?: CertificatePosition;
   };
   meta?: Partial<Omit<DocumentMeta, 'id'>>;
   requestMetadata: ApiRequestMetadata;
@@ -311,6 +321,9 @@ export const updateEnvelope = async ({
         useLegacyFieldInsertion: data.useLegacyFieldInsertion,
         authOptions,
         folder: folderUpdateQuery,
+        authenticationMethods: data.authenticationMethods,
+        certificateAllPages: data.certificateAllPages,
+        certificatePosition: data.certificatePosition,
         documentMeta: {
           update: {
             ...meta,

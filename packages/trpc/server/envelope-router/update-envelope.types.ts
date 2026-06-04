@@ -1,7 +1,7 @@
 import { ZDocumentAccessAuthTypesSchema, ZDocumentActionAuthTypesSchema } from '@documenso/lib/types/document-auth';
 import { ZDocumentMetaUpdateSchema } from '@documenso/lib/types/document-meta';
 import { ZEnvelopeLiteSchema } from '@documenso/lib/types/envelope';
-import { TemplateType } from '@prisma/client';
+import { AuthenticationMethod, CertificatePosition, TemplateType } from '@prisma/client';
 import { z } from 'zod';
 
 import { ZDocumentExternalIdSchema, ZDocumentTitleSchema, ZDocumentVisibilitySchema } from '../document-router/schema';
@@ -27,6 +27,9 @@ export const ZUpdateEnvelopeRequestSchema = z.object({
       globalActionAuth: z.array(ZDocumentActionAuthTypesSchema).optional(),
       folderId: z.string().nullish(),
       templateType: z.nativeEnum(TemplateType).optional(),
+      authenticationMethods: z.array(z.nativeEnum(AuthenticationMethod)).optional(),
+      certificateAllPages: z.boolean().optional(),
+      certificatePosition: z.nativeEnum(CertificatePosition).optional(),
     })
     .optional(),
   meta: ZDocumentMetaUpdateSchema.optional(),

@@ -4,6 +4,7 @@ import { formatDocumentsPath, formatTemplatesPath } from '@documenso/lib/utils/t
 import { trpc } from '@documenso/trpc/react';
 import { Button } from '@documenso/ui/primitives/button';
 import { Spinner } from '@documenso/ui/primitives/spinner';
+import { TooltipProvider } from '@documenso/ui/primitives/tooltip';
 import { msg } from '@lingui/core/macro';
 import { Trans } from '@lingui/react/macro';
 import { EnvelopeType } from '@prisma/client';
@@ -96,10 +97,12 @@ export default function EnvelopeEditorPage({ params }: Route.ComponentProps) {
   }
 
   return (
-    <EnvelopeEditorProvider initialEnvelope={envelope}>
-      <EnvelopeEditorRenderProviderWrapper>
-        <EnvelopeEditor />
-      </EnvelopeEditorRenderProviderWrapper>
-    </EnvelopeEditorProvider>
+    <TooltipProvider>
+      <EnvelopeEditorProvider initialEnvelope={envelope}>
+        <EnvelopeEditorRenderProviderWrapper>
+          <EnvelopeEditor />
+        </EnvelopeEditorRenderProviderWrapper>
+      </EnvelopeEditorProvider>
+    </TooltipProvider>
   );
 }

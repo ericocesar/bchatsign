@@ -259,6 +259,11 @@ msgstr "{0, plural, other {你即将删除 # 个模板。}}"
 msgid "{0}"
 msgstr "{0}"
 
+#. placeholder {0}: organisation.name
+#: apps/remix/app/routes/_authenticated+/o.$orgUrl._index.tsx
+msgid "{0} — Equipes"
+msgstr ""
+
 #. placeholder {0}: team.name
 #: apps/remix/app/components/dialogs/public-profile-template-manage-dialog.tsx
 msgid "{0} direct signing templates"
@@ -293,11 +298,6 @@ msgstr "本月还剩 {0}/{1} 份文档可用。"
 #: packages/lib/server-only/document/resend-document.ts
 msgid "{0} on behalf of \"{1}\" has invited you to {recipientActionVerb} the document \"{2}\"."
 msgstr "{0} 代表“{1}”邀请您 {recipientActionVerb} 文档“{2}”。"
-
-#. placeholder {0}: organisation.name
-#: apps/remix/app/routes/_authenticated+/o.$orgUrl._index.tsx
-msgid "{0} Teams"
-msgstr "{0} 个团队"
 
 #. placeholder {0}: currentStepData.order
 #. placeholder {1}: envelopeEditorSteps.length
@@ -1123,7 +1123,7 @@ msgid "Acknowledgment"
 msgstr "确认"
 
 #: apps/remix/app/routes/_authenticated+/dashboard.tsx
-msgid "Across organisations"
+msgid "Ações"
 msgstr ""
 
 #: apps/remix/app/components/general/document/document-page-view-dropdown.tsx
@@ -1492,7 +1492,6 @@ msgid "All claims"
 msgstr ""
 
 #: apps/remix/app/components/general/app-command-menu.tsx
-#: apps/remix/app/routes/_authenticated+/dashboard.tsx
 msgid "All documents"
 msgstr "所有文档"
 
@@ -2171,6 +2170,10 @@ msgstr "审计日志"
 msgid "Authentication Level"
 msgstr "验证级别"
 
+#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
+msgid "Authentication Methods"
+msgstr ""
+
 #: apps/remix/app/routes/_unauthenticated+/o.$orgUrl.signin.tsx
 msgid "Authentication Portal Not Found"
 msgstr "未找到认证门户"
@@ -2426,6 +2429,11 @@ msgstr "继续操作即表示您同意我们的<0>服务条款</0>和<1>隐私�
 msgid "By using the electronic signature feature, you are consenting to conduct transactions and receive disclosures electronically. You acknowledge that your electronic signature on documents is binding and that you accept the terms outlined in the documents you are signing."
 msgstr "使用电子签名功能，即表示你同意以电子方式进行交易并接收披露文件。你确认你在文档上的电子签名具有约束力，并接受所签署文档中列明的条款。"
 
+#: apps/remix/app/components/general/app-sidebar.tsx
+#: apps/remix/app/components/general/org-menu-switcher.tsx
+msgid "Caixa de Entrada Pessoal"
+msgstr ""
+
 #: packages/ui/components/recipient/recipient-role-select.tsx
 msgid "Can prepare"
 msgstr "可预填"
@@ -2584,6 +2592,14 @@ msgstr "抄送人"
 #: apps/remix/app/components/forms/editor/editor-field-generic-field-forms.tsx
 msgid "Center"
 msgstr "居中"
+
+#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
+msgid "Certificate"
+msgstr ""
+
+#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
+msgid "Certificate Position"
+msgstr ""
 
 #: apps/remix/app/components/general/app-command-menu.tsx
 msgid "Change language"
@@ -2813,7 +2829,6 @@ msgstr "请为以下签署人完成字段。"
 #: apps/remix/app/components/general/template/template-page-view-documents-table.tsx
 #: apps/remix/app/components/tables/admin-document-jobs-table.tsx
 #: apps/remix/app/components/tables/organisation-insights-table.tsx
-#: apps/remix/app/routes/_authenticated+/dashboard.tsx
 #: packages/email/template-components/template-document-completed.tsx
 #: packages/email/template-components/template-document-recipient-signed.tsx
 #: packages/email/template-components/template-document-self-signed.tsx
@@ -2843,6 +2858,14 @@ msgstr "已完成文档"
 msgid "Completed on {formattedDate}"
 msgstr "完成时间 {formattedDate}"
 
+#: apps/remix/app/routes/_authenticated+/dashboard.tsx
+msgid "Concluídos"
+msgstr ""
+
+#: apps/remix/app/components/general/org-menu-switcher.tsx
+msgid "Configurações da Organização"
+msgstr ""
+
 #: packages/lib/constants/pdf-viewer-i18n.ts
 #: packages/lib/constants/pdf-viewer-i18n.ts
 #: packages/lib/constants/pdf-viewer-i18n.ts
@@ -2858,6 +2881,10 @@ msgstr "配置 {0} 字段"
 #: apps/remix/app/components/embed/authoring/configure-document-advanced-settings.tsx
 msgid "Configure additional options and preferences"
 msgstr "配置其他选项和偏好"
+
+#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
+msgid "Configure certificate settings and per-page security overlay."
+msgstr ""
 
 #: packages/lib/constants/template.ts
 msgid "Configure Direct Recipient"
@@ -2965,6 +2992,11 @@ msgstr "确认邮件已发送"
 #: apps/remix/app/routes/_unauthenticated+/articles.signature-disclosure.tsx
 msgid "Consent to Electronic Transactions"
 msgstr "同意以电子方式进行交易"
+
+#: apps/remix/app/components/general/menu-switcher.tsx
+#: apps/remix/app/components/general/org-menu-switcher.tsx
+msgid "Conta Pessoal"
+msgstr ""
 
 #: apps/remix/app/routes/_unauthenticated+/articles.signature-disclosure.tsx
 msgid "Contact Information"
@@ -3289,9 +3321,7 @@ msgstr "自动创建一个"
 msgid "Create organisation"
 msgstr "创建组织"
 
-#: apps/remix/app/components/general/app-sidebar.tsx
 #: apps/remix/app/components/general/menu-switcher.tsx
-#: apps/remix/app/components/general/org-menu-switcher.tsx
 #: apps/remix/app/routes/_authenticated+/admin+/users.$id.tsx
 msgid "Create Organisation"
 msgstr "创建组织"
@@ -3415,6 +3445,11 @@ msgstr "正在创建文档"
 msgid "Creating Template"
 msgstr "正在创建模板"
 
+#: apps/remix/app/components/general/app-sidebar.tsx
+#: apps/remix/app/components/general/org-menu-switcher.tsx
+msgid "Criar Organização"
+msgstr ""
+
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl.settings.branding.tsx
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.branding.tsx
 msgid "CSS rules were dropped during sanitisation"
@@ -3491,9 +3526,12 @@ msgstr "深色模式"
 
 #: apps/remix/app/components/general/app-sidebar.tsx
 #: apps/remix/app/routes/_authenticated+/dashboard.tsx
-#: apps/remix/app/routes/_authenticated+/dashboard.tsx
 msgid "Dashboard"
 msgstr "控制台"
+
+#: apps/remix/app/routes/_authenticated+/dashboard.tsx
+msgid "Data"
+msgstr ""
 
 #: apps/remix/app/components/dialogs/ai-field-detection-dialog.tsx
 #: apps/remix/app/components/general/document-signing/document-signing-date-field.tsx
@@ -3978,6 +4016,10 @@ msgstr "Discord"
 msgid "Display Name"
 msgstr "显示名称"
 
+#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
+msgid "Display the certificate overlay summary on every page of the signed document."
+msgstr ""
+
 #: apps/remix/app/components/general/teams/team-email-usage.tsx
 msgid "Display your name and email in documents"
 msgstr "在文档中显示你的姓名和邮箱"
@@ -4375,6 +4417,10 @@ msgstr "文档将被永久删除"
 msgid "Documentation"
 msgstr "文档"
 
+#: apps/remix/app/routes/_authenticated+/dashboard.tsx
+msgid "Documentos Recentes"
+msgstr ""
+
 #: apps/remix/app/components/general/app-command-menu.tsx
 #: apps/remix/app/components/general/app-nav-desktop.tsx
 #: apps/remix/app/components/general/app-nav-mobile.tsx
@@ -4389,7 +4435,6 @@ msgstr "文档"
 #: apps/remix/app/components/tables/organisation-insights-table.tsx
 #: apps/remix/app/components/tables/organisation-insights-table.tsx
 #: apps/remix/app/routes/_authenticated+/admin+/_layout.tsx
-#: apps/remix/app/routes/_authenticated+/dashboard.tsx
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/documents._index.tsx
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/documents._index.tsx
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/documents.$id._index.tsx
@@ -4479,10 +4524,6 @@ msgstr "不重复"
 msgid "Don't transfer (Delete all documents)"
 msgstr "不要转移（删除所有文档）"
 
-#: apps/remix/app/routes/_authenticated+/dashboard.tsx
-msgid "done"
-msgstr ""
-
 #: apps/remix/app/components/forms/2fa/enable-authenticator-app-dialog.tsx
 #: apps/remix/app/components/forms/2fa/view-recovery-codes-dialog.tsx
 #: apps/remix/app/components/general/document/document-certificate-qr-view.tsx
@@ -4526,7 +4567,6 @@ msgstr "下载模板 CSV"
 #: apps/remix/app/components/general/document/document-status.tsx
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-header.tsx
 #: apps/remix/app/components/general/template/template-page-view-documents-table.tsx
-#: apps/remix/app/routes/_authenticated+/dashboard.tsx
 #: packages/lib/constants/document.ts
 msgid "Draft"
 msgstr "草稿"
@@ -5172,6 +5212,11 @@ msgstr "信封标题"
 msgid "Envelope updated"
 msgstr "信封已更新"
 
+#: apps/remix/app/components/general/app-sidebar.tsx
+#: apps/remix/app/components/general/org-menu-switcher.tsx
+msgid "Equipes"
+msgstr ""
+
 #: apps/remix/app/components/dialogs/admin-swap-subscription-dialog.tsx
 #: apps/remix/app/components/dialogs/admin-user-delete-dialog.tsx
 #: apps/remix/app/components/dialogs/admin-user-disable-dialog.tsx
@@ -5620,6 +5665,10 @@ msgstr "文件夹更新成功"
 msgid "Font Size"
 msgstr "字体大小"
 
+#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
+msgid "Footer"
+msgstr ""
+
 #: apps/remix/app/routes/_unauthenticated+/articles.signature-disclosure.tsx
 msgid "For any questions regarding this disclosure, electronic signatures, or any related process, please contact us at: <0>{SUPPORT_EMAIL}</0>"
 msgstr "如对本披露内容、电子签名或任何相关流程有疑问，请通过以下方式联系我们：<0>{SUPPORT_EMAIL}</0>"
@@ -5896,10 +5945,6 @@ msgstr "在这里，你可以设置通用品牌偏好。"
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl.settings.document.tsx
 msgid "Here you can set your general document preferences."
 msgstr "在这里，你可以设置通用文档偏好。"
-
-#: apps/remix/app/routes/_authenticated+/dashboard.tsx
-msgid "here’s an overview of your account."
-msgstr ""
 
 #: apps/remix/app/components/dialogs/template-direct-link-dialog.tsx
 msgid "Here's how it works:"
@@ -6465,6 +6510,10 @@ msgstr "离开组织"
 msgid "Left"
 msgstr "左对齐"
 
+#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
+msgid "Left Margin"
+msgstr ""
+
 #: apps/remix/app/routes/_unauthenticated+/articles.signature-disclosure.tsx
 msgid "Legality of Electronic Signatures"
 msgstr "电子签名的合法性"
@@ -6557,7 +6606,6 @@ msgstr "监听对象"
 msgid "Load older activity"
 msgstr "加载更早的活动记录"
 
-#: apps/remix/app/routes/_authenticated+/dashboard.tsx
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/documents.$id._index.tsx
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/documents.$id.edit.tsx
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/templates.$id._index.tsx
@@ -6589,6 +6637,10 @@ msgstr "正在加载..."
 #: apps/remix/app/components/forms/document-preferences-form.tsx
 msgid "Local timezone"
 msgstr "本地时区"
+
+#: packages/lib/server-only/pdf/render-certificate.ts
+msgid "Location"
+msgstr ""
 
 #: apps/remix/app/components/general/direct-template/direct-template-signing-auth-page.tsx
 #: apps/remix/app/components/general/document-signing/document-signing-auth-account.tsx
@@ -7059,6 +7111,10 @@ msgstr "需要签署"
 msgid "Needs to view"
 msgstr "需要查看"
 
+#: apps/remix/app/routes/_authenticated+/dashboard.tsx
+msgid "Nenhum documento encontrado"
+msgstr ""
+
 #: apps/remix/app/components/tables/settings-security-passkey-table.tsx
 msgid "Never"
 msgstr "从不"
@@ -7302,6 +7358,10 @@ msgstr "未找到值。"
 msgid "No worries, it happens! Enter your email and we'll email you a special link to reset your password."
 msgstr "别担心，这很常见！输入你的邮箱，我们会给你发送一个用于重置密码的特殊链接。"
 
+#: apps/remix/app/routes/_authenticated+/dashboard.tsx
+msgid "Nome do documento"
+msgstr ""
+
 #: apps/remix/app/components/dialogs/envelope-distribute-dialog.tsx
 #: apps/remix/app/components/embed/authoring/configure-document-advanced-settings.tsx
 #: apps/remix/app/components/forms/editor/editor-field-number-form.tsx
@@ -7442,10 +7502,6 @@ msgid "Oops! Something went wrong."
 msgstr "噢！出错了。"
 
 #: apps/remix/app/routes/_authenticated+/dashboard.tsx
-msgid "Open"
-msgstr ""
-
-#: apps/remix/app/routes/_authenticated+/dashboard.tsx
 msgid "Open documents"
 msgstr ""
 
@@ -7455,10 +7511,6 @@ msgstr "打开菜单"
 
 #: apps/remix/app/components/general/app-sidebar.tsx
 msgid "Open organisation menu"
-msgstr ""
-
-#: apps/remix/app/routes/_authenticated+/dashboard.tsx
-msgid "Open templates"
 msgstr ""
 
 #: apps/remix/app/components/general/stack-avatars-with-tooltip.tsx
@@ -7599,10 +7651,6 @@ msgstr "组织角色"
 msgid "Organisation Role"
 msgstr "组织角色"
 
-#: apps/remix/app/components/general/org-menu-switcher.tsx
-msgid "Organisation settings"
-msgstr "组织设置"
-
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl.settings._layout.tsx
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl.settings._layout.tsx
 msgid "Organisation Settings"
@@ -7643,8 +7691,6 @@ msgstr "组织用量"
 msgid "Organisation-level pending invites for this team's parent organisation."
 msgstr "此团队的上级组织在组织层级的待处理邀请。"
 
-#: apps/remix/app/components/general/app-sidebar.tsx
-#: apps/remix/app/components/general/org-menu-switcher.tsx
 #: apps/remix/app/components/general/settings-nav-desktop.tsx
 #: apps/remix/app/components/general/settings-nav-mobile.tsx
 #: apps/remix/app/routes/_authenticated+/admin+/_layout.tsx
@@ -7668,6 +7714,11 @@ msgstr "将成员划分为可分配给团队的组"
 msgid "Organise your templates"
 msgstr "整理您的模板"
 
+#: apps/remix/app/components/general/app-sidebar.tsx
+#: apps/remix/app/components/general/org-menu-switcher.tsx
+msgid "Organizações"
+msgstr ""
+
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl._index.tsx
 msgid "Organize your documents and templates"
 msgstr "整理您的文档和模板"
@@ -7685,10 +7736,6 @@ msgstr "否则将把文档创建为草稿。"
 #: apps/remix/app/components/forms/email-preferences-form.tsx
 msgid "Override organisation settings"
 msgstr "覆盖组织设置"
-
-#: apps/remix/app/routes/_authenticated+/dashboard.tsx
-msgid "Overview"
-msgstr ""
 
 #: apps/remix/app/components/dialogs/admin-organisation-member-update-dialog.tsx
 #: apps/remix/app/components/dialogs/admin-organisation-member-update-dialog.tsx
@@ -7837,6 +7884,10 @@ msgstr "付款逾期"
 msgid "PDF Document"
 msgstr "PDF 文档"
 
+#: apps/remix/app/routes/_authenticated+/dashboard.tsx
+msgid "Pendentes"
+msgstr ""
+
 #: apps/remix/app/components/general/document/document-page-view-recipients.tsx
 #: apps/remix/app/components/general/document/document-page-view-recipients.tsx
 #: apps/remix/app/components/general/document/document-status.tsx
@@ -7846,7 +7897,6 @@ msgstr "PDF 文档"
 #: apps/remix/app/routes/_authenticated+/admin+/email-domains._index.tsx
 #: apps/remix/app/routes/_authenticated+/admin+/email-domains._index.tsx
 #: apps/remix/app/routes/_authenticated+/admin+/email-domains.$id.tsx
-#: apps/remix/app/routes/_authenticated+/dashboard.tsx
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl.settings.members.tsx
 #: packages/lib/constants/document.ts
 #: packages/ui/components/document/document-read-only-fields.tsx
@@ -7907,13 +7957,6 @@ msgid "Personal"
 msgstr "个人"
 
 #: apps/remix/app/components/general/menu-switcher.tsx
-#: apps/remix/app/components/general/org-menu-switcher.tsx
-msgid "Personal Account"
-msgstr "个人账号"
-
-#: apps/remix/app/components/general/app-sidebar.tsx
-#: apps/remix/app/components/general/menu-switcher.tsx
-#: apps/remix/app/components/general/org-menu-switcher.tsx
 #: apps/remix/app/routes/_authenticated+/inbox.tsx
 #: apps/remix/app/routes/_authenticated+/inbox.tsx
 msgid "Personal Inbox"
@@ -8349,6 +8392,10 @@ msgstr "单选按钮设置"
 #: packages/ui/primitives/document-flow/field-items-advanced-settings/radio-field.tsx
 msgid "Radio values"
 msgstr "单选值"
+
+#: apps/remix/app/routes/_authenticated+/dashboard.tsx
+msgid "Rascunhos"
+msgstr ""
 
 #: apps/remix/app/routes/_authenticated+/admin+/email-domains.$id.tsx
 #: apps/remix/app/routes/_authenticated+/admin+/email-domains.$id.tsx
@@ -8981,11 +9028,6 @@ msgstr "返回登录"
 msgid "Return to templates"
 msgstr "返回模板列表"
 
-#: apps/remix/app/routes/_authenticated+/dashboard.tsx
-#: apps/remix/app/routes/_authenticated+/dashboard.tsx
-msgid "Reusable"
-msgstr ""
-
 #: packages/email/templates/organisation-account-link-confirmation.tsx
 msgid "Review request"
 msgstr "审查请求"
@@ -9008,6 +9050,10 @@ msgstr "撤销所有会话"
 #: apps/remix/app/components/forms/editor/editor-field-generic-field-forms.tsx
 msgid "Right"
 msgstr "右对齐"
+
+#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
+msgid "Right Margin"
+msgstr ""
 
 #: apps/remix/app/components/forms/branding-preferences-form.tsx
 msgid "Ring"
@@ -9178,6 +9224,10 @@ msgstr "查看文档"
 msgid "See the background jobs tab for the status"
 msgstr "状态请查看后台作业选项卡"
 
+#: apps/remix/app/routes/_authenticated+/o.$orgUrl._index.tsx
+msgid "Selecione uma equipe para ver seu painel"
+msgstr ""
+
 #: apps/remix/app/components/general/document-signing/document-signing-dropdown-field.tsx
 #: packages/ui/primitives/document-flow/field-content.tsx
 #: packages/ui/primitives/document-flow/field-items-advanced-settings/dropdown-field.tsx
@@ -9204,10 +9254,6 @@ msgstr "请选择套餐以继续"
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-fields-page-renderer.tsx
 msgid "Select a recipient"
 msgstr "选择一个收件人"
-
-#: apps/remix/app/routes/_authenticated+/o.$orgUrl._index.tsx
-msgid "Select a team to view its dashboard"
-msgstr "选择一个团队以查看其控制台"
 
 #: apps/remix/app/components/dialogs/public-profile-template-manage-dialog.tsx
 msgid "Select a template you'd like to display on your public profile"
@@ -9253,6 +9299,7 @@ msgstr "选择一个组织以查看团队"
 msgid "Select at least"
 msgstr "至少选择"
 
+#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
 #: packages/ui/components/document/document-global-auth-action-select.tsx
 #: packages/ui/components/recipient/recipient-action-auth-select.tsx
 msgid "Select authentication methods"
@@ -9532,6 +9579,10 @@ msgstr "设置"
 msgid "Share"
 msgstr "分享"
 
+#: apps/remix/app/components/general/document-signing/document-signing-complete-dialog.tsx
+msgid "Share my geolocation on the signature certificate"
+msgstr ""
+
 #: apps/remix/app/components/general/document/document-page-view-dropdown.tsx
 #: apps/remix/app/components/tables/documents-table-action-dropdown.tsx
 msgid "Share Signing Card"
@@ -9554,6 +9605,10 @@ msgstr "显示"
 #: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx
 msgid "Show advanced settings"
 msgstr "显示高级设置"
+
+#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
+msgid "Show certificate overlay on all pages"
+msgstr ""
 
 #: apps/remix/app/components/general/admin-license-card.tsx
 msgid "Show license key"
@@ -10029,6 +10084,7 @@ msgstr "统计"
 #: apps/remix/app/components/tables/organisation-insights-table.tsx
 #: apps/remix/app/routes/_authenticated+/admin+/documents._index.tsx
 #: apps/remix/app/routes/_authenticated+/admin+/email-domains._index.tsx
+#: apps/remix/app/routes/_authenticated+/dashboard.tsx
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.webhooks._index.tsx
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.webhooks.$id._index.tsx
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/audit-log.tsx
@@ -10424,8 +10480,6 @@ msgstr "团队 URL"
 msgid "Team URL"
 msgstr "团队 URL"
 
-#: apps/remix/app/components/general/app-sidebar.tsx
-#: apps/remix/app/components/general/org-menu-switcher.tsx
 #: apps/remix/app/components/tables/admin-organisation-overview-table.tsx
 #: apps/remix/app/components/tables/organisation-insights-table.tsx
 #: apps/remix/app/components/tables/organisation-insights-table.tsx
@@ -10533,15 +10587,10 @@ msgstr "模板更新成功"
 msgid "Template uploaded"
 msgstr "模板已上传"
 
-#: apps/remix/app/routes/_authenticated+/dashboard.tsx
-msgid "templates"
-msgstr ""
-
 #: apps/remix/app/components/general/app-command-menu.tsx
 #: apps/remix/app/components/general/app-nav-desktop.tsx
 #: apps/remix/app/components/general/app-nav-mobile.tsx
 #: apps/remix/app/components/general/app-sidebar.tsx
-#: apps/remix/app/routes/_authenticated+/dashboard.tsx
 #: apps/remix/app/routes/_authenticated+/dashboard.tsx
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.public-profile.tsx
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/templates._index.tsx
@@ -11603,10 +11652,6 @@ msgstr "请求过多"
 msgid "Top"
 msgstr "顶部对齐"
 
-#: apps/remix/app/routes/_authenticated+/dashboard.tsx
-msgid "total"
-msgstr ""
-
 #: apps/remix/app/components/tables/admin-organisation-stats-table.tsx
 msgid "Total"
 msgstr ""
@@ -12242,6 +12287,10 @@ msgstr "验证失败"
 #: packages/ui/primitives/document-flow/field-items-advanced-settings/number-field.tsx
 msgid "Value"
 msgstr "值"
+
+#: apps/remix/app/routes/_authenticated+/dashboard.tsx
+msgid "Ver todos"
+msgstr ""
 
 #: packages/email/template-components/template-access-auth-2fa.tsx
 msgid "Verification Code Required"

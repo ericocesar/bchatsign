@@ -558,6 +558,9 @@ export const createDocumentFromTemplate = async ({
         }),
         visibility: template.visibility || settings.documentVisibility,
         useLegacyFieldInsertion: template.useLegacyFieldInsertion ?? false,
+        authenticationMethods: template.authenticationMethods,
+        certificateAllPages: template.certificateAllPages,
+        certificatePosition: template.certificatePosition,
         documentMetaId: documentMeta.id,
         formValues: formValues ?? undefined,
         recipients: {

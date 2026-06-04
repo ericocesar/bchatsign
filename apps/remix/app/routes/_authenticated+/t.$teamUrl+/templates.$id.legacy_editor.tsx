@@ -2,6 +2,7 @@ import { getSession } from '@documenso/auth/server/lib/utils/get-session';
 import { getTeamByUrl } from '@documenso/lib/server-only/team/get-team';
 import { getTemplateById } from '@documenso/lib/server-only/template/get-template-by-id';
 import { formatTemplatesPath } from '@documenso/lib/utils/teams';
+import { TooltipProvider } from '@documenso/ui/primitives/tooltip';
 import { Trans } from '@lingui/react/macro';
 import { ChevronLeft } from 'lucide-react';
 import { Link, redirect } from 'react-router';
@@ -55,55 +56,57 @@ export default function TemplateEditPage() {
   const { template, templateRootPath } = useSuperLoaderData<typeof loader>();
 
   return (
-    <div className="mx-auto -mt-4 max-w-screen-xl px-4 md:px-8">
-      <div className="flex flex-col justify-between sm:flex-row">
-        <div>
-          <Link
-            to={`${templateRootPath}/${template.envelopeId}`}
-            className="flex items-center text-documenso-700 hover:opacity-80"
-          >
-            <ChevronLeft className="mr-2 inline-block h-5 w-5" />
-            <Trans>Template</Trans>
-          </Link>
+    <TooltipProvider>
+      <div className="mx-auto -mt-4 max-w-screen-xl px-4 md:px-8">
+        <div className="flex flex-col justify-between sm:flex-row">
+          <div>
+            <Link
+              to={`${templateRootPath}/${template.envelopeId}`}
+              className="flex items-center text-documenso-700 hover:opacity-80"
+            >
+              <ChevronLeft className="mr-2 inline-block h-5 w-5" />
+              <Trans>Template</Trans>
+            </Link>
 
-          <h1
-            className="mt-4 block max-w-[20rem] truncate font-semibold text-2xl md:max-w-[30rem] md:text-3xl"
-            title={template.title}
-          >
-            {template.title}
-          </h1>
+            <h1
+              className="mt-4 block max-w-[20rem] truncate font-semibold text-2xl md:max-w-[30rem] md:text-3xl"
+              title={template.title}
+            >
+              {template.title}
+            </h1>
 
-          <div className="mt-2.5 flex items-center">
-            <TemplateType inheritColor className="text-muted-foreground" type={template.type} />
+            <div className="mt-2.5 flex items-center">
+              <TemplateType inheritColor className="text-muted-foreground" type={template.type} />
 
-            {template.directLink?.token && (
-              <TemplateDirectLinkBadge
-                className="ml-4"
-                token={template.directLink.token}
-                enabled={template.directLink.enabled}
-              />
+              {template.directLink?.token && (
+                <TemplateDirectLinkBadge
+                  className="ml-4"
+                  token={template.directLink.token}
+                  enabled={template.directLink.enabled}
+                />
+              )}
+            </div>
+          </div>
+
+          <div className="mt-2 flex items-center gap-2 sm:mt-0 sm:self-end">
+            <DocumentAttachmentsPopover envelopeId={template.envelopeId} />
+
+            <TemplateDirectLinkDialog
+              templateId={template.id}
+              directLink={template.directLink}
+              recipients={template.recipients}
+            />
+
+            {template.useLegacyFieldInsertion && (
+              <div>
+                <LegacyFieldWarningPopover type="template" templateId={template.id} />
+              </div>
             )}
           </div>
         </div>
 
-        <div className="mt-2 flex items-center gap-2 sm:mt-0 sm:self-end">
-          <DocumentAttachmentsPopover envelopeId={template.envelopeId} />
-
-          <TemplateDirectLinkDialog
-            templateId={template.id}
-            directLink={template.directLink}
-            recipients={template.recipients}
-          />
-
-          {template.useLegacyFieldInsertion && (
-            <div>
-              <LegacyFieldWarningPopover type="template" templateId={template.id} />
-            </div>
-          )}
-        </div>
+        <TemplateEditForm className="mt-6" initialTemplate={template} templateRootPath={templateRootPath} />
       </div>
-
-      <TemplateEditForm className="mt-6" initialTemplate={template} templateRootPath={templateRootPath} />
-    </div>
+    </TooltipProvider>
   );
 }

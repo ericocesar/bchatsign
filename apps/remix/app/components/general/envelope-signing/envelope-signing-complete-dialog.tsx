@@ -87,6 +87,7 @@ export const EnvelopeSignerCompleteDialog = () => {
     nextSigner?: { name: string; email: string },
     accessAuthOptions?: TRecipientAccessAuth,
     recipientDetails?: { name: string; email: string },
+    geolocation?: { latitude: number; longitude: number },
   ) => {
     try {
       await completeDocument({
@@ -94,6 +95,7 @@ export const EnvelopeSignerCompleteDialog = () => {
         documentId: mapSecondaryIdToDocumentId(envelope.secondaryId),
         accessAuthOptions,
         recipientOverride: recipientDetails,
+        geolocation,
         ...(nextSigner?.email && nextSigner?.name ? { nextSigner } : {}),
       });
 

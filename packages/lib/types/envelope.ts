@@ -36,6 +36,9 @@ export const ZEnvelopeSchema = EnvelopeSchema.pick({
   teamId: true,
   folderId: true,
   templateId: true,
+  authenticationMethods: true,
+  certificateAllPages: true,
+  certificatePosition: true,
 }).extend({
   documentMeta: DocumentMetaSchema.pick({
     signingOrder: true,
@@ -109,6 +112,9 @@ export const ZEnvelopeLiteSchema = EnvelopeSchema.pick({
   userId: true,
   teamId: true,
   folderId: true,
+  authenticationMethods: true,
+  certificateAllPages: true,
+  certificatePosition: true,
 });
 
 export type TEnvelopeLite = z.infer<typeof ZEnvelopeLiteSchema>;
@@ -139,6 +145,9 @@ export const ZEnvelopeManySchema = EnvelopeSchema.pick({
   teamId: true,
   folderId: true,
   templateId: true,
+  authenticationMethods: true,
+  certificateAllPages: true,
+  certificatePosition: true,
 }).extend({
   user: z.object({
     id: z.number(),

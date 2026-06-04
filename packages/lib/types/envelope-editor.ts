@@ -266,6 +266,9 @@ export const ZEditorEnvelopeSchema = EnvelopeSchema.pick({
   userId: true,
   teamId: true,
   folderId: true,
+  authenticationMethods: true,
+  certificateAllPages: true,
+  certificatePosition: true,
 }).extend({
   documentMeta: DocumentMetaSchema.pick({
     signingOrder: true,

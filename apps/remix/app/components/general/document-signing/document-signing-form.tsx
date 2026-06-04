@@ -33,6 +33,7 @@ export type DocumentSigningFormProps = {
   completeDocument: (options: {
     accessAuthOptions?: TRecipientAccessAuth;
     nextSigner?: { email: string; name: string };
+    geolocation?: { latitude: number; longitude: number };
   }) => Promise<void>;
   isSubmitting: boolean;
   fieldsValidated: () => void;
@@ -141,8 +142,8 @@ export const DocumentSigningForm = ({
                   documentTitle={document.title}
                   fields={fields}
                   fieldsValidated={localFieldsValidated}
-                  onSignatureComplete={async (nextSigner, accessAuthOptions) =>
-                    completeDocument({ nextSigner, accessAuthOptions })
+                  onSignatureComplete={async (nextSigner, accessAuthOptions, recipientDetails, geolocation) =>
+                    completeDocument({ nextSigner, accessAuthOptions, geolocation })
                   }
                   recipient={recipient}
                   allowDictateNextSigner={document.documentMeta?.allowDictateNextSigner}
@@ -278,10 +279,11 @@ export const DocumentSigningForm = ({
                   fields={fields}
                   fieldsValidated={localFieldsValidated}
                   disabled={!isRecipientsTurn}
-                  onSignatureComplete={async (nextSigner, accessAuthOptions) =>
+                  onSignatureComplete={async (nextSigner, accessAuthOptions, recipientDetails, geolocation) =>
                     completeDocument({
                       accessAuthOptions,
                       nextSigner,
+                      geolocation,
                     })
                   }
                   recipient={recipient}

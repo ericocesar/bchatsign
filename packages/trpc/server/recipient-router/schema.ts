@@ -174,6 +174,12 @@ export const ZCompleteDocumentWithTokenMutationSchema = z.object({
       name: z.string().max(255).optional(),
     })
     .optional(),
+  geolocation: z
+    .object({
+      latitude: z.number(),
+      longitude: z.number(),
+    })
+    .optional(),
 });
 
 export type TCompleteDocumentWithTokenMutationSchema = z.infer<typeof ZCompleteDocumentWithTokenMutationSchema>;

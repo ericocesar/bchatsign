@@ -36,10 +36,11 @@ export type GenerateCertificatePdfOptions = {
   language?: string;
   pageWidth: number;
   pageHeight: number;
+  pdfHash?: string;
 };
 
 export const generateCertificatePdf = async (options: GenerateCertificatePdfOptions) => {
-  const { envelope, envelopeOwner, recipients, fields, language, pageWidth, pageHeight } = options;
+  const { envelope, envelopeOwner, recipients, fields, language, pageWidth, pageHeight, pdfHash } = options;
 
   const documentLanguage = ZSupportedLanguageCodeSchema.parse(language);
 
@@ -142,6 +143,7 @@ export const generateCertificatePdf = async (options: GenerateCertificatePdfOpti
     pageWidth,
     pageHeight,
     i18n,
+    pdfHash,
   };
 
   const certificatePages = await renderCertificate(payload);

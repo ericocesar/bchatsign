@@ -1,3 +1,4 @@
+import crypto from 'node:crypto';
 import path from 'node:path';
 import { PDFDocument } from '@cantoo/pdf-lib';
 import { addRejectionStampToPdf } from '@documenso/lib/server-only/pdf/add-rejection-stamp-to-pdf';
@@ -6,13 +7,13 @@ import { generateCertificatePdf } from '@documenso/lib/server-only/pdf/generate-
 import { getLastPageDimensions } from '@documenso/lib/server-only/pdf/get-page-size';
 import { prisma } from '@documenso/prisma';
 import { signPdf } from '@documenso/signing';
-import { PDF } from '@libpdf/core';
+import { PDF, rgb } from '@libpdf/core';
 import type { DocumentData, Envelope, EnvelopeItem, Field } from '@prisma/client';
 import { DocumentStatus, EnvelopeType, RecipientRole, SigningStatus, WebhookTriggerEvents } from '@prisma/client';
 import { nanoid } from 'nanoid';
 import { groupBy } from 'remeda';
 
-import { NEXT_PRIVATE_USE_PLAYWRIGHT_PDF } from '../../../constants/app';
+import { NEXT_PRIVATE_INTERNAL_WEBAPP_URL, NEXT_PRIVATE_USE_PLAYWRIGHT_PDF } from '../../../constants/app';
 import { AppError, AppErrorCode } from '../../../errors/app-error';
 import { getAuditLogsPdf } from '../../../server-only/htmltopdf/get-audit-logs-pdf';
 import { getCertificatePdf } from '../../../server-only/htmltopdf/get-certificate-pdf';
@@ -188,6 +189,8 @@ export const run = async ({ payload, io }: { payload: TSealDocumentJobDefinition
         throw new Error(`Envelope item fields not found for envelope item ${envelopeItem.id}`);
       }
 
+      const pdfHash = crypto.createHash('sha256').update(pdfData).digest('hex');
+
       let certificateDoc: PDF | null = null;
       let auditLogDoc: PDF | null = null;
 
@@ -221,6 +224,7 @@ export const run = async ({ payload, io }: { payload: TSealDocumentJobDefinition
           pageWidth,
           pageHeight,
           additionalAuditLogs,
+          pdfHash,
         };
 
         const makeCertificatePdf = async () =>
@@ -246,7 +250,14 @@ export const run = async ({ payload, io }: { payload: TSealDocumentJobDefinition
       }
 
       const result = await decorateAndSignPdf({
-        envelope,
+        envelope: {
+          id: envelope.id,
+          title: envelope.title,
+          useLegacyFieldInsertion: envelope.useLegacyFieldInsertion,
+          internalVersion: envelope.internalVersion,
+          certificateAllPages: envelope.certificateAllPages,
+          certificatePosition: envelope.certificatePosition,
+        },
         envelopeItem,
         envelopeItemFields,
         isRejected,
@@ -254,6 +265,7 @@ export const run = async ({ payload, io }: { payload: TSealDocumentJobDefinition
         pdfData,
         certificateDoc,
         auditLogDoc,
+        pdfHash,
       });
 
       newDocumentData.push(result);
@@ -329,7 +341,10 @@ export const run = async ({ payload, io }: { payload: TSealDocumentJobDefinition
 };
 
 type DecorateAndSignPdfOptions = {
-  envelope: Pick<Envelope, 'id' | 'title' | 'useLegacyFieldInsertion' | 'internalVersion'>;
+  envelope: Pick<
+    Envelope,
+    'id' | 'title' | 'useLegacyFieldInsertion' | 'internalVersion' | 'certificateAllPages' | 'certificatePosition'
+  >;
   envelopeItem: EnvelopeItem & { documentData: DocumentData };
   envelopeItemFields: Field[];
   isRejected: boolean;
@@ -337,6 +352,7 @@ type DecorateAndSignPdfOptions = {
   pdfData: Uint8Array;
   certificateDoc: PDF | null;
   auditLogDoc: PDF | null;
+  pdfHash: string;
 };
 
 /**
@@ -351,6 +367,7 @@ const decorateAndSignPdf = async ({
   pdfData,
   certificateDoc,
   auditLogDoc,
+  pdfHash,
 }: DecorateAndSignPdfOptions) => {
   let pdfDoc = await PDF.load(pdfData);
 
@@ -362,6 +379,71 @@ const decorateAndSignPdf = async ({
   // Add rejection stamp if the document is rejected
   if (isRejected) {
     await addRejectionStampToPdf(pdfDoc, rejectionReason);
+  }
+
+  // Add per-page certificate overlay if enabled
+  if (envelope.certificateAllPages) {
+    const fontBytes = await fetch(`${NEXT_PRIVATE_INTERNAL_WEBAPP_URL()}/fonts/noto-sans.ttf`).then(async (res) =>
+      res.arrayBuffer(),
+    );
+    const font = pdfDoc.embedFont(new Uint8Array(fontBytes));
+    const pages = pdfDoc.getPages();
+
+    const signatureIds = envelopeItemFields
+      .filter((field) => field.type === 'SIGNATURE' && field.secondaryId)
+      .map((field) => field.secondaryId.toUpperCase())
+      .join(', ');
+
+    const signatureIdText = signatureIds || envelope.id.toUpperCase();
+    const overlayText = `Documento assinado digitalmente com BchatSign. ID da Assinatura: ${signatureIdText} | Hash do PDF: ${pdfHash}`;
+    const fontSize = 8;
+    const overlayColor = rgb(100 / 255, 116 / 255, 139 / 255); // #64748B
+    const textWidth = font.getTextWidth(overlayText, fontSize);
+
+    for (const page of pages) {
+      const height = page.height;
+      const width = page.width;
+
+      if (envelope.certificatePosition === 'FOOTER') {
+        const x = (width - textWidth) / 2;
+        const y = 15;
+        page.drawText(overlayText, {
+          x,
+          y,
+          size: fontSize,
+          font,
+          color: overlayColor,
+        });
+      } else if (envelope.certificatePosition === 'LEFT') {
+        const x = 15;
+        const y = height / 2;
+        page.drawText(overlayText, {
+          x,
+          y,
+          size: fontSize,
+          font,
+          color: overlayColor,
+          rotate: {
+            angle: 90,
+            origin: 'center',
+          },
+        });
+      } else if (envelope.certificatePosition === 'RIGHT') {
+        const x = width - 15;
+        const y = height / 2;
+        page.drawText(overlayText, {
+          x,
+          y,
+          size: fontSize,
+          font,
+          color: overlayColor,
+          rotate: {
+            angle: 270,
+            origin: 'center',
+          },
+        });
+      }
+    }
   }
 
   if (certificateDoc) {

@@ -4,6 +4,7 @@ import { getTeamByUrl } from '@documenso/lib/server-only/team/get-team';
 import { isDocumentCompleted } from '@documenso/lib/utils/document';
 import { logDocumentAccess } from '@documenso/lib/utils/logger';
 import { canAccessTeamDocument, formatDocumentsPath } from '@documenso/lib/utils/teams';
+import { TooltipProvider } from '@documenso/ui/primitives/tooltip';
 import { Plural, Trans } from '@lingui/react/macro';
 import { ChevronLeft, Users2 } from 'lucide-react';
 import { Link, redirect } from 'react-router';
@@ -82,46 +83,48 @@ export default function DocumentEditPage() {
   const { recipients } = document;
 
   return (
-    <div className="mx-auto -mt-4 w-full max-w-screen-xl px-4 md:px-8">
-      <Link to={documentRootPath} className="flex items-center text-documenso-700 hover:opacity-80">
-        <ChevronLeft className="mr-2 inline-block h-5 w-5" />
-        <Trans>Documents</Trans>
-      </Link>
+    <TooltipProvider>
+      <div className="mx-auto -mt-4 w-full max-w-screen-xl px-4 md:px-8">
+        <Link to={documentRootPath} className="flex items-center text-documenso-700 hover:opacity-80">
+          <ChevronLeft className="mr-2 inline-block h-5 w-5" />
+          <Trans>Documents</Trans>
+        </Link>
 
-      <div className="mt-4 flex w-full items-end justify-between">
-        <div className="flex-1">
-          <h1
-            className="block max-w-[20rem] truncate font-semibold text-2xl md:max-w-[30rem] md:text-3xl"
-            title={document.title}
-          >
-            {document.title}
-          </h1>
+        <div className="mt-4 flex w-full items-end justify-between">
+          <div className="flex-1">
+            <h1
+              className="block max-w-[20rem] truncate font-semibold text-2xl md:max-w-[30rem] md:text-3xl"
+              title={document.title}
+            >
+              {document.title}
+            </h1>
 
-          <div className="mt-2.5 flex items-center gap-x-6">
-            <DocumentStatus inheritColor status={document.status} className="text-muted-foreground" />
+            <div className="mt-2.5 flex items-center gap-x-6">
+              <DocumentStatus inheritColor status={document.status} className="text-muted-foreground" />
 
-            {recipients.length > 0 && (
-              <div className="flex items-center text-muted-foreground">
-                <Users2 className="mr-2 h-5 w-5" />
+              {recipients.length > 0 && (
+                <div className="flex items-center text-muted-foreground">
+                  <Users2 className="mr-2 h-5 w-5" />
 
-                <StackAvatarsWithTooltip recipients={recipients} documentStatus={document.status} position="bottom">
-                  <span>
-                    <Plural one="1 Recipient" other="# Recipients" value={recipients.length} />
-                  </span>
-                </StackAvatarsWithTooltip>
-              </div>
-            )}
+                  <StackAvatarsWithTooltip recipients={recipients} documentStatus={document.status} position="bottom">
+                    <span>
+                      <Plural one="1 Recipient" other="# Recipients" value={recipients.length} />
+                    </span>
+                  </StackAvatarsWithTooltip>
+                </div>
+              )}
+            </div>
+          </div>
+
+          <div className="flex items-center gap-x-4">
+            <DocumentAttachmentsPopover envelopeId={document.envelopeId} />
+
+            {document.useLegacyFieldInsertion && <LegacyFieldWarningPopover type="document" documentId={document.id} />}
           </div>
         </div>
 
-        <div className="flex items-center gap-x-4">
-          <DocumentAttachmentsPopover envelopeId={document.envelopeId} />
-
-          {document.useLegacyFieldInsertion && <LegacyFieldWarningPopover type="document" documentId={document.id} />}
-        </div>
+        <DocumentEditForm className="mt-6" initialDocument={document} documentRootPath={documentRootPath} />
       </div>
-
-      <DocumentEditForm className="mt-6" initialDocument={document} documentRootPath={documentRootPath} />
-    </div>
+    </TooltipProvider>
   );
 }
