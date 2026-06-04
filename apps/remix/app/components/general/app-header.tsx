@@ -1,41 +1,27 @@
-import { useSession } from '@documenso/lib/client-only/providers/session';
-import { isPersonalLayout } from '@documenso/lib/utils/organisations';
-import { getRootHref } from '@documenso/lib/utils/params';
 import { trpc } from '@documenso/trpc/react';
 import { cn } from '@documenso/ui/lib/utils';
 import { Button } from '@documenso/ui/primitives/button';
+import { Sheet, SheetContent } from '@documenso/ui/primitives/sheet';
+import { Trans } from '@lingui/react/macro';
 import { ReadStatus } from '@prisma/client';
-import { InboxIcon, MenuIcon, SearchIcon } from 'lucide-react';
+import { InboxIcon, MenuIcon, Search, SearchIcon } from 'lucide-react';
 import { type HTMLAttributes, useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router';
-
-import { BrandingLogo } from '~/components/general/branding-logo';
+import { Link } from 'react-router';
 
 import { AppCommandMenu } from './app-command-menu';
-import { AppNavDesktop } from './app-nav-desktop';
-import { AppNavMobile } from './app-nav-mobile';
-import { MenuSwitcher } from './menu-switcher';
-import { OrgMenuSwitcher } from './org-menu-switcher';
+import { AppSidebar } from './app-sidebar';
 
 export type HeaderProps = HTMLAttributes<HTMLDivElement>;
 
 export const Header = ({ className, ...props }: HeaderProps) => {
-  const params = useParams();
-
-  const { organisations } = useSession();
-
   const [isCommandMenuOpen, setIsCommandMenuOpen] = useState(false);
-  const [isHamburgerMenuOpen, setIsHamburgerMenuOpen] = useState(false);
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
+  const [modifierKey, setModifierKey] = useState(() => 'Ctrl');
 
-  const { data: unreadCountData } = trpc.document.inbox.getCount.useQuery(
-    {
-      readStatus: ReadStatus.NOT_OPENED,
-    },
-    {
-      // refetchInterval: 30000, // Refetch every 30 seconds
-    },
-  );
+  const { data: unreadCountData } = trpc.document.inbox.getCount.useQuery({
+    readStatus: ReadStatus.NOT_OPENED,
+  });
 
   useEffect(() => {
     const onScroll = () => {
@@ -47,53 +33,97 @@ export const Header = ({ className, ...props }: HeaderProps) => {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  useEffect(() => {
+    const userAgent = typeof navigator !== 'undefined' ? navigator.userAgent : 'unknown';
+    const isMacOS = /Macintosh|Mac\s+OS\s+X/i.test(userAgent);
+
+    setModifierKey(isMacOS ? '⌘' : 'Ctrl');
+  }, []);
+
   return (
     <header
       className={cn(
-        'sticky top-0 z-[60] flex h-16 w-full items-center border-b border-b-transparent bg-background/95 backdrop-blur duration-200 supports-backdrop-blur:bg-background/60',
-        scrollY > 5 && 'border-b-border',
+        'app-topbar border-transparent border-b transition-colors duration-200',
+        scrollY > 5 && 'border-border/70 shadow-soft-sm',
         className,
       )}
       {...props}
     >
-      <div className="mx-auto flex w-full max-w-screen-xl items-center justify-between gap-x-4 px-4 md:justify-normal md:px-8">
-        <Link
-          to={getRootHref(params)}
-          className="hidden rounded-md ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 md:inline"
+      <div className="flex w-full items-center gap-3 px-4 md:px-6">
+        <div className="md:hidden">
+          <button
+            type="button"
+            onClick={() => setIsMobileSidebarOpen(true)}
+            aria-label="Open menu"
+            className="-ml-1 inline-flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted/60 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
+          >
+            <MenuIcon className="h-5 w-5" />
+          </button>
+        </div>
+
+        <Button
+          variant="outline"
+          className="hidden h-9 w-full max-w-sm items-center justify-between rounded-lg border-border/70 bg-muted/30 px-3 text-[13px] text-muted-foreground transition-all hover:bg-muted/60 md:flex"
+          onClick={() => setIsCommandMenuOpen(true)}
         >
-          <BrandingLogo className="h-6 w-auto" />
-        </Link>
+          <div className="flex items-center gap-2">
+            <Search className="h-3.5 w-3.5 text-muted-foreground" />
+            <span className="font-normal">
+              <Trans>Search documents, templates…</Trans>
+            </span>
+          </div>
 
-        <AppNavDesktop setIsCommandMenuOpen={setIsCommandMenuOpen} />
-
-        <Button asChild variant="outline" className="relative hidden h-10 w-10 rounded-lg md:flex">
-          <Link to="/inbox" className="relative block h-10 w-10">
-            <InboxIcon className="h-5 w-5 flex-shrink-0 text-muted-foreground transition-colors hover:text-foreground" />
-
-            {unreadCountData && unreadCountData.count > 0 && (
-              <span className="absolute -top-1.5 -right-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-primary font-semibold text-[10px] text-primary-foreground">
-                {unreadCountData.count > 99 ? '99+' : unreadCountData.count}
-              </span>
-            )}
-          </Link>
+          <div className="flex items-center gap-1 rounded-md border border-border/70 bg-background/80 px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground tracking-wider">
+            {modifierKey} K
+          </div>
         </Button>
 
-        <div className="md:ml-4">{isPersonalLayout(organisations) ? <MenuSwitcher /> : <OrgMenuSwitcher />}</div>
+        <div className="ml-auto flex items-center gap-1.5">
+          <Button
+            asChild
+            variant="ghost"
+            className="relative hidden h-9 w-9 rounded-lg p-0 text-muted-foreground hover:bg-muted/60 hover:text-foreground md:inline-flex"
+          >
+            <Link to="/inbox" aria-label="Inbox" className="inline-flex h-9 w-9 items-center justify-center">
+              <InboxIcon className="h-[18px] w-[18px]" strokeWidth={1.75} />
 
-        <div className="flex flex-row items-center space-x-4 md:hidden">
-          <button onClick={() => setIsCommandMenuOpen(true)}>
-            <SearchIcon className="h-6 w-6 text-muted-foreground" />
-          </button>
+              {unreadCountData && unreadCountData.count > 0 && (
+                <span className="absolute top-1.5 right-1.5 flex h-4 min-w-[16px] items-center justify-center rounded-full bg-[hsl(var(--primary))] px-1 font-semibold text-[10px] text-white ring-2 ring-card">
+                  {unreadCountData.count > 99 ? '99+' : unreadCountData.count}
+                </span>
+              )}
+            </Link>
+          </Button>
 
-          <button onClick={() => setIsHamburgerMenuOpen(true)}>
-            <MenuIcon className="h-6 w-6 text-muted-foreground" />
-          </button>
+          <div className="hidden items-center gap-1 md:flex">
+            <button
+              type="button"
+              onClick={() => setIsCommandMenuOpen(true)}
+              aria-label="Open search"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted/60 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 md:hidden"
+            >
+              <SearchIcon className="h-[18px] w-[18px]" />
+            </button>
 
-          <AppCommandMenu open={isCommandMenuOpen} onOpenChange={setIsCommandMenuOpen} />
-
-          <AppNavMobile isMenuOpen={isHamburgerMenuOpen} onMenuOpenChange={setIsHamburgerMenuOpen} />
+            <button
+              type="button"
+              onClick={() => setIsMobileSidebarOpen(true)}
+              aria-label="Open menu"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted/60 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 md:hidden"
+            >
+              <MenuIcon className="h-[18px] w-[18px]" />
+            </button>
+          </div>
         </div>
       </div>
+
+      <AppCommandMenu open={isCommandMenuOpen} onOpenChange={setIsCommandMenuOpen} />
+
+      <Sheet open={isMobileSidebarOpen} onOpenChange={setIsMobileSidebarOpen}>
+        <SheetContent position="left" size="sm" className="w-[12.8rem] p-0">
+          <AppSidebar onClick={() => setIsMobileSidebarOpen(false)} forceExpanded className="border-r-0" />
+        </SheetContent>
+      </Sheet>
     </header>
   );
 };

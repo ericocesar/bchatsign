@@ -11,6 +11,7 @@ import { Link, Outlet, redirect } from 'react-router';
 
 import { AppBanner } from '~/components/general/app-banner';
 import { Header } from '~/components/general/app-header';
+import { AppSidebar } from '~/components/general/app-sidebar';
 import { GenericErrorLayout } from '~/components/general/generic-error-layout';
 import { OrganisationBillingBanner } from '~/components/general/organisations/organisation-billing-banner';
 import { VerifyEmailBanner } from '~/components/general/verify-email-banner';
@@ -113,15 +114,31 @@ export default function Layout({ loaderData, params, matches }: Route.ComponentP
 
         {banner && !hideHeader && <AppBanner banner={banner} />}
 
-        {!hideHeader && <Header />}
+        {!hideHeader && (
+          <div className="flex min-h-screen w-full">
+            <div className="hidden md:block">
+              <AppSidebar />
+            </div>
 
-        <main
-          className={cn({
-            'mt-8 pb-8 md:mt-12 md:pb-12': !hideHeader,
-          })}
-        >
-          <Outlet />
-        </main>
+            <div className="flex min-w-0 flex-1 flex-col">
+              <Header />
+
+              <main
+                className={cn('flex-1', {
+                  'pb-10 md:pb-16': !hideHeader,
+                })}
+              >
+                <Outlet />
+              </main>
+            </div>
+          </div>
+        )}
+
+        {hideHeader && (
+          <main>
+            <Outlet />
+          </main>
+        )}
       </TeamProvider>
     </OrganisationProvider>
   );

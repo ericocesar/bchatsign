@@ -57,3 +57,7 @@
 - Use `(params: Route.Params)` and `(loaderData: Route.LoaderData)` for routes
 - Directly return data from loaders, don't use `json()`
 - Use `superLoaderJson` when sending complex data through loaders such as dates or prisma decimals
+## AI Context References
+- Documentation index: `.context/docs/README.md`
+- Agent playbooks: `.context/agents/README.md`
+

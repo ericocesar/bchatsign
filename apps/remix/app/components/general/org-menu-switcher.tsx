@@ -91,7 +91,7 @@ export const OrgMenuSwitcher = () => {
       avatarSrc: formatAvatarUrl(user.avatarImageId),
       avatarFallback: formatAvatarFallback(user.name ?? user.email),
       primaryText: user.name,
-      secondaryText: _(msg`Personal Account`),
+      secondaryText: _(msg`Conta Pessoal`),
     };
   }, [currentTeam, currentOrganisation, user]);
 
@@ -133,7 +133,7 @@ export const OrgMenuSwitcher = () => {
             <div className="flex h-12 items-center border-b p-2">
               <h3 className="flex items-center px-2 font-medium text-muted-foreground text-sm">
                 <Building2Icon className="mr-2 h-3.5 w-3.5" />
-                <Trans>Organisations</Trans>
+                <Trans>Organizações</Trans>
               </h3>
             </div>
             <div className="flex-1 space-y-1 overflow-y-auto p-1.5">
@@ -174,7 +174,7 @@ export const OrgMenuSwitcher = () => {
               <Button variant="ghost" className="w-full justify-start" asChild>
                 <Link to="/settings/organisations?action=add-organisation">
                   <Plus className="mr-2 h-4 w-4" />
-                  <Trans>Create Organisation</Trans>
+                  <Trans>Criar Organização</Trans>
                 </Link>
               </Button>
             </div>
@@ -185,7 +185,7 @@ export const OrgMenuSwitcher = () => {
             <div className="flex h-12 items-center border-b p-2">
               <h3 className="flex items-center px-2 font-medium text-muted-foreground text-sm">
                 <UsersIcon className="mr-2 h-3.5 w-3.5" />
-                <Trans>Teams</Trans>
+                <Trans>Equipes</Trans>
               </h3>
             </div>
             <div className="flex-1 space-y-1 overflow-y-auto p-1.5">
@@ -262,7 +262,7 @@ export const OrgMenuSwitcher = () => {
                 canExecuteOrganisationAction('MANAGE_ORGANISATION', currentOrganisation.currentOrganisationRole) && (
                   <DropdownMenuItem className="px-4 py-2 text-muted-foreground" asChild>
                     <Link to={`/o/${currentOrganisation.url}/settings`}>
-                      <Trans>Organisation settings</Trans>
+                      <Trans>Configurações da Organização</Trans>
                     </Link>
                   </DropdownMenuItem>
                 )}
@@ -277,7 +277,7 @@ export const OrgMenuSwitcher = () => {
 
               <DropdownMenuItem className="px-4 py-2 text-muted-foreground" asChild>
                 <Link to="/inbox">
-                  <Trans>Personal Inbox</Trans>
+                  <Trans>Caixa de Entrada Pessoal</Trans>
                 </Link>
               </DropdownMenuItem>
 

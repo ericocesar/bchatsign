@@ -117,6 +117,23 @@ module.exports = {
           yellow: 'hsl(var(--recipient-yellow))',
           pink: 'hsl(var(--recipient-pink))',
         },
+        brand: {
+          soft: 'hsl(var(--brand-soft))',
+        },
+        success: {
+          DEFAULT: 'hsl(var(--success))',
+          soft: 'hsl(var(--success-soft))',
+        },
+        info: {
+          DEFAULT: 'hsl(var(--info))',
+          soft: 'hsl(var(--info-soft))',
+        },
+        danger: {
+          soft: 'hsl(var(--danger-soft))',
+        },
+        neutral: {
+          soft: 'hsl(var(--neutral-soft))',
+        },
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -129,6 +146,11 @@ module.exports = {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
+      },
+      boxShadow: {
+        'soft-sm': 'var(--shadow-sm)',
+        'soft-md': 'var(--shadow-md)',
+        'soft-lg': 'var(--shadow-lg)',
       },
       keyframes: {
         'accordion-down': {

@@ -98,9 +98,9 @@ const buildCspHeader = ({ nonce, kind }: { nonce: string; kind: CspPathKind }) =
   // `'unsafe-inline'` on the embed scope only. Frameable (auth/signing)
   // pages do NOT load customer CSS and keep the strict nonced policy.
   if (kind === 'embed') {
-    directives.push(`style-src-elem 'self' 'unsafe-inline'`);
+    directives.push(`style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com`);
   } else {
-    directives.push(`style-src-elem 'self' 'nonce-${nonce}'`);
+    directives.push(`style-src-elem 'self' 'nonce-${nonce}' https://fonts.googleapis.com`);
   }
 
   // Embed, signing, and auth routes are all reachable from inside a

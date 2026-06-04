@@ -46,12 +46,12 @@ export function TrpcProvider({ children, headers }: TrpcProviderProps) {
             condition: (op) => op.context.skipBatch === true || isNonJsonSerializable(op.input),
             true: httpLink({
               url: `${getBaseUrl()}/api/trpc`,
-              headers,
+              headers: headers ?? {},
               transformer: dataTransformer,
             }),
             false: httpBatchLink({
               url: `${getBaseUrl()}/api/trpc`,
-              headers,
+              headers: headers ?? {},
               transformer: dataTransformer,
             }),
           }),

@@ -10,6 +10,7 @@ export const ZFindDocumentsInternalRequestSchema = ZFindDocumentsRequestSchema.e
   senderIds: z.array(z.number()).optional(),
   status: z.nativeEnum(ExtendedDocumentStatus).optional(),
   folderId: z.string().optional(),
+  teamId: z.number().optional(),
 });
 
 export const ZFindDocumentsInternalResponseSchema = ZFindResultResponse.extend({

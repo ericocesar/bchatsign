@@ -12,7 +12,7 @@ export const findDocumentsInternalRoute = authenticatedProcedure
   .input(ZFindDocumentsInternalRequestSchema)
   .output(ZFindDocumentsInternalResponseSchema)
   .query(async ({ input, ctx }) => {
-    const { user, teamId } = ctx;
+    const { user } = ctx;
 
     const {
       query,
@@ -26,7 +26,10 @@ export const findDocumentsInternalRoute = authenticatedProcedure
       period,
       senderIds,
       folderId,
+      teamId: inputTeamId,
     } = input;
+
+    const teamId = inputTeamId ?? ctx.teamId;
 
     const [stats, documents] = await Promise.all([
       getStats({

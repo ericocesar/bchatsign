@@ -50,7 +50,7 @@ export const MenuSwitcher = () => {
             avatarSrc={formatAvatarUrl(user.avatarImageId)}
             avatarFallback={formatAvatarFallback(user.name || user.email)}
             primaryText={user.name}
-            secondaryText={_(msg`Personal Account`)}
+            secondaryText={_(msg`Conta Pessoal`)}
             rightSideComponent={<ChevronsUpDown className="ml-auto h-4 w-4 text-muted-foreground" />}
             textSectionClassName="hidden lg:flex"
           />

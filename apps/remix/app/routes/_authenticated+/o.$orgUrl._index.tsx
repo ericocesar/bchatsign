@@ -107,10 +107,10 @@ export default function OrganisationSettingsTeamsPage() {
       <div className="mb-6 flex flex-row justify-between">
         <div>
           <h1 className="font-semibold text-2xl tracking-tight">
-            <Trans>{organisation.name} Teams</Trans>
+            <Trans>{organisation.name} — Equipes</Trans>
           </h1>
           <p className="mt-1 text-muted-foreground text-sm">
-            <Trans>Select a team to view its dashboard</Trans>
+            <Trans>Selecione uma equipe para ver seu painel</Trans>
           </p>
         </div>
 

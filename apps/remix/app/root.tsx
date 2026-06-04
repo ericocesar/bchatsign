@@ -28,7 +28,13 @@ import { langCookie } from './storage/lang-cookie.server';
 import { themeSessionResolver } from './storage/theme-session.server';
 import { appMetaTags } from './utils/meta';
 
-export const links: Route.LinksFunction = () => [{ rel: 'stylesheet', href: stylesheet }];
+export const links: Route.LinksFunction = () => [
+  { rel: 'stylesheet', href: stylesheet },
+  {
+    rel: 'stylesheet',
+    href: 'https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap',
+  },
+];
 
 export function meta() {
   return appMetaTags();

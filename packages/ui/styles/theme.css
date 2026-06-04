@@ -5,49 +5,69 @@
 @layer base {
   :root,
   .dark-mode-disabled {
-    --background: 0 0% 100%;
-    --foreground: 222.2 47.4% 11.2%;
+    /* App surface — soft slate background like Linear / Vercel */
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 47.4% 11.2%;
+    --popover-foreground: 222 47% 11%;
 
     --card: 0 0% 100%;
-    --card-border: 214.3 31.8% 91.4%;
+    --card-border: 214 32% 91%;
     --card-border-tint: 112 205 159;
-    --card-foreground: 222.2 47.4% 11.2%;
+    --card-foreground: 222 47% 11%;
 
     --field-card: 95 74% 90%;
     --field-card-border: 95.08 71.08% 67.45%;
     --field-card-foreground: 222.2 47.4% 11.2%;
 
-    --widget: 0 0% 97%;
-    --widget-foreground: 0 0% 95%;
+    --widget: 210 40% 97%;
+    --widget-foreground: 210 40% 95%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
 
-    --primary: 180 83% 51%;
-    --primary-foreground: 180 83% 10%;
+    /* Brand accent: refined teal/cyan for a modern SaaS feel */
+    --primary: 178 80% 40%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222 47% 11%;
 
-    --destructive: 0 100% 50%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --ring: 180 83% 51%;
+    --ring: 178 80% 40%;
 
-    --radius: 0.5rem;
+    --radius: 0.625rem;
 
-    --warning: 54 96% 45%;
+    --warning: 38 92% 50%;
 
     --gold: 47.9 95.8% 53.1%;
+
+    /* Soft brand surface (used for "active" pills, soft icon tints) */
+    --brand-soft: 178 70% 96%;
+
+    /* Status colors used by the new metric cards */
+    --success: 160 84% 39%;
+    --success-soft: 152 76% 95%;
+    --info: 199 89% 48%;
+    --info-soft: 199 95% 95%;
+    --warning-soft: 38 95% 95%;
+    --danger-soft: 0 86% 96%;
+    --neutral-soft: 210 40% 96%;
+
+    /* Elevation tokens */
+    --shadow-color: 222 47% 11%;
+    --shadow-sm: 0 1px 2px 0 hsl(var(--shadow-color) / 0.04);
+    --shadow-md: 0 1px 2px 0 hsl(var(--shadow-color) / 0.05), 0 4px 12px -2px hsl(var(--shadow-color) / 0.06);
+    --shadow-lg: 0 2px 4px 0 hsl(var(--shadow-color) / 0.04), 0 12px 24px -6px hsl(var(--shadow-color) / 0.08);
 
     --recipient-green: 100 48% 55%;
     --recipient-blue: 212 56% 50%;
@@ -142,49 +162,64 @@
   }
 
   .dark:not(.dark-mode-disabled) {
-    --background: 0 0% 14.9%;
-    --foreground: 0 0% 97%;
+    --background: 222 47% 6%;
+    --foreground: 210 40% 98%;
 
-    --muted: 0 0% 23.4%;
-    --muted-foreground: 0 0% 85%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
 
-    --popover: 0 0% 14.9%;
-    --popover-foreground: 0 0% 90%;
+    --popover: 222 47% 8%;
+    --popover-foreground: 210 40% 98%;
 
-    --card: 0 0% 14.9%;
-    --card-border: 0 0% 27.9%;
+    --card: 222 47% 8%;
+    --card-border: 217 33% 18%;
     --card-border-tint: 112 205 159;
-    --card-foreground: 0 0% 95%;
+    --card-foreground: 210 40% 98%;
 
-    --widget: 0 0% 14.9%;
-    --widget-foreground: 0 0% 18%;
+    --widget: 222 47% 10%;
+    --widget-foreground: 222 47% 14%;
 
-    --border: 0 0% 27.9%;
-    --input: 0 0% 27.9%;
+    --border: 217 33% 18%;
+    --input: 217 33% 18%;
 
-    --field-border: 214.3 31.8% 91.4%;
+    --field-border: 217 33% 18%;
 
-    --primary: 180 83% 51%;
-    --primary-foreground: 180 83% 10%;
+    --primary: 178 70% 48%;
+    --primary-foreground: 222 47% 6%;
 
-    --secondary: 0 0% 23.4%;
-    --secondary-foreground: 180 83% 51%;
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
 
-    --accent: 0 0% 27.9%;
-    --accent-foreground: 180 83% 51%;
+    --accent: 217 33% 17%;
+    --accent-foreground: 210 40% 98%;
 
-    --destructive: 0 87% 62%;
-    --destructive-foreground: 0 87% 19%;
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
 
-    --ring: 180 83% 51%;
+    --ring: 178 70% 48%;
 
-    --radius: 0.5rem;
+    --radius: 0.625rem;
 
-    --warning: 54 96% 45%;
+    --warning: 38 92% 55%;
 
     --gold: 47.9 95.8% 53.1%;
 
-    --envelope-editor-background: 0 0% 14.9%;
+    --brand-soft: 178 50% 16%;
+
+    --success: 160 70% 45%;
+    --success-soft: 160 50% 14%;
+    --info: 199 89% 55%;
+    --info-soft: 199 70% 14%;
+    --warning-soft: 38 50% 14%;
+    --danger-soft: 0 60% 14%;
+    --neutral-soft: 217 33% 17%;
+
+    --shadow-color: 0 0% 0%;
+    --shadow-sm: 0 1px 2px 0 hsl(var(--shadow-color) / 0.3);
+    --shadow-md: 0 1px 2px 0 hsl(var(--shadow-color) / 0.3), 0 4px 12px -2px hsl(var(--shadow-color) / 0.4);
+    --shadow-lg: 0 2px 4px 0 hsl(var(--shadow-color) / 0.3), 0 12px 24px -6px hsl(var(--shadow-color) / 0.4);
+
+    --envelope-editor-background: 222 47% 8%;
   }
 }
 
@@ -264,4 +299,138 @@
 
 .swagger-dark-theme .swagger-ui .microlight {
   filter: invert(100%) hue-rotate(180deg);
+}
+
+/* ----------------------------------------------------------------
+ * Premium design system utilities
+ *
+ * Light, reusable primitives used by the dashboard, sidebar,
+ * top bar and metric cards. Kept here so they share tokens with
+ * the rest of the app and remain dark-mode aware.
+ * ----------------------------------------------------------------
+ */
+
+@layer components {
+  /* Soft, surface card used by stat cards & panels */
+  .surface-card {
+    @apply rounded-xl border border-border/80 bg-card text-card-foreground;
+    box-shadow: var(--shadow-sm);
+    transition:
+      transform 200ms cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 200ms cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 200ms ease;
+  }
+
+  .surface-card-interactive {
+    @apply surface-card;
+  }
+
+  .surface-card-interactive:hover {
+    border-color: hsl(var(--border));
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+
+  .surface-card-interactive:focus-within {
+    border-color: hsl(var(--ring) / 0.5);
+    box-shadow:
+      0 0 0 4px hsl(var(--ring) / 0.12),
+      var(--shadow-md);
+  }
+
+  /* Subtle gradient halo used at the top of premium cards */
+  .surface-card-glow::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(600px circle at 0% -10%, hsl(var(--primary) / 0.06), transparent 40%);
+    pointer-events: none;
+  }
+
+  /* Top app bar — premium glassy surface with subtle border */
+  .app-topbar {
+    @apply sticky top-0 z-40 flex h-16 w-full items-center border-b border-border/60 bg-background/80;
+    backdrop-filter: saturate(150%) blur(10px);
+    -webkit-backdrop-filter: saturate(150%) blur(10px);
+  }
+
+  /* Sidebar — soft surface with right border, no harsh fills */
+  .app-sidebar {
+    @apply relative flex h-screen shrink-0 flex-col border-r border-border/70 bg-card/60;
+    backdrop-filter: saturate(140%) blur(6px);
+    -webkit-backdrop-filter: saturate(140%) blur(6px);
+  }
+
+  /* Status chip used inside cards to label metric states */
+  .status-chip {
+    @apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-medium ring-1 ring-inset;
+  }
+
+  .status-chip-success {
+    @apply bg-[hsl(var(--success-soft))] text-[hsl(var(--success))] ring-[hsl(var(--success)/0.18)];
+  }
+
+  .status-chip-info {
+    @apply bg-[hsl(var(--info-soft))] text-[hsl(var(--info))] ring-[hsl(var(--info)/0.18)];
+  }
+
+  .status-chip-warning {
+    @apply bg-[hsl(var(--warning-soft))] text-[hsl(var(--warning))] ring-[hsl(var(--warning)/0.18)];
+  }
+
+  .status-chip-neutral {
+    @apply bg-[hsl(var(--neutral-soft))] text-muted-foreground ring-[hsl(var(--border))];
+  }
+
+  .status-chip-brand {
+    @apply bg-[hsl(var(--brand-soft))] text-[hsl(var(--primary))] ring-[hsl(var(--primary)/0.18)];
+  }
+
+  /* Icon "tile" used at the top of each metric card */
+  .icon-tile {
+    @apply inline-flex h-10 w-10 items-center justify-center rounded-xl;
+  }
+
+  .icon-tile-brand {
+    @apply bg-[hsl(var(--brand-soft))] text-[hsl(var(--primary))] ring-1 ring-inset ring-[hsl(var(--primary)/0.16)];
+  }
+
+  .icon-tile-info {
+    @apply bg-[hsl(var(--info-soft))] text-[hsl(var(--info))] ring-1 ring-inset ring-[hsl(var(--info)/0.16)];
+  }
+
+  .icon-tile-success {
+    @apply bg-[hsl(var(--success-soft))] text-[hsl(var(--success))] ring-1 ring-inset ring-[hsl(var(--success)/0.16)];
+  }
+
+  .icon-tile-warning {
+    @apply bg-[hsl(var(--warning-soft))] text-[hsl(var(--warning))] ring-1 ring-inset ring-[hsl(var(--warning)/0.16)];
+  }
+
+  .icon-tile-neutral {
+    @apply bg-muted text-muted-foreground ring-1 ring-inset ring-border;
+  }
+
+  /* Animated progress bar used in metric subitems */
+  .progress-track {
+    @apply h-1.5 w-full overflow-hidden rounded-full bg-muted;
+  }
+
+  .progress-bar {
+    @apply h-full rounded-full bg-[hsl(var(--primary))] transition-[width] duration-500 ease-out;
+  }
+
+  /* Mini bar chart container (used for sparkline-style stats) */
+  .mini-bars {
+    @apply flex h-10 items-end gap-1;
+  }
+
+  .mini-bars > span {
+    @apply w-1.5 rounded-sm bg-[hsl(var(--primary)/0.18)] transition-all duration-300 ease-out;
+  }
+
+  .mini-bars > span[data-active="true"] {
+    @apply bg-[hsl(var(--primary))];
+  }
 }
