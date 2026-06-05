@@ -125,6 +125,11 @@ export function LayoutContent({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="color-scheme" content="light dark" />
         <link rel="manifest" href="/site.webmanifest" />
+        {/* Per-request CSP nonce surfaced for the client entry to read before
+            any third-party style-injection lib (react-style-singleton, used by
+            react-remove-scroll / Radix Dialog body-scroll lock) calls
+            getNonce() — keeps style-src-elem enforced without 'unsafe-inline'. */}
+        {cspNonce && <meta name="csp-nonce" content={cspNonce} />}
         <Meta />
         <Links />
 
