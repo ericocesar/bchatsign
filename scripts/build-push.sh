@@ -134,13 +134,20 @@ if ! docker buildx version &> /dev/null; then
 fi
 echo "    ✓ Buildx OK"
 
-# Para build single-platform, o builder default 'docker' ja serve.
-# Garantimos que ele esta ativo, criando se preciso.
-if ! docker buildx ls 2>/dev/null | awk '/^\*/{exit 0} END{exit 1}'; then
-  docker buildx use default &> /dev/null \
-    || docker buildx create --use --name default &> /dev/null
+# Detecta builder ativo (marcado com '*' ao final do nome em 'docker buildx ls').
+# NAO tentamos 'docker buildx use <nome>' cegamente: o nome 'default' colide
+# com o Docker context default no Docker Desktop, gerando
+# 'ERROR: run docker context use default to switch to default context'.
+ACTIVE_BUILDER="$(docker buildx ls 2>/dev/null | awk '$1 ~ /\*$/ {print $1; exit}' | sed 's/\*$//')"
+if [ -z "${ACTIVE_BUILDER}" ]; then
+  echo "    → Nenhum builder ativo, criando 'buildx-amd64'..."
+  # Nome evita colisao com o Docker context 'default'.
+  if ! docker buildx create --use --name buildx-amd64 --driver docker-container &> /dev/null; then
+    docker buildx create --use --name buildx-amd64 --driver docker &> /dev/null
+  fi
+  ACTIVE_BUILDER="$(docker buildx ls 2>/dev/null | awk '$1 ~ /\*$/ {print $1; exit}' | sed 's/\*$//')"
 fi
-echo "    ✓ Builder ativo: $(docker buildx ls 2>/dev/null | awk '/^\*/{print $2; exit}')"
+echo "    ✓ Builder ativo: ${ACTIVE_BUILDER:-desconhecido}"
 
 if [ ! -f "${DOCKERFILE_PATH}" ]; then
   echo "  ❌ Dockerfile nao encontrado: ${DOCKERFILE_PATH}" >&2
@@ -191,7 +198,7 @@ if [ "${ADD_LATEST}" = true ]; then
 fi
 
 CACHE_ARGS=()
-[ "${NO_CACHE}" = true ] && CACHE_ARGS+=(--no-cache)
+[ "${NO_CACHE}" = true ] && CACHE_ARGS=(--no-cache)
 
 OUTPUT_MODE="--push"
 LOCAL_TAG=""
@@ -212,7 +219,7 @@ docker buildx build \
   --progress=plain \
   --build-arg NEXT_PRIVATE_TELEMETRY_KEY="${NEXT_PRIVATE_TELEMETRY_KEY:-}" \
   --build-arg NEXT_PRIVATE_TELEMETRY_HOST="${NEXT_PRIVATE_TELEMETRY_HOST:-}" \
-  "${CACHE_ARGS[@]}" \
+  ${CACHE_ARGS[@]+"${CACHE_ARGS[@]}"} \
   "${TAG_ARGS[@]}" \
   ${OUTPUT_MODE} \
   -f "${DOCKERFILE_PATH}" \
