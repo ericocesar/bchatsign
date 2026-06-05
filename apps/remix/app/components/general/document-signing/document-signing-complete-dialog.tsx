@@ -1,6 +1,7 @@
 import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
 import { type TRecipientAccessAuth, ZDocumentAccessAuthSchema } from '@documenso/lib/types/document-auth';
 import { fieldsContainUnsignedRequiredField } from '@documenso/lib/utils/advanced-fields-helpers';
+import { env } from '@documenso/lib/utils/env';
 import { zEmail } from '@documenso/lib/utils/zod';
 import { Alert, AlertDescription, AlertTitle } from '@documenso/ui/primitives/alert';
 import { Button } from '@documenso/ui/primitives/button';
@@ -105,7 +106,9 @@ export const DocumentSigningCompleteDialog = ({
 
   const { derivedRecipientAccessAuth } = useRequiredDocumentSigningAuthContext();
 
-  const requiresGeolocation = recipient.role === RecipientRole.SIGNER && geolocationEnabled;
+  const isGeolocationDisabledByEnv = env('NEXT_PUBLIC_DISABLE_GEOLOCATION') === 'true';
+  const requiresGeolocation =
+    recipient.role === RecipientRole.SIGNER && geolocationEnabled && !isGeolocationDisabledByEnv;
   const [geolocation, setGeolocation] = useState<{ latitude: number; longitude: number } | undefined>(undefined);
   const [isResolvingGeolocation, setIsResolvingGeolocation] = useState(false);
   const [geolocationError, setGeolocationError] = useState<string | null>(null);
@@ -434,6 +437,20 @@ export const DocumentSigningCompleteDialog = ({
                         Para reforçar a segurança e a trilha de auditoria da assinatura eletrônica, solicitaremos sua
                         geolocalização. Ao clicar em Assinar, selecione Permitir no aviso do navegador para concluir o
                         processo.
+                      </Trans>
+                    </AlertDescription>
+                  </Alert>
+                )}
+
+                {isGeolocationDisabledByEnv && recipient.role === RecipientRole.SIGNER && geolocationEnabled && (
+                  <Alert className="mb-4" variant="warning">
+                    <AlertTitle>
+                      <Trans>Geolocalização desativada (ambiente de desenvolvimento)</Trans>
+                    </AlertTitle>
+                    <AlertDescription>
+                      <Trans>
+                        A captura de geolocalização foi ignorada porque a variável NEXT_PUBLIC_DISABLE_GEOLOCATION está
+                        definida. Não use esta configuração em produção.
                       </Trans>
                     </AlertDescription>
                   </Alert>
