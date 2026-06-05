@@ -146,6 +146,7 @@ export const DocumentSigningForm = ({
                     completeDocument({ nextSigner, accessAuthOptions, geolocation })
                   }
                   recipient={recipient}
+                  geolocationEnabled={document.geolocationEnabled}
                   allowDictateNextSigner={document.documentMeta?.allowDictateNextSigner}
                   defaultNextSigner={
                     nextRecipient ? { name: nextRecipient.name, email: nextRecipient.email } : undefined
@@ -287,6 +288,7 @@ export const DocumentSigningForm = ({
                     })
                   }
                   recipient={recipient}
+                  geolocationEnabled={document.geolocationEnabled}
                   allowDictateNextSigner={nextRecipient && document.documentMeta?.allowDictateNextSigner}
                   defaultNextSigner={
                     nextRecipient ? { name: nextRecipient.name, email: nextRecipient.email } : undefined

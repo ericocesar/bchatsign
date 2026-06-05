@@ -39,6 +39,7 @@ export const ZEnvelopeSchema = EnvelopeSchema.pick({
   authenticationMethods: true,
   certificateAllPages: true,
   certificatePosition: true,
+  geolocationEnabled: true,
 }).extend({
   documentMeta: DocumentMetaSchema.pick({
     signingOrder: true,
@@ -115,6 +116,7 @@ export const ZEnvelopeLiteSchema = EnvelopeSchema.pick({
   authenticationMethods: true,
   certificateAllPages: true,
   certificatePosition: true,
+  geolocationEnabled: true,
 });
 
 export type TEnvelopeLite = z.infer<typeof ZEnvelopeLiteSchema>;
@@ -148,6 +150,7 @@ export const ZEnvelopeManySchema = EnvelopeSchema.pick({
   authenticationMethods: true,
   certificateAllPages: true,
   certificatePosition: true,
+  geolocationEnabled: true,
 }).extend({
   user: z.object({
     id: z.number(),

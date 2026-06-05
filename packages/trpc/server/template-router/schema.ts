@@ -75,6 +75,12 @@ export const ZCreateDocumentFromDirectTemplateRequestSchema = z.object({
   directRecipientEmail: zEmail().max(254),
   directTemplateToken: z.string().min(1),
   directTemplateExternalId: z.string().optional(),
+  geolocation: z
+    .object({
+      latitude: z.number(),
+      longitude: z.number(),
+    })
+    .optional(),
   signedFieldValues: z.array(ZSignFieldWithTokenMutationSchema),
   templateUpdatedAt: z.date(),
   nextSigner: z

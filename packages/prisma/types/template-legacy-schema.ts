@@ -28,6 +28,7 @@ export const TemplateSchema = z.object({
   publicTitle: z.string(),
   publicDescription: z.string(),
   useLegacyFieldInsertion: z.boolean(),
+  geolocationEnabled: z.boolean(),
   userId: z.number(),
   teamId: z.number(),
   folderId: z.string().nullable(),

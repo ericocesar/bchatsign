@@ -29,6 +29,7 @@ export const ZTemplateSchema = TemplateSchema.pick({
   publicTitle: true,
   publicDescription: true,
   folderId: true,
+  geolocationEnabled: true,
 }).extend({
   envelopeId: z.string(),
 
@@ -110,6 +111,7 @@ export const ZTemplateLiteSchema = TemplateSchema.pick({
   publicDescription: true,
   folderId: true,
   useLegacyFieldInsertion: true,
+  geolocationEnabled: true,
 }).extend({
   envelopeId: z.string(),
 
@@ -137,6 +139,7 @@ export const ZTemplateManySchema = TemplateSchema.pick({
   publicDescription: true,
   folderId: true,
   useLegacyFieldInsertion: true,
+  geolocationEnabled: true,
 }).extend({
   envelopeId: z.string(),
   team: TeamSchema.pick({

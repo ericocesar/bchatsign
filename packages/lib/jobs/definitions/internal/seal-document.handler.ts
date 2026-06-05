@@ -17,6 +17,10 @@ import { NEXT_PRIVATE_INTERNAL_WEBAPP_URL, NEXT_PRIVATE_USE_PLAYWRIGHT_PDF } fro
 import { AppError, AppErrorCode } from '../../../errors/app-error';
 import { getAuditLogsPdf } from '../../../server-only/htmltopdf/get-audit-logs-pdf';
 import { getCertificatePdf } from '../../../server-only/htmltopdf/get-certificate-pdf';
+import {
+  getCertificateOverlayDrawCommands,
+  getCertificateOverlayLines,
+} from '../../../server-only/pdf/certificate-summary-overlay';
 import { insertFieldInPDFV1 } from '../../../server-only/pdf/insert-field-in-pdf-v1';
 import { insertFieldInPDFV2 } from '../../../server-only/pdf/insert-field-in-pdf-v2';
 import { legacy_insertFieldInPDF } from '../../../server-only/pdf/legacy-insert-field-in-pdf';
@@ -389,58 +393,30 @@ const decorateAndSignPdf = async ({
     const font = pdfDoc.embedFont(new Uint8Array(fontBytes));
     const pages = pdfDoc.getPages();
 
-    const signatureIds = envelopeItemFields
-      .filter((field) => field.type === 'SIGNATURE' && field.secondaryId)
-      .map((field) => field.secondaryId.toUpperCase())
-      .join(', ');
-
-    const signatureIdText = signatureIds || envelope.id.toUpperCase();
-    const overlayText = `Documento assinado digitalmente com BchatSign. ID da Assinatura: ${signatureIdText} | Hash do PDF: ${pdfHash}`;
     const fontSize = 8;
     const overlayColor = rgb(100 / 255, 116 / 255, 139 / 255); // #64748B
-    const textWidth = font.getTextWidth(overlayText, fontSize);
+    const overlayLines = getCertificateOverlayLines({
+      pdfHash,
+    });
 
     for (const page of pages) {
-      const height = page.height;
-      const width = page.width;
+      const commands = getCertificateOverlayDrawCommands({
+        position: envelope.certificatePosition,
+        pageWidth: page.width,
+        pageHeight: page.height,
+        lines: overlayLines,
+        fontSize,
+        getTextWidth: (text) => font.getTextWidth(text, fontSize),
+      });
 
-      if (envelope.certificatePosition === 'FOOTER') {
-        const x = (width - textWidth) / 2;
-        const y = 15;
-        page.drawText(overlayText, {
-          x,
-          y,
+      for (const command of commands) {
+        page.drawText(command.text, {
+          x: command.x,
+          y: command.y,
           size: fontSize,
           font,
           color: overlayColor,
-        });
-      } else if (envelope.certificatePosition === 'LEFT') {
-        const x = 15;
-        const y = height / 2;
-        page.drawText(overlayText, {
-          x,
-          y,
-          size: fontSize,
-          font,
-          color: overlayColor,
-          rotate: {
-            angle: 90,
-            origin: 'center',
-          },
-        });
-      } else if (envelope.certificatePosition === 'RIGHT') {
-        const x = width - 15;
-        const y = height / 2;
-        page.drawText(overlayText, {
-          x,
-          y,
-          size: fontSize,
-          font,
-          color: overlayColor,
-          rotate: {
-            angle: 270,
-            origin: 'center',
-          },
+          ...(command.rotate ? { rotate: command.rotate } : {}),
         });
       }
     }

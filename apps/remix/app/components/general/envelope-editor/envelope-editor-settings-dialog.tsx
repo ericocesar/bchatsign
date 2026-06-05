@@ -62,7 +62,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { msg } from '@lingui/core/macro';
 import { Trans, useLingui } from '@lingui/react/macro';
 import {
-  AuthenticationMethod,
   DocumentDistributionMethod,
   DocumentVisibility,
   EnvelopeType,
@@ -85,6 +84,12 @@ const CERTIFICATE_POSITION = {
   RIGHT: 'RIGHT',
 } as const;
 
+const AUTHENTICATION_METHOD = {
+  SMS: 'SMS',
+  WHATSAPP: 'WHATSAPP',
+  CAIXA_BCHAT: 'CAIXA_BCHAT',
+} as const;
+
 export const ZAddSettingsFormSchema = z.object({
   templateType: z.nativeEnum(TemplateType).optional(),
   externalId: z.string().optional(),
@@ -95,9 +100,10 @@ export const ZAddSettingsFormSchema = z.object({
     .optional()
     .default([]),
   globalActionAuth: z.array(ZDocumentActionAuthTypesSchema).optional().default([]),
-  authenticationMethods: z.array(z.nativeEnum(AuthenticationMethod)).optional().default([]),
-  certificateAllPages: z.boolean().default(false),
-  certificatePosition: z.nativeEnum(CERTIFICATE_POSITION).default(CERTIFICATE_POSITION.FOOTER),
+  authenticationMethods: z.array(z.nativeEnum(AUTHENTICATION_METHOD)).optional().default([]),
+  certificateAllPages: z.boolean().default(true),
+  certificatePosition: z.nativeEnum(CERTIFICATE_POSITION).default(CERTIFICATE_POSITION.LEFT),
+  geolocationEnabled: z.boolean().default(true),
   meta: z.object({
     subject: z.string(),
     message: z.string(),
@@ -148,15 +154,15 @@ const tabs = [
   },
   {
     id: 'security',
-    title: msg`Security`,
+    title: msg`Segurança`,
     icon: ShieldIcon,
-    description: msg`Configure security settings for the document.`,
+    description: msg`Configure as opções de segurança do documento.`,
   },
   {
     id: 'certificate',
-    title: msg`Certificate`,
+    title: msg`Certificado`,
     icon: BadgeCheckIcon,
-    description: msg`Configure certificate settings and per-page security overlay.`,
+    description: msg`Configure o certificado e o overlay de segurança em todas as páginas.`,
   },
 ] as const;
 
@@ -192,8 +198,9 @@ export const EnvelopeEditorSettingsDialog = ({ trigger, ...props }: EnvelopeEdit
       globalAccessAuth: documentAuthOption?.globalAccessAuth || [],
       globalActionAuth: documentAuthOption?.globalActionAuth || [],
       authenticationMethods: envelope.authenticationMethods || [],
-      certificateAllPages: envelope.certificateAllPages || false,
-      certificatePosition: envelope.certificatePosition || CERTIFICATE_POSITION.FOOTER,
+      certificateAllPages: envelope.certificateAllPages ?? true,
+      certificatePosition: envelope.certificatePosition || CERTIFICATE_POSITION.LEFT,
+      geolocationEnabled: envelope.geolocationEnabled ?? true,
       meta: {
         subject: envelope.documentMeta.subject ?? '',
         message: envelope.documentMeta.message ?? '',
@@ -271,6 +278,7 @@ export const EnvelopeEditorSettingsDialog = ({ trigger, ...props }: EnvelopeEdit
           authenticationMethods: data.authenticationMethods,
           certificateAllPages: data.certificateAllPages,
           certificatePosition: data.certificatePosition,
+          geolocationEnabled: data.geolocationEnabled,
         },
         meta: {
           timezone,
@@ -882,7 +890,7 @@ export const EnvelopeEditorSettingsDialog = ({ trigger, ...props }: EnvelopeEdit
                           render={({ field }) => (
                             <FormItem>
                               <FormLabel className="flex flex-row items-center">
-                                <Trans>Recipient action authentication</Trans>
+                                <Trans>Autenticação da ação do destinatário</Trans>
                                 <DocumentGlobalAuthActionTooltip />
                               </FormLabel>
 
@@ -904,7 +912,7 @@ export const EnvelopeEditorSettingsDialog = ({ trigger, ...props }: EnvelopeEdit
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel className="flex flex-row items-center">
-                              <Trans>Document access</Trans>
+                              <Trans>Acesso ao documento</Trans>
                               <DocumentGlobalAuthAccessTooltip />
                             </FormLabel>
 
@@ -926,7 +934,7 @@ export const EnvelopeEditorSettingsDialog = ({ trigger, ...props }: EnvelopeEdit
                           render={({ field }) => (
                             <FormItem>
                               <FormLabel className="flex flex-row items-center">
-                                <Trans>Document visibility</Trans>
+                                <Trans>Visibilidade do documento</Trans>
                                 <DocumentVisibilityTooltip />
                               </FormLabel>
 
@@ -945,23 +953,50 @@ export const EnvelopeEditorSettingsDialog = ({ trigger, ...props }: EnvelopeEdit
 
                       <FormField
                         control={form.control}
+                        name="geolocationEnabled"
+                        render={({ field }) => (
+                          <FormItem className="mt-6 flex flex-row items-center justify-between rounded-lg border p-4">
+                            <div className="space-y-0.5">
+                              <FormLabel className="text-base">
+                                <Trans>Geolocalizacao</Trans>
+                              </FormLabel>
+                              <CardDescription>
+                                <Trans>
+                                  Quando ativado, o fluxo de assinatura solicitará a geolocalização para reforçar a
+                                  trilha de auditoria do documento.
+                                </Trans>
+                              </CardDescription>
+                            </div>
+                            <FormControl>
+                              <Switch
+                                checked={field.value}
+                                onCheckedChange={field.onChange}
+                                disabled={field.disabled}
+                              />
+                            </FormControl>
+                          </FormItem>
+                        )}
+                      />
+
+                      <FormField
+                        control={form.control}
                         name="authenticationMethods"
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel>
-                              <Trans>Authentication Methods</Trans>
+                              <Trans>Métodos de autenticação</Trans>
                             </FormLabel>
                             <FormControl>
                               <MultiSelectCombobox
                                 options={[
-                                  { label: 'SMS', value: AuthenticationMethod.SMS },
-                                  { label: 'WhatsApp', value: AuthenticationMethod.WHATSAPP },
-                                  { label: 'Caixa BChat', value: AuthenticationMethod.CAIXA_BCHAT },
+                                  { label: 'SMS', value: AUTHENTICATION_METHOD.SMS },
+                                  { label: 'WhatsApp', value: AUTHENTICATION_METHOD.WHATSAPP },
+                                  { label: 'Caixa BChat', value: AUTHENTICATION_METHOD.CAIXA_BCHAT },
                                 ]}
                                 selectedValues={field.value}
                                 onChange={field.onChange}
                                 className="w-full bg-background"
-                                emptySelectionPlaceholder={t`Select authentication methods`}
+                                emptySelectionPlaceholder={t`Selecione os métodos de autenticação`}
                               />
                             </FormControl>
                             <FormMessage />
@@ -980,11 +1015,11 @@ export const EnvelopeEditorSettingsDialog = ({ trigger, ...props }: EnvelopeEdit
                             <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
                               <div className="space-y-0.5">
                                 <FormLabel className="text-base">
-                                  <Trans>Show certificate overlay on all pages</Trans>
+                                  <Trans>Exibir overlay do certificado em todas as páginas</Trans>
                                 </FormLabel>
                                 <CardDescription>
                                   <Trans>
-                                    Display the certificate overlay summary on every page of the signed document.
+                                    Exibe o resumo do certificado em todas as páginas do documento assinado.
                                   </Trans>
                                 </CardDescription>
                               </div>
@@ -1006,7 +1041,7 @@ export const EnvelopeEditorSettingsDialog = ({ trigger, ...props }: EnvelopeEdit
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel>
-                              <Trans>Certificate Position</Trans>
+                              <Trans>Posição do certificado</Trans>
                             </FormLabel>
                             <FormControl>
                               <Select value={field.value} disabled={field.disabled} onValueChange={field.onChange}>
@@ -1015,13 +1050,13 @@ export const EnvelopeEditorSettingsDialog = ({ trigger, ...props }: EnvelopeEdit
                                 </SelectTrigger>
                                 <SelectContent>
                                   <SelectItem value={CERTIFICATE_POSITION.FOOTER}>
-                                    <Trans>Footer</Trans>
+                                    <Trans>Rodapé</Trans>
                                   </SelectItem>
                                   <SelectItem value={CERTIFICATE_POSITION.LEFT}>
-                                    <Trans>Left Margin</Trans>
+                                    <Trans>Margem esquerda</Trans>
                                   </SelectItem>
                                   <SelectItem value={CERTIFICATE_POSITION.RIGHT}>
-                                    <Trans>Right Margin</Trans>
+                                    <Trans>Margem direita</Trans>
                                   </SelectItem>
                                 </SelectContent>
                               </Select>

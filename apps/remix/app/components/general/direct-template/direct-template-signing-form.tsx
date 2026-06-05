@@ -435,6 +435,7 @@ export const DirectTemplateSigningForm = ({
             fields={localFields}
             fieldsValidated={fieldsValidated}
             recipient={directRecipient}
+            geolocationEnabled={template.geolocationEnabled}
             allowDictateNextSigner={nextRecipient && template.templateMeta?.allowDictateNextSigner}
             defaultNextSigner={nextRecipient ? { name: nextRecipient.name, email: nextRecipient.email } : undefined}
           />

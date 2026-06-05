@@ -30,6 +30,7 @@ export const ZUpdateEnvelopeRequestSchema = z.object({
       authenticationMethods: z.array(z.nativeEnum(AuthenticationMethod)).optional(),
       certificateAllPages: z.boolean().optional(),
       certificatePosition: z.nativeEnum(CertificatePosition).optional(),
+      geolocationEnabled: z.boolean().optional(),
     })
     .optional(),
   meta: ZDocumentMetaUpdateSchema.optional(),

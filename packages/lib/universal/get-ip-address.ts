@@ -1,4 +1,14 @@
 export const getIpAddress = (req: Request) => {
+  const forwardedHeader = req.headers.get('forwarded');
+
+  if (forwardedHeader) {
+    const forwardedFor = forwardedHeader.match(/for=(?:"?\[?)([^;\],"]+)/i)?.[1];
+
+    if (forwardedFor) {
+      return forwardedFor;
+    }
+  }
+
   // Check for forwarded headers first (common in proxy setups)
   const forwarded = req.headers.get('x-forwarded-for');
 
@@ -33,6 +43,16 @@ export const getIpAddress = (req: Request) => {
 
   if (trueClientIp) {
     return trueClientIp;
+  }
+
+  const requestUrl = new URL(req.url);
+
+  if (requestUrl.hostname === 'localhost') {
+    return '127.0.0.1';
+  }
+
+  if (requestUrl.hostname === '::1' || requestUrl.hostname === '[::1]') {
+    return '::1';
   }
 
   throw new Error('No IP address found');

@@ -68,6 +68,7 @@ export const getTemplateByDirectLinkToken = async ({ token }: GetTemplateByDirec
     updatedAt: envelope.updatedAt,
     publicTitle: envelope.publicTitle,
     publicDescription: envelope.publicDescription,
+    geolocationEnabled: envelope.geolocationEnabled,
     folderId: envelope.folderId,
     templateDocumentDataId: firstDocumentData.id,
     templateDocumentData: {

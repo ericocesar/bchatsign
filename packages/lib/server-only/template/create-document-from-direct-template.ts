@@ -51,6 +51,10 @@ export type CreateDocumentFromDirectTemplateOptions = {
   directRecipientEmail: string;
   directTemplateToken: string;
   directTemplateExternalId?: string;
+  geolocation?: {
+    latitude: number;
+    longitude: number;
+  };
   signedFieldValues: TSignFieldWithTokenMutationSchema[];
   templateUpdatedAt: Date;
   requestMetadata: ApiRequestMetadata;
@@ -84,6 +88,7 @@ export const createDocumentFromDirectTemplate = async ({
   directRecipientEmail,
   directTemplateToken,
   directTemplateExternalId,
+  geolocation,
   signedFieldValues,
   templateUpdatedAt,
   nextSigner,
@@ -365,6 +370,7 @@ export const createDocumentFromDirectTemplate = async ({
         authenticationMethods: directTemplateEnvelope.authenticationMethods,
         certificateAllPages: directTemplateEnvelope.certificateAllPages,
         certificatePosition: directTemplateEnvelope.certificatePosition,
+        geolocationEnabled: directTemplateEnvelope.geolocationEnabled,
         envelopeItems: {
           createMany: {
             data: envelopeItemsToCreate,
@@ -646,6 +652,13 @@ export const createDocumentFromDirectTemplate = async ({
           recipientName: createdDirectRecipient.name,
           recipientRole: createdDirectRecipient.role,
           actionAuth: createdDirectRecipient.authOptions?.actionAuth ?? [],
+          geolocation:
+            geolocation && Number.isFinite(geolocation.latitude) && Number.isFinite(geolocation.longitude)
+              ? {
+                  latitude: geolocation.latitude,
+                  longitude: geolocation.longitude,
+                }
+              : undefined,
         },
       }),
     ];

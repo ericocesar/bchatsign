@@ -91,6 +91,7 @@ export const getTemplatesByIdsRoute = authenticatedProcedure
         updatedAt: envelope.updatedAt,
         publicTitle: envelope.publicTitle,
         publicDescription: envelope.publicDescription,
+        geolocationEnabled: envelope.geolocationEnabled,
         folderId: envelope.folderId,
         useLegacyFieldInsertion: envelope.useLegacyFieldInsertion,
         team: envelope.team

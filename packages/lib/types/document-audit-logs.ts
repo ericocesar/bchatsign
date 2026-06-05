@@ -540,6 +540,7 @@ export const ZDocumentAuditLogEventDocumentRecipientCompleteSchema = z.object({
     }, z.array(ZRecipientActionAuthTypesSchema)),
     geolocation: z
       .object({
+        address: z.string().optional().nullable(),
         latitude: z.number(),
         longitude: z.number(),
       })

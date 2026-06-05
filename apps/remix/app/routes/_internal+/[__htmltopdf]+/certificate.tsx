@@ -126,6 +126,16 @@ export default function SigningCertificate({ loaderData }: Route.ComponentProps)
     return `${result.os.name} - ${result.browser.name} ${result.browser.version}`;
   };
 
+  const formatRegisteredGeolocation = (
+    geolocation?: {
+      address?: string | null;
+      latitude: number;
+      longitude: number;
+    } | null,
+  ) =>
+    geolocation?.address?.trim() ||
+    (geolocation ? `${geolocation.latitude.toFixed(4)}, ${geolocation.longitude.toFixed(4)}` : null);
+
   const getAuthenticationLevel = (recipientId: number) => {
     const recipient = document.recipients.find((recipient) => recipient.id === recipientId);
 
@@ -287,6 +297,15 @@ export default function SigningCertificate({ loaderData }: Route.ComponentProps)
                           {getDevice(logs.DOCUMENT_RECIPIENT_COMPLETED[0]?.userAgent)}
                         </span>
                       </p>
+
+                      {logs.DOCUMENT_RECIPIENT_COMPLETED[0]?.data.geolocation && (
+                        <p className="mt-1 text-muted-foreground text-sm print:text-xs">
+                          <span className="font-medium">Geolocalização registrada:</span>{' '}
+                          <span className="inline-block">
+                            {formatRegisteredGeolocation(logs.DOCUMENT_RECIPIENT_COMPLETED[0]?.data.geolocation)}
+                          </span>
+                        </p>
+                      )}
                     </TableCell>
 
                     <TableCell truncate={false} className="w-[min-content] align-top">

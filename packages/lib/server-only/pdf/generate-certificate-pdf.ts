@@ -7,7 +7,7 @@ import { prop, sortBy } from 'remeda';
 import { match } from 'ts-pattern';
 
 import { ZSupportedLanguageCodeSchema } from '../../constants/i18n';
-import type { TDocumentAuditLogBaseSchema } from '../../types/document-audit-logs';
+import type { TDocumentAuditLog, TDocumentAuditLogBaseSchema } from '../../types/document-audit-logs';
 import { extractDocumentAuthMethods } from '../../utils/document-auth';
 import { getTranslations } from '../../utils/i18n';
 import { getDocumentCertificateAuditLogs } from '../document/get-document-certificate-audit-logs';
@@ -37,6 +37,31 @@ export type GenerateCertificatePdfOptions = {
   pageWidth: number;
   pageHeight: number;
   pdfHash?: string;
+};
+
+type CertificateCompletedAuditLog = Pick<TDocumentAuditLogBaseSchema, 'createdAt' | 'ipAddress' | 'userAgent'> & {
+  geolocation?: {
+    address?: string | null;
+    latitude: number;
+    longitude: number;
+  } | null;
+};
+
+type DocumentRecipientCompletedAuditLog = Extract<TDocumentAuditLog, { type: 'DOCUMENT_RECIPIENT_COMPLETED' }>;
+
+export const mapCompletedAuditLogToCertificateLog = (
+  log: DocumentRecipientCompletedAuditLog | undefined,
+): CertificateCompletedAuditLog | null => {
+  if (!log) {
+    return null;
+  }
+
+  return {
+    createdAt: log.createdAt,
+    ipAddress: log.ipAddress,
+    userAgent: log.userAgent,
+    geolocation: log.data.geolocation ?? null,
+  };
 };
 
 export const generateCertificatePdf = async (options: GenerateCertificatePdfOptions) => {
@@ -77,9 +102,12 @@ export const generateCertificatePdf = async (options: GenerateCertificatePdfOpti
         (log) => log.type === 'DOCUMENT_OPENED' && log.data.recipientId === recipientId,
       );
 
-      const documentRecipientCompleted: TDocumentAuditLogBaseSchema | undefined = auditLogs[
+      const documentRecipientCompleted: DocumentRecipientCompletedAuditLog | undefined = auditLogs[
         'DOCUMENT_RECIPIENT_COMPLETED'
-      ].find((log) => log.type === 'DOCUMENT_RECIPIENT_COMPLETED' && log.data.recipientId === recipientId);
+      ].find(
+        (log): log is DocumentRecipientCompletedAuditLog =>
+          log.type === 'DOCUMENT_RECIPIENT_COMPLETED' && log.data.recipientId === recipientId,
+      );
 
       const documentRecipientRejected: TDocumentAuditLogBaseSchema | undefined = auditLogs[
         'DOCUMENT_RECIPIENT_REJECTED'
@@ -131,7 +159,7 @@ export const generateCertificatePdf = async (options: GenerateCertificatePdfOpti
           emailed: emailSent ?? null,
           sent: documentSent ?? null,
           opened: documentOpened ?? null,
-          completed: documentRecipientCompleted ?? null,
+          completed: mapCompletedAuditLogToCertificateLog(documentRecipientCompleted),
           rejected: documentRecipientRejected ?? null,
         },
       };

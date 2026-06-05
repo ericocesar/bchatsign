@@ -561,6 +561,7 @@ export const createDocumentFromTemplate = async ({
         authenticationMethods: template.authenticationMethods,
         certificateAllPages: template.certificateAllPages,
         certificatePosition: template.certificatePosition,
+        geolocationEnabled: template.geolocationEnabled,
         documentMetaId: documentMeta.id,
         formValues: formValues ?? undefined,
         recipients: {

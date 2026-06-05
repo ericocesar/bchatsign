@@ -324,6 +324,7 @@ export const DocumentSigningPageViewV1 = ({
                             completeDocument({ nextSigner, accessAuthOptions, geolocation })
                           }
                           recipient={recipient}
+                          geolocationEnabled={document.geolocationEnabled}
                           allowDictateNextSigner={nextRecipient && documentMeta?.allowDictateNextSigner}
                           defaultNextSigner={
                             nextRecipient ? { name: nextRecipient.name, email: nextRecipient.email } : undefined

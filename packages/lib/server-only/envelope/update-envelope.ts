@@ -43,6 +43,7 @@ export type UpdateEnvelopeOptions = {
     authenticationMethods?: AuthenticationMethod[];
     certificateAllPages?: boolean;
     certificatePosition?: CertificatePosition;
+    geolocationEnabled?: boolean;
   };
   meta?: Partial<Omit<DocumentMeta, 'id'>>;
   requestMetadata: ApiRequestMetadata;
@@ -324,6 +325,7 @@ export const updateEnvelope = async ({
         authenticationMethods: data.authenticationMethods,
         certificateAllPages: data.certificateAllPages,
         certificatePosition: data.certificatePosition,
+        geolocationEnabled: data.geolocationEnabled,
         documentMeta: {
           update: {
             ...meta,

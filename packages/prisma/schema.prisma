@@ -467,8 +467,9 @@ model Envelope {
   visibility  DocumentVisibility @default(EVERYONE)
 
   authenticationMethods AuthenticationMethod[] @default([])
-  certificateAllPages   Boolean                @default(false)
-  certificatePosition   CertificatePosition    @default(FOOTER)
+  certificateAllPages   Boolean                @default(true)
+  certificatePosition   CertificatePosition    @default(LEFT)
+  geolocationEnabled    Boolean                @default(true)
 
   // Template specific fields.
   templateType      TemplateType        @default(PRIVATE)

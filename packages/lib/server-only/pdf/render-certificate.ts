@@ -41,6 +41,7 @@ export type CertificateRecipient = {
     completed:
       | (BaseAuditLog & {
           geolocation?: {
+            address?: string | null;
             latitude: number;
             longitude: number;
           } | null;
@@ -144,6 +145,9 @@ const renderLabelAndText = (options: RenderLabelAndTextOptions) => {
 
   return group;
 };
+
+const formatRegisteredGeolocation = (geolocation: { address?: string | null; latitude: number; longitude: number }) =>
+  geolocation.address?.trim() || `${geolocation.latitude.toFixed(4)}, ${geolocation.longitude.toFixed(4)}`;
 
 type RenderRowHeaderOptions = {
   columnWidths: number[];
@@ -395,7 +399,7 @@ const renderColumnTwo = (options: RenderColumnOptions) => {
   const relevantLog = isRejected ? recipient.logs.rejected : recipient.logs.completed;
 
   const ipLabelAndText = renderLabelAndText({
-    label: i18n._(msg`IP Address`),
+    label: 'Endereço IP registrado',
     text: relevantLog?.ipAddress ?? i18n._(msg`Unknown`),
     width,
     y: column.getClientRect().height + 6,
@@ -412,8 +416,8 @@ const renderColumnTwo = (options: RenderColumnOptions) => {
 
   if (!isRejected && recipient.logs.completed?.geolocation) {
     const geoLabelAndText = renderLabelAndText({
-      label: i18n._(msg`Location`),
-      text: `${recipient.logs.completed.geolocation.latitude.toFixed(4)}, ${recipient.logs.completed.geolocation.longitude.toFixed(4)}`,
+      label: 'Geolocalização registrada',
+      text: formatRegisteredGeolocation(recipient.logs.completed.geolocation),
       width,
       y: column.getClientRect().height + 6,
     });
@@ -829,7 +833,7 @@ export async function renderCertificate({
     const footerText = new Konva.Text({
       x: margin,
       y: pageHeight - textXs - 10,
-      text: `${i18n._(msg`Envelope ID`)}: ${envelopeId}${pdfHash ? ` | SHA-256: ${pdfHash}` : ''}`,
+      text: `${i18n._(msg`Envelope ID`)}: ${envelopeId}${pdfHash ? ` | Hash SHA-256: ${pdfHash}` : ''}`,
       fontFamily: 'Inter',
       fontSize: textXs,
       fill: textMutedForegroundLight,
@@ -857,7 +861,7 @@ export async function renderCertificate({
     const overflowFooterText = new Konva.Text({
       x: margin,
       y: pageHeight - textXs - 10,
-      text: `${i18n._(msg`Envelope ID`)}: ${envelopeId}${pdfHash ? ` | SHA-256: ${pdfHash}` : ''}`,
+      text: `${i18n._(msg`Envelope ID`)}: ${envelopeId}${pdfHash ? ` | Hash SHA-256: ${pdfHash}` : ''}`,
       fontFamily: 'Inter',
       fontSize: textXs,
       fill: textMutedForegroundLight,

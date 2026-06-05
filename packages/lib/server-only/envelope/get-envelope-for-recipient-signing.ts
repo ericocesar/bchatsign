@@ -34,6 +34,7 @@ export const ZEnvelopeForSigningResponse = z.object({
     deletedAt: true,
     title: true,
     authOptions: true,
+    geolocationEnabled: true,
     userId: true,
     teamId: true,
   }).extend({

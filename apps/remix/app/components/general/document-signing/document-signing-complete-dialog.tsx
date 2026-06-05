@@ -2,8 +2,8 @@ import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
 import { type TRecipientAccessAuth, ZDocumentAccessAuthSchema } from '@documenso/lib/types/document-auth';
 import { fieldsContainUnsignedRequiredField } from '@documenso/lib/utils/advanced-fields-helpers';
 import { zEmail } from '@documenso/lib/utils/zod';
+import { Alert, AlertDescription, AlertTitle } from '@documenso/ui/primitives/alert';
 import { Button } from '@documenso/ui/primitives/button';
-import { Checkbox } from '@documenso/ui/primitives/checkbox';
 import {
   Dialog,
   DialogContent,
@@ -15,11 +15,11 @@ import {
 } from '@documenso/ui/primitives/dialog';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@documenso/ui/primitives/form/form';
 import { Input } from '@documenso/ui/primitives/input';
-import { Label } from '@documenso/ui/primitives/label';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Trans, useLingui } from '@lingui/react/macro';
 import type { Field, Recipient } from '@prisma/client';
 import { RecipientRole } from '@prisma/client';
+import { MapPinIcon } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { match } from 'ts-pattern';
@@ -28,6 +28,12 @@ import { z } from 'zod';
 import { useEmbedSigningContext } from '~/components/embed/embed-signing-context';
 import { AccessAuth2FAForm } from '~/components/general/document-signing/access-auth-2fa-form';
 import { DocumentSigningDisclosure } from '~/components/general/document-signing/document-signing-disclosure';
+import {
+  getGeolocationErrorMessage,
+  getGeolocationPermissionState,
+  isBrowserSecureContext,
+  resolveGeolocation,
+} from '~/components/general/document-signing/document-signing-geolocation';
 
 import { useRequiredDocumentSigningAuthContext } from './document-signing-auth-provider';
 
@@ -56,6 +62,7 @@ export type DocumentSigningCompleteDialogProps = {
   buttonSize?: 'sm' | 'lg';
   position?: 'start' | 'end' | 'center';
   disableNameInput?: boolean;
+  geolocationEnabled?: boolean;
 };
 
 const ZNextSignerFormSchema = z.object({
@@ -87,6 +94,7 @@ export const DocumentSigningCompleteDialog = ({
   buttonSize = 'lg',
   position,
   disableNameInput = false,
+  geolocationEnabled = true,
 }: DocumentSigningCompleteDialogProps) => {
   const { t } = useLingui();
 
@@ -97,33 +105,59 @@ export const DocumentSigningCompleteDialog = ({
 
   const { derivedRecipientAccessAuth } = useRequiredDocumentSigningAuthContext();
 
-  const [optInGeolocation, setOptInGeolocation] = useState(false);
+  const requiresGeolocation = recipient.role === RecipientRole.SIGNER && geolocationEnabled;
   const [geolocation, setGeolocation] = useState<{ latitude: number; longitude: number } | undefined>(undefined);
+  const [isResolvingGeolocation, setIsResolvingGeolocation] = useState(false);
+  const [geolocationError, setGeolocationError] = useState<string | null>(null);
 
-  const handleGeolocationChange = (checked: boolean) => {
-    setOptInGeolocation(checked);
-    if (checked) {
-      if (typeof navigator !== 'undefined' && navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            setGeolocation({
-              latitude: position.coords.latitude,
-              longitude: position.coords.longitude,
-            });
-          },
-          (error) => {
-            console.error('Error fetching geolocation:', error);
-            setOptInGeolocation(false);
-            setGeolocation(undefined);
-          },
-        );
-      } else {
-        console.error('Geolocation is not supported by this browser.');
-        setOptInGeolocation(false);
-        setGeolocation(undefined);
-      }
-    } else {
+  const requestGeolocation = async () => {
+    if (typeof navigator === 'undefined' || !navigator.geolocation) {
+      setGeolocationError(t`Seu navegador não oferece suporte à geolocalização necessária para concluir a assinatura.`);
+      return undefined;
+    }
+
+    const isSecureContext = isBrowserSecureContext();
+
+    if (!isSecureContext) {
       setGeolocation(undefined);
+      setGeolocationError(
+        getGeolocationErrorMessage({
+          error: undefined,
+          isSecureContext: false,
+        }),
+      );
+      return undefined;
+    }
+
+    setIsResolvingGeolocation(true);
+    setGeolocationError(null);
+
+    try {
+      const position = await resolveGeolocation(navigator);
+
+      const nextGeolocation = {
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+      };
+
+      setGeolocation(nextGeolocation);
+
+      return nextGeolocation;
+    } catch (error) {
+      setGeolocation(undefined);
+      const permissionState = await getGeolocationPermissionState();
+
+      setGeolocationError(
+        getGeolocationErrorMessage({
+          error,
+          permissionState,
+          isSecureContext,
+        }),
+      );
+
+      return undefined;
+    } finally {
+      setIsResolvingGeolocation(false);
     }
   };
 
@@ -162,8 +196,8 @@ export const DocumentSigningCompleteDialog = ({
         name: defaultNextSigner?.name ?? '',
         email: defaultNextSigner?.email ?? '',
       });
-      setOptInGeolocation(false);
       setGeolocation(undefined);
+      setGeolocationError(null);
     }
 
     setShowDialog(open);
@@ -172,6 +206,7 @@ export const DocumentSigningCompleteDialog = ({
   const onFormSubmit = async (data: TNextSignerFormSchema) => {
     try {
       let recipientOverridePayload: { name: string; email: string } | undefined;
+      let resolvedGeolocation = geolocation;
 
       if (recipientPayload && !recipientPayload.email) {
         const isFormValid = await recipientForm.trigger();
@@ -196,7 +231,15 @@ export const DocumentSigningCompleteDialog = ({
       const nextSigner =
         allowDictateNextSigner && data.name && data.email ? { name: data.name, email: data.email } : undefined;
 
-      await onSignatureComplete(nextSigner, data.accessAuthOptions, recipientOverridePayload, geolocation);
+      if (requiresGeolocation && !resolvedGeolocation) {
+        resolvedGeolocation = await requestGeolocation();
+
+        if (!resolvedGeolocation) {
+          return;
+        }
+      }
+
+      await onSignatureComplete(nextSigner, data.accessAuthOptions, recipientOverridePayload, resolvedGeolocation);
     } catch (error) {
       const err = AppError.parseError(error);
 
@@ -281,7 +324,7 @@ export const DocumentSigningCompleteDialog = ({
         </div>
 
         {!showTwoFactorForm && (
-          <fieldset disabled={form.formState.isSubmitting} className="border-none p-0">
+          <fieldset disabled={form.formState.isSubmitting || isResolvingGeolocation} className="border-none p-0">
             {recipientPayload && !recipientPayload.email && (
               <Form {...recipientForm}>
                 <div className="mb-4 flex flex-col gap-4">
@@ -380,19 +423,27 @@ export const DocumentSigningCompleteDialog = ({
                   </div>
                 )}
 
-                <div className="mb-4 flex items-center space-x-2">
-                  <Checkbox
-                    id="opt-in-geolocation"
-                    checked={optInGeolocation}
-                    onCheckedChange={handleGeolocationChange}
-                  />
-                  <Label
-                    htmlFor="opt-in-geolocation"
-                    className="cursor-pointer select-none font-normal text-muted-foreground text-xs"
-                  >
-                    <Trans>Share my geolocation on the signature certificate</Trans>
-                  </Label>
-                </div>
+                {requiresGeolocation && (
+                  <Alert className="mb-4" variant="default">
+                    <MapPinIcon className="h-4 w-4" />
+                    <AlertTitle>
+                      <Trans>Autorização de geolocalização</Trans>
+                    </AlertTitle>
+                    <AlertDescription>
+                      <Trans>
+                        Para reforçar a segurança e a trilha de auditoria da assinatura eletrônica, solicitaremos sua
+                        geolocalização. Ao clicar em Assinar, selecione Permitir no aviso do navegador para concluir o
+                        processo.
+                      </Trans>
+                    </AlertDescription>
+                  </Alert>
+                )}
+
+                {geolocationError && (
+                  <Alert className="mb-4" variant="destructive">
+                    <AlertDescription>{geolocationError}</AlertDescription>
+                  </Alert>
+                )}
 
                 <DocumentSigningDisclosure />
 
@@ -401,12 +452,16 @@ export const DocumentSigningCompleteDialog = ({
                     type="button"
                     variant="secondary"
                     onClick={() => setShowDialog(false)}
-                    disabled={form.formState.isSubmitting}
+                    disabled={form.formState.isSubmitting || isResolvingGeolocation}
                   >
                     <Trans>Cancel</Trans>
                   </Button>
 
-                  <Button type="submit" disabled={!isComplete} loading={form.formState.isSubmitting}>
+                  <Button
+                    type="submit"
+                    disabled={!isComplete}
+                    loading={form.formState.isSubmitting || isResolvingGeolocation}
+                  >
                     {match(recipient.role)
                       .with(RecipientRole.VIEWER, () => <Trans>Mark as Viewed</Trans>)
                       .with(RecipientRole.SIGNER, () => <Trans>Sign</Trans>)

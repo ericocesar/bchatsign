@@ -4,6 +4,10 @@ import { describe, expect, it, vi } from 'vitest';
 
 import { renderCertificate } from './render-certificate';
 
+vi.mock('@lingui/core/macro', () => ({
+  msg: (strings: TemplateStringsArray, ...values: unknown[]) => String.raw({ raw: strings }, ...values),
+}));
+
 // Mock helpers to avoid missing font paths during testing
 vi.mock('./helpers', () => ({
   ensureFontLibrary: vi.fn(),

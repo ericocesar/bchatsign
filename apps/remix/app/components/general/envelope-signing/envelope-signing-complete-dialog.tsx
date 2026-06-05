@@ -147,6 +147,7 @@ export const EnvelopeSignerCompleteDialog = () => {
     nextSigner?: { name: string; email: string },
     accessAuthOptions?: TRecipientAccessAuth,
     recipientDetails?: { name: string; email: string },
+    geolocation?: { latitude: number; longitude: number },
   ) => {
     try {
       let directTemplateExternalId = searchParams?.get('externalId') || undefined;
@@ -164,6 +165,7 @@ export const EnvelopeSignerCompleteDialog = () => {
         directTemplateExternalId,
         directRecipientName: recipientDetails?.name || fullName,
         directRecipientEmail: recipientDetails?.email || email,
+        geolocation,
         templateUpdatedAt: envelope.updatedAt,
         signedFieldValues: recipient.fields.map((field) => {
           let value = field.customText;
@@ -246,6 +248,7 @@ export const EnvelopeSignerCompleteDialog = () => {
       fields={recipientFieldsRemaining}
       fieldsValidated={handleOnNextFieldClick}
       recipient={recipient}
+      geolocationEnabled={envelope.geolocationEnabled}
       allowDictateNextSigner={Boolean(nextRecipient && envelope.documentMeta.allowDictateNextSigner)}
       disableNameInput={!isDirectTemplate && recipient.name !== ''}
       defaultNextSigner={nextRecipient ? { name: nextRecipient.name, email: nextRecipient.email } : undefined}

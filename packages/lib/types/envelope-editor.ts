@@ -269,6 +269,7 @@ export const ZEditorEnvelopeSchema = EnvelopeSchema.pick({
   authenticationMethods: true,
   certificateAllPages: true,
   certificatePosition: true,
+  geolocationEnabled: true,
 }).extend({
   documentMeta: DocumentMetaSchema.pick({
     signingOrder: true,
