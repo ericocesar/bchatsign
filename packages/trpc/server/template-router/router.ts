@@ -94,12 +94,11 @@ export const templateRouter = router({
       });
 
       // Remapping for backwards compatibility.
-      return {
-        ...result,
-        data: result.data.map((envelope) => {
+      const mappedData = result.data.reduce((acc, envelope) => {
+        try {
           const legacyTemplateId = mapSecondaryIdToTemplateId(envelope.secondaryId);
 
-          return {
+          acc.push({
             id: legacyTemplateId,
             envelopeId: envelope.id,
             type: envelope.templateType,
@@ -121,8 +120,24 @@ export const templateRouter = router({
             recipients: envelope.recipients.map((recipient) => mapRecipientToLegacyRecipient(recipient, envelope)),
             templateMeta: envelope.documentMeta,
             directLink: envelope.directLink,
-          };
-        }),
+          });
+        } catch (error) {
+          ctx.logger.error(
+            {
+              envelopeId: envelope.id,
+              secondaryId: envelope.secondaryId,
+              error,
+            },
+            'Failed to map template secondary ID',
+          );
+        }
+
+        return acc;
+      }, [] as any[]);
+
+      return {
+        ...result,
+        data: mappedData,
       };
     }),
 
@@ -142,12 +157,11 @@ export const templateRouter = router({
       });
 
       // Remapping for backwards compatibility.
-      return {
-        ...result,
-        data: result.data.map((envelope) => {
+      const mappedData = result.data.reduce((acc, envelope) => {
+        try {
           const legacyTemplateId = mapSecondaryIdToTemplateId(envelope.secondaryId);
 
-          return {
+          acc.push({
             id: legacyTemplateId,
             envelopeId: envelope.id,
             type: envelope.templateType,
@@ -169,8 +183,24 @@ export const templateRouter = router({
             recipients: envelope.recipients.map((recipient) => mapRecipientToLegacyRecipient(recipient, envelope)),
             templateMeta: envelope.documentMeta,
             directLink: envelope.directLink,
-          };
-        }),
+          });
+        } catch (error) {
+          ctx.logger.error(
+            {
+              envelopeId: envelope.id,
+              secondaryId: envelope.secondaryId,
+              error,
+            },
+            'Failed to map template secondary ID',
+          );
+        }
+
+        return acc;
+      }, [] as any[]);
+
+      return {
+        ...result,
+        data: mappedData,
       };
     }),
 

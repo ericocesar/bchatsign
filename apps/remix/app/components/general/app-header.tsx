@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { type HTMLAttributes, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router';
+import { BrandingLogo } from '~/components/general/branding-logo';
 
 export type HeaderProps = HTMLAttributes<HTMLDivElement> & {
   teamUrl?: string | null;
@@ -83,8 +84,9 @@ export const Header = ({ teamUrl, className, ...props }: HeaderProps) => {
                     key={link.href}
                     to={link.href}
                     className={cn(
-                      'flex items-center gap-3 rounded-md px-3 py-2 text-[14px] text-foreground transition-colors hover:bg-muted/60',
-                      isActive(link.href) && 'bg-[hsl(var(--brand-soft))] text-[hsl(var(--primary))]',
+                      'flex items-center gap-3 rounded-md px-3 py-2 font-semibold text-[17px] text-black uppercase transition-all duration-200 hover:scale-[1.15] hover:bg-muted/60 hover:text-primary dark:text-white dark:hover:text-primary',
+                      isActive(link.href) &&
+                        'bg-[hsl(var(--brand-soft))] text-[hsl(var(--primary))] dark:text-[hsl(var(--primary))]',
                     )}
                   >
                     <Icon className="h-4 w-4" />
@@ -98,7 +100,7 @@ export const Header = ({ teamUrl, className, ...props }: HeaderProps) => {
 
             <Link
               to="/settings/profile"
-              className="flex items-center gap-3 rounded-md px-3 py-2 text-[14px] text-foreground transition-colors hover:bg-muted/60"
+              className="flex items-center gap-3 rounded-md px-3 py-2 font-semibold text-[17px] text-black uppercase transition-all duration-200 hover:scale-[1.15] hover:bg-muted/60 hover:text-primary dark:text-white dark:hover:text-primary"
             >
               <UserIcon className="h-4 w-4" />
               <Trans>Account</Trans>
@@ -107,7 +109,7 @@ export const Header = ({ teamUrl, className, ...props }: HeaderProps) => {
             <button
               type="button"
               onClick={() => void authClient.signOut()}
-              className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-[14px] text-foreground transition-colors hover:bg-muted/60"
+              className="flex w-full items-center gap-3 rounded-md px-3 py-2 font-semibold text-[17px] text-black uppercase transition-all duration-200 hover:scale-[1.15] hover:bg-muted/60 hover:text-primary dark:text-white dark:hover:text-primary"
             >
               <LogOutIcon className="h-4 w-4" />
               <Trans>Sign Out</Trans>
@@ -118,9 +120,9 @@ export const Header = ({ teamUrl, className, ...props }: HeaderProps) => {
         {/* Home link */}
         <Link
           to="/dashboard"
-          className="flex shrink-0 items-center gap-2 font-semibold text-foreground text-sm tracking-tight transition-opacity hover:opacity-80"
+          className="flex shrink-0 items-center gap-2 ring-offset-background transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         >
-          BchatSign
+          <BrandingLogo className="h-6 w-auto" />
         </Link>
 
         {/* Desktop nav links */}
@@ -133,8 +135,9 @@ export const Header = ({ teamUrl, className, ...props }: HeaderProps) => {
                 key={link.href}
                 to={link.href}
                 className={cn(
-                  'flex items-center gap-2 rounded-md px-3 py-1.5 font-medium text-[13px] text-muted-foreground transition-colors hover:bg-muted/60 hover:text-foreground',
-                  isActive(link.href) && 'bg-[hsl(var(--brand-soft))] text-[hsl(var(--primary))]',
+                  'flex items-center gap-2 rounded-md px-3 py-1.5 font-bold text-[16px] text-black uppercase transition-all duration-200 hover:scale-[1.15] hover:bg-muted/60 hover:text-primary dark:text-white dark:hover:text-primary',
+                  isActive(link.href) &&
+                    'bg-[hsl(var(--brand-soft))] text-[hsl(var(--primary))] dark:text-[hsl(var(--primary))]',
                 )}
               >
                 <Icon className="h-4 w-4" />
@@ -162,10 +165,10 @@ export const Header = ({ teamUrl, className, ...props }: HeaderProps) => {
 
           <Link
             to="/settings/profile"
-            className="hidden h-9 items-center gap-2 rounded-lg px-2 text-muted-foreground transition-colors hover:bg-muted/60 hover:text-foreground md:inline-flex"
+            className="hidden h-9 items-center gap-2 rounded-lg px-2 font-bold text-black uppercase transition-all duration-200 hover:scale-[1.15] hover:bg-muted/60 hover:text-primary md:inline-flex dark:text-white dark:hover:text-primary"
           >
             <SettingsIcon className="h-[18px] w-[18px]" strokeWidth={1.75} />
-            <span className="font-medium text-[13px]">
+            <span className="text-[16px]">
               <Trans>Account</Trans>
             </span>
           </Link>

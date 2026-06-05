@@ -15,7 +15,7 @@ import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
 import { type Field, type Recipient, RecipientRole } from '@prisma/client';
-import { useId, useMemo, useState } from 'react';
+import { useEffect, useId, useMemo, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
 
@@ -63,6 +63,11 @@ export const DocumentSigningForm = ({
   const [validateUninsertedFields, setValidateUninsertedFields] = useState(false);
   const [isConfirmationDialogOpen, setIsConfirmationDialogOpen] = useState(false);
   const [isAssistantSubmitting, setIsAssistantSubmitting] = useState(false);
+  const [isBackNavigationAvailable, setIsBackNavigationAvailable] = useState(true);
+
+  useEffect(() => {
+    setIsBackNavigationAvailable(window.history.length > 1);
+  }, []);
 
   const assistantForm = useForm<{ selectedSignerId: number | undefined }>({
     defaultValues: {
@@ -131,7 +136,7 @@ export const DocumentSigningForm = ({
                   className="w-full bg-black/5 hover:bg-black/10 dark:bg-muted dark:hover:bg-muted/80"
                   variant="secondary"
                   size="lg"
-                  disabled={typeof window !== 'undefined' && window.history.length <= 1}
+                  disabled={!isBackNavigationAvailable}
                   onClick={async () => navigate(-1)}
                 >
                   <Trans>Cancel</Trans>
@@ -268,7 +273,7 @@ export const DocumentSigningForm = ({
                   className="w-full bg-black/5 hover:bg-black/10 dark:bg-muted dark:hover:bg-muted/80"
                   variant="secondary"
                   size="lg"
-                  disabled={typeof window !== 'undefined' && window.history.length <= 1}
+                  disabled={!isBackNavigationAvailable}
                   onClick={async () => navigate(-1)}
                 >
                   <Trans>Cancel</Trans>

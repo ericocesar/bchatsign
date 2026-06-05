@@ -129,6 +129,7 @@ RUN npx prisma generate --schema ./packages/prisma/schema.prisma
 
 # Get the start script from docker/
 COPY --chown=nodejs:nodejs ./docker/start.sh /app/apps/remix/start.sh
+COPY --chown=nodejs:nodejs ./docker/create-superadmin.mjs /app/scripts/create-superadmin.mjs
 
 WORKDIR /app/apps/remix
 

@@ -6,6 +6,7 @@ import { extractLocaleData } from '@documenso/lib/utils/i18n';
 import { TrpcProvider } from '@documenso/trpc/react';
 import { getOrganisationSession } from '@documenso/trpc/server/organisation-router/get-organisation-session';
 import { Toaster } from '@documenso/ui/primitives/toaster';
+import { TooltipProvider } from '@documenso/ui/primitives/tooltip';
 import { NuqsAdapter } from 'nuqs/adapters/react-router/v7';
 import {
   data,
@@ -156,13 +157,15 @@ export function LayoutContent({ children }: { children: React.ReactNode }) {
         )} */}
 
         <NuqsAdapter>
-          <SessionProvider initialSession={session}>
-            <TrpcProvider>
-              {children}
+          <TooltipProvider>
+            <SessionProvider initialSession={session}>
+              <TrpcProvider>
+                {children}
 
-              <Toaster />
-            </TrpcProvider>
-          </SessionProvider>
+                <Toaster />
+              </TrpcProvider>
+            </SessionProvider>
+          </TooltipProvider>
         </NuqsAdapter>
 
         <script

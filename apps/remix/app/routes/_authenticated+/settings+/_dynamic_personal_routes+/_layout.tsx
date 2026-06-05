@@ -1,9 +1,7 @@
 import { OrganisationProvider } from '@documenso/lib/client-only/providers/organisation';
 import { useSession } from '@documenso/lib/client-only/providers/session';
-import { isPersonalLayout } from '@documenso/lib/utils/organisations';
 import { TrpcProvider } from '@documenso/trpc/react';
-import { useEffect } from 'react';
-import { Outlet, useNavigate } from 'react-router';
+import { Outlet } from 'react-router';
 
 import { TeamProvider } from '~/providers/team';
 
@@ -21,20 +19,10 @@ import { TeamProvider } from '~/providers/team';
 export default function Layout() {
   const { organisations } = useSession();
 
-  const navigate = useNavigate();
-
-  const isPersonalLayoutMode = isPersonalLayout(organisations);
-
-  const currentOrganisation = organisations[0];
+  const currentOrganisation = organisations.find((org) => org.type === 'PERSONAL') || organisations[0];
   const team = currentOrganisation?.teams[0] || null;
 
-  useEffect(() => {
-    if (!isPersonalLayoutMode || !team) {
-      void navigate('/settings/profile');
-    }
-  }, []);
-
-  if (!isPersonalLayoutMode || !team) {
+  if (!currentOrganisation || !team) {
     return null;
   }
 

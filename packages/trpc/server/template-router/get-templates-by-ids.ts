@@ -72,52 +72,65 @@ export const getTemplatesByIdsRoute = authenticatedProcedure
       },
     });
 
-    const templates = envelopes.map((envelope) => {
-      const legacyTemplateId = mapSecondaryIdToTemplateId(envelope.secondaryId);
+    const templates = envelopes.reduce((acc, envelope) => {
+      try {
+        const legacyTemplateId = mapSecondaryIdToTemplateId(envelope.secondaryId);
 
-      const firstTemplateDocumentData = envelope.envelopeItems[0].documentData;
+        const firstTemplateDocumentData = envelope.envelopeItems[0].documentData;
 
-      return {
-        id: legacyTemplateId,
-        envelopeId: envelope.id,
-        type: envelope.templateType,
-        visibility: envelope.visibility,
-        externalId: envelope.externalId,
-        title: envelope.title,
-        userId: envelope.userId,
-        teamId: envelope.teamId,
-        authOptions: envelope.authOptions,
-        createdAt: envelope.createdAt,
-        updatedAt: envelope.updatedAt,
-        publicTitle: envelope.publicTitle,
-        publicDescription: envelope.publicDescription,
-        geolocationEnabled: envelope.geolocationEnabled,
-        folderId: envelope.folderId,
-        useLegacyFieldInsertion: envelope.useLegacyFieldInsertion,
-        team: envelope.team
-          ? {
-              id: envelope.team.id,
-              url: envelope.team.url,
-              name: envelope.team.name,
-            }
-          : null,
-        fields: envelope.fields.map((field) => mapFieldToLegacyField(field, envelope)),
-        recipients: envelope.recipients.map((recipient) => mapRecipientToLegacyRecipient(recipient, envelope)),
-        templateMeta: envelope.documentMeta
-          ? {
-              signingOrder: envelope.documentMeta.signingOrder,
-              distributionMethod: envelope.documentMeta.distributionMethod,
-            }
-          : null,
-        directLink: envelope.directLink
-          ? {
-              token: envelope.directLink.token,
-              enabled: envelope.directLink.enabled,
-            }
-          : null,
-        templateDocumentDataId: firstTemplateDocumentData.id, // Backwards compatibility.
-      };
-    });
+        acc.push({
+          id: legacyTemplateId,
+          envelopeId: envelope.id,
+          type: envelope.templateType,
+          visibility: envelope.visibility,
+          externalId: envelope.externalId,
+          title: envelope.title,
+          userId: envelope.userId,
+          teamId: envelope.teamId,
+          authOptions: envelope.authOptions,
+          createdAt: envelope.createdAt,
+          updatedAt: envelope.updatedAt,
+          publicTitle: envelope.publicTitle,
+          publicDescription: envelope.publicDescription,
+          geolocationEnabled: envelope.geolocationEnabled,
+          folderId: envelope.folderId,
+          useLegacyFieldInsertion: envelope.useLegacyFieldInsertion,
+          team: envelope.team
+            ? {
+                id: envelope.team.id,
+                url: envelope.team.url,
+                name: envelope.team.name,
+              }
+            : null,
+          fields: envelope.fields.map((field) => mapFieldToLegacyField(field, envelope)),
+          recipients: envelope.recipients.map((recipient) => mapRecipientToLegacyRecipient(recipient, envelope)),
+          templateMeta: envelope.documentMeta
+            ? {
+                signingOrder: envelope.documentMeta.signingOrder,
+                distributionMethod: envelope.documentMeta.distributionMethod,
+              }
+            : null,
+          directLink: envelope.directLink
+            ? {
+                token: envelope.directLink.token,
+                enabled: envelope.directLink.enabled,
+              }
+            : null,
+          templateDocumentDataId: firstTemplateDocumentData.id, // Backwards compatibility.
+        });
+      } catch (error) {
+        ctx.logger.error(
+          {
+            envelopeId: envelope.id,
+            secondaryId: envelope.secondaryId,
+            error,
+          },
+          'Failed to map template secondary ID',
+        );
+      }
+
+      return acc;
+    }, [] as any[]);
 
     return {
       data: templates,

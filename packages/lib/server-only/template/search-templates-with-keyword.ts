@@ -113,17 +113,27 @@ export const searchTemplatesWithKeyword = async ({ query, userId, limit = 20 }: 
         .otherwise(() => false);
     })
     .slice(0, limit)
-    .map((envelope) => {
-      const legacyTemplateId = mapSecondaryIdToTemplateId(envelope.secondaryId);
+    .reduce((acc, envelope) => {
+      try {
+        const legacyTemplateId = mapSecondaryIdToTemplateId(envelope.secondaryId);
 
-      const path = `${formatTemplatesPath(envelope.team.url)}/${legacyTemplateId}`;
+        const path = `${formatTemplatesPath(envelope.team.url)}/${legacyTemplateId}`;
 
-      return {
-        title: envelope.title,
-        path,
-        value: [envelope.id, envelope.title, ...envelope.recipients.map((r) => r.email)].join(' '),
-      };
-    });
+        acc.push({
+          title: envelope.title,
+          path,
+          value: [envelope.id, envelope.title, ...envelope.recipients.map((r) => r.email)].join(' '),
+        });
+      } catch (error) {
+        console.error('Failed to map template secondary ID', {
+          envelopeId: envelope.id,
+          secondaryId: envelope.secondaryId,
+          error,
+        });
+      }
+
+      return acc;
+    }, [] as any[]);
 
   return results;
 };
