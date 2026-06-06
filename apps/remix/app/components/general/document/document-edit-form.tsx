@@ -28,6 +28,7 @@ import { z } from 'zod';
 
 import PDFViewerLazy from '~/components/general/pdf-viewer/pdf-viewer-lazy';
 import { useCurrentTeam } from '~/providers/team';
+import { useCspNonce } from '~/utils/nonce';
 
 export type DocumentEditFormProps = {
   className?: string;
@@ -41,6 +42,7 @@ const EditDocumentSteps: EditDocumentStep[] = ['settings', 'signers', 'fields', 
 export const DocumentEditForm = ({ className, initialDocument, documentRootPath }: DocumentEditFormProps) => {
   const { toast } = useToast();
   const { _ } = useLingui();
+  const cspNonce = useCspNonce();
 
   const navigate = useNavigate();
 
@@ -461,6 +463,7 @@ export const DocumentEditForm = ({ className, initialDocument, documentRootPath 
 
             <AddSignersFormPartial
               key={document.id}
+              cspNonce={cspNonce}
               documentFlow={documentFlow.signers}
               recipients={recipients}
               signingOrder={document.documentMeta?.signingOrder}

@@ -62,6 +62,7 @@ export type AddSignersFormProps = {
   onSubmit: (_data: TAddSignersFormSchema) => void;
   onAutoSave: (_data: TAddSignersFormSchema) => Promise<AutoSaveResponse>;
   isDocumentPdfLoaded: boolean;
+  cspNonce?: string;
 };
 
 export const AddSignersFormPartial = ({
@@ -73,6 +74,7 @@ export const AddSignersFormPartial = ({
   onSubmit,
   onAutoSave,
   isDocumentPdfLoaded,
+  cspNonce,
 }: AddSignersFormProps) => {
   const { _ } = useLingui();
   const { toast } = useToast();
@@ -609,6 +611,7 @@ export const AddSignersFormPartial = ({
             />
 
             <DragDropContext
+              nonce={cspNonce}
               onDragEnd={onDragEnd}
               sensors={[
                 (api: SensorAPI) => {

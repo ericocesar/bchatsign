@@ -58,6 +58,7 @@ export type AddTemplatePlaceholderRecipientsFormProps = {
   onSubmit: (_data: TAddTemplatePlacholderRecipientsFormSchema) => void;
   onAutoSave: (_data: TAddTemplatePlacholderRecipientsFormSchema) => Promise<AutoSaveResponse>;
   isDocumentPdfLoaded: boolean;
+  cspNonce?: string;
 };
 
 export const AddTemplatePlaceholderRecipientsFormPartial = ({
@@ -70,6 +71,7 @@ export const AddTemplatePlaceholderRecipientsFormPartial = ({
   isDocumentPdfLoaded,
   onSubmit,
   onAutoSave,
+  cspNonce,
 }: AddTemplatePlaceholderRecipientsFormProps) => {
   const initialId = useId();
   const $sensorApi = useRef<SensorAPI | null>(null);
@@ -525,6 +527,7 @@ export const AddTemplatePlaceholderRecipientsFormPartial = ({
 
             {/* Drag and drop context */}
             <DragDropContext
+              nonce={cspNonce}
               onDragEnd={onDragEnd}
               sensors={[
                 (api: SensorAPI) => {

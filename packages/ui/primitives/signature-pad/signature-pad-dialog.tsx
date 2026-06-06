@@ -1,5 +1,12 @@
 import { parseMessageDescriptor } from '@documenso/lib/utils/i18n';
-import { Dialog, DialogClose, DialogContent, DialogFooter } from '@documenso/ui/primitives/dialog';
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogTitle,
+} from '@documenso/ui/primitives/dialog';
 
 import type { MessageDescriptor } from '@lingui/core';
 import { Trans, useLingui } from '@lingui/react/macro';
@@ -111,6 +118,13 @@ export const SignaturePadDialog = ({
 
       <Dialog open={showSignatureModal} onOpenChange={disabled ? undefined : setShowSignatureModal}>
         <DialogContent hideClose={true} className="p-6 pt-4">
+          <DialogTitle className="sr-only">
+            <Trans>Add signature</Trans>
+          </DialogTitle>
+          <DialogDescription className="sr-only">
+            <Trans>Draw, type, or upload your signature.</Trans>
+          </DialogDescription>
+
           <SignaturePad
             id="signature"
             fullName={fullName}
