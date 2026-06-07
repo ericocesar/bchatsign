@@ -1,10 +1,12 @@
 import crypto from 'node:crypto';
+import fs from 'node:fs';
 import path from 'node:path';
 import { PDFDocument } from '@cantoo/pdf-lib';
 import { addRejectionStampToPdf } from '@documenso/lib/server-only/pdf/add-rejection-stamp-to-pdf';
 import { generateAuditLogPdf } from '@documenso/lib/server-only/pdf/generate-audit-log-pdf';
 import { generateCertificatePdf } from '@documenso/lib/server-only/pdf/generate-certificate-pdf';
 import { getLastPageDimensions } from '@documenso/lib/server-only/pdf/get-page-size';
+import { resolvePublicAssetPath } from '@documenso/lib/server-only/pdf/resolve-public-asset-path';
 import { prisma } from '@documenso/prisma';
 import { signPdf } from '@documenso/signing';
 import { PDF, rgb } from '@libpdf/core';
@@ -13,7 +15,7 @@ import { DocumentStatus, EnvelopeType, RecipientRole, SigningStatus, WebhookTrig
 import { nanoid } from 'nanoid';
 import { groupBy } from 'remeda';
 
-import { NEXT_PRIVATE_INTERNAL_WEBAPP_URL, NEXT_PRIVATE_USE_PLAYWRIGHT_PDF } from '../../../constants/app';
+import { NEXT_PRIVATE_USE_PLAYWRIGHT_PDF } from '../../../constants/app';
 import { AppError, AppErrorCode } from '../../../errors/app-error';
 import { getAuditLogsPdf } from '../../../server-only/htmltopdf/get-audit-logs-pdf';
 import { getCertificatePdf } from '../../../server-only/htmltopdf/get-certificate-pdf';
@@ -387,10 +389,8 @@ const decorateAndSignPdf = async ({
 
   // Add per-page certificate overlay if enabled
   if (envelope.certificateAllPages) {
-    const fontBytes = await fetch(`${NEXT_PRIVATE_INTERNAL_WEBAPP_URL()}/fonts/noto-sans.ttf`).then(async (res) =>
-      res.arrayBuffer(),
-    );
-    const font = pdfDoc.embedFont(new Uint8Array(fontBytes));
+    const fontBytes = new Uint8Array(fs.readFileSync(resolvePublicAssetPath('fonts/open-sans-latin-300-normal.ttf')));
+    const font = pdfDoc.embedFont(fontBytes);
     const pages = pdfDoc.getPages();
 
     const fontSize = 8;

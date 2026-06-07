@@ -18,7 +18,7 @@ import type { TDocumentAuditLog } from '../../types/document-audit-logs';
 import { DOCUMENT_AUDIT_LOG_TYPE } from '../../types/document-audit-logs';
 import { formatDocumentAuditLogAction } from '../../utils/document-audit-logs';
 import { ensureFontLibrary } from './helpers';
-import { resolvePublicAssetPath } from './resolve-public-asset-path';
+import { resolvePackageAssetPath } from './resolve-package-asset-path';
 
 export type AuditLogRecipient = {
   id: number;
@@ -49,7 +49,6 @@ const parser = new UAParser();
 const textMutedForegroundLight = '#929DAE';
 const textForeground = '#000';
 const textMutedForeground = '#64748B';
-const textBase = 10;
 const textSm = 9;
 const textXs = 8;
 const fontMedium = '500';
@@ -108,7 +107,7 @@ const renderOverviewCardLabels = (options: RenderOverviewCardLabelAndTextOptions
         y: group.getClientRect().height + 4,
         width: width - label.width(),
         fontFamily: 'Inter',
-        text: '• ' + textValue,
+        text: `• ${textValue}`,
         fill: textForeground,
         wrap: 'char',
         fontSize: textSm,
@@ -440,7 +439,7 @@ const renderBranding = () => {
 
   const brandingHeight = 16;
 
-  const logo = fs.readFileSync(resolvePublicAssetPath('static/logo.png'));
+  const logo = fs.readFileSync(resolvePackageAssetPath('logodocs.png'));
 
   // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
   const img = new SkiaImage(logo) as unknown as HTMLImageElement;

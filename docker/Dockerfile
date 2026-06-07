@@ -119,6 +119,7 @@ RUN npm ci --only=production
 COPY --from=installer --chown=nodejs:nodejs /app/apps/remix/build ./apps/remix/build
 COPY --from=installer --chown=nodejs:nodejs /app/apps/remix/public ./apps/remix/public
 COPY --from=installer --chown=nodejs:nodejs /app/packages/assets/logo.svg ./packages/assets/logo.svg
+COPY --from=installer --chown=nodejs:nodejs /app/packages/assets/logodocs.png ./packages/assets/logodocs.png
 
 # Copy the prisma binary, schema and migrations
 COPY --from=installer --chown=nodejs:nodejs /app/packages/prisma/schema.prisma ./packages/prisma/schema.prisma

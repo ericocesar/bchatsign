@@ -5,7 +5,6 @@ import { SigningStatus } from '@prisma/client';
 import Konva from 'konva';
 import 'konva/skia-backend';
 import fs from 'node:fs';
-import path from 'node:path';
 import { DateTime } from 'luxon';
 import type { Canvas } from 'skia-canvas';
 import { Image as SkiaImage } from 'skia-canvas';
@@ -18,6 +17,7 @@ import { RECIPIENT_ROLE_SIGNING_REASONS, RECIPIENT_ROLES_DESCRIPTION } from '../
 import type { TDocumentAuditLogBaseSchema } from '../../types/document-audit-logs';
 import { svgToPng } from '../../utils/images/svg-to-png';
 import { ensureFontLibrary } from './helpers';
+import { resolvePackageAssetPath } from './resolve-package-asset-path';
 
 type ColumnWidths = [number, number, number];
 
@@ -82,13 +82,13 @@ const getDevice = (userAgent?: string | null): string => {
 };
 
 const textMutedForegroundLight = '#929DAE';
-const textForeground = '#000';
 const textMutedForeground = '#64748B';
 const textRejectedRed = '#dc2626';
 const textBase = 10;
 const textSm = 9;
 const textXs = 8;
 const fontMedium = '500';
+const certificateFontFamily = 'Inter Latin 200';
 
 const columnWidthPercentages = [30, 30, 40];
 const rowPadding = 12;
@@ -123,7 +123,7 @@ const renderLabelAndText = (options: RenderLabelAndTextOptions) => {
     y: 0,
     text: `${options.label}: `,
     fontStyle: fontMedium,
-    fontFamily: 'Inter',
+    fontFamily: certificateFontFamily,
     fill: labelFill,
     fontSize: textSm,
   });
@@ -134,7 +134,7 @@ const renderLabelAndText = (options: RenderLabelAndTextOptions) => {
     x: label.width(),
     y: 0,
     width: width - label.width(),
-    fontFamily: 'Inter',
+    fontFamily: certificateFontFamily,
     text: options.text,
     fill: valueFill,
     wrap: 'char',
@@ -164,7 +164,7 @@ const renderRowHeader = (options: RenderRowHeaderOptions) => {
   const headerRow = new Konva.Group();
 
   const headerFontStyling = {
-    fontFamily: 'Inter',
+    fontFamily: certificateFontFamily,
     fontSize: 11,
     fontStyle: fontMedium,
     verticalAlign: 'middle',
@@ -220,7 +220,7 @@ const renderColumnOne = (options: RenderColumnOptions) => {
 
   const textFontStyling = {
     x: 0,
-    fontFamily: 'Inter',
+    fontFamily: certificateFontFamily,
     wrap: 'char',
     lineHeight: 1.2,
     fill: textMutedForeground,
@@ -366,7 +366,7 @@ const renderColumnTwo = (options: RenderColumnOptions) => {
       text: `${i18n._(msg`Signature ID`)}:`,
       fill: textMutedForeground,
       width: columnWidth,
-      fontFamily: 'Inter',
+      fontFamily: certificateFontFamily,
       fontSize: textSm,
       fontStyle: fontMedium,
       lineHeight: 1.4,
@@ -378,7 +378,7 @@ const renderColumnTwo = (options: RenderColumnOptions) => {
       y: column.getClientRect().height,
       text: recipient.signatureField.secondaryId.toUpperCase(),
       fill: textMutedForeground,
-      fontFamily: 'monospace',
+      fontFamily: certificateFontFamily,
       fontSize: textSm,
       width: columnWidth,
       wrap: 'char',
@@ -390,7 +390,7 @@ const renderColumnTwo = (options: RenderColumnOptions) => {
       y: 0,
       text: 'N/A',
       fill: textMutedForeground,
-      fontFamily: 'Inter',
+      fontFamily: certificateFontFamily,
       fontSize: textSm,
     });
     column.add(naText);
@@ -592,22 +592,14 @@ const renderBranding = async ({ qrToken, i18n }: { qrToken: string | null; i18n:
   const text = new Konva.Text({
     x: 0,
     verticalAlign: 'middle',
-    text: i18n._(msg`Signing certificate provided by`) + ':',
+    text: `${i18n._(msg`Signing certificate provided by`)}:`,
     fontStyle: fontMedium,
-    fontFamily: 'Inter',
+    fontFamily: certificateFontFamily,
     fontSize: textSm,
     height: brandingHeight,
   });
 
-  let logoPath = path.join(process.cwd(), 'packages/assets/logo.svg');
-  if (!fs.existsSync(logoPath)) {
-    logoPath = path.join(process.cwd(), '../../packages/assets/logo.svg');
-  }
-  if (!fs.existsSync(logoPath)) {
-    logoPath = path.join(process.cwd(), '../assets/logo.svg');
-  }
-  const logoSvg = fs.readFileSync(logoPath, 'utf8');
-  const logoPng = await svgToPng(logoSvg);
+  const logoPng = fs.readFileSync(resolvePackageAssetPath('logodocs.png'));
 
   // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
   const img = new SkiaImage(logoPng) as unknown as HTMLImageElement;
@@ -802,7 +794,7 @@ export async function renderCertificate({
       height: pageTopMargin,
       verticalAlign: 'middle',
       text: i18n._(msg`Signing Certificate`),
-      fontFamily: 'Inter',
+      fontFamily: certificateFontFamily,
       fontSize: titleFontSize,
       fontStyle: '700',
     });
@@ -834,7 +826,7 @@ export async function renderCertificate({
       x: margin,
       y: pageHeight - textXs - 10,
       text: `${i18n._(msg`Envelope ID`)}: ${envelopeId}${pdfHash ? ` | Hash SHA-256: ${pdfHash}` : ''}`,
-      fontFamily: 'Inter',
+      fontFamily: certificateFontFamily,
       fontSize: textXs,
       fill: textMutedForegroundLight,
     });
@@ -862,7 +854,7 @@ export async function renderCertificate({
       x: margin,
       y: pageHeight - textXs - 10,
       text: `${i18n._(msg`Envelope ID`)}: ${envelopeId}${pdfHash ? ` | Hash SHA-256: ${pdfHash}` : ''}`,
-      fontFamily: 'Inter',
+      fontFamily: certificateFontFamily,
       fontSize: textXs,
       fill: textMutedForegroundLight,
     });
