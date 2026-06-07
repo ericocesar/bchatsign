@@ -20,7 +20,7 @@ export const getCertificateStatus = () => {
 
     const stats = fs.statSync(filePath);
 
-    return { isAvailable: stats.size > 0 };
+    return { isAvailable: stats.isFile() && stats.size > 0 };
   } catch {
     return { isAvailable: false };
   }

@@ -4,8 +4,6 @@ import { BackgroundJobStatus, Prisma } from '@prisma/client';
 import { CronExpressionParser } from 'cron-parser';
 import type { Context as HonoContext } from 'hono';
 
-import { NEXT_PRIVATE_INTERNAL_WEBAPP_URL } from '../../constants/app';
-import { sign } from '../../server-only/crypto/sign';
 import { verify } from '../../server-only/crypto/verify';
 import {
   type JobDefinition,
@@ -32,6 +30,11 @@ type CronJobEntry = {
   definition: JobDefinition;
   cron: string;
   lastTickAt: Date;
+};
+
+type ProcessJobResult = {
+  status: 200 | 202 | 400 | 404 | 500;
+  message: string;
 };
 
 const CRON_POLL_INTERVAL_MS = 30_000; // 30 seconds
@@ -153,7 +156,7 @@ export class LocalJobProvider extends BaseJobProvider {
           continue;
         }
 
-        await this.submitJobToEndpoint({
+        this.submitJobToEndpoint({
           jobId: pendingJob.id,
           jobDefinitionId: pendingJob.jobId,
           data: {
@@ -207,7 +210,7 @@ export class LocalJobProvider extends BaseJobProvider {
           },
         });
 
-        await this.submitJobToEndpoint({
+        this.submitJobToEndpoint({
           jobId: pendingJob.id,
           jobDefinitionId: pendingJob.jobId,
           data: options,
@@ -268,89 +271,18 @@ export class LocalJobProvider extends BaseJobProvider {
         }
       }
 
-      console.log(`[JOBS]: Triggering job ${options.name} with payload`, options.payload);
+      const result = await this.processJob({
+        jobId,
+        jobDefinitionId: definition.id,
+        data: options,
+        isRetry,
+      });
 
-      let backgroundJob = await prisma.backgroundJob
-        .update({
-          where: {
-            id: jobId,
-            status: BackgroundJobStatus.PENDING,
-          },
-          data: {
-            status: BackgroundJobStatus.PROCESSING,
-            retried: {
-              increment: isRetry ? 1 : 0,
-            },
-            lastRetriedAt: isRetry ? new Date() : undefined,
-          },
-        })
-        .catch(() => null);
-
-      if (!backgroundJob) {
-        return c.text('Job not found', 404);
-      }
-
-      try {
-        await definition.handler({
-          payload: options.payload,
-          io: this.createJobRunIO(jobId),
-        });
-
-        backgroundJob = await prisma.backgroundJob.update({
-          where: {
-            id: jobId,
-            status: BackgroundJobStatus.PROCESSING,
-          },
-          data: {
-            status: BackgroundJobStatus.COMPLETED,
-            completedAt: new Date(),
-          },
-        });
-      } catch (error) {
-        console.log(`[JOBS]: Job ${options.name} failed`, error);
-
-        const taskHasExceededRetries = error instanceof BackgroundTaskExceededRetriesError;
-        const jobHasExceededRetries =
-          backgroundJob.retried >= backgroundJob.maxRetries && !(error instanceof BackgroundTaskFailedError);
-
-        if (taskHasExceededRetries || jobHasExceededRetries) {
-          backgroundJob = await prisma.backgroundJob.update({
-            where: {
-              id: jobId,
-              status: BackgroundJobStatus.PROCESSING,
-            },
-            data: {
-              status: BackgroundJobStatus.FAILED,
-              completedAt: new Date(),
-            },
-          });
-
-          return c.text('Task exceeded retries', 500);
-        }
-
-        backgroundJob = await prisma.backgroundJob.update({
-          where: {
-            id: jobId,
-            status: BackgroundJobStatus.PROCESSING,
-          },
-          data: {
-            status: BackgroundJobStatus.PENDING,
-          },
-        });
-
-        await this.submitJobToEndpoint({
-          jobId,
-          jobDefinitionId: backgroundJob.jobId,
-          data: options,
-          isRetry: true,
-        });
-      }
-
-      return c.text('OK', 200);
+      return c.text(result.message, result.status);
     };
   }
 
-  private async submitJobToEndpoint(options: {
+  private submitJobToEndpoint(options: {
     jobId: string;
     jobDefinitionId: string;
     data: SimpleTriggerJobOptions;
@@ -358,30 +290,126 @@ export class LocalJobProvider extends BaseJobProvider {
   }) {
     const { jobId, jobDefinitionId, data, isRetry } = options;
 
-    const endpoint = `${NEXT_PRIVATE_INTERNAL_WEBAPP_URL()}/api/jobs/${jobDefinitionId}/${jobId}`;
-    const signature = sign(data);
+    setTimeout(() => {
+      void this.processJob({
+        jobId,
+        jobDefinitionId,
+        data,
+        isRetry: Boolean(isRetry),
+      }).catch((error) => {
+        console.error(`[JOBS]: Failed to process queued job ${jobDefinitionId}`, error);
+      });
+    }, 0);
+  }
 
-    const headers: Record<string, string> = {
-      'Content-Type': 'application/json',
-      'X-Job-Id': jobId,
-      'X-Job-Signature': signature,
-    };
+  private async processJob(options: {
+    jobId: string;
+    jobDefinitionId: string;
+    data: SimpleTriggerJobOptions;
+    isRetry?: boolean;
+  }): Promise<ProcessJobResult> {
+    const { jobId, jobDefinitionId, data, isRetry = false } = options;
+    const definition = this._jobDefinitions[jobDefinitionId] ?? this._jobDefinitions[data.name];
 
-    if (isRetry) {
-      headers['X-Job-Retry'] = '1';
+    if (!definition) {
+      console.error(`[JOBS]: No definition found for job ${jobDefinitionId}`);
+      return { message: 'Job not found', status: 404 };
     }
 
-    console.log('Submitting job to endpoint:', endpoint);
-    await Promise.race([
-      fetch(endpoint, {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers,
-      }).catch(() => null),
-      new Promise((resolve) => {
-        setTimeout(resolve, 150);
-      }),
-    ]);
+    if (!definition.enabled) {
+      console.log('Attempted to trigger a disabled job', data.name);
+      return { message: 'Job not found', status: 404 };
+    }
+
+    if (definition.trigger.schema) {
+      const result = definition.trigger.schema.safeParse(data.payload);
+
+      if (!result.success) {
+        return { message: 'Bad request', status: 400 };
+      }
+    }
+
+    console.log(`[JOBS]: Triggering job ${data.name} with payload`, data.payload);
+
+    let backgroundJob = await prisma.backgroundJob
+      .update({
+        where: {
+          id: jobId,
+          status: BackgroundJobStatus.PENDING,
+        },
+        data: {
+          status: BackgroundJobStatus.PROCESSING,
+          retried: {
+            increment: isRetry ? 1 : 0,
+          },
+          lastRetriedAt: isRetry ? new Date() : undefined,
+        },
+      })
+      .catch(() => null);
+
+    if (!backgroundJob) {
+      return { message: 'Job not found', status: 404 };
+    }
+
+    try {
+      await definition.handler({
+        payload: data.payload,
+        io: this.createJobRunIO(jobId),
+      });
+
+      await prisma.backgroundJob.update({
+        where: {
+          id: jobId,
+          status: BackgroundJobStatus.PROCESSING,
+        },
+        data: {
+          status: BackgroundJobStatus.COMPLETED,
+          completedAt: new Date(),
+        },
+      });
+    } catch (error) {
+      console.log(`[JOBS]: Job ${data.name} failed`, error);
+
+      const taskHasExceededRetries = error instanceof BackgroundTaskExceededRetriesError;
+      const jobHasExceededRetries =
+        backgroundJob.retried >= backgroundJob.maxRetries && !(error instanceof BackgroundTaskFailedError);
+
+      if (taskHasExceededRetries || jobHasExceededRetries) {
+        await prisma.backgroundJob.update({
+          where: {
+            id: jobId,
+            status: BackgroundJobStatus.PROCESSING,
+          },
+          data: {
+            status: BackgroundJobStatus.FAILED,
+            completedAt: new Date(),
+          },
+        });
+
+        return { message: 'Task exceeded retries', status: 500 };
+      }
+
+      backgroundJob = await prisma.backgroundJob.update({
+        where: {
+          id: jobId,
+          status: BackgroundJobStatus.PROCESSING,
+        },
+        data: {
+          status: BackgroundJobStatus.PENDING,
+        },
+      });
+
+      this.submitJobToEndpoint({
+        jobId,
+        jobDefinitionId: backgroundJob.jobId,
+        data,
+        isRetry: true,
+      });
+
+      return { message: 'Retrying', status: 202 };
+    }
+
+    return { message: 'OK', status: 200 };
   }
 
   private createJobRunIO(jobId: string): JobRunIO {

@@ -40,7 +40,8 @@
     "make:version": "npm version --workspace @documenso/remix --include-workspace-root --no-git-tag-version -m \"v%s\"",
     "translate": "npm run translate:extract && npm run translate:compile",
     "translate:extract": "lingui extract --clean",
-    "translate:compile": "lingui compile"
+    "translate:compile": "lingui compile",
+    "push": "./scripts/build-push.sh"
   },
   "packageManager": "npm@11.11.0",
   "engines": {
