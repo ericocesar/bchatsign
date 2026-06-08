@@ -136,7 +136,7 @@ export const DocumentSigningDisclosure = ({ className, ...props }: DocumentSigni
             </Button>
           </DialogTrigger>
 
-          <DialogContent position="center" className="max-h-[90vh] sm:max-w-3xl">
+          <DialogContent position="center" className="max-h-[90vh] sm:max-w-[60rem]">
             <DialogHeader>
               <DialogTitle>
                 <Trans>Termo de Ciência e Consentimento para Uso de Assinatura Eletrônica</Trans>
@@ -153,7 +153,6 @@ export const DocumentSigningDisclosure = ({ className, ...props }: DocumentSigni
             </ScrollArea>
           </DialogContent>
         </Dialog>
-        <Trans> completo.</Trans>
       </span>
     </p>
   );
