@@ -4,7 +4,6 @@ import type { DocumentMeta, Envelope, RecipientRole } from '@prisma/client';
 import Konva from 'konva';
 import 'konva/skia-backend';
 import fs from 'node:fs';
-import type { DateTimeFormatOptions } from 'luxon';
 import { DateTime } from 'luxon';
 import type { Canvas } from 'skia-canvas';
 import { Image as SkiaImage } from 'skia-canvas';
@@ -237,16 +236,12 @@ const renderOverviewCard = (options: RenderOverviewCardOptions) => {
 
   const createdAtLabel = renderOverviewCardLabels({
     label: i18n._(msg`Created At`),
-    text: DateTime.fromJSDate(envelope.createdAt)
-      .setLocale(APP_I18N_OPTIONS.defaultLocale)
-      .toFormat('yyyy-MM-dd hh:mm:ss a (ZZZZ)'),
+    text: formatAuditLogDateTime(envelope.createdAt),
     width: columnWidth,
   });
   const lastUpdatedLabel = renderOverviewCardLabels({
     label: i18n._(msg`Last Updated`),
-    text: DateTime.fromJSDate(envelope.updatedAt)
-      .setLocale(APP_I18N_OPTIONS.defaultLocale)
-      .toFormat('yyyy-MM-dd hh:mm:ss a (ZZZZ)'),
+    text: formatAuditLogDateTime(envelope.updatedAt),
     width: columnWidth,
     groupX: columnWidth + columnSpacing,
   });
@@ -347,11 +342,12 @@ const renderRow = (options: RenderRowOptions) => {
   const auditLogTimestampText = new Konva.Text({
     x: columnWidth + columnSpacing,
     width: columnWidth,
-    text: DateTime.fromJSDate(auditLog.createdAt).setLocale(APP_I18N_OPTIONS.defaultLocale).toLocaleString(dateFormat),
+    text: formatAuditLogDateTime(auditLog.createdAt),
     fontFamily: 'Inter',
     align: 'right',
     fontSize: textSm,
     fill: textMutedForeground,
+    lineHeight: 1.4,
   });
 
   rowHeaderGroup.add(auditLogIndicatorColor);
@@ -685,10 +681,15 @@ export async function renderAuditLogs({
   return pages;
 }
 
-const dateFormat: DateTimeFormatOptions = {
-  ...DateTime.DATETIME_SHORT,
-  hourCycle: 'h12',
+const formatAuditLogDateTime = (date: Date): string => {
+  const dt = DateTime.fromJSDate(date).setLocale(APP_I18N_OPTIONS.defaultLocale);
+  const local = dt.toFormat("dd/MM/yyyy 'às' HH:mm:ss");
+  const utc = DateTime.fromJSDate(date).toUTC().toFormat("yyyy-MM-dd HH:mm:ss");
+
+  return `${local} — ${dt.zoneName}\n${utc} UTC`;
 };
+
+
 
 /**
  * Get the color indicator for the audit log type

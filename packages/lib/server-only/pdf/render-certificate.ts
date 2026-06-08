@@ -4,7 +4,6 @@ import type { Field, RecipientRole, Signature } from '@prisma/client';
 import { SigningStatus } from '@prisma/client';
 import Konva from 'konva';
 import 'konva/skia-backend';
-import fs from 'node:fs';
 import { DateTime } from 'luxon';
 import type { Canvas } from 'skia-canvas';
 import { Image as SkiaImage } from 'skia-canvas';
@@ -17,9 +16,8 @@ import { RECIPIENT_ROLE_SIGNING_REASONS, RECIPIENT_ROLES_DESCRIPTION } from '../
 import type { TDocumentAuditLogBaseSchema } from '../../types/document-audit-logs';
 import { svgToPng } from '../../utils/images/svg-to-png';
 import { ensureFontLibrary } from './helpers';
-import { resolvePackageAssetPath } from './resolve-package-asset-path';
 
-type ColumnWidths = [number, number, number];
+type ColumnWidths = [number, number];
 
 type BaseAuditLog = Pick<TDocumentAuditLogBaseSchema, 'createdAt' | 'ipAddress' | 'userAgent'>;
 
@@ -81,16 +79,16 @@ const getDevice = (userAgent?: string | null): string => {
   return `${result.os.name} - ${result.browser.name} ${result.browser.version}`;
 };
 
-const textMutedForegroundLight = '#929DAE';
-const textMutedForeground = '#64748B';
-const textRejectedRed = '#dc2626';
+const textMutedForegroundLight = '#000000';
+const textMutedForeground = '#000000';
+const textRejectedRed = '#000000';
 const textBase = 10;
 const textSm = 9;
 const textXs = 8;
 const fontMedium = '500';
 const certificateFontFamily = 'Inter Latin 200';
 
-const columnWidthPercentages = [30, 30, 40];
+const columnWidthPercentages = [50, 50];
 const rowPadding = 12;
 const tableHeaderHeight = 38;
 const pageTopMargin = 72;
@@ -146,8 +144,13 @@ const renderLabelAndText = (options: RenderLabelAndTextOptions) => {
   return group;
 };
 
-const formatRegisteredGeolocation = (geolocation: { address?: string | null; latitude: number; longitude: number }) =>
-  geolocation.address?.trim() || `${geolocation.latitude.toFixed(4)}, ${geolocation.longitude.toFixed(4)}`;
+const formatCertificateDateTime = (date: Date): string => {
+  const dt = DateTime.fromJSDate(date).setLocale(APP_I18N_OPTIONS.defaultLocale);
+  const local = dt.toFormat("dd/MM/yyyy 'às' HH:mm:ss");
+  const utc = DateTime.fromJSDate(date).toUTC().toFormat("yyyy-MM-dd HH:mm:ss");
+
+  return `${local} — ${dt.zoneName}\n${utc} UTC`;
+};
 
 type RenderRowHeaderOptions = {
   columnWidths: number[];
@@ -159,7 +162,6 @@ const renderRowHeader = (options: RenderRowHeaderOptions) => {
 
   const columnOneWidth = columnWidths[0];
   const columnTwoWidth = columnWidths[1];
-  const columnThreeWidth = columnWidths[2];
 
   const headerRow = new Konva.Group();
 
@@ -188,14 +190,6 @@ const renderRowHeader = (options: RenderRowHeaderOptions) => {
   });
   headerRow.add(header2);
 
-  const header3 = new Konva.Text({
-    x: columnOneWidth + columnTwoWidth + rowPadding,
-    width: columnThreeWidth,
-    text: i18n._(msg`Details`),
-    ...headerFontStyling,
-  });
-  headerRow.add(header3);
-
   return headerRow;
 };
 
@@ -209,6 +203,7 @@ type RenderColumnOptions = {
     name: string;
     email: string;
   };
+  pdfHash?: string;
 };
 
 const renderColumnOne = (options: RenderColumnOptions) => {
@@ -273,13 +268,30 @@ const renderColumnOne = (options: RenderColumnOptions) => {
   });
   columnGroup.add(authValue);
 
+  const sigSectionText = new Konva.Text({
+    y: columnGroup.getClientRect().height + textSectionPadding,
+    text: 'Assinatura eletrônica avançada do signatário',
+    fontSize: textSm,
+    fontStyle: fontMedium,
+    ...textFontStyling,
+  });
+  columnGroup.add(sigSectionText);
+
+  const baseLegalText = new Konva.Text({
+    y: columnGroup.getClientRect().height + textSectionPadding,
+    text: 'Base legal: Lei nº 14.063/2020 e art. 10, §2º, da MP nº 2.200-2/2001',
+    fontSize: textSm,
+    ...textFontStyling,
+  });
+  columnGroup.add(baseLegalText);
+
   return columnGroup;
 };
 
 const renderColumnTwo = (options: RenderColumnOptions) => {
   const { recipient, width, i18n } = options;
+  const pdfHash = options.pdfHash;
 
-  // Column 2: Signature
   const column = new Konva.Group();
 
   const columnWidth = width - columnPadding;
@@ -359,11 +371,45 @@ const renderColumnTwo = (options: RenderColumnOptions) => {
     });
     signatureContainer.add(signatureShadow);
 
-    // Signature ID
-    const sigIdLabel = new Konva.Text({
+    // Documento final selado digitalmente com certificado A1 ICP-Brasil
+    const sealLabel = new Konva.Text({
       x: 0,
       y: isRejected ? 0 : signatureHeight + 10,
-      text: `${i18n._(msg`Signature ID`)}:`,
+      text: 'Documento final selado digitalmente com certificado A1 ICP-Brasil',
+      fill: textMutedForeground,
+      width: columnWidth,
+      fontFamily: certificateFontFamily,
+      fontSize: textSm,
+      fontStyle: fontMedium,
+      lineHeight: 1.4,
+    });
+    column.add(sealLabel);
+
+    // Finalidade do selo
+    const purposeField = renderLabelAndText({
+      label: 'Finalidade do selo',
+      text: 'garantir integridade, autenticidade técnica e verificabilidade do documento eletrônico.',
+      width,
+      y: column.getClientRect().height + 6,
+    });
+    column.add(purposeField);
+
+    // Hash SHA-256
+    if (pdfHash) {
+      const hashField = renderLabelAndText({
+        label: 'Hash SHA-256',
+        text: pdfHash,
+        width,
+        y: column.getClientRect().height + 6,
+      });
+      column.add(hashField);
+    }
+
+    // ID da assinatura
+    const sigIdLabel = new Konva.Text({
+      x: 0,
+      y: column.getClientRect().height + 6,
+      text: 'ID da assinatura:',
       fill: textMutedForeground,
       width: columnWidth,
       fontFamily: certificateFontFamily,
@@ -394,6 +440,38 @@ const renderColumnTwo = (options: RenderColumnOptions) => {
       fontSize: textSm,
     });
     column.add(naText);
+
+    // Still show seal info even without signature
+    const sealLabel = new Konva.Text({
+      x: 0,
+      y: column.getClientRect().height + 6,
+      text: 'Documento final selado digitalmente com certificado A1 ICP-Brasil',
+      fill: textMutedForeground,
+      width: columnWidth,
+      fontFamily: certificateFontFamily,
+      fontSize: textSm,
+      fontStyle: fontMedium,
+      lineHeight: 1.4,
+    });
+    column.add(sealLabel);
+
+    const purposeField = renderLabelAndText({
+      label: 'Finalidade do selo',
+      text: 'garantir integridade, autenticidade técnica e verificabilidade do documento eletrônico.',
+      width,
+      y: column.getClientRect().height + 6,
+    });
+    column.add(purposeField);
+
+    if (pdfHash) {
+      const hashField = renderLabelAndText({
+        label: 'Hash SHA-256',
+        text: pdfHash,
+        width,
+        y: column.getClientRect().height + 6,
+      });
+      column.add(hashField);
+    }
   }
 
   const relevantLog = isRejected ? recipient.logs.rejected : recipient.logs.completed;
@@ -407,7 +485,7 @@ const renderColumnTwo = (options: RenderColumnOptions) => {
   column.add(ipLabelAndText);
 
   const deviceLabelAndText = renderLabelAndText({
-    label: i18n._(msg`Device`),
+    label: 'Dispositivo',
     text: getDevice(relevantLog?.userAgent),
     width,
     y: column.getClientRect().height + 6,
@@ -415,13 +493,54 @@ const renderColumnTwo = (options: RenderColumnOptions) => {
   column.add(deviceLabelAndText);
 
   if (!isRejected && recipient.logs.completed?.geolocation) {
-    const geoLabelAndText = renderLabelAndText({
-      label: 'Geolocalização registrada',
-      text: formatRegisteredGeolocation(recipient.logs.completed.geolocation),
-      width,
+    const geo = recipient.logs.completed.geolocation;
+    const coords = `${geo.latitude.toFixed(4)}, ${geo.longitude.toFixed(4)}`;
+    const address = geo.address?.trim();
+
+    const geoGroup = new Konva.Group({
       y: column.getClientRect().height + 6,
     });
-    column.add(geoLabelAndText);
+
+    const geoCoordText = new Konva.Text({
+      x: 0,
+      y: 0,
+      text: `Geolocalização registrada: ${coords}`,
+      fontStyle: fontMedium,
+      fontFamily: certificateFontFamily,
+      fill: textMutedForeground,
+      fontSize: textSm,
+      width,
+      wrap: 'char',
+    });
+    geoGroup.add(geoCoordText);
+
+    if (address) {
+      const addressText = new Konva.Text({
+        x: 0,
+        y: geoGroup.getClientRect().height + 2,
+        text: `Endereço aproximado: ${address}`,
+        fontFamily: certificateFontFamily,
+        fill: textMutedForeground,
+        fontSize: textSm,
+        width,
+        wrap: 'char',
+      });
+      geoGroup.add(addressText);
+    }
+
+    const precisionText = new Konva.Text({
+      x: 0,
+      y: geoGroup.getClientRect().height + 2,
+      text: 'Precisão: obtida pelo navegador do signatário mediante consentimento.',
+      fontFamily: certificateFontFamily,
+      fill: textMutedForeground,
+      fontSize: textSm,
+      width,
+      wrap: 'char',
+    });
+    geoGroup.add(precisionText);
+
+    column.add(geoGroup);
   }
 
   return column;
@@ -441,43 +560,33 @@ const renderColumnThree = (options: RenderColumnOptions) => {
 
   const itemsToRender: DetailItem[] = [
     {
-      label: i18n._(msg`Sent`),
+      label: 'Enviado em:',
       value: recipient.logs.emailed
-        ? DateTime.fromJSDate(recipient.logs.emailed.createdAt)
-            .setLocale(APP_I18N_OPTIONS.defaultLocale)
-            .toFormat('yyyy-MM-dd hh:mm:ss a (ZZZZ)')
+        ? formatCertificateDateTime(recipient.logs.emailed.createdAt)
         : recipient.logs.sent
-          ? DateTime.fromJSDate(recipient.logs.sent.createdAt)
-              .setLocale(APP_I18N_OPTIONS.defaultLocale)
-              .toFormat('yyyy-MM-dd hh:mm:ss a (ZZZZ)')
+          ? formatCertificateDateTime(recipient.logs.sent.createdAt)
           : i18n._(msg`Unknown`),
     },
     {
-      label: i18n._(msg`Viewed`),
+      label: 'Visualizado em:',
       value: recipient.logs.opened
-        ? DateTime.fromJSDate(recipient.logs.opened.createdAt)
-            .setLocale(APP_I18N_OPTIONS.defaultLocale)
-            .toFormat('yyyy-MM-dd hh:mm:ss a (ZZZZ)')
+        ? formatCertificateDateTime(recipient.logs.opened.createdAt)
         : i18n._(msg`Unknown`),
     },
   ];
 
   if (recipient.logs.rejected) {
     itemsToRender.push({
-      label: i18n._(msg`Rejected`),
-      value: DateTime.fromJSDate(recipient.logs.rejected.createdAt)
-        .setLocale(APP_I18N_OPTIONS.defaultLocale)
-        .toFormat('yyyy-MM-dd hh:mm:ss a (ZZZZ)'),
+      label: 'Rejeitado em:',
+      value: formatCertificateDateTime(recipient.logs.rejected.createdAt),
       labelFill: textRejectedRed,
       valueFill: textRejectedRed,
     });
   } else {
     itemsToRender.push({
-      label: i18n._(msg`Signed`),
+      label: 'Assinado em:',
       value: recipient.logs.completed
-        ? DateTime.fromJSDate(recipient.logs.completed.createdAt)
-            .setLocale(APP_I18N_OPTIONS.defaultLocale)
-            .toFormat('yyyy-MM-dd hh:mm:ss a (ZZZZ)')
+        ? formatCertificateDateTime(recipient.logs.completed.createdAt)
         : i18n._(msg`Unknown`),
     });
   }
@@ -485,7 +594,7 @@ const renderColumnThree = (options: RenderColumnOptions) => {
   const isOwner = recipient.email.toLowerCase() === envelopeOwner.email.toLowerCase();
 
   itemsToRender.push({
-    label: i18n._(msg`Reason`),
+    label: 'Motivo:',
     value:
       recipient.signingStatus === SigningStatus.REJECTED
         ? recipient.rejectionReason || ''
@@ -517,14 +626,42 @@ type RenderRowOptions = {
     name: string;
     email: string;
   };
+  pdfHash?: string;
+};
+
+const renderDetailsSection = (options: RenderColumnOptions) => {
+  const { width } = options;
+
+  const detailsGroup = new Konva.Group();
+
+  const detailsLabel = new Konva.Text({
+    x: 0,
+    y: 0,
+    text: 'Detalhes',
+    fill: textMutedForeground,
+    fontFamily: certificateFontFamily,
+    fontSize: textSm,
+    fontStyle: fontMedium,
+    width: width - columnPadding,
+  });
+  detailsGroup.add(detailsLabel);
+
+  const detailsContent = renderColumnThree(options);
+  detailsContent.setAttrs({
+    x: 0,
+    y: detailsGroup.getClientRect().height + 6,
+  } satisfies Partial<Konva.GroupConfig>);
+  detailsGroup.add(detailsContent);
+
+  return detailsGroup;
 };
 
 const renderRow = (options: RenderRowOptions) => {
-  const { recipient, columnWidths, i18n, envelopeOwner } = options;
+  const { recipient, columnWidths, i18n, envelopeOwner, pdfHash } = options;
 
   const rowGroup = new Konva.Group();
 
-  const width = columnWidths[0] + columnWidths[1] + columnWidths[2];
+  const width = columnWidths[0] + columnWidths[1];
 
   // Draw top border line.
   const borderLine = new Konva.Line({
@@ -541,6 +678,7 @@ const renderRow = (options: RenderRowOptions) => {
     width: columnWidths[0],
     i18n,
     envelopeOwner,
+    pdfHash,
   });
   columnGroup.setAttrs({
     x: rowPadding,
@@ -553,6 +691,7 @@ const renderRow = (options: RenderRowOptions) => {
     width: columnWidths[1],
     i18n,
     envelopeOwner,
+    pdfHash,
   });
   columnTwoGroup.setAttrs({
     x: rowPadding + columnWidths[0],
@@ -560,18 +699,18 @@ const renderRow = (options: RenderRowOptions) => {
   } satisfies Partial<Konva.GroupConfig>);
   rowGroup.add(columnTwoGroup);
 
-  // Column 3: Details
-  const columnThreeGroup = renderColumnThree({
+  const detailsGroup = renderDetailsSection({
     recipient,
-    width: columnWidths[2],
+    width: width,
     i18n,
     envelopeOwner,
+    pdfHash,
   });
-  columnThreeGroup.setAttrs({
-    x: rowPadding + columnWidths[0] + columnWidths[1],
-    y: rowPadding,
+  detailsGroup.setAttrs({
+    x: rowPadding,
+    y: rowPadding + Math.max(columnGroup.getClientRect().height, columnTwoGroup.getClientRect().height) + 12,
   } satisfies Partial<Konva.GroupConfig>);
-  rowGroup.add(columnThreeGroup);
+  rowGroup.add(detailsGroup);
 
   const rowBottomPadding = new Konva.Rect({
     x: 0,
@@ -584,45 +723,27 @@ const renderRow = (options: RenderRowOptions) => {
   return rowGroup;
 };
 
-const renderBranding = async ({ qrToken, i18n }: { qrToken: string | null; i18n: I18n }) => {
+const renderBranding = async ({ qrToken }: { qrToken: string | null }) => {
   const branding = new Konva.Group();
-
-  const brandingHeight = 12;
+  const validationLink = qrToken ? `${NEXT_PUBLIC_WEBAPP_URL()}/share/${qrToken}` : null;
+  const validationLinkWidth = 180;
 
   const text = new Konva.Text({
     x: 0,
-    verticalAlign: 'middle',
-    text: `${i18n._(msg`Signing certificate provided by`)}:`,
-    fontStyle: fontMedium,
+    text: 'Certificado de assinatura fornecido por BchatSign.\nDocumento final selado digitalmente com certificado A1 emitido no âmbito da ICP-Brasil.',
     fontFamily: certificateFontFamily,
     fontSize: textSm,
-    height: brandingHeight,
-  });
-
-  const logoPng = fs.readFileSync(resolvePackageAssetPath('logodocs.png'));
-
-  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-  const img = new SkiaImage(logoPng) as unknown as HTMLImageElement;
-
-  const documensoImage = new Konva.Image({
-    image: img,
-    height: brandingHeight,
-    width: brandingHeight * (img.width / img.height),
-    x: text.width() + 16,
+    width: validationLinkWidth + (qrToken ? 72 : 0),
+    wrap: 'char',
+    lineHeight: 1.4,
+    fill: textMutedForeground,
   });
 
   const qrSize = qrToken ? 72 : 0;
+  const qrSection = new Konva.Group({ x: 0, y: 0 });
 
-  const logoGroup = new Konva.Group({
-    y: qrSize + 16,
-  });
-  logoGroup.add(text);
-  logoGroup.add(documensoImage);
-
-  branding.add(logoGroup);
-
-  if (qrToken) {
-    const qrSvg = renderSVG(`${NEXT_PUBLIC_WEBAPP_URL()}/share/${qrToken}`, {
+  if (validationLink) {
+    const qrSvg = renderSVG(validationLink, {
       ecc: 'Q',
     });
 
@@ -634,12 +755,47 @@ const renderBranding = async ({ qrToken, i18n }: { qrToken: string | null; i18n:
       image: qrSkiaImage,
       height: qrSize,
       width: qrSize,
-      x: branding.getClientRect().width - qrSize,
+      x: validationLinkWidth - qrSize,
       y: 0,
     });
 
-    branding.add(qrImage);
+    const validationLabel = new Konva.Text({
+      x: 0,
+      y: qrSize + 8,
+      text: 'Link de validação:',
+      width: validationLinkWidth,
+      align: 'right',
+      fontFamily: certificateFontFamily,
+      fontSize: textSm,
+      fontStyle: fontMedium,
+      fill: textMutedForeground,
+    });
+
+    const validationValue = new Konva.Text({
+      x: 0,
+      y: qrSize + 22,
+      text: validationLink,
+      width: validationLinkWidth,
+      align: 'right',
+      fontFamily: certificateFontFamily,
+      fontSize: textXs,
+      fill: textMutedForeground,
+      wrap: 'char',
+      lineHeight: 1.2,
+    });
+
+    qrSection.add(qrImage);
+    qrSection.add(validationLabel);
+    qrSection.add(validationValue);
+    branding.add(qrSection);
   }
+
+  const logoGroup = new Konva.Group({
+    y: qrSection.getClientRect().height > 0 ? qrSection.getClientRect().height + 16 : 0,
+  });
+  logoGroup.add(text);
+
+  branding.add(logoGroup);
 
   return branding;
 };
@@ -653,10 +809,11 @@ type GroupRowsIntoPagesOptions = {
     name: string;
     email: string;
   };
+  pdfHash?: string;
 };
 
 const groupRowsIntoPages = (options: GroupRowsIntoPagesOptions) => {
-  const { recipients, maxHeight, i18n, columnWidths, envelopeOwner } = options;
+  const { recipients, maxHeight, i18n, columnWidths, envelopeOwner, pdfHash } = options;
 
   const rowHeader = renderRowHeader({ columnWidths, i18n });
   const rowHeaderHeight = rowHeader.getClientRect().height;
@@ -668,7 +825,7 @@ const groupRowsIntoPages = (options: GroupRowsIntoPagesOptions) => {
 
   // Group rows into pages.
   for (const recipient of recipients) {
-    const row = renderRow({ recipient, columnWidths, i18n, envelopeOwner });
+    const row = renderRow({ recipient, columnWidths, i18n, envelopeOwner, pdfHash });
 
     const rowHeight = row.getClientRect().height;
 
@@ -754,9 +911,7 @@ export async function renderCertificate({
 
   const columnOneWidth = (tableContentWidth * columnWidthPercentages[0]) / 100;
   const columnTwoWidth = (tableContentWidth * columnWidthPercentages[1]) / 100;
-  const columnThreeWidth = (tableContentWidth * columnWidthPercentages[2]) / 100;
-
-  const columnWidths: ColumnWidths = [columnOneWidth, columnTwoWidth, columnThreeWidth];
+  const columnWidths: ColumnWidths = [columnOneWidth, columnTwoWidth];
 
   // Helper to render a Konva stage to a PNG buffer
   let stage: Konva.Stage | null = new Konva.Stage({ width: pageWidth, height: pageHeight });
@@ -769,11 +924,12 @@ export async function renderCertificate({
     columnWidths,
     i18n,
     envelopeOwner,
+    pdfHash,
   });
 
   const tables = renderTables({ groupedRows, columnWidths, i18n });
 
-  const brandingGroup = await renderBranding({ qrToken, i18n });
+  const brandingGroup = await renderBranding({ qrToken });
   const brandingRect = brandingGroup.getClientRect();
   const brandingTopPadding = 24;
 
@@ -799,12 +955,32 @@ export async function renderCertificate({
       fontStyle: '700',
     });
 
+    group.add(titleText);
+
+    // Add legal paragraph below title on the first page
+    let tableY = pageTopMargin;
+
+    if (index === 0) {
+      const legalParagraph = new Konva.Text({
+        x: margin,
+        y: pageTopMargin + 4,
+        text: 'Assinado eletronicamente com assinatura eletrônica avançada, nos termos da Lei nº 14.063/2020 e do art. 10, §2º, da MP nº 2.200-2/2001. Documento final selado digitalmente com certificado A1 emitido no âmbito da ICP-Brasil para preservação de integridade, autenticidade técnica e verificabilidade do arquivo.',
+        fontFamily: certificateFontFamily,
+        fontSize: textSm,
+        width: tableWidth - rowPadding * 2,
+        wrap: 'char',
+        lineHeight: 1.4,
+        fill: textMutedForeground,
+      });
+      group.add(legalParagraph);
+      tableY = legalParagraph.getClientRect().y + legalParagraph.getClientRect().height + 10;
+    }
+
     table.setAttrs({
       x: margin,
-      y: pageTopMargin,
+      y: tableY,
     } satisfies Partial<Konva.GroupConfig>);
 
-    group.add(titleText);
     group.add(table);
 
     // Add QR code and branding on the last page if there is space.

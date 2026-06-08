@@ -639,42 +639,6 @@ msgstr "<0>{organisationName}</0>에서 귀하를 대신해 계정을 생성하�
 msgid "<0>{organisationName}</0> has requested to link your current BchatSign account to their organisation."
 msgstr ""
 
-#: apps/remix/app/components/general/document-signing/document-signing-page-view-v1.tsx
-msgid "<0>{senderName} {senderEmail}</0> has invited you to approve this document"
-msgstr "<0>{senderName} {senderEmail}</0> 님이 이 문서를 승인해 달라고 초대했습니다."
-
-#: apps/remix/app/components/general/document-signing/document-signing-page-view-v1.tsx
-msgid "<0>{senderName} {senderEmail}</0> has invited you to assist this document"
-msgstr "<0>{senderName} {senderEmail}</0> 님이 이 문서를 처리하는 데 참여해 달라고 초대했습니다."
-
-#: apps/remix/app/components/general/document-signing/document-signing-page-view-v1.tsx
-msgid "<0>{senderName} {senderEmail}</0> has invited you to sign this document"
-msgstr "<0>{senderName} {senderEmail}</0> 님이 이 문서에 서명해 달라고 초대했습니다."
-
-#: apps/remix/app/components/general/document-signing/document-signing-page-view-v1.tsx
-msgid "<0>{senderName} {senderEmail}</0> has invited you to view this document"
-msgstr "<0>{senderName} {senderEmail}</0> 님이 이 문서를 열람해 달라고 초대했습니다."
-
-#. placeholder {0}: document.team?.name
-#: apps/remix/app/components/general/document-signing/document-signing-page-view-v1.tsx
-msgid "<0>{senderName} {senderEmail}</0> on behalf of \"{0}\" has invited you to approve this document"
-msgstr "<0>{senderName} {senderEmail}</0> 님이 \"{0}\"을(를) 대신하여 이 문서를 승인해 달라고 초대했습니다."
-
-#. placeholder {0}: document.team?.name
-#: apps/remix/app/components/general/document-signing/document-signing-page-view-v1.tsx
-msgid "<0>{senderName} {senderEmail}</0> on behalf of \"{0}\" has invited you to assist this document"
-msgstr "<0>{senderName} {senderEmail}</0> 님이 \"{0}\"을(를) 대신하여 이 문서를 처리하는 데 참여해 달라고 초대했습니다."
-
-#. placeholder {0}: document.team?.name
-#: apps/remix/app/components/general/document-signing/document-signing-page-view-v1.tsx
-msgid "<0>{senderName} {senderEmail}</0> on behalf of \"{0}\" has invited you to sign this document"
-msgstr "<0>{senderName} {senderEmail}</0> 님이 \"{0}\"을(를) 대신하여 이 문서에 서명해 달라고 초대했습니다."
-
-#. placeholder {0}: document.team?.name
-#: apps/remix/app/components/general/document-signing/document-signing-page-view-v1.tsx
-msgid "<0>{senderName} {senderEmail}</0> on behalf of \"{0}\" has invited you to view this document"
-msgstr "<0>{senderName} {senderEmail}</0> 님이 \"{0}\"을(를) 대신하여 이 문서를 열람해 달라고 초대했습니다."
-
 #: packages/email/templates/confirm-team-email.tsx
 msgid "<0>{teamName}</0> has requested to use your email address for their team on BchatSign."
 msgstr ""
@@ -899,6 +863,10 @@ msgstr "6개월"
 msgid "7 days"
 msgstr "7일"
 
+#: apps/remix/app/components/general/document-signing/document-signing-complete-dialog.tsx
+msgid "A captura de geolocalização foi ignorada porque a variável NEXT_PUBLIC_DISABLE_GEOLOCATION está definida. Não use esta configuração em produção."
+msgstr ""
+
 #: apps/remix/app/components/forms/send-confirmation-email.tsx
 msgid "A confirmation email has been sent, and it should arrive in your inbox shortly."
 msgstr "확인 이메일을 발송했으며, 곧 받은 편지함에서 확인하실 수 있습니다."
@@ -1064,6 +1032,8 @@ msgstr "액세스 비활성화됨"
 msgid "Access enabled"
 msgstr "액세스 활성화됨"
 
+#: apps/remix/app/components/general/app-header.tsx
+#: apps/remix/app/components/general/app-header.tsx
 #: apps/remix/app/components/general/app-sidebar.tsx
 #: apps/remix/app/components/general/document-signing/document-signing-auth-dialog.tsx
 #: apps/remix/app/components/general/org-menu-switcher.tsx
@@ -1117,6 +1087,10 @@ msgstr "계정 재인증"
 #: apps/remix/app/routes/_authenticated+/settings+/security.linked-accounts.tsx
 msgid "Account unlinked"
 msgstr "계정 연결 해제됨"
+
+#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
+msgid "Acesso ao documento"
+msgstr ""
 
 #: apps/remix/app/routes/_unauthenticated+/articles.signature-disclosure.tsx
 msgid "Acknowledgment"
@@ -1364,6 +1338,10 @@ msgstr "수신자 추가"
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-recipient-form.tsx
 msgid "Add recipients to your document"
 msgstr "문서에 수신자를 추가하세요"
+
+#: packages/ui/primitives/signature-pad/signature-pad-dialog.tsx
+msgid "Add signature"
+msgstr ""
 
 #: apps/remix/app/components/embed/authoring/configure-document-recipients.tsx
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-recipient-form.tsx
@@ -1938,6 +1916,10 @@ msgstr "모든 소스"
 msgid "Any Status"
 msgstr "모든 상태"
 
+#: apps/remix/app/components/general/document-signing/document-signing-disclosure.tsx
+msgid "Ao prosseguir com sua assinatura eletrônica, você reconhece e concorda que ela será utilizada para assinar o documento apresentado e terá validade jurídica equivalente à assinatura manuscrita. Ao concluir o processo de assinatura eletrônica, você confirma sua ciência e aceitação dessas condições."
+msgstr ""
+
 #: apps/remix/app/components/tables/admin-organisation-stats-table.tsx
 msgid "API"
 msgstr ""
@@ -2165,14 +2147,14 @@ msgstr "감사 로그 세부 정보"
 msgid "Audit Logs"
 msgstr "감사 로그"
 
+#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
+msgid "Autenticação da ação do destinatário"
+msgstr ""
+
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
 #: packages/lib/server-only/pdf/render-certificate.ts
 msgid "Authentication Level"
 msgstr "인증 수준"
-
-#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
-msgid "Authentication Methods"
-msgstr ""
 
 #: apps/remix/app/routes/_unauthenticated+/o.$orgUrl.signin.tsx
 msgid "Authentication Portal Not Found"
@@ -2190,6 +2172,10 @@ msgstr "인증 앱"
 #: apps/remix/app/components/general/document-signing/document-signing-auto-sign.tsx
 msgid "Automatically sign fields"
 msgstr "필드를 자동으로 서명하기"
+
+#: apps/remix/app/components/general/document-signing/document-signing-complete-dialog.tsx
+msgid "Autorização de geolocalização"
+msgstr ""
 
 #: apps/remix/app/components/forms/avatar-image.tsx
 msgid "Avatar"
@@ -2417,10 +2403,6 @@ msgstr "2단계 인증을 활성화하면 이메일과 비밀번호로 로그인
 msgid "By proceeding to use the electronic signature service provided by BchatSign, you affirm that you have read and understood this disclosure. You agree to all terms and conditions related to the use of electronic signatures and electronic transactions as outlined herein."
 msgstr ""
 
-#: apps/remix/app/components/general/document-signing/document-signing-disclosure.tsx
-msgid "By proceeding with your electronic signature, you acknowledge and consent that it will be used to sign the given document and holds the same legal validity as a handwritten signature. By completing the electronic signing process, you affirm your understanding and acceptance of these conditions."
-msgstr "전자 서명을 진행함으로써 귀하는 해당 서명이 문서 서명에 사용되며 자필 서명과 동일한 법적 효력을 가진다는 점을 인지하고 동의하는 것입니다. 전자 서명 프로세스를 완료함으로써 이러한 조건을 이해하고 수락했음을 확인합니다."
-
 #: apps/remix/app/components/forms/signup.tsx
 msgid "By proceeding, you agree to our <0>Terms of Service</0> and <1>Privacy Policy</1>."
 msgstr "계속 진행함으로써 <0>서비스 이용약관</0>과 <1>개인정보 처리방침</1>에 동의하는 것으로 간주됩니다."
@@ -2594,11 +2576,7 @@ msgid "Center"
 msgstr "가운데"
 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
-msgid "Certificate"
-msgstr ""
-
-#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
-msgid "Certificate Position"
+msgid "Certificado"
 msgstr ""
 
 #: apps/remix/app/components/general/app-command-menu.tsx
@@ -2883,7 +2861,7 @@ msgid "Configure additional options and preferences"
 msgstr "추가 옵션과 기본 설정을 구성합니다."
 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
-msgid "Configure certificate settings and per-page security overlay."
+msgid "Configure as opções de segurança do documento."
 msgstr ""
 
 #: packages/lib/constants/template.ts
@@ -2917,8 +2895,8 @@ msgid "Configure general settings for the template."
 msgstr "템플릿의 일반 설정을 구성합니다."
 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
-msgid "Configure security settings for the document."
-msgstr "문서의 보안 설정을 구성합니다."
+msgid "Configure o certificado e o overlay de segurança em todas as páginas."
+msgstr ""
 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
 msgid "Configure signing reminder settings for the document."
@@ -3005,6 +2983,10 @@ msgstr "연락처 정보"
 #: apps/remix/app/components/dialogs/organisation-create-dialog.tsx
 msgid "Contact sales here"
 msgstr "영업팀에 문의"
+
+#: apps/remix/app/components/general/organisations/organisation-billing-banner.tsx
+msgid "Contact support"
+msgstr ""
 
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl.support.tsx
 msgid "Contact us"
@@ -3524,6 +3506,7 @@ msgstr "위험 구역"
 msgid "Dark Mode"
 msgstr "다크 모드"
 
+#: apps/remix/app/components/general/app-header.tsx
 #: apps/remix/app/components/general/app-sidebar.tsx
 #: apps/remix/app/routes/_authenticated+/dashboard.tsx
 msgid "Dashboard"
@@ -3837,7 +3820,6 @@ msgstr "대상"
 
 #: apps/remix/app/components/general/webhook-logs-sheet.tsx
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
-#: packages/lib/server-only/pdf/render-certificate.ts
 msgid "Details"
 msgstr "세부 정보"
 
@@ -3893,8 +3875,6 @@ msgstr "개발자 모드"
 
 #: apps/remix/app/components/tables/settings-security-activity-table.tsx
 #: apps/remix/app/routes/_authenticated+/settings+/security.sessions.tsx
-#: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
-#: packages/lib/server-only/pdf/render-certificate.ts
 msgid "Device"
 msgstr "디바이스"
 
@@ -4016,10 +3996,6 @@ msgstr "Discord"
 msgid "Display Name"
 msgstr "표시 이름"
 
-#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
-msgid "Display the certificate overlay summary on every page of the signed document."
-msgstr ""
-
 #: apps/remix/app/components/general/teams/team-email-usage.tsx
 msgid "Display your name and email in documents"
 msgstr "문서에 이름과 이메일을 표시합니다"
@@ -4073,7 +4049,6 @@ msgstr "문서 \"{0}\" 취소됨"
 msgid "Document & Recipients"
 msgstr "문서 및 수신자"
 
-#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
 #: packages/ui/components/document/document-global-auth-access-select.tsx
 #: packages/ui/primitives/document-flow/add-settings.tsx
 #: packages/ui/primitives/template-flow/add-template-settings.tsx
@@ -4287,6 +4262,10 @@ msgstr "문서 기본 설정"
 msgid "Document preferences updated"
 msgstr "문서 환경설정이 업데이트되었습니다"
 
+#: apps/remix/app/routes/_recipient+/sign.$token+/complete.tsx
+msgid "Document processing failed"
+msgstr ""
+
 #: apps/remix/app/components/general/claim-limit-fields.tsx
 msgid "Document rate limits"
 msgstr "문서 요청 한도"
@@ -4393,7 +4372,6 @@ msgid "Document Viewed"
 msgstr "문서 열람 완료"
 
 #: apps/remix/app/components/general/admin-global-settings-section.tsx
-#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
 #: packages/ui/components/document/document-visibility-select.tsx
 #: packages/ui/primitives/document-flow/add-settings.tsx
 #: packages/ui/primitives/template-flow/add-template-settings.tsx
@@ -4422,6 +4400,7 @@ msgid "Documentos Recentes"
 msgstr ""
 
 #: apps/remix/app/components/general/app-command-menu.tsx
+#: apps/remix/app/components/general/app-header.tsx
 #: apps/remix/app/components/general/app-nav-desktop.tsx
 #: apps/remix/app/components/general/app-nav-mobile.tsx
 #: apps/remix/app/components/general/app-sidebar.tsx
@@ -4600,6 +4579,10 @@ msgstr "그리기"
 #: apps/remix/app/components/general/admin-global-settings-section.tsx
 msgid "Draw signature"
 msgstr "서명 그리기"
+
+#: packages/ui/primitives/signature-pad/signature-pad-dialog.tsx
+msgid "Draw, type, or upload your signature."
+msgstr ""
 
 #: apps/remix/app/components/dialogs/envelope-item-edit-dialog.tsx
 msgid "Drop PDF here or click to select"
@@ -5343,6 +5326,14 @@ msgstr "모두 서명했습니다! 서명된 문서의 사본이 이메일로 �
 msgid "Exceeded timeout"
 msgstr "시간 초과됨"
 
+#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
+msgid "Exibe o resumo do certificado em todas as páginas do documento assinado."
+msgstr ""
+
+#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
+msgid "Exibir overlay do certificado em todas as páginas"
+msgstr ""
+
 #: apps/remix/app/components/general/app-sidebar.tsx
 #: apps/remix/app/components/general/app-sidebar.tsx
 #: apps/remix/app/components/general/document-signing/document-signing-page-view-v2.tsx
@@ -5665,10 +5656,6 @@ msgstr "폴더가 성공적으로 업데이트되었습니다."
 msgid "Font Size"
 msgstr "글꼴 크기"
 
-#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
-msgid "Footer"
-msgstr ""
-
 #: apps/remix/app/routes/_unauthenticated+/articles.signature-disclosure.tsx
 msgid "For any questions regarding this disclosure, electronic signatures, or any related process, please contact us at: <0>{SUPPORT_EMAIL}</0>"
 msgstr "본 고지, 전자 서명 또는 관련 프로세스에 관한 질문이 있으시면 <0>{SUPPORT_EMAIL}</0>로 문의해 주세요."
@@ -5758,6 +5745,14 @@ msgstr "DKIM 레코드 생성"
 #: packages/ui/primitives/document-flow/add-subject.tsx
 msgid "Generate Links"
 msgstr "링크 생성"
+
+#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
+msgid "Geolocalizacao"
+msgstr ""
+
+#: apps/remix/app/components/general/document-signing/document-signing-complete-dialog.tsx
+msgid "Geolocalização desativada (ambiente de desenvolvimento)"
+msgstr ""
 
 #: packages/lib/constants/i18n.ts
 msgid "German"
@@ -5982,6 +5977,7 @@ msgstr "라이선스 키 숨기기"
 
 #: apps/remix/app/components/dialogs/folder-move-dialog.tsx
 #: apps/remix/app/components/general/app-sidebar.tsx
+#: apps/remix/app/components/general/app-sidebar.tsx
 #: apps/remix/app/components/general/folder/folder-grid.tsx
 #: apps/remix/app/components/general/generic-error-layout.tsx
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/documents.folders._index.tsx
@@ -6040,6 +6036,14 @@ msgstr "저는 이 문서의 사본을 받아야 합니다."
 msgid "I am the owner of this document"
 msgstr "이 문서의 소유자입니다"
 
+#: packages/ui/components/document/document-share-button.tsx
+msgid "I just sent a document in style with @documenso. Check it out!"
+msgstr ""
+
+#: packages/ui/components/document/document-share-button.tsx
+msgid "I just signed a document in style with @documenso. Check it out!"
+msgstr ""
+
 #: apps/remix/app/routes/_unauthenticated+/o.$orgUrl.signin.tsx
 msgid "I understand that I am providing my credentials to a 3rd party service configured by this organisation"
 msgstr "이 조직에서 구성한 제3자 서비스에 내 자격 증명을 제공하는 것임을 이해합니다"
@@ -6066,10 +6070,6 @@ msgstr "입력 필드 식별 중"
 #: apps/remix/app/components/dialogs/ai-recipient-detection-dialog.tsx
 msgid "Identifying recipients"
 msgstr "수신자 식별 중"
-
-#: apps/remix/app/components/general/organisations/organisation-billing-banner.tsx
-msgid "If there is any issue with your subscription, please contact us at <0>{SUPPORT_EMAIL}</0>."
-msgstr "구독 관련 문제가 있는 경우 <0>{SUPPORT_EMAIL}</0>로 연락해 주세요."
 
 #: apps/remix/app/routes/embed+/v2+/authoring+/_layout.tsx
 msgid "If you are using staging, ensure that you have set the host prop on the embedding component to the staging domain (https://stg-app.documenso.com)"
@@ -6325,9 +6325,7 @@ msgstr "청구서"
 #: apps/remix/app/components/tables/internal-audit-log-table.tsx
 #: apps/remix/app/components/tables/settings-security-activity-table.tsx
 #: apps/remix/app/routes/_authenticated+/settings+/security.sessions.tsx
-#: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
 #: packages/lib/server-only/pdf/render-audit-logs.ts
-#: packages/lib/server-only/pdf/render-certificate.ts
 msgid "IP Address"
 msgstr "IP 주소"
 
@@ -6411,7 +6409,6 @@ msgid "Label"
 msgstr "레이블"
 
 #: apps/remix/app/components/embed/authoring/configure-document-advanced-settings.tsx
-#: apps/remix/app/components/general/app-sidebar.tsx
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
 #: apps/remix/app/components/general/menu-switcher.tsx
 #: apps/remix/app/components/general/org-menu-switcher.tsx
@@ -6510,13 +6507,17 @@ msgstr "조직 탈퇴"
 msgid "Left"
 msgstr "왼쪽"
 
-#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
-msgid "Left Margin"
-msgstr ""
-
 #: apps/remix/app/routes/_unauthenticated+/articles.signature-disclosure.tsx
 msgid "Legality of Electronic Signatures"
 msgstr "전자 서명의 합법성"
+
+#: apps/remix/app/components/general/document-signing/document-signing-disclosure.tsx
+msgid "Leia o "
+msgstr ""
+
+#: apps/remix/app/components/general/document-signing/document-signing-disclosure.tsx
+msgid "Leia o termo completo antes de concluir a assinatura."
+msgstr ""
 
 #: apps/remix/app/components/forms/editor/editor-field-generic-field-forms.tsx
 msgid "Letter spacing"
@@ -6637,10 +6638,6 @@ msgstr "로딩 중..."
 #: apps/remix/app/components/forms/document-preferences-form.tsx
 msgid "Local timezone"
 msgstr "현지 시간대"
-
-#: packages/lib/server-only/pdf/render-certificate.ts
-msgid "Location"
-msgstr ""
 
 #: apps/remix/app/components/general/direct-template/direct-template-signing-auth-page.tsx
 #: apps/remix/app/components/general/document-signing/document-signing-auth-account.tsx
@@ -6833,6 +6830,14 @@ msgstr "관리자 이상"
 msgid "Mapping fields to recipients"
 msgstr "필드를 수신자에 매핑하는 중"
 
+#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
+msgid "Margem direita"
+msgstr ""
+
+#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
+msgid "Margem esquerda"
+msgstr ""
+
 #: apps/remix/app/components/general/document-signing/document-signing-complete-dialog.tsx
 msgid "Mark as viewed"
 msgstr "열람 완료로 표시"
@@ -6934,6 +6939,10 @@ msgstr "메시지"
 #: packages/ui/primitives/template-flow/add-template-settings.tsx
 msgid "Message <0>(Optional)</0>"
 msgstr "메시지 <0>(선택 사항)</0>"
+
+#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
+msgid "Métodos de autenticação"
+msgstr ""
 
 #: apps/remix/app/components/forms/editor/editor-field-generic-field-forms.tsx
 msgid "Middle"
@@ -7510,12 +7519,20 @@ msgid "Open menu"
 msgstr "메뉴 열기"
 
 #: apps/remix/app/components/general/app-sidebar.tsx
-msgid "Open organisation menu"
+msgid "Open organisation settings"
+msgstr ""
+
+#: apps/remix/app/components/general/app-sidebar.tsx
+msgid "Open team settings"
 msgstr ""
 
 #: apps/remix/app/components/general/stack-avatars-with-tooltip.tsx
 msgid "Opened"
 msgstr "열람됨"
+
+#: apps/remix/app/components/general/organisations/organisation-billing-banner.tsx
+msgid "Opening..."
+msgstr ""
 
 #: apps/remix/app/components/forms/editor/editor-field-dropdown-form.tsx
 #: packages/ui/primitives/document-flow/field-items-advanced-settings/dropdown-field.tsx
@@ -7783,6 +7800,10 @@ msgctxt "Subscription status"
 msgid "Paid"
 msgstr "유료"
 
+#: apps/remix/app/components/general/document-signing/document-signing-complete-dialog.tsx
+msgid "Para reforçar a segurança e a trilha de auditoria da assinatura eletrônica, solicitaremos sua geolocalização. Ao clicar em Assinar, selecione Permitir no aviso do navegador para concluir o processo."
+msgstr ""
+
 #: apps/remix/app/components/dialogs/envelope-download-dialog.tsx
 msgctxt "Partially signed document (adjective)"
 msgid "Partial"
@@ -7875,7 +7896,6 @@ msgctxt "Subscription status"
 msgid "Past Due"
 msgstr "연체"
 
-#: apps/remix/app/components/general/organisations/organisation-billing-banner.tsx
 #: apps/remix/app/components/general/organisations/organisation-billing-banner.tsx
 msgid "Payment overdue"
 msgstr "결제 지연"
@@ -8229,6 +8249,10 @@ msgstr "X 위치:"
 msgid "Pos Y:"
 msgstr "Y 위치:"
 
+#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
+msgid "Posição do certificado"
+msgstr ""
+
 #: apps/remix/app/components/embed/embed-direct-template-client-page.tsx
 #: apps/remix/app/components/embed/embed-document-signing-page-v1.tsx
 #: apps/remix/app/components/general/document-signing/document-signing-mobile-widget.tsx
@@ -8371,6 +8395,10 @@ msgstr "공개 템플릿"
 msgid "Public templates are connected to your public profile. Any modifications to public templates will also appear in your public profile."
 msgstr "공개 템플릿은 공개 프로필과 연결됩니다. 공개 템플릿을 수정하면 공개 프로필에도 반영됩니다."
 
+#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
+msgid "Quando ativado, o fluxo de assinatura solicitará a geolocalização para reforçar a trilha de auditoria do documento."
+msgstr ""
+
 #: apps/remix/app/components/general/envelope-editor/envelope-editor.tsx
 msgid "Quick Actions"
 msgstr "빠른 작업"
@@ -8427,10 +8455,6 @@ msgstr ""
 msgid "Read Status"
 msgstr "열람 상태"
 
-#: apps/remix/app/components/general/document-signing/document-signing-disclosure.tsx
-msgid "Read the full <0>signature disclosure</0>."
-msgstr "전체 <0>전자 서명 고지</0>를 읽어 보세요."
-
 #: apps/remix/app/components/dialogs/ai-field-detection-dialog.tsx
 #: apps/remix/app/components/dialogs/ai-recipient-detection-dialog.tsx
 msgid "Reading your document"
@@ -8441,7 +8465,6 @@ msgid "Ready"
 msgstr "준비됨"
 
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
-#: packages/lib/server-only/pdf/render-certificate.ts
 msgid "Reason"
 msgstr "이유"
 
@@ -8495,7 +8518,6 @@ msgstr "수신자"
 msgid "Recipient {0}"
 msgstr "수신자 {0}"
 
-#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
 #: packages/ui/components/recipient/recipient-action-auth-select.tsx
 #: packages/ui/primitives/document-flow/add-settings.tsx
 #: packages/ui/primitives/template-flow/add-template-settings.tsx
@@ -8678,7 +8700,6 @@ msgstr "문서 거부"
 #: apps/remix/app/components/general/stack-avatars-with-tooltip.tsx
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
 #: packages/lib/constants/document.ts
-#: packages/lib/server-only/pdf/render-certificate.ts
 msgid "Rejected"
 msgstr "거부됨"
 
@@ -8954,10 +8975,6 @@ msgid "Resetting Password..."
 msgstr "비밀번호 재설정 중..."
 
 #: apps/remix/app/components/general/organisations/organisation-billing-banner.tsx
-msgid "Resolve"
-msgstr "해결"
-
-#: apps/remix/app/components/general/organisations/organisation-billing-banner.tsx
 msgid "Resolve payment"
 msgstr "결제 해결"
 
@@ -9051,13 +9068,13 @@ msgstr "모든 세션 해지"
 msgid "Right"
 msgstr "오른쪽"
 
-#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
-msgid "Right Margin"
-msgstr ""
-
 #: apps/remix/app/components/forms/branding-preferences-form.tsx
 msgid "Ring"
 msgstr "링"
+
+#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
+msgid "Rodapé"
+msgstr ""
 
 #: apps/remix/app/components/dialogs/admin-organisation-member-update-dialog.tsx
 #: apps/remix/app/components/dialogs/organisation-member-update-dialog.tsx
@@ -9170,10 +9187,6 @@ msgstr "조직 이름으로 검색"
 msgid "Search by organisation name, URL or ID"
 msgstr ""
 
-#: apps/remix/app/components/general/app-header.tsx
-msgid "Search documents, templates…"
-msgstr ""
-
 #: apps/remix/app/components/general/document/document-search.tsx
 msgid "Search documents..."
 msgstr "문서 검색..."
@@ -9203,7 +9216,6 @@ msgstr "이름 또는 이메일로 구성원 검색"
 msgid "Secret"
 msgstr "시크릿"
 
-#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
 #: apps/remix/app/components/general/settings-nav-desktop.tsx
 #: apps/remix/app/components/general/settings-nav-mobile.tsx
 #: apps/remix/app/routes/_authenticated+/settings+/security._index.tsx
@@ -9223,6 +9235,14 @@ msgstr "문서 보기"
 #: apps/remix/app/routes/_authenticated+/admin+/documents.$id.tsx
 msgid "See the background jobs tab for the status"
 msgstr "상태는 백그라운드 작업 탭에서 확인하세요"
+
+#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
+msgid "Segurança"
+msgstr ""
+
+#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
+msgid "Selecione os métodos de autenticação"
+msgstr ""
 
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl._index.tsx
 msgid "Selecione uma equipe para ver seu painel"
@@ -9299,7 +9319,6 @@ msgstr "조직을 선택하여 팀을 확인하세요."
 msgid "Select at least"
 msgstr "최소 선택 개수"
 
-#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
 #: packages/ui/components/document/document-global-auth-action-select.tsx
 #: packages/ui/components/recipient/recipient-action-auth-select.tsx
 msgid "Select authentication methods"
@@ -9520,7 +9539,6 @@ msgstr "전송 중..."
 #: apps/remix/app/components/general/webhook-logs-sheet.tsx
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.webhooks.$id._index.tsx
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
-#: packages/lib/server-only/pdf/render-certificate.ts
 msgid "Sent"
 msgstr "발송됨"
 
@@ -9556,7 +9574,6 @@ msgstr ""
 #: apps/remix/app/components/general/app-command-menu.tsx
 #: apps/remix/app/components/general/app-nav-mobile.tsx
 #: apps/remix/app/components/general/app-nav-mobile.tsx
-#: apps/remix/app/components/general/app-sidebar.tsx
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
 #: apps/remix/app/components/general/envelope-editor/envelope-editor.tsx
 #: apps/remix/app/components/general/folder/folder-card.tsx
@@ -9573,14 +9590,18 @@ msgstr "설정"
 msgid "Setup"
 msgstr "설정"
 
+#: apps/remix/app/components/general/document-signing/document-signing-complete-dialog.tsx
+msgid "Seu navegador não oferece suporte à geolocalização necessária para concluir a assinatura."
+msgstr ""
+
 #: apps/remix/app/components/general/document/document-page-view-dropdown.tsx
 #: apps/remix/app/components/tables/documents-table-action-dropdown.tsx
 #: packages/ui/components/document/document-share-button.tsx
 msgid "Share"
 msgstr "공유"
 
-#: apps/remix/app/components/general/document-signing/document-signing-complete-dialog.tsx
-msgid "Share my geolocation on the signature certificate"
+#: packages/ui/components/document/document-share-button.tsx
+msgid "Share on X"
 msgstr ""
 
 #: apps/remix/app/components/general/document/document-page-view-dropdown.tsx
@@ -9596,6 +9617,10 @@ msgstr "링크 공유"
 msgid "Share your signing experience!"
 msgstr "서명 경험을 공유하세요!"
 
+#: packages/ui/components/document/document-share-button.tsx
+msgid "sharing link preview"
+msgstr ""
+
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.public-profile.tsx
 msgid "Show"
 msgstr "표시"
@@ -9605,10 +9630,6 @@ msgstr "표시"
 #: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx
 msgid "Show advanced settings"
 msgstr "고급 설정 표시"
-
-#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
-msgid "Show certificate overlay on all pages"
-msgstr ""
 
 #: apps/remix/app/components/general/admin-license-card.tsx
 msgid "Show license key"
@@ -9698,6 +9719,7 @@ msgstr "로그인"
 msgid "Sign in to your account"
 msgstr "계정에 로그인"
 
+#: apps/remix/app/components/general/app-header.tsx
 #: apps/remix/app/components/general/app-nav-mobile.tsx
 #: apps/remix/app/components/general/app-sidebar.tsx
 #: apps/remix/app/components/general/menu-switcher.tsx
@@ -9757,7 +9779,6 @@ msgid "Signature"
 msgstr "서명"
 
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
-#: packages/lib/server-only/pdf/render-certificate.ts
 msgid "Signature ID"
 msgstr "서명 ID"
 
@@ -9783,7 +9804,6 @@ msgstr "수집된 서명 수"
 
 #: apps/remix/app/components/general/document/document-page-view-recipients.tsx
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
-#: packages/lib/server-only/pdf/render-certificate.ts
 #: packages/ui/components/document/document-read-only-fields.tsx
 #: packages/ui/components/document/envelope-recipient-field-tooltip.tsx
 msgid "Signed"
@@ -9829,7 +9849,6 @@ msgid "Signing Certificate"
 msgstr "서명 인증서"
 
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
-#: packages/lib/server-only/pdf/render-certificate.ts
 msgid "Signing certificate provided by"
 msgstr "서명 인증서 제공자"
 
@@ -10165,10 +10184,6 @@ msgstr "구독 클레임이 성공적으로 업데이트되었습니다."
 #: apps/remix/app/routes/_authenticated+/admin+/claims.tsx
 msgid "Subscription Claims"
 msgstr "구독 클레임"
-
-#: apps/remix/app/components/general/organisations/organisation-billing-banner.tsx
-msgid "Subscription invalid"
-msgstr "구독이 유효하지 않습니다."
 
 #: apps/remix/app/components/dialogs/admin-swap-subscription-dialog.tsx
 msgid "Subscription moved successfully"
@@ -10588,6 +10603,7 @@ msgid "Template uploaded"
 msgstr "템플릿이 업로드되었습니다."
 
 #: apps/remix/app/components/general/app-command-menu.tsx
+#: apps/remix/app/components/general/app-header.tsx
 #: apps/remix/app/components/general/app-nav-desktop.tsx
 #: apps/remix/app/components/general/app-nav-mobile.tsx
 #: apps/remix/app/components/general/app-sidebar.tsx
@@ -10607,6 +10623,11 @@ msgstr "템플릿이 삭제되었습니다"
 #: apps/remix/app/components/dialogs/envelopes-bulk-delete-dialog.tsx
 msgid "Templates partially deleted"
 msgstr "템플릿이 일부만 삭제되었습니다"
+
+#: apps/remix/app/components/general/document-signing/document-signing-disclosure.tsx
+#: apps/remix/app/components/general/document-signing/document-signing-disclosure.tsx
+msgid "Termo de Ciência e Consentimento para Uso de Assinatura Eletrônica"
+msgstr ""
 
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.webhooks.$id._index.tsx
 msgid "Test"
@@ -11608,6 +11629,7 @@ msgid "Toggle the switch to show your profile to the public."
 msgstr "스위치를 전환하여 프로필을 공개로 표시합니다."
 
 #: apps/remix/app/components/forms/2fa/enable-authenticator-app-dialog.tsx
+#: apps/remix/app/components/forms/signin.tsx
 msgid "Token"
 msgstr "토큰"
 
@@ -11861,7 +11883,6 @@ msgstr "실행 취소"
 #: apps/remix/app/routes/_authenticated+/settings+/security.sessions.tsx
 #: apps/remix/app/routes/_authenticated+/settings+/security.sessions.tsx
 #: apps/remix/app/routes/_authenticated+/settings+/security.sessions.tsx
-#: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
@@ -12317,16 +12338,8 @@ msgid "Verify Email"
 msgstr "이메일 확인"
 
 #: apps/remix/app/components/general/verify-email-banner.tsx
-msgid "Verify Now"
-msgstr "지금 인증하기"
-
-#: apps/remix/app/components/general/verify-email-banner.tsx
-msgid "Verify your email address"
-msgstr "이메일 주소 확인"
-
-#: apps/remix/app/components/general/verify-email-banner.tsx
-msgid "Verify your email address to unlock all features."
-msgstr "이메일을 확인하면 모든 기능을 사용할 수 있습니다."
+msgid "Verify your email address to unlock all features. We sent a confirmation email to <0>{email}</0>."
+msgstr ""
 
 #: apps/remix/app/components/general/envelope/envelope-upload-button.tsx
 msgid "Verify your email to upload documents."
@@ -12499,7 +12512,6 @@ msgstr ""
 #: apps/remix/app/components/embed/multisign/multi-sign-document-list.tsx
 #: apps/remix/app/components/general/document/document-page-view-recipients.tsx
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
-#: packages/lib/server-only/pdf/render-certificate.ts
 msgid "Viewed"
 msgstr "열람됨"
 
@@ -12526,6 +12538,10 @@ msgstr "뷰어들"
 msgctxt "Recipient role progressive verb"
 msgid "Viewing"
 msgstr "열람 중"
+
+#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
+msgid "Visibilidade do documento"
+msgstr ""
 
 #: apps/remix/app/components/dialogs/folder-update-dialog.tsx
 msgid "Visibility"
@@ -12585,6 +12601,10 @@ msgstr "현재 이 패스키를 제거할 수 없습니다. 나중에 다시 시
 #: apps/remix/app/components/tables/settings-security-passkey-table-actions.tsx
 msgid "We are unable to update this passkey at the moment. Please try again later."
 msgstr "현재 이 패스키를 업데이트할 수 없습니다. 나중에 다시 시도해 주세요."
+
+#: apps/remix/app/routes/_recipient+/sign.$token+/complete.tsx
+msgid "We could not finish processing this document automatically. Please try again later or contact the document owner for support."
+msgstr ""
 
 #: apps/remix/app/components/general/envelope/envelope-drop-zone-wrapper.tsx
 #: apps/remix/app/components/general/envelope/envelope-upload-button.tsx
@@ -12956,10 +12976,6 @@ msgstr "현재 요금제의 공정 사용 한도를 초과하는 이메일 발�
 #: apps/remix/app/components/general/document-signing/access-auth-2fa-form.tsx
 msgid "We've sent a 6-digit verification code to your email. Please enter it below to complete the document."
 msgstr "이메일로 6자리 인증 코드를 보냈습니다. 문서를 완료하려면 아래에 코드를 입력하세요."
-
-#: apps/remix/app/components/general/verify-email-banner.tsx
-msgid "We've sent a confirmation email to <0>{email}</0>. Please check your inbox and click the link in the email to verify your account."
-msgstr "<0>{email}</0>(으)로 확인 이메일을 전송했습니다. 받은편지함을 확인하고 이메일에 포함된 링크를 클릭해 계정을 인증해 주세요."
 
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.webhooks._index.tsx
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.webhooks.$id._index.tsx
@@ -14115,10 +14131,6 @@ msgstr "비밀번호가 성공적으로 업데이트되었습니다."
 msgid "Your password has been updated."
 msgstr "비밀번호가 업데이트되었습니다."
 
-#: apps/remix/app/components/general/organisations/organisation-billing-banner.tsx
-msgid "Your payment is overdue. Please settle the payment to avoid any service disruptions."
-msgstr "결제가 연체되었습니다. 서비스 중단을 방지하려면 결제를 완료해 주세요."
-
 #: apps/remix/app/components/tables/user-organisations-table.tsx
 msgid "Your personal organisation"
 msgstr "개인 조직"
@@ -14126,10 +14138,6 @@ msgstr "개인 조직"
 #: apps/remix/app/components/dialogs/organisation-member-invite-dialog.tsx
 msgid "Your plan does not support inviting members. Please upgrade or your plan or contact sales at <0>{SUPPORT_EMAIL}</0> if you would like to discuss your options."
 msgstr "현재 요금제에서는 구성원 초대를 지원하지 않습니다. 요금제를 업그레이드하시거나, 옵션에 대해 논의하려면 <0>{SUPPORT_EMAIL}</0>로 영업팀에 문의해 주세요."
-
-#: apps/remix/app/components/general/organisations/organisation-billing-banner.tsx
-msgid "Your plan is no longer valid. Please subscribe to a new plan to continue using BchatSign."
-msgstr ""
 
 #: apps/remix/app/components/forms/profile.tsx
 msgid "Your profile has been updated successfully."

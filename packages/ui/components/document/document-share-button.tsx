@@ -60,6 +60,9 @@ export const DocumentShareButton = ({ token, documentId, className, trigger }: D
   });
 
   const isLoading = isCreatingOrGettingShareLink || isCopyingShareLink;
+  const shareMessage = token
+    ? _(msg`I just signed a document in style with @documenso. Check it out!`)
+    : _(msg`I just sent a document in style with @documenso. Check it out!`);
 
   const onOpenChange = (nextOpen: boolean) => {
     if (nextOpen) {
@@ -105,7 +108,7 @@ export const DocumentShareButton = ({ token, documentId, className, trigger }: D
 
     window.open(
       generateTwitterIntent(
-        `I just ${token ? 'signed' : 'sent'} a document in style with @documenso. Check it out!`,
+        shareMessage,
         `${NEXT_PUBLIC_WEBAPP_URL()}/share/${slug}`,
       ),
       '_blank',
@@ -149,8 +152,7 @@ export const DocumentShareButton = ({ token, documentId, className, trigger }: D
 
         <div className="flex w-full flex-col">
           <div className="rounded-md border p-4">
-            I just {token ? 'signed' : 'sent'} a document in style with{' '}
-            <span className="font-medium text-blue-400">@documenso</span>. Check it out!
+            {shareMessage}
             <span className="mt-2 block" />
             <span
               className={cn('break-all font-medium text-blue-400', {
@@ -167,7 +169,7 @@ export const DocumentShareButton = ({ token, documentId, className, trigger }: D
               {shareLink?.slug && (
                 <img
                   src={`${NEXT_PUBLIC_WEBAPP_URL()}/share/${shareLink.slug}/opengraph`}
-                  alt="sharing link"
+                  alt={_(msg`sharing link preview`)}
                   className="h-full w-full object-cover"
                 />
               )}
@@ -177,7 +179,7 @@ export const DocumentShareButton = ({ token, documentId, className, trigger }: D
           <div className="mt-6 flex items-center gap-4">
             <Button variant="outline" className="flex-1" onClick={onTweetClick}>
               <FaXTwitter className="mr-2 h-4 w-4" />
-              Tweet
+              <Trans>Share on X</Trans>
             </Button>
 
             <Button variant="outline" className="flex-1" onClick={onCopyClick}>

@@ -1,7 +1,7 @@
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
-import { PDFDocument } from '@cantoo/pdf-lib';
+import { PDFDocument, degrees } from '@cantoo/pdf-lib';
 import { addRejectionStampToPdf } from '@documenso/lib/server-only/pdf/add-rejection-stamp-to-pdf';
 import { generateAuditLogPdf } from '@documenso/lib/server-only/pdf/generate-audit-log-pdf';
 import { generateCertificatePdf } from '@documenso/lib/server-only/pdf/generate-certificate-pdf';
@@ -15,14 +15,17 @@ import { DocumentStatus, EnvelopeType, RecipientRole, SigningStatus, WebhookTrig
 import { nanoid } from 'nanoid';
 import { groupBy } from 'remeda';
 
-import { NEXT_PRIVATE_USE_PLAYWRIGHT_PDF } from '../../../constants/app';
+import { NEXT_PRIVATE_USE_PLAYWRIGHT_PDF, NEXT_PUBLIC_WEBAPP_URL } from '../../../constants/app';
 import { AppError, AppErrorCode } from '../../../errors/app-error';
 import { getAuditLogsPdf } from '../../../server-only/htmltopdf/get-audit-logs-pdf';
 import { getCertificatePdf } from '../../../server-only/htmltopdf/get-certificate-pdf';
+import type { CertificateOverlayCommand } from '../../../server-only/pdf/certificate-summary-overlay';
 import {
   getCertificateOverlayDrawCommands,
   getCertificateOverlayLines,
 } from '../../../server-only/pdf/certificate-summary-overlay';
+import { svgToPng } from '../../../utils/images/svg-to-png';
+import { renderSVG } from 'uqr';
 import { insertFieldInPDFV1 } from '../../../server-only/pdf/insert-field-in-pdf-v1';
 import { insertFieldInPDFV2 } from '../../../server-only/pdf/insert-field-in-pdf-v2';
 import { legacy_insertFieldInPDF } from '../../../server-only/pdf/legacy-insert-field-in-pdf';
@@ -263,6 +266,7 @@ export const run = async ({ payload, io }: { payload: TSealDocumentJobDefinition
           internalVersion: envelope.internalVersion,
           certificateAllPages: envelope.certificateAllPages,
           certificatePosition: envelope.certificatePosition,
+          qrToken: envelope.qrToken,
         },
         envelopeItem,
         envelopeItemFields,
@@ -349,7 +353,7 @@ export const run = async ({ payload, io }: { payload: TSealDocumentJobDefinition
 type DecorateAndSignPdfOptions = {
   envelope: Pick<
     Envelope,
-    'id' | 'title' | 'useLegacyFieldInsertion' | 'internalVersion' | 'certificateAllPages' | 'certificatePosition'
+    'id' | 'title' | 'useLegacyFieldInsertion' | 'internalVersion' | 'certificateAllPages' | 'certificatePosition' | 'qrToken'
   >;
   envelopeItem: EnvelopeItem & { documentData: DocumentData };
   envelopeItemFields: Field[];
@@ -373,7 +377,7 @@ const decorateAndSignPdf = async ({
   pdfData,
   certificateDoc,
   auditLogDoc,
-  pdfHash,
+  pdfHash: _pdfHash,
 }: DecorateAndSignPdfOptions) => {
   let pdfDoc = await PDF.load(pdfData);
 
@@ -395,29 +399,59 @@ const decorateAndSignPdf = async ({
 
     const fontSize = 8;
     const overlayColor = rgb(100 / 255, 116 / 255, 139 / 255); // #64748B
-    const overlayLines = getCertificateOverlayLines({
-      pdfHash,
-    });
+    const overlayLines = getCertificateOverlayLines();
+
+    const qrToken = envelope.qrToken ?? null;
+    const validationLink = qrToken ? `${NEXT_PUBLIC_WEBAPP_URL()}/share/${qrToken}` : null;
+
+    // Generate QR code image once (reused across all pages)
+    let qrImageBuffer: Uint8Array | null = null;
+
+    if (validationLink) {
+      const qrSvg = renderSVG(validationLink, { ecc: 'Q' });
+      qrImageBuffer = await svgToPng(qrSvg);
+    }
 
     for (const page of pages) {
-      const commands = getCertificateOverlayDrawCommands({
+      const commands: CertificateOverlayCommand[] = getCertificateOverlayDrawCommands({
         position: envelope.certificatePosition,
         pageWidth: page.width,
         pageHeight: page.height,
         lines: overlayLines,
         fontSize,
         getTextWidth: (text) => font.getTextWidth(text, fontSize),
+        validationLink,
       });
 
       for (const command of commands) {
-        page.drawText(command.text, {
-          x: command.x,
-          y: command.y,
-          size: fontSize,
-          font,
-          color: overlayColor,
-          ...(command.rotate ? { rotate: command.rotate } : {}),
-        });
+        if (command.kind === 'text') {
+          page.drawText(command.text, {
+            x: command.x,
+            y: command.y,
+            size: fontSize,
+            font,
+            color: overlayColor,
+            ...(command.rotate ? { rotate: command.rotate } : {}),
+          });
+        } else if (command.kind === 'qr' && qrImageBuffer) {
+          const qrImage = await pdfDoc.embedPng(qrImageBuffer);
+
+          page.drawImage(qrImage, {
+            x: command.x,
+            y: command.y,
+            width: command.size,
+            height: command.size,
+          });
+        } else if (command.kind === 'vertical-label') {
+          page.drawText(command.text, {
+            x: command.x,
+            y: command.y,
+            size: command.fontSize,
+            font,
+            color: overlayColor,
+            rotate: degrees(90),
+          });
+        }
       }
     }
   }

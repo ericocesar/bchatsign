@@ -639,42 +639,6 @@ msgstr "<0>{organisationName}</0> heeft verzocht om een account voor je aan te m
 msgid "<0>{organisationName}</0> has requested to link your current BchatSign account to their organisation."
 msgstr ""
 
-#: apps/remix/app/components/general/document-signing/document-signing-page-view-v1.tsx
-msgid "<0>{senderName} {senderEmail}</0> has invited you to approve this document"
-msgstr "<0>{senderName} {senderEmail}</0> heeft je uitgenodigd om dit document goed te keuren"
-
-#: apps/remix/app/components/general/document-signing/document-signing-page-view-v1.tsx
-msgid "<0>{senderName} {senderEmail}</0> has invited you to assist this document"
-msgstr "<0>{senderName} {senderEmail}</0> heeft je uitgenodigd om bij dit document te assisteren"
-
-#: apps/remix/app/components/general/document-signing/document-signing-page-view-v1.tsx
-msgid "<0>{senderName} {senderEmail}</0> has invited you to sign this document"
-msgstr "<0>{senderName} {senderEmail}</0> heeft je uitgenodigd om dit document te ondertekenen"
-
-#: apps/remix/app/components/general/document-signing/document-signing-page-view-v1.tsx
-msgid "<0>{senderName} {senderEmail}</0> has invited you to view this document"
-msgstr "<0>{senderName} {senderEmail}</0> heeft je uitgenodigd om dit document te bekijken"
-
-#. placeholder {0}: document.team?.name
-#: apps/remix/app/components/general/document-signing/document-signing-page-view-v1.tsx
-msgid "<0>{senderName} {senderEmail}</0> on behalf of \"{0}\" has invited you to approve this document"
-msgstr "<0>{senderName} {senderEmail}</0> namens \"{0}\" heeft je uitgenodigd om dit document goed te keuren"
-
-#. placeholder {0}: document.team?.name
-#: apps/remix/app/components/general/document-signing/document-signing-page-view-v1.tsx
-msgid "<0>{senderName} {senderEmail}</0> on behalf of \"{0}\" has invited you to assist this document"
-msgstr "<0>{senderName} {senderEmail}</0> namens \"{0}\" heeft je uitgenodigd om bij dit document te assisteren"
-
-#. placeholder {0}: document.team?.name
-#: apps/remix/app/components/general/document-signing/document-signing-page-view-v1.tsx
-msgid "<0>{senderName} {senderEmail}</0> on behalf of \"{0}\" has invited you to sign this document"
-msgstr "<0>{senderName} {senderEmail}</0> namens \"{0}\" heeft je uitgenodigd om dit document te ondertekenen"
-
-#. placeholder {0}: document.team?.name
-#: apps/remix/app/components/general/document-signing/document-signing-page-view-v1.tsx
-msgid "<0>{senderName} {senderEmail}</0> on behalf of \"{0}\" has invited you to view this document"
-msgstr "<0>{senderName} {senderEmail}</0> namens \"{0}\" heeft je uitgenodigd om dit document te bekijken"
-
 #: packages/email/templates/confirm-team-email.tsx
 msgid "<0>{teamName}</0> has requested to use your email address for their team on BchatSign."
 msgstr ""
@@ -899,6 +863,10 @@ msgstr "6 maanden"
 msgid "7 days"
 msgstr "7 dagen"
 
+#: apps/remix/app/components/general/document-signing/document-signing-complete-dialog.tsx
+msgid "A captura de geolocalização foi ignorada porque a variável NEXT_PUBLIC_DISABLE_GEOLOCATION está definida. Não use esta configuração em produção."
+msgstr ""
+
 #: apps/remix/app/components/forms/send-confirmation-email.tsx
 msgid "A confirmation email has been sent, and it should arrive in your inbox shortly."
 msgstr "Er is een bevestigingsmail verzonden; deze zou binnenkort in je inbox moeten verschijnen."
@@ -1064,6 +1032,8 @@ msgstr "Toegang uitgeschakeld"
 msgid "Access enabled"
 msgstr "Toegang ingeschakeld"
 
+#: apps/remix/app/components/general/app-header.tsx
+#: apps/remix/app/components/general/app-header.tsx
 #: apps/remix/app/components/general/app-sidebar.tsx
 #: apps/remix/app/components/general/document-signing/document-signing-auth-dialog.tsx
 #: apps/remix/app/components/general/org-menu-switcher.tsx
@@ -1117,6 +1087,10 @@ msgstr "Account‑herauthenticatie"
 #: apps/remix/app/routes/_authenticated+/settings+/security.linked-accounts.tsx
 msgid "Account unlinked"
 msgstr "Account ontkoppeld"
+
+#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
+msgid "Acesso ao documento"
+msgstr ""
 
 #: apps/remix/app/routes/_unauthenticated+/articles.signature-disclosure.tsx
 msgid "Acknowledgment"
@@ -1364,6 +1338,10 @@ msgstr "Ontvangers toevoegen"
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-recipient-form.tsx
 msgid "Add recipients to your document"
 msgstr "Ontvangers aan je document toevoegen"
+
+#: packages/ui/primitives/signature-pad/signature-pad-dialog.tsx
+msgid "Add signature"
+msgstr ""
 
 #: apps/remix/app/components/embed/authoring/configure-document-recipients.tsx
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-recipient-form.tsx
@@ -1938,6 +1916,10 @@ msgstr "Elke bron"
 msgid "Any Status"
 msgstr "Elke status"
 
+#: apps/remix/app/components/general/document-signing/document-signing-disclosure.tsx
+msgid "Ao prosseguir com sua assinatura eletrônica, você reconhece e concorda que ela será utilizada para assinar o documento apresentado e terá validade jurídica equivalente à assinatura manuscrita. Ao concluir o processo de assinatura eletrônica, você confirma sua ciência e aceitação dessas condições."
+msgstr ""
+
 #: apps/remix/app/components/tables/admin-organisation-stats-table.tsx
 msgid "API"
 msgstr ""
@@ -2165,14 +2147,14 @@ msgstr "Details van auditlogboek"
 msgid "Audit Logs"
 msgstr "Auditlogs"
 
+#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
+msgid "Autenticação da ação do destinatário"
+msgstr ""
+
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
 #: packages/lib/server-only/pdf/render-certificate.ts
 msgid "Authentication Level"
 msgstr "Authenticatieniveau"
-
-#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
-msgid "Authentication Methods"
-msgstr ""
 
 #: apps/remix/app/routes/_unauthenticated+/o.$orgUrl.signin.tsx
 msgid "Authentication Portal Not Found"
@@ -2190,6 +2172,10 @@ msgstr "Authenticator-app"
 #: apps/remix/app/components/general/document-signing/document-signing-auto-sign.tsx
 msgid "Automatically sign fields"
 msgstr "Velden automatisch ondertekenen"
+
+#: apps/remix/app/components/general/document-signing/document-signing-complete-dialog.tsx
+msgid "Autorização de geolocalização"
+msgstr ""
 
 #: apps/remix/app/components/forms/avatar-image.tsx
 msgid "Avatar"
@@ -2417,10 +2403,6 @@ msgstr "Door 2FA in te schakelen, moet je elke keer dat je inlogt met e-mail en 
 msgid "By proceeding to use the electronic signature service provided by BchatSign, you affirm that you have read and understood this disclosure. You agree to all terms and conditions related to the use of electronic signatures and electronic transactions as outlined herein."
 msgstr ""
 
-#: apps/remix/app/components/general/document-signing/document-signing-disclosure.tsx
-msgid "By proceeding with your electronic signature, you acknowledge and consent that it will be used to sign the given document and holds the same legal validity as a handwritten signature. By completing the electronic signing process, you affirm your understanding and acceptance of these conditions."
-msgstr "Door verder te gaan met je elektronische handtekening erken en stem je ermee in dat deze wordt gebruikt om het betreffende document te ondertekenen en dat deze dezelfde juridische geldigheid heeft als een handgeschreven handtekening. Door het elektronische ondertekeningsproces te voltooien, bevestig je dat je deze voorwaarden begrijpt en accepteert."
-
 #: apps/remix/app/components/forms/signup.tsx
 msgid "By proceeding, you agree to our <0>Terms of Service</0> and <1>Privacy Policy</1>."
 msgstr "Door verder te gaan ga je akkoord met onze <0>Servicevoorwaarden</0> en <1>Privacyverklaring</1>."
@@ -2594,11 +2576,7 @@ msgid "Center"
 msgstr "Centreren"
 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
-msgid "Certificate"
-msgstr ""
-
-#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
-msgid "Certificate Position"
+msgid "Certificado"
 msgstr ""
 
 #: apps/remix/app/components/general/app-command-menu.tsx
@@ -2883,7 +2861,7 @@ msgid "Configure additional options and preferences"
 msgstr "Configureer aanvullende opties en voorkeuren"
 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
-msgid "Configure certificate settings and per-page security overlay."
+msgid "Configure as opções de segurança do documento."
 msgstr ""
 
 #: packages/lib/constants/template.ts
@@ -2917,8 +2895,8 @@ msgid "Configure general settings for the template."
 msgstr "Configureer algemene instellingen voor de sjabloon."
 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
-msgid "Configure security settings for the document."
-msgstr "Beveiligingsinstellingen voor het document configureren."
+msgid "Configure o certificado e o overlay de segurança em todas as páginas."
+msgstr ""
 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
 msgid "Configure signing reminder settings for the document."
@@ -3005,6 +2983,10 @@ msgstr "Contactgegevens"
 #: apps/remix/app/components/dialogs/organisation-create-dialog.tsx
 msgid "Contact sales here"
 msgstr "Neem hier contact op met sales"
+
+#: apps/remix/app/components/general/organisations/organisation-billing-banner.tsx
+msgid "Contact support"
+msgstr ""
 
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl.support.tsx
 msgid "Contact us"
@@ -3524,6 +3506,7 @@ msgstr "Gevarenzone"
 msgid "Dark Mode"
 msgstr "Donker modus"
 
+#: apps/remix/app/components/general/app-header.tsx
 #: apps/remix/app/components/general/app-sidebar.tsx
 #: apps/remix/app/routes/_authenticated+/dashboard.tsx
 msgid "Dashboard"
@@ -3837,7 +3820,6 @@ msgstr "Bestemming"
 
 #: apps/remix/app/components/general/webhook-logs-sheet.tsx
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
-#: packages/lib/server-only/pdf/render-certificate.ts
 msgid "Details"
 msgstr "Details"
 
@@ -3893,8 +3875,6 @@ msgstr "Ontwikkelaarsmodus"
 
 #: apps/remix/app/components/tables/settings-security-activity-table.tsx
 #: apps/remix/app/routes/_authenticated+/settings+/security.sessions.tsx
-#: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
-#: packages/lib/server-only/pdf/render-certificate.ts
 msgid "Device"
 msgstr "Apparaat"
 
@@ -4016,10 +3996,6 @@ msgstr "Discord"
 msgid "Display Name"
 msgstr "Weergavenaam"
 
-#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
-msgid "Display the certificate overlay summary on every page of the signed document."
-msgstr ""
-
 #: apps/remix/app/components/general/teams/team-email-usage.tsx
 msgid "Display your name and email in documents"
 msgstr "Toon je naam en e‑mail in documenten"
@@ -4073,7 +4049,6 @@ msgstr "Document \"{0}\" geannuleerd"
 msgid "Document & Recipients"
 msgstr "Document & ontvangers"
 
-#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
 #: packages/ui/components/document/document-global-auth-access-select.tsx
 #: packages/ui/primitives/document-flow/add-settings.tsx
 #: packages/ui/primitives/template-flow/add-template-settings.tsx
@@ -4287,6 +4262,10 @@ msgstr "Documentvoorkeuren"
 msgid "Document preferences updated"
 msgstr "Documentvoorkeuren bijgewerkt"
 
+#: apps/remix/app/routes/_recipient+/sign.$token+/complete.tsx
+msgid "Document processing failed"
+msgstr ""
+
 #: apps/remix/app/components/general/claim-limit-fields.tsx
 msgid "Document rate limits"
 msgstr "Documentsnelheidslimieten"
@@ -4393,7 +4372,6 @@ msgid "Document Viewed"
 msgstr "Document bekeken"
 
 #: apps/remix/app/components/general/admin-global-settings-section.tsx
-#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
 #: packages/ui/components/document/document-visibility-select.tsx
 #: packages/ui/primitives/document-flow/add-settings.tsx
 #: packages/ui/primitives/template-flow/add-template-settings.tsx
@@ -4422,6 +4400,7 @@ msgid "Documentos Recentes"
 msgstr ""
 
 #: apps/remix/app/components/general/app-command-menu.tsx
+#: apps/remix/app/components/general/app-header.tsx
 #: apps/remix/app/components/general/app-nav-desktop.tsx
 #: apps/remix/app/components/general/app-nav-mobile.tsx
 #: apps/remix/app/components/general/app-sidebar.tsx
@@ -4600,6 +4579,10 @@ msgstr "Tekenen"
 #: apps/remix/app/components/general/admin-global-settings-section.tsx
 msgid "Draw signature"
 msgstr "Handtekening tekenen"
+
+#: packages/ui/primitives/signature-pad/signature-pad-dialog.tsx
+msgid "Draw, type, or upload your signature."
+msgstr ""
 
 #: apps/remix/app/components/dialogs/envelope-item-edit-dialog.tsx
 msgid "Drop PDF here or click to select"
@@ -5343,6 +5326,14 @@ msgstr "Iedereen heeft ondertekend! U ontvangt een kopie van het ondertekende do
 msgid "Exceeded timeout"
 msgstr "Time‑out overschreden"
 
+#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
+msgid "Exibe o resumo do certificado em todas as páginas do documento assinado."
+msgstr ""
+
+#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
+msgid "Exibir overlay do certificado em todas as páginas"
+msgstr ""
+
 #: apps/remix/app/components/general/app-sidebar.tsx
 #: apps/remix/app/components/general/app-sidebar.tsx
 #: apps/remix/app/components/general/document-signing/document-signing-page-view-v2.tsx
@@ -5665,10 +5656,6 @@ msgstr "Map succesvol bijgewerkt"
 msgid "Font Size"
 msgstr "Lettergrootte"
 
-#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
-msgid "Footer"
-msgstr ""
-
 #: apps/remix/app/routes/_unauthenticated+/articles.signature-disclosure.tsx
 msgid "For any questions regarding this disclosure, electronic signatures, or any related process, please contact us at: <0>{SUPPORT_EMAIL}</0>"
 msgstr "Voor vragen over deze kennisgeving, elektronische handtekeningen of een gerelateerd proces kun je contact met ons opnemen via: <0>{SUPPORT_EMAIL}</0>"
@@ -5758,6 +5745,14 @@ msgstr "DKIM-records genereren"
 #: packages/ui/primitives/document-flow/add-subject.tsx
 msgid "Generate Links"
 msgstr "Links genereren"
+
+#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
+msgid "Geolocalizacao"
+msgstr ""
+
+#: apps/remix/app/components/general/document-signing/document-signing-complete-dialog.tsx
+msgid "Geolocalização desativada (ambiente de desenvolvimento)"
+msgstr ""
 
 #: packages/lib/constants/i18n.ts
 msgid "German"
@@ -5982,6 +5977,7 @@ msgstr "Licentiesleutel verbergen"
 
 #: apps/remix/app/components/dialogs/folder-move-dialog.tsx
 #: apps/remix/app/components/general/app-sidebar.tsx
+#: apps/remix/app/components/general/app-sidebar.tsx
 #: apps/remix/app/components/general/folder/folder-grid.tsx
 #: apps/remix/app/components/general/generic-error-layout.tsx
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/documents.folders._index.tsx
@@ -6040,6 +6036,14 @@ msgstr "Ik moet een kopie van dit document ontvangen"
 msgid "I am the owner of this document"
 msgstr "Ik ben de eigenaar van dit document"
 
+#: packages/ui/components/document/document-share-button.tsx
+msgid "I just sent a document in style with @documenso. Check it out!"
+msgstr ""
+
+#: packages/ui/components/document/document-share-button.tsx
+msgid "I just signed a document in style with @documenso. Check it out!"
+msgstr ""
+
 #: apps/remix/app/routes/_unauthenticated+/o.$orgUrl.signin.tsx
 msgid "I understand that I am providing my credentials to a 3rd party service configured by this organisation"
 msgstr "Ik begrijp dat ik mijn inloggegevens verstrek aan een externe dienst die door deze organisatie is ingesteld"
@@ -6066,10 +6070,6 @@ msgstr "Invoervelden identificeren"
 #: apps/remix/app/components/dialogs/ai-recipient-detection-dialog.tsx
 msgid "Identifying recipients"
 msgstr "Ontvangers identificeren"
-
-#: apps/remix/app/components/general/organisations/organisation-billing-banner.tsx
-msgid "If there is any issue with your subscription, please contact us at <0>{SUPPORT_EMAIL}</0>."
-msgstr "Als er een probleem is met je abonnement, neem dan contact met ons op via <0>{SUPPORT_EMAIL}</0>."
 
 #: apps/remix/app/routes/embed+/v2+/authoring+/_layout.tsx
 msgid "If you are using staging, ensure that you have set the host prop on the embedding component to the staging domain (https://stg-app.documenso.com)"
@@ -6325,9 +6325,7 @@ msgstr "Factuur"
 #: apps/remix/app/components/tables/internal-audit-log-table.tsx
 #: apps/remix/app/components/tables/settings-security-activity-table.tsx
 #: apps/remix/app/routes/_authenticated+/settings+/security.sessions.tsx
-#: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
 #: packages/lib/server-only/pdf/render-audit-logs.ts
-#: packages/lib/server-only/pdf/render-certificate.ts
 msgid "IP Address"
 msgstr "IP‑adres"
 
@@ -6411,7 +6409,6 @@ msgid "Label"
 msgstr "Label"
 
 #: apps/remix/app/components/embed/authoring/configure-document-advanced-settings.tsx
-#: apps/remix/app/components/general/app-sidebar.tsx
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
 #: apps/remix/app/components/general/menu-switcher.tsx
 #: apps/remix/app/components/general/org-menu-switcher.tsx
@@ -6510,13 +6507,17 @@ msgstr "Organisatie verlaten"
 msgid "Left"
 msgstr "Links"
 
-#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
-msgid "Left Margin"
-msgstr ""
-
 #: apps/remix/app/routes/_unauthenticated+/articles.signature-disclosure.tsx
 msgid "Legality of Electronic Signatures"
 msgstr "Rechtsgeldigheid van elektronische handtekeningen"
+
+#: apps/remix/app/components/general/document-signing/document-signing-disclosure.tsx
+msgid "Leia o "
+msgstr ""
+
+#: apps/remix/app/components/general/document-signing/document-signing-disclosure.tsx
+msgid "Leia o termo completo antes de concluir a assinatura."
+msgstr ""
 
 #: apps/remix/app/components/forms/editor/editor-field-generic-field-forms.tsx
 msgid "Letter spacing"
@@ -6637,10 +6638,6 @@ msgstr "Laden..."
 #: apps/remix/app/components/forms/document-preferences-form.tsx
 msgid "Local timezone"
 msgstr "Lokale tijdzone"
-
-#: packages/lib/server-only/pdf/render-certificate.ts
-msgid "Location"
-msgstr ""
 
 #: apps/remix/app/components/general/direct-template/direct-template-signing-auth-page.tsx
 #: apps/remix/app/components/general/document-signing/document-signing-auth-account.tsx
@@ -6833,6 +6830,14 @@ msgstr "Managers en hoger"
 msgid "Mapping fields to recipients"
 msgstr "Velden aan ontvangers koppelen"
 
+#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
+msgid "Margem direita"
+msgstr ""
+
+#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
+msgid "Margem esquerda"
+msgstr ""
+
 #: apps/remix/app/components/general/document-signing/document-signing-complete-dialog.tsx
 msgid "Mark as viewed"
 msgstr "Markeren als bekeken"
@@ -6934,6 +6939,10 @@ msgstr "Bericht"
 #: packages/ui/primitives/template-flow/add-template-settings.tsx
 msgid "Message <0>(Optional)</0>"
 msgstr "Bericht <0>(optioneel)</0>"
+
+#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
+msgid "Métodos de autenticação"
+msgstr ""
 
 #: apps/remix/app/components/forms/editor/editor-field-generic-field-forms.tsx
 msgid "Middle"
@@ -7510,12 +7519,20 @@ msgid "Open menu"
 msgstr "Menu openen"
 
 #: apps/remix/app/components/general/app-sidebar.tsx
-msgid "Open organisation menu"
+msgid "Open organisation settings"
+msgstr ""
+
+#: apps/remix/app/components/general/app-sidebar.tsx
+msgid "Open team settings"
 msgstr ""
 
 #: apps/remix/app/components/general/stack-avatars-with-tooltip.tsx
 msgid "Opened"
 msgstr "Geopend"
+
+#: apps/remix/app/components/general/organisations/organisation-billing-banner.tsx
+msgid "Opening..."
+msgstr ""
 
 #: apps/remix/app/components/forms/editor/editor-field-dropdown-form.tsx
 #: packages/ui/primitives/document-flow/field-items-advanced-settings/dropdown-field.tsx
@@ -7783,6 +7800,10 @@ msgctxt "Subscription status"
 msgid "Paid"
 msgstr "Betaald"
 
+#: apps/remix/app/components/general/document-signing/document-signing-complete-dialog.tsx
+msgid "Para reforçar a segurança e a trilha de auditoria da assinatura eletrônica, solicitaremos sua geolocalização. Ao clicar em Assinar, selecione Permitir no aviso do navegador para concluir o processo."
+msgstr ""
+
 #: apps/remix/app/components/dialogs/envelope-download-dialog.tsx
 msgctxt "Partially signed document (adjective)"
 msgid "Partial"
@@ -7875,7 +7896,6 @@ msgctxt "Subscription status"
 msgid "Past Due"
 msgstr "Achterstallig"
 
-#: apps/remix/app/components/general/organisations/organisation-billing-banner.tsx
 #: apps/remix/app/components/general/organisations/organisation-billing-banner.tsx
 msgid "Payment overdue"
 msgstr "Betaling achterstallig"
@@ -8229,6 +8249,10 @@ msgstr "Pos X:"
 msgid "Pos Y:"
 msgstr "Pos Y:"
 
+#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
+msgid "Posição do certificado"
+msgstr ""
+
 #: apps/remix/app/components/embed/embed-direct-template-client-page.tsx
 #: apps/remix/app/components/embed/embed-document-signing-page-v1.tsx
 #: apps/remix/app/components/general/document-signing/document-signing-mobile-widget.tsx
@@ -8371,6 +8395,10 @@ msgstr "Publieke sjabloon"
 msgid "Public templates are connected to your public profile. Any modifications to public templates will also appear in your public profile."
 msgstr "Openbare sjablonen zijn gekoppeld aan je openbare profiel. Alle wijzigingen aan openbare sjablonen worden ook zichtbaar in je openbare profiel."
 
+#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
+msgid "Quando ativado, o fluxo de assinatura solicitará a geolocalização para reforçar a trilha de auditoria do documento."
+msgstr ""
+
 #: apps/remix/app/components/general/envelope-editor/envelope-editor.tsx
 msgid "Quick Actions"
 msgstr "Snelle acties"
@@ -8427,10 +8455,6 @@ msgstr ""
 msgid "Read Status"
 msgstr "Leesstatus"
 
-#: apps/remix/app/components/general/document-signing/document-signing-disclosure.tsx
-msgid "Read the full <0>signature disclosure</0>."
-msgstr "Lees de volledige <0>kennisgeving elektronische handtekening</0>."
-
 #: apps/remix/app/components/dialogs/ai-field-detection-dialog.tsx
 #: apps/remix/app/components/dialogs/ai-recipient-detection-dialog.tsx
 msgid "Reading your document"
@@ -8441,7 +8465,6 @@ msgid "Ready"
 msgstr "Klaar"
 
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
-#: packages/lib/server-only/pdf/render-certificate.ts
 msgid "Reason"
 msgstr "Reden"
 
@@ -8495,7 +8518,6 @@ msgstr "Ontvanger"
 msgid "Recipient {0}"
 msgstr "Ontvanger {0}"
 
-#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
 #: packages/ui/components/recipient/recipient-action-auth-select.tsx
 #: packages/ui/primitives/document-flow/add-settings.tsx
 #: packages/ui/primitives/template-flow/add-template-settings.tsx
@@ -8678,7 +8700,6 @@ msgstr "Document weigeren"
 #: apps/remix/app/components/general/stack-avatars-with-tooltip.tsx
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
 #: packages/lib/constants/document.ts
-#: packages/lib/server-only/pdf/render-certificate.ts
 msgid "Rejected"
 msgstr "Geweigerd"
 
@@ -8954,10 +8975,6 @@ msgid "Resetting Password..."
 msgstr "Wachtwoord wordt gereset..."
 
 #: apps/remix/app/components/general/organisations/organisation-billing-banner.tsx
-msgid "Resolve"
-msgstr "Oplossen"
-
-#: apps/remix/app/components/general/organisations/organisation-billing-banner.tsx
 msgid "Resolve payment"
 msgstr "Betaling oplossen"
 
@@ -9051,13 +9068,13 @@ msgstr "Alle sessies intrekken"
 msgid "Right"
 msgstr "Rechts"
 
-#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
-msgid "Right Margin"
-msgstr ""
-
 #: apps/remix/app/components/forms/branding-preferences-form.tsx
 msgid "Ring"
 msgstr "Ring"
+
+#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
+msgid "Rodapé"
+msgstr ""
 
 #: apps/remix/app/components/dialogs/admin-organisation-member-update-dialog.tsx
 #: apps/remix/app/components/dialogs/organisation-member-update-dialog.tsx
@@ -9170,10 +9187,6 @@ msgstr "Zoek op organisatienaam"
 msgid "Search by organisation name, URL or ID"
 msgstr ""
 
-#: apps/remix/app/components/general/app-header.tsx
-msgid "Search documents, templates…"
-msgstr ""
-
 #: apps/remix/app/components/general/document/document-search.tsx
 msgid "Search documents..."
 msgstr "Documenten zoeken..."
@@ -9203,7 +9216,6 @@ msgstr "Zoek leden op naam of e-mail"
 msgid "Secret"
 msgstr "Geheim"
 
-#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
 #: apps/remix/app/components/general/settings-nav-desktop.tsx
 #: apps/remix/app/components/general/settings-nav-mobile.tsx
 #: apps/remix/app/routes/_authenticated+/settings+/security._index.tsx
@@ -9223,6 +9235,14 @@ msgstr "Documentatie bekijken"
 #: apps/remix/app/routes/_authenticated+/admin+/documents.$id.tsx
 msgid "See the background jobs tab for the status"
 msgstr "Zie het tabblad Achtergrondtaken voor de status"
+
+#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
+msgid "Segurança"
+msgstr ""
+
+#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
+msgid "Selecione os métodos de autenticação"
+msgstr ""
 
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl._index.tsx
 msgid "Selecione uma equipe para ver seu painel"
@@ -9299,7 +9319,6 @@ msgstr "Selecteer een organisatie om teams te bekijken"
 msgid "Select at least"
 msgstr "Selecteer minimaal"
 
-#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
 #: packages/ui/components/document/document-global-auth-action-select.tsx
 #: packages/ui/components/recipient/recipient-action-auth-select.tsx
 msgid "Select authentication methods"
@@ -9520,7 +9539,6 @@ msgstr "Verzenden..."
 #: apps/remix/app/components/general/webhook-logs-sheet.tsx
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.webhooks.$id._index.tsx
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
-#: packages/lib/server-only/pdf/render-certificate.ts
 msgid "Sent"
 msgstr "Verzonden"
 
@@ -9556,7 +9574,6 @@ msgstr ""
 #: apps/remix/app/components/general/app-command-menu.tsx
 #: apps/remix/app/components/general/app-nav-mobile.tsx
 #: apps/remix/app/components/general/app-nav-mobile.tsx
-#: apps/remix/app/components/general/app-sidebar.tsx
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
 #: apps/remix/app/components/general/envelope-editor/envelope-editor.tsx
 #: apps/remix/app/components/general/folder/folder-card.tsx
@@ -9573,14 +9590,18 @@ msgstr "Instellingen"
 msgid "Setup"
 msgstr "Instellen"
 
+#: apps/remix/app/components/general/document-signing/document-signing-complete-dialog.tsx
+msgid "Seu navegador não oferece suporte à geolocalização necessária para concluir a assinatura."
+msgstr ""
+
 #: apps/remix/app/components/general/document/document-page-view-dropdown.tsx
 #: apps/remix/app/components/tables/documents-table-action-dropdown.tsx
 #: packages/ui/components/document/document-share-button.tsx
 msgid "Share"
 msgstr "Delen"
 
-#: apps/remix/app/components/general/document-signing/document-signing-complete-dialog.tsx
-msgid "Share my geolocation on the signature certificate"
+#: packages/ui/components/document/document-share-button.tsx
+msgid "Share on X"
 msgstr ""
 
 #: apps/remix/app/components/general/document/document-page-view-dropdown.tsx
@@ -9596,6 +9617,10 @@ msgstr "Deel de link"
 msgid "Share your signing experience!"
 msgstr "Deel je ondertekeningservaring!"
 
+#: packages/ui/components/document/document-share-button.tsx
+msgid "sharing link preview"
+msgstr ""
+
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.public-profile.tsx
 msgid "Show"
 msgstr "Tonen"
@@ -9605,10 +9630,6 @@ msgstr "Tonen"
 #: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx
 msgid "Show advanced settings"
 msgstr "Geavanceerde instellingen weergeven"
-
-#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
-msgid "Show certificate overlay on all pages"
-msgstr ""
 
 #: apps/remix/app/components/general/admin-license-card.tsx
 msgid "Show license key"
@@ -9698,6 +9719,7 @@ msgstr "Inloggen"
 msgid "Sign in to your account"
 msgstr "Log in op je account"
 
+#: apps/remix/app/components/general/app-header.tsx
 #: apps/remix/app/components/general/app-nav-mobile.tsx
 #: apps/remix/app/components/general/app-sidebar.tsx
 #: apps/remix/app/components/general/menu-switcher.tsx
@@ -9757,7 +9779,6 @@ msgid "Signature"
 msgstr "Handtekening"
 
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
-#: packages/lib/server-only/pdf/render-certificate.ts
 msgid "Signature ID"
 msgstr "Handtekening‑ID"
 
@@ -9783,7 +9804,6 @@ msgstr "Verzamelde handtekeningen"
 
 #: apps/remix/app/components/general/document/document-page-view-recipients.tsx
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
-#: packages/lib/server-only/pdf/render-certificate.ts
 #: packages/ui/components/document/document-read-only-fields.tsx
 #: packages/ui/components/document/envelope-recipient-field-tooltip.tsx
 msgid "Signed"
@@ -9829,7 +9849,6 @@ msgid "Signing Certificate"
 msgstr "Ondertekeningscertificaat"
 
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
-#: packages/lib/server-only/pdf/render-certificate.ts
 msgid "Signing certificate provided by"
 msgstr "Ondertekeningscertificaat verstrekt door"
 
@@ -10165,10 +10184,6 @@ msgstr "Abonnementsclaim succesvol bijgewerkt."
 #: apps/remix/app/routes/_authenticated+/admin+/claims.tsx
 msgid "Subscription Claims"
 msgstr "Abonnementsclaims"
-
-#: apps/remix/app/components/general/organisations/organisation-billing-banner.tsx
-msgid "Subscription invalid"
-msgstr "Abonnement ongeldig"
 
 #: apps/remix/app/components/dialogs/admin-swap-subscription-dialog.tsx
 msgid "Subscription moved successfully"
@@ -10588,6 +10603,7 @@ msgid "Template uploaded"
 msgstr "Sjabloon geüpload"
 
 #: apps/remix/app/components/general/app-command-menu.tsx
+#: apps/remix/app/components/general/app-header.tsx
 #: apps/remix/app/components/general/app-nav-desktop.tsx
 #: apps/remix/app/components/general/app-nav-mobile.tsx
 #: apps/remix/app/components/general/app-sidebar.tsx
@@ -10607,6 +10623,11 @@ msgstr "Templates verwijderd"
 #: apps/remix/app/components/dialogs/envelopes-bulk-delete-dialog.tsx
 msgid "Templates partially deleted"
 msgstr "Templates gedeeltelijk verwijderd"
+
+#: apps/remix/app/components/general/document-signing/document-signing-disclosure.tsx
+#: apps/remix/app/components/general/document-signing/document-signing-disclosure.tsx
+msgid "Termo de Ciência e Consentimento para Uso de Assinatura Eletrônica"
+msgstr ""
 
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.webhooks.$id._index.tsx
 msgid "Test"
@@ -11608,6 +11629,7 @@ msgid "Toggle the switch to show your profile to the public."
 msgstr "Schakel de schakelaar om je profiel voor het publiek zichtbaar te maken."
 
 #: apps/remix/app/components/forms/2fa/enable-authenticator-app-dialog.tsx
+#: apps/remix/app/components/forms/signin.tsx
 msgid "Token"
 msgstr "Token"
 
@@ -11861,7 +11883,6 @@ msgstr "Ongedaan maken"
 #: apps/remix/app/routes/_authenticated+/settings+/security.sessions.tsx
 #: apps/remix/app/routes/_authenticated+/settings+/security.sessions.tsx
 #: apps/remix/app/routes/_authenticated+/settings+/security.sessions.tsx
-#: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
@@ -12317,16 +12338,8 @@ msgid "Verify Email"
 msgstr "E‑mail verifiëren"
 
 #: apps/remix/app/components/general/verify-email-banner.tsx
-msgid "Verify Now"
-msgstr "Nu verifiëren"
-
-#: apps/remix/app/components/general/verify-email-banner.tsx
-msgid "Verify your email address"
-msgstr "Verifieer je e‑mailadres"
-
-#: apps/remix/app/components/general/verify-email-banner.tsx
-msgid "Verify your email address to unlock all features."
-msgstr "Verifieer je e‑mailadres om alle functies te ontgrendelen."
+msgid "Verify your email address to unlock all features. We sent a confirmation email to <0>{email}</0>."
+msgstr ""
 
 #: apps/remix/app/components/general/envelope/envelope-upload-button.tsx
 msgid "Verify your email to upload documents."
@@ -12499,7 +12512,6 @@ msgstr ""
 #: apps/remix/app/components/embed/multisign/multi-sign-document-list.tsx
 #: apps/remix/app/components/general/document/document-page-view-recipients.tsx
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
-#: packages/lib/server-only/pdf/render-certificate.ts
 msgid "Viewed"
 msgstr "Bekeken"
 
@@ -12526,6 +12538,10 @@ msgstr "Viewers"
 msgctxt "Recipient role progressive verb"
 msgid "Viewing"
 msgstr "Bekijken"
+
+#: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
+msgid "Visibilidade do documento"
+msgstr ""
 
 #: apps/remix/app/components/dialogs/folder-update-dialog.tsx
 msgid "Visibility"
@@ -12585,6 +12601,10 @@ msgstr "We kunnen deze passkey momenteel niet verwijderen. Probeer het later opn
 #: apps/remix/app/components/tables/settings-security-passkey-table-actions.tsx
 msgid "We are unable to update this passkey at the moment. Please try again later."
 msgstr "We kunnen deze passkey momenteel niet bijwerken. Probeer het later opnieuw."
+
+#: apps/remix/app/routes/_recipient+/sign.$token+/complete.tsx
+msgid "We could not finish processing this document automatically. Please try again later or contact the document owner for support."
+msgstr ""
 
 #: apps/remix/app/components/general/envelope/envelope-drop-zone-wrapper.tsx
 #: apps/remix/app/components/general/envelope/envelope-upload-button.tsx
@@ -12956,10 +12976,6 @@ msgstr "We hebben e-mailverzendactiviteit op je account opgemerkt die de fair-us
 #: apps/remix/app/components/general/document-signing/access-auth-2fa-form.tsx
 msgid "We've sent a 6-digit verification code to your email. Please enter it below to complete the document."
 msgstr "We hebben een 6-cijferige verificatiecode naar uw e-mailadres gestuurd. Voer deze hieronder in om het document te voltooien."
-
-#: apps/remix/app/components/general/verify-email-banner.tsx
-msgid "We've sent a confirmation email to <0>{email}</0>. Please check your inbox and click the link in the email to verify your account."
-msgstr "We hebben een bevestigingsmail gestuurd naar <0>{email}</0>. Controleer je inbox en klik op de link in de e‑mail om je account te verifiëren."
 
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.webhooks._index.tsx
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.webhooks.$id._index.tsx
@@ -14115,10 +14131,6 @@ msgstr "Je wachtwoord is succesvol bijgewerkt."
 msgid "Your password has been updated."
 msgstr "Je wachtwoord is bijgewerkt."
 
-#: apps/remix/app/components/general/organisations/organisation-billing-banner.tsx
-msgid "Your payment is overdue. Please settle the payment to avoid any service disruptions."
-msgstr "Je betaling is te laat. Rond de betaling af om onderbreking van de dienstverlening te voorkomen."
-
 #: apps/remix/app/components/tables/user-organisations-table.tsx
 msgid "Your personal organisation"
 msgstr "Je persoonlijke organisatie"
@@ -14126,10 +14138,6 @@ msgstr "Je persoonlijke organisatie"
 #: apps/remix/app/components/dialogs/organisation-member-invite-dialog.tsx
 msgid "Your plan does not support inviting members. Please upgrade or your plan or contact sales at <0>{SUPPORT_EMAIL}</0> if you would like to discuss your options."
 msgstr "Je abonnement ondersteunt geen uitnodigingen van leden. Upgrade je abonnement of neem contact op met sales via <0>{SUPPORT_EMAIL}</0> om je opties te bespreken."
-
-#: apps/remix/app/components/general/organisations/organisation-billing-banner.tsx
-msgid "Your plan is no longer valid. Please subscribe to a new plan to continue using BchatSign."
-msgstr ""
 
 #: apps/remix/app/components/forms/profile.tsx
 msgid "Your profile has been updated successfully."

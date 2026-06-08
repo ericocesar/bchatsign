@@ -3,14 +3,13 @@ import { describe, expect, it } from 'vitest';
 import { getCertificateOverlayDrawCommands, getCertificateOverlayLines } from './certificate-summary-overlay';
 
 describe('certificate summary overlay', () => {
-  it('renders the hash on the second line', () => {
-    const lines = getCertificateOverlayLines({
-      pdfHash: 'abc123',
-    });
+  it('renders the three legal text lines', () => {
+    const lines = getCertificateOverlayLines();
 
     expect(lines).toEqual([
-      'Assinado eletronicamente com assinatura eletrônica avançada — Lei nº 14.063/2020 e MP nº 2.200-2/2001',
-      'Hash SHA-256: abc123',
+      'Assinado eletronicamente com assinatura eletrônica avançada — Lei nº 14.063/2020 e MP nº 2.200-2/2001.',
+      'Integridade verificável por Hash SHA-256, ID da assinatura, IP, dispositivo, data/hora e logs de auditoria.',
+      'Documento final selado digitalmente com certificado A1 ICP-Brasil.',
     ]);
   });
 
@@ -26,6 +25,7 @@ describe('certificate summary overlay', () => {
 
     expect(commands).toEqual([
       {
+        kind: 'text',
         text: 'Linha 1',
         x: 15,
         y: 15,
@@ -34,6 +34,7 @@ describe('certificate summary overlay', () => {
         },
       },
       {
+        kind: 'text',
         text: 'Linha 2',
         x: 25,
         y: 15,
@@ -44,7 +45,35 @@ describe('certificate summary overlay', () => {
     ]);
   });
 
-  it('keeps footer overlays centered while stacking the second line below the first', () => {
+  it('keeps footer overlays with text on left and qr on right when validation link is present', () => {
+    const commands = getCertificateOverlayDrawCommands({
+      position: 'FOOTER',
+      pageWidth: 200,
+      pageHeight: 300,
+      lines: ['Linha principal', 'Hash SHA-256: abc123'],
+      fontSize: 8,
+      getTextWidth: (text) => text.length * 4,
+      validationLink: 'https://example.com/verify/qr-token',
+    });
+
+    // First two commands should be text lines on the left
+    expect(commands[0]).toMatchObject({ kind: 'text', text: 'Linha principal', x: 15, y: 15 });
+    expect(commands[1]).toMatchObject({ kind: 'text', text: 'Hash SHA-256: abc123', x: 15, y: 25 });
+
+    // Third command should be the QR code to the right of the text
+    const qrCommand = commands[2];
+    expect(qrCommand).toMatchObject({ kind: 'qr', size: 32 });
+    expect((qrCommand as { kind: 'qr'; x: number; y: number; size: number }).x).toBeGreaterThan(15);
+
+    // Fourth command should be the vertical label
+    expect(commands[3]).toMatchObject({
+      kind: 'vertical-label',
+      text: 'BCHATSIGN',
+      fontSize: 6,
+    });
+  });
+
+  it('does not include qr commands when no validation link is provided', () => {
     const commands = getCertificateOverlayDrawCommands({
       position: 'FOOTER',
       pageWidth: 200,
@@ -54,9 +83,8 @@ describe('certificate summary overlay', () => {
       getTextWidth: (text) => text.length * 4,
     });
 
-    expect(commands[0]?.y).toBeGreaterThan(commands[1]?.y ?? 0);
-    expect(commands[0]?.x).toBe((200 - 'Linha principal'.length * 4) / 2);
-    expect(commands[1]?.x).toBe((200 - 'Hash SHA-256: abc123'.length * 4) / 2);
+    // Only text commands
+    expect(commands.every((cmd) => cmd.kind === 'text')).toBe(true);
   });
 
   it('anchors right overlays to the right margin instead of page center', () => {
@@ -71,6 +99,7 @@ describe('certificate summary overlay', () => {
 
     expect(commands).toEqual([
       {
+        kind: 'text',
         text: 'Linha 1',
         x: 562,
         y: 43,
@@ -79,6 +108,7 @@ describe('certificate summary overlay', () => {
         },
       },
       {
+        kind: 'text',
         text: 'Linha 2',
         x: 572,
         y: 43,
