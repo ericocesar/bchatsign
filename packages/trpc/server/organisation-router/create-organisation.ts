@@ -3,8 +3,10 @@ import { createCustomer } from '@documenso/ee/server-only/stripe/create-customer
 import { IS_BILLING_ENABLED, NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
 import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
 import { createOrganisation } from '@documenso/lib/server-only/organisation/create-organisation';
+import { createTeam } from '@documenso/lib/server-only/team/create-team';
 import { getSubscriptionClaim } from '@documenso/lib/server-only/subscription/get-subscription-claim';
 import { INTERNAL_CLAIM_ID } from '@documenso/lib/types/subscription';
+import { prefixedId } from '@documenso/lib/universal/id';
 import { generateStripeOrganisationCreateMetadata } from '@documenso/lib/utils/billing';
 import { prisma } from '@documenso/prisma';
 import { OrganisationType } from '@prisma/client';
@@ -68,14 +70,30 @@ export const createOrganisationRoute = authenticatedProcedure
 
     const freeSubscriptionClaim = await getSubscriptionClaim(INTERNAL_CLAIM_ID.FREE);
 
-    await createOrganisation({
+    const organisation = await createOrganisation({
       userId: user.id,
       name,
       type: organisationType,
       claim: freeSubscriptionClaim,
     });
 
+    await createTeam({
+      userId: user.id,
+      teamName: buildInitialTeamName(name),
+      teamUrl: prefixedId('team'),
+      organisationId: organisation.id,
+      inheritMembers: true,
+    });
+
     return {
       paymentRequired: false,
     };
   });
+
+const buildInitialTeamName = (organisationName: string) => {
+  const trimmedOrganisationName = organisationName.trim();
+  const maxOrganisationNameLength = 25;
+  const safeOrganisationName = trimmedOrganisationName.slice(0, maxOrganisationNameLength).trimEnd();
+
+  return `${safeOrganisationName} Team`;
+};

@@ -468,7 +468,9 @@ export const SignInForm = ({
                   name="totpCode"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Token</FormLabel>
+                      <FormLabel>
+                        <Trans>Token</Trans>
+                      </FormLabel>
                       <FormControl>
                         <PinInput {...field} value={field.value ?? ''} maxLength={6}>
                           {Array(6)

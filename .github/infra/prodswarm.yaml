@@ -1,0 +1,82 @@
+services:
+  bchatsign:
+    image: ghcr.io/ericocesar/bchatsign:${IMAGE_TAG}
+    volumes:
+      - /opt/documenso/cert.p12:/opt/documenso/cert.p12:ro
+    networks:
+      - interna
+      - externa
+    environment:
+    ## 🔐 Dados de Acesso
+      - PORT=3000
+      - NEXTAUTH_URL=https://assine.bchat.com.br
+      - NEXT_PUBLIC_WEBAPP_URL=https://assine.bchat.com.br
+      - NEXT_PUBLIC_MARKETING_URL=https://assine.bchat.com.br
+
+    ## 🔑 Secret Keys
+      - NEXTAUTH_SECRET=406a3eeedf053de2b4864eca26d1ae77
+      - NEXT_PRIVATE_ENCRYPTION_KEY=8f45a960f6985d0ce5045ff8442ba63a
+      - NEXT_PRIVATE_ENCRYPTION_SECONDARY_KEY=140f6140aba70e7d11fc7c3238d5ae20
+
+    ## ☁️ Dados do Google Cloud
+      #- NEXT_PRIVATE_GOOGLE_CLIENT_ID=
+      #- NEXT_PRIVATE_GOOGLE_CLIENT_SECRET=
+
+    ## 🐘 Dados Postgres
+      - NEXT_PRIVATE_DATABASE_URL=postgresql://postgres:D57A4D868ECCABF423F1F3D142F41@postgres:5432/bchatsign
+      - NEXT_PRIVATE_DIRECT_DATABASE_URL=postgresql://postgres:D57A4D868ECCABF423F1F3D142F41@postgres:5432/bchatsign
+
+    ## 🗄️ Configurações MinIO
+      - NEXT_PUBLIC_UPLOAD_TRANSPORT=s3
+      - NEXT_PRIVATE_UPLOAD_ENDPOINT=https://s3dev.webck.com.br
+      - NEXT_PRIVATE_UPLOAD_FORCE_PATH_STYLE=true
+      - NEXT_PRIVATE_UPLOAD_REGION=eu-south-1
+      - NEXT_PRIVATE_UPLOAD_BUCKET=bchatsign
+      - NEXT_PRIVATE_UPLOAD_ACCESS_KEY_ID=R2ZO1c1bz8LfHt20RH6G
+      - NEXT_PRIVATE_UPLOAD_SECRET_ACCESS_KEY=2TKzFW4M1PmxUIDamB2qRdn49F8YPogfjtBLPbRH
+
+    ## ✉️ Dados de SMTP
+      - NEXT_PRIVATE_SMTP_TRANSPORT=smtp-auth
+      - NEXT_PRIVATE_SMTP_FROM_ADDRESS=bchat@bolt360.com.br
+      - NEXT_PRIVATE_SMTP_USERNAME=bchat@bolt360.com.br
+      - NEXT_PRIVATE_SMTP_PASSWORD=Bolt36023@
+      - NEXT_PRIVATE_SMTP_HOST=mail.bolt360.com.br
+      - NEXT_PRIVATE_SMTP_PORT=465
+      - NEXT_PRIVATE_SMTP_SECURE=true
+      - NEXT_PRIVATE_SMTP_FROM_NAME=Suporte
+
+    ## ⚙️ Configurações
+      - NEXT_PUBLIC_DOCUMENT_SIZE_UPLOAD_LIMIT=10
+      - NEXT_PUBLIC_DISABLE_SIGNUP=false
+      - NEXT_PRIVATE_SIGNING_TRANSPORT=local
+      - NEXT_PRIVATE_SIGNING_LOCAL_FILE_PATH=/opt/documenso/cert.p12
+      - NEXT_PRIVATE_SIGNING_PASSPHRASE=Bolt36023@
+      # - NEXT_PUBLIC_DISABLE_GEOLOCATION=true 
+
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      resources:
+        limits:
+          cpus: "1"
+          memory: 1024M
+      labels:
+        - traefik.enable=true
+        - traefik.docker.network=interna
+        - traefik.http.routers.bchatsign.rule=Host(`assine.bchat.com.br`)
+        - traefik.http.services.bchatsign.loadbalancer.server.port=3000
+        - traefik.http.routers.bchatsign.service=bchatsign
+        - traefik.http.routers.bchatsign.tls.certresolver=letsencryptresolver
+        - traefik.http.routers.bchatsign.entrypoints=websecure
+        - traefik.http.routers.bchatsign.tls=true
+
+networks:
+  interna: 
+    name: interna
+    external: true
+  externa: 
+    name: externa 
+    external: true
