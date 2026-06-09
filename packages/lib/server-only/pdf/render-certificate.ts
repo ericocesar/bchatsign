@@ -237,15 +237,6 @@ const renderColumnOne = (options: RenderColumnOptions) => {
     columnGroup.add(nameText);
   }
 
-  const emailText = new Konva.Text({
-    y: columnGroup.getClientRect().height,
-    text: recipient.email,
-    fontSize: textBase,
-    ...textFontStyling,
-  });
-
-  columnGroup.add(emailText);
-
   const roleText = new Konva.Text({
     y: columnGroup.getClientRect().height + textSectionPadding,
     text: i18n._(RECIPIENT_ROLES_DESCRIPTION[recipient.role].roleName),
@@ -254,22 +245,13 @@ const renderColumnOne = (options: RenderColumnOptions) => {
   });
   columnGroup.add(roleText);
 
-  const authLabel = new Konva.Text({
+  const authAndEmailText = new Konva.Text({
     y: columnGroup.getClientRect().height + textSectionPadding,
-    text: `${i18n._(msg`Authentication Level`)}:`,
-    fontSize: textSm,
-    fontStyle: fontMedium,
-    ...textFontStyling,
-  });
-  columnGroup.add(authLabel);
-
-  const authValue = new Konva.Text({
-    y: columnGroup.getClientRect().height,
-    text: recipient.authLevel,
+    text: `${i18n._(msg`Authentication Level`)}: ${recipient.authLevel}  |  E-mail: ${recipient.email}`,
     fontSize: textSm,
     ...textFontStyling,
   });
-  columnGroup.add(authValue);
+  columnGroup.add(authAndEmailText);
 
   const sigSectionText = new Konva.Text({
     y: columnGroup.getClientRect().height + textSectionPadding,
@@ -280,13 +262,22 @@ const renderColumnOne = (options: RenderColumnOptions) => {
   });
   columnGroup.add(sigSectionText);
 
-  const baseLegalText = new Konva.Text({
+  const baseLegalLabel = new Konva.Text({
     y: columnGroup.getClientRect().height + textSectionPadding,
-    text: 'Base legal: Lei nº 14.063/2020 e art. 10, §2º, da MP nº 2.200-2/2001',
+    text: 'Base legal:',
+    fontSize: textSm,
+    fontStyle: fontMedium,
+    ...textFontStyling,
+  });
+  columnGroup.add(baseLegalLabel);
+
+  const baseLegalValue = new Konva.Text({
+    y: columnGroup.getClientRect().height,
+    text: 'Lei nº 14.063/2020 e art. 10, §2º, da MP nº 2.200-2/2001',
     fontSize: textSm,
     ...textFontStyling,
   });
-  columnGroup.add(baseLegalText);
+  columnGroup.add(baseLegalValue);
 
   return columnGroup;
 };
@@ -397,13 +388,30 @@ const renderColumnTwo = (options: RenderColumnOptions) => {
     column.add(purposeField);
 
     if (baseDocumentSha256) {
-      const hashField = renderLabelAndText({
-        label: 'Hash SHA-256 do documento base',
-        text: baseDocumentSha256,
-        width,
+      const hashLabel = new Konva.Text({
+        x: 0,
         y: column.getClientRect().height + 6,
+        text: 'Hash SHA-256 do documento base:',
+        fill: textMutedForeground,
+        width: columnWidth,
+        fontFamily: certificateFontFamily,
+        fontSize: textSm,
+        fontStyle: fontMedium,
+        lineHeight: 1.4,
       });
-      column.add(hashField);
+      column.add(hashLabel);
+
+      const hashValue = new Konva.Text({
+        x: 0,
+        y: column.getClientRect().height,
+        text: baseDocumentSha256,
+        fill: textMutedForeground,
+        fontFamily: certificateFontFamily,
+        fontSize: textSm,
+        width: columnWidth,
+        wrap: 'char',
+      });
+      column.add(hashValue);
     }
 
     // ID da assinatura
@@ -465,13 +473,30 @@ const renderColumnTwo = (options: RenderColumnOptions) => {
     column.add(purposeField);
 
     if (baseDocumentSha256) {
-      const hashField = renderLabelAndText({
-        label: 'Hash SHA-256 do documento base',
-        text: baseDocumentSha256,
-        width,
+      const hashLabel = new Konva.Text({
+        x: 0,
         y: column.getClientRect().height + 6,
+        text: 'Hash SHA-256 do documento base:',
+        fill: textMutedForeground,
+        width: columnWidth,
+        fontFamily: certificateFontFamily,
+        fontSize: textSm,
+        fontStyle: fontMedium,
+        lineHeight: 1.4,
       });
-      column.add(hashField);
+      column.add(hashLabel);
+
+      const hashValue = new Konva.Text({
+        x: 0,
+        y: column.getClientRect().height,
+        text: baseDocumentSha256,
+        fill: textMutedForeground,
+        fontFamily: certificateFontFamily,
+        fontSize: textSm,
+        width: columnWidth,
+        wrap: 'char',
+      });
+      column.add(hashValue);
     }
   }
 
@@ -834,7 +859,7 @@ const renderValidationBlock = (options: RenderValidationBlockOptions) => {
     fontFamily: certificateFontFamily,
     fontSize: textXs,
     fill: textMutedForeground,
-    width,
+    width: Math.floor(width / 2),
     wrap: 'char',
     lineHeight: 1.3,
     text:
