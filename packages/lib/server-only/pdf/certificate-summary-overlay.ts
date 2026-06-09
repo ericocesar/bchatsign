@@ -10,6 +10,12 @@ type GetCertificateOverlayDrawCommandsOptions = {
   validationLink?: string | null;
 };
 
+type GetCertificateOverlayLinesOptions = {
+  envelopeId: string;
+  signatureIds?: string[];
+  validationUrl?: string | null;
+};
+
 export type CertificateOverlayDrawCommand = {
   kind: 'text';
   text: string;
@@ -35,16 +41,30 @@ export type CertificateOverlayVerticalLabelCommand = {
   fontSize: number;
 };
 
-export type CertificateOverlayCommand = CertificateOverlayDrawCommand | CertificateOverlayQrCommand | CertificateOverlayVerticalLabelCommand;
+export type CertificateOverlayCommand =
+  | CertificateOverlayDrawCommand
+  | CertificateOverlayQrCommand
+  | CertificateOverlayVerticalLabelCommand;
 
 const CERTIFICATE_OVERLAY_MARGIN = 15;
 const CERTIFICATE_OVERLAY_LINE_GAP = 2;
 
-export const getCertificateOverlayLines = (): string[] => [
-  'Assinado eletronicamente com assinatura eletrônica avançada — Lei nº 14.063/2020 e MP nº 2.200-2/2001.',
-  'Integridade verificável por Hash SHA-256, ID da assinatura, IP, dispositivo, data/hora e logs de auditoria.',
-  'Documento final selado digitalmente com certificado A1 ICP-Brasil.',
-];
+export const getCertificateOverlayLines = ({
+  envelopeId,
+  signatureIds = [],
+  validationUrl,
+}: GetCertificateOverlayLinesOptions): string[] => {
+  const signatureText =
+    signatureIds.length === 1
+      ? `ID da Assinatura: ${signatureIds[0]}`
+      : `IDs das Assinaturas: ${signatureIds.length > 0 ? signatureIds.join(', ') : 'N/A'}`;
+
+  return [
+    'Assinado eletronicamente com assinatura eletrônica avançada — Lei nº 14.063/2020 e MP nº 2.200-2/2001.',
+    `ID do Envelope: ${envelopeId} | ${signatureText}`,
+    `Documento final selado digitalmente com certificado A1 ICP-Brasil.${validationUrl ? ` Valide em: ${validationUrl}` : ''}`,
+  ];
+};
 
 export const getCertificateOverlayDrawCommands = ({
   position,

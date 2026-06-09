@@ -26,6 +26,15 @@ export const links: Route.LinksFunction = () => [
   { rel: 'stylesheet', href: auditLogStylesheet },
 ];
 
+const EVIDENCE_TIME_ZONE = 'America/Recife';
+
+const formatEvidenceDateTime = (date: Date) => {
+  const localDateTime = DateTime.fromJSDate(date).setZone(EVIDENCE_TIME_ZONE).setLocale(APP_I18N_OPTIONS.defaultLocale);
+  const utcDateTime = DateTime.fromJSDate(date).toUTC();
+
+  return `${localDateTime.toFormat("dd/MM/yyyy 'às' HH:mm:ss")} — ${EVIDENCE_TIME_ZONE}\nUTC: ${utcDateTime.toFormat('yyyy-MM-dd HH:mm:ss')} UTC`;
+};
+
 export async function loader({ request }: Route.LoaderArgs) {
   const d = new URL(request.url).searchParams.get('d');
 
@@ -143,21 +152,13 @@ export default function AuditLog({ loaderData }: Route.ComponentProps) {
           <p>
             <span className="font-medium">{_(msg`Created At`)}</span>
 
-            <span className="mt-1 block">
-              {DateTime.fromJSDate(document.createdAt)
-                .setLocale(APP_I18N_OPTIONS.defaultLocale)
-                .toFormat('yyyy-MM-dd hh:mm:ss a (ZZZZ)')}
-            </span>
+            <span className="mt-1 block whitespace-pre-line">{formatEvidenceDateTime(document.createdAt)}</span>
           </p>
 
           <p>
             <span className="font-medium">{_(msg`Last Updated`)}</span>
 
-            <span className="mt-1 block">
-              {DateTime.fromJSDate(document.updatedAt)
-                .setLocale(APP_I18N_OPTIONS.defaultLocale)
-                .toFormat('yyyy-MM-dd hh:mm:ss a (ZZZZ)')}
-            </span>
+            <span className="mt-1 block whitespace-pre-line">{formatEvidenceDateTime(document.updatedAt)}</span>
           </p>
 
           <p>

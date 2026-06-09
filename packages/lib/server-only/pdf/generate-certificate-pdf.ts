@@ -36,7 +36,8 @@ export type GenerateCertificatePdfOptions = {
   language?: string;
   pageWidth: number;
   pageHeight: number;
-  pdfHash?: string;
+  baseDocumentSha256?: string;
+  sealedPdfSha256?: string;
 };
 
 type CertificateCompletedAuditLog = Pick<TDocumentAuditLogBaseSchema, 'createdAt' | 'ipAddress' | 'userAgent'> & {
@@ -65,7 +66,17 @@ export const mapCompletedAuditLogToCertificateLog = (
 };
 
 export const generateCertificatePdf = async (options: GenerateCertificatePdfOptions) => {
-  const { envelope, envelopeOwner, recipients, fields, language, pageWidth, pageHeight, pdfHash } = options;
+  const {
+    envelope,
+    envelopeOwner,
+    recipients,
+    fields,
+    language,
+    pageWidth,
+    pageHeight,
+    baseDocumentSha256,
+    sealedPdfSha256,
+  } = options;
 
   const documentLanguage = ZSupportedLanguageCodeSchema.parse(language);
 
@@ -171,7 +182,8 @@ export const generateCertificatePdf = async (options: GenerateCertificatePdfOpti
     pageWidth,
     pageHeight,
     i18n,
-    pdfHash,
+    baseDocumentSha256,
+    sealedPdfSha256,
   };
 
   const certificatePages = await renderCertificate(payload);

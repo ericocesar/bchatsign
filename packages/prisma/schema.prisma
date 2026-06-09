@@ -508,6 +508,20 @@ model EnvelopeItem {
 
   order Int
 
+  baseDocumentSha256 String? @map("base_document_sha256")
+  sealedPdfSha256    String? @map("sealed_pdf_sha256")
+
+  sealedAt       DateTime? @map("sealed_at")
+  sealedTimezone String?   @map("sealed_timezone")
+
+  sealingCertificateSubject      String?   @map("sealing_certificate_subject")
+  sealingCertificateIssuer       String?   @map("sealing_certificate_issuer")
+  sealingCertificateSerialNumber String?   @map("sealing_certificate_serial_number")
+  sealingCertificateValidFrom    DateTime? @map("sealing_certificate_valid_from")
+  sealingCertificateValidTo      DateTime? @map("sealing_certificate_valid_to")
+  sealingSignatureStatus         String?   @map("sealing_signature_status")
+  sealingCertificateChainStatus  String?   @map("sealing_certificate_chain_status")
+
   documentDataId String
   documentData   DocumentData @relation(fields: [documentDataId], references: [id], onDelete: Cascade)
 

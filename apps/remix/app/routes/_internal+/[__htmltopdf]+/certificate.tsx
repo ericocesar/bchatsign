@@ -32,6 +32,15 @@ const FRIENDLY_SIGNING_REASONS = {
   ...RECIPIENT_ROLE_SIGNING_REASONS,
 };
 
+const EVIDENCE_TIME_ZONE = 'America/Recife';
+
+const formatEvidenceDateTime = (date: Date) => {
+  const localDateTime = DateTime.fromJSDate(date).setZone(EVIDENCE_TIME_ZONE).setLocale(APP_I18N_OPTIONS.defaultLocale);
+  const utcDateTime = DateTime.fromJSDate(date).toUTC();
+
+  return `${localDateTime.toFormat("dd/MM/yyyy 'às' HH:mm:ss")} — ${EVIDENCE_TIME_ZONE}\nUTC: ${utcDateTime.toFormat('yyyy-MM-dd HH:mm:ss')} UTC`;
+};
+
 export async function loader({ request }: Route.LoaderArgs) {
   const d = new URL(request.url).searchParams.get('d');
 
@@ -290,32 +299,24 @@ export default function SigningCertificate({ loaderData }: Route.ComponentProps)
                     <TableRow key={`${i}-details`} className="print:break-inside-avoid">
                       <TableCell truncate={false} colSpan={2} className="align-top">
                         <div className="space-y-1">
-                          <p className="font-bold text-black">
-                            {_(msg`Details`)}
-                          </p>
+                          <p className="font-bold text-black">{_(msg`Details`)}</p>
 
                           <p className="text-black text-sm print:text-xs">
                             <span className="font-medium">{_(msg`Sent`)}:</span>{' '}
-                            <span className="inline-block">
+                            <span className="inline-block whitespace-pre-line">
                               {logs.EMAIL_SENT[0]
-                                ? DateTime.fromJSDate(logs.EMAIL_SENT[0].createdAt)
-                                    .setLocale(APP_I18N_OPTIONS.defaultLocale)
-                                    .toFormat('yyyy-MM-dd hh:mm:ss a (ZZZZ)')
+                                ? formatEvidenceDateTime(logs.EMAIL_SENT[0].createdAt)
                                 : logs.DOCUMENT_SENT[0]
-                                  ? DateTime.fromJSDate(logs.DOCUMENT_SENT[0].createdAt)
-                                      .setLocale(APP_I18N_OPTIONS.defaultLocale)
-                                      .toFormat('yyyy-MM-dd hh:mm:ss a (ZZZZ)')
+                                  ? formatEvidenceDateTime(logs.DOCUMENT_SENT[0].createdAt)
                                   : _(msg`Unknown`)}
                             </span>
                           </p>
 
                           <p className="text-black text-sm print:text-xs">
                             <span className="font-medium">{_(msg`Viewed`)}:</span>{' '}
-                            <span className="inline-block">
+                            <span className="inline-block whitespace-pre-line">
                               {logs.DOCUMENT_OPENED[0]
-                                ? DateTime.fromJSDate(logs.DOCUMENT_OPENED[0].createdAt)
-                                    .setLocale(APP_I18N_OPTIONS.defaultLocale)
-                                    .toFormat('yyyy-MM-dd hh:mm:ss a (ZZZZ)')
+                                ? formatEvidenceDateTime(logs.DOCUMENT_OPENED[0].createdAt)
                                 : _(msg`Unknown`)}
                             </span>
                           </p>
@@ -323,22 +324,18 @@ export default function SigningCertificate({ loaderData }: Route.ComponentProps)
                           {logs.DOCUMENT_RECIPIENT_REJECTED[0] ? (
                             <p className="text-black text-sm print:text-xs">
                               <span className="font-medium">{_(msg`Rejected`)}:</span>{' '}
-                              <span className="inline-block">
+                              <span className="inline-block whitespace-pre-line">
                                 {logs.DOCUMENT_RECIPIENT_REJECTED[0]
-                                  ? DateTime.fromJSDate(logs.DOCUMENT_RECIPIENT_REJECTED[0].createdAt)
-                                      .setLocale(APP_I18N_OPTIONS.defaultLocale)
-                                      .toFormat('yyyy-MM-dd hh:mm:ss a (ZZZZ)')
+                                  ? formatEvidenceDateTime(logs.DOCUMENT_RECIPIENT_REJECTED[0].createdAt)
                                   : _(msg`Unknown`)}
                               </span>
                             </p>
                           ) : (
                             <p className="text-black text-sm print:text-xs">
                               <span className="font-medium">{_(msg`Signed`)}:</span>{' '}
-                              <span className="inline-block">
+                              <span className="inline-block whitespace-pre-line">
                                 {logs.DOCUMENT_RECIPIENT_COMPLETED[0]
-                                  ? DateTime.fromJSDate(logs.DOCUMENT_RECIPIENT_COMPLETED[0].createdAt)
-                                      .setLocale(APP_I18N_OPTIONS.defaultLocale)
-                                      .toFormat('yyyy-MM-dd hh:mm:ss a (ZZZZ)')
+                                  ? formatEvidenceDateTime(logs.DOCUMENT_RECIPIENT_COMPLETED[0].createdAt)
                                   : _(msg`Unknown`)}
                               </span>
                             </p>

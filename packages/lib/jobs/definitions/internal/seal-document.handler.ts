@@ -1,7 +1,7 @@
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
-import { PDFDocument, degrees } from '@cantoo/pdf-lib';
+import { degrees, PDFDocument } from '@cantoo/pdf-lib';
 import { addRejectionStampToPdf } from '@documenso/lib/server-only/pdf/add-rejection-stamp-to-pdf';
 import { generateAuditLogPdf } from '@documenso/lib/server-only/pdf/generate-audit-log-pdf';
 import { generateCertificatePdf } from '@documenso/lib/server-only/pdf/generate-certificate-pdf';
@@ -11,21 +11,25 @@ import { prisma } from '@documenso/prisma';
 import { signPdf } from '@documenso/signing';
 import { PDF, rgb } from '@libpdf/core';
 import type { DocumentData, Envelope, EnvelopeItem, Field } from '@prisma/client';
-import { DocumentStatus, EnvelopeType, RecipientRole, SigningStatus, WebhookTriggerEvents } from '@prisma/client';
+import {
+  DocumentStatus,
+  EnvelopeType,
+  FieldType,
+  RecipientRole,
+  SigningStatus,
+  WebhookTriggerEvents,
+} from '@prisma/client';
 import { nanoid } from 'nanoid';
 import { groupBy } from 'remeda';
-
-import { NEXT_PRIVATE_USE_PLAYWRIGHT_PDF, NEXT_PUBLIC_WEBAPP_URL } from '../../../constants/app';
+import { renderSVG } from 'uqr';
+import { NEXT_PUBLIC_WEBAPP_URL } from '../../../constants/app';
 import { AppError, AppErrorCode } from '../../../errors/app-error';
-import { getAuditLogsPdf } from '../../../server-only/htmltopdf/get-audit-logs-pdf';
-import { getCertificatePdf } from '../../../server-only/htmltopdf/get-certificate-pdf';
 import type { CertificateOverlayCommand } from '../../../server-only/pdf/certificate-summary-overlay';
 import {
   getCertificateOverlayDrawCommands,
   getCertificateOverlayLines,
 } from '../../../server-only/pdf/certificate-summary-overlay';
-import { svgToPng } from '../../../utils/images/svg-to-png';
-import { renderSVG } from 'uqr';
+import { EVIDENCE_TIME_ZONE } from '../../../server-only/pdf/format-evidence-date-time';
 import { insertFieldInPDFV1 } from '../../../server-only/pdf/insert-field-in-pdf-v1';
 import { insertFieldInPDFV2 } from '../../../server-only/pdf/insert-field-in-pdf-v2';
 import { legacy_insertFieldInPDF } from '../../../server-only/pdf/legacy-insert-field-in-pdf';
@@ -40,6 +44,7 @@ import { fieldsContainUnsignedRequiredField } from '../../../utils/advanced-fiel
 import { isDocumentCompleted } from '../../../utils/document';
 import { createDocumentAuditLogData } from '../../../utils/document-audit-logs';
 import { mapDocumentIdToSecondaryId } from '../../../utils/envelope';
+import { svgToPng } from '../../../utils/images/svg-to-png';
 import { jobs } from '../../client';
 import type { JobRunIO } from '../../client/_internal/job';
 import type { TSealDocumentJobDefinition } from './seal-document';
@@ -184,12 +189,10 @@ export const run = async ({ payload, io }: { payload: TSealDocumentJobDefinition
       }),
     );
 
-    const usePlaywrightPdf = NEXT_PRIVATE_USE_PLAYWRIGHT_PDF();
-
     const needsCertificate = settings.includeSigningCertificate;
     const needsAuditLog = settings.includeAuditLog;
 
-    const newDocumentData: Array<{ oldDocumentDataId: string; newDocumentDataId: string }> = [];
+    const newDocumentData: DecoratedDocumentData[] = [];
 
     for (const { envelopeItem, pdfData } of prefetchedItems) {
       const envelopeItemFields = envelope.envelopeItems.find((item) => item.id === envelopeItem.id)?.field;
@@ -198,10 +201,8 @@ export const run = async ({ payload, io }: { payload: TSealDocumentJobDefinition
         throw new Error(`Envelope item fields not found for envelope item ${envelopeItem.id}`);
       }
 
-      const pdfHash = crypto.createHash('sha256').update(pdfData).digest('hex');
-
-      let certificateDoc: PDF | null = null;
-      let auditLogDoc: PDF | null = null;
+      let makeCertificatePdf: DecorateAndSignPdfOptions['makeCertificatePdf'] = null;
+      let makeAuditLogPdf: DecorateAndSignPdfOptions['makeAuditLogPdf'] = null;
 
       if (needsCertificate || needsAuditLog) {
         const pdfDoc = await PDF.load(pdfData);
@@ -217,7 +218,7 @@ export const run = async ({ payload, io }: { payload: TSealDocumentJobDefinition
           } as TDocumentAuditLog,
         ];
 
-        const certificatePayload = {
+        const certificatePayloadBase = {
           envelope: {
             ...envelope,
             status: finalEnvelopeStatus,
@@ -233,29 +234,18 @@ export const run = async ({ payload, io }: { payload: TSealDocumentJobDefinition
           pageWidth,
           pageHeight,
           additionalAuditLogs,
-          pdfHash,
         };
 
-        const makeCertificatePdf = async () =>
-          usePlaywrightPdf
-            ? getCertificatePdf({
-                documentId,
-                language: envelope.documentMeta.language,
-              }).then(async (buffer) => PDF.load(buffer))
-            : generateCertificatePdf(certificatePayload);
+        makeCertificatePdf = needsCertificate
+          ? async ({ baseDocumentSha256, sealedPdfSha256 }) =>
+              generateCertificatePdf({
+                ...certificatePayloadBase,
+                baseDocumentSha256,
+                sealedPdfSha256,
+              })
+          : null;
 
-        const makeAuditLogPdf = async () =>
-          usePlaywrightPdf
-            ? getAuditLogsPdf({
-                documentId,
-                language: envelope.documentMeta.language,
-              }).then(async (buffer) => PDF.load(buffer))
-            : generateAuditLogPdf(certificatePayload);
-
-        [certificateDoc, auditLogDoc] = await Promise.all([
-          needsCertificate ? makeCertificatePdf() : null,
-          needsAuditLog ? makeAuditLogPdf() : null,
-        ]);
+        makeAuditLogPdf = needsAuditLog ? async () => generateAuditLogPdf(certificatePayloadBase) : null;
       }
 
       const result = await decorateAndSignPdf({
@@ -273,16 +263,29 @@ export const run = async ({ payload, io }: { payload: TSealDocumentJobDefinition
         isRejected,
         rejectionReason,
         pdfData,
-        certificateDoc,
-        auditLogDoc,
-        pdfHash,
+        makeCertificatePdf,
+        makeAuditLogPdf,
       });
 
       newDocumentData.push(result);
     }
 
     await prisma.$transaction(async (tx) => {
-      for (const { oldDocumentDataId, newDocumentDataId } of newDocumentData) {
+      for (const {
+        oldDocumentDataId,
+        newDocumentDataId,
+        baseDocumentSha256,
+        sealedPdfSha256,
+        sealedAt,
+        sealedTimezone,
+        sealingCertificateSubject,
+        sealingCertificateIssuer,
+        sealingCertificateSerialNumber,
+        sealingCertificateValidFrom,
+        sealingCertificateValidTo,
+        sealingSignatureStatus,
+        sealingCertificateChainStatus,
+      } of newDocumentData) {
         await tx.envelopeItem.update({
           where: {
             envelopeId: envelope.id,
@@ -290,6 +293,17 @@ export const run = async ({ payload, io }: { payload: TSealDocumentJobDefinition
           },
           data: {
             documentDataId: newDocumentDataId,
+            baseDocumentSha256,
+            sealedPdfSha256,
+            sealedAt,
+            sealedTimezone,
+            sealingCertificateSubject,
+            sealingCertificateIssuer,
+            sealingCertificateSerialNumber,
+            sealingCertificateValidFrom,
+            sealingCertificateValidTo,
+            sealingSignatureStatus,
+            sealingCertificateChainStatus,
           },
         });
       }
@@ -353,16 +367,37 @@ export const run = async ({ payload, io }: { payload: TSealDocumentJobDefinition
 type DecorateAndSignPdfOptions = {
   envelope: Pick<
     Envelope,
-    'id' | 'title' | 'useLegacyFieldInsertion' | 'internalVersion' | 'certificateAllPages' | 'certificatePosition' | 'qrToken'
+    | 'id'
+    | 'title'
+    | 'useLegacyFieldInsertion'
+    | 'internalVersion'
+    | 'certificateAllPages'
+    | 'certificatePosition'
+    | 'qrToken'
   >;
   envelopeItem: EnvelopeItem & { documentData: DocumentData };
   envelopeItemFields: Field[];
   isRejected: boolean;
   rejectionReason: string;
   pdfData: Uint8Array;
-  certificateDoc: PDF | null;
-  auditLogDoc: PDF | null;
-  pdfHash: string;
+  makeCertificatePdf: ((hashes: { baseDocumentSha256: string; sealedPdfSha256?: string }) => Promise<PDF>) | null;
+  makeAuditLogPdf: (() => Promise<PDF>) | null;
+};
+
+type DecoratedDocumentData = {
+  oldDocumentDataId: string;
+  newDocumentDataId: string;
+  baseDocumentSha256: string;
+  sealedPdfSha256: string;
+  sealedAt: Date;
+  sealedTimezone: string;
+  sealingCertificateSubject: string | null;
+  sealingCertificateIssuer: string | null;
+  sealingCertificateSerialNumber: string | null;
+  sealingCertificateValidFrom: Date | null;
+  sealingCertificateValidTo: Date | null;
+  sealingSignatureStatus: string;
+  sealingCertificateChainStatus: string;
 };
 
 /**
@@ -375,10 +410,9 @@ const decorateAndSignPdf = async ({
   isRejected,
   rejectionReason,
   pdfData,
-  certificateDoc,
-  auditLogDoc,
-  pdfHash: _pdfHash,
-}: DecorateAndSignPdfOptions) => {
+  makeCertificatePdf,
+  makeAuditLogPdf,
+}: DecorateAndSignPdfOptions): Promise<DecoratedDocumentData> => {
   let pdfDoc = await PDF.load(pdfData);
 
   // Normalize and flatten layers that could cause issues with the signature
@@ -399,10 +433,19 @@ const decorateAndSignPdf = async ({
 
     const fontSize = 8;
     const overlayColor = rgb(100 / 255, 116 / 255, 139 / 255); // #64748B
-    const overlayLines = getCertificateOverlayLines();
 
     const qrToken = envelope.qrToken ?? null;
     const validationLink = qrToken ? `${NEXT_PUBLIC_WEBAPP_URL()}/share/${qrToken}` : null;
+    const signatureIds = envelopeItemFields
+      .filter(
+        (field) => field.inserted && (field.type === FieldType.SIGNATURE || field.type === FieldType.FREE_SIGNATURE),
+      )
+      .map((field) => field.secondaryId.toUpperCase());
+    const overlayLines = getCertificateOverlayLines({
+      envelopeId: envelope.id,
+      signatureIds,
+      validationUrl: validationLink,
+    });
 
     // Generate QR code image once (reused across all pages)
     let qrImageBuffer: Uint8Array | null = null;
@@ -454,20 +497,6 @@ const decorateAndSignPdf = async ({
         }
       }
     }
-  }
-
-  if (certificateDoc) {
-    await pdfDoc.copyPagesFrom(
-      certificateDoc,
-      Array.from({ length: certificateDoc.getPageCount() }, (_, index) => index),
-    );
-  }
-
-  if (auditLogDoc) {
-    await pdfDoc.copyPagesFrom(
-      auditLogDoc,
-      Array.from({ length: auditLogDoc.getPageCount() }, (_, index) => index),
-    );
   }
 
   // Handle V1 and legacy insertions.
@@ -549,9 +578,36 @@ const decorateAndSignPdf = async ({
   // create native arcoFields
   pdfDoc.flattenAll();
 
+  const baseDocumentBytes = await pdfDoc.save({ useXRefStream: true });
+  const baseDocumentSha256 = crypto.createHash('sha256').update(baseDocumentBytes).digest('hex');
+  pdfDoc = await PDF.load(baseDocumentBytes);
+
+  // The post-seal hash cannot be embedded before signing because writing it into the PDF changes that hash.
+  const [certificateDoc, auditLogDoc] = await Promise.all([
+    makeCertificatePdf ? makeCertificatePdf({ baseDocumentSha256 }) : null,
+    makeAuditLogPdf ? makeAuditLogPdf() : null,
+  ]);
+
+  if (certificateDoc) {
+    await pdfDoc.copyPagesFrom(
+      certificateDoc,
+      Array.from({ length: certificateDoc.getPageCount() }, (_, index) => index),
+    );
+  }
+
+  if (auditLogDoc) {
+    await pdfDoc.copyPagesFrom(
+      auditLogDoc,
+      Array.from({ length: auditLogDoc.getPageCount() }, (_, index) => index),
+    );
+  }
+
   pdfDoc = await PDF.load(await pdfDoc.save({ useXRefStream: true }));
 
-  const pdfBytes = await signPdf({ pdf: pdfDoc });
+  const signedPdf = await signPdf({ pdf: pdfDoc });
+  const pdfBytes = signedPdf.bytes;
+  const sealedPdfSha256 = crypto.createHash('sha256').update(pdfBytes).digest('hex');
+  const sealedAt = new Date();
 
   const { name } = path.parse(envelopeItem.title);
 
@@ -570,5 +626,16 @@ const decorateAndSignPdf = async ({
   return {
     oldDocumentDataId: envelopeItem.documentData.id,
     newDocumentDataId: newDocumentData.id,
+    baseDocumentSha256,
+    sealedPdfSha256,
+    sealedAt,
+    sealedTimezone: EVIDENCE_TIME_ZONE,
+    sealingCertificateSubject: signedPdf.certificateMetadata.subject,
+    sealingCertificateIssuer: signedPdf.certificateMetadata.issuer,
+    sealingCertificateSerialNumber: signedPdf.certificateMetadata.serialNumber,
+    sealingCertificateValidFrom: signedPdf.certificateMetadata.validFrom,
+    sealingCertificateValidTo: signedPdf.certificateMetadata.validTo,
+    sealingSignatureStatus: signedPdf.certificateMetadata.signatureStatus,
+    sealingCertificateChainStatus: signedPdf.certificateMetadata.certificateChainStatus,
   };
 };

@@ -4,18 +4,17 @@ import type { DocumentMeta, Envelope, RecipientRole } from '@prisma/client';
 import Konva from 'konva';
 import 'konva/skia-backend';
 import fs from 'node:fs';
-import { DateTime } from 'luxon';
 import type { Canvas } from 'skia-canvas';
 import { Image as SkiaImage } from 'skia-canvas';
 import { match, P } from 'ts-pattern';
 import { UAParser } from 'ua-parser-js';
 
 import { DOCUMENT_STATUS } from '../../constants/document';
-import { APP_I18N_OPTIONS } from '../../constants/i18n';
 import { RECIPIENT_ROLES_DESCRIPTION } from '../../constants/recipient-roles';
 import type { TDocumentAuditLog } from '../../types/document-audit-logs';
 import { DOCUMENT_AUDIT_LOG_TYPE } from '../../types/document-audit-logs';
 import { formatDocumentAuditLogAction } from '../../utils/document-audit-logs';
+import { formatEvidenceDateTime } from './format-evidence-date-time';
 import { ensureFontLibrary } from './helpers';
 import { resolvePackageAssetPath } from './resolve-package-asset-path';
 
@@ -236,12 +235,12 @@ const renderOverviewCard = (options: RenderOverviewCardOptions) => {
 
   const createdAtLabel = renderOverviewCardLabels({
     label: i18n._(msg`Created At`),
-    text: formatAuditLogDateTime(envelope.createdAt),
+    text: formatEvidenceDateTime(envelope.createdAt),
     width: columnWidth,
   });
   const lastUpdatedLabel = renderOverviewCardLabels({
     label: i18n._(msg`Last Updated`),
-    text: formatAuditLogDateTime(envelope.updatedAt),
+    text: formatEvidenceDateTime(envelope.updatedAt),
     width: columnWidth,
     groupX: columnWidth + columnSpacing,
   });
@@ -342,7 +341,7 @@ const renderRow = (options: RenderRowOptions) => {
   const auditLogTimestampText = new Konva.Text({
     x: columnWidth + columnSpacing,
     width: columnWidth,
-    text: formatAuditLogDateTime(auditLog.createdAt),
+    text: formatEvidenceDateTime(auditLog.createdAt),
     fontFamily: 'Inter',
     align: 'right',
     fontSize: textSm,
@@ -680,16 +679,6 @@ export async function renderAuditLogs({
 
   return pages;
 }
-
-const formatAuditLogDateTime = (date: Date): string => {
-  const dt = DateTime.fromJSDate(date).setLocale(APP_I18N_OPTIONS.defaultLocale);
-  const local = dt.toFormat("dd/MM/yyyy 'às' HH:mm:ss");
-  const utc = DateTime.fromJSDate(date).toUTC().toFormat("yyyy-MM-dd HH:mm:ss");
-
-  return `${local} — ${dt.zoneName}\n${utc} UTC`;
-};
-
-
 
 /**
  * Get the color indicator for the audit log type

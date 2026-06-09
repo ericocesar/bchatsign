@@ -17,7 +17,7 @@ vi.mock('./helpers', () => ({
 }));
 
 describe('renderCertificate', () => {
-  it('should render certificate without errors when pdfHash and geolocation are provided', async () => {
+  it('should render certificate without errors when hashes and geolocation are provided', async () => {
     const i18nMock = setupI18n();
     i18nMock.load('pt-BR', {});
     i18nMock.activate('pt-BR');
@@ -33,7 +33,8 @@ describe('renderCertificate', () => {
       },
       pageWidth: 595.276, // A4 dimensions
       pageHeight: 841.89,
-      pdfHash: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', // sha256 empty bytes
+      baseDocumentSha256: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+      sealedPdfSha256: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
       recipients: [
         {
           id: 1,
@@ -79,7 +80,7 @@ describe('renderCertificate', () => {
     expect(result.length).toBeGreaterThan(0);
   });
 
-  it('should render certificate retrocompatibly when pdfHash and geolocation are omitted', async () => {
+  it('should render certificate retrocompatibly when hashes and geolocation are omitted', async () => {
     const i18nMock = setupI18n();
     i18nMock.load('pt-BR', {});
     i18nMock.activate('pt-BR');

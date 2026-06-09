@@ -45,6 +45,7 @@ export const downloadDocumentCertificateRoute = authenticatedProcedure
           },
         },
         documentMeta: true,
+        envelopeItems: true,
         user: {
           select: {
             email: true,
@@ -64,6 +65,10 @@ export const downloadDocumentCertificateRoute = authenticatedProcedure
       throw new AppError('DOCUMENT_NOT_COMPLETE');
     }
 
+    const sealedEnvelopeItem =
+      envelope.envelopeItems.find((item) => item.sealedPdfSha256 || item.baseDocumentSha256) ??
+      envelope.envelopeItems[0];
+
     const certificatePdf = await generateCertificatePdf({
       envelope,
       recipients: envelope.recipients,
@@ -75,6 +80,8 @@ export const downloadDocumentCertificateRoute = authenticatedProcedure
       },
       pageWidth: PDF_SIZE_A4_72PPI.width,
       pageHeight: PDF_SIZE_A4_72PPI.height,
+      baseDocumentSha256: sealedEnvelopeItem?.baseDocumentSha256 ?? undefined,
+      sealedPdfSha256: sealedEnvelopeItem?.sealedPdfSha256 ?? undefined,
     });
 
     const result = await certificatePdf.save();

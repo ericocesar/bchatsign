@@ -4,17 +4,16 @@ import type { Field, RecipientRole, Signature } from '@prisma/client';
 import { SigningStatus } from '@prisma/client';
 import Konva from 'konva';
 import 'konva/skia-backend';
-import { DateTime } from 'luxon';
 import type { Canvas } from 'skia-canvas';
 import { Image as SkiaImage } from 'skia-canvas';
 import { UAParser } from 'ua-parser-js';
 import { renderSVG } from 'uqr';
 
 import { NEXT_PUBLIC_WEBAPP_URL } from '../../constants/app';
-import { APP_I18N_OPTIONS } from '../../constants/i18n';
 import { RECIPIENT_ROLE_SIGNING_REASONS, RECIPIENT_ROLES_DESCRIPTION } from '../../constants/recipient-roles';
 import type { TDocumentAuditLogBaseSchema } from '../../types/document-audit-logs';
 import { svgToPng } from '../../utils/images/svg-to-png';
+import { formatEvidenceDateTime } from './format-evidence-date-time';
 import { ensureFontLibrary } from './helpers';
 
 type ColumnWidths = [number, number];
@@ -61,7 +60,8 @@ type GenerateCertificateOptions = {
   };
   pageWidth: number;
   pageHeight: number;
-  pdfHash?: string;
+  baseDocumentSha256?: string;
+  sealedPdfSha256?: string;
 };
 
 // Helper function to get device info from user agent
@@ -144,14 +144,6 @@ const renderLabelAndText = (options: RenderLabelAndTextOptions) => {
   return group;
 };
 
-const formatCertificateDateTime = (date: Date): string => {
-  const dt = DateTime.fromJSDate(date).setLocale(APP_I18N_OPTIONS.defaultLocale);
-  const local = dt.toFormat("dd/MM/yyyy 'às' HH:mm:ss");
-  const utc = DateTime.fromJSDate(date).toUTC().toFormat("yyyy-MM-dd HH:mm:ss");
-
-  return `${local} — ${dt.zoneName}\n${utc} UTC`;
-};
-
 type RenderRowHeaderOptions = {
   columnWidths: number[];
   i18n: I18n;
@@ -168,7 +160,7 @@ const renderRowHeader = (options: RenderRowHeaderOptions) => {
   const headerFontStyling = {
     fontFamily: certificateFontFamily,
     fontSize: 11,
-    fontStyle: fontMedium,
+    fontStyle: '700',
     verticalAlign: 'middle',
     fill: textMutedForeground,
     height: tableHeaderHeight,
@@ -203,7 +195,8 @@ type RenderColumnOptions = {
     name: string;
     email: string;
   };
-  pdfHash?: string;
+  baseDocumentSha256?: string;
+  sealedPdfSha256?: string;
 };
 
 const renderColumnOne = (options: RenderColumnOptions) => {
@@ -290,7 +283,7 @@ const renderColumnOne = (options: RenderColumnOptions) => {
 
 const renderColumnTwo = (options: RenderColumnOptions) => {
   const { recipient, width, i18n } = options;
-  const pdfHash = options.pdfHash;
+  const { baseDocumentSha256, sealedPdfSha256 } = options;
 
   const column = new Konva.Group();
 
@@ -394,11 +387,20 @@ const renderColumnTwo = (options: RenderColumnOptions) => {
     });
     column.add(purposeField);
 
-    // Hash SHA-256
-    if (pdfHash) {
+    if (baseDocumentSha256) {
       const hashField = renderLabelAndText({
-        label: 'Hash SHA-256',
-        text: pdfHash,
+        label: 'Hash SHA-256 do documento base',
+        text: baseDocumentSha256,
+        width,
+        y: column.getClientRect().height + 6,
+      });
+      column.add(hashField);
+    }
+
+    if (sealedPdfSha256) {
+      const hashField = renderLabelAndText({
+        label: 'Hash SHA-256 do PDF final lacrado',
+        text: sealedPdfSha256,
         width,
         y: column.getClientRect().height + 6,
       });
@@ -463,10 +465,20 @@ const renderColumnTwo = (options: RenderColumnOptions) => {
     });
     column.add(purposeField);
 
-    if (pdfHash) {
+    if (baseDocumentSha256) {
       const hashField = renderLabelAndText({
-        label: 'Hash SHA-256',
-        text: pdfHash,
+        label: 'Hash SHA-256 do documento base',
+        text: baseDocumentSha256,
+        width,
+        y: column.getClientRect().height + 6,
+      });
+      column.add(hashField);
+    }
+
+    if (sealedPdfSha256) {
+      const hashField = renderLabelAndText({
+        label: 'Hash SHA-256 do PDF final lacrado',
+        text: sealedPdfSha256,
         width,
         y: column.getClientRect().height + 6,
       });
@@ -560,33 +572,31 @@ const renderColumnThree = (options: RenderColumnOptions) => {
 
   const itemsToRender: DetailItem[] = [
     {
-      label: 'Enviado em:',
+      label: 'Enviado em',
       value: recipient.logs.emailed
-        ? formatCertificateDateTime(recipient.logs.emailed.createdAt)
+        ? formatEvidenceDateTime(recipient.logs.emailed.createdAt)
         : recipient.logs.sent
-          ? formatCertificateDateTime(recipient.logs.sent.createdAt)
+          ? formatEvidenceDateTime(recipient.logs.sent.createdAt)
           : i18n._(msg`Unknown`),
     },
     {
-      label: 'Visualizado em:',
-      value: recipient.logs.opened
-        ? formatCertificateDateTime(recipient.logs.opened.createdAt)
-        : i18n._(msg`Unknown`),
+      label: 'Visualizado em',
+      value: recipient.logs.opened ? formatEvidenceDateTime(recipient.logs.opened.createdAt) : i18n._(msg`Unknown`),
     },
   ];
 
   if (recipient.logs.rejected) {
     itemsToRender.push({
-      label: 'Rejeitado em:',
-      value: formatCertificateDateTime(recipient.logs.rejected.createdAt),
+      label: 'Rejeitado em',
+      value: formatEvidenceDateTime(recipient.logs.rejected.createdAt),
       labelFill: textRejectedRed,
       valueFill: textRejectedRed,
     });
   } else {
     itemsToRender.push({
-      label: 'Assinado em:',
+      label: 'Assinado em',
       value: recipient.logs.completed
-        ? formatCertificateDateTime(recipient.logs.completed.createdAt)
+        ? formatEvidenceDateTime(recipient.logs.completed.createdAt)
         : i18n._(msg`Unknown`),
     });
   }
@@ -594,7 +604,7 @@ const renderColumnThree = (options: RenderColumnOptions) => {
   const isOwner = recipient.email.toLowerCase() === envelopeOwner.email.toLowerCase();
 
   itemsToRender.push({
-    label: 'Motivo:',
+    label: 'Motivo',
     value:
       recipient.signingStatus === SigningStatus.REJECTED
         ? recipient.rejectionReason || ''
@@ -626,7 +636,8 @@ type RenderRowOptions = {
     name: string;
     email: string;
   };
-  pdfHash?: string;
+  baseDocumentSha256?: string;
+  sealedPdfSha256?: string;
 };
 
 const renderDetailsSection = (options: RenderColumnOptions) => {
@@ -640,8 +651,8 @@ const renderDetailsSection = (options: RenderColumnOptions) => {
     text: 'Detalhes',
     fill: textMutedForeground,
     fontFamily: certificateFontFamily,
-    fontSize: textSm,
-    fontStyle: fontMedium,
+    fontSize: textSm + 1,
+    fontStyle: '700',
     width: width - columnPadding,
   });
   detailsGroup.add(detailsLabel);
@@ -657,7 +668,7 @@ const renderDetailsSection = (options: RenderColumnOptions) => {
 };
 
 const renderRow = (options: RenderRowOptions) => {
-  const { recipient, columnWidths, i18n, envelopeOwner, pdfHash } = options;
+  const { recipient, columnWidths, i18n, envelopeOwner, baseDocumentSha256, sealedPdfSha256 } = options;
 
   const rowGroup = new Konva.Group();
 
@@ -678,7 +689,8 @@ const renderRow = (options: RenderRowOptions) => {
     width: columnWidths[0],
     i18n,
     envelopeOwner,
-    pdfHash,
+    baseDocumentSha256,
+    sealedPdfSha256,
   });
   columnGroup.setAttrs({
     x: rowPadding,
@@ -691,7 +703,8 @@ const renderRow = (options: RenderRowOptions) => {
     width: columnWidths[1],
     i18n,
     envelopeOwner,
-    pdfHash,
+    baseDocumentSha256,
+    sealedPdfSha256,
   });
   columnTwoGroup.setAttrs({
     x: rowPadding + columnWidths[0],
@@ -704,7 +717,8 @@ const renderRow = (options: RenderRowOptions) => {
     width: width,
     i18n,
     envelopeOwner,
-    pdfHash,
+    baseDocumentSha256,
+    sealedPdfSha256,
   });
   detailsGroup.setAttrs({
     x: rowPadding,
@@ -809,11 +823,12 @@ type GroupRowsIntoPagesOptions = {
     name: string;
     email: string;
   };
-  pdfHash?: string;
+  baseDocumentSha256?: string;
+  sealedPdfSha256?: string;
 };
 
 const groupRowsIntoPages = (options: GroupRowsIntoPagesOptions) => {
-  const { recipients, maxHeight, i18n, columnWidths, envelopeOwner, pdfHash } = options;
+  const { recipients, maxHeight, i18n, columnWidths, envelopeOwner, baseDocumentSha256, sealedPdfSha256 } = options;
 
   const rowHeader = renderRowHeader({ columnWidths, i18n });
   const rowHeaderHeight = rowHeader.getClientRect().height;
@@ -825,7 +840,14 @@ const groupRowsIntoPages = (options: GroupRowsIntoPagesOptions) => {
 
   // Group rows into pages.
   for (const recipient of recipients) {
-    const row = renderRow({ recipient, columnWidths, i18n, envelopeOwner, pdfHash });
+    const row = renderRow({
+      recipient,
+      columnWidths,
+      i18n,
+      envelopeOwner,
+      baseDocumentSha256,
+      sealedPdfSha256,
+    });
 
     const rowHeight = row.getClientRect().height;
 
@@ -899,7 +921,8 @@ export async function renderCertificate({
   envelopeOwner,
   pageWidth,
   pageHeight,
-  pdfHash,
+  baseDocumentSha256,
+  sealedPdfSha256,
 }: GenerateCertificateOptions) {
   ensureFontLibrary();
 
@@ -924,7 +947,8 @@ export async function renderCertificate({
     columnWidths,
     i18n,
     envelopeOwner,
-    pdfHash,
+    baseDocumentSha256,
+    sealedPdfSha256,
   });
 
   const tables = renderTables({ groupedRows, columnWidths, i18n });
@@ -1001,7 +1025,7 @@ export async function renderCertificate({
     const footerText = new Konva.Text({
       x: margin,
       y: pageHeight - textXs - 10,
-      text: `${i18n._(msg`Envelope ID`)}: ${envelopeId}${pdfHash ? ` | Hash SHA-256: ${pdfHash}` : ''}`,
+      text: `${i18n._(msg`Envelope ID`)}: ${envelopeId}`,
       fontFamily: certificateFontFamily,
       fontSize: textXs,
       fill: textMutedForegroundLight,
@@ -1029,7 +1053,7 @@ export async function renderCertificate({
     const overflowFooterText = new Konva.Text({
       x: margin,
       y: pageHeight - textXs - 10,
-      text: `${i18n._(msg`Envelope ID`)}: ${envelopeId}${pdfHash ? ` | Hash SHA-256: ${pdfHash}` : ''}`,
+      text: `${i18n._(msg`Envelope ID`)}: ${envelopeId}`,
       fontFamily: certificateFontFamily,
       fontSize: textXs,
       fill: textMutedForegroundLight,

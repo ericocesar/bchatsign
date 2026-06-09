@@ -3,14 +3,20 @@ import { describe, expect, it } from 'vitest';
 import { getCertificateOverlayDrawCommands, getCertificateOverlayLines } from './certificate-summary-overlay';
 
 describe('certificate summary overlay', () => {
-  it('renders the three legal text lines', () => {
-    const lines = getCertificateOverlayLines();
+  it('renders stable legal text without hashes', () => {
+    const lines = getCertificateOverlayLines({
+      envelopeId: 'env-123',
+      signatureIds: ['sig-123'],
+      validationUrl: 'https://example.com/share/qr-123',
+    });
 
     expect(lines).toEqual([
       'Assinado eletronicamente com assinatura eletrônica avançada — Lei nº 14.063/2020 e MP nº 2.200-2/2001.',
-      'Integridade verificável por Hash SHA-256, ID da assinatura, IP, dispositivo, data/hora e logs de auditoria.',
-      'Documento final selado digitalmente com certificado A1 ICP-Brasil.',
+      'ID do Envelope: env-123 | ID da Assinatura: sig-123',
+      'Documento final selado digitalmente com certificado A1 ICP-Brasil. Valide em: https://example.com/share/qr-123',
     ]);
+
+    expect(lines.join('\n')).not.toMatch(/hash|sha-256/i);
   });
 
   it('anchors left overlays to the left margin instead of page center', () => {
@@ -50,7 +56,7 @@ describe('certificate summary overlay', () => {
       position: 'FOOTER',
       pageWidth: 200,
       pageHeight: 300,
-      lines: ['Linha principal', 'Hash SHA-256: abc123'],
+      lines: ['Linha principal', 'ID do Envelope: env-123'],
       fontSize: 8,
       getTextWidth: (text) => text.length * 4,
       validationLink: 'https://example.com/verify/qr-token',
@@ -58,7 +64,7 @@ describe('certificate summary overlay', () => {
 
     // First two commands should be text lines on the left
     expect(commands[0]).toMatchObject({ kind: 'text', text: 'Linha principal', x: 15, y: 15 });
-    expect(commands[1]).toMatchObject({ kind: 'text', text: 'Hash SHA-256: abc123', x: 15, y: 25 });
+    expect(commands[1]).toMatchObject({ kind: 'text', text: 'ID do Envelope: env-123', x: 15, y: 25 });
 
     // Third command should be the QR code to the right of the text
     const qrCommand = commands[2];
@@ -78,7 +84,7 @@ describe('certificate summary overlay', () => {
       position: 'FOOTER',
       pageWidth: 200,
       pageHeight: 300,
-      lines: ['Linha principal', 'Hash SHA-256: abc123'],
+      lines: ['Linha principal', 'ID do Envelope: env-123'],
       fontSize: 8,
       getTextWidth: (text) => text.length * 4,
     });

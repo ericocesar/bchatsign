@@ -6029,7 +6029,7 @@ msgstr "Sou obrigado a receber uma cópia deste documento"
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
 #: packages/lib/server-only/pdf/render-certificate.ts
 msgid "I am the owner of this document"
-msgstr "Eu sou o proprietário deste documento"
+msgstr "Assinatura realizada por livre manifestação de vontade do signatário."
 
 #: packages/ui/components/document/document-share-button.tsx
 msgid "I just sent a document in style with @documenso. Check it out!"
