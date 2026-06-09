@@ -62,22 +62,7 @@ type ExtractLocaleDataOptions = {
 export const extractLocaleData = ({ headers }: ExtractLocaleDataOptions): I18nLocaleData => {
   const headerLocales = (headers.get('accept-language') ?? '').split(',');
 
-  const unknownLanguages = headerLocales
-    .map((locale) => parseLanguageFromLocale(locale))
-    .filter((value): value is SupportedLanguageCodes => value !== null);
-
-  // Filter out locales that are not valid.
-  const languages = (unknownLanguages ?? []).filter((language) => {
-    try {
-      new Intl.Locale(language);
-      return true;
-    } catch {
-      return false;
-    }
-  });
-
-  const detectedLang = languages[0];
-  const fallbackLang = (detectedLang || APP_I18N_OPTIONS.defaultLocale) as SupportedLanguageCodes;
+  const fallbackLang = APP_I18N_OPTIONS.defaultLocale;
 
   return {
     lang: fallbackLang,

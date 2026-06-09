@@ -10,4 +10,4 @@ export const APP_I18N_OPTIONS = {
   defaultLocale: 'pt-BR',
 } as const;
 
-export const ZSupportedLanguageCodeSchema = z.enum(SUPPORTED_LANGUAGE_CODES).catch('en');
+export const ZSupportedLanguageCodeSchema = z.enum(SUPPORTED_LANGUAGE_CODES).catch('pt-BR');
