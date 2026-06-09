@@ -792,6 +792,23 @@ const renderBranding = async ({ qrToken }: { qrToken: string | null }) => {
   const logoGroup = new Konva.Group({
     y: qrSection.getClientRect().height > 0 ? qrSection.getClientRect().height + 16 : 0,
   });
+
+  const itiText = new Konva.Text({
+    x: 0,
+    y: 0,
+    text: 'Validação externa: https://validar.iti.gov.br/',
+    fontFamily: certificateFontFamily,
+    fontSize: textXs,
+    width: validationLinkWidth + (qrToken ? 72 : 0),
+    wrap: 'char',
+    lineHeight: 1.4,
+    fill: textMutedForeground,
+  });
+  logoGroup.add(itiText);
+
+  text.setAttrs({
+    y: itiText.height() + 4,
+  });
   logoGroup.add(text);
 
   branding.add(logoGroup);
@@ -804,32 +821,16 @@ type RenderValidationBlockOptions = {
   envelopeId: string;
   qrToken: string | null;
   width: number;
-  baseDocumentSha256?: string | null;
 };
 
 const renderValidationBlock = (options: RenderValidationBlockOptions) => {
-  const { qrToken, width, baseDocumentSha256 } = options;
+  const { width } = options;
 
   const group = new Konva.Group();
 
-  const linkText = qrToken ? `${NEXT_PUBLIC_WEBAPP_URL()}/share/${qrToken}` : '—';
-
-  let cursorY = 0;
-
-  if (baseDocumentSha256) {
-    const hashField = renderLabelAndText({
-      label: 'Hash SHA-256 do documento base',
-      text: baseDocumentSha256,
-      width,
-      y: cursorY,
-    });
-    group.add(hashField);
-    cursorY += hashField.getClientRect().height + 4;
-  }
-
   const validationLabel = new Konva.Text({
     x: 0,
-    y: cursorY,
+    y: 0,
     fontFamily: certificateFontFamily,
     fontSize: textXs,
     fill: textMutedForeground,
@@ -842,24 +843,6 @@ const renderValidationBlock = (options: RenderValidationBlockOptions) => {
       'A integridade do PDF final pode ser verificada pelo link de validação BchatSign ou manualmente no VALIDAR/ITI.',
   });
   group.add(validationLabel);
-  cursorY += validationLabel.height() + 8;
-
-  const linkField = renderLabelAndText({
-    label: 'Link de validação BchatSign',
-    text: linkText,
-    width,
-    y: cursorY,
-  });
-  group.add(linkField);
-  cursorY += linkField.getClientRect().height + 4;
-
-  const itiLink = renderLabelAndText({
-    label: 'Validação externa (VALIDAR/ITI)',
-    text: 'https://validar.iti.gov.br/',
-    width,
-    y: cursorY,
-  });
-  group.add(itiLink);
 
   return group;
 };
@@ -1058,7 +1041,6 @@ export async function renderCertificate({
         envelopeId,
         qrToken,
         width: tableWidth - rowPadding * 2,
-        baseDocumentSha256,
       });
 
       const validationY = group.getClientRect().height + brandingTopPadding;
