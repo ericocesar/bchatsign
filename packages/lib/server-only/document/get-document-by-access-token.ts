@@ -46,6 +46,20 @@ export const getDocumentByAccessToken = async ({ token }: GetDocumentByAccessTok
           sealingCertificateValidTo: true,
           sealingSignatureStatus: true,
           sealingCertificateChainStatus: true,
+          pdfSignatureValidationStatus: true,
+          icpBrasilChainValidationStatus: true,
+          internalValidationStatus: true,
+          sealedPdfPublicTokenHash: true,
+          sealedPdfPublicUrlExpiresAt: true,
+          itiReportUploadedAt: true,
+          itiReportDocumentDataId: true,
+          itiReportValidationStatus: true,
+          itiReportValidatedHash: true,
+          itiReportValidationDate: true,
+          itiReportSignatureCount: true,
+          itiReportAnchoredSignatureCount: true,
+          itiReportCertificateSubject: true,
+          itiReportCertificateIssuer: true,
           documentDataId: true,
           envelopeId: true,
           documentData: {
@@ -82,6 +96,7 @@ export const getDocumentByAccessToken = async ({ token }: GetDocumentByAccessTok
 
   return {
     id: mapSecondaryIdToDocumentId(result.secondaryId),
+    envelopeId: result.id,
     internalVersion: result.internalVersion,
     title: result.title,
     completedAt: result.completedAt,

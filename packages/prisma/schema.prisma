@@ -522,8 +522,26 @@ model EnvelopeItem {
   sealingSignatureStatus         String?   @map("sealing_signature_status")
   sealingCertificateChainStatus  String?   @map("sealing_certificate_chain_status")
 
+  pdfSignatureValidationStatus   PdfSignatureValidationStatus?   @map("pdf_signature_validation_status")
+  icpBrasilChainValidationStatus IcpBrasilChainValidationStatus? @map("icp_brasil_chain_validation_status")
+  internalValidationStatus       InternalValidationStatus?       @map("internal_validation_status")
+
+  sealedPdfPublicTokenHash    String?   @map("sealed_pdf_public_token_hash")
+  sealedPdfPublicUrlExpiresAt DateTime? @map("sealed_pdf_public_url_expires_at")
+
+  itiReportUploadedAt             DateTime?                  @map("iti_report_uploaded_at")
+  itiReportDocumentDataId         String?                    @map("iti_report_document_data_id")
+  itiReportDocumentData           DocumentData?              @relation("EnvelopeItemItiReport", fields: [itiReportDocumentDataId], references: [id], onDelete: SetNull)
+  itiReportValidationStatus       ItiReportValidationStatus? @map("iti_report_validation_status")
+  itiReportValidatedHash          String?                    @map("iti_report_validated_hash")
+  itiReportValidationDate         DateTime?                  @map("iti_report_validation_date")
+  itiReportSignatureCount         Int?                       @map("iti_report_signature_count")
+  itiReportAnchoredSignatureCount Int?                       @map("iti_report_anchored_signature_count")
+  itiReportCertificateSubject     String?                    @map("iti_report_certificate_subject")
+  itiReportCertificateIssuer      String?                    @map("iti_report_certificate_issuer")
+
   documentDataId String
-  documentData   DocumentData @relation(fields: [documentDataId], references: [id], onDelete: Cascade)
+  documentData   DocumentData @relation("EnvelopeItemSealedPdf", fields: [documentDataId], references: [id], onDelete: Cascade)
 
   envelopeId String
   envelope   Envelope @relation(fields: [envelopeId], references: [id], onDelete: Cascade)
@@ -532,6 +550,8 @@ model EnvelopeItem {
 
   @@unique([documentDataId])
   @@index([envelopeId])
+  @@index([sealedPdfPublicTokenHash])
+  @@index([envelopeId, sealedPdfPublicTokenHash])
 }
 
 model DocumentAuditLog {
@@ -564,12 +584,43 @@ enum DocumentSigningOrder {
   SEQUENTIAL
 }
 
+enum InternalValidationStatus {
+  PENDING
+  APPROVED
+  FAILED
+  WARNING
+  NOT_APPLICABLE
+}
+
+enum ItiReportValidationStatus {
+  PENDING
+  APPROVED
+  HASH_MISMATCH
+  REJECTED
+}
+
+enum PdfSignatureValidationStatus {
+  VALID
+  INVALID
+  INDETERMINATE
+  NOT_SIGNED
+}
+
+enum IcpBrasilChainValidationStatus {
+  VALID
+  INVALID
+  UNKNOWN
+  EXPIRED
+  REVOKED
+}
+
 model DocumentData {
   id           String           @id @default(cuid())
   type         DocumentDataType
   data         String
   initialData  String
-  envelopeItem EnvelopeItem?
+  envelopeItem EnvelopeItem?    @relation("EnvelopeItemSealedPdf")
+  itiReportOf  EnvelopeItem[]   @relation("EnvelopeItemItiReport")
 }
 
 enum DocumentDistributionMethod {
