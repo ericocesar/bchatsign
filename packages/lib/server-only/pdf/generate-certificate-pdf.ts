@@ -37,7 +37,6 @@ export type GenerateCertificatePdfOptions = {
   pageWidth: number;
   pageHeight: number;
   baseDocumentSha256?: string;
-  sealedPdfSha256?: string;
   sealedAt?: Date | null;
   sealedTimezone?: string | null;
   pdfSignatureValidationStatus?: string | null;
@@ -87,7 +86,6 @@ export const generateCertificatePdf = async (options: GenerateCertificatePdfOpti
     pageWidth,
     pageHeight,
     baseDocumentSha256,
-    sealedPdfSha256,
     sealedAt,
     sealedTimezone,
     pdfSignatureValidationStatus,
@@ -201,13 +199,6 @@ export const generateCertificatePdf = async (options: GenerateCertificatePdfOpti
     pageHeight,
     i18n,
     baseDocumentSha256,
-    sealedPdfSha256,
-    sealedAt,
-    sealedTimezone,
-    pdfSignatureValidationStatus,
-    icpBrasilChainValidationStatus,
-    internalValidationStatus,
-    itiReport,
   };
 
   const certificatePages = await renderCertificate(payload);

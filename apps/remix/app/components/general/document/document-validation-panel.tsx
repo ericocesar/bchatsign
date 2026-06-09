@@ -49,7 +49,6 @@ export const DocumentValidationPanel = ({
 }: DocumentValidationPanelProps) => {
   const sealedAt = formatSealedAt(envelopeItem.sealedAt, envelopeItem.sealedTimezone);
   const baseSha = envelopeItem.baseDocumentSha256;
-  const sealedSha = envelopeItem.sealedPdfSha256;
   const itiStatus = envelopeItem.itiReportValidationStatus;
 
   return (
@@ -105,11 +104,6 @@ export const DocumentValidationPanel = ({
         <Field
           label={<Trans>SHA-256 of the base document</Trans>}
           value={baseSha ? <code className="break-all text-xs">{baseSha}</code> : <DashValue />}
-        />
-
-        <Field
-          label={<Trans>SHA-256 of the sealed PDF</Trans>}
-          value={sealedSha ? <code className="break-all text-xs">{sealedSha}</code> : <DashValue />}
         />
 
         <Field

@@ -239,23 +239,13 @@ export const run = async ({ payload, io }: { payload: TSealDocumentJobDefinition
           pageWidth,
           pageHeight,
           additionalAuditLogs,
-          itiReport: envelopeItem.itiReportValidationStatus
-            ? {
-                status: envelopeItem.itiReportValidationStatus,
-                validatedHash: envelopeItem.itiReportValidatedHash,
-                validationDate: envelopeItem.itiReportValidationDate,
-                signatureCount: envelopeItem.itiReportSignatureCount,
-                anchoredSignatureCount: envelopeItem.itiReportAnchoredSignatureCount,
-              }
-            : null,
         };
 
         makeCertificatePdf = needsCertificate
-          ? async ({ baseDocumentSha256, sealedPdfSha256 }) =>
+          ? async ({ baseDocumentSha256 }) =>
               generateCertificatePdf({
                 ...certificatePayloadBase,
                 baseDocumentSha256,
-                sealedPdfSha256,
               })
           : null;
 
@@ -425,7 +415,7 @@ type DecorateAndSignPdfOptions = {
   isRejected: boolean;
   rejectionReason: string;
   pdfData: Uint8Array;
-  makeCertificatePdf: ((hashes: { baseDocumentSha256: string; sealedPdfSha256?: string }) => Promise<PDF>) | null;
+  makeCertificatePdf: ((hashes: { baseDocumentSha256: string }) => Promise<PDF>) | null;
   makeAuditLogPdf: (() => Promise<PDF>) | null;
 };
 

@@ -81,7 +81,6 @@ export const downloadDocumentCertificateRoute = authenticatedProcedure
       pageWidth: PDF_SIZE_A4_72PPI.width,
       pageHeight: PDF_SIZE_A4_72PPI.height,
       baseDocumentSha256: sealedEnvelopeItem?.baseDocumentSha256 ?? undefined,
-      sealedPdfSha256: sealedEnvelopeItem?.sealedPdfSha256 ?? undefined,
     });
 
     const result = await certificatePdf.save();

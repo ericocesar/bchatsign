@@ -85,7 +85,6 @@ describe('renderCertificate', () => {
       pageWidth: 595.276,
       pageHeight: 841.89,
       baseDocumentSha256: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-      sealedPdfSha256: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
       recipients: recipientsWithGeo,
     };
 
@@ -127,7 +126,6 @@ describe('renderCertificate', () => {
       pageWidth: 595.276,
       pageHeight: 841.89,
       baseDocumentSha256: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-      sealedPdfSha256: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
       pdfSignatureValidationStatus: 'VALID',
       icpBrasilChainValidationStatus: 'VALID',
       internalValidationStatus: 'APPROVED',
@@ -154,7 +152,6 @@ describe('renderCertificate', () => {
       pageWidth: 595.276,
       pageHeight: 841.89,
       baseDocumentSha256: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-      sealedPdfSha256: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
       pdfSignatureValidationStatus: 'VALID',
       icpBrasilChainValidationStatus: 'VALID',
       internalValidationStatus: 'APPROVED',

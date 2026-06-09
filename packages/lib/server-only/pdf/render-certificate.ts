@@ -61,7 +61,6 @@ type GenerateCertificateOptions = {
   pageWidth: number;
   pageHeight: number;
   baseDocumentSha256?: string;
-  sealedPdfSha256?: string;
   sealedAt?: Date | null;
   sealedTimezone?: string | null;
   pdfSignatureValidationStatus?: string | null;
@@ -208,7 +207,6 @@ type RenderColumnOptions = {
     email: string;
   };
   baseDocumentSha256?: string;
-  sealedPdfSha256?: string;
 };
 
 const renderColumnOne = (options: RenderColumnOptions) => {
@@ -294,8 +292,7 @@ const renderColumnOne = (options: RenderColumnOptions) => {
 };
 
 const renderColumnTwo = (options: RenderColumnOptions) => {
-  const { recipient, width, i18n } = options;
-  const { baseDocumentSha256, sealedPdfSha256 } = options;
+  const { recipient, width, i18n, baseDocumentSha256 } = options;
 
   const column = new Konva.Group();
 
@@ -409,16 +406,6 @@ const renderColumnTwo = (options: RenderColumnOptions) => {
       column.add(hashField);
     }
 
-    if (sealedPdfSha256) {
-      const hashField = renderLabelAndText({
-        label: 'Hash SHA-256 do PDF final lacrado',
-        text: sealedPdfSha256,
-        width,
-        y: column.getClientRect().height + 6,
-      });
-      column.add(hashField);
-    }
-
     // ID da assinatura
     const sigIdLabel = new Konva.Text({
       x: 0,
@@ -481,16 +468,6 @@ const renderColumnTwo = (options: RenderColumnOptions) => {
       const hashField = renderLabelAndText({
         label: 'Hash SHA-256 do documento base',
         text: baseDocumentSha256,
-        width,
-        y: column.getClientRect().height + 6,
-      });
-      column.add(hashField);
-    }
-
-    if (sealedPdfSha256) {
-      const hashField = renderLabelAndText({
-        label: 'Hash SHA-256 do PDF final lacrado',
-        text: sealedPdfSha256,
         width,
         y: column.getClientRect().height + 6,
       });
@@ -649,7 +626,6 @@ type RenderRowOptions = {
     email: string;
   };
   baseDocumentSha256?: string;
-  sealedPdfSha256?: string;
 };
 
 const renderDetailsSection = (options: RenderColumnOptions) => {
@@ -680,7 +656,7 @@ const renderDetailsSection = (options: RenderColumnOptions) => {
 };
 
 const renderRow = (options: RenderRowOptions) => {
-  const { recipient, columnWidths, i18n, envelopeOwner, baseDocumentSha256, sealedPdfSha256 } = options;
+  const { recipient, columnWidths, i18n, envelopeOwner, baseDocumentSha256 } = options;
 
   const rowGroup = new Konva.Group();
 
@@ -702,7 +678,6 @@ const renderRow = (options: RenderRowOptions) => {
     i18n,
     envelopeOwner,
     baseDocumentSha256,
-    sealedPdfSha256,
   });
   columnGroup.setAttrs({
     x: rowPadding,
@@ -716,7 +691,6 @@ const renderRow = (options: RenderRowOptions) => {
     i18n,
     envelopeOwner,
     baseDocumentSha256,
-    sealedPdfSha256,
   });
   columnTwoGroup.setAttrs({
     x: rowPadding + columnWidths[0],
@@ -730,7 +704,6 @@ const renderRow = (options: RenderRowOptions) => {
     i18n,
     envelopeOwner,
     baseDocumentSha256,
-    sealedPdfSha256,
   });
   detailsGroup.setAttrs({
     x: rowPadding,
@@ -832,182 +805,61 @@ type RenderValidationBlockOptions = {
   qrToken: string | null;
   width: number;
   baseDocumentSha256?: string | null;
-  sealedPdfSha256?: string | null;
-  sealedAt?: Date | null;
-  sealedTimezone?: string | null;
-  pdfSignatureValidationStatus?: string | null;
-  icpBrasilChainValidationStatus?: string | null;
-  internalValidationStatus?: string | null;
-  itiReport?: {
-    status: string | null;
-    validatedHash: string | null;
-    validationDate: Date | null;
-    signatureCount: number | null;
-    anchoredSignatureCount: number | null;
-  } | null;
-};
-
-const formatCertificateDate = (date: Date | null | undefined, timezone: string | null | undefined) => {
-  if (!date) {
-    return null;
-  }
-
-  const zone = timezone ?? 'America/Recife';
-  const local = `${formatEvidenceDateTime(date)} (${zone})`;
-  const utc = date.toISOString();
-
-  return `${local} (UTC: ${utc})`;
 };
 
 const renderValidationBlock = (options: RenderValidationBlockOptions) => {
-  const {
-    envelopeId,
-    qrToken,
-    width,
-    baseDocumentSha256,
-    sealedPdfSha256,
-    sealedAt,
-    sealedTimezone,
-    pdfSignatureValidationStatus,
-    icpBrasilChainValidationStatus,
-    internalValidationStatus,
-    itiReport,
-  } = options;
+  const { qrToken, width, baseDocumentSha256 } = options;
 
   const group = new Konva.Group();
 
-  const title = new Konva.Text({
-    x: 0,
-    y: 0,
-    text: 'Validação do Documento',
-    fontFamily: certificateFontFamily,
-    fontSize: titleFontSize,
-    fontStyle: fontMedium,
-    fill: textMutedForeground,
-  });
-  group.add(title);
-
-  const intro = new Konva.Text({
-    x: 0,
-    y: title.height() + 6,
-    text:
-      'Este documento pode ser validado no serviço VALIDAR/ITI por upload do arquivo PDF, URL pública ou QR Code. ' +
-      'O PDF final foi selado digitalmente com certificado A1 ICP-Brasil, e sua integridade pode ser conferida ' +
-      'pelo hash SHA-256 do PDF final lacrado.',
-    fontFamily: certificateFontFamily,
-    fontSize: textSm,
-    fill: textMutedForeground,
-    width,
-    wrap: 'char',
-    lineHeight: 1.4,
-  });
-  group.add(intro);
-
-  let cursorY = intro.y() + intro.height() + 12;
-
   const linkText = qrToken ? `${NEXT_PUBLIC_WEBAPP_URL()}/share/${qrToken}` : '—';
 
-  const labelAndTextRows: Array<{ label: string; value: string }> = [
-    { label: 'Link de validação BchatSign', value: linkText },
-    {
-      label: 'Link público temporário do PDF final lacrado',
-      value: `${NEXT_PUBLIC_WEBAPP_URL()}/public/validation/${envelopeId}/document.pdf?token=…`,
-    },
-    { label: 'Hash SHA-256 do documento base', value: baseDocumentSha256 ?? '—' },
-    { label: 'Hash SHA-256 do PDF final lacrado', value: sealedPdfSha256 ?? '—' },
-    { label: 'Status da validação interna', value: internalValidationStatus ?? '—' },
-    { label: 'Resultado da assinatura digital', value: pdfSignatureValidationStatus ?? '—' },
-    { label: 'Status da cadeia ICP-Brasil', value: icpBrasilChainValidationStatus ?? '—' },
-    {
-      label: 'Data/hora do lacre',
-      value: formatCertificateDate(sealedAt ?? null, sealedTimezone ?? null) ?? '—',
-    },
-  ];
+  let cursorY = 0;
 
-  for (const row of labelAndTextRows) {
-    const item = renderLabelAndText({
-      label: row.label,
-      text: row.value,
+  if (baseDocumentSha256) {
+    const hashField = renderLabelAndText({
+      label: 'Hash SHA-256 do documento base',
+      text: baseDocumentSha256,
       width,
       y: cursorY,
     });
-    group.add(item);
-    cursorY += item.getClientRect().height + 4;
+    group.add(hashField);
+    cursorY += hashField.getClientRect().height + 4;
   }
 
-  cursorY += 8;
-
-  const reportTitle = new Konva.Text({
+  const validationLabel = new Konva.Text({
     x: 0,
     y: cursorY,
-    text: 'Validação VALIDAR/ITI:',
-    fontFamily: certificateFontFamily,
-    fontSize: textBase,
-    fontStyle: fontMedium,
-    fill: textMutedForeground,
-  });
-  group.add(reportTitle);
-  cursorY += reportTitle.height() + 4;
-
-  let reportMessage: string;
-
-  if (!itiReport || !itiReport.status) {
-    reportMessage =
-      'Pendente de relatório oficial. Este documento pode ser validado manualmente no VALIDAR/ITI ' +
-      'por upload do PDF final lacrado, URL pública ou QR Code.';
-  } else if (itiReport.status === 'APPROVED') {
-    const date = itiReport.validationDate
-      ? `${formatEvidenceDateTime(itiReport.validationDate)} (${sealedTimezone ?? 'America/Recife'})`
-      : '—';
-    reportMessage =
-      `Aprovada em ${date}.\n` +
-      `Hash validado: ${itiReport.validatedHash ?? '—'}\n` +
-      `Quantidade de assinaturas: ${itiReport.signatureCount ?? '—'}\n` +
-      `Quantidade de assinaturas ancoradas: ${itiReport.anchoredSignatureCount ?? '—'}`;
-  } else if (itiReport.status === 'HASH_MISMATCH') {
-    reportMessage =
-      'Relatório anexado com divergência de hash. O hash validado no relatório não corresponde ' +
-      'ao hash SHA-256 do PDF final lacrado armazenado neste envelope.';
-  } else if (itiReport.status === 'REJECTED') {
-    reportMessage = 'O relatório oficial do VALIDAR/ITI declarou o documento como rejeitado.';
-  } else {
-    reportMessage = 'Aguardando submissão do relatório oficial do VALIDAR/ITI.';
-  }
-
-  const reportText = new Konva.Text({
-    x: 0,
-    y: cursorY,
-    text: reportMessage,
-    fontFamily: certificateFontFamily,
-    fontSize: textSm,
-    fill:
-      itiReport?.status === 'HASH_MISMATCH' || itiReport?.status === 'REJECTED' ? textRejectedRed : textMutedForeground,
-    width,
-    wrap: 'char',
-    lineHeight: 1.4,
-  });
-  group.add(reportText);
-  cursorY += reportText.height() + 8;
-
-  const legal = new Konva.Text({
-    x: 0,
-    y: cursorY,
-    text:
-      'Este documento foi assinado eletronicamente com assinatura eletrônica avançada, nos termos ' +
-      'da Lei nº 14.063/2020 e do art. 10, §2º, da MP nº 2.200-2/2001.\n' +
-      'O documento final foi selado digitalmente com certificado A1 emitido no âmbito da ICP-Brasil ' +
-      'para preservação de integridade, autenticidade técnica e verificabilidade do arquivo.\n' +
-      'A validação pode ser realizada no BchatSign por meio do link ou QR Code abaixo. Também é ' +
-      'possível validar o PDF final lacrado no serviço VALIDAR/ITI, por upload do arquivo, URL ' +
-      'pública ou QR Code.',
     fontFamily: certificateFontFamily,
     fontSize: textXs,
     fill: textMutedForeground,
     width,
     wrap: 'char',
-    lineHeight: 1.4,
+    lineHeight: 1.3,
+    text:
+      'Observação: o hash informado refere-se ao documento base utilizado no processo de assinatura. ' +
+      'O PDF final lacrado possui hash próprio após a geração do certificado de evidências e o lacre digital. ' +
+      'A integridade do PDF final pode ser verificada pelo link de validação BchatSign ou manualmente no VALIDAR/ITI.',
   });
-  group.add(legal);
+  group.add(validationLabel);
+  cursorY += validationLabel.height() + 8;
+
+  const linkField = renderLabelAndText({
+    label: 'Link de validação BchatSign',
+    text: linkText,
+    width,
+    y: cursorY,
+  });
+  group.add(linkField);
+  cursorY += linkField.getClientRect().height + 4;
+
+  const itiLink = renderLabelAndText({
+    label: 'Validação externa (VALIDAR/ITI)',
+    text: 'https://validar.iti.gov.br/',
+    width,
+    y: cursorY,
+  });
+  group.add(itiLink);
 
   return group;
 };
@@ -1022,11 +874,10 @@ type GroupRowsIntoPagesOptions = {
     email: string;
   };
   baseDocumentSha256?: string;
-  sealedPdfSha256?: string;
 };
 
 const groupRowsIntoPages = (options: GroupRowsIntoPagesOptions) => {
-  const { recipients, maxHeight, i18n, columnWidths, envelopeOwner, baseDocumentSha256, sealedPdfSha256 } = options;
+  const { recipients, maxHeight, i18n, columnWidths, envelopeOwner, baseDocumentSha256 } = options;
 
   const rowHeader = renderRowHeader({ columnWidths, i18n });
   const rowHeaderHeight = rowHeader.getClientRect().height;
@@ -1044,7 +895,6 @@ const groupRowsIntoPages = (options: GroupRowsIntoPagesOptions) => {
       i18n,
       envelopeOwner,
       baseDocumentSha256,
-      sealedPdfSha256,
     });
 
     const rowHeight = row.getClientRect().height;
@@ -1120,13 +970,6 @@ export async function renderCertificate({
   pageWidth,
   pageHeight,
   baseDocumentSha256,
-  sealedPdfSha256,
-  sealedAt,
-  sealedTimezone,
-  pdfSignatureValidationStatus,
-  icpBrasilChainValidationStatus,
-  internalValidationStatus,
-  itiReport,
 }: GenerateCertificateOptions) {
   ensureFontLibrary();
 
@@ -1152,7 +995,6 @@ export async function renderCertificate({
     i18n,
     envelopeOwner,
     baseDocumentSha256,
-    sealedPdfSha256,
   });
 
   const tables = renderTables({ groupedRows, columnWidths, i18n });
@@ -1177,7 +1019,7 @@ export async function renderCertificate({
       y: 0,
       height: pageTopMargin,
       verticalAlign: 'middle',
-      text: i18n._(msg`Signing Certificate`),
+      text: 'Certificado de Assinatura e Validação',
       fontFamily: certificateFontFamily,
       fontSize: titleFontSize,
       fontStyle: '700',
@@ -1185,24 +1027,7 @@ export async function renderCertificate({
 
     group.add(titleText);
 
-    // Add legal paragraph below title on the first page
-    let tableY = pageTopMargin;
-
-    if (index === 0) {
-      const legalParagraph = new Konva.Text({
-        x: margin,
-        y: pageTopMargin + 4,
-        text: 'Assinado eletronicamente com assinatura eletrônica avançada, nos termos da Lei nº 14.063/2020 e do art. 10, §2º, da MP nº 2.200-2/2001. Documento final selado digitalmente com certificado A1 emitido no âmbito da ICP-Brasil para preservação de integridade, autenticidade técnica e verificabilidade do arquivo.',
-        fontFamily: certificateFontFamily,
-        fontSize: textSm,
-        width: tableWidth - rowPadding * 2,
-        wrap: 'char',
-        lineHeight: 1.4,
-        fill: textMutedForeground,
-      });
-      group.add(legalParagraph);
-      tableY = legalParagraph.getClientRect().y + legalParagraph.getClientRect().height + 10;
-    }
+    const tableY = pageTopMargin;
 
     table.setAttrs({
       x: margin,
@@ -1234,13 +1059,6 @@ export async function renderCertificate({
         qrToken,
         width: tableWidth - rowPadding * 2,
         baseDocumentSha256,
-        sealedPdfSha256,
-        sealedAt,
-        sealedTimezone,
-        pdfSignatureValidationStatus,
-        icpBrasilChainValidationStatus,
-        internalValidationStatus,
-        itiReport,
       });
 
       const validationY = group.getClientRect().height + brandingTopPadding;
