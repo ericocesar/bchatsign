@@ -222,6 +222,43 @@ A validação pode ser realizada no BchatSign por meio do link ou QR Code abaixo
 * O sistema comparar o hash do relatório VALIDAR/ITI com o hash final do PDF lacrado.
 * Os horários exibidos no certificado e logs usarem America/Recife como horário principal e UTC apenas como campo complementar.
 
+11. Ajustes obrigatórios antes da implementação
+    Revisão do plano original identificou cinco pontos que precisam estar resolvidos antes da fase de execução.
+
+    11.1. Tokens e segurança
+    * Definir expiração padrão do token de PDF lacrado. Sugestão inicial: `now() + 24h`, ajustável por configuração.
+    * Persistir apenas o hash do token (`sealed_pdf_public_token_hash`). Nunca persistir o token bruto.
+    * Nunca registrar token bruto nem `_secretCode` em logs. Registrar apenas hash truncado, request id, envelope id, item id, expiração, user agent e IP.
+    * Revogar token em: relacre, cancelamento, exclusão ou alteração de status do envelope.
+    * Aplicar headers no endpoint público:
+      * `Cache-Control: private, no-store`
+      * `X-Content-Type-Options: nosniff`
+      * `Content-Type: application/pdf` (ou JSON quando `_format=application/validador-iti+json`).
+
+    11.2. Multi-item
+    * Se o envelope tiver mais de um `EnvelopeItem` lacrado, exigir `envelopeItemId` (ou `documentId`) na rota `/public/validation/:envelopeId/document.pdf` e `/metadata`.
+    * Quando ausente em envelope multi-item, retornar `400` com a lista de itens disponíveis na metadata. Não retornar o primeiro item automaticamente.
+
+    11.3. Dados pessoais
+    * Mascarar CPF (`***.389.664-**`) e e-mail (`e***@dominio.com.br`) na página pública.
+    * Não exibir IP publicamente; registrar apenas no certificado interno e audit log.
+    * Não exibir geolocalização publicamente; exibir somente para usuários autenticados com permissão.
+    * Exibir dados completos de signatários apenas para usuários autenticados com permissão.
+
+    11.4. Relatório VALIDAR/ITI
+    * Preferir armazenar o PDF do relatório em `DocumentData` (relacionado por `iti_report_document_data_id`). Remover `iti_report_storage_key` do schema.
+    * Extrair/preencher dados do relatório por parsing assistido antes da confirmação humana.
+    * Comparar hash extraído/informado com `sealed_pdf_sha256` (normalizado).
+    * Em relacre, se `sealed_pdf_sha256` mudar, invalidar relatório anterior.
+
+    11.5. Status
+    * Trocar `String?` por enum Prisma para os status críticos:
+      * `internal_validation_status` (`PENDING | APPROVED | FAILED | WARNING | NOT_APPLICABLE`)
+      * `iti_report_validation_status` (`PENDING | APPROVED | HASH_MISMATCH | REJECTED`)
+      * `pdf_signature_validation_status` (`VALID | INVALID | INDETERMINATE | NOT_SIGNED`)
+      * `icp_brasil_chain_validation_status` (`VALID | INVALID | UNKNOWN | EXPIRED | REVOKED`)
+    * `pdf_signature_validation_status` e `icp_brasil_chain_validation_status` são colunas enum distintas das colunas legadas de lacre, não alias.
+
 Para o seu caso específico, o valor confirmado pelo relatório do VALIDAR/ITI como **hash final do PDF lacrado** deve ser salvo em `sealed_pdf_sha256`:
 
 ```text

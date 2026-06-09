@@ -3,6 +3,7 @@ import {
   useCurrentEnvelopeRender,
 } from '@documenso/lib/client-only/providers/envelope-render-provider';
 import { PDF_VIEWER_ERROR_MESSAGES } from '@documenso/lib/constants/pdf-viewer-i18n';
+import { buildBchatValidationUrl } from '@documenso/lib/server-only/validation';
 import { getDocumentDataUrlForPdfViewer } from '@documenso/lib/utils/envelope-download';
 import { formatDocumentsPath } from '@documenso/lib/utils/teams';
 import { trpc } from '@documenso/trpc/react';
@@ -27,6 +28,7 @@ import PDFViewerLazy from '~/components/general/pdf-viewer/pdf-viewer-lazy';
 
 import { EnvelopeRendererFileSelector } from '../envelope-editor/envelope-file-selector';
 import { EnvelopeGenericPageRenderer } from '../envelope-editor/envelope-generic-page-renderer';
+import { DocumentValidationPanel } from './document-validation-panel';
 
 export type DocumentCertificateQRViewProps = {
   documentId: number;
@@ -113,6 +115,7 @@ export const DocumentCertificateQRView = ({
             recipientCount={recipientCount}
             formattedDate={formattedDate}
             token={token}
+            envelopeItem={envelopeItems[0]}
           />
         </EnvelopeRenderProvider>
       ) : (
@@ -170,10 +173,31 @@ type DocumentCertificateQrV2Props = {
   recipientCount: number;
   formattedDate: string;
   token: string;
+  envelopeItem: EnvelopeItem & { documentData: DocumentData };
 };
 
-const DocumentCertificateQrV2 = ({ title, recipientCount, formattedDate, token }: DocumentCertificateQrV2Props) => {
+const DocumentCertificateQrV2 = ({
+  title,
+  recipientCount,
+  formattedDate,
+  token,
+  envelopeItem,
+}: DocumentCertificateQrV2Props) => {
   const { envelopeItems } = useCurrentEnvelopeRender();
+  const envelopeId = envelopeItem.envelopeId;
+
+  const bchatValidationUrl = buildBchatValidationUrl(token);
+
+  const { data: sealedTokenData } = trpc.envelope.item.mintSealedPdfToken.useQuery(
+    {
+      envelopeId,
+      envelopeItemId: envelopeItem.id,
+    },
+    {
+      retry: false,
+      refetchOnWindowFocus: false,
+    },
+  );
 
   return (
     <div className="flex min-h-screen flex-col items-start">
@@ -192,7 +216,7 @@ const DocumentCertificateQrV2 = ({ title, recipientCount, formattedDate, token }
         </div>
 
         <EnvelopeDownloadDialog
-          envelopeId={envelopeItems[0].envelopeId}
+          envelopeId={envelopeId}
           envelopeStatus={DocumentStatus.COMPLETED}
           envelopeItems={envelopeItems}
           token={token}
@@ -214,6 +238,13 @@ const DocumentCertificateQrV2 = ({ title, recipientCount, formattedDate, token }
           errorMessage={PDF_VIEWER_ERROR_MESSAGES.preview}
         />
       </div>
+
+      <DocumentValidationPanel
+        envelopeItem={envelopeItem}
+        showSensitiveRecipients={false}
+        sealedPdfPublicUrl={sealedTokenData?.url ?? null}
+        bchatValidationUrl={bchatValidationUrl}
+      />
     </div>
   );
 };
