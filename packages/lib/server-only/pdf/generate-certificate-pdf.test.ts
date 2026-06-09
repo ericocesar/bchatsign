@@ -6,7 +6,7 @@ vi.mock('@lingui/core/macro', () => ({
 
 import { mapCompletedAuditLogToCertificateLog } from './generate-certificate-pdf';
 
-describe('generate certificate pdf', () => {
+describe('mapCompletedAuditLogToCertificateLog', () => {
   it('flattens geolocation from audit log data into the certificate payload', () => {
     const createdAt = new Date('2026-06-05T12:00:00.000Z');
     const completedAuditLog = {
@@ -36,5 +36,50 @@ describe('generate certificate pdf', () => {
 
   it('returns null when there is no completed audit log', () => {
     expect(mapCompletedAuditLogToCertificateLog(undefined)).toBeNull();
+  });
+
+  it('keeps geolocation null when the completed audit log has no geolocation data', () => {
+    const createdAt = new Date('2026-06-05T12:00:00.000Z');
+    const completedAuditLog = {
+      createdAt,
+      ipAddress: '203.0.113.10',
+      userAgent: 'Mozilla/5.0',
+      data: {
+        geolocation: null,
+      },
+    } as Parameters<typeof mapCompletedAuditLogToCertificateLog>[0];
+
+    const mappedLog = mapCompletedAuditLogToCertificateLog(completedAuditLog);
+
+    expect(mappedLog).toEqual({
+      createdAt,
+      ipAddress: '203.0.113.10',
+      userAgent: 'Mozilla/5.0',
+      geolocation: null,
+    });
+  });
+
+  it('propagates an approximate address alongside the latitude/longitude', () => {
+    const createdAt = new Date('2026-06-05T12:00:00.000Z');
+    const completedAuditLog = {
+      createdAt,
+      ipAddress: '203.0.113.10',
+      userAgent: 'Mozilla/5.0',
+      data: {
+        geolocation: {
+          address: 'Av. Boa Viagem, 500 - Recife/PE',
+          latitude: -8.119,
+          longitude: -34.901,
+        },
+      },
+    } as Parameters<typeof mapCompletedAuditLogToCertificateLog>[0];
+
+    const mappedLog = mapCompletedAuditLogToCertificateLog(completedAuditLog);
+
+    expect(mappedLog?.geolocation).toEqual({
+      address: 'Av. Boa Viagem, 500 - Recife/PE',
+      latitude: -8.119,
+      longitude: -34.901,
+    });
   });
 });
