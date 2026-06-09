@@ -38,6 +38,18 @@ export type GenerateCertificatePdfOptions = {
   pageHeight: number;
   baseDocumentSha256?: string;
   sealedPdfSha256?: string;
+  sealedAt?: Date | null;
+  sealedTimezone?: string | null;
+  pdfSignatureValidationStatus?: string | null;
+  icpBrasilChainValidationStatus?: string | null;
+  internalValidationStatus?: string | null;
+  itiReport?: {
+    status: string | null;
+    validatedHash: string | null;
+    validationDate: Date | null;
+    signatureCount: number | null;
+    anchoredSignatureCount: number | null;
+  } | null;
 };
 
 type CertificateCompletedAuditLog = Pick<TDocumentAuditLogBaseSchema, 'createdAt' | 'ipAddress' | 'userAgent'> & {
@@ -76,6 +88,12 @@ export const generateCertificatePdf = async (options: GenerateCertificatePdfOpti
     pageHeight,
     baseDocumentSha256,
     sealedPdfSha256,
+    sealedAt,
+    sealedTimezone,
+    pdfSignatureValidationStatus,
+    icpBrasilChainValidationStatus,
+    internalValidationStatus,
+    itiReport,
   } = options;
 
   const documentLanguage = ZSupportedLanguageCodeSchema.parse(language);
@@ -184,6 +202,12 @@ export const generateCertificatePdf = async (options: GenerateCertificatePdfOpti
     i18n,
     baseDocumentSha256,
     sealedPdfSha256,
+    sealedAt,
+    sealedTimezone,
+    pdfSignatureValidationStatus,
+    icpBrasilChainValidationStatus,
+    internalValidationStatus,
+    itiReport,
   };
 
   const certificatePages = await renderCertificate(payload);

@@ -15,6 +15,10 @@ import {
   DocumentStatus,
   EnvelopeType,
   FieldType,
+  IcpBrasilChainValidationStatus,
+  InternalValidationStatus,
+  ItiReportValidationStatus,
+  PdfSignatureValidationStatus,
   RecipientRole,
   SigningStatus,
   WebhookTriggerEvents,
@@ -34,6 +38,7 @@ import { insertFieldInPDFV1 } from '../../../server-only/pdf/insert-field-in-pdf
 import { insertFieldInPDFV2 } from '../../../server-only/pdf/insert-field-in-pdf-v2';
 import { legacy_insertFieldInPDF } from '../../../server-only/pdf/legacy-insert-field-in-pdf';
 import { getTeamSettings } from '../../../server-only/team/get-team-settings';
+import { generateSealedPdfToken, SEALED_PDF_TOKEN_TTL_MS } from '../../../server-only/validation';
 import { triggerWebhook } from '../../../server-only/webhooks/trigger/trigger-webhook';
 import { DOCUMENT_AUDIT_LOG_TYPE, type TDocumentAuditLog } from '../../../types/document-audit-logs';
 import { mapEnvelopeToWebhookDocumentPayload, ZWebhookDocumentSchema } from '../../../types/webhook-payload';
@@ -234,6 +239,15 @@ export const run = async ({ payload, io }: { payload: TSealDocumentJobDefinition
           pageWidth,
           pageHeight,
           additionalAuditLogs,
+          itiReport: envelopeItem.itiReportValidationStatus
+            ? {
+                status: envelopeItem.itiReportValidationStatus,
+                validatedHash: envelopeItem.itiReportValidatedHash,
+                validationDate: envelopeItem.itiReportValidationDate,
+                signatureCount: envelopeItem.itiReportSignatureCount,
+                anchoredSignatureCount: envelopeItem.itiReportAnchoredSignatureCount,
+              }
+            : null,
         };
 
         makeCertificatePdf = needsCertificate
@@ -285,7 +299,27 @@ export const run = async ({ payload, io }: { payload: TSealDocumentJobDefinition
         sealingCertificateValidTo,
         sealingSignatureStatus,
         sealingCertificateChainStatus,
+        pdfSignatureValidationStatus,
+        icpBrasilChainValidationStatus,
+        internalValidationStatus,
+        sealedPdfPublicTokenHash,
+        sealedPdfPublicUrlExpiresAt,
       } of newDocumentData) {
+        const existingItem = await tx.envelopeItem.findUnique({
+          where: {
+            envelopeId: envelope.id,
+            documentDataId: oldDocumentDataId,
+          },
+          select: {
+            id: true,
+            sealedPdfSha256: true,
+            itiReportValidationStatus: true,
+          },
+        });
+
+        const isReseal = existingItem?.sealedPdfSha256 !== sealedPdfSha256;
+        const invalidateItiReport = isReseal && existingItem?.itiReportValidationStatus !== null;
+
         await tx.envelopeItem.update({
           where: {
             envelopeId: envelope.id,
@@ -304,6 +338,17 @@ export const run = async ({ payload, io }: { payload: TSealDocumentJobDefinition
             sealingCertificateValidTo,
             sealingSignatureStatus,
             sealingCertificateChainStatus,
+            pdfSignatureValidationStatus,
+            icpBrasilChainValidationStatus,
+            internalValidationStatus,
+            sealedPdfPublicTokenHash,
+            sealedPdfPublicUrlExpiresAt,
+            ...(invalidateItiReport
+              ? {
+                  itiReportValidationStatus: ItiReportValidationStatus.PENDING,
+                  itiReportValidatedHash: null,
+                }
+              : {}),
           },
         });
       }
@@ -398,6 +443,11 @@ type DecoratedDocumentData = {
   sealingCertificateValidTo: Date | null;
   sealingSignatureStatus: string;
   sealingCertificateChainStatus: string;
+  pdfSignatureValidationStatus: PdfSignatureValidationStatus;
+  icpBrasilChainValidationStatus: IcpBrasilChainValidationStatus;
+  internalValidationStatus: InternalValidationStatus;
+  sealedPdfPublicTokenHash: string;
+  sealedPdfPublicUrlExpiresAt: Date;
 };
 
 /**
@@ -583,6 +633,9 @@ const decorateAndSignPdf = async ({
   pdfDoc = await PDF.load(baseDocumentBytes);
 
   // The post-seal hash cannot be embedded before signing because writing it into the PDF changes that hash.
+  // The status enum values (VALID/INVALID/etc) and `sealedPdfSha256` are derived from the
+  // signing step below, so on a first seal the certificate prints placeholders ("—")
+  // and a re-seal will rewrite the block with the canonical values.
   const [certificateDoc, auditLogDoc] = await Promise.all([
     makeCertificatePdf ? makeCertificatePdf({ baseDocumentSha256 }) : null,
     makeAuditLogPdf ? makeAuditLogPdf() : null,
@@ -623,6 +676,17 @@ const decorateAndSignPdf = async ({
     envelopeItem.documentData.initialData,
   );
 
+  const { tokenHash: sealedPdfPublicTokenHash } = generateSealedPdfToken();
+  const sealedPdfPublicUrlExpiresAt = new Date(Date.now() + SEALED_PDF_TOKEN_TTL_MS());
+
+  const pdfSignatureValidationStatus = mapSignatureValidationStatus(signedPdf.certificateMetadata.signatureStatus);
+  const icpBrasilChainValidationStatus = mapChainValidationStatus(signedPdf.certificateMetadata.certificateChainStatus);
+  const internalValidationStatus =
+    pdfSignatureValidationStatus === PdfSignatureValidationStatus.VALID &&
+    icpBrasilChainValidationStatus === IcpBrasilChainValidationStatus.VALID
+      ? InternalValidationStatus.APPROVED
+      : InternalValidationStatus.WARNING;
+
   return {
     oldDocumentDataId: envelopeItem.documentData.id,
     newDocumentDataId: newDocumentData.id,
@@ -637,5 +701,50 @@ const decorateAndSignPdf = async ({
     sealingCertificateValidTo: signedPdf.certificateMetadata.validTo,
     sealingSignatureStatus: signedPdf.certificateMetadata.signatureStatus,
     sealingCertificateChainStatus: signedPdf.certificateMetadata.certificateChainStatus,
+    pdfSignatureValidationStatus,
+    icpBrasilChainValidationStatus,
+    internalValidationStatus,
+    sealedPdfPublicTokenHash,
+    sealedPdfPublicUrlExpiresAt,
   };
+};
+
+const mapSignatureValidationStatus = (raw: string | null | undefined): PdfSignatureValidationStatus => {
+  const normalized = (raw ?? '').toUpperCase().trim();
+
+  switch (normalized) {
+    case 'VALID':
+    case 'OK':
+    case 'PASSED':
+    case 'SUCCESS':
+      return PdfSignatureValidationStatus.VALID;
+    case 'INVALID':
+    case 'FAILED':
+      return PdfSignatureValidationStatus.INVALID;
+    case 'INDETERMINATE':
+    case 'UNKNOWN':
+      return PdfSignatureValidationStatus.INDETERMINATE;
+    default:
+      return PdfSignatureValidationStatus.NOT_SIGNED;
+  }
+};
+
+const mapChainValidationStatus = (raw: string | null | undefined): IcpBrasilChainValidationStatus => {
+  const normalized = (raw ?? '').toUpperCase().trim();
+
+  switch (normalized) {
+    case 'VALID':
+    case 'OK':
+    case 'PASSED':
+    case 'SUCCESS':
+      return IcpBrasilChainValidationStatus.VALID;
+    case 'INVALID':
+    case 'FAILED':
+    case 'REVOKED':
+      return IcpBrasilChainValidationStatus.REVOKED;
+    case 'EXPIRED':
+      return IcpBrasilChainValidationStatus.EXPIRED;
+    default:
+      return IcpBrasilChainValidationStatus.UNKNOWN;
+  }
 };
