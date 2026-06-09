@@ -28,6 +28,7 @@ import { getEnvelopeRoute } from './get-envelope';
 import { getEnvelopeItemsRoute } from './get-envelope-items';
 import { getEnvelopeItemsByTokenRoute } from './get-envelope-items-by-token';
 import { getEnvelopesByIdsRoute } from './get-envelopes-by-ids';
+import { extractItiReportRoute, mintSealedPdfTokenRoute, uploadItiReportRoute } from './iti-report';
 import { redistributeEnvelopeRoute } from './redistribute-envelope';
 import { replaceEnvelopeItemPdfRoute } from './replace-envelope-item-pdf';
 import { saveAsTemplateRoute } from './save-as-template';
@@ -59,6 +60,9 @@ export const envelopeRouter = router({
     delete: deleteEnvelopeItemRoute,
     download: downloadEnvelopeItemRoute,
     replacePdf: replaceEnvelopeItemPdfRoute,
+    uploadItiReport: uploadItiReportRoute,
+    extractItiReport: extractItiReportRoute,
+    mintSealedPdfToken: mintSealedPdfTokenRoute,
   },
   recipient: {
     get: getEnvelopeRecipientRoute,

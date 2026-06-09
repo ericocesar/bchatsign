@@ -26,6 +26,7 @@ import type { Logger } from 'pino';
 import { aiRoute } from './api/ai/route';
 import { downloadRoute } from './api/download/download';
 import { filesRoute } from './api/files/files';
+import { publicValidationRoute } from './api/public-validation/public-validation';
 import { type AppContext, appContext } from './context';
 import { appMiddleware } from './middleware';
 import { securityHeadersMiddleware } from './security-headers';
@@ -94,6 +95,12 @@ app.use(async (c, next) => {
 // Silently handle browser-generated well-known probes (e.g. Chrome DevTools)
 // before they reach React Router and cause noisy 404 errors.
 app.get('/.well-known/*', (c) => c.body(null, 404));
+
+// Public validation endpoints (token-authenticated, no login required).
+// Mounted before the API rate limits and the React Router handler so the
+// routes are reachable by external validators (e.g. VALIDAR/ITI) without
+// sharing API key plumbing.
+app.route('/public', publicValidationRoute);
 
 // Apply cors and rate limits to API routes.
 app.use(`/api/v1/*`, cors());
