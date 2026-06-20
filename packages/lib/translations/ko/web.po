@@ -326,7 +326,6 @@ msgid "{amount, plural, one {Year} other {Years}}"
 msgstr "{amount, plural, other {년}}"
 
 #: apps/remix/app/components/tables/internal-audit-log-table.tsx
-#: packages/lib/server-only/pdf/render-audit-logs.ts
 msgid "{browserInfo} on {os}"
 msgstr "{browserInfo} / {os}"
 
@@ -604,7 +603,6 @@ msgid "{user} viewed the document"
 msgstr "{user}가 문서를 조회했습니다"
 
 #: apps/remix/app/components/tables/internal-audit-log-table.tsx
-#: packages/lib/server-only/pdf/render-audit-logs.ts
 msgid "{userAgent}"
 msgstr "{userAgent}"
 
@@ -1447,6 +1445,11 @@ msgstr "전자 서명을 완료한 후에는, 기록용으로 문서를 열람�
 msgid "After submission, a document will be automatically generated and added to your documents page. You will also receive a notification via email."
 msgstr "제출이 완료되면 문서가 자동으로 생성되어 문서 페이지에 추가됩니다. 또한 이메일로 알림을 받게 됩니다."
 
+#: apps/remix/app/routes/_internal+/[__htmltopdf]+/audit-log.tsx
+#: packages/lib/server-only/pdf/render-audit-logs.ts
+msgid "Agent"
+msgstr ""
+
 #: apps/remix/app/components/general/admin-global-settings-section.tsx
 msgid "AI features"
 msgstr "AI 기능들"
@@ -1904,6 +1907,10 @@ msgstr "페이지 레이아웃 분석 중"
 msgid "Analyzing pages"
 msgstr "페이지 분석 중"
 
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "Anchored signature count:"
+msgstr ""
+
 #: apps/remix/app/routes/_authenticated+/inbox.tsx
 msgid "Any documents that you have been invited to will appear here"
 msgstr "귀하를 초대한 문서는 여기에 표시됩니다."
@@ -1973,6 +1980,11 @@ msgstr "승인됨"
 msgctxt "Recipient role actioned"
 msgid "Approved"
 msgstr "승인됨"
+
+#. placeholder {0}: envelopeItem.itiReportValidationDate ? DateTime.fromJSDate(envelopeItem.itiReportValidationDate).toLocaleString(DateTime.DATETIME_MED) : '—'
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "Approved on {0}."
+msgstr ""
 
 #: apps/remix/app/components/general/envelope-signing/envelope-signer-header.tsx
 msgid "Approver"
@@ -2189,6 +2201,10 @@ msgstr "아바타가 업데이트되었습니다"
 msgid "Awaiting email confirmation"
 msgstr "이메일 확인 대기 중"
 
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "Awaiting submission of the official VALIDAR/ITI report."
+msgstr ""
+
 #: apps/remix/app/components/dialogs/organisation-create-dialog.tsx
 #: apps/remix/app/components/dialogs/team-group-create-dialog.tsx
 #: apps/remix/app/components/dialogs/team-member-create-dialog.tsx
@@ -2237,6 +2253,10 @@ msgstr "기본 텍스트 색상입니다."
 
 #: apps/remix/app/components/general/admin-license-card.tsx
 msgid "BchatSign License"
+msgstr ""
+
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "BchatSign validation link"
 msgstr ""
 
 #: apps/remix/app/components/dialogs/account-delete-dialog.tsx
@@ -3882,6 +3902,10 @@ msgstr "디바이스"
 msgid "Didn't request a password change? We are here to help you secure your account, just <0>contact us</0>."
 msgstr "비밀번호 변경을 요청하지 않으셨나요? 계정을 안전하게 보호하실 수 있도록 도와드리겠습니다. <0>문의하기</0>만 해 주세요."
 
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "Digital signature result"
+msgstr ""
+
 #: apps/remix/app/components/general/template/template-direct-link-badge.tsx
 #: apps/remix/app/components/tables/templates-table.tsx
 msgid "direct link"
@@ -4362,6 +4386,10 @@ msgstr "미납된 청구서로 인해 문서 업로드가 비활성화되었습�
 msgid "Document uploaded"
 msgstr "문서가 업로드되었습니다"
 
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "Document Validation"
+msgstr ""
+
 #: packages/lib/utils/document-audit-logs.ts
 msgctxt "Audit log format"
 msgid "Document viewed"
@@ -4538,6 +4566,10 @@ msgstr "파일 다운로드"
 #: apps/remix/app/components/general/envelope-signing/envelope-signer-header.tsx
 msgid "Download PDF"
 msgstr "PDF 다운로드"
+
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "Download sealed PDF"
+msgstr ""
 
 #: apps/remix/app/components/dialogs/template-bulk-send-dialog.tsx
 msgid "Download Template CSV"
@@ -5032,9 +5064,10 @@ msgid "Enabling the account results in the user being able to use the account ag
 msgstr "계정을 활성화하면 사용자가 다시 계정을 사용할 수 있게 되며, 웹후크, 팀, API 키 등 관련 기능도 다시 활성화됩니다."
 
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/audit-log.tsx
-msgid "Enclosed Document"
-msgstr "동봉 문서"
+#~ msgid "Enclosed Document"
+#~ msgstr "동봉 문서"
 
+#: apps/remix/app/routes/_internal+/[__htmltopdf]+/audit-log.tsx
 #: packages/lib/server-only/pdf/render-audit-logs.ts
 msgid "Enclosed Documents"
 msgstr "동봉된 문서들"
@@ -5153,6 +5186,7 @@ msgstr "봉투가 배포되었습니다"
 #: packages/lib/server-only/pdf/render-audit-logs.ts
 #: packages/lib/server-only/pdf/render-audit-logs.ts
 #: packages/lib/server-only/pdf/render-audit-logs.ts
+#: packages/lib/server-only/pdf/render-certificate.ts
 #: packages/lib/server-only/pdf/render-certificate.ts
 #: packages/lib/server-only/pdf/render-certificate.ts
 msgid "Envelope ID"
@@ -5737,6 +5771,10 @@ msgstr "전체 이름"
 msgid "General"
 msgstr "일반"
 
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "Generate a new temporary link from the document owner's account."
+msgstr ""
+
 #: apps/remix/app/components/dialogs/organisation-email-domain-create-dialog.tsx
 msgid "Generate DKIM Records"
 msgstr "DKIM 레코드 생성"
@@ -5748,6 +5786,10 @@ msgstr "링크 생성"
 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
 msgid "Geolocalizacao"
+msgstr ""
+
+#: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
+msgid "Geolocalização"
 msgstr ""
 
 #: apps/remix/app/components/general/document-signing/document-signing-complete-dialog.tsx
@@ -6052,6 +6094,10 @@ msgstr "이 조직에서 구성한 제3자 서비스에 내 자격 증명을 제
 msgid "I'm sure! Delete it"
 msgstr "확실합니다! 삭제하세요"
 
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "ICP-Brasil chain status"
+msgstr ""
+
 #: apps/remix/app/components/tables/admin-claims-table.tsx
 #: apps/remix/app/components/tables/admin-dashboard-users-table.tsx
 #: apps/remix/app/components/tables/admin-document-recipient-item-table.tsx
@@ -6215,6 +6261,10 @@ msgstr "삽입됨"
 msgid "Instance Stats"
 msgstr "인스턴스 통계"
 
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "Internal validation status"
+msgstr ""
+
 #: apps/remix/app/components/forms/2fa/view-recovery-codes-dialog.tsx
 msgid "Invalid code. Please try again."
 msgstr "코드가 올바르지 않습니다. 다시 시도해 주세요."
@@ -6320,12 +6370,16 @@ msgstr "초대 일시"
 msgid "Invoice"
 msgstr "청구서"
 
+#: apps/remix/app/routes/_internal+/[__htmltopdf]+/audit-log.tsx
+#: packages/lib/server-only/pdf/render-audit-logs.ts
+msgid "IP"
+msgstr ""
+
 #: apps/remix/app/components/tables/admin-document-logs-table.tsx
 #: apps/remix/app/components/tables/document-logs-table.tsx
 #: apps/remix/app/components/tables/internal-audit-log-table.tsx
 #: apps/remix/app/components/tables/settings-security-activity-table.tsx
 #: apps/remix/app/routes/_authenticated+/settings+/security.sessions.tsx
-#: packages/lib/server-only/pdf/render-audit-logs.ts
 msgid "IP Address"
 msgstr "IP 주소"
 
@@ -7055,7 +7109,6 @@ msgstr "내 폴더"
 #: apps/remix/app/components/tables/document-logs-table.tsx
 #: apps/remix/app/components/tables/internal-audit-log-table.tsx
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
-#: packages/lib/server-only/pdf/render-audit-logs.ts
 msgid "N/A"
 msgstr "해당 없음"
 
@@ -7526,6 +7579,10 @@ msgstr ""
 msgid "Open team settings"
 msgstr ""
 
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "Open VALIDAR/ITI"
+msgstr ""
+
 #: apps/remix/app/components/general/stack-avatars-with-tooltip.tsx
 msgid "Opened"
 msgstr "열람됨"
@@ -7764,7 +7821,6 @@ msgstr "조직 설정 재정의"
 #: apps/remix/app/routes/_authenticated+/admin+/organisations.$id.tsx
 #: apps/remix/app/routes/_authenticated+/admin+/teams.$id.tsx
 #: apps/remix/app/routes/_authenticated+/admin+/unsealed-documents._index.tsx
-#: apps/remix/app/routes/_internal+/[__htmltopdf]+/audit-log.tsx
 #: packages/lib/server-only/pdf/render-audit-logs.ts
 msgid "Owner"
 msgstr "소유자"
@@ -7943,6 +7999,10 @@ msgstr "보류 중인 문서는 서명 절차가 취소됩니다"
 #: apps/remix/app/components/general/organisations/organisation-invitations.tsx
 msgid "Pending invitations"
 msgstr "보류 중인 초대장"
+
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "Pending official report. This document can be validated manually on VALIDAR/ITI by uploading the final sealed PDF, using the public URL or the QR Code."
+msgstr ""
 
 #: apps/remix/app/routes/_authenticated+/admin+/teams.$id.tsx
 msgid "Pending Organisation Invites"
@@ -8860,6 +8920,10 @@ msgstr "회신 이메일"
 msgid "Reply To Email <0>(Optional)</0>"
 msgstr "이메일 회신 <0>(선택 사항)</0>"
 
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "Report attached with a hash mismatch. The hash validated in the report does not match the SHA-256 of the sealed PDF stored in this envelope."
+msgstr ""
+
 #: apps/remix/app/components/general/webhook-logs-sheet.tsx
 msgid "Request"
 msgstr "요청"
@@ -9136,6 +9200,10 @@ msgstr "템플릿 저장"
 #: apps/remix/app/routes/_authenticated+/admin+/unsealed-documents._index.tsx
 msgid "Seal job triggered"
 msgstr "봉인 작업이 트리거되었습니다"
+
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "Sealed at"
+msgstr ""
 
 #: apps/remix/app/routes/_authenticated+/admin+/documents.$id.tsx
 msgid "Sealing job started"
@@ -9594,6 +9662,10 @@ msgstr "설정"
 msgid "Seu navegador não oferece suporte à geolocalização necessária para concluir a assinatura."
 msgstr ""
 
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "SHA-256 of the base document"
+msgstr ""
+
 #: apps/remix/app/components/general/document/document-page-view-dropdown.tsx
 #: apps/remix/app/components/tables/documents-table-action-dropdown.tsx
 #: packages/ui/components/document/document-share-button.tsx
@@ -9778,6 +9850,10 @@ msgstr "OIDC로 가입"
 msgid "Signature"
 msgstr "서명"
 
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "Signature count:"
+msgstr ""
+
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
 msgid "Signature ID"
 msgstr "서명 ID"
@@ -9844,7 +9920,6 @@ msgid "Signing"
 msgstr "서명 중"
 
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
-#: packages/lib/server-only/pdf/render-certificate.ts
 msgid "Signing Certificate"
 msgstr "서명 인증서"
 
@@ -10624,6 +10699,10 @@ msgstr "템플릿이 삭제되었습니다"
 msgid "Templates partially deleted"
 msgstr "템플릿이 일부만 삭제되었습니다"
 
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "Temporary public URL (sealed PDF)"
+msgstr ""
+
 #: apps/remix/app/components/general/document-signing/document-signing-disclosure.tsx
 #: apps/remix/app/components/general/document-signing/document-signing-disclosure.tsx
 msgid "Termo de Ciência e Consentimento para Uso de Assinatura Eletrônica"
@@ -10884,6 +10963,10 @@ msgstr "다음 팀이 삭제되었습니다. 더 이상 이 팀과 그 문서에
 #: apps/remix/app/components/dialogs/assistant-confirmation-dialog.tsx
 msgid "The next recipient to sign this document will be <0>{0}</0> (<1>{1}</1>)."
 msgstr "이 문서의 다음 서명자는 <0>{0}</0> (<1>{1}</1>)입니다."
+
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "The official report declared the document as rejected by VALIDAR/ITI."
+msgstr ""
 
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl.settings.sso.tsx
 msgid "The OpenID discovery endpoint URL for your provider"
@@ -11178,6 +11261,10 @@ msgstr "문서 크기에 따라 1~2분 정도 소요될 수 있습니다."
 #: apps/remix/app/components/dialogs/claim-delete-dialog.tsx
 msgid "This claim is locked and cannot be deleted."
 msgstr "이 클레임은 잠겨 있어 삭제할 수 없습니다."
+
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "This document can be validated through the VALIDAR/ITI service by uploading the sealed PDF, using a public URL or by scanning its QR Code. The final PDF was digitally sealed with an A1 ICP-Brasil certificate and its integrity can be verified through the SHA-256 hash below."
+msgstr ""
 
 #: packages/email/template-components/template-document-super-delete.tsx
 msgid "This document can not be recovered, if you would like to dispute the reason for future documents please contact support."
@@ -12239,12 +12326,12 @@ msgstr "패스키로 인증하세요."
 #: apps/remix/app/components/tables/admin-document-logs-table.tsx
 #: apps/remix/app/components/tables/document-logs-table.tsx
 #: apps/remix/app/components/tables/internal-audit-log-table.tsx
+#: apps/remix/app/routes/_internal+/[__htmltopdf]+/audit-log.tsx
 #: packages/lib/server-only/pdf/render-audit-logs.ts
 msgid "User"
 msgstr "사용자"
 
 #: apps/remix/app/components/tables/internal-audit-log-table.tsx
-#: packages/lib/server-only/pdf/render-audit-logs.ts
 msgid "User Agent"
 msgstr "User Agent"
 
@@ -12288,6 +12375,14 @@ msgstr "사용자 설정"
 #: apps/remix/app/routes/_authenticated+/admin+/_layout.tsx
 msgid "Users"
 msgstr "사용자"
+
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "VALIDAR/ITI official report"
+msgstr ""
+
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "Validated hash:"
+msgstr ""
 
 #: apps/remix/app/components/forms/editor/editor-field-checkbox-form.tsx
 #: apps/remix/app/components/forms/editor/editor-field-number-form.tsx

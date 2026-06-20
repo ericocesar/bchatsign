@@ -102,14 +102,19 @@ export const DocumentSigningPageViewV1 = ({
     accessAuthOptions?: TRecipientAccessAuth;
     nextSigner?: { email: string; name: string };
     geolocation?: { latitude: number; longitude: number };
+    directRecipient?: { name: string; email: string };
   }) => {
-    const { accessAuthOptions, nextSigner, geolocation } = options;
+    const { accessAuthOptions, nextSigner, geolocation, directRecipient } = options;
+
+    const recipientOverride =
+      directRecipient?.email ? { email: directRecipient.email, name: directRecipient.name } : undefined;
 
     const payload = {
       token: recipient.token,
       documentId: document.id,
       accessAuthOptions,
       geolocation,
+      recipientOverride,
       ...(nextSigner?.email && nextSigner?.name ? { nextSigner } : {}),
     };
 
@@ -246,7 +251,7 @@ export const DocumentSigningPageViewV1 = ({
                           fieldsValidated={fieldsValidated}
                           disabled={!isRecipientsTurn}
                           onSignatureComplete={async (nextSigner, accessAuthOptions, recipientDetails, geolocation) =>
-                            completeDocument({ nextSigner, accessAuthOptions, geolocation })
+                            completeDocument({ nextSigner, accessAuthOptions, geolocation, directRecipient: recipientDetails })
                           }
                           recipient={recipient}
                           geolocationEnabled={document.geolocationEnabled}

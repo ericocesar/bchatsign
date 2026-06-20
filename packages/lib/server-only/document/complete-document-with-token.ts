@@ -87,11 +87,15 @@ export const completeDocumentWithToken = async ({
   const legacyDocumentId = mapSecondaryIdToDocumentId(envelope.secondaryId);
 
   if (envelope.status !== DocumentStatus.PENDING) {
-    throw new Error(`Document ${envelope.id} must be pending`);
+    throw new AppError(AppErrorCode.INVALID_REQUEST, {
+      message: `Document ${envelope.id} must be pending`,
+    });
   }
 
   if (envelope.recipients.length === 0) {
-    throw new Error(`Document ${envelope.id} has no recipient with token ${token}`);
+    throw new AppError(AppErrorCode.NOT_FOUND, {
+      message: `Document ${envelope.id} has no recipient with token ${token}`,
+    });
   }
 
   const [recipient] = envelope.recipients;
@@ -99,7 +103,9 @@ export const completeDocumentWithToken = async ({
   assertRecipientNotExpired(recipient);
 
   if (recipient.signingStatus === SigningStatus.SIGNED) {
-    throw new Error(`Recipient ${recipient.id} has already signed`);
+    throw new AppError(AppErrorCode.INVALID_REQUEST, {
+      message: `Recipient ${recipient.id} has already signed`,
+    });
   }
 
   if (recipient.signingStatus === SigningStatus.REJECTED) {
@@ -115,7 +121,9 @@ export const completeDocumentWithToken = async ({
     });
 
     if (!isRecipientsTurn) {
-      throw new Error(`Recipient ${recipient.id} attempted to complete the document before it was their turn`);
+      throw new AppError(AppErrorCode.INVALID_REQUEST, {
+        message: `Recipient ${recipient.id} attempted to complete the document before it was their turn`,
+      });
     }
   }
 
@@ -278,7 +286,9 @@ export const completeDocumentWithToken = async ({
   }
 
   if (fieldsContainUnsignedRequiredField(fields)) {
-    throw new Error(`Recipient ${recipient.id} has unsigned fields`);
+    throw new AppError(AppErrorCode.INVALID_BODY, {
+      message: `Recipient ${recipient.id} has unsigned fields`,
+    });
   }
 
   await prisma.$transaction(async (tx) => {

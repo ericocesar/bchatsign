@@ -326,7 +326,6 @@ msgid "{amount, plural, one {Year} other {Years}}"
 msgstr "{amount, plural, one {Año} other {Años}}"
 
 #: apps/remix/app/components/tables/internal-audit-log-table.tsx
-#: packages/lib/server-only/pdf/render-audit-logs.ts
 msgid "{browserInfo} on {os}"
 msgstr "{browserInfo} en {os}"
 
@@ -604,7 +603,6 @@ msgid "{user} viewed the document"
 msgstr "{user} vio el documento"
 
 #: apps/remix/app/components/tables/internal-audit-log-table.tsx
-#: packages/lib/server-only/pdf/render-audit-logs.ts
 msgid "{userAgent}"
 msgstr "{userAgent}"
 
@@ -1447,6 +1445,11 @@ msgstr "Después de firmar un documento electrónicamente, se le dará la oportu
 msgid "After submission, a document will be automatically generated and added to your documents page. You will also receive a notification via email."
 msgstr "Después de la presentación, se generará automáticamente un documento y se agregará a su página de documentos. También recibirá una notificación por correo electrónico."
 
+#: apps/remix/app/routes/_internal+/[__htmltopdf]+/audit-log.tsx
+#: packages/lib/server-only/pdf/render-audit-logs.ts
+msgid "Agent"
+msgstr ""
+
 #: apps/remix/app/components/general/admin-global-settings-section.tsx
 msgid "AI features"
 msgstr "Funciones de IA"
@@ -1904,6 +1907,10 @@ msgstr "Analizando el diseño de la página"
 msgid "Analyzing pages"
 msgstr "Analizando las páginas"
 
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "Anchored signature count:"
+msgstr ""
+
 #: apps/remix/app/routes/_authenticated+/inbox.tsx
 msgid "Any documents that you have been invited to will appear here"
 msgstr "Cualquier documento al que hayas sido invitado aparecerá aquí"
@@ -1973,6 +1980,11 @@ msgstr "Aprobado"
 msgctxt "Recipient role actioned"
 msgid "Approved"
 msgstr "Aprobado"
+
+#. placeholder {0}: envelopeItem.itiReportValidationDate ? DateTime.fromJSDate(envelopeItem.itiReportValidationDate).toLocaleString(DateTime.DATETIME_MED) : '—'
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "Approved on {0}."
+msgstr ""
 
 #: apps/remix/app/components/general/envelope-signing/envelope-signer-header.tsx
 msgid "Approver"
@@ -2189,6 +2201,10 @@ msgstr "Avatar actualizado"
 msgid "Awaiting email confirmation"
 msgstr "Esperando confirmación de correo electrónico"
 
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "Awaiting submission of the official VALIDAR/ITI report."
+msgstr ""
+
 #: apps/remix/app/components/dialogs/organisation-create-dialog.tsx
 #: apps/remix/app/components/dialogs/team-group-create-dialog.tsx
 #: apps/remix/app/components/dialogs/team-member-create-dialog.tsx
@@ -2237,6 +2253,10 @@ msgstr "Color de texto base."
 
 #: apps/remix/app/components/general/admin-license-card.tsx
 msgid "BchatSign License"
+msgstr ""
+
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "BchatSign validation link"
 msgstr ""
 
 #: apps/remix/app/components/dialogs/account-delete-dialog.tsx
@@ -3882,6 +3902,10 @@ msgstr "Dispositivo"
 msgid "Didn't request a password change? We are here to help you secure your account, just <0>contact us</0>."
 msgstr "¿No solicitaste un cambio de contraseña? Estamos aquí para ayudarte a asegurar tu cuenta, solo <0>contáctanos</0>."
 
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "Digital signature result"
+msgstr ""
+
 #: apps/remix/app/components/general/template/template-direct-link-badge.tsx
 #: apps/remix/app/components/tables/templates-table.tsx
 msgid "direct link"
@@ -4362,6 +4386,10 @@ msgstr "La carga de documentos está deshabilitada debido a facturas impagadas"
 msgid "Document uploaded"
 msgstr "Documento subido"
 
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "Document Validation"
+msgstr ""
+
 #: packages/lib/utils/document-audit-logs.ts
 msgctxt "Audit log format"
 msgid "Document viewed"
@@ -4538,6 +4566,10 @@ msgstr "Descargar archivos"
 #: apps/remix/app/components/general/envelope-signing/envelope-signer-header.tsx
 msgid "Download PDF"
 msgstr "Descargar PDF"
+
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "Download sealed PDF"
+msgstr ""
 
 #: apps/remix/app/components/dialogs/template-bulk-send-dialog.tsx
 msgid "Download Template CSV"
@@ -5032,9 +5064,10 @@ msgid "Enabling the account results in the user being able to use the account ag
 msgstr "Habilitar la cuenta permite al usuario usar la cuenta de nuevo, junto con todas las funciones relacionadas como webhooks, equipos y claves API, por ejemplo."
 
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/audit-log.tsx
-msgid "Enclosed Document"
-msgstr "Documento Adjunto"
+#~ msgid "Enclosed Document"
+#~ msgstr "Documento Adjunto"
 
+#: apps/remix/app/routes/_internal+/[__htmltopdf]+/audit-log.tsx
 #: packages/lib/server-only/pdf/render-audit-logs.ts
 msgid "Enclosed Documents"
 msgstr "Documentos adjuntos"
@@ -5153,6 +5186,7 @@ msgstr "Sobre distribuido"
 #: packages/lib/server-only/pdf/render-audit-logs.ts
 #: packages/lib/server-only/pdf/render-audit-logs.ts
 #: packages/lib/server-only/pdf/render-audit-logs.ts
+#: packages/lib/server-only/pdf/render-certificate.ts
 #: packages/lib/server-only/pdf/render-certificate.ts
 #: packages/lib/server-only/pdf/render-certificate.ts
 msgid "Envelope ID"
@@ -5737,6 +5771,10 @@ msgstr "Nombre completo"
 msgid "General"
 msgstr "General"
 
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "Generate a new temporary link from the document owner's account."
+msgstr ""
+
 #: apps/remix/app/components/dialogs/organisation-email-domain-create-dialog.tsx
 msgid "Generate DKIM Records"
 msgstr "Generar registros DKIM"
@@ -5748,6 +5786,10 @@ msgstr "Generar enlaces"
 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
 msgid "Geolocalizacao"
+msgstr ""
+
+#: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
+msgid "Geolocalização"
 msgstr ""
 
 #: apps/remix/app/components/general/document-signing/document-signing-complete-dialog.tsx
@@ -6052,6 +6094,10 @@ msgstr "Entiendo que estoy proporcionando mis credenciales a un servicio de terc
 msgid "I'm sure! Delete it"
 msgstr "¡Estoy seguro! Elimínalo"
 
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "ICP-Brasil chain status"
+msgstr ""
+
 #: apps/remix/app/components/tables/admin-claims-table.tsx
 #: apps/remix/app/components/tables/admin-dashboard-users-table.tsx
 #: apps/remix/app/components/tables/admin-document-recipient-item-table.tsx
@@ -6215,6 +6261,10 @@ msgstr "Insertado"
 msgid "Instance Stats"
 msgstr "Estadísticas de instancia"
 
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "Internal validation status"
+msgstr ""
+
 #: apps/remix/app/components/forms/2fa/view-recovery-codes-dialog.tsx
 msgid "Invalid code. Please try again."
 msgstr "Código inválido. Por favor, intenta nuevamente."
@@ -6320,12 +6370,16 @@ msgstr "Invitado el"
 msgid "Invoice"
 msgstr "Factura"
 
+#: apps/remix/app/routes/_internal+/[__htmltopdf]+/audit-log.tsx
+#: packages/lib/server-only/pdf/render-audit-logs.ts
+msgid "IP"
+msgstr ""
+
 #: apps/remix/app/components/tables/admin-document-logs-table.tsx
 #: apps/remix/app/components/tables/document-logs-table.tsx
 #: apps/remix/app/components/tables/internal-audit-log-table.tsx
 #: apps/remix/app/components/tables/settings-security-activity-table.tsx
 #: apps/remix/app/routes/_authenticated+/settings+/security.sessions.tsx
-#: packages/lib/server-only/pdf/render-audit-logs.ts
 msgid "IP Address"
 msgstr "Dirección IP"
 
@@ -7055,7 +7109,6 @@ msgstr "Mi Carpeta"
 #: apps/remix/app/components/tables/document-logs-table.tsx
 #: apps/remix/app/components/tables/internal-audit-log-table.tsx
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
-#: packages/lib/server-only/pdf/render-audit-logs.ts
 msgid "N/A"
 msgstr "N/A"
 
@@ -7526,6 +7579,10 @@ msgstr ""
 msgid "Open team settings"
 msgstr ""
 
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "Open VALIDAR/ITI"
+msgstr ""
+
 #: apps/remix/app/components/general/stack-avatars-with-tooltip.tsx
 msgid "Opened"
 msgstr "Abierto"
@@ -7764,7 +7821,6 @@ msgstr "Anular la configuración de la organización"
 #: apps/remix/app/routes/_authenticated+/admin+/organisations.$id.tsx
 #: apps/remix/app/routes/_authenticated+/admin+/teams.$id.tsx
 #: apps/remix/app/routes/_authenticated+/admin+/unsealed-documents._index.tsx
-#: apps/remix/app/routes/_internal+/[__htmltopdf]+/audit-log.tsx
 #: packages/lib/server-only/pdf/render-audit-logs.ts
 msgid "Owner"
 msgstr "Propietario"
@@ -7943,6 +7999,10 @@ msgstr "Los documentos pendientes cancelarán su proceso de firma"
 #: apps/remix/app/components/general/organisations/organisation-invitations.tsx
 msgid "Pending invitations"
 msgstr "Invitaciones pendientes"
+
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "Pending official report. This document can be validated manually on VALIDAR/ITI by uploading the final sealed PDF, using the public URL or the QR Code."
+msgstr ""
 
 #: apps/remix/app/routes/_authenticated+/admin+/teams.$id.tsx
 msgid "Pending Organisation Invites"
@@ -8860,6 +8920,10 @@ msgstr "Responder al correo"
 msgid "Reply To Email <0>(Optional)</0>"
 msgstr "Responder al correo electrónico <0>(Opcional)</0>"
 
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "Report attached with a hash mismatch. The hash validated in the report does not match the SHA-256 of the sealed PDF stored in this envelope."
+msgstr ""
+
 #: apps/remix/app/components/general/webhook-logs-sheet.tsx
 msgid "Request"
 msgstr "Solicitud"
@@ -9136,6 +9200,10 @@ msgstr "Guardar plantilla"
 #: apps/remix/app/routes/_authenticated+/admin+/unsealed-documents._index.tsx
 msgid "Seal job triggered"
 msgstr "Tarea de sellado activada"
+
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "Sealed at"
+msgstr ""
 
 #: apps/remix/app/routes/_authenticated+/admin+/documents.$id.tsx
 msgid "Sealing job started"
@@ -9594,6 +9662,10 @@ msgstr "Configuración"
 msgid "Seu navegador não oferece suporte à geolocalização necessária para concluir a assinatura."
 msgstr ""
 
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "SHA-256 of the base document"
+msgstr ""
+
 #: apps/remix/app/components/general/document/document-page-view-dropdown.tsx
 #: apps/remix/app/components/tables/documents-table-action-dropdown.tsx
 #: packages/ui/components/document/document-share-button.tsx
@@ -9778,6 +9850,10 @@ msgstr "Regístrate con OIDC"
 msgid "Signature"
 msgstr "Firma"
 
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "Signature count:"
+msgstr ""
+
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
 msgid "Signature ID"
 msgstr "ID de Firma"
@@ -9844,7 +9920,6 @@ msgid "Signing"
 msgstr "Firmando"
 
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
-#: packages/lib/server-only/pdf/render-certificate.ts
 msgid "Signing Certificate"
 msgstr "Certificado de Firma"
 
@@ -10624,6 +10699,10 @@ msgstr "Plantillas eliminadas"
 msgid "Templates partially deleted"
 msgstr "Plantillas eliminadas parcialmente"
 
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "Temporary public URL (sealed PDF)"
+msgstr ""
+
 #: apps/remix/app/components/general/document-signing/document-signing-disclosure.tsx
 #: apps/remix/app/components/general/document-signing/document-signing-disclosure.tsx
 msgid "Termo de Ciência e Consentimento para Uso de Assinatura Eletrônica"
@@ -10884,6 +10963,10 @@ msgstr "El siguiente equipo ha sido eliminado. Ya no podrá acceder a este equip
 #: apps/remix/app/components/dialogs/assistant-confirmation-dialog.tsx
 msgid "The next recipient to sign this document will be <0>{0}</0> (<1>{1}</1>)."
 msgstr "El siguiente destinatario en firmar este documento será <0>{0}</0> (<1>{1}</1>)."
+
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "The official report declared the document as rejected by VALIDAR/ITI."
+msgstr ""
 
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl.settings.sso.tsx
 msgid "The OpenID discovery endpoint URL for your provider"
@@ -11178,6 +11261,10 @@ msgstr "Esto puede tardar uno o dos minutos, según el tamaño de tu documento."
 #: apps/remix/app/components/dialogs/claim-delete-dialog.tsx
 msgid "This claim is locked and cannot be deleted."
 msgstr "Esta reclamo está bloqueado y no puede ser eliminado."
+
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "This document can be validated through the VALIDAR/ITI service by uploading the sealed PDF, using a public URL or by scanning its QR Code. The final PDF was digitally sealed with an A1 ICP-Brasil certificate and its integrity can be verified through the SHA-256 hash below."
+msgstr ""
 
 #: packages/email/template-components/template-document-super-delete.tsx
 msgid "This document can not be recovered, if you would like to dispute the reason for future documents please contact support."
@@ -12239,12 +12326,12 @@ msgstr "Utilice su clave de acceso para la autenticación"
 #: apps/remix/app/components/tables/admin-document-logs-table.tsx
 #: apps/remix/app/components/tables/document-logs-table.tsx
 #: apps/remix/app/components/tables/internal-audit-log-table.tsx
+#: apps/remix/app/routes/_internal+/[__htmltopdf]+/audit-log.tsx
 #: packages/lib/server-only/pdf/render-audit-logs.ts
 msgid "User"
 msgstr "Usuario"
 
 #: apps/remix/app/components/tables/internal-audit-log-table.tsx
-#: packages/lib/server-only/pdf/render-audit-logs.ts
 msgid "User Agent"
 msgstr "Agente de usuario"
 
@@ -12288,6 +12375,14 @@ msgstr "Configuraciones del usuario"
 #: apps/remix/app/routes/_authenticated+/admin+/_layout.tsx
 msgid "Users"
 msgstr "Usuarios"
+
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "VALIDAR/ITI official report"
+msgstr ""
+
+#: apps/remix/app/components/general/document/document-validation-panel.tsx
+msgid "Validated hash:"
+msgstr ""
 
 #: apps/remix/app/components/forms/editor/editor-field-checkbox-form.tsx
 #: apps/remix/app/components/forms/editor/editor-field-number-form.tsx
