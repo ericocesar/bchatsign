@@ -19,6 +19,7 @@ import { DateTime } from 'luxon';
 
 import { AppError, AppErrorCode } from '../../errors/app-error';
 import { jobs } from '../../jobs/client';
+import { logger } from '../../utils/logger';
 import type { TRecipientAccessAuth } from '../../types/document-auth';
 import { DocumentAuth } from '../../types/document-auth';
 import { mapEnvelopeToWebhookDocumentPayload, ZWebhookDocumentSchema } from '../../types/webhook-payload';
@@ -410,7 +411,9 @@ export const completeDocumentWithToken = async ({
   });
 
   if (pendingRecipients.length > 0) {
-    await sendPendingEmail({ id, recipientId: recipient.id });
+    await sendPendingEmail({ id, recipientId: recipient.id }).catch((err) => {
+      logger.error({ err }, 'Failed to send pending email after recipient signed — signing completed successfully');
+    });
 
     if (envelope.documentMeta?.signingOrder === DocumentSigningOrder.SEQUENTIAL) {
       const [nextRecipient] = pendingRecipients;
