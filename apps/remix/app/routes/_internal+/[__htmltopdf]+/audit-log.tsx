@@ -5,34 +5,34 @@ import { unsafeGetEntireEnvelope } from '@documenso/lib/server-only/admin/get-en
 import { decryptSecondaryData } from '@documenso/lib/server-only/crypto/decrypt';
 import { findDocumentAuditLogs } from '@documenso/lib/server-only/document/find-document-audit-logs';
 import { getOrganisationClaimByTeamId } from '@documenso/lib/server-only/organisation/get-organisation-claims';
+import { formatDocumentAuditLogAction } from '@documenso/lib/utils/document-audit-logs';
 import { mapSecondaryIdToDocumentId } from '@documenso/lib/utils/envelope';
 import { getTranslations } from '@documenso/lib/utils/i18n';
-import { Card, CardContent } from '@documenso/ui/primitives/card';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { EnvelopeType } from '@prisma/client';
 import { DateTime } from 'luxon';
 import { redirect } from 'react-router';
+import { UAParser } from 'ua-parser-js';
 
-import appStylesheet from '~/app.css?url';
 import { BrandingLogo } from '~/components/general/branding-logo';
-import { InternalAuditLogTable } from '~/components/tables/internal-audit-log-table';
 
 import type { Route } from './+types/audit-log';
 import auditLogStylesheet from './audit-log.print.css?url';
 
-export const links: Route.LinksFunction = () => [
-  { rel: 'stylesheet', href: appStylesheet },
-  { rel: 'stylesheet', href: auditLogStylesheet },
-];
+export const links: Route.LinksFunction = () => [{ rel: 'stylesheet', href: auditLogStylesheet }];
 
 const EVIDENCE_TIME_ZONE = 'America/Recife';
 
-const formatEvidenceDateTime = (date: Date) => {
-  const localDateTime = DateTime.fromJSDate(date).setZone(EVIDENCE_TIME_ZONE).setLocale(APP_I18N_OPTIONS.defaultLocale);
-  const utcDateTime = DateTime.fromJSDate(date).toUTC();
+const formatLocalDateTime = (date: Date) => {
+  return DateTime.fromJSDate(date)
+    .setZone(EVIDENCE_TIME_ZONE)
+    .setLocale(APP_I18N_OPTIONS.defaultLocale)
+    .toFormat("dd/MM/yyyy 'às' HH:mm:ss");
+};
 
-  return `${localDateTime.toFormat("dd/MM/yyyy 'às' HH:mm:ss")} — ${EVIDENCE_TIME_ZONE}\nUTC: ${utcDateTime.toFormat('yyyy-MM-dd HH:mm:ss')} UTC`;
+const formatUtcDateTime = (date: Date) => {
+  return DateTime.fromJSDate(date).toUTC().toFormat("yyyy-MM-dd HH:mm:ss 'UTC'");
 };
 
 export async function loader({ request }: Route.LoaderArgs) {
@@ -113,88 +113,105 @@ export default function AuditLog({ loaderData }: Route.ComponentProps) {
 
   i18n.loadAndActivate({ locale: documentLanguage, messages });
 
+  const parser = new UAParser();
+
   return (
-    <div className="print-provider pointer-events-none mx-auto max-w-screen-md">
-      <div className="mb-6 border-b pb-4">
-        <h1 className="font-semibold text-xl">{_(msg`Audit Log`)}</h1>
-      </div>
+    <section className="audit-page">
+      <header className="audit-header">
+        <div>
+          <small>{_(msg`Envelope ID`)}</small>
+          <strong>{document.envelopeId}</strong>
+        </div>
 
-      <Card>
-        <CardContent className="grid grid-cols-2 gap-4 p-6 text-sm print:text-xs">
-          <p>
-            <span className="font-medium">{_(msg`Envelope ID`)}</span>
+        <h1>{_(msg`Audit Log`)}</h1>
+      </header>
 
-            <span className="mt-1 block break-words">{document.envelopeId}</span>
-          </p>
+      <section className="audit-summary">
+        <div>
+          <span>{_(msg`Status`)}</span>
+          <strong>
+            {_(document.deletedAt ? msg`Deleted` : DOCUMENT_STATUS[document.status].description).toUpperCase()}
+          </strong>
+        </div>
 
-          <p>
-            <span className="font-medium">{_(msg`Enclosed Document`)}</span>
+        <div>
+          <span>{_(msg`Time Zone`)}</span>
+          <strong>{document.documentMeta?.timezone ?? 'N/A'}</strong>
+        </div>
 
-            <span className="mt-1 block break-words">{document.title}</span>
-          </p>
+        <div>
+          <span>{_(msg`Created At`)}</span>
+          <strong>{formatLocalDateTime(document.createdAt)}</strong>
+          <small>{formatUtcDateTime(document.createdAt)}</small>
+        </div>
 
-          <p>
-            <span className="font-medium">{_(msg`Status`)}</span>
+        <div>
+          <span>{_(msg`Last Updated`)}</span>
+          <strong>{formatLocalDateTime(document.updatedAt)}</strong>
+          <small>{formatUtcDateTime(document.updatedAt)}</small>
+        </div>
 
-            <span className="mt-1 block">
-              {_(document.deletedAt ? msg`Deleted` : DOCUMENT_STATUS[document.status].description).toUpperCase()}
-            </span>
-          </p>
+        <div className="wide">
+          <span>{_(msg`Enclosed Documents`)}</span>
+          <strong>{document.title}</strong>
+        </div>
 
-          <p>
-            <span className="font-medium">{_(msg`Owner`)}</span>
+        <div className="wide">
+          <span>{_(msg`Recipients`)}</span>
+          <strong>
+            {document.recipients.map((recipient, i) => (
+              <span key={recipient.id}>
+                {i > 0 && <br />}[{_(RECIPIENT_ROLES_DESCRIPTION[recipient.role].roleName)}] {recipient.name} (
+                {recipient.email})
+              </span>
+            ))}
+          </strong>
+        </div>
+      </section>
 
-            <span className="mt-1 block break-words">
-              {document.user.name} ({document.user.email})
-            </span>
-          </p>
+      <section className="audit-events">
+        {auditLogs.map((log) => {
+          parser.setUA(log.userAgent || '');
+          const formattedAction = formatDocumentAuditLogAction(i18n, log);
+          const userAgentInfo = parser.getResult();
 
-          <p>
-            <span className="font-medium">{_(msg`Created At`)}</span>
+          const browser = userAgentInfo.browser.name;
+          const version = userAgentInfo.browser.version;
+          const os = userAgentInfo.os.name;
 
-            <span className="mt-1 block whitespace-pre-line">{formatEvidenceDateTime(document.createdAt)}</span>
-          </p>
+          const userAgentFormatted =
+            browser && os ? `${version ? `${browser} ${version}` : browser} em ${os}` : log.userAgent || 'N/A';
 
-          <p>
-            <span className="font-medium">{_(msg`Last Updated`)}</span>
-
-            <span className="mt-1 block whitespace-pre-line">{formatEvidenceDateTime(document.updatedAt)}</span>
-          </p>
-
-          <p>
-            <span className="font-medium">{_(msg`Time Zone`)}</span>
-
-            <span className="mt-1 block break-words">{document.documentMeta?.timezone ?? 'N/A'}</span>
-          </p>
-
-          <div>
-            <p className="font-medium">{_(msg`Recipients`)}</p>
-
-            <ul className="mt-1 list-inside list-disc">
-              {document.recipients.map((recipient) => (
-                <li key={recipient.id}>
-                  <span className="text-muted-foreground">
-                    [{_(RECIPIENT_ROLES_DESCRIPTION[recipient.role].roleName)}]
-                  </span>{' '}
-                  {recipient.name} ({recipient.email})
-                </li>
-              ))}
-            </ul>
-          </div>
-        </CardContent>
-      </Card>
-
-      <div className="mt-8">
-        <InternalAuditLogTable logs={auditLogs} />
-      </div>
+          return (
+            <article key={log.id} className="audit-card">
+              <h2>{log.type.replace(/_/g, ' ')}</h2>
+              <p>{formattedAction.description}</p>
+              <time>{formatLocalDateTime(log.createdAt)}</time>
+              <small>{formatUtcDateTime(log.createdAt)}</small>
+              <dl>
+                <div>
+                  <dt>{_(msg`User`)}</dt>
+                  <dd>{log.email || 'N/A'}</dd>
+                </div>
+                <div>
+                  <dt>{_(msg`IP`)}</dt>
+                  <dd>{log.ipAddress || 'N/A'}</dd>
+                </div>
+                <div>
+                  <dt>{_(msg`Agent`)}</dt>
+                  <dd>{userAgentFormatted}</dd>
+                </div>
+              </dl>
+            </article>
+          );
+        })}
+      </section>
 
       {!hidePoweredBy && (
-        <div className="my-8 flex-row-reverse">
-          <div className="flex items-end justify-end gap-x-4">
-            <BrandingLogo className="max-h-6 print:max-h-4" />
-          </div>
+        <div className="audit-branding">
+          <BrandingLogo className="max-h-6" />
         </div>
       )}
-    </div>
+    </section>
   );
 }

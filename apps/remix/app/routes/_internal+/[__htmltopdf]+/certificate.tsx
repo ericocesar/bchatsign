@@ -143,9 +143,16 @@ export default function SigningCertificate({ loaderData }: Route.ComponentProps)
       latitude: number;
       longitude: number;
     } | null,
-  ) =>
-    geolocation?.address?.trim() ||
-    (geolocation ? `${geolocation.latitude.toFixed(4)}, ${geolocation.longitude.toFixed(4)}` : null);
+  ) => {
+    if (!geolocation) {
+      return null;
+    }
+
+    const coords = `${geolocation.latitude.toFixed(4)}, ${geolocation.longitude.toFixed(4)}`;
+    const address = geolocation.address?.trim();
+
+    return address ? `${coords} — ${address}` : coords;
+  };
 
   const getAuthenticationLevel = (recipientId: number) => {
     const recipient = document.recipients.find((recipient) => recipient.id === recipientId);
@@ -337,6 +344,15 @@ export default function SigningCertificate({ loaderData }: Route.ComponentProps)
                                 {logs.DOCUMENT_RECIPIENT_COMPLETED[0]
                                   ? formatEvidenceDateTime(logs.DOCUMENT_RECIPIENT_COMPLETED[0].createdAt)
                                   : _(msg`Unknown`)}
+                              </span>
+                            </p>
+                          )}
+
+                          {logs.DOCUMENT_RECIPIENT_COMPLETED[0]?.data?.geolocation && (
+                            <p className="text-black text-sm print:text-xs">
+                              <span className="font-medium">{_(msg`Geolocalização`)}:</span>{' '}
+                              <span className="inline-block">
+                                {formatRegisteredGeolocation(logs.DOCUMENT_RECIPIENT_COMPLETED[0].data.geolocation)}
                               </span>
                             </p>
                           )}

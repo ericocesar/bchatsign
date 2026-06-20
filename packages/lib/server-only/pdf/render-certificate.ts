@@ -15,6 +15,7 @@ import type { TDocumentAuditLogBaseSchema } from '../../types/document-audit-log
 import { svgToPng } from '../../utils/images/svg-to-png';
 import { formatEvidenceDateTime } from './format-evidence-date-time';
 import { ensureFontLibrary } from './helpers';
+import { reverseGeocode } from './reverse-geocode';
 
 type ColumnWidths = [number, number];
 
@@ -527,10 +528,10 @@ const renderColumnTwo = (options: RenderColumnOptions) => {
       y: column.getClientRect().height + 6,
     });
 
-    const geoCoordText = new Konva.Text({
+    const geoLabel = new Konva.Text({
       x: 0,
       y: 0,
-      text: `Geolocalização registrada: ${coords}`,
+      text: 'Geolocalização registrada:',
       fontStyle: fontMedium,
       fontFamily: certificateFontFamily,
       fill: textMutedForeground,
@@ -538,21 +539,21 @@ const renderColumnTwo = (options: RenderColumnOptions) => {
       width,
       wrap: 'char',
     });
-    geoGroup.add(geoCoordText);
+    geoGroup.add(geoLabel);
 
-    if (address) {
-      const addressText = new Konva.Text({
-        x: 0,
-        y: geoGroup.getClientRect().height + 2,
-        text: `Endereço aproximado: ${address}`,
-        fontFamily: certificateFontFamily,
-        fill: textMutedForeground,
-        fontSize: textSm,
-        width,
-        wrap: 'char',
-      });
-      geoGroup.add(addressText);
-    }
+    const geoValue = address ? `${coords} — ${address}` : coords;
+
+    const geoValueText = new Konva.Text({
+      x: 0,
+      y: geoGroup.getClientRect().height,
+      text: geoValue,
+      fontFamily: certificateFontFamily,
+      fill: textMutedForeground,
+      fontSize: textSm,
+      width,
+      wrap: 'char',
+    });
+    geoGroup.add(geoValueText);
 
     const precisionText = new Konva.Text({
       x: 0,
@@ -980,6 +981,20 @@ export async function renderCertificate({
   baseDocumentSha256,
 }: GenerateCertificateOptions) {
   ensureFontLibrary();
+
+  // Pre-fetch addresses from Google Geocoding for recipients missing geolocation address
+  await Promise.all(
+    recipients.map(async (recipient) => {
+      const geo = recipient.logs.completed?.geolocation;
+      if (!geo || geo.address?.trim()) {
+        return;
+      }
+      const address = await reverseGeocode(geo.latitude, geo.longitude);
+      if (address) {
+        geo.address = address;
+      }
+    }),
+  );
 
   const minimumMargin = 10;
 

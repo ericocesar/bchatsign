@@ -1,5 +1,161 @@
-@media print {
-  html {
-    font-size: 10pt;
-  }
+@page {
+  size: A4;
+  margin: 10mm;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #111827;
+}
+
+.audit-page {
+  width: 190mm;
+  min-height: 277mm;
+  padding: 0;
+}
+
+.audit-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #d1d5db;
+}
+
+.audit-header h1 {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.1;
+}
+
+.audit-header small {
+  display: block;
+  font-size: 6.5px;
+  color: #6b7280;
+}
+
+.audit-header strong {
+  display: block;
+  font-size: 8px;
+}
+
+.audit-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 8px;
+  margin: 6px 0;
+  padding: 6px;
+  border: 1px solid #e5e7eb;
+  border-radius: 5px;
+  background: #f9fafb;
+}
+
+.audit-summary div {
+  min-width: 0;
+}
+
+.audit-summary .wide {
+  grid-column: span 2;
+}
+
+.audit-summary span {
+  display: block;
+  font-size: 6.5px;
+  font-weight: 700;
+  color: #6b7280;
+  text-transform: uppercase;
+}
+
+.audit-summary strong {
+  display: block;
+  font-size: 7.2px;
+  line-height: 1.2;
+  word-break: break-word;
+}
+
+.audit-summary small {
+  display: block;
+  font-size: 6.2px;
+  line-height: 1.15;
+  color: #4b5563;
+}
+
+.audit-events {
+  column-count: 2;
+  column-gap: 6px;
+}
+
+.audit-card {
+  display: inline-block;
+  width: 100%;
+  margin: 0 0 5px;
+  padding: 5px;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  background: #ffffff;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.audit-card h2 {
+  margin: 0 0 2px;
+  font-size: 7.8px;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+}
+
+.audit-card p {
+  margin: 0 0 3px;
+  font-size: 7px;
+  line-height: 1.15;
+}
+
+.audit-card time {
+  display: block;
+  font-size: 6.8px;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.audit-card small {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 6.2px;
+  line-height: 1.15;
+  color: #6b7280;
+}
+
+.audit-card dl {
+  margin: 0;
+}
+
+.audit-card dl div {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 3px;
+  margin-top: 1px;
+}
+
+.audit-card dt {
+  font-size: 6.2px;
+  font-weight: 700;
+  color: #6b7280;
+}
+
+.audit-card dd {
+  margin: 0;
+  font-size: 6.2px;
+  line-height: 1.15;
+  word-break: break-word;
+}
+
+.audit-branding {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
 }

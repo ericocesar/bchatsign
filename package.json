@@ -39,7 +39,8 @@
     "translate": "npm run translate:extract && npm run translate:compile",
     "translate:extract": "lingui extract --clean",
     "translate:compile": "lingui compile",
-    "push": "./scripts/build-push.sh"
+    "push": "./scripts/build-push.sh",
+    "deploy:stack": "bash scripts/deployportainer.sh"
   },
   "packageManager": "npm@11.11.0",
   "engines": {

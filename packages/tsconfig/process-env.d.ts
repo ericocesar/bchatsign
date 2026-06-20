@@ -122,5 +122,10 @@ declare namespace NodeJS {
     GOOGLE_VERTEX_PROJECT_ID?: string;
     GOOGLE_VERTEX_LOCATION?: string;
     GOOGLE_VERTEX_API_KEY?: string;
+
+    /**
+     * Google Maps API key for reverse geocoding in certificate
+     */
+    NEXT_PRIVATE_GOOGLE_MAPS_API_KEY?: string;
   }
 }
