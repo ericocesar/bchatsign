@@ -64,7 +64,7 @@ const formContainerVariants = {
     opacity: 1,
     transition: { staggerChildren: 0.06, delayChildren: 0.15 },
   },
-};
+} as const;
 
 const formItemVariants = {
   hidden: { opacity: 0, y: 16 },
@@ -73,7 +73,7 @@ const formItemVariants = {
     y: 0,
     transition: { duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] },
   },
-};
+} as const;
 
 export default function SignIn({ loaderData }: Route.ComponentProps) {
   const {
