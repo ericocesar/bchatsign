@@ -28,4 +28,7 @@ printf "🗄️  Running database migrations...\n"
 npx prisma migrate deploy --schema ../../packages/prisma/schema.prisma
 
 printf "🌟 Starting Documenso server...\n"
-HOSTNAME=0.0.0.0 node build/server/main.js
+# Force production so runtime code paths (i18n catalog loading, logging, etc.)
+# behave correctly. Without this, getTranslations() can fall back to the raw
+# `.po` catalog and emit "Uncompiled message detected" warnings.
+NODE_ENV="${NODE_ENV:-production}" HOSTNAME=0.0.0.0 node build/server/main.js

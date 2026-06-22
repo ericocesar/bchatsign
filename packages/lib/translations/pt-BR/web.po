@@ -6256,6 +6256,10 @@ msgstr "Inserido"
 msgid "Instance Stats"
 msgstr "Estatísticas da Instância"
 
+#: apps/remix/app/components/signin-hero.tsx
+msgid "Intelligent and secure digital signatures for your documents."
+msgstr "Assinaturas digitais inteligentes e seguras para seus documentos."
+
 #: apps/remix/app/components/general/document/document-validation-panel.tsx
 msgid "Internal validation status"
 msgstr ""
@@ -9278,6 +9282,14 @@ msgstr ""
 #: apps/remix/app/components/dialogs/webhook-create-dialog.tsx
 msgid "Secret"
 msgstr "Segredo"
+
+#: apps/remix/app/components/signin-hero.tsx
+msgid "Secure"
+msgstr "Seguro"
+
+#: apps/remix/app/routes/_unauthenticated+/signin.tsx
+msgid "Secure digital signatures powered by BchatSign"
+msgstr "Assinaturas digitais seguras com BchatSign"
 
 #: apps/remix/app/components/general/settings-nav-desktop.tsx
 #: apps/remix/app/components/general/settings-nav-mobile.tsx
@@ -13129,8 +13141,9 @@ msgid "Welcome to {organisationName}"
 msgstr "Bem-vindo à {organisationName}"
 
 #: packages/lib/jobs/definitions/emails/send-admin-user-created-email.handler.ts
+#: apps/remix/app/components/signin-hero.tsx
 msgid "Welcome to BchatSign"
-msgstr ""
+msgstr "Bem-vindo ao BchatSign"
 
 #: packages/email/template-components/template-admin-user-created.tsx
 #: packages/email/template-components/template-confirmation-email.tsx

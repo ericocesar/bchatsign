@@ -292,6 +292,38 @@
   background: rgb(100 116 139 / 0.5);
 } */
 
+/* ----------------------------------------------------------------
+ * Sign-in hero animations
+ * ----------------------------------------------------------------
+ */
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.hero-gradient {
+  background: linear-gradient(
+    135deg,
+    hsl(178 80% 40%),
+    hsl(222 47% 12%),
+    hsl(199 89% 38%)
+  );
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-gradient {
+    animation: none;
+    background-size: 100% 100%;
+  }
+}
+
 /* Custom Swagger Dark Theme */
 .swagger-dark-theme .swagger-ui {
   filter: invert(88%) hue-rotate(180deg);

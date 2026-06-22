@@ -59,11 +59,17 @@ export async function loader({ context, request }: Route.LoaderArgs) {
 
   const cookieHeader = request.headers.get('cookie') ?? '';
 
-  let lang: SupportedLanguageCodes = await langCookie.parse(cookieHeader);
+  // Only honour a language that was explicitly chosen and persisted via
+  // /api/locale (the language switcher). For everyone else we resolve the
+  // locale fresh on each request (defaults to pt-BR) instead of letting a
+  // previously auto-written cookie pin the language for two years — which is
+  // what kept showing a stale `en` after the default became pt-BR.
+  const cookieLang: SupportedLanguageCodes = await langCookie.parse(cookieHeader);
+  const hasExplicitLangChoice = APP_I18N_OPTIONS.supportedLangs.includes(cookieLang);
 
-  if (!APP_I18N_OPTIONS.supportedLangs.includes(lang)) {
-    lang = extractLocaleData({ headers: request.headers }).lang;
-  }
+  const lang: SupportedLanguageCodes = hasExplicitLangChoice
+    ? cookieLang
+    : extractLocaleData({ headers: request.headers }).lang;
 
   const disableAnimations = cookieHeader.includes('__disable_animations=true');
 
@@ -91,11 +97,16 @@ export async function loader({ context, request }: Route.LoaderArgs) {
         : null,
       publicEnv: createPublicEnv(),
     },
-    {
-      headers: {
-        'Set-Cookie': await langCookie.serialize(lang),
-      },
-    },
+    // Only (re)write the cookie when the user has an explicit choice; never
+    // auto-pin the detected/default locale, otherwise a first visit during an
+    // older default would lock the language in for two years.
+    hasExplicitLangChoice
+      ? {
+          headers: {
+            'Set-Cookie': await langCookie.serialize(lang),
+          },
+        }
+      : undefined,
   );
 }
 
