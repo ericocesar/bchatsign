@@ -1,6 +1,6 @@
-import { nanoid, prefixedId } from '@documenso/lib/universal/id';
-import { prisma } from '@documenso/prisma';
-import type { TSignFieldWithTokenMutationSchema } from '@documenso/trpc/server/field-router/schema';
+import { nanoid, prefixedId } from '@bchatsign/lib/universal/id';
+import { prisma } from '@bchatsign/prisma';
+import type { TSignFieldWithTokenMutationSchema } from '@bchatsign/trpc/server/field-router/schema';
 import type { Field, Signature } from '@prisma/client';
 import {
   DocumentSigningOrder,

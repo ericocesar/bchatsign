@@ -1,6 +1,6 @@
-import { ZDocumentManySchema } from '@documenso/lib/types/document';
-import { ZFindResultResponse } from '@documenso/lib/types/search-params';
-import { ExtendedDocumentStatus } from '@documenso/prisma/types/extended-document-status';
+import { ZDocumentManySchema } from '@bchatsign/lib/types/document';
+import { ZFindResultResponse } from '@bchatsign/lib/types/search-params';
+import { ExtendedDocumentStatus } from '@bchatsign/prisma/types/extended-document-status';
 import { z } from 'zod';
 
 import { ZFindDocumentsRequestSchema } from './find-documents.types';

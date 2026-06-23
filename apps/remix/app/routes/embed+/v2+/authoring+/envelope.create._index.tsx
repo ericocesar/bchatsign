@@ -1,22 +1,22 @@
-import { EnvelopeEditorProvider } from '@documenso/lib/client-only/providers/envelope-editor-provider';
-import type { SupportedLanguageCodes } from '@documenso/lib/constants/i18n';
-import { verifyEmbeddingPresignToken } from '@documenso/lib/server-only/embedding-presign/verify-embedding-presign-token';
-import { getTeamSettings } from '@documenso/lib/server-only/team/get-team-settings';
-import { ZDefaultRecipientsSchema } from '@documenso/lib/types/default-recipients';
-import type { TDocumentMetaDateFormat } from '@documenso/lib/types/document-meta';
-import type { TEditorEnvelope } from '@documenso/lib/types/envelope-editor';
+import { EnvelopeEditorProvider } from '@bchatsign/lib/client-only/providers/envelope-editor-provider';
+import type { SupportedLanguageCodes } from '@bchatsign/lib/constants/i18n';
+import { verifyEmbeddingPresignToken } from '@bchatsign/lib/server-only/embedding-presign/verify-embedding-presign-token';
+import { getTeamSettings } from '@bchatsign/lib/server-only/team/get-team-settings';
+import { ZDefaultRecipientsSchema } from '@bchatsign/lib/types/default-recipients';
+import type { TDocumentMetaDateFormat } from '@bchatsign/lib/types/document-meta';
+import type { TEditorEnvelope } from '@bchatsign/lib/types/envelope-editor';
 import {
   type TEmbedCreateEnvelopeAuthoring,
   ZEmbedCreateEnvelopeAuthoringSchema,
-} from '@documenso/lib/types/envelope-editor';
-import type { TEnvelopeFieldAndMeta } from '@documenso/lib/types/field-meta';
-import { extractDerivedDocumentMeta } from '@documenso/lib/utils/document';
-import { buildEmbeddedEditorOptions, buildEmbeddedFeatures } from '@documenso/lib/utils/embed-config';
-import { prisma } from '@documenso/prisma';
-import { trpc } from '@documenso/trpc/react';
-import type { TCreateEnvelopePayload } from '@documenso/trpc/server/envelope-router/create-envelope.types';
-import { Spinner } from '@documenso/ui/primitives/spinner';
-import { useToast } from '@documenso/ui/primitives/use-toast';
+} from '@bchatsign/lib/types/envelope-editor';
+import type { TEnvelopeFieldAndMeta } from '@bchatsign/lib/types/field-meta';
+import { extractDerivedDocumentMeta } from '@bchatsign/lib/utils/document';
+import { buildEmbeddedEditorOptions, buildEmbeddedFeatures } from '@bchatsign/lib/utils/embed-config';
+import { prisma } from '@bchatsign/prisma';
+import { trpc } from '@bchatsign/trpc/react';
+import type { TCreateEnvelopePayload } from '@bchatsign/trpc/server/envelope-router/create-envelope.types';
+import { Spinner } from '@bchatsign/ui/primitives/spinner';
+import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { Trans, useLingui } from '@lingui/react/macro';
 import { DocumentStatus, EnvelopeType, ReadStatus, SendStatus, SigningStatus } from '@prisma/client';
 import { CheckCircle2Icon } from 'lucide-react';

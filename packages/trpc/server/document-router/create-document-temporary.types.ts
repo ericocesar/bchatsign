@@ -1,16 +1,16 @@
-import { ZDocumentSchema } from '@documenso/lib/types/document';
-import { ZDocumentAccessAuthTypesSchema, ZDocumentActionAuthTypesSchema } from '@documenso/lib/types/document-auth';
-import { ZDocumentFormValuesSchema } from '@documenso/lib/types/document-form-values';
-import { ZDocumentMetaCreateSchema } from '@documenso/lib/types/document-meta';
-import { ZEnvelopeAttachmentTypeSchema } from '@documenso/lib/types/envelope-attachment';
+import { ZDocumentSchema } from '@bchatsign/lib/types/document';
+import { ZDocumentAccessAuthTypesSchema, ZDocumentActionAuthTypesSchema } from '@bchatsign/lib/types/document-auth';
+import { ZDocumentFormValuesSchema } from '@bchatsign/lib/types/document-form-values';
+import { ZDocumentMetaCreateSchema } from '@bchatsign/lib/types/document-meta';
+import { ZEnvelopeAttachmentTypeSchema } from '@bchatsign/lib/types/envelope-attachment';
 import {
   ZFieldHeightSchema,
   ZFieldPageNumberSchema,
   ZFieldPageXSchema,
   ZFieldPageYSchema,
   ZFieldWidthSchema,
-} from '@documenso/lib/types/field';
-import { ZFieldAndMetaSchema } from '@documenso/lib/types/field-meta';
+} from '@bchatsign/lib/types/field';
+import { ZFieldAndMetaSchema } from '@bchatsign/lib/types/field-meta';
 import { z } from 'zod';
 
 import { ZCreateRecipientSchema } from '../recipient-router/schema';

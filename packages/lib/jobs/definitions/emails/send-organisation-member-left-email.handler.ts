@@ -1,6 +1,6 @@
-import { mailer } from '@documenso/email/mailer';
-import OrganisationLeaveEmailTemplate from '@documenso/email/templates/organisation-leave';
-import { prisma } from '@documenso/prisma';
+import { mailer } from '@bchatsign/email/mailer';
+import OrganisationLeaveEmailTemplate from '@bchatsign/email/templates/organisation-leave';
+import { prisma } from '@bchatsign/prisma';
 import { msg } from '@lingui/core/macro';
 import { createElement } from 'react';
 

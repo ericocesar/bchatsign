@@ -1,7 +1,7 @@
-import { isTeamRoleWithinUserHierarchy } from '@documenso/lib/utils/teams';
-import { trpc } from '@documenso/trpc/react';
-import { Alert, AlertDescription } from '@documenso/ui/primitives/alert';
-import { Button } from '@documenso/ui/primitives/button';
+import { isTeamRoleWithinUserHierarchy } from '@bchatsign/lib/utils/teams';
+import { trpc } from '@bchatsign/trpc/react';
+import { Alert, AlertDescription } from '@bchatsign/ui/primitives/alert';
+import { Button } from '@bchatsign/ui/primitives/button';
 import {
   Dialog,
   DialogContent,
@@ -10,8 +10,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@documenso/ui/primitives/dialog';
-import { useToast } from '@documenso/ui/primitives/use-toast';
+} from '@bchatsign/ui/primitives/dialog';
+import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';

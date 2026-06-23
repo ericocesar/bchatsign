@@ -1,4 +1,4 @@
-import type { RecipientWithFields } from '@documenso/prisma/types/recipient-with-fields';
+import type { RecipientWithFields } from '@bchatsign/prisma/types/recipient-with-fields';
 
 import type { Recipient } from '@prisma/client';
 import { createContext, type PropsWithChildren, useContext } from 'react';

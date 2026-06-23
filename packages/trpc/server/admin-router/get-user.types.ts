@@ -1,4 +1,4 @@
-import UserSchema from '@documenso/prisma/generated/zod/modelSchema/UserSchema';
+import UserSchema from '@bchatsign/prisma/generated/zod/modelSchema/UserSchema';
 import { z } from 'zod';
 
 export const ZGetUserRequestSchema = z.object({

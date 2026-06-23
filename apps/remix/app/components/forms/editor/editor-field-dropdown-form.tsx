@@ -1,8 +1,8 @@
-import { DEFAULT_FIELD_FONT_SIZE, type TDropdownFieldMeta as DropdownFieldMeta } from '@documenso/lib/types/field-meta';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@documenso/ui/primitives/form/form';
-import { Input } from '@documenso/ui/primitives/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@documenso/ui/primitives/select';
-import { Separator } from '@documenso/ui/primitives/separator';
+import { DEFAULT_FIELD_FONT_SIZE, type TDropdownFieldMeta as DropdownFieldMeta } from '@bchatsign/lib/types/field-meta';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@bchatsign/ui/primitives/form/form';
+import { Input } from '@bchatsign/ui/primitives/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@bchatsign/ui/primitives/select';
+import { Separator } from '@bchatsign/ui/primitives/separator';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { msg } from '@lingui/core/macro';
 import { Trans, useLingui } from '@lingui/react/macro';

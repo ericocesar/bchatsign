@@ -5,7 +5,7 @@ import {
   generateBlobSASQueryParameters,
   StorageSharedKeyCredential,
 } from '@azure/storage-blob';
-import { env } from '@documenso/lib/utils/env';
+import { env } from '@bchatsign/lib/utils/env';
 import slugify from '@sindresorhus/slugify';
 
 import { ONE_HOUR } from '../../../constants/time';

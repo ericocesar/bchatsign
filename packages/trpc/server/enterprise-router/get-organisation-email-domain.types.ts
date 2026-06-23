@@ -1,4 +1,4 @@
-import { ZEmailDomainSchema } from '@documenso/lib/types/email-domain';
+import { ZEmailDomainSchema } from '@bchatsign/lib/types/email-domain';
 import { z } from 'zod';
 
 export const ZGetOrganisationEmailDomainRequestSchema = z.object({

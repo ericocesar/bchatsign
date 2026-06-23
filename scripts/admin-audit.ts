@@ -1,7 +1,7 @@
 import { prisma } from '../packages/prisma';
 
 (async () => {
-  const user = await prisma.user.findUnique({ where: { email: 'admin@documenso.com' } });
+  const user = await prisma.user.findUnique({ where: { email: 'admin@bchatsign.com' } });
 
   if (!user) {
     console.log('Admin user not found');

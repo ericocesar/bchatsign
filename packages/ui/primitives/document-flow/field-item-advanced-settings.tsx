@@ -1,4 +1,4 @@
-import { useAutoSave } from '@documenso/lib/client-only/hooks/use-autosave';
+import { useAutoSave } from '@bchatsign/lib/client-only/hooks/use-autosave';
 import {
   type TBaseFieldMeta as BaseFieldMeta,
   type TCheckboxFieldMeta as CheckboxFieldMeta,
@@ -14,8 +14,8 @@ import {
   type TRadioFieldMeta as RadioFieldMeta,
   type TTextFieldMeta as TextFieldMeta,
   ZFieldMetaSchema,
-} from '@documenso/lib/types/field-meta';
-import { useToast } from '@documenso/ui/primitives/use-toast';
+} from '@bchatsign/lib/types/field-meta';
+import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import type { MessageDescriptor } from '@lingui/core';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';

@@ -1,22 +1,22 @@
-import { useUpdateSearchParams } from '@documenso/lib/client-only/hooks/use-update-search-params';
-import type { TLicenseClaim } from '@documenso/lib/types/license';
-import { ZUrlSearchParamsSchema } from '@documenso/lib/types/search-params';
-import { SUBSCRIPTION_CLAIM_FEATURE_FLAGS } from '@documenso/lib/types/subscription';
-import { trpc } from '@documenso/trpc/react';
-import { CopyTextButton } from '@documenso/ui/components/common/copy-text-button';
-import type { DataTableColumnDef } from '@documenso/ui/primitives/data-table';
-import { DataTable } from '@documenso/ui/primitives/data-table';
-import { DataTablePagination } from '@documenso/ui/primitives/data-table-pagination';
+import { useUpdateSearchParams } from '@bchatsign/lib/client-only/hooks/use-update-search-params';
+import type { TLicenseClaim } from '@bchatsign/lib/types/license';
+import { ZUrlSearchParamsSchema } from '@bchatsign/lib/types/search-params';
+import { SUBSCRIPTION_CLAIM_FEATURE_FLAGS } from '@bchatsign/lib/types/subscription';
+import { trpc } from '@bchatsign/trpc/react';
+import { CopyTextButton } from '@bchatsign/ui/components/common/copy-text-button';
+import type { DataTableColumnDef } from '@bchatsign/ui/primitives/data-table';
+import { DataTable } from '@bchatsign/ui/primitives/data-table';
+import { DataTablePagination } from '@bchatsign/ui/primitives/data-table-pagination';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
-} from '@documenso/ui/primitives/dropdown-menu';
-import { Skeleton } from '@documenso/ui/primitives/skeleton';
-import { TableCell } from '@documenso/ui/primitives/table';
-import { useToast } from '@documenso/ui/primitives/use-toast';
+} from '@bchatsign/ui/primitives/dropdown-menu';
+import { Skeleton } from '@bchatsign/ui/primitives/skeleton';
+import { TableCell } from '@bchatsign/ui/primitives/table';
+import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { Trans, useLingui } from '@lingui/react/macro';
 import { EditIcon, MoreHorizontalIcon, Trash2Icon } from 'lucide-react';
 import { useMemo } from 'react';

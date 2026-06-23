@@ -1,5 +1,5 @@
-import { prisma } from '@documenso/prisma';
-import { ExtendedDocumentStatus } from '@documenso/prisma/types/extended-document-status';
+import { prisma } from '@bchatsign/prisma';
+import { ExtendedDocumentStatus } from '@bchatsign/prisma/types/extended-document-status';
 import { EnvelopeType } from '@prisma/client';
 
 export const getDocumentStats = async () => {

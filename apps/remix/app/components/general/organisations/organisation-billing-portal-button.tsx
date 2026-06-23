@@ -1,9 +1,9 @@
-import { useCurrentOrganisation } from '@documenso/lib/client-only/providers/organisation';
-import { useSession } from '@documenso/lib/client-only/providers/session';
-import { canExecuteOrganisationAction, isPersonalLayout } from '@documenso/lib/utils/organisations';
-import { trpc } from '@documenso/trpc/react';
-import { Button } from '@documenso/ui/primitives/button';
-import { useToast } from '@documenso/ui/primitives/use-toast';
+import { useCurrentOrganisation } from '@bchatsign/lib/client-only/providers/organisation';
+import { useSession } from '@bchatsign/lib/client-only/providers/session';
+import { canExecuteOrganisationAction, isPersonalLayout } from '@bchatsign/lib/utils/organisations';
+import { trpc } from '@bchatsign/trpc/react';
+import { Button } from '@bchatsign/ui/primitives/button';
+import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';

@@ -1,8 +1,8 @@
-import type { TDefaultRecipient } from '@documenso/lib/types/default-recipients';
-import { isRecipientEmailValidForSending } from '@documenso/lib/utils/recipients';
-import { trpc } from '@documenso/trpc/react';
-import { MultiSelect, type Option } from '@documenso/ui/primitives/multiselect';
-import { useToast } from '@documenso/ui/primitives/use-toast';
+import type { TDefaultRecipient } from '@bchatsign/lib/types/default-recipients';
+import { isRecipientEmailValidForSending } from '@bchatsign/lib/utils/recipients';
+import { trpc } from '@bchatsign/trpc/react';
+import { MultiSelect, type Option } from '@bchatsign/ui/primitives/multiselect';
+import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans, useLingui as useLinguiMacro } from '@lingui/react/macro';

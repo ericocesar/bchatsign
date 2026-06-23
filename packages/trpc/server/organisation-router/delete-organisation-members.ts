@@ -1,10 +1,10 @@
-import { syncMemberCountWithStripeSeatPlan } from '@documenso/ee/server-only/stripe/update-subscription-item-quantity';
-import { ORGANISATION_MEMBER_ROLE_PERMISSIONS_MAP } from '@documenso/lib/constants/organisations';
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { jobs } from '@documenso/lib/jobs/client';
-import { buildOrganisationWhereQuery } from '@documenso/lib/utils/organisations';
-import { prisma } from '@documenso/prisma';
-import { OrganisationMemberInviteStatus } from '@documenso/prisma/client';
+import { syncMemberCountWithStripeSeatPlan } from '@bchatsign/ee/server-only/stripe/update-subscription-item-quantity';
+import { ORGANISATION_MEMBER_ROLE_PERMISSIONS_MAP } from '@bchatsign/lib/constants/organisations';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { jobs } from '@bchatsign/lib/jobs/client';
+import { buildOrganisationWhereQuery } from '@bchatsign/lib/utils/organisations';
+import { prisma } from '@bchatsign/prisma';
+import { OrganisationMemberInviteStatus } from '@bchatsign/prisma/client';
 
 import { authenticatedProcedure } from '../trpc';
 import {

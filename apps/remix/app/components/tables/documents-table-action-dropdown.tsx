@@ -1,18 +1,18 @@
-import { useSession } from '@documenso/lib/client-only/providers/session';
-import type { TDocumentMany as TDocumentRow } from '@documenso/lib/types/document';
-import { isDocumentCompleted } from '@documenso/lib/utils/document';
-import { getEnvelopeItemPermissions } from '@documenso/lib/utils/envelope';
-import { findRecipientByEmail } from '@documenso/lib/utils/recipients';
-import { formatDocumentsPath } from '@documenso/lib/utils/teams';
-import { trpc as trpcReact } from '@documenso/trpc/react';
-import { DocumentShareButton } from '@documenso/ui/components/document/document-share-button';
+import { useSession } from '@bchatsign/lib/client-only/providers/session';
+import type { TDocumentMany as TDocumentRow } from '@bchatsign/lib/types/document';
+import { isDocumentCompleted } from '@bchatsign/lib/utils/document';
+import { getEnvelopeItemPermissions } from '@bchatsign/lib/utils/envelope';
+import { findRecipientByEmail } from '@bchatsign/lib/utils/recipients';
+import { formatDocumentsPath } from '@bchatsign/lib/utils/teams';
+import { trpc as trpcReact } from '@bchatsign/trpc/react';
+import { DocumentShareButton } from '@bchatsign/ui/components/document/document-share-button';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
-} from '@documenso/ui/primitives/dropdown-menu';
+} from '@bchatsign/ui/primitives/dropdown-menu';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';

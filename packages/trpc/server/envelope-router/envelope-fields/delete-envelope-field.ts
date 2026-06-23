@@ -1,9 +1,9 @@
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { getEnvelopeWhereInput } from '@documenso/lib/server-only/envelope/get-envelope-by-id';
-import { DOCUMENT_AUDIT_LOG_TYPE } from '@documenso/lib/types/document-audit-logs';
-import { createDocumentAuditLogData } from '@documenso/lib/utils/document-audit-logs';
-import { canRecipientFieldsBeModified } from '@documenso/lib/utils/recipients';
-import { prisma } from '@documenso/prisma';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { getEnvelopeWhereInput } from '@bchatsign/lib/server-only/envelope/get-envelope-by-id';
+import { DOCUMENT_AUDIT_LOG_TYPE } from '@bchatsign/lib/types/document-audit-logs';
+import { createDocumentAuditLogData } from '@bchatsign/lib/utils/document-audit-logs';
+import { canRecipientFieldsBeModified } from '@bchatsign/lib/utils/recipients';
+import { prisma } from '@bchatsign/prisma';
 import { EnvelopeType } from '@prisma/client';
 
 import { ZGenericSuccessResponse } from '../../schema';

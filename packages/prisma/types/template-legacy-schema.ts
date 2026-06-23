@@ -3,7 +3,7 @@
  * we removed the "Template" prisma schema model.
  */
 
-import { ZDocumentAuthOptionsSchema } from '@documenso/lib/types/document-auth';
+import { ZDocumentAuthOptionsSchema } from '@bchatsign/lib/types/document-auth';
 import { TemplateType } from '@prisma/client';
 import { z } from 'zod';
 

@@ -19,20 +19,20 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
-import { createApiToken } from '@documenso/lib/server-only/public-api/create-api-token';
-import { mapSecondaryIdToTemplateId } from '@documenso/lib/utils/envelope';
-import { seedUser } from '@documenso/prisma/seed/users';
+import { NEXT_PUBLIC_WEBAPP_URL } from '@bchatsign/lib/constants/app';
+import { createApiToken } from '@bchatsign/lib/server-only/public-api/create-api-token';
+import { mapSecondaryIdToTemplateId } from '@bchatsign/lib/utils/envelope';
+import { seedUser } from '@bchatsign/prisma/seed/users';
 import type {
   TCreateEnvelopePayload,
   TCreateEnvelopeResponse,
-} from '@documenso/trpc/server/envelope-router/create-envelope.types';
+} from '@bchatsign/trpc/server/envelope-router/create-envelope.types';
 import type {
   TDistributeEnvelopeRequest,
   TDistributeEnvelopeResponse,
-} from '@documenso/trpc/server/envelope-router/distribute-envelope.types';
-import type { TCreateEnvelopeRecipientsResponse } from '@documenso/trpc/server/envelope-router/envelope-recipients/create-envelope-recipients.types';
-import type { TGetEnvelopeResponse } from '@documenso/trpc/server/envelope-router/get-envelope.types';
+} from '@bchatsign/trpc/server/envelope-router/distribute-envelope.types';
+import type { TCreateEnvelopeRecipientsResponse } from '@bchatsign/trpc/server/envelope-router/envelope-recipients/create-envelope-recipients.types';
+import type { TGetEnvelopeResponse } from '@bchatsign/trpc/server/envelope-router/get-envelope.types';
 import { type APIRequestContext, expect } from '@playwright/test';
 
 // ---------------------------------------------------------------------------
@@ -617,7 +617,7 @@ export const apiSeedPendingDocument = async (
 
   const recipients = options.recipients ?? [
     {
-      email: `signer-${Date.now()}@test.documenso.com`,
+      email: `signer-${Date.now()}@test.bchatsign.com`,
       name: 'Test Signer',
       role: 'SIGNER' as const,
     },
@@ -804,7 +804,7 @@ export const apiSeedDirectTemplate = async (
 > => {
   const recipients = options.recipients ?? [
     options.directRecipient ?? {
-      email: 'direct-template-recipient@documenso.com',
+      email: 'direct-template-recipient@bchatsign.com',
       name: 'Direct Template Recipient',
       role: 'SIGNER' as const,
     },

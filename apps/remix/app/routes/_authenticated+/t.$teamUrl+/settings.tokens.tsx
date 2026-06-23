@@ -1,6 +1,6 @@
-import { trpc } from '@documenso/trpc/react';
-import { Alert, AlertDescription, AlertTitle } from '@documenso/ui/primitives/alert';
-import { Button } from '@documenso/ui/primitives/button';
+import { trpc } from '@bchatsign/trpc/react';
+import { Alert, AlertDescription, AlertTitle } from '@bchatsign/ui/primitives/alert';
+import { Button } from '@bchatsign/ui/primitives/button';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
@@ -33,7 +33,7 @@ export default function ApiTokensPage() {
             On this page, you can create and manage API tokens. See our{' '}
             <a
               className="text-primary underline"
-              href={'https://docs.documenso.com/developers/public-api'}
+              href={'https://docs.bchatsign.com/developers/public-api'}
               target="_blank"
               rel="noopener"
             >

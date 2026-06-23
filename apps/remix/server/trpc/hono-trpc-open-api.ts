@@ -1,9 +1,9 @@
-import { API_V2_BETA_URL, API_V2_URL } from '@documenso/lib/constants/app';
-import { AppError, genericErrorCodeToTrpcErrorCodeMap } from '@documenso/lib/errors/app-error';
-import { createTrpcContext } from '@documenso/trpc/server/context';
-import { appRouter } from '@documenso/trpc/server/router';
-import { createOpenApiFetchHandler } from '@documenso/trpc/utils/openapi-fetch-handler';
-import { handleTrpcRouterError } from '@documenso/trpc/utils/trpc-error-handler';
+import { API_V2_BETA_URL, API_V2_URL } from '@bchatsign/lib/constants/app';
+import { AppError, genericErrorCodeToTrpcErrorCodeMap } from '@bchatsign/lib/errors/app-error';
+import { createTrpcContext } from '@bchatsign/trpc/server/context';
+import { appRouter } from '@bchatsign/trpc/server/router';
+import { createOpenApiFetchHandler } from '@bchatsign/trpc/utils/openapi-fetch-handler';
+import { handleTrpcRouterError } from '@bchatsign/trpc/utils/trpc-error-handler';
 import type { Context } from 'hono';
 
 type OpenApiTrpcServerHandlerOptions = {

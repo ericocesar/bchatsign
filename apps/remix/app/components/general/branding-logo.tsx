@@ -1,4 +1,4 @@
-import LogoSvg from '@documenso/assets/logo.svg';
+import LogoSvg from '@bchatsign/assets/logo.svg';
 import type { ImgHTMLAttributes } from 'react';
 
 export type LogoProps = ImgHTMLAttributes<HTMLImageElement>;

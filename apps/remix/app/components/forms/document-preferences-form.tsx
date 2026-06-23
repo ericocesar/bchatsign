@@ -1,28 +1,28 @@
-import { useCurrentOrganisation } from '@documenso/lib/client-only/providers/organisation';
-import { useSession } from '@documenso/lib/client-only/providers/session';
-import { DATE_FORMATS } from '@documenso/lib/constants/date-formats';
-import { DOCUMENT_SIGNATURE_TYPES, DocumentSignatureType } from '@documenso/lib/constants/document';
+import { useCurrentOrganisation } from '@bchatsign/lib/client-only/providers/organisation';
+import { useSession } from '@bchatsign/lib/client-only/providers/session';
+import { DATE_FORMATS } from '@bchatsign/lib/constants/date-formats';
+import { DOCUMENT_SIGNATURE_TYPES, DocumentSignatureType } from '@bchatsign/lib/constants/document';
 import {
   type TEnvelopeExpirationPeriod,
   ZEnvelopeExpirationPeriod,
-} from '@documenso/lib/constants/envelope-expiration';
-import { type TEnvelopeReminderSettings, ZEnvelopeReminderSettings } from '@documenso/lib/constants/envelope-reminder';
-import { isValidLanguageCode, SUPPORTED_LANGUAGE_CODES, SUPPORTED_LANGUAGES } from '@documenso/lib/constants/i18n';
-import { TIME_ZONES } from '@documenso/lib/constants/time-zones';
-import type { TDefaultRecipients } from '@documenso/lib/types/default-recipients';
-import { ZDefaultRecipientsSchema } from '@documenso/lib/types/default-recipients';
-import { type TDocumentMetaDateFormat, ZDocumentMetaTimezoneSchema } from '@documenso/lib/types/document-meta';
-import { isPersonalLayout } from '@documenso/lib/utils/organisations';
-import { recipientAbbreviation } from '@documenso/lib/utils/recipient-formatter';
-import { extractTeamSignatureSettings } from '@documenso/lib/utils/teams';
-import { DocumentSignatureSettingsTooltip } from '@documenso/ui/components/document/document-signature-settings-tooltip';
-import { ExpirationPeriodPicker } from '@documenso/ui/components/document/expiration-period-picker';
-import { ReminderSettingsPicker } from '@documenso/ui/components/document/reminder-settings-picker';
-import { RecipientRoleSelect } from '@documenso/ui/components/recipient/recipient-role-select';
-import { Alert } from '@documenso/ui/primitives/alert';
-import { AvatarWithText } from '@documenso/ui/primitives/avatar';
-import { Button } from '@documenso/ui/primitives/button';
-import { Combobox } from '@documenso/ui/primitives/combobox';
+} from '@bchatsign/lib/constants/envelope-expiration';
+import { type TEnvelopeReminderSettings, ZEnvelopeReminderSettings } from '@bchatsign/lib/constants/envelope-reminder';
+import { isValidLanguageCode, SUPPORTED_LANGUAGE_CODES, SUPPORTED_LANGUAGES } from '@bchatsign/lib/constants/i18n';
+import { TIME_ZONES } from '@bchatsign/lib/constants/time-zones';
+import type { TDefaultRecipients } from '@bchatsign/lib/types/default-recipients';
+import { ZDefaultRecipientsSchema } from '@bchatsign/lib/types/default-recipients';
+import { type TDocumentMetaDateFormat, ZDocumentMetaTimezoneSchema } from '@bchatsign/lib/types/document-meta';
+import { isPersonalLayout } from '@bchatsign/lib/utils/organisations';
+import { recipientAbbreviation } from '@bchatsign/lib/utils/recipient-formatter';
+import { extractTeamSignatureSettings } from '@bchatsign/lib/utils/teams';
+import { DocumentSignatureSettingsTooltip } from '@bchatsign/ui/components/document/document-signature-settings-tooltip';
+import { ExpirationPeriodPicker } from '@bchatsign/ui/components/document/expiration-period-picker';
+import { ReminderSettingsPicker } from '@bchatsign/ui/components/document/reminder-settings-picker';
+import { RecipientRoleSelect } from '@bchatsign/ui/components/recipient/recipient-role-select';
+import { Alert } from '@bchatsign/ui/primitives/alert';
+import { AvatarWithText } from '@bchatsign/ui/primitives/avatar';
+import { Button } from '@bchatsign/ui/primitives/button';
+import { Combobox } from '@bchatsign/ui/primitives/combobox';
 import {
   Form,
   FormControl,
@@ -31,9 +31,9 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@documenso/ui/primitives/form/form';
-import { MultiSelectCombobox } from '@documenso/ui/primitives/multi-select-combobox';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@documenso/ui/primitives/select';
+} from '@bchatsign/ui/primitives/form/form';
+import { MultiSelectCombobox } from '@bchatsign/ui/primitives/multi-select-combobox';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@bchatsign/ui/primitives/select';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { msg, t } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';

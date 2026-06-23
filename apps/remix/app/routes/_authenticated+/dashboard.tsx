@@ -1,10 +1,10 @@
-import { useSession } from '@documenso/lib/client-only/providers/session';
-import { SKIP_QUERY_BATCH_META } from '@documenso/lib/constants/trpc';
-import { ExtendedDocumentStatus } from '@documenso/prisma/types/extended-document-status';
-import { trpc } from '@documenso/trpc/react';
-import type { TFindDocumentsInternalResponse } from '@documenso/trpc/server/document-router/find-documents-internal.types';
-import { Button } from '@documenso/ui/primitives/button';
-import { Skeleton } from '@documenso/ui/primitives/skeleton';
+import { useSession } from '@bchatsign/lib/client-only/providers/session';
+import { SKIP_QUERY_BATCH_META } from '@bchatsign/lib/constants/trpc';
+import { ExtendedDocumentStatus } from '@bchatsign/prisma/types/extended-document-status';
+import { trpc } from '@bchatsign/trpc/react';
+import type { TFindDocumentsInternalResponse } from '@bchatsign/trpc/server/document-router/find-documents-internal.types';
+import { Button } from '@bchatsign/ui/primitives/button';
+import { Skeleton } from '@bchatsign/ui/primitives/skeleton';
 import { msg } from '@lingui/core/macro';
 import { Trans, useLingui } from '@lingui/react/macro';
 import { DocumentStatus } from '@prisma/client';

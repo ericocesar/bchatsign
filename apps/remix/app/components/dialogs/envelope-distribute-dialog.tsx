@@ -1,14 +1,14 @@
-import { useCurrentEnvelopeEditor } from '@documenso/lib/client-only/providers/envelope-editor-provider';
-import { useCurrentOrganisation } from '@documenso/lib/client-only/providers/organisation';
-import { DO_NOT_INVALIDATE_QUERY_ON_MUTATION } from '@documenso/lib/constants/trpc';
-import { extractDocumentAuthMethods } from '@documenso/lib/utils/document-auth';
-import { getRecipientsWithMissingFields } from '@documenso/lib/utils/recipients';
-import { zEmail } from '@documenso/lib/utils/zod';
-import { trpc, trpc as trpcReact } from '@documenso/trpc/react';
-import { DocumentSendEmailMessageHelper } from '@documenso/ui/components/document/document-send-email-message-helper';
-import { cn } from '@documenso/ui/lib/utils';
-import { Alert, AlertDescription } from '@documenso/ui/primitives/alert';
-import { Button } from '@documenso/ui/primitives/button';
+import { useCurrentEnvelopeEditor } from '@bchatsign/lib/client-only/providers/envelope-editor-provider';
+import { useCurrentOrganisation } from '@bchatsign/lib/client-only/providers/organisation';
+import { DO_NOT_INVALIDATE_QUERY_ON_MUTATION } from '@bchatsign/lib/constants/trpc';
+import { extractDocumentAuthMethods } from '@bchatsign/lib/utils/document-auth';
+import { getRecipientsWithMissingFields } from '@bchatsign/lib/utils/recipients';
+import { zEmail } from '@bchatsign/lib/utils/zod';
+import { trpc, trpc as trpcReact } from '@bchatsign/trpc/react';
+import { DocumentSendEmailMessageHelper } from '@bchatsign/ui/components/document/document-send-email-message-helper';
+import { cn } from '@bchatsign/ui/lib/utils';
+import { Alert, AlertDescription } from '@bchatsign/ui/primitives/alert';
+import { Button } from '@bchatsign/ui/primitives/button';
 import {
   Dialog,
   DialogClose,
@@ -18,15 +18,15 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@documenso/ui/primitives/dialog';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@documenso/ui/primitives/form/form';
-import { Input } from '@documenso/ui/primitives/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@documenso/ui/primitives/select';
-import { SpinnerBox } from '@documenso/ui/primitives/spinner';
-import { Tabs, TabsList, TabsTrigger } from '@documenso/ui/primitives/tabs';
-import { Textarea } from '@documenso/ui/primitives/textarea';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@documenso/ui/primitives/tooltip';
-import { useToast } from '@documenso/ui/primitives/use-toast';
+} from '@bchatsign/ui/primitives/dialog';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@bchatsign/ui/primitives/form/form';
+import { Input } from '@bchatsign/ui/primitives/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@bchatsign/ui/primitives/select';
+import { SpinnerBox } from '@bchatsign/ui/primitives/spinner';
+import { Tabs, TabsList, TabsTrigger } from '@bchatsign/ui/primitives/tabs';
+import { Textarea } from '@bchatsign/ui/primitives/textarea';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@bchatsign/ui/primitives/tooltip';
+import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Trans, useLingui } from '@lingui/react/macro';
 import { DocumentDistributionMethod, DocumentStatus, EnvelopeType } from '@prisma/client';

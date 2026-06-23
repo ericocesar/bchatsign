@@ -1,15 +1,15 @@
-import { formatDocumentsPath, formatTemplatesPath } from '@documenso/lib/utils/teams';
-import { trpc } from '@documenso/trpc/react';
-import type { TFolderWithSubfolders } from '@documenso/trpc/server/folder-router/schema';
-import { Button } from '@documenso/ui/primitives/button';
-import { Card, CardContent } from '@documenso/ui/primitives/card';
+import { formatDocumentsPath, formatTemplatesPath } from '@bchatsign/lib/utils/teams';
+import { trpc } from '@bchatsign/trpc/react';
+import type { TFolderWithSubfolders } from '@bchatsign/trpc/server/folder-router/schema';
+import { Button } from '@bchatsign/ui/primitives/button';
+import { Card, CardContent } from '@bchatsign/ui/primitives/card';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@documenso/ui/primitives/dropdown-menu';
+} from '@bchatsign/ui/primitives/dropdown-menu';
 import { Plural, Trans } from '@lingui/react/macro';
 import { FolderType } from '@prisma/client';
 import {
@@ -58,13 +58,13 @@ export const FolderCard = ({ folder, onMove, onSettings, onDelete }: FolderCardP
       <Card className="h-full border border-border transition-all hover:bg-muted/50">
         <CardContent className="p-4">
           <div className="flex min-w-0 items-center gap-3">
-            <FolderIcon className="h-6 w-6 flex-shrink-0 text-documenso" />
+            <FolderIcon className="h-6 w-6 flex-shrink-0 text-bchatsign" />
 
             <div className="flex w-full min-w-0 items-center justify-between">
               <div className="min-w-0 flex-1">
                 <h3 className="flex min-w-0 items-center gap-2 font-medium">
                   <span className="truncate">{folder.name}</span>
-                  {folder.pinned && <PinIcon className="h-3 w-3 flex-shrink-0 text-documenso" />}
+                  {folder.pinned && <PinIcon className="h-3 w-3 flex-shrink-0 text-bchatsign" />}
                 </h3>
 
                 <div className="mt-1 flex space-x-2 truncate text-muted-foreground text-xs">

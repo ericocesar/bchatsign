@@ -1,6 +1,6 @@
-import type { TCachedLicense } from '@documenso/lib/types/license';
-import { cn } from '@documenso/ui/lib/utils';
-import { Button } from '@documenso/ui/primitives/button';
+import type { TCachedLicense } from '@bchatsign/lib/types/license';
+import { cn } from '@bchatsign/ui/lib/utils';
+import { Button } from '@bchatsign/ui/primitives/button';
 import { Trans } from '@lingui/react/macro';
 import { AlertTriangleIcon, KeyRoundIcon } from 'lucide-react';
 import { Link } from 'react-router';
@@ -57,7 +57,7 @@ export const AdminLicenseStatusBanner = ({ license }: AdminLicenseStatusBannerPr
           })}
           asChild
         >
-          <Link to="https://docs.documenso.com/users/licenses/enterprise-edition" target="_blank">
+          <Link to="https://docs.bchatsign.com/users/licenses/enterprise-edition" target="_blank">
             <KeyRoundIcon className="mr-1.5 h-4 w-4" />
             <Trans>See Documentation</Trans>
           </Link>

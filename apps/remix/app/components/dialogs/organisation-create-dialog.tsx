@@ -1,16 +1,16 @@
-import type { InternalClaimPlans } from '@documenso/ee/server-only/stripe/get-internal-claim-plans';
-import { useUpdateSearchParams } from '@documenso/lib/client-only/hooks/use-update-search-params';
-import { useSession } from '@documenso/lib/client-only/providers/session';
-import { IS_BILLING_ENABLED } from '@documenso/lib/constants/app';
-import { AppError } from '@documenso/lib/errors/app-error';
-import { INTERNAL_CLAIM_ID } from '@documenso/lib/types/subscription';
-import { parseMessageDescriptorMacro } from '@documenso/lib/utils/i18n';
-import { isPersonalLayout } from '@documenso/lib/utils/organisations';
-import { trpc } from '@documenso/trpc/react';
-import { ZCreateOrganisationRequestSchema } from '@documenso/trpc/server/organisation-router/create-organisation.types';
-import { cn } from '@documenso/ui/lib/utils';
-import { Badge } from '@documenso/ui/primitives/badge';
-import { Button } from '@documenso/ui/primitives/button';
+import type { InternalClaimPlans } from '@bchatsign/ee/server-only/stripe/get-internal-claim-plans';
+import { useUpdateSearchParams } from '@bchatsign/lib/client-only/hooks/use-update-search-params';
+import { useSession } from '@bchatsign/lib/client-only/providers/session';
+import { IS_BILLING_ENABLED } from '@bchatsign/lib/constants/app';
+import { AppError } from '@bchatsign/lib/errors/app-error';
+import { INTERNAL_CLAIM_ID } from '@bchatsign/lib/types/subscription';
+import { parseMessageDescriptorMacro } from '@bchatsign/lib/utils/i18n';
+import { isPersonalLayout } from '@bchatsign/lib/utils/organisations';
+import { trpc } from '@bchatsign/trpc/react';
+import { ZCreateOrganisationRequestSchema } from '@bchatsign/trpc/server/organisation-router/create-organisation.types';
+import { cn } from '@bchatsign/ui/lib/utils';
+import { Badge } from '@bchatsign/ui/primitives/badge';
+import { Button } from '@bchatsign/ui/primitives/button';
 import {
   Dialog,
   DialogContent,
@@ -19,12 +19,12 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@documenso/ui/primitives/dialog';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@documenso/ui/primitives/form/form';
-import { Input } from '@documenso/ui/primitives/input';
-import { SpinnerBox } from '@documenso/ui/primitives/spinner';
-import { Tabs, TabsList, TabsTrigger } from '@documenso/ui/primitives/tabs';
-import { useToast } from '@documenso/ui/primitives/use-toast';
+} from '@bchatsign/ui/primitives/dialog';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@bchatsign/ui/primitives/form/form';
+import { Input } from '@bchatsign/ui/primitives/input';
+import { SpinnerBox } from '@bchatsign/ui/primitives/spinner';
+import { Tabs, TabsList, TabsTrigger } from '@bchatsign/ui/primitives/tabs';
+import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import type { MessageDescriptor } from '@lingui/core';
 import { msg } from '@lingui/core/macro';
@@ -398,7 +398,7 @@ const BillingPlanForm = ({ value, onChange, plans, canCreateFreeOrganisation }: 
 
       <div className="mt-6 text-center">
         <Link
-          to="https://documenso.com/pricing"
+          to="https://bchatsign.com/pricing"
           className="flex items-center justify-center gap-1 text-primary text-sm hover:text-primary/80 hover:underline"
           target="_blank"
         >

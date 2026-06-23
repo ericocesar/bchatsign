@@ -1,4 +1,4 @@
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
 import { CodeChallengeMethod, generateCodeVerifier, generateState, OAuth2Client } from 'arctic';
 import type { Context } from 'hono';
 import { setCookie } from 'hono/cookie';

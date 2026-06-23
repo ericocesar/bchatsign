@@ -1,6 +1,6 @@
-import { mailer } from '@documenso/email/mailer';
-import { DocumentCreatedFromDirectTemplateEmailTemplate } from '@documenso/email/templates/document-created-from-direct-template';
-import { prisma } from '@documenso/prisma';
+import { mailer } from '@bchatsign/email/mailer';
+import { DocumentCreatedFromDirectTemplateEmailTemplate } from '@bchatsign/email/templates/document-created-from-direct-template';
+import { prisma } from '@bchatsign/prisma';
 import { msg } from '@lingui/core/macro';
 import { createElement } from 'react';
 

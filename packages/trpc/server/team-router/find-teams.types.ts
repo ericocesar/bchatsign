@@ -1,5 +1,5 @@
-import { ZFindResultResponse, ZFindSearchParamsSchema } from '@documenso/lib/types/search-params';
-import TeamSchema from '@documenso/prisma/generated/zod/modelSchema/TeamSchema';
+import { ZFindResultResponse, ZFindSearchParamsSchema } from '@bchatsign/lib/types/search-params';
+import TeamSchema from '@bchatsign/prisma/generated/zod/modelSchema/TeamSchema';
 import { TeamMemberRole } from '@prisma/client';
 import { z } from 'zod';
 

@@ -1,9 +1,9 @@
-import { useCurrentEnvelopeRender } from '@documenso/lib/client-only/providers/envelope-render-provider';
-import { PDF_VIEWER_ERROR_MESSAGES } from '@documenso/lib/constants/pdf-viewer-i18n';
-import { mapSecondaryIdToDocumentId } from '@documenso/lib/utils/envelope';
-import { cn } from '@documenso/ui/lib/utils';
-import { Button } from '@documenso/ui/primitives/button';
-import { Separator } from '@documenso/ui/primitives/separator';
+import { useCurrentEnvelopeRender } from '@bchatsign/lib/client-only/providers/envelope-render-provider';
+import { PDF_VIEWER_ERROR_MESSAGES } from '@bchatsign/lib/constants/pdf-viewer-i18n';
+import { mapSecondaryIdToDocumentId } from '@bchatsign/lib/utils/envelope';
+import { cn } from '@bchatsign/ui/lib/utils';
+import { Button } from '@bchatsign/ui/primitives/button';
+import { Separator } from '@bchatsign/ui/primitives/separator';
 import { Plural, Trans, useLingui } from '@lingui/react/macro';
 import { EnvelopeType, RecipientRole } from '@prisma/client';
 import { motion } from 'framer-motion';
@@ -283,7 +283,7 @@ export const DocumentSigningPageViewV2 = () => {
 
               {!hidePoweredBy && (
                 <a
-                  href="https://documenso.com"
+                  href="https://bchatsign.com"
                   target="_blank"
                   className="fixed right-0 bottom-0 z-40 hidden cursor-pointer rounded-tl bg-primary px-2 py-1 font-medium text-primary-foreground text-xs opacity-60 hover:opacity-100 lg:block"
                   rel="noopener"

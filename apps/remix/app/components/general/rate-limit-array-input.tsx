@@ -1,5 +1,5 @@
-import { Button } from '@documenso/ui/primitives/button';
-import { Input } from '@documenso/ui/primitives/input';
+import { Button } from '@bchatsign/ui/primitives/button';
+import { Input } from '@bchatsign/ui/primitives/input';
 import { Trans } from '@lingui/react/macro';
 import { PlusIcon, Trash2Icon } from 'lucide-react';
 

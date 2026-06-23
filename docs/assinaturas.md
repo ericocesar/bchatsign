@@ -100,7 +100,7 @@ e rotulados em `SUBSCRIPTION_CLAIM_FEATURE_FLAGS` ([subscription.ts:59](../packa
 | --- | --- | :---: | --- |
 | `unlimitedDocuments` | Unlimited documents | | Remove o limite de documentos. |
 | `allowCustomBranding` | Branding | | Branding customizado (certificados, e-mails). |
-| `hidePoweredBy` | Hide Documenso branding | | Oculta a marca "Powered by Documenso". |
+| `hidePoweredBy` | Hide Bchatsign branding | | Oculta a marca "Powered by Bchatsign". |
 | `emailDomains` | Email domains | ✅ | Domínios de e-mail próprios. |
 | `embedAuthoring` | Embed authoring | ✅ | Autoria de documentos via embed. |
 | `embedAuthoringWhiteLabel` | White label for embed authoring | ✅ | White label na autoria via embed. |

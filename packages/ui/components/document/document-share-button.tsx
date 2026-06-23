@@ -1,8 +1,8 @@
-import { useCopyShareLink } from '@documenso/lib/client-only/hooks/use-copy-share-link';
-import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
-import { DO_NOT_INVALIDATE_QUERY_ON_MUTATION } from '@documenso/lib/constants/trpc';
-import { generateTwitterIntent } from '@documenso/lib/universal/generate-twitter-intent';
-import { trpc } from '@documenso/trpc/react';
+import { useCopyShareLink } from '@bchatsign/lib/client-only/hooks/use-copy-share-link';
+import { NEXT_PUBLIC_WEBAPP_URL } from '@bchatsign/lib/constants/app';
+import { DO_NOT_INVALIDATE_QUERY_ON_MUTATION } from '@bchatsign/lib/constants/trpc';
+import { generateTwitterIntent } from '@bchatsign/lib/universal/generate-twitter-intent';
+import { trpc } from '@bchatsign/trpc/react';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
@@ -61,8 +61,8 @@ export const DocumentShareButton = ({ token, documentId, className, trigger }: D
 
   const isLoading = isCreatingOrGettingShareLink || isCopyingShareLink;
   const shareMessage = token
-    ? _(msg`I just signed a document in style with @documenso. Check it out!`)
-    : _(msg`I just sent a document in style with @documenso. Check it out!`);
+    ? _(msg`I just signed a document in style with @bchatsign. Check it out!`)
+    : _(msg`I just sent a document in style with @bchatsign. Check it out!`);
 
   const onOpenChange = (nextOpen: boolean) => {
     if (nextOpen) {
@@ -168,7 +168,7 @@ export const DocumentShareButton = ({ token, documentId, className, trigger }: D
             >
               {shareLink?.slug && (
                 <img
-                  src={`${NEXT_PUBLIC_WEBAPP_URL()}/share/${shareLink.slug}/opengraph`}
+                  src={`${NEXT_PUBLIC_WEBAPP_URL()}/share/${shareLink.slug}/opengraph?v=${Date.now()}`}
                   alt={_(msg`sharing link preview`)}
                   className="h-full w-full object-cover"
                 />

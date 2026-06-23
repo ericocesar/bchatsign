@@ -26,7 +26,7 @@ datasource db {
 
 // Todo: (RR7) Remove after RR7 migration.
 enum IdentityProvider {
-  DOCUMENSO
+  BCHATSIGN
   GOOGLE
   OIDC
 }
@@ -48,7 +48,7 @@ model User {
   updatedAt        DateTime         @default(now()) @updatedAt
   lastSignedIn     DateTime         @default(now())
   roles            Role[]           @default([USER])
-  identityProvider IdentityProvider @default(DOCUMENSO) // Todo: (RR7) Remove after RR7 migration.
+  identityProvider IdentityProvider @default(BCHATSIGN) // Todo: (RR7) Remove after RR7 migration.
   avatarImageId    String?
   disabled         Boolean          @default(false)
 
@@ -256,7 +256,7 @@ model Subscription {
   @@index([organisationId])
 }
 
-/// @zod.import(["import { ZClaimFlagsSchema, ZRateLimitArraySchema } from '@documenso/lib/types/subscription';"])
+/// @zod.import(["import { ZClaimFlagsSchema, ZRateLimitArraySchema } from '@bchatsign/lib/types/subscription';"])
 model SubscriptionClaim {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
@@ -282,7 +282,7 @@ model SubscriptionClaim {
   apiQuota      Int?
 }
 
-/// @zod.import(["import { ZClaimFlagsSchema, ZRateLimitArraySchema } from '@documenso/lib/types/subscription';"])
+/// @zod.import(["import { ZClaimFlagsSchema, ZRateLimitArraySchema } from '@bchatsign/lib/types/subscription';"])
 model OrganisationClaim {
   id        String   @id
   createdAt DateTime @default(now())
@@ -434,7 +434,7 @@ enum EnvelopeType {
   TEMPLATE
 }
 
-/// @zod.import(["import { ZDocumentAuthOptionsSchema } from '@documenso/lib/types/document-auth';", "import { ZDocumentFormValuesSchema } from '@documenso/lib/types/document-form-values';"])
+/// @zod.import(["import { ZDocumentAuthOptionsSchema } from '@bchatsign/lib/types/document-auth';", "import { ZDocumentFormValuesSchema } from '@bchatsign/lib/types/document-form-values';"])
 model Envelope {
   id          String  @id
   secondaryId String  @unique
@@ -628,7 +628,7 @@ enum DocumentDistributionMethod {
   NONE
 }
 
-/// @zod.import(["import { ZDocumentEmailSettingsSchema } from '@documenso/lib/types/document-email';", "import { ZEnvelopeExpirationPeriod as ZEnvelopeExpirationPeriodSchema } from '@documenso/lib/constants/envelope-expiration';", "import { ZEnvelopeReminderSettings as ZEnvelopeReminderSettingsSchema } from '@documenso/lib/constants/envelope-reminder';"])
+/// @zod.import(["import { ZDocumentEmailSettingsSchema } from '@bchatsign/lib/types/document-email';", "import { ZEnvelopeExpirationPeriod as ZEnvelopeExpirationPeriodSchema } from '@bchatsign/lib/constants/envelope-expiration';", "import { ZEnvelopeReminderSettings as ZEnvelopeReminderSettingsSchema } from '@bchatsign/lib/constants/envelope-reminder';"])
 model DocumentMeta {
   id                     String               @id @default(cuid())
   subject                String?
@@ -657,7 +657,7 @@ model DocumentMeta {
   envelope Envelope?
 }
 
-/// @zod.import(["import { ZEnvelopeAttachmentTypeSchema } from '@documenso/lib/types/envelope-attachment';"])
+/// @zod.import(["import { ZEnvelopeAttachmentTypeSchema } from '@bchatsign/lib/types/envelope-attachment';"])
 model EnvelopeAttachment {
   id String @id @default(cuid())
 
@@ -699,7 +699,7 @@ enum RecipientRole {
   ASSISTANT
 }
 
-/// @zod.import(["import { ZRecipientAuthOptionsSchema } from '@documenso/lib/types/document-auth';"])
+/// @zod.import(["import { ZRecipientAuthOptionsSchema } from '@bchatsign/lib/types/document-auth';"])
 model Recipient {
   id                   Int           @id @default(autoincrement())
   envelopeId           String
@@ -752,7 +752,7 @@ enum FieldType {
   DROPDOWN
 }
 
-/// @zod.import(["import { ZFieldMetaNotOptionalSchema } from '@documenso/lib/types/field-meta';"])
+/// @zod.import(["import { ZFieldMetaNotOptionalSchema } from '@bchatsign/lib/types/field-meta';"])
 model Field {
   id             Int          @id @default(autoincrement())
   secondaryId    String       @unique @default(cuid())
@@ -954,7 +954,7 @@ enum OrganisationMemberInviteStatus {
   DECLINED
 }
 
-/// @zod.import(["import { ZDocumentEmailSettingsSchema } from '@documenso/lib/types/document-email';", "import { ZDefaultRecipientsSchema } from '@documenso/lib/types/default-recipients';", "import { ZEnvelopeExpirationPeriod as ZEnvelopeExpirationPeriodSchema } from '@documenso/lib/constants/envelope-expiration';", "import { ZEnvelopeReminderSettings as ZEnvelopeReminderSettingsSchema } from '@documenso/lib/constants/envelope-reminder';", "import { ZCssVarsSchema } from '@documenso/lib/types/css-vars';"])
+/// @zod.import(["import { ZDocumentEmailSettingsSchema } from '@bchatsign/lib/types/document-email';", "import { ZDefaultRecipientsSchema } from '@bchatsign/lib/types/default-recipients';", "import { ZEnvelopeExpirationPeriod as ZEnvelopeExpirationPeriodSchema } from '@bchatsign/lib/constants/envelope-expiration';", "import { ZEnvelopeReminderSettings as ZEnvelopeReminderSettingsSchema } from '@bchatsign/lib/constants/envelope-reminder';", "import { ZCssVarsSchema } from '@bchatsign/lib/types/css-vars';"])
 model OrganisationGlobalSettings {
   id           String        @id
   organisation Organisation?
@@ -996,7 +996,7 @@ model OrganisationGlobalSettings {
   aiFeaturesEnabled Boolean @default(false)
 }
 
-/// @zod.import(["import { ZDocumentEmailSettingsSchema } from '@documenso/lib/types/document-email';", "import { ZDefaultRecipientsSchema } from '@documenso/lib/types/default-recipients';", "import { ZEnvelopeExpirationPeriod as ZEnvelopeExpirationPeriodSchema } from '@documenso/lib/constants/envelope-expiration';", "import { ZEnvelopeReminderSettings as ZEnvelopeReminderSettingsSchema } from '@documenso/lib/constants/envelope-reminder';", "import { ZCssVarsSchema } from '@documenso/lib/types/css-vars';"])
+/// @zod.import(["import { ZDocumentEmailSettingsSchema } from '@bchatsign/lib/types/document-email';", "import { ZDefaultRecipientsSchema } from '@bchatsign/lib/types/default-recipients';", "import { ZEnvelopeExpirationPeriod as ZEnvelopeExpirationPeriodSchema } from '@bchatsign/lib/constants/envelope-expiration';", "import { ZEnvelopeReminderSettings as ZEnvelopeReminderSettingsSchema } from '@bchatsign/lib/constants/envelope-reminder';", "import { ZCssVarsSchema } from '@bchatsign/lib/types/css-vars';"])
 model TeamGlobalSettings {
   id   String @id
   team Team?

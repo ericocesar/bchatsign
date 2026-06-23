@@ -1,5 +1,5 @@
-import backgroundPattern from '@documenso/assets/images/background-pattern.png';
-import { Button } from '@documenso/ui/primitives/button';
+import backgroundPattern from '@bchatsign/assets/images/background-pattern.png';
+import { Button } from '@bchatsign/ui/primitives/button';
 import type { MessageDescriptor } from '@lingui/core';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';

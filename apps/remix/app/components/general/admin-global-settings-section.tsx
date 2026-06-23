@@ -1,5 +1,5 @@
-import { DOCUMENT_VISIBILITY } from '@documenso/lib/constants/document-visibility';
-import { type TDocumentEmailSettings, ZDocumentEmailSettingsSchema } from '@documenso/lib/types/document-email';
+import { DOCUMENT_VISIBILITY } from '@bchatsign/lib/constants/document-visibility';
+import { type TDocumentEmailSettings, ZDocumentEmailSettingsSchema } from '@bchatsign/lib/types/document-email';
 import type { MessageDescriptor } from '@lingui/core';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';

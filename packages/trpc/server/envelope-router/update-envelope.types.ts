@@ -1,6 +1,6 @@
-import { ZDocumentAccessAuthTypesSchema, ZDocumentActionAuthTypesSchema } from '@documenso/lib/types/document-auth';
-import { ZDocumentMetaUpdateSchema } from '@documenso/lib/types/document-meta';
-import { ZEnvelopeLiteSchema } from '@documenso/lib/types/envelope';
+import { ZDocumentAccessAuthTypesSchema, ZDocumentActionAuthTypesSchema } from '@bchatsign/lib/types/document-auth';
+import { ZDocumentMetaUpdateSchema } from '@bchatsign/lib/types/document-meta';
+import { ZEnvelopeLiteSchema } from '@bchatsign/lib/types/envelope';
 import { AuthenticationMethod, CertificatePosition, TemplateType } from '@prisma/client';
 import { z } from 'zod';
 

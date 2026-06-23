@@ -1,23 +1,23 @@
-import { usePageRenderer } from '@documenso/lib/client-only/hooks/use-page-renderer';
+import { usePageRenderer } from '@bchatsign/lib/client-only/hooks/use-page-renderer';
 import {
   type PageRenderData,
   useCurrentEnvelopeRender,
-} from '@documenso/lib/client-only/providers/envelope-render-provider';
-import { useOptionalSession } from '@documenso/lib/client-only/providers/session';
-import { DIRECT_TEMPLATE_RECIPIENT_EMAIL } from '@documenso/lib/constants/direct-templates';
-import { isBase64Image } from '@documenso/lib/constants/signatures';
-import type { TRecipientActionAuth } from '@documenso/lib/types/document-auth';
-import type { TEnvelope } from '@documenso/lib/types/envelope';
-import { ZFullFieldSchema } from '@documenso/lib/types/field';
-import { createSpinner } from '@documenso/lib/universal/field-renderer/field-generic-items';
-import { renderField } from '@documenso/lib/universal/field-renderer/render-field';
-import { isFieldUnsignedAndRequired } from '@documenso/lib/utils/advanced-fields-helpers';
-import { getClientSideFieldTranslations } from '@documenso/lib/utils/fields';
-import { extractInitials } from '@documenso/lib/utils/recipient-formatter';
-import type { TSignEnvelopeFieldValue } from '@documenso/trpc/server/envelope-router/sign-envelope-field.types';
-import { EnvelopeRecipientFieldTooltip } from '@documenso/ui/components/document/envelope-recipient-field-tooltip';
-import { EnvelopeFieldToolTip } from '@documenso/ui/components/field/envelope-field-tooltip';
-import { useToast } from '@documenso/ui/primitives/use-toast';
+} from '@bchatsign/lib/client-only/providers/envelope-render-provider';
+import { useOptionalSession } from '@bchatsign/lib/client-only/providers/session';
+import { DIRECT_TEMPLATE_RECIPIENT_EMAIL } from '@bchatsign/lib/constants/direct-templates';
+import { isBase64Image } from '@bchatsign/lib/constants/signatures';
+import type { TRecipientActionAuth } from '@bchatsign/lib/types/document-auth';
+import type { TEnvelope } from '@bchatsign/lib/types/envelope';
+import { ZFullFieldSchema } from '@bchatsign/lib/types/field';
+import { createSpinner } from '@bchatsign/lib/universal/field-renderer/field-generic-items';
+import { renderField } from '@bchatsign/lib/universal/field-renderer/render-field';
+import { isFieldUnsignedAndRequired } from '@bchatsign/lib/utils/advanced-fields-helpers';
+import { getClientSideFieldTranslations } from '@bchatsign/lib/utils/fields';
+import { extractInitials } from '@bchatsign/lib/utils/recipient-formatter';
+import type { TSignEnvelopeFieldValue } from '@bchatsign/trpc/server/envelope-router/sign-envelope-field.types';
+import { EnvelopeRecipientFieldTooltip } from '@bchatsign/ui/components/document/envelope-recipient-field-tooltip';
+import { EnvelopeFieldToolTip } from '@bchatsign/ui/components/field/envelope-field-tooltip';
+import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { Trans, useLingui } from '@lingui/react/macro';
 import { type Field, FieldType, type Recipient, RecipientRole, type Signature, SigningStatus } from '@prisma/client';
 import type Konva from 'konva';

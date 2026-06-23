@@ -1,4 +1,4 @@
-import { prisma } from '@documenso/prisma';
+import { prisma } from '@bchatsign/prisma';
 import { SigningStatus, WebhookTriggerEvents } from '@prisma/client';
 
 import { triggerWebhook } from '../../../server-only/webhooks/trigger/trigger-webhook';

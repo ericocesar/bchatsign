@@ -1,4 +1,4 @@
-import { prisma } from '@documenso/prisma';
+import { prisma } from '@bchatsign/prisma';
 import { UserSecurityAuditLogType } from '@prisma/client';
 import type { RegistrationResponseJSON } from '@simplewebauthn/server';
 import { verifyRegistrationResponse } from '@simplewebauthn/server';

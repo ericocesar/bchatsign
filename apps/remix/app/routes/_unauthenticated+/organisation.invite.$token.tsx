@@ -1,7 +1,7 @@
-import { getOptionalSession } from '@documenso/auth/server/lib/utils/get-session';
-import { acceptOrganisationInvitation } from '@documenso/lib/server-only/organisation/accept-organisation-invitation';
-import { prisma } from '@documenso/prisma';
-import { Button } from '@documenso/ui/primitives/button';
+import { getOptionalSession } from '@bchatsign/auth/server/lib/utils/get-session';
+import { acceptOrganisationInvitation } from '@bchatsign/lib/server-only/organisation/accept-organisation-invitation';
+import { prisma } from '@bchatsign/prisma';
+import { Button } from '@bchatsign/ui/primitives/button';
 import { Trans } from '@lingui/react/macro';
 import { Link } from 'react-router';
 

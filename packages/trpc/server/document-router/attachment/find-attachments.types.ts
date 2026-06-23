@@ -1,4 +1,4 @@
-import { ZEnvelopeAttachmentTypeSchema } from '@documenso/lib/types/envelope-attachment';
+import { ZEnvelopeAttachmentTypeSchema } from '@bchatsign/lib/types/envelope-attachment';
 import { z } from 'zod';
 
 export const ZFindAttachmentsRequestSchema = z.object({

@@ -1,10 +1,10 @@
-import type { TCachedLicense } from '@documenso/lib/types/license';
-import { SUBSCRIPTION_CLAIM_FEATURE_FLAGS } from '@documenso/lib/types/subscription';
-import { trpc } from '@documenso/trpc/react';
-import { Badge } from '@documenso/ui/primitives/badge';
-import { Button } from '@documenso/ui/primitives/button';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@documenso/ui/primitives/tooltip';
-import { useToast } from '@documenso/ui/primitives/use-toast';
+import type { TCachedLicense } from '@bchatsign/lib/types/license';
+import { SUBSCRIPTION_CLAIM_FEATURE_FLAGS } from '@bchatsign/lib/types/subscription';
+import { trpc } from '@bchatsign/trpc/react';
+import { Badge } from '@bchatsign/ui/primitives/badge';
+import { Button } from '@bchatsign/ui/primitives/button';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@bchatsign/ui/primitives/tooltip';
+import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { Trans, useLingui } from '@lingui/react/macro';
 import {
   ArrowRightIcon,
@@ -61,7 +61,7 @@ export const AdminLicenseCard = ({ licenseData }: AdminLicenseCardProps) => {
               )}
 
               <Link
-                to="https://docs.documenso.com/users/licenses/enterprise-edition"
+                to="https://docs.bchatsign.com/users/licenses/enterprise-edition"
                 target="_blank"
                 className="flex flex-row items-center text-muted-foreground text-xs hover:text-muted-foreground/80"
               >

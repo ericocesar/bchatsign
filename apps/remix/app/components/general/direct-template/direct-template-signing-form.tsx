@@ -1,34 +1,34 @@
-import { DEFAULT_DOCUMENT_DATE_FORMAT } from '@documenso/lib/constants/date-formats';
-import { PDF_VIEWER_PAGE_SELECTOR } from '@documenso/lib/constants/pdf-viewer';
-import { DEFAULT_DOCUMENT_TIME_ZONE } from '@documenso/lib/constants/time-zones';
+import { DEFAULT_DOCUMENT_DATE_FORMAT } from '@bchatsign/lib/constants/date-formats';
+import { PDF_VIEWER_PAGE_SELECTOR } from '@bchatsign/lib/constants/pdf-viewer';
+import { DEFAULT_DOCUMENT_TIME_ZONE } from '@bchatsign/lib/constants/time-zones';
 import {
   ZCheckboxFieldMeta,
   ZDropdownFieldMeta,
   ZNumberFieldMeta,
   ZRadioFieldMeta,
   ZTextFieldMeta,
-} from '@documenso/lib/types/field-meta';
-import type { TTemplate } from '@documenso/lib/types/template';
-import { isFieldUnsignedAndRequired } from '@documenso/lib/utils/advanced-fields-helpers';
-import { sortFieldsByPosition, validateFieldsInserted } from '@documenso/lib/utils/fields';
+} from '@bchatsign/lib/types/field-meta';
+import type { TTemplate } from '@bchatsign/lib/types/template';
+import { isFieldUnsignedAndRequired } from '@bchatsign/lib/utils/advanced-fields-helpers';
+import { sortFieldsByPosition, validateFieldsInserted } from '@bchatsign/lib/utils/fields';
 import type {
   TRemovedSignedFieldWithTokenMutationSchema,
   TSignFieldWithTokenMutationSchema,
-} from '@documenso/trpc/server/field-router/schema';
-import { FieldToolTip } from '@documenso/ui/components/field/field-tooltip';
-import { Button } from '@documenso/ui/primitives/button';
+} from '@bchatsign/trpc/server/field-router/schema';
+import { FieldToolTip } from '@bchatsign/ui/components/field/field-tooltip';
+import { Button } from '@bchatsign/ui/primitives/button';
 import {
   DocumentFlowFormContainerContent,
   DocumentFlowFormContainerFooter,
   DocumentFlowFormContainerHeader,
   DocumentFlowFormContainerStep,
-} from '@documenso/ui/primitives/document-flow/document-flow-root';
-import type { DocumentFlowStep } from '@documenso/ui/primitives/document-flow/types';
-import { ElementVisible } from '@documenso/ui/primitives/element-visible';
-import { Input } from '@documenso/ui/primitives/input';
-import { Label } from '@documenso/ui/primitives/label';
-import { SignaturePadDialog } from '@documenso/ui/primitives/signature-pad/signature-pad-dialog';
-import { useStep } from '@documenso/ui/primitives/stepper';
+} from '@bchatsign/ui/primitives/document-flow/document-flow-root';
+import type { DocumentFlowStep } from '@bchatsign/ui/primitives/document-flow/types';
+import { ElementVisible } from '@bchatsign/ui/primitives/element-visible';
+import { Input } from '@bchatsign/ui/primitives/input';
+import { Label } from '@bchatsign/ui/primitives/label';
+import { SignaturePadDialog } from '@bchatsign/ui/primitives/signature-pad/signature-pad-dialog';
+import { useStep } from '@bchatsign/ui/primitives/stepper';
 import { Trans } from '@lingui/react/macro';
 import type { Field, Recipient, Signature } from '@prisma/client';
 import { FieldType } from '@prisma/client';

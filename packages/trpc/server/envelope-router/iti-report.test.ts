@@ -8,7 +8,7 @@ const extractItiReportFields = vi.hoisted(() => vi.fn());
 const uploadItiReport = vi.hoisted(() => vi.fn());
 const mintSealedPdfToken = vi.hoisted(() => vi.fn());
 
-vi.mock('@documenso/prisma', () => ({
+vi.mock('@bchatsign/prisma', () => ({
   prisma: {
     envelopeItem: {
       findFirst: envelopeItemFindFirst,
@@ -17,11 +17,11 @@ vi.mock('@documenso/prisma', () => ({
   },
 }));
 
-vi.mock('@documenso/lib/server-only/document-data/create-document-data', () => ({
+vi.mock('@bchatsign/lib/server-only/document-data/create-document-data', () => ({
   createDocumentData,
 }));
 
-vi.mock('@documenso/lib/server-only/validation', () => ({
+vi.mock('@bchatsign/lib/server-only/validation', () => ({
   assertValidPdf,
   extractItiReportFields,
   mintSealedPdfToken,

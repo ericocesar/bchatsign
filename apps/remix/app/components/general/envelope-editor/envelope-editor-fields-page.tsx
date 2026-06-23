@@ -1,7 +1,7 @@
-import { useCurrentEnvelopeEditor } from '@documenso/lib/client-only/providers/envelope-editor-provider';
-import { useCurrentEnvelopeRender } from '@documenso/lib/client-only/providers/envelope-render-provider';
-import { PDF_VIEWER_ERROR_MESSAGES } from '@documenso/lib/constants/pdf-viewer-i18n';
-import type { NormalizedFieldWithContext } from '@documenso/lib/server-only/ai/envelope/detect-fields/types';
+import { useCurrentEnvelopeEditor } from '@bchatsign/lib/client-only/providers/envelope-editor-provider';
+import { useCurrentEnvelopeRender } from '@bchatsign/lib/client-only/providers/envelope-render-provider';
+import { PDF_VIEWER_ERROR_MESSAGES } from '@bchatsign/lib/constants/pdf-viewer-i18n';
+import type { NormalizedFieldWithContext } from '@bchatsign/lib/server-only/ai/envelope/detect-fields/types';
 import {
   FIELD_META_DEFAULT_VALUES,
   type TCheckboxFieldMeta,
@@ -15,14 +15,14 @@ import {
   type TRadioFieldMeta,
   type TSignatureFieldMeta,
   type TTextFieldMeta,
-} from '@documenso/lib/types/field-meta';
-import { getEnvelopeItemPermissions } from '@documenso/lib/utils/envelope';
-import { canRecipientFieldsBeModified } from '@documenso/lib/utils/recipients';
-import { AnimateGenericFadeInOut } from '@documenso/ui/components/animate/animate-generic-fade-in-out';
-import { cn } from '@documenso/ui/lib/utils';
-import { Alert, AlertDescription, AlertTitle } from '@documenso/ui/primitives/alert';
-import { Button } from '@documenso/ui/primitives/button';
-import { Separator } from '@documenso/ui/primitives/separator';
+} from '@bchatsign/lib/types/field-meta';
+import { getEnvelopeItemPermissions } from '@bchatsign/lib/utils/envelope';
+import { canRecipientFieldsBeModified } from '@bchatsign/lib/utils/recipients';
+import { AnimateGenericFadeInOut } from '@bchatsign/ui/components/animate/animate-generic-fade-in-out';
+import { cn } from '@bchatsign/ui/lib/utils';
+import { Alert, AlertDescription, AlertTitle } from '@bchatsign/ui/primitives/alert';
+import { Button } from '@bchatsign/ui/primitives/button';
+import { Separator } from '@bchatsign/ui/primitives/separator';
 import type { MessageDescriptor } from '@lingui/core';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';

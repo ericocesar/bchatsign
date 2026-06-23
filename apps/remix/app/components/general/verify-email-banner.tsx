@@ -1,6 +1,6 @@
-import { authClient } from '@documenso/auth/client';
-import { ONE_SECOND } from '@documenso/lib/constants/time';
-import { useToast } from '@documenso/ui/primitives/use-toast';
+import { authClient } from '@bchatsign/auth/client';
+import { ONE_SECOND } from '@bchatsign/lib/constants/time';
+import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';

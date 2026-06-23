@@ -1,13 +1,13 @@
-import { getOptionalSession } from '@documenso/auth/server/lib/utils/get-session';
+import { getOptionalSession } from '@bchatsign/auth/server/lib/utils/get-session';
 import {
   IS_GOOGLE_SSO_ENABLED,
   IS_MICROSOFT_SSO_ENABLED,
   IS_OIDC_SSO_ENABLED,
   isSignupEnabledForProvider,
   OIDC_PROVIDER_LABEL,
-} from '@documenso/lib/constants/auth';
-import { isValidReturnTo, normalizeReturnTo } from '@documenso/lib/utils/is-valid-return-to';
-import { Alert, AlertDescription } from '@documenso/ui/primitives/alert';
+} from '@bchatsign/lib/constants/auth';
+import { isValidReturnTo, normalizeReturnTo } from '@bchatsign/lib/utils/is-valid-return-to';
+import { Alert, AlertDescription } from '@bchatsign/ui/primitives/alert';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';

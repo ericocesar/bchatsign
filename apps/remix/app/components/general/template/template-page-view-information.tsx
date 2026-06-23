@@ -1,5 +1,5 @@
-import { useIsMounted } from '@documenso/lib/client-only/hooks/use-is-mounted';
-import { mapSecondaryIdToTemplateId } from '@documenso/lib/utils/envelope';
+import { useIsMounted } from '@bchatsign/lib/client-only/hooks/use-is-mounted';
+import { mapSecondaryIdToTemplateId } from '@bchatsign/lib/utils/envelope';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';

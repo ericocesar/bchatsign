@@ -1,9 +1,9 @@
-import { getDocumentByToken } from '@documenso/lib/server-only/document/get-document-by-token';
-import { getEnvelopeItemPdfUrl } from '@documenso/lib/utils/envelope-download';
-import { prisma } from '@documenso/prisma';
-import { seedPendingDocumentWithFullFields } from '@documenso/prisma/seed/documents';
-import { seedTeam } from '@documenso/prisma/seed/teams';
-import { seedUser } from '@documenso/prisma/seed/users';
+import { getDocumentByToken } from '@bchatsign/lib/server-only/document/get-document-by-token';
+import { getEnvelopeItemPdfUrl } from '@bchatsign/lib/utils/envelope-download';
+import { prisma } from '@bchatsign/prisma';
+import { seedPendingDocumentWithFullFields } from '@bchatsign/prisma/seed/documents';
+import { seedTeam } from '@bchatsign/prisma/seed/teams';
+import { seedUser } from '@bchatsign/prisma/seed/users';
 import { PDF } from '@libpdf/core';
 import { expect, test } from '@playwright/test';
 import { DocumentStatus, FieldType } from '@prisma/client';

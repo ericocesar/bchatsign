@@ -1,10 +1,10 @@
-import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
-import { createApiToken } from '@documenso/lib/server-only/public-api/create-api-token';
-import { mapSecondaryIdToDocumentId } from '@documenso/lib/utils/envelope';
-import { prisma } from '@documenso/prisma';
-import { FieldType, RecipientRole } from '@documenso/prisma/client';
-import { seedBlankDocument, seedPendingDocumentWithFullFields } from '@documenso/prisma/seed/documents';
-import { seedUser } from '@documenso/prisma/seed/users';
+import { NEXT_PUBLIC_WEBAPP_URL } from '@bchatsign/lib/constants/app';
+import { createApiToken } from '@bchatsign/lib/server-only/public-api/create-api-token';
+import { mapSecondaryIdToDocumentId } from '@bchatsign/lib/utils/envelope';
+import { prisma } from '@bchatsign/prisma';
+import { FieldType, RecipientRole } from '@bchatsign/prisma/client';
+import { seedBlankDocument, seedPendingDocumentWithFullFields } from '@bchatsign/prisma/seed/documents';
+import { seedUser } from '@bchatsign/prisma/seed/users';
 import { expect, test } from '@playwright/test';
 
 test.describe('Document API', () => {

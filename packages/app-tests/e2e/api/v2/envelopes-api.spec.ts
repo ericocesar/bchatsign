@@ -1,9 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
-import { createApiToken } from '@documenso/lib/server-only/public-api/create-api-token';
-import { DocumentAccessAuth } from '@documenso/lib/types/document-auth';
-import { prisma } from '@documenso/prisma';
+import { NEXT_PUBLIC_WEBAPP_URL } from '@bchatsign/lib/constants/app';
+import { createApiToken } from '@bchatsign/lib/server-only/public-api/create-api-token';
+import { DocumentAccessAuth } from '@bchatsign/lib/types/document-auth';
+import { prisma } from '@bchatsign/prisma';
 import {
   DocumentDistributionMethod,
   DocumentSigningOrder,
@@ -13,19 +13,19 @@ import {
   FieldType,
   FolderType,
   RecipientRole,
-} from '@documenso/prisma/client';
-import { seedUser } from '@documenso/prisma/seed/users';
+} from '@bchatsign/prisma/client';
+import { seedUser } from '@bchatsign/prisma/seed/users';
 import type {
   TCreateEnvelopePayload,
   TCreateEnvelopeResponse,
-} from '@documenso/trpc/server/envelope-router/create-envelope.types';
-import type { TCreateEnvelopeItemsPayload } from '@documenso/trpc/server/envelope-router/create-envelope-items.types';
-import type { TDistributeEnvelopeRequest } from '@documenso/trpc/server/envelope-router/distribute-envelope.types';
-import type { TCreateEnvelopeRecipientsRequest } from '@documenso/trpc/server/envelope-router/envelope-recipients/create-envelope-recipients.types';
-import type { TUpdateEnvelopeRecipientsRequest } from '@documenso/trpc/server/envelope-router/envelope-recipients/update-envelope-recipients.types';
-import type { TFindEnvelopesResponse } from '@documenso/trpc/server/envelope-router/find-envelopes.types';
-import type { TGetEnvelopeResponse } from '@documenso/trpc/server/envelope-router/get-envelope.types';
-import type { TUpdateEnvelopeRequest } from '@documenso/trpc/server/envelope-router/update-envelope.types';
+} from '@bchatsign/trpc/server/envelope-router/create-envelope.types';
+import type { TCreateEnvelopeItemsPayload } from '@bchatsign/trpc/server/envelope-router/create-envelope-items.types';
+import type { TDistributeEnvelopeRequest } from '@bchatsign/trpc/server/envelope-router/distribute-envelope.types';
+import type { TCreateEnvelopeRecipientsRequest } from '@bchatsign/trpc/server/envelope-router/envelope-recipients/create-envelope-recipients.types';
+import type { TUpdateEnvelopeRecipientsRequest } from '@bchatsign/trpc/server/envelope-router/envelope-recipients/update-envelope-recipients.types';
+import type { TFindEnvelopesResponse } from '@bchatsign/trpc/server/envelope-router/find-envelopes.types';
+import type { TGetEnvelopeResponse } from '@bchatsign/trpc/server/envelope-router/get-envelope.types';
+import type { TUpdateEnvelopeRequest } from '@bchatsign/trpc/server/envelope-router/update-envelope.types';
 import { type APIRequestContext, expect, test } from '@playwright/test';
 import type { Team, User } from '@prisma/client';
 import { pick } from 'remeda';
@@ -191,7 +191,7 @@ test.describe('API V2 Envelopes', () => {
           distributionMethod: DocumentDistributionMethod.NONE,
           signingOrder: DocumentSigningOrder.SEQUENTIAL,
           allowDictateNextSigner: true,
-          redirectUrl: 'https://documenso.com',
+          redirectUrl: 'https://bchatsign.com',
           language: 'de',
           typedSignatureEnabled: true,
           uploadSignatureEnabled: false,
@@ -212,7 +212,7 @@ test.describe('API V2 Envelopes', () => {
         attachments: [
           {
             label: 'Test Attachment',
-            data: 'https://documenso.com',
+            data: 'https://bchatsign.com',
             type: 'link',
           },
         ],

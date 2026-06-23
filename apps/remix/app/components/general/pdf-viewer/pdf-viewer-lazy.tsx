@@ -5,7 +5,7 @@
  * 2. onMount guard prevents "Worker not defined"
  */
 
-import { cn } from '@documenso/ui/lib/utils';
+import { cn } from '@bchatsign/ui/lib/utils';
 import { lazy, Suspense, useEffect, useState } from 'react';
 
 import type { PDFViewerProps } from './pdf-viewer';

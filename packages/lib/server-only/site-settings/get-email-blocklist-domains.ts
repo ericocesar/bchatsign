@@ -1,4 +1,4 @@
-import { prisma } from '@documenso/prisma';
+import { prisma } from '@bchatsign/prisma';
 
 import { SITE_SETTINGS_EMAIL_BLOCKLIST_ID, ZSiteSettingsEmailBlocklistSchema } from './schemas/email-blocklist';
 

@@ -1,25 +1,25 @@
-import { useCurrentOrganisation } from '@documenso/lib/client-only/providers/organisation';
-import { ORGANISATION_MEMBER_ROLE_HIERARCHY } from '@documenso/lib/constants/organisations';
-import { ORGANISATION_MEMBER_ROLE_MAP } from '@documenso/lib/constants/organisations-translations';
+import { useCurrentOrganisation } from '@bchatsign/lib/client-only/providers/organisation';
+import { ORGANISATION_MEMBER_ROLE_HIERARCHY } from '@bchatsign/lib/constants/organisations';
+import { ORGANISATION_MEMBER_ROLE_MAP } from '@bchatsign/lib/constants/organisations-translations';
 import {
   formatOrganisationCallbackUrl,
   formatOrganisationLoginUrl,
-} from '@documenso/lib/utils/organisation-authentication-portal';
-import { trpc } from '@documenso/trpc/react';
-import { domainRegex } from '@documenso/trpc/server/enterprise-router/create-organisation-email-domain.types';
-import type { TGetOrganisationAuthenticationPortalResponse } from '@documenso/trpc/server/enterprise-router/get-organisation-authentication-portal.types';
-import { ZUpdateOrganisationAuthenticationPortalRequestSchema } from '@documenso/trpc/server/enterprise-router/update-organisation-authentication-portal.types';
-import { CopyTextButton } from '@documenso/ui/components/common/copy-text-button';
-import { Alert, AlertDescription } from '@documenso/ui/primitives/alert';
-import { Button } from '@documenso/ui/primitives/button';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@documenso/ui/primitives/form/form';
-import { Input } from '@documenso/ui/primitives/input';
-import { Label } from '@documenso/ui/primitives/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@documenso/ui/primitives/select';
-import { SpinnerBox } from '@documenso/ui/primitives/spinner';
-import { Switch } from '@documenso/ui/primitives/switch';
-import { Textarea } from '@documenso/ui/primitives/textarea';
-import { useToast } from '@documenso/ui/primitives/use-toast';
+} from '@bchatsign/lib/utils/organisation-authentication-portal';
+import { trpc } from '@bchatsign/trpc/react';
+import { domainRegex } from '@bchatsign/trpc/server/enterprise-router/create-organisation-email-domain.types';
+import type { TGetOrganisationAuthenticationPortalResponse } from '@bchatsign/trpc/server/enterprise-router/get-organisation-authentication-portal.types';
+import { ZUpdateOrganisationAuthenticationPortalRequestSchema } from '@bchatsign/trpc/server/enterprise-router/update-organisation-authentication-portal.types';
+import { CopyTextButton } from '@bchatsign/ui/components/common/copy-text-button';
+import { Alert, AlertDescription } from '@bchatsign/ui/primitives/alert';
+import { Button } from '@bchatsign/ui/primitives/button';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@bchatsign/ui/primitives/form/form';
+import { Input } from '@bchatsign/ui/primitives/input';
+import { Label } from '@bchatsign/ui/primitives/label';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@bchatsign/ui/primitives/select';
+import { SpinnerBox } from '@bchatsign/ui/primitives/spinner';
+import { Switch } from '@bchatsign/ui/primitives/switch';
+import { Textarea } from '@bchatsign/ui/primitives/textarea';
+import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { msg } from '@lingui/core/macro';
 import { Trans, useLingui } from '@lingui/react/macro';

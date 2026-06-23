@@ -2,18 +2,18 @@ import {
   isDisposableEmail,
   isEmailDomainAllowedForSignup,
   isSignupEnabledForProvider,
-} from '@documenso/lib/constants/auth';
-import { EMAIL_VERIFICATION_STATE } from '@documenso/lib/constants/email';
-import { AppError } from '@documenso/lib/errors/app-error';
-import { jobsClient } from '@documenso/lib/jobs/client';
-import { disableTwoFactorAuthentication } from '@documenso/lib/server-only/2fa/disable-2fa';
-import { enableTwoFactorAuthentication } from '@documenso/lib/server-only/2fa/enable-2fa';
-import { isTwoFactorAuthenticationEnabled } from '@documenso/lib/server-only/2fa/is-2fa-availble';
-import { setupTwoFactorAuthentication } from '@documenso/lib/server-only/2fa/setup-2fa';
-import { validateTwoFactorAuthentication } from '@documenso/lib/server-only/2fa/validate-2fa';
-import { viewBackupCodes } from '@documenso/lib/server-only/2fa/view-backup-codes';
-import { verifyCaptchaToken } from '@documenso/lib/server-only/captcha/verify-captcha';
-import { rateLimitResponse } from '@documenso/lib/server-only/rate-limit/rate-limit-middleware';
+} from '@bchatsign/lib/constants/auth';
+import { EMAIL_VERIFICATION_STATE } from '@bchatsign/lib/constants/email';
+import { AppError } from '@bchatsign/lib/errors/app-error';
+import { jobsClient } from '@bchatsign/lib/jobs/client';
+import { disableTwoFactorAuthentication } from '@bchatsign/lib/server-only/2fa/disable-2fa';
+import { enableTwoFactorAuthentication } from '@bchatsign/lib/server-only/2fa/enable-2fa';
+import { isTwoFactorAuthenticationEnabled } from '@bchatsign/lib/server-only/2fa/is-2fa-availble';
+import { setupTwoFactorAuthentication } from '@bchatsign/lib/server-only/2fa/setup-2fa';
+import { validateTwoFactorAuthentication } from '@bchatsign/lib/server-only/2fa/validate-2fa';
+import { viewBackupCodes } from '@bchatsign/lib/server-only/2fa/view-backup-codes';
+import { verifyCaptchaToken } from '@bchatsign/lib/server-only/captcha/verify-captcha';
+import { rateLimitResponse } from '@bchatsign/lib/server-only/rate-limit/rate-limit-middleware';
 import {
   forgotPasswordRateLimit,
   loginRateLimit,
@@ -21,18 +21,18 @@ import {
   resetPasswordRateLimit,
   signupRateLimit,
   verifyEmailRateLimit,
-} from '@documenso/lib/server-only/rate-limit/rate-limits';
-import { getEmailBlocklistDomains } from '@documenso/lib/server-only/site-settings/get-email-blocklist-domains';
-import { createUser } from '@documenso/lib/server-only/user/create-user';
-import { forgotPassword } from '@documenso/lib/server-only/user/forgot-password';
-import { getMostRecentEmailVerificationToken } from '@documenso/lib/server-only/user/get-most-recent-email-verification-token';
-import { getUserByResetToken } from '@documenso/lib/server-only/user/get-user-by-reset-token';
-import { resetPassword } from '@documenso/lib/server-only/user/reset-password';
-import { deletedServiceAccountEmail } from '@documenso/lib/server-only/user/service-accounts/deleted-account';
-import { legacyServiceAccountEmail } from '@documenso/lib/server-only/user/service-accounts/legacy-service-account';
-import { updatePassword } from '@documenso/lib/server-only/user/update-password';
-import { verifyEmail } from '@documenso/lib/server-only/user/verify-email';
-import { prisma } from '@documenso/prisma';
+} from '@bchatsign/lib/server-only/rate-limit/rate-limits';
+import { getEmailBlocklistDomains } from '@bchatsign/lib/server-only/site-settings/get-email-blocklist-domains';
+import { createUser } from '@bchatsign/lib/server-only/user/create-user';
+import { forgotPassword } from '@bchatsign/lib/server-only/user/forgot-password';
+import { getMostRecentEmailVerificationToken } from '@bchatsign/lib/server-only/user/get-most-recent-email-verification-token';
+import { getUserByResetToken } from '@bchatsign/lib/server-only/user/get-user-by-reset-token';
+import { resetPassword } from '@bchatsign/lib/server-only/user/reset-password';
+import { deletedServiceAccountEmail } from '@bchatsign/lib/server-only/user/service-accounts/deleted-account';
+import { legacyServiceAccountEmail } from '@bchatsign/lib/server-only/user/service-accounts/legacy-service-account';
+import { updatePassword } from '@bchatsign/lib/server-only/user/update-password';
+import { verifyEmail } from '@bchatsign/lib/server-only/user/verify-email';
+import { prisma } from '@bchatsign/prisma';
 import { sValidator } from '@hono/standard-validator';
 import { compare } from '@node-rs/bcrypt';
 import { UserSecurityAuditLogType } from '@prisma/client';

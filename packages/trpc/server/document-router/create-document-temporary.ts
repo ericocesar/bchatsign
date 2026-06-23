@@ -1,10 +1,10 @@
-import { getServerLimits } from '@documenso/ee/server-only/limits/server';
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { createDocumentData } from '@documenso/lib/server-only/document-data/create-document-data';
-import { createEnvelope } from '@documenso/lib/server-only/envelope/create-envelope';
-import { getPresignPostUrl } from '@documenso/lib/universal/upload/server-actions';
-import { mapSecondaryIdToDocumentId } from '@documenso/lib/utils/envelope';
-import { prisma } from '@documenso/prisma';
+import { getServerLimits } from '@bchatsign/ee/server-only/limits/server';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { createDocumentData } from '@bchatsign/lib/server-only/document-data/create-document-data';
+import { createEnvelope } from '@bchatsign/lib/server-only/envelope/create-envelope';
+import { getPresignPostUrl } from '@bchatsign/lib/universal/upload/server-actions';
+import { mapSecondaryIdToDocumentId } from '@bchatsign/lib/utils/envelope';
+import { prisma } from '@bchatsign/prisma';
 import { DocumentDataType, EnvelopeType } from '@prisma/client';
 
 import { authenticatedProcedure } from '../trpc';

@@ -1,4 +1,4 @@
-import { prisma } from '@documenso/prisma';
+import { prisma } from '@bchatsign/prisma';
 import type { User } from '@prisma/client';
 import { UserSecurityAuditLogType } from '@prisma/client';
 

@@ -1,7 +1,7 @@
-import { useCurrentOrganisation } from '@documenso/lib/client-only/providers/organisation';
-import { useSession } from '@documenso/lib/client-only/providers/session';
-import { IS_BILLING_ENABLED } from '@documenso/lib/constants/app';
-import { Button } from '@documenso/ui/primitives/button';
+import { useCurrentOrganisation } from '@bchatsign/lib/client-only/providers/organisation';
+import { useSession } from '@bchatsign/lib/client-only/providers/session';
+import { IS_BILLING_ENABLED } from '@bchatsign/lib/constants/app';
+import { Button } from '@bchatsign/ui/primitives/button';
 import { msg } from '@lingui/core/macro';
 import { Trans } from '@lingui/react/macro';
 import { BookIcon, HelpCircleIcon, Link2Icon } from 'lucide-react';
@@ -51,7 +51,7 @@ export default function SupportPage() {
             <h2 className="flex items-center gap-2 font-bold text-lg">
               <BookIcon className="h-5 w-5 text-muted-foreground" />
               <Link
-                to="https://docs.documenso.com"
+                to="https://docs.bchatsign.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:underline"

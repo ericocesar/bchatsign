@@ -1,5 +1,5 @@
-import type { TDocumentAuditLog } from '@documenso/lib/types/document-audit-logs';
-import { prisma } from '@documenso/prisma';
+import type { TDocumentAuditLog } from '@bchatsign/lib/types/document-audit-logs';
+import { prisma } from '@bchatsign/prisma';
 import { PDF } from '@libpdf/core';
 import { i18n } from '@lingui/core';
 

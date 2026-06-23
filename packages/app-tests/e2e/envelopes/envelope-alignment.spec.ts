@@ -1,9 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { getEnvelopeItemPdfUrl } from '@documenso/lib/utils/envelope-download';
-import { prisma } from '@documenso/prisma';
-import { seedAlignmentTestDocument } from '@documenso/prisma/seed/initial-seed';
-import { seedUser } from '@documenso/prisma/seed/users';
+import { getEnvelopeItemPdfUrl } from '@bchatsign/lib/utils/envelope-download';
+import { prisma } from '@bchatsign/prisma';
+import { seedAlignmentTestDocument } from '@bchatsign/prisma/seed/initial-seed';
+import { seedUser } from '@bchatsign/prisma/seed/users';
 import { createCanvas } from '@napi-rs/canvas';
 import type { TestInfo } from '@playwright/test';
 import { expect, test } from '@playwright/test';
@@ -36,7 +36,7 @@ test.describe.configure({ mode: 'parallel', timeout: 60000 });
 test.skip('seed alignment test document', async ({ page }) => {
   const user = await prisma.user.findFirstOrThrow({
     where: {
-      email: 'example@documenso.com',
+      email: 'example@bchatsign.com',
     },
     include: {
       ownedOrganisations: {

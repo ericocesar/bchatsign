@@ -1,4 +1,4 @@
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
 import {
   buildPublicValidationMetadata,
   hashSealedPdfToken,
@@ -7,9 +7,9 @@ import {
   type PublicValidationEnvelopeItem,
   safeTokenEqual,
   truncateTokenHashForLog,
-} from '@documenso/lib/server-only/validation';
-import { getFileServerSide } from '@documenso/lib/universal/upload/get-file.server';
-import { prisma } from '@documenso/prisma';
+} from '@bchatsign/lib/server-only/validation';
+import { getFileServerSide } from '@bchatsign/lib/universal/upload/get-file.server';
+import { prisma } from '@bchatsign/prisma';
 import { type Context, Hono } from 'hono';
 
 import type { HonoEnv } from '../../router';

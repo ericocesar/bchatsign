@@ -1,8 +1,8 @@
-import { useCurrentOrganisation } from '@documenso/lib/client-only/providers/organisation';
-import { trpc } from '@documenso/trpc/react';
-import { Alert, AlertDescription } from '@documenso/ui/primitives/alert';
-import { Button } from '@documenso/ui/primitives/button';
-import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@documenso/ui/primitives/dialog';
+import { useCurrentOrganisation } from '@bchatsign/lib/client-only/providers/organisation';
+import { trpc } from '@bchatsign/trpc/react';
+import { Alert, AlertDescription } from '@bchatsign/ui/primitives/alert';
+import { Button } from '@bchatsign/ui/primitives/button';
+import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@bchatsign/ui/primitives/dialog';
 import { Trans, useLingui } from '@lingui/react/macro';
 import { OrganisationMemberRole, TeamMemberRole } from '@prisma/client';
 import { useState } from 'react';

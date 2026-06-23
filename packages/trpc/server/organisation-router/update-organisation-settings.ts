@@ -1,9 +1,9 @@
-import { ORGANISATION_MEMBER_ROLE_PERMISSIONS_MAP } from '@documenso/lib/constants/organisations';
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { normalizeBrandingColors } from '@documenso/lib/utils/normalize-branding-colors';
-import { buildOrganisationWhereQuery } from '@documenso/lib/utils/organisations';
-import { type SanitizeBrandingCssWarning, sanitizeBrandingCss } from '@documenso/lib/utils/sanitize-branding-css';
-import { prisma } from '@documenso/prisma';
+import { ORGANISATION_MEMBER_ROLE_PERMISSIONS_MAP } from '@bchatsign/lib/constants/organisations';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { normalizeBrandingColors } from '@bchatsign/lib/utils/normalize-branding-colors';
+import { buildOrganisationWhereQuery } from '@bchatsign/lib/utils/organisations';
+import { type SanitizeBrandingCssWarning, sanitizeBrandingCss } from '@bchatsign/lib/utils/sanitize-branding-css';
+import { prisma } from '@bchatsign/prisma';
 import { OrganisationType, Prisma } from '@prisma/client';
 
 import { authenticatedProcedure } from '../trpc';

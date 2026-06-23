@@ -1,10 +1,10 @@
-import { getSession } from '@documenso/auth/server/lib/utils/get-session';
-import { getEnvelopeById } from '@documenso/lib/server-only/envelope/get-envelope-by-id';
-import { getTeamByUrl } from '@documenso/lib/server-only/team/get-team';
-import { mapSecondaryIdToDocumentId } from '@documenso/lib/utils/envelope';
-import { logDocumentAccess } from '@documenso/lib/utils/logger';
-import { formatDocumentsPath } from '@documenso/lib/utils/teams';
-import { Card } from '@documenso/ui/primitives/card';
+import { getSession } from '@bchatsign/auth/server/lib/utils/get-session';
+import { getEnvelopeById } from '@bchatsign/lib/server-only/envelope/get-envelope-by-id';
+import { getTeamByUrl } from '@bchatsign/lib/server-only/team/get-team';
+import { mapSecondaryIdToDocumentId } from '@bchatsign/lib/utils/envelope';
+import { logDocumentAccess } from '@bchatsign/lib/utils/logger';
+import { formatDocumentsPath } from '@bchatsign/lib/utils/teams';
+import { Card } from '@bchatsign/ui/primitives/card';
 import type { MessageDescriptor } from '@lingui/core';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
@@ -131,7 +131,7 @@ export default function DocumentsLogsPage({ loaderData }: Route.ComponentProps) 
     <div className="mx-auto -mt-4 w-full max-w-screen-xl px-4 md:px-8">
       <Link
         to={`${documentRootPath}/${document.envelopeId}`}
-        className="flex items-center text-documenso-700 hover:opacity-80"
+        className="flex items-center text-bchatsign-700 hover:opacity-80"
       >
         <ChevronLeft className="mr-2 inline-block h-5 w-5" />
         <Trans>Document</Trans>

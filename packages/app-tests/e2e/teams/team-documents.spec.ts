@@ -1,6 +1,6 @@
-import { seedBlankDocument, seedDocuments, seedTeamDocuments } from '@documenso/prisma/seed/documents';
-import { seedTeam, seedTeamEmail, seedTeamMember } from '@documenso/prisma/seed/teams';
-import { seedUser } from '@documenso/prisma/seed/users';
+import { seedBlankDocument, seedDocuments, seedTeamDocuments } from '@bchatsign/prisma/seed/documents';
+import { seedTeam, seedTeamEmail, seedTeamMember } from '@bchatsign/prisma/seed/teams';
+import { seedUser } from '@bchatsign/prisma/seed/users';
 import { expect, test } from '@playwright/test';
 import { DocumentStatus, DocumentVisibility, TeamMemberRole } from '@prisma/client';
 
@@ -142,7 +142,7 @@ test('[TEAMS]: check team documents count with external team email', async ({ pa
 
   const { team: team2, teamMember2: team2Member2 } = await seedTeamDocuments();
 
-  const teamEmail = `external-team-email-${team.id}@test.documenso.com`;
+  const teamEmail = `external-team-email-${team.id}@test.bchatsign.com`;
 
   await seedTeamEmail({
     email: teamEmail,
@@ -235,7 +235,7 @@ test('[TEAMS]: resend pending team document', async ({ page }) => {
   await openDropdownMenu(page, actionBtn);
   await expect(page.getByRole('menuitem', { name: 'Resend' })).toBeVisible();
   await page.getByRole('menuitem', { name: 'Resend' }).click();
-  await page.getByLabel('test.documenso.com').first().click();
+  await page.getByLabel('test.bchatsign.com').first().click();
   await page.getByRole('button', { name: 'Send reminder' }).click();
 
   await expectToastTextToBeVisible(page, 'Document re-sent');

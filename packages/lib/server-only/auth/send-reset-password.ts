@@ -1,6 +1,6 @@
-import { mailer } from '@documenso/email/mailer';
-import { ResetPasswordTemplate } from '@documenso/email/templates/reset-password';
-import { prisma } from '@documenso/prisma';
+import { mailer } from '@bchatsign/email/mailer';
+import { ResetPasswordTemplate } from '@bchatsign/email/templates/reset-password';
+import { prisma } from '@bchatsign/prisma';
 import { createElement } from 'react';
 
 import { NEXT_PUBLIC_WEBAPP_URL } from '../../constants/app';
@@ -38,7 +38,7 @@ export const sendResetPassword = async ({ userId }: SendResetPasswordOptions) =>
     },
     from: {
       name: env('NEXT_PRIVATE_SMTP_FROM_NAME') || 'BchatSign',
-      address: env('NEXT_PRIVATE_SMTP_FROM_ADDRESS') || 'noreply@documenso.com',
+      address: env('NEXT_PRIVATE_SMTP_FROM_ADDRESS') || 'noreply@bchatsign.com',
     },
     subject: 'Password Reset Success!',
     html,

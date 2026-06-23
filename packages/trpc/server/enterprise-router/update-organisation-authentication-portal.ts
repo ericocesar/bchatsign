@@ -1,10 +1,10 @@
-import { IS_BILLING_ENABLED } from '@documenso/lib/constants/app';
-import { DOCUMENSO_ENCRYPTION_KEY } from '@documenso/lib/constants/crypto';
-import { ORGANISATION_MEMBER_ROLE_PERMISSIONS_MAP } from '@documenso/lib/constants/organisations';
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { symmetricEncrypt } from '@documenso/lib/universal/crypto';
-import { buildOrganisationWhereQuery } from '@documenso/lib/utils/organisations';
-import { prisma } from '@documenso/prisma';
+import { IS_BILLING_ENABLED } from '@bchatsign/lib/constants/app';
+import { BCHATSIGN_ENCRYPTION_KEY } from '@bchatsign/lib/constants/crypto';
+import { ORGANISATION_MEMBER_ROLE_PERMISSIONS_MAP } from '@bchatsign/lib/constants/organisations';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { symmetricEncrypt } from '@bchatsign/lib/universal/crypto';
+import { buildOrganisationWhereQuery } from '@bchatsign/lib/utils/organisations';
+import { prisma } from '@bchatsign/prisma';
 
 import { authenticatedProcedure } from '../trpc';
 import {
@@ -78,10 +78,10 @@ export const updateOrganisationAuthenticationPortalRoute = authenticatedProcedur
 
     // Encrypt the secret if it is provided.
     if (clientSecret) {
-      const encryptionKey = DOCUMENSO_ENCRYPTION_KEY;
+      const encryptionKey = BCHATSIGN_ENCRYPTION_KEY;
 
       if (!encryptionKey) {
-        throw new Error('Missing DOCUMENSO_ENCRYPTION_KEY');
+        throw new Error('Missing BCHATSIGN_ENCRYPTION_KEY');
       }
 
       encryptedClientSecret = symmetricEncrypt({

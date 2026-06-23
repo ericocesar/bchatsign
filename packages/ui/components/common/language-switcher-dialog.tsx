@@ -1,7 +1,7 @@
-import { SUPPORTED_LANGUAGES } from '@documenso/lib/constants/i18n';
-import { dynamicActivate } from '@documenso/lib/utils/i18n';
-import { cn } from '@documenso/ui/lib/utils';
-import { CommandDialog, CommandGroup, CommandInput, CommandItem, CommandList } from '@documenso/ui/primitives/command';
+import { SUPPORTED_LANGUAGES } from '@bchatsign/lib/constants/i18n';
+import { dynamicActivate } from '@bchatsign/lib/utils/i18n';
+import { cn } from '@bchatsign/ui/lib/utils';
+import { CommandDialog, CommandGroup, CommandInput, CommandItem, CommandList } from '@bchatsign/ui/primitives/command';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { CheckIcon } from 'lucide-react';

@@ -1,4 +1,4 @@
-import { createTeamMembers } from '@documenso/trpc/server/team-router/create-team-members';
+import { createTeamMembers } from '@bchatsign/trpc/server/team-router/create-team-members';
 import { customAlphabet } from 'nanoid';
 
 import { prisma } from '..';
@@ -7,7 +7,7 @@ import { OrganisationMemberRole, TeamMemberRole } from '../client';
 import { seedOrganisationMembers } from './organisations';
 import { seedUser } from './users';
 
-const EMAIL_DOMAIN = `test.documenso.com`;
+const EMAIL_DOMAIN = `test.bchatsign.com`;
 const nanoid = customAlphabet('1234567890abcdef', 10);
 
 type SeedTeamOptions = {

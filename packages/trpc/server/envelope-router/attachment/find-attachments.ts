@@ -1,6 +1,6 @@
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { findAttachmentsByEnvelopeId } from '@documenso/lib/server-only/envelope-attachment/find-attachments-by-envelope-id';
-import { findAttachmentsByToken } from '@documenso/lib/server-only/envelope-attachment/find-attachments-by-token';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { findAttachmentsByEnvelopeId } from '@bchatsign/lib/server-only/envelope-attachment/find-attachments-by-envelope-id';
+import { findAttachmentsByToken } from '@bchatsign/lib/server-only/envelope-attachment/find-attachments-by-token';
 
 import { maybeAuthenticatedProcedure } from '../../trpc';
 import {

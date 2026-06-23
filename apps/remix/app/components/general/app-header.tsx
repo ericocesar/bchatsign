@@ -1,6 +1,6 @@
-import { authClient } from '@documenso/auth/client';
-import { trpc } from '@documenso/trpc/react';
-import { cn } from '@documenso/ui/lib/utils';
+import { authClient } from '@bchatsign/auth/client';
+import { trpc } from '@bchatsign/trpc/react';
+import { cn } from '@bchatsign/ui/lib/utils';
 import { Trans } from '@lingui/react/macro';
 import { ReadStatus } from '@prisma/client';
 import {

@@ -2,9 +2,9 @@ import {
   DocumentAuth,
   type TRecipientActionAuth,
   type TRecipientActionAuthTypes,
-} from '@documenso/lib/types/document-auth';
-import { Button } from '@documenso/ui/primitives/button';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@documenso/ui/primitives/dialog';
+} from '@bchatsign/lib/types/document-auth';
+import { Button } from '@bchatsign/ui/primitives/button';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@bchatsign/ui/primitives/dialog';
 import { Trans } from '@lingui/react/macro';
 import type { FieldType } from '@prisma/client';
 import { ChevronLeftIcon } from 'lucide-react';

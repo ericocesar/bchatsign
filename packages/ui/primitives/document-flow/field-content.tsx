@@ -1,6 +1,6 @@
-import { convertToLocalSystemFormat, DEFAULT_DOCUMENT_DATE_FORMAT } from '@documenso/lib/constants/date-formats';
-import type { TFieldMetaSchema } from '@documenso/lib/types/field-meta';
-import { fromCheckboxValue } from '@documenso/lib/universal/field-checkbox';
+import { convertToLocalSystemFormat, DEFAULT_DOCUMENT_DATE_FORMAT } from '@bchatsign/lib/constants/date-formats';
+import type { TFieldMetaSchema } from '@bchatsign/lib/types/field-meta';
+import { fromCheckboxValue } from '@bchatsign/lib/universal/field-checkbox';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
 import type { DocumentMeta, Signature } from '@prisma/client';

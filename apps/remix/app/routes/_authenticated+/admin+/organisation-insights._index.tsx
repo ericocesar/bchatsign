@@ -1,5 +1,5 @@
-import { getOrganisationInsights } from '@documenso/lib/server-only/admin/get-signing-volume';
-import type { DateRange } from '@documenso/lib/types/search-params';
+import { getOrganisationInsights } from '@bchatsign/lib/server-only/admin/get-signing-volume';
+import type { DateRange } from '@bchatsign/lib/types/search-params';
 import { Trans } from '@lingui/react/macro';
 
 import { DateRangeFilter } from '~/components/filters/date-range-filter';

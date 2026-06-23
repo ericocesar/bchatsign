@@ -1,5 +1,5 @@
-import { kyselyPrisma, prisma, sql } from '@documenso/prisma';
-import { SubscriptionStatus, UserSecurityAuditLogType } from '@documenso/prisma/client';
+import { kyselyPrisma, prisma, sql } from '@bchatsign/prisma';
+import { SubscriptionStatus, UserSecurityAuditLogType } from '@bchatsign/prisma/client';
 import { DateTime } from 'luxon';
 
 export const getUsersCount = async () => {

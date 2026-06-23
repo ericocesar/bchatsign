@@ -1,9 +1,9 @@
-import { ORGANISATION_MEMBER_ROLE_MAP } from '@documenso/lib/constants/organisations-translations';
-import { formatAvatarUrl } from '@documenso/lib/utils/avatars';
-import { trpc } from '@documenso/trpc/react';
-import { Alert } from '@documenso/ui/primitives/alert';
-import { AvatarWithText } from '@documenso/ui/primitives/avatar';
-import { Button } from '@documenso/ui/primitives/button';
+import { ORGANISATION_MEMBER_ROLE_MAP } from '@bchatsign/lib/constants/organisations-translations';
+import { formatAvatarUrl } from '@bchatsign/lib/utils/avatars';
+import { trpc } from '@bchatsign/trpc/react';
+import { Alert } from '@bchatsign/ui/primitives/alert';
+import { AvatarWithText } from '@bchatsign/ui/primitives/avatar';
+import { Button } from '@bchatsign/ui/primitives/button';
 import {
   Dialog,
   DialogContent,
@@ -12,8 +12,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@documenso/ui/primitives/dialog';
-import { useToast } from '@documenso/ui/primitives/use-toast';
+} from '@bchatsign/ui/primitives/dialog';
+import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { Trans, useLingui } from '@lingui/react/macro';
 import type { OrganisationMemberRole } from '@prisma/client';
 import { useState } from 'react';

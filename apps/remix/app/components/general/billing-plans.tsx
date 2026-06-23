@@ -1,12 +1,12 @@
-import type { InternalClaimPlans } from '@documenso/ee/server-only/stripe/get-internal-claim-plans';
-import { useIsMounted } from '@documenso/lib/client-only/hooks/use-is-mounted';
-import { useCurrentOrganisation } from '@documenso/lib/client-only/providers/organisation';
-import { useSession } from '@documenso/lib/client-only/providers/session';
-import { INTERNAL_CLAIM_ID } from '@documenso/lib/types/subscription';
-import { isPersonalLayout } from '@documenso/lib/utils/organisations';
-import { trpc } from '@documenso/trpc/react';
-import { Button } from '@documenso/ui/primitives/button';
-import { Card, CardContent, CardTitle } from '@documenso/ui/primitives/card';
+import type { InternalClaimPlans } from '@bchatsign/ee/server-only/stripe/get-internal-claim-plans';
+import { useIsMounted } from '@bchatsign/lib/client-only/hooks/use-is-mounted';
+import { useCurrentOrganisation } from '@bchatsign/lib/client-only/providers/organisation';
+import { useSession } from '@bchatsign/lib/client-only/providers/session';
+import { INTERNAL_CLAIM_ID } from '@bchatsign/lib/types/subscription';
+import { isPersonalLayout } from '@bchatsign/lib/utils/organisations';
+import { trpc } from '@bchatsign/trpc/react';
+import { Button } from '@bchatsign/ui/primitives/button';
+import { Card, CardContent, CardTitle } from '@bchatsign/ui/primitives/card';
 import {
   Dialog,
   DialogClose,
@@ -16,13 +16,13 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@documenso/ui/primitives/dialog';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@documenso/ui/primitives/form/form';
-import { Input } from '@documenso/ui/primitives/input';
-import { Label } from '@documenso/ui/primitives/label';
-import { RadioGroup, RadioGroupItem } from '@documenso/ui/primitives/radio-group';
-import { Tabs, TabsList, TabsTrigger } from '@documenso/ui/primitives/tabs';
-import { useToast } from '@documenso/ui/primitives/use-toast';
+} from '@bchatsign/ui/primitives/dialog';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@bchatsign/ui/primitives/form/form';
+import { Input } from '@bchatsign/ui/primitives/input';
+import { Label } from '@bchatsign/ui/primitives/label';
+import { RadioGroup, RadioGroupItem } from '@bchatsign/ui/primitives/radio-group';
+import { Tabs, TabsList, TabsTrigger } from '@bchatsign/ui/primitives/tabs';
+import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Trans, useLingui } from '@lingui/react/macro';
 import { AnimatePresence, motion } from 'framer-motion';

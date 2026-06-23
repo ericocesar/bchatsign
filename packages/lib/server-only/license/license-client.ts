@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
-import { prisma } from '@documenso/prisma';
+import { prisma } from '@bchatsign/prisma';
 
 import { IS_BILLING_ENABLED } from '../../constants/app';
 import type { TLicenseClaim } from '../../types/license';
@@ -15,12 +15,12 @@ import {
 import { SUBSCRIPTION_CLAIM_FEATURE_FLAGS } from '../../types/subscription';
 import { env } from '../../utils/env';
 
-const LICENSE_KEY = env('NEXT_PRIVATE_DOCUMENSO_LICENSE_KEY');
-const LICENSE_SERVER_URL = env('INTERNAL_OVERRIDE_LICENSE_SERVER_URL') || 'https://license.documenso.com';
+const LICENSE_KEY = env('NEXT_PRIVATE_BCHATSIGN_LICENSE_KEY');
+const LICENSE_SERVER_URL = env('INTERNAL_OVERRIDE_LICENSE_SERVER_URL') || 'https://license.bchatsign.com';
 
 declare global {
   // eslint-disable-next-line no-var
-  var __documenso_license_client__: LicenseClient | undefined;
+  var __bchatsign_license_client__: LicenseClient | undefined;
 }
 
 export class LicenseClient {
@@ -42,7 +42,7 @@ export class LicenseClient {
    * different bundles (e.g. Hono and Remix) at runtime.
    */
   public static async start(): Promise<void> {
-    if (globalThis.__documenso_license_client__) {
+    if (globalThis.__bchatsign_license_client__) {
       return;
     }
 
@@ -52,7 +52,7 @@ export class LicenseClient {
 
     const instance = new LicenseClient();
 
-    globalThis.__documenso_license_client__ = instance;
+    globalThis.__bchatsign_license_client__ = instance;
 
     try {
       await instance.initialize();
@@ -69,7 +69,7 @@ export class LicenseClient {
    * bundles access the same instance.
    */
   public static getInstance(): LicenseClient | null {
-    return globalThis.__documenso_license_client__ ?? null;
+    return globalThis.__bchatsign_license_client__ ?? null;
   }
 
   public async getCachedLicense(): Promise<TCachedLicense | null> {

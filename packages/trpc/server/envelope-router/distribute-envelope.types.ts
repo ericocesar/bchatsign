@@ -1,4 +1,4 @@
-import { ZDocumentMetaUpdateSchema } from '@documenso/lib/types/document-meta';
+import { ZDocumentMetaUpdateSchema } from '@bchatsign/lib/types/document-meta';
 import { z } from 'zod';
 
 import { ZSuccessResponseSchema } from '../schema';

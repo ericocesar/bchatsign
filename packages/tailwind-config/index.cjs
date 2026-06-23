@@ -67,7 +67,7 @@ module.exports = {
           DEFAULT: 'hsl(var(--widget))',
           foreground: 'hsl(var(--widget-foreground))',
         },
-        documenso: {
+        bchatsign: {
           DEFAULT: '#A2E771',
           50: '#FFFFFF',
           100: '#FDFFFD',

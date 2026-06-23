@@ -1,8 +1,8 @@
-import { useElementBounds } from '@documenso/lib/client-only/hooks/use-element-bounds';
-import { useFieldPageCoords } from '@documenso/lib/client-only/hooks/use-field-page-coords';
-import { useIsPageInDom } from '@documenso/lib/client-only/hooks/use-is-page-in-dom';
-import { PDF_VIEWER_CONTENT_SELECTOR, PDF_VIEWER_PAGE_SELECTOR } from '@documenso/lib/constants/pdf-viewer';
-import { isFieldUnsignedAndRequired } from '@documenso/lib/utils/advanced-fields-helpers';
+import { useElementBounds } from '@bchatsign/lib/client-only/hooks/use-element-bounds';
+import { useFieldPageCoords } from '@bchatsign/lib/client-only/hooks/use-field-page-coords';
+import { useIsPageInDom } from '@bchatsign/lib/client-only/hooks/use-is-page-in-dom';
+import { PDF_VIEWER_CONTENT_SELECTOR, PDF_VIEWER_PAGE_SELECTOR } from '@bchatsign/lib/constants/pdf-viewer';
+import { isFieldUnsignedAndRequired } from '@bchatsign/lib/utils/advanced-fields-helpers';
 import { type Field, FieldType } from '@prisma/client';
 import React, { useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';

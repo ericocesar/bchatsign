@@ -1,8 +1,8 @@
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { getEnvelopeById } from '@documenso/lib/server-only/envelope/get-envelope-by-id';
-import { getApiTokenByToken } from '@documenso/lib/server-only/public-api/get-api-token-by-token';
-import { buildTeamWhereQuery } from '@documenso/lib/utils/teams';
-import { prisma } from '@documenso/prisma';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { getEnvelopeById } from '@bchatsign/lib/server-only/envelope/get-envelope-by-id';
+import { getApiTokenByToken } from '@bchatsign/lib/server-only/public-api/get-api-token-by-token';
+import { buildTeamWhereQuery } from '@bchatsign/lib/utils/teams';
+import { prisma } from '@bchatsign/prisma';
 import { sValidator } from '@hono/standard-validator';
 import { EnvelopeType } from '@prisma/client';
 import { Hono } from 'hono';

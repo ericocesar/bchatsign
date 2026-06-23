@@ -1,8 +1,8 @@
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import type { FindResultResponse } from '@documenso/lib/types/search-params';
-import { parseDocumentAuditLogData } from '@documenso/lib/utils/document-audit-logs';
-import { unsafeBuildEnvelopeIdQuery } from '@documenso/lib/utils/envelope';
-import { prisma } from '@documenso/prisma';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import type { FindResultResponse } from '@bchatsign/lib/types/search-params';
+import { parseDocumentAuditLogData } from '@bchatsign/lib/utils/document-audit-logs';
+import { unsafeBuildEnvelopeIdQuery } from '@bchatsign/lib/utils/envelope';
+import { prisma } from '@bchatsign/prisma';
 import { EnvelopeType } from '@prisma/client';
 
 import { adminProcedure } from '../trpc';

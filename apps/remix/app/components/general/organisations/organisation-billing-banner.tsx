@@ -1,9 +1,9 @@
-import { useOptionalCurrentOrganisation } from '@documenso/lib/client-only/providers/organisation';
-import { SUPPORT_EMAIL } from '@documenso/lib/constants/app';
-import { canExecuteOrganisationAction } from '@documenso/lib/utils/organisations';
-import { trpc } from '@documenso/trpc/react';
-import { cn } from '@documenso/ui/lib/utils';
-import { useToast } from '@documenso/ui/primitives/use-toast';
+import { useOptionalCurrentOrganisation } from '@bchatsign/lib/client-only/providers/organisation';
+import { SUPPORT_EMAIL } from '@bchatsign/lib/constants/app';
+import { canExecuteOrganisationAction } from '@bchatsign/lib/utils/organisations';
+import { trpc } from '@bchatsign/trpc/react';
+import { cn } from '@bchatsign/ui/lib/utils';
+import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';

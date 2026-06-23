@@ -1,7 +1,7 @@
-import { formatTemplatesPath } from '@documenso/lib/utils/teams';
-import { trpc } from '@documenso/trpc/react';
-import { Button } from '@documenso/ui/primitives/button';
-import { Checkbox } from '@documenso/ui/primitives/checkbox';
+import { formatTemplatesPath } from '@bchatsign/lib/utils/teams';
+import { trpc } from '@bchatsign/trpc/react';
+import { Button } from '@bchatsign/ui/primitives/button';
+import { Checkbox } from '@bchatsign/ui/primitives/checkbox';
 import {
   Dialog,
   DialogClose,
@@ -11,9 +11,9 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@documenso/ui/primitives/dialog';
-import { Label } from '@documenso/ui/primitives/label';
-import { useToast } from '@documenso/ui/primitives/use-toast';
+} from '@bchatsign/ui/primitives/dialog';
+import { Label } from '@bchatsign/ui/primitives/label';
+import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { Trans, useLingui } from '@lingui/react/macro';
 import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';

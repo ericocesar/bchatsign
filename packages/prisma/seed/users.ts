@@ -1,5 +1,5 @@
-import { hashSync } from '@documenso/lib/server-only/auth/hash';
-import { createPersonalOrganisation } from '@documenso/lib/server-only/organisation/create-organisation';
+import { hashSync } from '@bchatsign/lib/server-only/auth/hash';
+import { createPersonalOrganisation } from '@bchatsign/lib/server-only/organisation/create-organisation';
 import { OrganisationType, Role } from '@prisma/client';
 import { customAlphabet } from 'nanoid';
 
@@ -20,7 +20,7 @@ type SeedUserOptions = {
 
 const nanoid = customAlphabet('1234567890abcdef', 10);
 
-export const seedTestEmail = () => `${nanoid()}@test.documenso.com`;
+export const seedTestEmail = () => `${nanoid()}@test.bchatsign.com`;
 
 export const seedUser = async ({
   name = nanoid(),
@@ -34,7 +34,7 @@ export const seedUser = async ({
   isPersonalOrganisation = false,
 }: SeedUserOptions = {}) => {
   if (!email) {
-    email = `${nanoid()}@test.documenso.com`;
+    email = `${nanoid()}@test.bchatsign.com`;
   }
 
   const user = await prisma.user.create({

@@ -1,6 +1,6 @@
-import { prisma } from '@documenso/prisma';
-import { TeamMemberRole } from '@documenso/prisma/generated/types';
-import { TeamSchema } from '@documenso/prisma/generated/zod/modelSchema/TeamSchema';
+import { prisma } from '@bchatsign/prisma';
+import { TeamMemberRole } from '@bchatsign/prisma/generated/types';
+import { TeamSchema } from '@bchatsign/prisma/generated/zod/modelSchema/TeamSchema';
 import { z } from 'zod';
 
 import { buildTeamWhereQuery, getHighestTeamRoleInGroup } from '../../utils/teams';

@@ -1,5 +1,5 @@
-import { RECIPIENT_ROLES_DESCRIPTION } from '@documenso/lib/constants/recipient-roles';
-import type { TRecipientLite } from '@documenso/lib/types/recipient';
+import { RECIPIENT_ROLES_DESCRIPTION } from '@bchatsign/lib/constants/recipient-roles';
+import type { TRecipientLite } from '@bchatsign/lib/types/recipient';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
 import { RecipientRole, SendStatus, SigningStatus } from '@prisma/client';

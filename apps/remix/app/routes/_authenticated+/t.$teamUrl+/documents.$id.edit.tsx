@@ -1,10 +1,10 @@
-import { EnvelopeEditorProvider } from '@documenso/lib/client-only/providers/envelope-editor-provider';
-import { DO_NOT_INVALIDATE_QUERY_ON_MUTATION } from '@documenso/lib/constants/trpc';
-import { formatDocumentsPath, formatTemplatesPath } from '@documenso/lib/utils/teams';
-import { trpc } from '@documenso/trpc/react';
-import { Button } from '@documenso/ui/primitives/button';
-import { Spinner } from '@documenso/ui/primitives/spinner';
-import { TooltipProvider } from '@documenso/ui/primitives/tooltip';
+import { EnvelopeEditorProvider } from '@bchatsign/lib/client-only/providers/envelope-editor-provider';
+import { DO_NOT_INVALIDATE_QUERY_ON_MUTATION } from '@bchatsign/lib/constants/trpc';
+import { formatDocumentsPath, formatTemplatesPath } from '@bchatsign/lib/utils/teams';
+import { trpc } from '@bchatsign/trpc/react';
+import { Button } from '@bchatsign/ui/primitives/button';
+import { Spinner } from '@bchatsign/ui/primitives/spinner';
+import { TooltipProvider } from '@bchatsign/ui/primitives/tooltip';
 import { msg } from '@lingui/core/macro';
 import { Trans } from '@lingui/react/macro';
 import { EnvelopeType } from '@prisma/client';

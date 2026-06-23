@@ -54,7 +54,7 @@ A UI autenticada fica em `apps/remix/app/routes/_authenticated+/*`, com componen
 
 ### 3.1 Levantamento da arquitetura atual
 
-Documenso roda como monorepo com:
+Bchatsign roda como monorepo com:
 
 * UI e rotas no `apps/remix`;
 * lógica central em `packages/lib`;
@@ -484,9 +484,9 @@ A feature pode ser considerada pronta quando:
 6. Documentos antigos, sem os novos campos, continuam funcionando sem erro.
 7. O sealing continua assinando o PDF final corretamente após a inserção do novo overlay. ([GitHub][2])
 
-[1]: https://github.com/documenso/documenso/blob/main/ARCHITECTURE.md "documenso/ARCHITECTURE.md at main · documenso/documenso · GitHub"
-[2]: https://github.com/documenso/documenso/blob/main/packages/lib/jobs/definitions/internal/seal-document.handler.ts "documenso/packages/lib/jobs/definitions/internal/seal-document.handler.ts at main · documenso/documenso · GitHub"
-[3]: https://github.com/documenso/documenso/blob/main/packages/prisma/schema.prisma "documenso/packages/prisma/schema.prisma at main · documenso/documenso · GitHub"
-[4]: https://github.com/documenso/documenso/blob/main/packages/lib/types/document-audit-logs.ts "documenso/packages/lib/types/document-audit-logs.ts at main · documenso/documenso · GitHub"
-[5]: https://github.com/documenso/documenso/issues/1807?utm_source=chatgpt.com "internal.sealdocument fails with \"Unknown font format\" #1807"
-[6]: https://github.com/documenso/documenso/blob/main/packages/lib/server-only/htmltopdf/get-certificate-pdf.ts "documenso/packages/lib/server-only/htmltopdf/get-certificate-pdf.ts at main · documenso/documenso · GitHub"
+[1]: https://github.com/bchatsign/bchatsign/blob/main/ARCHITECTURE.md "bchatsign/ARCHITECTURE.md at main · bchatsign/bchatsign · GitHub"
+[2]: https://github.com/bchatsign/bchatsign/blob/main/packages/lib/jobs/definitions/internal/seal-document.handler.ts "bchatsign/packages/lib/jobs/definitions/internal/seal-document.handler.ts at main · bchatsign/bchatsign · GitHub"
+[3]: https://github.com/bchatsign/bchatsign/blob/main/packages/prisma/schema.prisma "bchatsign/packages/prisma/schema.prisma at main · bchatsign/bchatsign · GitHub"
+[4]: https://github.com/bchatsign/bchatsign/blob/main/packages/lib/types/document-audit-logs.ts "bchatsign/packages/lib/types/document-audit-logs.ts at main · bchatsign/bchatsign · GitHub"
+[5]: https://github.com/bchatsign/bchatsign/issues/1807?utm_source=chatgpt.com "internal.sealdocument fails with \"Unknown font format\" #1807"
+[6]: https://github.com/bchatsign/bchatsign/blob/main/packages/lib/server-only/htmltopdf/get-certificate-pdf.ts "bchatsign/packages/lib/server-only/htmltopdf/get-certificate-pdf.ts at main · bchatsign/bchatsign · GitHub"

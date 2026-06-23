@@ -1,10 +1,10 @@
-import { downloadFile } from '@documenso/lib/client-only/download-file';
-import { base64 } from '@documenso/lib/universal/base64';
-import { isDocumentCompleted } from '@documenso/lib/utils/document';
-import { trpc } from '@documenso/trpc/react';
-import { cn } from '@documenso/ui/lib/utils';
-import { Button } from '@documenso/ui/primitives/button';
-import { useToast } from '@documenso/ui/primitives/use-toast';
+import { downloadFile } from '@bchatsign/lib/client-only/download-file';
+import { base64 } from '@bchatsign/lib/universal/base64';
+import { isDocumentCompleted } from '@bchatsign/lib/utils/document';
+import { trpc } from '@bchatsign/trpc/react';
+import { cn } from '@bchatsign/ui/lib/utils';
+import { Button } from '@bchatsign/ui/primitives/button';
+import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';

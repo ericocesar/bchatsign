@@ -1,4 +1,4 @@
-import { AnimateGenericFadeInOut } from '@documenso/ui/components/animate/animate-generic-fade-in-out';
+import { AnimateGenericFadeInOut } from '@bchatsign/ui/components/animate/animate-generic-fade-in-out';
 
 import type { MessageDescriptor } from '@lingui/core';
 import { t } from '@lingui/core/macro';

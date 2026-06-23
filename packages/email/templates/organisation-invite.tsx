@@ -17,7 +17,7 @@ export type OrganisationInviteEmailProps = {
 
 export const OrganisationInviteEmailTemplate = ({
   assetBaseUrl = 'http://localhost:3002',
-  baseUrl = 'https://documenso.com',
+  baseUrl = 'https://bchatsign.com',
   senderName = 'John Doe',
   organisationName = 'Organisation Name',
   token = '',
@@ -66,7 +66,7 @@ export const OrganisationInviteEmailTemplate = ({
 
               <Section className="mt-6 mb-6 text-center">
                 <Button
-                  className="inline-flex items-center justify-center rounded-lg bg-documenso-500 px-6 py-3 text-center font-medium text-black text-sm no-underline"
+                  className="inline-flex items-center justify-center rounded-lg bg-bchatsign-500 px-6 py-3 text-center font-medium text-black text-sm no-underline"
                   href={`${baseUrl}/organisation/invite/${token}`}
                 >
                   <Trans>Accept</Trans>

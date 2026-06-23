@@ -1,6 +1,6 @@
-import { getInternalClaimPlans } from '@documenso/ee/server-only/stripe/get-internal-claim-plans';
-import { IS_BILLING_ENABLED } from '@documenso/lib/constants/app';
-import { prisma } from '@documenso/prisma';
+import { getInternalClaimPlans } from '@bchatsign/ee/server-only/stripe/get-internal-claim-plans';
+import { IS_BILLING_ENABLED } from '@bchatsign/lib/constants/app';
+import { prisma } from '@bchatsign/prisma';
 
 import { authenticatedProcedure } from '../trpc';
 

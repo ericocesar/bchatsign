@@ -1,8 +1,8 @@
 import { readFileSync } from 'node:fs';
 
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { mapSecondaryIdToDocumentId } from '@documenso/lib/utils/envelope';
-import { prisma } from '@documenso/prisma';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { mapSecondaryIdToDocumentId } from '@bchatsign/lib/utils/envelope';
+import { prisma } from '@bchatsign/prisma';
 import { BackgroundJobStatus, DocumentStatus, EnvelopeType, RecipientRole, SigningStatus } from '@prisma/client';
 
 import { maybeAuthenticatedProcedure } from '../trpc';

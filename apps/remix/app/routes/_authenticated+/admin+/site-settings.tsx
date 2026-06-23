@@ -1,6 +1,6 @@
-import { getSiteSettings } from '@documenso/lib/server-only/site-settings/get-site-settings';
-import { SITE_SETTINGS_BANNER_ID } from '@documenso/lib/server-only/site-settings/schemas/banner';
-import { SITE_SETTINGS_EMAIL_BLOCKLIST_ID } from '@documenso/lib/server-only/site-settings/schemas/email-blocklist';
+import { getSiteSettings } from '@bchatsign/lib/server-only/site-settings/get-site-settings';
+import { SITE_SETTINGS_BANNER_ID } from '@bchatsign/lib/server-only/site-settings/schemas/banner';
+import { SITE_SETTINGS_EMAIL_BLOCKLIST_ID } from '@bchatsign/lib/server-only/site-settings/schemas/email-blocklist';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 

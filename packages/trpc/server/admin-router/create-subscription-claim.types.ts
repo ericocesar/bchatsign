@@ -1,4 +1,4 @@
-import { ZClaimFlagsSchema, ZRateLimitArraySchema } from '@documenso/lib/types/subscription';
+import { ZClaimFlagsSchema, ZRateLimitArraySchema } from '@bchatsign/lib/types/subscription';
 import { z } from 'zod';
 
 export const ZCreateSubscriptionClaimRequestSchema = z.object({

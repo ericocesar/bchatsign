@@ -1,6 +1,6 @@
-import { extractPostHogConfig } from '@documenso/lib/constants/feature-flags';
-import { APP_I18N_OPTIONS } from '@documenso/lib/constants/i18n';
-import { dynamicActivate } from '@documenso/lib/utils/i18n';
+import { extractPostHogConfig } from '@bchatsign/lib/constants/feature-flags';
+import { APP_I18N_OPTIONS } from '@bchatsign/lib/constants/i18n';
+import { dynamicActivate } from '@bchatsign/lib/utils/i18n';
 import { i18n } from '@lingui/core';
 import { detect, fromHtmlTag } from '@lingui/detect-locale';
 import { I18nProvider } from '@lingui/react';

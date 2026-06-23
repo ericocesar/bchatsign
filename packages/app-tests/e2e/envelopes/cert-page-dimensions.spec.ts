@@ -1,8 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { getEnvelopeItemPdfUrl } from '@documenso/lib/utils/envelope-download';
-import { prisma } from '@documenso/prisma';
-import { seedUser } from '@documenso/prisma/seed/users';
+import { getEnvelopeItemPdfUrl } from '@bchatsign/lib/utils/envelope-download';
+import { prisma } from '@bchatsign/prisma';
+import { seedUser } from '@bchatsign/prisma/seed/users';
 import { type APIRequestContext, expect, type Page, test } from '@playwright/test';
 import { DocumentStatus, EnvelopeType, FieldType } from '@prisma/client';
 import * as pdfjsLib from 'pdfjs-dist/legacy/build/pdf.mjs';

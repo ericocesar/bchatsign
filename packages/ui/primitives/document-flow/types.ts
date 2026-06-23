@@ -1,5 +1,5 @@
-import { ZFieldMetaSchema } from '@documenso/lib/types/field-meta';
-import { zEmail } from '@documenso/lib/utils/zod';
+import { ZFieldMetaSchema } from '@bchatsign/lib/types/field-meta';
+import { zEmail } from '@bchatsign/lib/utils/zod';
 import type { MessageDescriptor } from '@lingui/core';
 import { msg } from '@lingui/core/macro';
 import { FieldType } from '@prisma/client';

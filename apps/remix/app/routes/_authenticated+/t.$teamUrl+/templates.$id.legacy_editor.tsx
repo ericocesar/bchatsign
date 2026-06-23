@@ -1,8 +1,8 @@
-import { getSession } from '@documenso/auth/server/lib/utils/get-session';
-import { getTeamByUrl } from '@documenso/lib/server-only/team/get-team';
-import { getTemplateById } from '@documenso/lib/server-only/template/get-template-by-id';
-import { formatTemplatesPath } from '@documenso/lib/utils/teams';
-import { TooltipProvider } from '@documenso/ui/primitives/tooltip';
+import { getSession } from '@bchatsign/auth/server/lib/utils/get-session';
+import { getTeamByUrl } from '@bchatsign/lib/server-only/team/get-team';
+import { getTemplateById } from '@bchatsign/lib/server-only/template/get-template-by-id';
+import { formatTemplatesPath } from '@bchatsign/lib/utils/teams';
+import { TooltipProvider } from '@bchatsign/ui/primitives/tooltip';
 import { Trans } from '@lingui/react/macro';
 import { ChevronLeft } from 'lucide-react';
 import { Link, redirect } from 'react-router';
@@ -62,7 +62,7 @@ export default function TemplateEditPage() {
           <div>
             <Link
               to={`${templateRootPath}/${template.envelopeId}`}
-              className="flex items-center text-documenso-700 hover:opacity-80"
+              className="flex items-center text-bchatsign-700 hover:opacity-80"
             >
               <ChevronLeft className="mr-2 inline-block h-5 w-5" />
               <Trans>Template</Trans>

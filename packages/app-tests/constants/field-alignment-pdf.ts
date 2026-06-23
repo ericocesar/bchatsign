@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import type { TFieldAndMeta } from '@documenso/lib/types/field-meta';
-import { toCheckboxCustomText } from '@documenso/lib/utils/fields';
+import type { TFieldAndMeta } from '@bchatsign/lib/types/field-meta';
+import { toCheckboxCustomText } from '@bchatsign/lib/utils/fields';
 import { FieldType } from '@prisma/client';
 
 export type FieldTestData = TFieldAndMeta & {
@@ -81,7 +81,7 @@ export const ALIGNMENT_TEST_FIELDS: FieldTestData[] = [
     },
     page: 1,
     ...calculatePositionPageOne(0, 0),
-    customText: 'admin@documenso.com',
+    customText: 'admin@bchatsign.com',
   },
   {
     type: FieldType.EMAIL,
@@ -92,7 +92,7 @@ export const ALIGNMENT_TEST_FIELDS: FieldTestData[] = [
     },
     page: 1,
     ...calculatePositionPageOne(0, 1),
-    customText: 'admin@documenso.com',
+    customText: 'admin@bchatsign.com',
   },
   {
     type: FieldType.EMAIL,
@@ -104,7 +104,7 @@ export const ALIGNMENT_TEST_FIELDS: FieldTestData[] = [
     },
     page: 1,
     ...calculatePositionPageOne(0, 2),
-    customText: 'admin@documenso.com',
+    customText: 'admin@bchatsign.com',
   },
   /**
    * Row 2 NAME

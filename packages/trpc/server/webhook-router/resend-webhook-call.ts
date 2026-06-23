@@ -1,9 +1,9 @@
-import { TEAM_MEMBER_ROLE_PERMISSIONS_MAP } from '@documenso/lib/constants/teams';
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { jobs } from '@documenso/lib/jobs/client';
-import { ZWebhookPayloadSchema } from '@documenso/lib/types/webhook-payload';
-import { buildTeamWhereQuery } from '@documenso/lib/utils/teams';
-import { prisma } from '@documenso/prisma';
+import { TEAM_MEMBER_ROLE_PERMISSIONS_MAP } from '@bchatsign/lib/constants/teams';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { jobs } from '@bchatsign/lib/jobs/client';
+import { ZWebhookPayloadSchema } from '@bchatsign/lib/types/webhook-payload';
+import { buildTeamWhereQuery } from '@bchatsign/lib/utils/teams';
+import { prisma } from '@bchatsign/prisma';
 
 import { authenticatedProcedure } from '../trpc';
 import { ZResendWebhookCallRequestSchema, ZResendWebhookCallResponseSchema } from './resend-webhook-call.types';

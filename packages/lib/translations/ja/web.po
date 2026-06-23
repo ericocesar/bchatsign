@@ -6,13 +6,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: ja\n"
-"Project-Id-Version: documenso-app\n"
+"Project-Id-Version: bchatsign-app\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2026-05-30 16:23\n"
 "Last-Translator: \n"
 "Language-Team: Japanese\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Crowdin-Project: documenso-app\n"
+"X-Crowdin-Project: bchatsign-app\n"
 "X-Crowdin-Project-ID: 694691\n"
 "X-Crowdin-Language: ja\n"
 "X-Crowdin-File: web.po\n"
@@ -958,8 +958,8 @@ msgstr ""
 
 #. placeholder {0}: team.name
 #: packages/lib/server-only/team/create-team-email-verification.ts
-msgid "A request to use your email has been initiated by {0} on Documenso"
-msgstr "Documenso で {0} によって、あなたのメールアドレスを使用するリクエストが開始されました"
+msgid "A request to use your email has been initiated by {0} on Bchatsign"
+msgstr "Bchatsign で {0} によって、あなたのメールアドレスを使用するリクエストが開始されました"
 
 #: apps/remix/app/components/dialogs/webhook-create-dialog.tsx
 #: apps/remix/app/components/dialogs/webhook-edit-dialog.tsx
@@ -6079,11 +6079,11 @@ msgid "I am the owner of this document"
 msgstr "私はこの文書の所有者です"
 
 #: packages/ui/components/document/document-share-button.tsx
-msgid "I just sent a document in style with @documenso. Check it out!"
+msgid "I just sent a document in style with @bchatsign. Check it out!"
 msgstr ""
 
 #: packages/ui/components/document/document-share-button.tsx
-msgid "I just signed a document in style with @documenso. Check it out!"
+msgid "I just signed a document in style with @bchatsign. Check it out!"
 msgstr ""
 
 #: apps/remix/app/routes/_unauthenticated+/o.$orgUrl.signin.tsx
@@ -6118,8 +6118,8 @@ msgid "Identifying recipients"
 msgstr "受信者を特定しています"
 
 #: apps/remix/app/routes/embed+/v2+/authoring+/_layout.tsx
-msgid "If you are using staging, ensure that you have set the host prop on the embedding component to the staging domain (https://stg-app.documenso.com)"
-msgstr "ステージング環境を使用している場合は、埋め込みコンポーネントの host プロパティをステージングドメイン (https://stg-app.documenso.com) に設定していることを確認してください"
+msgid "If you are using staging, ensure that you have set the host prop on the embedding component to the staging domain (https://stg-app.bchatsign.com)"
+msgstr "ステージング環境を使用している場合は、埋め込みコンポーネントの host プロパティをステージングドメイン (https://stg-app.bchatsign.com) に設定していることを確認してください"
 
 #: packages/email/template-components/template-admin-user-created.tsx
 msgid "If you didn't expect this account or have any questions, please <0>contact support</0>."
@@ -10421,8 +10421,8 @@ msgstr "チーム"
 
 #. placeholder {0}: team.name
 #: packages/lib/server-only/team/delete-team.ts
-msgid "Team \"{0}\" has been deleted on Documenso"
-msgstr "Documenso にてチーム「{0}」が削除されました"
+msgid "Team \"{0}\" has been deleted on Bchatsign"
+msgstr "Bchatsign にてチーム「{0}」が削除されました"
 
 #: packages/lib/constants/teams-translations.ts
 msgid "Team Admin"
@@ -13602,8 +13602,8 @@ msgstr "<0>{0}</0> から組織への参加を招待されています。"
 
 #. placeholder {0}: organisation.name
 #: packages/lib/server-only/organisation/create-organisation-member-invites.ts
-msgid "You have been invited to join {0} on Documenso"
-msgstr "Documenso で {0} に参加するよう招待されています"
+msgid "You have been invited to join {0} on Bchatsign"
+msgstr "Bchatsign で {0} に参加するよう招待されています"
 
 #: packages/email/templates/organisation-invite.tsx
 msgid "You have been invited to join the following organisation"

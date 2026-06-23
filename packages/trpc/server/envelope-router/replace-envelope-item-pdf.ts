@@ -1,8 +1,8 @@
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { getEnvelopeWhereInput } from '@documenso/lib/server-only/envelope/get-envelope-by-id';
-import { UNSAFE_replaceEnvelopeItemPdf } from '@documenso/lib/server-only/envelope-item/replace-envelope-item-pdf';
-import { getEnvelopeItemPermissions } from '@documenso/lib/utils/envelope';
-import { prisma } from '@documenso/prisma';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { getEnvelopeWhereInput } from '@bchatsign/lib/server-only/envelope/get-envelope-by-id';
+import { UNSAFE_replaceEnvelopeItemPdf } from '@bchatsign/lib/server-only/envelope-item/replace-envelope-item-pdf';
+import { getEnvelopeItemPermissions } from '@bchatsign/lib/utils/envelope';
+import { prisma } from '@bchatsign/prisma';
 
 import { authenticatedProcedure } from '../trpc';
 import {

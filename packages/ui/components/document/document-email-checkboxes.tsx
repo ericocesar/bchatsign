@@ -1,6 +1,6 @@
-import type { TDocumentEmailSettings } from '@documenso/lib/types/document-email';
-import { DocumentEmailEvents } from '@documenso/lib/types/document-email';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@documenso/ui/primitives/tooltip';
+import type { TDocumentEmailSettings } from '@bchatsign/lib/types/document-email';
+import { DocumentEmailEvents } from '@bchatsign/lib/types/document-email';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@bchatsign/ui/primitives/tooltip';
 import { Trans } from '@lingui/react/macro';
 import { InfoIcon } from 'lucide-react';
 

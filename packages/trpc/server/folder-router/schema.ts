@@ -1,7 +1,7 @@
-import { ZFolderTypeSchema } from '@documenso/lib/types/folder-type';
-import { ZFindResultResponse, ZFindSearchParamsSchema } from '@documenso/lib/types/search-params';
-import { DocumentVisibility } from '@documenso/prisma/generated/types';
-import FolderSchema from '@documenso/prisma/generated/zod/modelSchema/FolderSchema';
+import { ZFolderTypeSchema } from '@bchatsign/lib/types/folder-type';
+import { ZFindResultResponse, ZFindSearchParamsSchema } from '@bchatsign/lib/types/search-params';
+import { DocumentVisibility } from '@bchatsign/prisma/generated/types';
+import FolderSchema from '@bchatsign/prisma/generated/zod/modelSchema/FolderSchema';
 import { z } from 'zod';
 
 export const ZFolderSchema = FolderSchema.pick({

@@ -1,12 +1,12 @@
-import { OrganisationMemberRoleSchema } from '@documenso/prisma/generated/zod/inputTypeSchemas/OrganisationMemberRoleSchema';
-import { TeamMemberRoleSchema } from '@documenso/prisma/generated/zod/inputTypeSchemas/TeamMemberRoleSchema';
-import OrganisationMemberInviteSchema from '@documenso/prisma/generated/zod/modelSchema/OrganisationMemberInviteSchema';
-import OrganisationMemberSchema from '@documenso/prisma/generated/zod/modelSchema/OrganisationMemberSchema';
-import OrganisationSchema from '@documenso/prisma/generated/zod/modelSchema/OrganisationSchema';
-import TeamEmailSchema from '@documenso/prisma/generated/zod/modelSchema/TeamEmailSchema';
-import TeamGlobalSettingsSchema from '@documenso/prisma/generated/zod/modelSchema/TeamGlobalSettingsSchema';
-import TeamSchema from '@documenso/prisma/generated/zod/modelSchema/TeamSchema';
-import UserSchema from '@documenso/prisma/generated/zod/modelSchema/UserSchema';
+import { OrganisationMemberRoleSchema } from '@bchatsign/prisma/generated/zod/inputTypeSchemas/OrganisationMemberRoleSchema';
+import { TeamMemberRoleSchema } from '@bchatsign/prisma/generated/zod/inputTypeSchemas/TeamMemberRoleSchema';
+import OrganisationMemberInviteSchema from '@bchatsign/prisma/generated/zod/modelSchema/OrganisationMemberInviteSchema';
+import OrganisationMemberSchema from '@bchatsign/prisma/generated/zod/modelSchema/OrganisationMemberSchema';
+import OrganisationSchema from '@bchatsign/prisma/generated/zod/modelSchema/OrganisationSchema';
+import TeamEmailSchema from '@bchatsign/prisma/generated/zod/modelSchema/TeamEmailSchema';
+import TeamGlobalSettingsSchema from '@bchatsign/prisma/generated/zod/modelSchema/TeamGlobalSettingsSchema';
+import TeamSchema from '@bchatsign/prisma/generated/zod/modelSchema/TeamSchema';
+import UserSchema from '@bchatsign/prisma/generated/zod/modelSchema/UserSchema';
 import { z } from 'zod';
 
 export const ZGetAdminTeamRequestSchema = z.object({

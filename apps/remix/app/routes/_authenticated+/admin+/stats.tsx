@@ -1,13 +1,13 @@
-import { getDocumentStats } from '@documenso/lib/server-only/admin/get-documents-stats';
-import { getRecipientsStats } from '@documenso/lib/server-only/admin/get-recipients-stats';
+import { getDocumentStats } from '@bchatsign/lib/server-only/admin/get-documents-stats';
+import { getRecipientsStats } from '@bchatsign/lib/server-only/admin/get-recipients-stats';
 import {
   getMonthlyActiveUsers,
   getOrganisationsWithSubscriptionsCount,
   getUsersCount,
   getUserWithSignedDocumentMonthlyGrowth,
-} from '@documenso/lib/server-only/admin/get-users-stats';
-import { LicenseClient } from '@documenso/lib/server-only/license/license-client';
-import { getSignerConversionMonthly } from '@documenso/lib/server-only/user/get-signer-conversion';
+} from '@bchatsign/lib/server-only/admin/get-users-stats';
+import { LicenseClient } from '@bchatsign/lib/server-only/license/license-client';
+import { getSignerConversionMonthly } from '@bchatsign/lib/server-only/user/get-signer-conversion';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';

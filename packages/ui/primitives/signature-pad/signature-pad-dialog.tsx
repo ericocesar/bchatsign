@@ -1,4 +1,4 @@
-import { parseMessageDescriptor } from '@documenso/lib/utils/i18n';
+import { parseMessageDescriptor } from '@bchatsign/lib/utils/i18n';
 import {
   Dialog,
   DialogClose,
@@ -6,7 +6,7 @@ import {
   DialogDescription,
   DialogFooter,
   DialogTitle,
-} from '@documenso/ui/primitives/dialog';
+} from '@bchatsign/ui/primitives/dialog';
 
 import type { MessageDescriptor } from '@lingui/core';
 import { Trans, useLingui } from '@lingui/react/macro';

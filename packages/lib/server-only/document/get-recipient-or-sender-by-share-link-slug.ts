@@ -1,4 +1,4 @@
-import { prisma } from '@documenso/prisma';
+import { prisma } from '@bchatsign/prisma';
 
 export type GetRecipientOrSenderByShareLinkSlugOptions = {
   slug: string;

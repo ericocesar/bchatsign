@@ -1,6 +1,6 @@
-import { isTokenExpired } from '@documenso/lib/utils/token-verification';
-import { prisma } from '@documenso/prisma';
-import { Button } from '@documenso/ui/primitives/button';
+import { isTokenExpired } from '@bchatsign/lib/utils/token-verification';
+import { prisma } from '@bchatsign/prisma';
+import { Button } from '@bchatsign/ui/primitives/button';
 import { Trans } from '@lingui/react/macro';
 import { Link } from 'react-router';
 

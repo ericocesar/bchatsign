@@ -1,10 +1,10 @@
-import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
-import { generateDatabaseId } from '@documenso/lib/universal/id';
-import { prisma } from '@documenso/prisma';
-import { seedOrganisationMembers } from '@documenso/prisma/seed/organisations';
-import { seedTeam, seedTeamMember } from '@documenso/prisma/seed/teams';
-import { seedBlankTemplate } from '@documenso/prisma/seed/templates';
-import { seedUser } from '@documenso/prisma/seed/users';
+import { NEXT_PUBLIC_WEBAPP_URL } from '@bchatsign/lib/constants/app';
+import { generateDatabaseId } from '@bchatsign/lib/universal/id';
+import { prisma } from '@bchatsign/prisma';
+import { seedOrganisationMembers } from '@bchatsign/prisma/seed/organisations';
+import { seedTeam, seedTeamMember } from '@bchatsign/prisma/seed/teams';
+import { seedBlankTemplate } from '@bchatsign/prisma/seed/templates';
+import { seedUser } from '@bchatsign/prisma/seed/users';
 import type { Page } from '@playwright/test';
 import { expect, test } from '@playwright/test';
 import { OrganisationMemberRole, TeamMemberRole } from '@prisma/client';

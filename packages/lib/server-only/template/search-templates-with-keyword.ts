@@ -1,5 +1,5 @@
-import { formatTemplatesPath, getHighestTeamRoleInGroup } from '@documenso/lib/utils/teams';
-import { prisma } from '@documenso/prisma';
+import { formatTemplatesPath, getHighestTeamRoleInGroup } from '@bchatsign/lib/utils/teams';
+import { prisma } from '@bchatsign/prisma';
 import type { Prisma } from '@prisma/client';
 import { DocumentVisibility, EnvelopeType, TeamMemberRole } from '@prisma/client';
 import { match } from 'ts-pattern';

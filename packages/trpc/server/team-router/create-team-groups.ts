@@ -1,10 +1,10 @@
-import { ALLOWED_TEAM_GROUP_TYPES, TEAM_MEMBER_ROLE_PERMISSIONS_MAP } from '@documenso/lib/constants/teams';
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { getMemberRoles } from '@documenso/lib/server-only/team/get-member-roles';
-import { generateDatabaseId } from '@documenso/lib/universal/id';
-import { buildTeamWhereQuery, isTeamRoleWithinUserHierarchy } from '@documenso/lib/utils/teams';
-import { prisma } from '@documenso/prisma';
-import { OrganisationGroupType, OrganisationMemberRole, TeamMemberRole } from '@documenso/prisma/generated/types';
+import { ALLOWED_TEAM_GROUP_TYPES, TEAM_MEMBER_ROLE_PERMISSIONS_MAP } from '@bchatsign/lib/constants/teams';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { getMemberRoles } from '@bchatsign/lib/server-only/team/get-member-roles';
+import { generateDatabaseId } from '@bchatsign/lib/universal/id';
+import { buildTeamWhereQuery, isTeamRoleWithinUserHierarchy } from '@bchatsign/lib/utils/teams';
+import { prisma } from '@bchatsign/prisma';
+import { OrganisationGroupType, OrganisationMemberRole, TeamMemberRole } from '@bchatsign/prisma/generated/types';
 
 import { authenticatedProcedure } from '../trpc';
 import { ZCreateTeamGroupsRequestSchema, ZCreateTeamGroupsResponseSchema } from './create-team-groups.types';

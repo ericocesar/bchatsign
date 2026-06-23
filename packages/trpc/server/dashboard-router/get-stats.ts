@@ -1,4 +1,4 @@
-import { getDashboardStats } from '@documenso/lib/server-only/dashboard/get-dashboard-stats';
+import { getDashboardStats } from '@bchatsign/lib/server-only/dashboard/get-dashboard-stats';
 
 import { authenticatedProcedure } from '../trpc';
 import { ZGetDashboardStatsRequestSchema, ZGetDashboardStatsResponseSchema } from './get-stats.types';

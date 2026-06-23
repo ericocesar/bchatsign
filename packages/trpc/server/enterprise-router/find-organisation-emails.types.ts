@@ -1,5 +1,5 @@
-import { ZOrganisationEmailManySchema } from '@documenso/lib/types/organisation-email';
-import { ZFindResultResponse, ZFindSearchParamsSchema } from '@documenso/lib/types/search-params';
+import { ZOrganisationEmailManySchema } from '@bchatsign/lib/types/organisation-email';
+import { ZFindResultResponse, ZFindSearchParamsSchema } from '@bchatsign/lib/types/search-params';
 import { z } from 'zod';
 
 export const ZFindOrganisationEmailsRequestSchema = ZFindSearchParamsSchema.extend({

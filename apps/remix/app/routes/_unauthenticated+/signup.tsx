@@ -3,8 +3,8 @@ import {
   IS_MICROSOFT_SSO_ENABLED,
   IS_OIDC_SSO_ENABLED,
   isSignupEnabledForProvider,
-} from '@documenso/lib/constants/auth';
-import { isValidReturnTo, normalizeReturnTo } from '@documenso/lib/utils/is-valid-return-to';
+} from '@bchatsign/lib/constants/auth';
+import { isValidReturnTo, normalizeReturnTo } from '@bchatsign/lib/utils/is-valid-return-to';
 import { msg } from '@lingui/core/macro';
 import { Trans } from '@lingui/react/macro';
 import { motion } from 'framer-motion';

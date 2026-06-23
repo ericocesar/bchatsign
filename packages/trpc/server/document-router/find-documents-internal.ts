@@ -1,6 +1,6 @@
-import { findDocuments } from '@documenso/lib/server-only/document/find-documents';
-import { getStats } from '@documenso/lib/server-only/document/get-stats';
-import { mapEnvelopesToDocumentMany } from '@documenso/lib/utils/document';
+import { findDocuments } from '@bchatsign/lib/server-only/document/find-documents';
+import { getStats } from '@bchatsign/lib/server-only/document/get-stats';
+import { mapEnvelopesToDocumentMany } from '@bchatsign/lib/utils/document';
 
 import { authenticatedProcedure } from '../trpc';
 import {

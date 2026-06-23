@@ -1,10 +1,10 @@
-import { validateCheckboxField } from '@documenso/lib/advanced-fields-validation/validate-checkbox';
-import { validateDropdownField } from '@documenso/lib/advanced-fields-validation/validate-dropdown';
-import { validateNumberField } from '@documenso/lib/advanced-fields-validation/validate-number';
-import { validateRadioField } from '@documenso/lib/advanced-fields-validation/validate-radio';
-import { validateTextField } from '@documenso/lib/advanced-fields-validation/validate-text';
-import { fromCheckboxValue } from '@documenso/lib/universal/field-checkbox';
-import { prisma } from '@documenso/prisma';
+import { validateCheckboxField } from '@bchatsign/lib/advanced-fields-validation/validate-checkbox';
+import { validateDropdownField } from '@bchatsign/lib/advanced-fields-validation/validate-dropdown';
+import { validateNumberField } from '@bchatsign/lib/advanced-fields-validation/validate-number';
+import { validateRadioField } from '@bchatsign/lib/advanced-fields-validation/validate-radio';
+import { validateTextField } from '@bchatsign/lib/advanced-fields-validation/validate-text';
+import { fromCheckboxValue } from '@bchatsign/lib/universal/field-checkbox';
+import { prisma } from '@bchatsign/prisma';
 import { DocumentStatus, FieldType, RecipientRole, SigningStatus } from '@prisma/client';
 import { DateTime } from 'luxon';
 import { isDeepEqual } from 'remeda';

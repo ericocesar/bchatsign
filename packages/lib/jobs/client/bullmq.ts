@@ -3,7 +3,7 @@ import path from 'node:path';
 import { createBullBoard } from '@bull-board/api';
 import { BullMQAdapter } from '@bull-board/api/bullMQAdapter';
 import { HonoAdapter } from '@bull-board/hono';
-import { prisma } from '@documenso/prisma';
+import { prisma } from '@bchatsign/prisma';
 import { serveStatic } from '@hono/node-server/serve-static';
 import { sha256 } from '@noble/hashes/sha2';
 import { BackgroundJobStatus, Prisma } from '@prisma/client';
@@ -18,7 +18,7 @@ import type { JobDefinition, JobRunIO, SimpleTriggerJobOptions } from './_intern
 import type { Json } from './_internal/json';
 import { BaseJobProvider } from './base';
 
-const QUEUE_NAME = 'documenso-jobs';
+const QUEUE_NAME = 'bchatsign-jobs';
 
 const DEFAULT_CONCURRENCY = 10;
 const DEFAULT_MAX_RETRIES = 3;
@@ -26,7 +26,7 @@ const DEFAULT_BACKOFF_DELAY = 1000;
 
 declare global {
   // eslint-disable-next-line no-var
-  var __documenso_bullmq_provider__: BullMQJobProvider | undefined;
+  var __bchatsign_bullmq_provider__: BullMQJobProvider | undefined;
 }
 
 export class BullMQJobProvider extends BaseJobProvider {
@@ -44,7 +44,7 @@ export class BullMQJobProvider extends BaseJobProvider {
       throw new Error('[JOBS]: NEXT_PRIVATE_REDIS_URL is required when using the BullMQ jobs provider');
     }
 
-    const prefix = env('NEXT_PRIVATE_REDIS_PREFIX') || 'documenso';
+    const prefix = env('NEXT_PRIVATE_REDIS_PREFIX') || 'bchatsign';
 
     this._connection = new IORedis(redisUrl, {
       maxRetriesPerRequest: null,
@@ -85,13 +85,13 @@ export class BullMQJobProvider extends BaseJobProvider {
    * different bundles (e.g. Hono and Vite/React Router) at runtime.
    */
   static getInstance() {
-    if (globalThis.__documenso_bullmq_provider__) {
-      return globalThis.__documenso_bullmq_provider__;
+    if (globalThis.__bchatsign_bullmq_provider__) {
+      return globalThis.__bchatsign_bullmq_provider__;
     }
 
     const instance = new BullMQJobProvider();
 
-    globalThis.__documenso_bullmq_provider__ = instance;
+    globalThis.__bchatsign_bullmq_provider__ = instance;
 
     return instance;
   }
@@ -178,7 +178,7 @@ export class BullMQJobProvider extends BaseJobProvider {
 
       // Auth check — open in dev, admin-only in production.
       if (env('NODE_ENV') !== 'development') {
-        const { getOptionalSession } = await import('@documenso/auth/server/lib/utils/get-session');
+        const { getOptionalSession } = await import('@bchatsign/auth/server/lib/utils/get-session');
         const { isAdmin } = await import('../../utils/is-admin');
 
         const { user } = await getOptionalSession(c);

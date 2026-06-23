@@ -1,27 +1,27 @@
-import signingCelebration from '@documenso/assets/images/signing-celebration.png';
-import { getOptionalSession } from '@documenso/auth/server/lib/utils/get-session';
-import { EnvelopeRenderProvider } from '@documenso/lib/client-only/providers/envelope-render-provider';
-import { useOptionalSession } from '@documenso/lib/client-only/providers/session';
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { loadRecipientBrandingByTeamId } from '@documenso/lib/server-only/branding/load-recipient-branding';
-import { getDocumentAndSenderByToken } from '@documenso/lib/server-only/document/get-document-by-token';
-import { viewedDocument } from '@documenso/lib/server-only/document/viewed-document';
-import { getEnvelopeForRecipientSigning } from '@documenso/lib/server-only/envelope/get-envelope-for-recipient-signing';
-import { getEnvelopeRequiredAccessData } from '@documenso/lib/server-only/envelope/get-envelope-required-access-data';
-import { getCompletedFieldsForToken } from '@documenso/lib/server-only/field/get-completed-fields-for-token';
-import { getFieldsForToken } from '@documenso/lib/server-only/field/get-fields-for-token';
-import { getIsRecipientsTurnToSign } from '@documenso/lib/server-only/recipient/get-is-recipient-turn';
-import { getNextPendingRecipient } from '@documenso/lib/server-only/recipient/get-next-pending-recipient';
-import { getRecipientByToken } from '@documenso/lib/server-only/recipient/get-recipient-by-token';
-import { getRecipientSignatures } from '@documenso/lib/server-only/recipient/get-recipient-signatures';
-import { getRecipientsForAssistant } from '@documenso/lib/server-only/recipient/get-recipients-for-assistant';
-import { getTeamSettings } from '@documenso/lib/server-only/team/get-team-settings';
-import { getUserByEmail } from '@documenso/lib/server-only/user/get-user-by-email';
-import { DocumentAccessAuth } from '@documenso/lib/types/document-auth';
-import { extractDocumentAuthMethods } from '@documenso/lib/utils/document-auth';
-import { isRecipientExpired } from '@documenso/lib/utils/recipients';
-import { prisma } from '@documenso/prisma';
-import { SigningCard3D } from '@documenso/ui/components/signing-card';
+import signingCelebration from '@bchatsign/assets/images/signing-celebration.png';
+import { getOptionalSession } from '@bchatsign/auth/server/lib/utils/get-session';
+import { EnvelopeRenderProvider } from '@bchatsign/lib/client-only/providers/envelope-render-provider';
+import { useOptionalSession } from '@bchatsign/lib/client-only/providers/session';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { loadRecipientBrandingByTeamId } from '@bchatsign/lib/server-only/branding/load-recipient-branding';
+import { getDocumentAndSenderByToken } from '@bchatsign/lib/server-only/document/get-document-by-token';
+import { viewedDocument } from '@bchatsign/lib/server-only/document/viewed-document';
+import { getEnvelopeForRecipientSigning } from '@bchatsign/lib/server-only/envelope/get-envelope-for-recipient-signing';
+import { getEnvelopeRequiredAccessData } from '@bchatsign/lib/server-only/envelope/get-envelope-required-access-data';
+import { getCompletedFieldsForToken } from '@bchatsign/lib/server-only/field/get-completed-fields-for-token';
+import { getFieldsForToken } from '@bchatsign/lib/server-only/field/get-fields-for-token';
+import { getIsRecipientsTurnToSign } from '@bchatsign/lib/server-only/recipient/get-is-recipient-turn';
+import { getNextPendingRecipient } from '@bchatsign/lib/server-only/recipient/get-next-pending-recipient';
+import { getRecipientByToken } from '@bchatsign/lib/server-only/recipient/get-recipient-by-token';
+import { getRecipientSignatures } from '@bchatsign/lib/server-only/recipient/get-recipient-signatures';
+import { getRecipientsForAssistant } from '@bchatsign/lib/server-only/recipient/get-recipients-for-assistant';
+import { getTeamSettings } from '@bchatsign/lib/server-only/team/get-team-settings';
+import { getUserByEmail } from '@bchatsign/lib/server-only/user/get-user-by-email';
+import { DocumentAccessAuth } from '@bchatsign/lib/types/document-auth';
+import { extractDocumentAuthMethods } from '@bchatsign/lib/utils/document-auth';
+import { isRecipientExpired } from '@bchatsign/lib/utils/recipients';
+import { prisma } from '@bchatsign/prisma';
+import { SigningCard3D } from '@bchatsign/ui/components/signing-card';
 import { Trans } from '@lingui/react/macro';
 import { DocumentSigningOrder, DocumentStatus, RecipientRole, SigningStatus } from '@prisma/client';
 import { Clock8 } from 'lucide-react';
@@ -370,14 +370,14 @@ const SigningPageV1 = ({ data }: { data: Awaited<ReturnType<typeof handleV1Loade
           </p>
 
           {user ? (
-            <Link to="/" className="mt-36 text-documenso-700 hover:text-documenso-600">
+            <Link to="/" className="mt-36 text-bchatsign-700 hover:text-bchatsign-600">
               <Trans>Go Back Home</Trans>
             </Link>
           ) : (
             <p className="mt-36 text-muted-foreground/60 text-sm">
               <Trans>
                 Want to send slick signing links like this one?{' '}
-                <Link to="https://documenso.com" className="text-documenso-700 hover:text-documenso-600">
+                <Link to="https://bchatsign.com" className="text-bchatsign-700 hover:text-bchatsign-600">
                   Check out BchatSign
                 </Link>
                 .
@@ -456,14 +456,14 @@ const SigningPageV2 = ({ data }: { data: Awaited<ReturnType<typeof handleV2Loade
           </p>
 
           {user ? (
-            <Link to="/" className="mt-36 text-documenso-700 hover:text-documenso-600">
+            <Link to="/" className="mt-36 text-bchatsign-700 hover:text-bchatsign-600">
               <Trans>Go Back Home</Trans>
             </Link>
           ) : (
             <p className="mt-36 text-muted-foreground/60 text-sm">
               <Trans>
                 Want to send slick signing links like this one?{' '}
-                <Link to="https://documenso.com" className="text-documenso-700 hover:text-documenso-600">
+                <Link to="https://bchatsign.com" className="text-bchatsign-700 hover:text-bchatsign-600">
                   Check out BchatSign
                 </Link>
                 .

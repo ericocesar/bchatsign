@@ -1,4 +1,4 @@
-import { ExtendedDocumentStatus } from '@documenso/prisma/types/extended-document-status';
+import { ExtendedDocumentStatus } from '@bchatsign/prisma/types/extended-document-status';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Bird, CheckCircle2 } from 'lucide-react';

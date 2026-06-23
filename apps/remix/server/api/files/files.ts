@@ -1,10 +1,10 @@
-import { getOptionalSession } from '@documenso/auth/server/lib/utils/get-session';
-import { APP_DOCUMENT_UPLOAD_SIZE_LIMIT } from '@documenso/lib/constants/app';
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { verifyEmbeddingPresignToken } from '@documenso/lib/server-only/embedding-presign/verify-embedding-presign-token';
-import { putNormalizedPdfFileServerSide } from '@documenso/lib/universal/upload/put-file.server';
-import { getPresignPostUrl } from '@documenso/lib/universal/upload/server-actions';
-import { prisma } from '@documenso/prisma';
+import { getOptionalSession } from '@bchatsign/auth/server/lib/utils/get-session';
+import { APP_DOCUMENT_UPLOAD_SIZE_LIMIT } from '@bchatsign/lib/constants/app';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { verifyEmbeddingPresignToken } from '@bchatsign/lib/server-only/embedding-presign/verify-embedding-presign-token';
+import { putNormalizedPdfFileServerSide } from '@bchatsign/lib/universal/upload/put-file.server';
+import { getPresignPostUrl } from '@bchatsign/lib/universal/upload/server-actions';
+import { prisma } from '@bchatsign/prisma';
 import { sValidator } from '@hono/standard-validator';
 import type { Prisma } from '@prisma/client';
 import { Hono } from 'hono';

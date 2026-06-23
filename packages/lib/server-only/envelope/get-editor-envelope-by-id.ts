@@ -1,5 +1,5 @@
-import { getEnvelopeWhereInput } from '@documenso/lib/server-only/envelope/get-envelope-by-id';
-import { prisma } from '@documenso/prisma';
+import { getEnvelopeWhereInput } from '@bchatsign/lib/server-only/envelope/get-envelope-by-id';
+import { prisma } from '@bchatsign/prisma';
 import type { EnvelopeType } from '@prisma/client';
 
 import { AppError, AppErrorCode } from '../../errors/app-error';

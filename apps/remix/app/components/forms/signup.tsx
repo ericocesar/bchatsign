@@ -1,17 +1,17 @@
-import { authClient } from '@documenso/auth/client';
-import { useAnalytics } from '@documenso/lib/client-only/hooks/use-analytics';
-import { ZNameSchema } from '@documenso/lib/constants/auth';
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { env } from '@documenso/lib/utils/env';
-import { zEmail } from '@documenso/lib/utils/zod';
-import { ZPasswordSchema } from '@documenso/trpc/server/auth-router/schema';
-import { cn } from '@documenso/ui/lib/utils';
-import { Button } from '@documenso/ui/primitives/button';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@documenso/ui/primitives/form/form';
-import { Input } from '@documenso/ui/primitives/input';
-import { PasswordInput } from '@documenso/ui/primitives/password-input';
-import { SignaturePadDialog } from '@documenso/ui/primitives/signature-pad/signature-pad-dialog';
-import { useToast } from '@documenso/ui/primitives/use-toast';
+import { authClient } from '@bchatsign/auth/client';
+import { useAnalytics } from '@bchatsign/lib/client-only/hooks/use-analytics';
+import { ZNameSchema } from '@bchatsign/lib/constants/auth';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { env } from '@bchatsign/lib/utils/env';
+import { zEmail } from '@bchatsign/lib/utils/zod';
+import { ZPasswordSchema } from '@bchatsign/trpc/server/auth-router/schema';
+import { cn } from '@bchatsign/ui/lib/utils';
+import { Button } from '@bchatsign/ui/primitives/button';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@bchatsign/ui/primitives/form/form';
+import { Input } from '@bchatsign/ui/primitives/input';
+import { PasswordInput } from '@bchatsign/ui/primitives/password-input';
+import { SignaturePadDialog } from '@bchatsign/ui/primitives/signature-pad/signature-pad-dialog';
+import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import type { MessageDescriptor } from '@lingui/core';
 import { msg } from '@lingui/core/macro';
@@ -361,7 +361,7 @@ export const SignUpForm = ({
               loading={form.formState.isSubmitting}
               type="submit"
               size="lg"
-              className="mt-2 w-full dark:bg-documenso dark:hover:opacity-90"
+              className="mt-2 w-full dark:bg-bchatsign dark:hover:opacity-90"
             >
               <Trans>Create account</Trans>
             </Button>

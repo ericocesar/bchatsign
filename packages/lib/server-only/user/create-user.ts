@@ -1,4 +1,4 @@
-import { prisma } from '@documenso/prisma';
+import { prisma } from '@bchatsign/prisma';
 import { hash } from '@node-rs/bcrypt';
 import type { User } from '@prisma/client';
 
@@ -52,7 +52,7 @@ export const createUser = async ({ name, email, password, signature }: CreateUse
   //     data: {
   //       userId: user.id,
   //       type: 'emailPassword', // Todo: (RR7)
-  //       provider: 'DOCUMENSO', // Todo: (RR7) Enums
+  //       provider: 'BCHATSIGN', // Todo: (RR7) Enums
   //       providerAccountId: user.id.toString(),
   //       password: hashedPassword,
   //     },

@@ -1,4 +1,4 @@
-import { env } from '@documenso/lib/utils/env';
+import { env } from '@bchatsign/lib/utils/env';
 
 import { AzureBlobProvider } from './azure-blob-provider';
 import { S3Provider } from './s3-provider';

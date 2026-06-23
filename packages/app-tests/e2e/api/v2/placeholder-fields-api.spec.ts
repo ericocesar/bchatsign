@@ -1,16 +1,16 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
-import { createApiToken } from '@documenso/lib/server-only/public-api/create-api-token';
-import { prisma } from '@documenso/prisma';
-import { EnvelopeType, FieldType, RecipientRole } from '@documenso/prisma/client';
-import { seedUser } from '@documenso/prisma/seed/users';
+import { NEXT_PUBLIC_WEBAPP_URL } from '@bchatsign/lib/constants/app';
+import { createApiToken } from '@bchatsign/lib/server-only/public-api/create-api-token';
+import { prisma } from '@bchatsign/prisma';
+import { EnvelopeType, FieldType, RecipientRole } from '@bchatsign/prisma/client';
+import { seedUser } from '@bchatsign/prisma/seed/users';
 import type {
   TCreateEnvelopePayload,
   TCreateEnvelopeResponse,
-} from '@documenso/trpc/server/envelope-router/create-envelope.types';
-import type { TCreateEnvelopeRecipientsRequest } from '@documenso/trpc/server/envelope-router/envelope-recipients/create-envelope-recipients.types';
-import type { TGetEnvelopeResponse } from '@documenso/trpc/server/envelope-router/get-envelope.types';
+} from '@bchatsign/trpc/server/envelope-router/create-envelope.types';
+import type { TCreateEnvelopeRecipientsRequest } from '@bchatsign/trpc/server/envelope-router/envelope-recipients/create-envelope-recipients.types';
+import type { TGetEnvelopeResponse } from '@bchatsign/trpc/server/envelope-router/get-envelope.types';
 import { PDF, StandardFonts } from '@libpdf/core';
 import type { APIRequestContext } from '@playwright/test';
 import { expect, test } from '@playwright/test';
@@ -404,7 +404,7 @@ test.describe('Placeholder-based field creation', () => {
 
     await addRecipients(request, envelope.id, [
       {
-        email: 'second.recipient@documenso.com',
+        email: 'second.recipient@bchatsign.com',
         name: 'Second Recipient',
         role: RecipientRole.SIGNER,
         signingOrder: 2,
@@ -412,7 +412,7 @@ test.describe('Placeholder-based field creation', () => {
         actionAuth: [],
       },
       {
-        email: 'first.recipient@documenso.com',
+        email: 'first.recipient@bchatsign.com',
         name: 'First Recipient',
         role: RecipientRole.SIGNER,
         signingOrder: 1,

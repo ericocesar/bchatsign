@@ -4,7 +4,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 const envelopeItemFindFirst = vi.hoisted(() => vi.fn());
 const envelopeItemUpdate = vi.hoisted(() => vi.fn());
 
-vi.mock('@documenso/prisma', () => ({
+vi.mock('@bchatsign/prisma', () => ({
   prisma: {
     envelopeItem: {
       findFirst: envelopeItemFindFirst,

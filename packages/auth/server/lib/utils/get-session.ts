@@ -1,5 +1,5 @@
-import { AppError } from '@documenso/lib/errors/app-error';
-import { prisma } from '@documenso/prisma';
+import { AppError } from '@bchatsign/lib/errors/app-error';
+import { prisma } from '@bchatsign/prisma';
 import type { Session } from '@prisma/client';
 import type { Context } from 'hono';
 

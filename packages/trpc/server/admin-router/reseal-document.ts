@@ -1,7 +1,7 @@
-import { jobs } from '@documenso/lib/jobs/client';
-import { unsafeGetEntireEnvelope } from '@documenso/lib/server-only/admin/get-entire-document';
-import { isDocumentCompleted } from '@documenso/lib/utils/document';
-import { mapSecondaryIdToDocumentId } from '@documenso/lib/utils/envelope';
+import { jobs } from '@bchatsign/lib/jobs/client';
+import { unsafeGetEntireEnvelope } from '@bchatsign/lib/server-only/admin/get-entire-document';
+import { isDocumentCompleted } from '@bchatsign/lib/utils/document';
+import { mapSecondaryIdToDocumentId } from '@bchatsign/lib/utils/envelope';
 import { EnvelopeType } from '@prisma/client';
 
 import { adminProcedure } from '../trpc';

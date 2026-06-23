@@ -1,5 +1,5 @@
-import { TEAM_MEMBER_ROLE_PERMISSIONS_MAP } from '@documenso/lib/constants/teams';
-import { prisma } from '@documenso/prisma';
+import { TEAM_MEMBER_ROLE_PERMISSIONS_MAP } from '@bchatsign/lib/constants/teams';
+import { prisma } from '@bchatsign/prisma';
 
 import { buildTeamWhereQuery } from '../../utils/teams';
 

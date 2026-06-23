@@ -1,6 +1,6 @@
-import { seedDraftDocument } from '@documenso/prisma/seed/documents';
-import { seedBlankFolder } from '@documenso/prisma/seed/folders';
-import { seedUser } from '@documenso/prisma/seed/users';
+import { seedDraftDocument } from '@bchatsign/prisma/seed/documents';
+import { seedBlankFolder } from '@bchatsign/prisma/seed/folders';
+import { seedUser } from '@bchatsign/prisma/seed/users';
 import { expect, test } from '@playwright/test';
 
 import { apiSignin } from '../fixtures/authentication';
@@ -217,7 +217,7 @@ test('[BULK_ACTIONS]: can search for folders in move dialog', async ({ page }) =
 test('[BULK_ACTIONS]: can move documents from folder to home (root)', async ({ page }) => {
   const { sender, documents, folder } = await seedBulkActionsTestRequirements();
 
-  const { prisma } = await import('@documenso/prisma');
+  const { prisma } = await import('@bchatsign/prisma');
 
   await prisma.envelope.updateMany({
     where: { id: documents[0].id },

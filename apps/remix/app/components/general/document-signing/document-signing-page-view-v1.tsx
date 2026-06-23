@@ -1,27 +1,27 @@
-import { useAnalytics } from '@documenso/lib/client-only/hooks/use-analytics';
-import { DEFAULT_DOCUMENT_DATE_FORMAT } from '@documenso/lib/constants/date-formats';
-import { PDF_VIEWER_PAGE_SELECTOR } from '@documenso/lib/constants/pdf-viewer';
-import { DEFAULT_DOCUMENT_TIME_ZONE } from '@documenso/lib/constants/time-zones';
-import type { DocumentAndSender } from '@documenso/lib/server-only/document/get-document-by-token';
-import type { TRecipientAccessAuth } from '@documenso/lib/types/document-auth';
+import { useAnalytics } from '@bchatsign/lib/client-only/hooks/use-analytics';
+import { DEFAULT_DOCUMENT_DATE_FORMAT } from '@bchatsign/lib/constants/date-formats';
+import { PDF_VIEWER_PAGE_SELECTOR } from '@bchatsign/lib/constants/pdf-viewer';
+import { DEFAULT_DOCUMENT_TIME_ZONE } from '@bchatsign/lib/constants/time-zones';
+import type { DocumentAndSender } from '@bchatsign/lib/server-only/document/get-document-by-token';
+import type { TRecipientAccessAuth } from '@bchatsign/lib/types/document-auth';
 import {
   ZCheckboxFieldMeta,
   ZDropdownFieldMeta,
   ZNumberFieldMeta,
   ZRadioFieldMeta,
   ZTextFieldMeta,
-} from '@documenso/lib/types/field-meta';
-import type { CompletedField } from '@documenso/lib/types/fields';
-import { isFieldUnsignedAndRequired } from '@documenso/lib/utils/advanced-fields-helpers';
-import { getDocumentDataUrlForPdfViewer } from '@documenso/lib/utils/envelope-download';
-import { validateFieldsInserted } from '@documenso/lib/utils/fields';
-import type { FieldWithSignatureAndFieldMeta } from '@documenso/prisma/types/field-with-signature-and-fieldmeta';
-import type { RecipientWithFields } from '@documenso/prisma/types/recipient-with-fields';
-import { trpc } from '@documenso/trpc/react';
-import { DocumentReadOnlyFields } from '@documenso/ui/components/document/document-read-only-fields';
-import { Button } from '@documenso/ui/primitives/button';
-import { Card, CardContent } from '@documenso/ui/primitives/card';
-import { ElementVisible } from '@documenso/ui/primitives/element-visible';
+} from '@bchatsign/lib/types/field-meta';
+import type { CompletedField } from '@bchatsign/lib/types/fields';
+import { isFieldUnsignedAndRequired } from '@bchatsign/lib/utils/advanced-fields-helpers';
+import { getDocumentDataUrlForPdfViewer } from '@bchatsign/lib/utils/envelope-download';
+import { validateFieldsInserted } from '@bchatsign/lib/utils/fields';
+import type { FieldWithSignatureAndFieldMeta } from '@bchatsign/prisma/types/field-with-signature-and-fieldmeta';
+import type { RecipientWithFields } from '@bchatsign/prisma/types/recipient-with-fields';
+import { trpc } from '@bchatsign/trpc/react';
+import { DocumentReadOnlyFields } from '@bchatsign/ui/components/document/document-read-only-fields';
+import { Button } from '@bchatsign/ui/primitives/button';
+import { Card, CardContent } from '@bchatsign/ui/primitives/card';
+import { ElementVisible } from '@bchatsign/ui/primitives/element-visible';
 import { Trans } from '@lingui/react/macro';
 import type { Field } from '@prisma/client';
 import { FieldType, RecipientRole } from '@prisma/client';

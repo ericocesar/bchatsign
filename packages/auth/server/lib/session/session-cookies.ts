@@ -1,6 +1,6 @@
-import { formatSecureCookieName, getCookieDomain, useSecureCookies } from '@documenso/lib/constants/auth';
-import { appLog } from '@documenso/lib/utils/debugger';
-import { env } from '@documenso/lib/utils/env';
+import { formatSecureCookieName, getCookieDomain, useSecureCookies } from '@bchatsign/lib/constants/auth';
+import { appLog } from '@bchatsign/lib/utils/debugger';
+import { env } from '@bchatsign/lib/utils/env';
 import type { Context } from 'hono';
 import { deleteCookie, getSignedCookie, setSignedCookie } from 'hono/cookie';
 

@@ -1,5 +1,5 @@
-import { plainClient } from '@documenso/lib/plain/client';
-import { prisma } from '@documenso/prisma';
+import { plainClient } from '@bchatsign/lib/plain/client';
+import { prisma } from '@bchatsign/prisma';
 
 import { AppError, AppErrorCode } from '../../errors/app-error';
 import { buildOrganisationWhereQuery } from '../../utils/organisations';

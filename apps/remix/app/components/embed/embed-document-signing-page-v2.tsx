@@ -1,7 +1,7 @@
-import { APP_I18N_OPTIONS } from '@documenso/lib/constants/i18n';
-import { ZSignDocumentEmbedDataSchema } from '@documenso/lib/types/embed-document-sign-schema';
-import { mapSecondaryIdToDocumentId } from '@documenso/lib/utils/envelope';
-import { dynamicActivate } from '@documenso/lib/utils/i18n';
+import { APP_I18N_OPTIONS } from '@bchatsign/lib/constants/i18n';
+import { ZSignDocumentEmbedDataSchema } from '@bchatsign/lib/types/embed-document-sign-schema';
+import { mapSecondaryIdToDocumentId } from '@bchatsign/lib/utils/envelope';
+import { dynamicActivate } from '@bchatsign/lib/utils/i18n';
 import { useLingui } from '@lingui/react';
 import { EnvelopeType } from '@prisma/client';
 import { useEffect, useLayoutEffect, useState } from 'react';

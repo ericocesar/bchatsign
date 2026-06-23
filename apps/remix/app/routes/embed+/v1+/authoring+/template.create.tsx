@@ -1,11 +1,11 @@
 import {
   type TBaseEmbedAuthoringSchema,
   ZBaseEmbedAuthoringSchema,
-} from '@documenso/lib/types/embed-authoring-base-schema';
-import { putPdfFile } from '@documenso/lib/universal/upload/put-file';
-import { trpc } from '@documenso/trpc/react';
-import { Stepper } from '@documenso/ui/primitives/stepper';
-import { useToast } from '@documenso/ui/primitives/use-toast';
+} from '@bchatsign/lib/types/embed-authoring-base-schema';
+import { putPdfFile } from '@bchatsign/lib/universal/upload/put-file';
+import { trpc } from '@bchatsign/trpc/react';
+import { Stepper } from '@bchatsign/ui/primitives/stepper';
+import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { useLingui } from '@lingui/react';
 import { useLayoutEffect, useState } from 'react';
 import { useNavigate } from 'react-router';

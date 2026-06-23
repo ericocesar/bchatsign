@@ -1,9 +1,9 @@
 import * as fs from 'node:fs';
-import { env } from '@documenso/lib/utils/env';
+import { env } from '@bchatsign/lib/utils/env';
 import { P12Signer } from '@libpdf/core';
 
 const getDefaultLocalFilePath = () =>
-  env('NODE_ENV') === 'production' ? '/opt/documenso/cert.p12' : './example/cert.p12';
+  env('NODE_ENV') === 'production' ? '/opt/bchatsign/cert.p12' : './example/cert.p12';
 
 const readP12File = (filePath: string): Uint8Array => {
   let stats: fs.Stats;

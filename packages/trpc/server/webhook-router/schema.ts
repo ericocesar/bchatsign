@@ -1,4 +1,4 @@
-import { isPrivateUrl } from '@documenso/lib/server-only/webhooks/is-private-url';
+import { isPrivateUrl } from '@bchatsign/lib/server-only/webhooks/is-private-url';
 import { WebhookTriggerEvents } from '@prisma/client';
 import { z } from 'zod';
 

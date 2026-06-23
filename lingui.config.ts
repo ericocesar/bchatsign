@@ -1,4 +1,4 @@
-import { APP_I18N_OPTIONS } from '@documenso/lib/constants/locales';
+import { APP_I18N_OPTIONS } from '@bchatsign/lib/constants/locales';
 import type { LinguiConfig } from '@lingui/conf';
 import { formatter } from '@lingui/format-po';
 

@@ -1,5 +1,5 @@
-import { ZDocumentTitleSchema } from '@documenso/trpc/server/document-router/schema';
-import { cn } from '@documenso/ui/lib/utils';
+import { ZDocumentTitleSchema } from '@bchatsign/trpc/server/document-router/schema';
+import { cn } from '@bchatsign/ui/lib/utils';
 import { useEffect, useRef, useState } from 'react';
 
 const MIN_INPUT_WIDTH = 100;

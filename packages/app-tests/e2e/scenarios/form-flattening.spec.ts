@@ -1,16 +1,16 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
-import { createApiToken } from '@documenso/lib/server-only/public-api/create-api-token';
-import { getFileServerSide } from '@documenso/lib/universal/upload/get-file.server';
-import { mapSecondaryIdToTemplateId } from '@documenso/lib/utils/envelope';
-import { prisma } from '@documenso/prisma';
-import { EnvelopeType, RecipientRole } from '@documenso/prisma/client';
-import { seedUser } from '@documenso/prisma/seed/users';
+import { NEXT_PUBLIC_WEBAPP_URL } from '@bchatsign/lib/constants/app';
+import { createApiToken } from '@bchatsign/lib/server-only/public-api/create-api-token';
+import { getFileServerSide } from '@bchatsign/lib/universal/upload/get-file.server';
+import { mapSecondaryIdToTemplateId } from '@bchatsign/lib/utils/envelope';
+import { prisma } from '@bchatsign/prisma';
+import { EnvelopeType, RecipientRole } from '@bchatsign/prisma/client';
+import { seedUser } from '@bchatsign/prisma/seed/users';
 import type {
   TCreateEnvelopePayload,
   TCreateEnvelopeResponse,
-} from '@documenso/trpc/server/envelope-router/create-envelope.types';
+} from '@bchatsign/trpc/server/envelope-router/create-envelope.types';
 import { PDF } from '@libpdf/core';
 import { expect, test } from '@playwright/test';
 
@@ -28,7 +28,7 @@ const FORM_FIELDS = {
 // Test values to insert into form fields
 const TEST_FORM_VALUES = {
   [FORM_FIELDS.TEXT_FIELD]: 'Hello World',
-  [FORM_FIELDS.COMPANY_NAME]: 'Documenso Inc.',
+  [FORM_FIELDS.COMPANY_NAME]: 'Bchatsign Inc.',
   [FORM_FIELDS.CHECKBOX]: true,
   [FORM_FIELDS.DROPDOWN]: 'Germany',
 };

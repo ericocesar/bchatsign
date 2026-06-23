@@ -1,4 +1,4 @@
-import { prisma } from '@documenso/prisma';
+import { prisma } from '@bchatsign/prisma';
 import crypto from 'crypto';
 import { DateTime } from 'luxon';
 

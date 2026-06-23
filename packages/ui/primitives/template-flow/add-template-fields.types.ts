@@ -1,4 +1,4 @@
-import { ZFieldMetaSchema } from '@documenso/lib/types/field-meta';
+import { ZFieldMetaSchema } from '@bchatsign/lib/types/field-meta';
 import { FieldType } from '@prisma/client';
 import { z } from 'zod';
 

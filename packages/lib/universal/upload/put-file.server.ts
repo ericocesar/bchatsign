@@ -1,4 +1,4 @@
-import { env } from '@documenso/lib/utils/env';
+import { env } from '@bchatsign/lib/utils/env';
 import { PDF } from '@libpdf/core';
 import { DocumentDataType } from '@prisma/client';
 import { base64 } from '@scure/base';

@@ -1,5 +1,5 @@
-import { getHighestOrganisationRoleInGroup } from '@documenso/lib/utils/organisations';
-import { prisma } from '@documenso/prisma';
+import { getHighestOrganisationRoleInGroup } from '@bchatsign/lib/utils/organisations';
+import { prisma } from '@bchatsign/prisma';
 
 import { authenticatedProcedure } from '../trpc';
 import { ZGetOrganisationsRequestSchema, ZGetOrganisationsResponseSchema } from './get-organisations.types';

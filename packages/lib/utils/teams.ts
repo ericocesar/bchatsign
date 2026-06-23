@@ -1,4 +1,4 @@
-import type { TeamGroup, TeamMemberRole } from '@documenso/prisma/generated/types';
+import type { TeamGroup, TeamMemberRole } from '@bchatsign/prisma/generated/types';
 import type { DocumentVisibility, OrganisationGlobalSettings, Prisma, TeamGlobalSettings } from '@prisma/client';
 
 import { NEXT_PUBLIC_WEBAPP_URL } from '../constants/app';

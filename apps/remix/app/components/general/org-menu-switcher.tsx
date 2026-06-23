@@ -1,24 +1,24 @@
-import { authClient } from '@documenso/auth/client';
-import { useOptionalCurrentOrganisation } from '@documenso/lib/client-only/providers/organisation';
-import { useSession } from '@documenso/lib/client-only/providers/session';
-import { EXTENDED_ORGANISATION_MEMBER_ROLE_MAP } from '@documenso/lib/constants/organisations-translations';
-import { EXTENDED_TEAM_MEMBER_ROLE_MAP } from '@documenso/lib/constants/teams-translations';
-import { formatAvatarUrl } from '@documenso/lib/utils/avatars';
-import { isAdmin } from '@documenso/lib/utils/is-admin';
-import { canExecuteOrganisationAction } from '@documenso/lib/utils/organisations';
-import { extractInitials } from '@documenso/lib/utils/recipient-formatter';
-import { canExecuteTeamAction } from '@documenso/lib/utils/teams';
-import { AnimateGenericFadeInOut } from '@documenso/ui/components/animate/animate-generic-fade-in-out';
-import { LanguageSwitcherDialog } from '@documenso/ui/components/common/language-switcher-dialog';
-import { cn } from '@documenso/ui/lib/utils';
-import { AvatarWithText } from '@documenso/ui/primitives/avatar';
-import { Button } from '@documenso/ui/primitives/button';
+import { authClient } from '@bchatsign/auth/client';
+import { useOptionalCurrentOrganisation } from '@bchatsign/lib/client-only/providers/organisation';
+import { useSession } from '@bchatsign/lib/client-only/providers/session';
+import { EXTENDED_ORGANISATION_MEMBER_ROLE_MAP } from '@bchatsign/lib/constants/organisations-translations';
+import { EXTENDED_TEAM_MEMBER_ROLE_MAP } from '@bchatsign/lib/constants/teams-translations';
+import { formatAvatarUrl } from '@bchatsign/lib/utils/avatars';
+import { isAdmin } from '@bchatsign/lib/utils/is-admin';
+import { canExecuteOrganisationAction } from '@bchatsign/lib/utils/organisations';
+import { extractInitials } from '@bchatsign/lib/utils/recipient-formatter';
+import { canExecuteTeamAction } from '@bchatsign/lib/utils/teams';
+import { AnimateGenericFadeInOut } from '@bchatsign/ui/components/animate/animate-generic-fade-in-out';
+import { LanguageSwitcherDialog } from '@bchatsign/ui/components/common/language-switcher-dialog';
+import { cn } from '@bchatsign/ui/lib/utils';
+import { AvatarWithText } from '@bchatsign/ui/primitives/avatar';
+import { Button } from '@bchatsign/ui/primitives/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@documenso/ui/primitives/dropdown-menu';
+} from '@bchatsign/ui/primitives/dropdown-menu';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';

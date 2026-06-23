@@ -1,5 +1,5 @@
-import { getCertificateStatus } from '@documenso/lib/server-only/cert/cert-status';
-import { prisma } from '@documenso/prisma';
+import { getCertificateStatus } from '@bchatsign/lib/server-only/cert/cert-status';
+import { prisma } from '@bchatsign/prisma';
 
 type CheckStatus = 'ok' | 'warning' | 'error';
 

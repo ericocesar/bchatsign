@@ -1,5 +1,5 @@
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { prisma } from '@documenso/prisma';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { prisma } from '@bchatsign/prisma';
 import { DocumentStatus } from '@prisma/client';
 
 import { buildTeamWhereQuery } from '../../utils/teams';

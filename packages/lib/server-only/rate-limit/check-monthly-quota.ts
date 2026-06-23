@@ -1,4 +1,4 @@
-import { prisma } from '@documenso/prisma';
+import { prisma } from '@bchatsign/prisma';
 import { AppError, AppErrorCode } from '../../errors/app-error';
 import { jobsClient } from '../../jobs/client';
 import { generateDatabaseId } from '../../universal/id';

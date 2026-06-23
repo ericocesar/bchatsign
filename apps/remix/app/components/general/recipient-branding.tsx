@@ -1,4 +1,4 @@
-import type { TCssVarsSchema } from '@documenso/lib/types/css-vars';
+import type { TCssVarsSchema } from '@bchatsign/lib/types/css-vars';
 import { useEffect } from 'react';
 import { toNativeCssVarsString } from '~/utils/css-vars';
 import { nonce as createNonce } from '~/utils/nonce';
@@ -16,18 +16,18 @@ export type RecipientBrandingProps = {
 
 /**
  * Renders a `<style nonce>` block for a recipient route, scoped to the
- * `.documenso-branded` wrapper rendered in `_recipient+/_layout.tsx`.
+ * `.bchatsign-branded` wrapper rendered in `_recipient+/_layout.tsx`.
  *
  * Both the CSS variables (from `branding.colors`) and the user's custom CSS
  * (from `branding.css`) are emitted inside a single nested rule so the user
  * doesn't need to scope their own selectors — native CSS nesting handles it:
  *
- *   .documenso-branded {
+ *   .bchatsign-branded {
  *     --background: ...;
  *     .my-class { color: red; }
  *   }
  *
- * Equivalent to `.documenso-branded .my-class { color: red; }` after expansion.
+ * Equivalent to `.bchatsign-branded .my-class { color: red; }` after expansion.
  *
  * The user's CSS is sanitised at write time (`sanitizeBrandingCss`) and stored
  * in the DB as-is — no per-render parsing.
@@ -56,7 +56,7 @@ export const RecipientBranding = ({ branding, cspNonce }: RecipientBrandingProps
   const hasUserCss = userCss.trim().length > 0;
 
   const innerBody = `${hasVars ? `${varsString}\n` : ''}${hasUserCss ? userCss : ''}`.trim();
-  const css = `.documenso-branded { ${innerBody} }`;
+  const css = `.bchatsign-branded { ${innerBody} }`;
 
   useEffect(() => {
     if (!branding?.allowCustomBranding) {

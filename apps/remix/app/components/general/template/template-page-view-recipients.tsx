@@ -1,8 +1,8 @@
-import { RECIPIENT_ROLES_DESCRIPTION } from '@documenso/lib/constants/recipient-roles';
-import { isTemplateRecipientEmailPlaceholder } from '@documenso/lib/constants/template';
-import type { TRecipientLite } from '@documenso/lib/types/recipient';
-import { extractInitials } from '@documenso/lib/utils/recipient-formatter';
-import { AvatarWithText } from '@documenso/ui/primitives/avatar';
+import { RECIPIENT_ROLES_DESCRIPTION } from '@bchatsign/lib/constants/recipient-roles';
+import { isTemplateRecipientEmailPlaceholder } from '@bchatsign/lib/constants/template';
+import type { TRecipientLite } from '@bchatsign/lib/types/recipient';
+import { extractInitials } from '@bchatsign/lib/utils/recipient-formatter';
+import { AvatarWithText } from '@bchatsign/ui/primitives/avatar';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';

@@ -1,10 +1,10 @@
-import { useCurrentOrganisation } from '@documenso/lib/client-only/providers/organisation';
-import { FROM_ADDRESS } from '@documenso/lib/constants/email';
-import { DEFAULT_DOCUMENT_EMAIL_SETTINGS, ZDocumentEmailSettingsSchema } from '@documenso/lib/types/document-email';
-import { zEmail } from '@documenso/lib/utils/zod';
-import { trpc } from '@documenso/trpc/react';
-import { DocumentEmailCheckboxes } from '@documenso/ui/components/document/document-email-checkboxes';
-import { Button } from '@documenso/ui/primitives/button';
+import { useCurrentOrganisation } from '@bchatsign/lib/client-only/providers/organisation';
+import { FROM_ADDRESS } from '@bchatsign/lib/constants/email';
+import { DEFAULT_DOCUMENT_EMAIL_SETTINGS, ZDocumentEmailSettingsSchema } from '@bchatsign/lib/types/document-email';
+import { zEmail } from '@bchatsign/lib/utils/zod';
+import { trpc } from '@bchatsign/trpc/react';
+import { DocumentEmailCheckboxes } from '@bchatsign/ui/components/document/document-email-checkboxes';
+import { Button } from '@bchatsign/ui/primitives/button';
 import {
   Form,
   FormControl,
@@ -13,9 +13,9 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@documenso/ui/primitives/form/form';
-import { Input } from '@documenso/ui/primitives/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@documenso/ui/primitives/select';
+} from '@bchatsign/ui/primitives/form/form';
+import { Input } from '@bchatsign/ui/primitives/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@bchatsign/ui/primitives/select';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Trans } from '@lingui/react/macro';
 import type { TeamGlobalSettings } from '@prisma/client';

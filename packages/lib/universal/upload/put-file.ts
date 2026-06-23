@@ -1,5 +1,5 @@
-import { env } from '@documenso/lib/utils/env';
-import type { TGetPresignedPostUrlResponse, TUploadPdfResponse } from '@documenso/remix/server/api/files/files.types';
+import { env } from '@bchatsign/lib/utils/env';
+import type { TGetPresignedPostUrlResponse, TUploadPdfResponse } from '@bchatsign/remix/server/api/files/files.types';
 import { DocumentDataType } from '@prisma/client';
 import { base64 } from '@scure/base';
 import { match } from 'ts-pattern';

@@ -1,4 +1,4 @@
-import { env } from '@documenso/lib/utils/env';
+import { env } from '@bchatsign/lib/utils/env';
 import { Trans } from '@lingui/react/macro';
 
 import { Button, Column, Img, Link, Section, Text } from '../components';
@@ -42,7 +42,7 @@ export const TemplateDocumentSelfSigned = ({ documentName, assetBaseUrl }: Templ
             <Link
               href={signUpUrl}
               target="_blank"
-              className="whitespace-nowrap text-documenso-700 hover:text-documenso-600"
+              className="whitespace-nowrap text-bchatsign-700 hover:text-bchatsign-600"
             >
               free account
             </Link>{' '}
@@ -61,7 +61,7 @@ export const TemplateDocumentSelfSigned = ({ documentName, assetBaseUrl }: Templ
 
           <Button
             className="rounded-lg border border-slate-200 border-solid px-4 py-2 text-center font-medium text-black text-sm no-underline"
-            href="https://documenso.com/pricing"
+            href="https://bchatsign.com/pricing"
           >
             <Img src={getAssetUrl('/static/review.png')} className="mr-2 mb-0.5 inline h-5 w-5 align-middle" />
             <Trans>View plans</Trans>

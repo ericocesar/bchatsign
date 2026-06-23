@@ -1,6 +1,6 @@
-import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
-import { getUserByEmail } from '@documenso/lib/server-only/user/get-user-by-email';
-import { seedUser } from '@documenso/prisma/seed/users';
+import { NEXT_PUBLIC_WEBAPP_URL } from '@bchatsign/lib/constants/app';
+import { getUserByEmail } from '@bchatsign/lib/server-only/user/get-user-by-email';
+import { seedUser } from '@bchatsign/prisma/seed/users';
 import { expect, test } from '@playwright/test';
 
 import { apiSignin } from '../fixtures/authentication';

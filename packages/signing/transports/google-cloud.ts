@@ -1,5 +1,5 @@
 import fs from 'node:fs';
-import { env } from '@documenso/lib/utils/env';
+import { env } from '@bchatsign/lib/utils/env';
 import { GoogleKmsSigner, parsePem } from '@libpdf/core';
 
 const loadCertificates = async (): Promise<Uint8Array[]> => {

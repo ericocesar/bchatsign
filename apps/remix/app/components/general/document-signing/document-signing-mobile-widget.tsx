@@ -1,4 +1,4 @@
-import { Button } from '@documenso/ui/primitives/button';
+import { Button } from '@bchatsign/ui/primitives/button';
 
 import { Plural, Trans } from '@lingui/react/macro';
 import { RecipientRole } from '@prisma/client';

@@ -1,7 +1,7 @@
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { getEnvelopeWhereInput } from '@documenso/lib/server-only/envelope/get-envelope-by-id';
-import { getOrganisationTemplateWhereInput } from '@documenso/lib/server-only/template/get-organisation-template-by-id';
-import { prisma } from '@documenso/prisma';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { getEnvelopeWhereInput } from '@bchatsign/lib/server-only/envelope/get-envelope-by-id';
+import { getOrganisationTemplateWhereInput } from '@bchatsign/lib/server-only/template/get-organisation-template-by-id';
+import { prisma } from '@bchatsign/prisma';
 import { EnvelopeType } from '@prisma/client';
 
 import { maybeAuthenticatedProcedure } from '../trpc';

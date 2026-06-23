@@ -1,4 +1,4 @@
-import { zEmail } from '@documenso/lib/utils/zod';
+import { zEmail } from '@bchatsign/lib/utils/zod';
 import { z } from 'zod';
 
 export const ZGetRecipientSuggestionsRequestSchema = z.object({

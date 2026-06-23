@@ -7,7 +7,7 @@ const loggerInfo = vi.hoisted(() => vi.fn());
 const loggerWarn = vi.hoisted(() => vi.fn());
 const loggerError = vi.hoisted(() => vi.fn());
 
-vi.mock('@documenso/prisma', () => ({
+vi.mock('@bchatsign/prisma', () => ({
   prisma: {
     envelope: {
       findFirst: prismaEnvelopeFindFirst,
@@ -15,11 +15,11 @@ vi.mock('@documenso/prisma', () => ({
   },
 }));
 
-vi.mock('@documenso/lib/universal/upload/get-file.server', () => ({
+vi.mock('@bchatsign/lib/universal/upload/get-file.server', () => ({
   getFileServerSide,
 }));
 
-vi.mock('@documenso/lib/utils/logger', () => ({
+vi.mock('@bchatsign/lib/utils/logger', () => ({
   logger: {
     child: () => ({
       info: loggerInfo,

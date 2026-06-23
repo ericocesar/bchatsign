@@ -1,10 +1,10 @@
-import { authClient } from '@documenso/auth/client';
-import { getOptionalSession } from '@documenso/auth/server/lib/utils/get-session';
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { prisma } from '@documenso/prisma';
-import { Button } from '@documenso/ui/primitives/button';
-import { Checkbox } from '@documenso/ui/primitives/checkbox';
-import { useToast } from '@documenso/ui/primitives/use-toast';
+import { authClient } from '@bchatsign/auth/client';
+import { getOptionalSession } from '@bchatsign/auth/server/lib/utils/get-session';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { prisma } from '@bchatsign/prisma';
+import { Button } from '@bchatsign/ui/primitives/button';
+import { Checkbox } from '@bchatsign/ui/primitives/checkbox';
+import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { Trans, useLingui } from '@lingui/react/macro';
 import { MailsIcon } from 'lucide-react';

@@ -1,4 +1,4 @@
-import { zEmail } from '@documenso/lib/utils/zod';
+import { zEmail } from '@bchatsign/lib/utils/zod';
 import { OrganisationMemberRole } from '@prisma/client';
 import { z } from 'zod';
 

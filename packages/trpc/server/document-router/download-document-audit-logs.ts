@@ -1,7 +1,7 @@
-import { PDF_SIZE_A4_72PPI } from '@documenso/lib/constants/pdf';
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { getEnvelopeById } from '@documenso/lib/server-only/envelope/get-envelope-by-id';
-import { generateAuditLogPdf } from '@documenso/lib/server-only/pdf/generate-audit-log-pdf';
+import { PDF_SIZE_A4_72PPI } from '@bchatsign/lib/constants/pdf';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { getEnvelopeById } from '@bchatsign/lib/server-only/envelope/get-envelope-by-id';
+import { generateAuditLogPdf } from '@bchatsign/lib/server-only/pdf/generate-audit-log-pdf';
 import { EnvelopeType } from '@prisma/client';
 
 import { authenticatedProcedure } from '../trpc';

@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { createEnvelope } from '@documenso/lib/server-only/envelope/create-envelope';
-import { incrementDocumentId } from '@documenso/lib/server-only/envelope/increment-id';
+import { createEnvelope } from '@bchatsign/lib/server-only/envelope/create-envelope';
+import { incrementDocumentId } from '@bchatsign/lib/server-only/envelope/increment-id';
 import {
   FIELD_CHECKBOX_META_DEFAULT_VALUES,
   FIELD_DATE_META_DEFAULT_VALUES,
@@ -13,8 +13,8 @@ import {
   FIELD_RADIO_META_DEFAULT_VALUES,
   FIELD_SIGNATURE_META_DEFAULT_VALUES,
   FIELD_TEXT_META_DEFAULT_VALUES,
-} from '@documenso/lib/types/field-meta';
-import { prefixedId } from '@documenso/lib/universal/id';
+} from '@bchatsign/lib/types/field-meta';
+import { prefixedId } from '@bchatsign/lib/universal/id';
 import type { Team, User } from '@prisma/client';
 import { nanoid } from 'nanoid';
 import { match } from 'ts-pattern';

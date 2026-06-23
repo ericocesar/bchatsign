@@ -1,13 +1,13 @@
-import { mailer } from '@documenso/email/mailer';
-import { DocumentInviteEmailTemplate } from '@documenso/email/templates/document-invite';
-import { resolveExpiresAt } from '@documenso/lib/constants/envelope-expiration';
-import { RECIPIENT_ROLE_TO_EMAIL_TYPE, RECIPIENT_ROLES_DESCRIPTION } from '@documenso/lib/constants/recipient-roles';
-import { AppError } from '@documenso/lib/errors/app-error';
-import { DOCUMENT_AUDIT_LOG_TYPE } from '@documenso/lib/types/document-audit-logs';
-import type { ApiRequestMetadata } from '@documenso/lib/universal/extract-request-metadata';
-import { createDocumentAuditLogData } from '@documenso/lib/utils/document-audit-logs';
-import { renderCustomEmailTemplate } from '@documenso/lib/utils/render-custom-email-template';
-import { prisma } from '@documenso/prisma';
+import { mailer } from '@bchatsign/email/mailer';
+import { DocumentInviteEmailTemplate } from '@bchatsign/email/templates/document-invite';
+import { resolveExpiresAt } from '@bchatsign/lib/constants/envelope-expiration';
+import { RECIPIENT_ROLE_TO_EMAIL_TYPE, RECIPIENT_ROLES_DESCRIPTION } from '@bchatsign/lib/constants/recipient-roles';
+import { AppError } from '@bchatsign/lib/errors/app-error';
+import { DOCUMENT_AUDIT_LOG_TYPE } from '@bchatsign/lib/types/document-audit-logs';
+import type { ApiRequestMetadata } from '@bchatsign/lib/universal/extract-request-metadata';
+import { createDocumentAuditLogData } from '@bchatsign/lib/utils/document-audit-logs';
+import { renderCustomEmailTemplate } from '@bchatsign/lib/utils/render-custom-email-template';
+import { prisma } from '@bchatsign/prisma';
 import { msg } from '@lingui/core/macro';
 import {
   DocumentStatus,

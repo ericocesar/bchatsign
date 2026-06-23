@@ -1,19 +1,19 @@
-import { authClient } from '@documenso/auth/client';
-import { useSession } from '@documenso/lib/client-only/providers/session';
-import { formatAvatarUrl } from '@documenso/lib/utils/avatars';
-import { isAdmin } from '@documenso/lib/utils/is-admin';
-import { extractInitials } from '@documenso/lib/utils/recipient-formatter';
-import { LanguageSwitcherDialog } from '@documenso/ui/components/common/language-switcher-dialog';
-import { cn } from '@documenso/ui/lib/utils';
-import { AvatarWithText } from '@documenso/ui/primitives/avatar';
-import { Button } from '@documenso/ui/primitives/button';
+import { authClient } from '@bchatsign/auth/client';
+import { useSession } from '@bchatsign/lib/client-only/providers/session';
+import { formatAvatarUrl } from '@bchatsign/lib/utils/avatars';
+import { isAdmin } from '@bchatsign/lib/utils/is-admin';
+import { extractInitials } from '@bchatsign/lib/utils/recipient-formatter';
+import { LanguageSwitcherDialog } from '@bchatsign/ui/components/common/language-switcher-dialog';
+import { cn } from '@bchatsign/ui/lib/utils';
+import { AvatarWithText } from '@bchatsign/ui/primitives/avatar';
+import { Button } from '@bchatsign/ui/primitives/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@documenso/ui/primitives/dropdown-menu';
+} from '@bchatsign/ui/primitives/dropdown-menu';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';

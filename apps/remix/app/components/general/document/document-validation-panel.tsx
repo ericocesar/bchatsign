@@ -1,5 +1,5 @@
-import { EVIDENCE_TIME_ZONE } from '@documenso/lib/server-only/pdf/format-evidence-date-time';
-import { VALIDAR_ITI_URL } from '@documenso/lib/server-only/validation';
+import { EVIDENCE_TIME_ZONE } from '@bchatsign/lib/server-only/pdf/format-evidence-date-time';
+import { VALIDAR_ITI_URL } from '@bchatsign/lib/server-only/validation';
 import { Trans } from '@lingui/react/macro';
 import type { EnvelopeItem } from '@prisma/client';
 import { DateTime } from 'luxon';

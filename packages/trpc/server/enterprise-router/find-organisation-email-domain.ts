@@ -1,7 +1,7 @@
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import type { FindResultResponse } from '@documenso/lib/types/search-params';
-import { buildOrganisationWhereQuery } from '@documenso/lib/utils/organisations';
-import { prisma } from '@documenso/prisma';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import type { FindResultResponse } from '@bchatsign/lib/types/search-params';
+import { buildOrganisationWhereQuery } from '@bchatsign/lib/utils/organisations';
+import { prisma } from '@bchatsign/prisma';
 import type { EmailDomainStatus } from '@prisma/client';
 import { Prisma } from '@prisma/client';
 

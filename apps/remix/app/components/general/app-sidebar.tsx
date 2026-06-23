@@ -1,13 +1,13 @@
-import LogoSvg from '@documenso/assets/logo.svg';
-import LogoMarkImage from '@documenso/assets/logo_icon.png';
-import { authClient } from '@documenso/auth/client';
-import { useOptionalCurrentOrganisation } from '@documenso/lib/client-only/providers/organisation';
-import { useSession } from '@documenso/lib/client-only/providers/session';
-import { formatAvatarUrl } from '@documenso/lib/utils/avatars';
-import { canExecuteOrganisationAction } from '@documenso/lib/utils/organisations';
-import { extractInitials } from '@documenso/lib/utils/recipient-formatter';
-import { canExecuteTeamAction } from '@documenso/lib/utils/teams';
-import { cn } from '@documenso/ui/lib/utils';
+import LogoSvg from '@bchatsign/assets/logo.svg';
+import LogoMarkImage from '@bchatsign/assets/logo_icon.png';
+import { authClient } from '@bchatsign/auth/client';
+import { useOptionalCurrentOrganisation } from '@bchatsign/lib/client-only/providers/organisation';
+import { useSession } from '@bchatsign/lib/client-only/providers/session';
+import { formatAvatarUrl } from '@bchatsign/lib/utils/avatars';
+import { canExecuteOrganisationAction } from '@bchatsign/lib/utils/organisations';
+import { extractInitials } from '@bchatsign/lib/utils/recipient-formatter';
+import { canExecuteTeamAction } from '@bchatsign/lib/utils/teams';
+import { cn } from '@bchatsign/ui/lib/utils';
 import { msg } from '@lingui/core/macro';
 import { Trans, useLingui } from '@lingui/react/macro';
 import {
@@ -30,7 +30,7 @@ import { Link, useLocation } from 'react-router';
 
 import { useOptionalCurrentTeam } from '~/providers/team';
 
-const SIDEBAR_COLLAPSED_STORAGE_KEY = 'documenso:sidebar-collapsed';
+const SIDEBAR_COLLAPSED_STORAGE_KEY = 'bchatsign:sidebar-collapsed';
 
 export type AppSidebarProps = HTMLAttributes<HTMLDivElement> & {
   forceExpanded?: boolean;

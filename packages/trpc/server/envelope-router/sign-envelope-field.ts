@@ -1,10 +1,10 @@
-import { isBase64Image } from '@documenso/lib/constants/signatures';
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { validateFieldAuth } from '@documenso/lib/server-only/document/validate-field-auth';
-import { DOCUMENT_AUDIT_LOG_TYPE } from '@documenso/lib/types/document-audit-logs';
-import { createDocumentAuditLogData } from '@documenso/lib/utils/document-audit-logs';
-import { extractFieldInsertionValues } from '@documenso/lib/utils/envelope-signing';
-import { prisma } from '@documenso/prisma';
+import { isBase64Image } from '@bchatsign/lib/constants/signatures';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { validateFieldAuth } from '@bchatsign/lib/server-only/document/validate-field-auth';
+import { DOCUMENT_AUDIT_LOG_TYPE } from '@bchatsign/lib/types/document-audit-logs';
+import { createDocumentAuditLogData } from '@bchatsign/lib/utils/document-audit-logs';
+import { extractFieldInsertionValues } from '@bchatsign/lib/utils/envelope-signing';
+import { prisma } from '@bchatsign/prisma';
 import { DocumentStatus, FieldType, RecipientRole, SigningStatus } from '@prisma/client';
 import { match } from 'ts-pattern';
 

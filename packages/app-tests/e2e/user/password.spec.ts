@@ -1,5 +1,5 @@
-import { prisma } from '@documenso/prisma';
-import { seedUser } from '@documenso/prisma/seed/users';
+import { prisma } from '@bchatsign/prisma';
+import { seedUser } from '@bchatsign/prisma/seed/users';
 import { expect, type Page, test } from '@playwright/test';
 
 import { apiSignin, apiSignout, checkSessionValid } from '../fixtures/authentication';

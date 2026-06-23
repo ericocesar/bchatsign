@@ -1,4 +1,4 @@
-import { getAvatarImage } from '@documenso/lib/server-only/profile/get-avatar-image';
+import { getAvatarImage } from '@bchatsign/lib/server-only/profile/get-avatar-image';
 
 import type { Route } from './+types/avatar.$id';
 

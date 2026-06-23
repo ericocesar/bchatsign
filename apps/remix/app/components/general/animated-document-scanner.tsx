@@ -1,4 +1,4 @@
-import { cn } from '@documenso/ui/lib/utils';
+import { cn } from '@bchatsign/ui/lib/utils';
 
 import { SearchIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';

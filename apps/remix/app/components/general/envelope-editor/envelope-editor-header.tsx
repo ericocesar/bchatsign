@@ -1,8 +1,8 @@
-import { useCurrentEnvelopeEditor } from '@documenso/lib/client-only/providers/envelope-editor-provider';
-import { getEnvelopeItemPermissions, mapSecondaryIdToTemplateId } from '@documenso/lib/utils/envelope';
-import { Badge } from '@documenso/ui/primitives/badge';
-import { Button } from '@documenso/ui/primitives/button';
-import { Separator } from '@documenso/ui/primitives/separator';
+import { useCurrentEnvelopeEditor } from '@bchatsign/lib/client-only/providers/envelope-editor-provider';
+import { getEnvelopeItemPermissions, mapSecondaryIdToTemplateId } from '@bchatsign/lib/utils/envelope';
+import { Badge } from '@bchatsign/ui/primitives/badge';
+import { Button } from '@bchatsign/ui/primitives/button';
+import { Separator } from '@bchatsign/ui/primitives/separator';
 import { Trans, useLingui } from '@lingui/react/macro';
 import { DocumentStatus, EnvelopeType, TemplateType } from '@prisma/client';
 import {

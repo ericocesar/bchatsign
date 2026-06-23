@@ -1,8 +1,8 @@
-import { toCheckboxCustomText } from '@documenso/lib/utils/fields';
+import { toCheckboxCustomText } from '@bchatsign/lib/utils/fields';
 import {
   CheckboxValidationRules,
   numberFormatValues,
-} from '@documenso/ui/primitives/document-flow/field-items-advanced-settings/constants';
+} from '@bchatsign/ui/primitives/document-flow/field-items-advanced-settings/constants';
 import { FieldType } from '@prisma/client';
 
 import type { FieldTestData } from './field-alignment-pdf';

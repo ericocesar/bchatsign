@@ -1,5 +1,5 @@
-import { hashSync } from '@documenso/lib/server-only/auth/hash';
-import { addUserToOrganisation } from '@documenso/lib/server-only/organisation/accept-organisation-invitation';
+import { hashSync } from '@bchatsign/lib/server-only/auth/hash';
+import { addUserToOrganisation } from '@bchatsign/lib/server-only/organisation/accept-organisation-invitation';
 import type { OrganisationMemberRole, OrganisationType } from '@prisma/client';
 import { OrganisationGroupType, type User } from '@prisma/client';
 

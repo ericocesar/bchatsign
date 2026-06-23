@@ -1,4 +1,4 @@
-import { prisma } from '@documenso/prisma';
+import { prisma } from '@bchatsign/prisma';
 import { DocumentStatus, EnvelopeType } from '@prisma/client';
 
 export type GetDashboardStatsOptions = {

@@ -1,8 +1,8 @@
-import type { TLicenseClaim } from '@documenso/lib/types/license';
-import { SUBSCRIPTION_CLAIM_FEATURE_FLAGS } from '@documenso/lib/types/subscription';
-import { ZCreateSubscriptionClaimRequestSchema } from '@documenso/trpc/server/admin-router/create-subscription-claim.types';
-import { Alert, AlertDescription } from '@documenso/ui/primitives/alert';
-import { Checkbox } from '@documenso/ui/primitives/checkbox';
+import type { TLicenseClaim } from '@bchatsign/lib/types/license';
+import { SUBSCRIPTION_CLAIM_FEATURE_FLAGS } from '@bchatsign/lib/types/subscription';
+import { ZCreateSubscriptionClaimRequestSchema } from '@bchatsign/trpc/server/admin-router/create-subscription-claim.types';
+import { Alert, AlertDescription } from '@bchatsign/ui/primitives/alert';
+import { Checkbox } from '@bchatsign/ui/primitives/checkbox';
 import {
   Form,
   FormControl,
@@ -11,8 +11,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@documenso/ui/primitives/form/form';
-import { Input } from '@documenso/ui/primitives/input';
+} from '@bchatsign/ui/primitives/form/form';
+import { Input } from '@bchatsign/ui/primitives/input';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Trans, useLingui } from '@lingui/react/macro';
 import type { SubscriptionClaim } from '@prisma/client';
@@ -225,7 +225,7 @@ export const SubscriptionClaimForm = ({
                   <span>¹&nbsp;</span>
                   <Trans>Your current license does not include these features.</Trans>{' '}
                   <Link
-                    to="https://docs.documenso.com/users/licenses/enterprise-edition"
+                    to="https://docs.bchatsign.com/users/licenses/enterprise-edition"
                     target="_blank"
                     className="text-foreground underline hover:opacity-80"
                   >

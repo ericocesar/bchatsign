@@ -1,4 +1,4 @@
-import { DEFAULT_RECT_BACKGROUND, getRecipientColorStyles } from '@documenso/ui/lib/recipient-colors';
+import { DEFAULT_RECT_BACKGROUND, getRecipientColorStyles } from '@bchatsign/ui/lib/recipient-colors';
 import Konva from 'konva';
 
 import type { FieldToRender, RenderFieldElementOptions } from './field-renderer';

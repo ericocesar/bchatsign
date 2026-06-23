@@ -1,5 +1,5 @@
 {
-  "extends": "@documenso/tsconfig/base.json",
+  "extends": "@bchatsign/tsconfig/base.json",
   "compilerOptions": {
     "allowJs": true,
     "noEmit": true

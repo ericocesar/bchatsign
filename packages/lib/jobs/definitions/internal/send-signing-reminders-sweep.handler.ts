@@ -1,4 +1,4 @@
-import { prisma } from '@documenso/prisma';
+import { prisma } from '@bchatsign/prisma';
 import { DocumentStatus, RecipientRole, SendStatus, SigningStatus } from '@prisma/client';
 
 import { jobs } from '../../client';

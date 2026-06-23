@@ -1,9 +1,9 @@
-import { ZOrganisationSchema } from '@documenso/lib/types/organisation';
-import OrganisationClaimSchema from '@documenso/prisma/generated/zod/modelSchema/OrganisationClaimSchema';
-import OrganisationGlobalSettingsSchema from '@documenso/prisma/generated/zod/modelSchema/OrganisationGlobalSettingsSchema';
-import OrganisationMemberSchema from '@documenso/prisma/generated/zod/modelSchema/OrganisationMemberSchema';
-import SubscriptionSchema from '@documenso/prisma/generated/zod/modelSchema/SubscriptionSchema';
-import TeamSchema from '@documenso/prisma/generated/zod/modelSchema/TeamSchema';
+import { ZOrganisationSchema } from '@bchatsign/lib/types/organisation';
+import OrganisationClaimSchema from '@bchatsign/prisma/generated/zod/modelSchema/OrganisationClaimSchema';
+import OrganisationGlobalSettingsSchema from '@bchatsign/prisma/generated/zod/modelSchema/OrganisationGlobalSettingsSchema';
+import OrganisationMemberSchema from '@bchatsign/prisma/generated/zod/modelSchema/OrganisationMemberSchema';
+import SubscriptionSchema from '@bchatsign/prisma/generated/zod/modelSchema/SubscriptionSchema';
+import TeamSchema from '@bchatsign/prisma/generated/zod/modelSchema/TeamSchema';
 import { z } from 'zod';
 
 // export const getOrganisationMeta: TrpcOpenApiMeta = {

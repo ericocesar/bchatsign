@@ -1,9 +1,9 @@
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { generatePartialSignedPdf } from '@documenso/lib/server-only/pdf/generate-partial-signed-pdf';
-import { getTeamById } from '@documenso/lib/server-only/team/get-team';
-import { sha256 } from '@documenso/lib/universal/crypto';
-import { getFileServerSide } from '@documenso/lib/universal/upload/get-file.server';
-import { prisma } from '@documenso/prisma';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { generatePartialSignedPdf } from '@bchatsign/lib/server-only/pdf/generate-partial-signed-pdf';
+import { getTeamById } from '@bchatsign/lib/server-only/team/get-team';
+import { sha256 } from '@bchatsign/lib/universal/crypto';
+import { getFileServerSide } from '@bchatsign/lib/universal/upload/get-file.server';
+import { prisma } from '@bchatsign/prisma';
 import {
   type DocumentDataType,
   DocumentStatus,

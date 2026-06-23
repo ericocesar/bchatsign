@@ -1,5 +1,5 @@
-import { kyselyPrisma, prisma, sql } from '@documenso/prisma';
-import type { DB } from '@documenso/prisma/generated/types';
+import { kyselyPrisma, prisma, sql } from '@bchatsign/prisma';
+import type { DB } from '@bchatsign/prisma/generated/types';
 import type { DocumentSource, DocumentStatus, Envelope, EnvelopeType } from '@prisma/client';
 import type { Expression, ExpressionBuilder, SelectQueryBuilder, SqlBool } from 'kysely';
 

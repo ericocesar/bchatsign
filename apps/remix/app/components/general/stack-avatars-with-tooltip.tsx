@@ -1,8 +1,8 @@
-import { getRecipientType, RecipientStatusType } from '@documenso/lib/client-only/recipient-type';
-import { RECIPIENT_ROLES_DESCRIPTION } from '@documenso/lib/constants/recipient-roles';
-import type { TRecipientLite } from '@documenso/lib/types/recipient';
-import { recipientAbbreviation } from '@documenso/lib/utils/recipient-formatter';
-import { PopoverHover } from '@documenso/ui/primitives/popover';
+import { getRecipientType, RecipientStatusType } from '@bchatsign/lib/client-only/recipient-type';
+import { RECIPIENT_ROLES_DESCRIPTION } from '@bchatsign/lib/constants/recipient-roles';
+import type { TRecipientLite } from '@bchatsign/lib/types/recipient';
+import { recipientAbbreviation } from '@bchatsign/lib/utils/recipient-formatter';
+import { PopoverHover } from '@bchatsign/ui/primitives/popover';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
 import type { DocumentStatus } from '@prisma/client';

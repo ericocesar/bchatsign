@@ -1,4 +1,4 @@
-import { extractPostHogConfig } from '@documenso/lib/constants/feature-flags';
+import { extractPostHogConfig } from '@bchatsign/lib/constants/feature-flags';
 
 let posthogPromise: Promise<typeof import('posthog-js')> | null = null;
 

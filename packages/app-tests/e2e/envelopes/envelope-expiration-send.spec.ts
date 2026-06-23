@@ -1,16 +1,16 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
-import { createApiToken } from '@documenso/lib/server-only/public-api/create-api-token';
-import { prisma } from '@documenso/prisma';
-import { EnvelopeType, RecipientRole } from '@documenso/prisma/client';
-import { seedPendingDocument } from '@documenso/prisma/seed/documents';
-import { seedUser } from '@documenso/prisma/seed/users';
+import { NEXT_PUBLIC_WEBAPP_URL } from '@bchatsign/lib/constants/app';
+import { createApiToken } from '@bchatsign/lib/server-only/public-api/create-api-token';
+import { prisma } from '@bchatsign/prisma';
+import { EnvelopeType, RecipientRole } from '@bchatsign/prisma/client';
+import { seedPendingDocument } from '@bchatsign/prisma/seed/documents';
+import { seedUser } from '@bchatsign/prisma/seed/users';
 import type {
   TCreateEnvelopePayload,
   TCreateEnvelopeResponse,
-} from '@documenso/trpc/server/envelope-router/create-envelope.types';
-import type { TDistributeEnvelopeRequest } from '@documenso/trpc/server/envelope-router/distribute-envelope.types';
+} from '@bchatsign/trpc/server/envelope-router/create-envelope.types';
+import type { TDistributeEnvelopeRequest } from '@bchatsign/trpc/server/envelope-router/distribute-envelope.types';
 import { expect, test } from '@playwright/test';
 
 import { apiSignin } from '../fixtures/authentication';
@@ -38,7 +38,7 @@ test('[ENVELOPE_EXPIRATION]: sending document sets expiresAt on recipients', asy
     title: '[TEST] Expiration Send Test',
     recipients: [
       {
-        email: 'signer-expiry@test.documenso.com',
+        email: 'signer-expiry@test.bchatsign.com',
         name: 'Signer Expiry',
         role: RecipientRole.SIGNER,
         fields: [
@@ -116,7 +116,7 @@ test('[ENVELOPE_EXPIRATION]: sending document with custom org expiration period'
     title: '[TEST] Custom Expiration Send Test',
     recipients: [
       {
-        email: 'signer-custom@test.documenso.com',
+        email: 'signer-custom@test.bchatsign.com',
         name: 'Signer Custom',
         role: RecipientRole.SIGNER,
         fields: [
@@ -192,7 +192,7 @@ test('[ENVELOPE_EXPIRATION]: sending document with expiration disabled', async (
     title: '[TEST] Disabled Expiration Send Test',
     recipients: [
       {
-        email: 'signer-disabled@test.documenso.com',
+        email: 'signer-disabled@test.bchatsign.com',
         name: 'Signer Disabled',
         role: RecipientRole.SIGNER,
         fields: [
@@ -241,7 +241,7 @@ test('[ENVELOPE_EXPIRATION]: sending document with expiration disabled', async (
 test('[ENVELOPE_EXPIRATION]: resending refreshes expiresAt', async ({ page }) => {
   const { user, team } = await seedUser();
 
-  const document = await seedPendingDocument(user, team.id, ['resend-target@test.documenso.com']);
+  const document = await seedPendingDocument(user, team.id, ['resend-target@test.bchatsign.com']);
 
   const recipient = document.recipients[0];
 
@@ -267,7 +267,7 @@ test('[ENVELOPE_EXPIRATION]: resending refreshes expiresAt', async ({ page }) =>
   await page.getByRole('menuitem', { name: 'Resend' }).click();
 
   // Select the recipient and send.
-  await page.getByLabel('test.documenso.com').first().click();
+  await page.getByLabel('test.bchatsign.com').first().click();
   await page.getByRole('button', { name: 'Send reminder' }).click();
 
   await expect(page.getByText('Document re-sent', { exact: true })).toBeVisible({

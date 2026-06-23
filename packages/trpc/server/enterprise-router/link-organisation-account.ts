@@ -1,6 +1,6 @@
-import { linkOrganisationAccount } from '@documenso/ee/server-only/lib/link-organisation-account';
-import { assertRateLimit } from '@documenso/lib/server-only/rate-limit/rate-limit-middleware';
-import { linkOrgAccountRateLimit } from '@documenso/lib/server-only/rate-limit/rate-limits';
+import { linkOrganisationAccount } from '@bchatsign/ee/server-only/lib/link-organisation-account';
+import { assertRateLimit } from '@bchatsign/lib/server-only/rate-limit/rate-limit-middleware';
+import { linkOrgAccountRateLimit } from '@bchatsign/lib/server-only/rate-limit/rate-limits';
 
 import { procedure } from '../trpc';
 import {

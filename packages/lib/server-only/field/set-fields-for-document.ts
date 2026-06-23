@@ -1,9 +1,9 @@
-import { validateCheckboxField } from '@documenso/lib/advanced-fields-validation/validate-checkbox';
-import { validateDropdownField } from '@documenso/lib/advanced-fields-validation/validate-dropdown';
-import { validateNumberField } from '@documenso/lib/advanced-fields-validation/validate-number';
-import { validateRadioField } from '@documenso/lib/advanced-fields-validation/validate-radio';
-import { validateTextField } from '@documenso/lib/advanced-fields-validation/validate-text';
-import { DOCUMENT_AUDIT_LOG_TYPE } from '@documenso/lib/types/document-audit-logs';
+import { validateCheckboxField } from '@bchatsign/lib/advanced-fields-validation/validate-checkbox';
+import { validateDropdownField } from '@bchatsign/lib/advanced-fields-validation/validate-dropdown';
+import { validateNumberField } from '@bchatsign/lib/advanced-fields-validation/validate-number';
+import { validateRadioField } from '@bchatsign/lib/advanced-fields-validation/validate-radio';
+import { validateTextField } from '@bchatsign/lib/advanced-fields-validation/validate-text';
+import { DOCUMENT_AUDIT_LOG_TYPE } from '@bchatsign/lib/types/document-audit-logs';
 import {
   FIELD_META_DEFAULT_VALUES,
   type TFieldMetaSchema as FieldMeta,
@@ -13,10 +13,10 @@ import {
   ZNumberFieldMeta,
   ZRadioFieldMeta,
   ZTextFieldMeta,
-} from '@documenso/lib/types/field-meta';
-import type { ApiRequestMetadata } from '@documenso/lib/universal/extract-request-metadata';
-import { createDocumentAuditLogData, diffFieldChanges } from '@documenso/lib/utils/document-audit-logs';
-import { prisma } from '@documenso/prisma';
+} from '@bchatsign/lib/types/field-meta';
+import type { ApiRequestMetadata } from '@bchatsign/lib/universal/extract-request-metadata';
+import { createDocumentAuditLogData, diffFieldChanges } from '@bchatsign/lib/utils/document-audit-logs';
+import { prisma } from '@bchatsign/prisma';
 import { EnvelopeType, type Field, FieldType } from '@prisma/client';
 import { isDeepEqual } from 'remeda';
 

@@ -1,11 +1,11 @@
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { createDocumentData } from '@documenso/lib/server-only/document-data/create-document-data';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { createDocumentData } from '@bchatsign/lib/server-only/document-data/create-document-data';
 import {
   assertValidPdf,
   extractItiReportFields,
   mintSealedPdfToken,
   uploadItiReport,
-} from '@documenso/lib/server-only/validation';
+} from '@bchatsign/lib/server-only/validation';
 
 import { authenticatedProcedure } from '../trpc';
 import {

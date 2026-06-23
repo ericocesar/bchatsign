@@ -1,5 +1,5 @@
-import { SUPPORT_EMAIL } from '@documenso/lib/constants/app';
-import { Button } from '@documenso/ui/primitives/button';
+import { SUPPORT_EMAIL } from '@bchatsign/lib/constants/app';
+import { Button } from '@bchatsign/ui/primitives/button';
 import { Trans } from '@lingui/react/macro';
 import { Link } from 'react-router';
 

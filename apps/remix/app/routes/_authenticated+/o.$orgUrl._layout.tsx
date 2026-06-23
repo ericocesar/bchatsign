@@ -1,4 +1,4 @@
-import { useCurrentOrganisation } from '@documenso/lib/client-only/providers/organisation';
+import { useCurrentOrganisation } from '@bchatsign/lib/client-only/providers/organisation';
 import { Outlet } from 'react-router';
 
 export default function Layout() {

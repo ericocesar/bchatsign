@@ -1,4 +1,4 @@
-import { useFieldPageCoords } from '@documenso/lib/client-only/hooks/use-field-page-coords';
+import { useFieldPageCoords } from '@bchatsign/lib/client-only/hooks/use-field-page-coords';
 import type { Field } from '@prisma/client';
 import { TooltipArrow } from '@radix-ui/react-tooltip';
 import type { VariantProps } from 'class-variance-authority';

@@ -1,5 +1,5 @@
-import { ZFindResultResponse, ZFindSearchParamsSchema } from '@documenso/lib/types/search-params';
-import WebhookCallSchema from '@documenso/prisma/generated/zod/modelSchema/WebhookCallSchema';
+import { ZFindResultResponse, ZFindSearchParamsSchema } from '@bchatsign/lib/types/search-params';
+import WebhookCallSchema from '@bchatsign/prisma/generated/zod/modelSchema/WebhookCallSchema';
 import { WebhookCallStatus, WebhookTriggerEvents } from '@prisma/client';
 import { z } from 'zod';
 

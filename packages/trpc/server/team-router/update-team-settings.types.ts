@@ -1,14 +1,14 @@
-import { BRANDING_CSS_MAX_LENGTH } from '@documenso/lib/constants/branding';
-import { ZEnvelopeExpirationPeriod } from '@documenso/lib/constants/envelope-expiration';
-import { ZEnvelopeReminderSettings } from '@documenso/lib/constants/envelope-reminder';
-import { SUPPORTED_LANGUAGE_CODES } from '@documenso/lib/constants/i18n';
-import { ZCssVarsSchema } from '@documenso/lib/types/css-vars';
-import { ZDefaultRecipientsSchema } from '@documenso/lib/types/default-recipients';
-import { ZDocumentEmailSettingsSchema } from '@documenso/lib/types/document-email';
-import { ZDocumentMetaDateFormatSchema, ZDocumentMetaTimezoneSchema } from '@documenso/lib/types/document-meta';
-import { DocumentVisibility } from '@documenso/lib/types/document-visibility';
-import { ZSanitizeBrandingCssWarningSchema } from '@documenso/lib/utils/sanitize-branding-css';
-import { zEmail } from '@documenso/lib/utils/zod';
+import { BRANDING_CSS_MAX_LENGTH } from '@bchatsign/lib/constants/branding';
+import { ZEnvelopeExpirationPeriod } from '@bchatsign/lib/constants/envelope-expiration';
+import { ZEnvelopeReminderSettings } from '@bchatsign/lib/constants/envelope-reminder';
+import { SUPPORTED_LANGUAGE_CODES } from '@bchatsign/lib/constants/i18n';
+import { ZCssVarsSchema } from '@bchatsign/lib/types/css-vars';
+import { ZDefaultRecipientsSchema } from '@bchatsign/lib/types/default-recipients';
+import { ZDocumentEmailSettingsSchema } from '@bchatsign/lib/types/document-email';
+import { ZDocumentMetaDateFormatSchema, ZDocumentMetaTimezoneSchema } from '@bchatsign/lib/types/document-meta';
+import { DocumentVisibility } from '@bchatsign/lib/types/document-visibility';
+import { ZSanitizeBrandingCssWarningSchema } from '@bchatsign/lib/utils/sanitize-branding-css';
+import { zEmail } from '@bchatsign/lib/utils/zod';
 import { z } from 'zod';
 
 /**

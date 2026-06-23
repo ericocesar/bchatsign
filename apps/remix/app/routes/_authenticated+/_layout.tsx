@@ -1,10 +1,10 @@
-import { getOptionalSession } from '@documenso/auth/server/lib/utils/get-session';
-import { OrganisationProvider } from '@documenso/lib/client-only/providers/organisation';
-import { useSession } from '@documenso/lib/client-only/providers/session';
-import { getSiteSettings } from '@documenso/lib/server-only/site-settings/get-site-settings';
-import { SITE_SETTINGS_BANNER_ID } from '@documenso/lib/server-only/site-settings/schemas/banner';
-import { cn } from '@documenso/ui/lib/utils';
-import { Button } from '@documenso/ui/primitives/button';
+import { getOptionalSession } from '@bchatsign/auth/server/lib/utils/get-session';
+import { OrganisationProvider } from '@bchatsign/lib/client-only/providers/organisation';
+import { useSession } from '@bchatsign/lib/client-only/providers/session';
+import { getSiteSettings } from '@bchatsign/lib/server-only/site-settings/get-site-settings';
+import { SITE_SETTINGS_BANNER_ID } from '@bchatsign/lib/server-only/site-settings/schemas/banner';
+import { cn } from '@bchatsign/ui/lib/utils';
+import { Button } from '@bchatsign/ui/primitives/button';
 import { msg } from '@lingui/core/macro';
 import { Trans } from '@lingui/react/macro';
 import { Link, Outlet, redirect } from 'react-router';

@@ -1,12 +1,12 @@
-import { getOptionalSession } from '@documenso/auth/server/lib/utils/get-session';
-import { SessionProvider } from '@documenso/lib/client-only/providers/session';
-import { APP_I18N_OPTIONS, type SupportedLanguageCodes } from '@documenso/lib/constants/i18n';
-import { createPublicEnv } from '@documenso/lib/utils/env';
-import { extractLocaleData } from '@documenso/lib/utils/i18n';
-import { TrpcProvider } from '@documenso/trpc/react';
-import { getOrganisationSession } from '@documenso/trpc/server/organisation-router/get-organisation-session';
-import { Toaster } from '@documenso/ui/primitives/toaster';
-import { TooltipProvider } from '@documenso/ui/primitives/tooltip';
+import { getOptionalSession } from '@bchatsign/auth/server/lib/utils/get-session';
+import { SessionProvider } from '@bchatsign/lib/client-only/providers/session';
+import { APP_I18N_OPTIONS, type SupportedLanguageCodes } from '@bchatsign/lib/constants/i18n';
+import { createPublicEnv } from '@bchatsign/lib/utils/env';
+import { extractLocaleData } from '@bchatsign/lib/utils/i18n';
+import { TrpcProvider } from '@bchatsign/trpc/react';
+import { getOrganisationSession } from '@bchatsign/trpc/server/organisation-router/get-organisation-session';
+import { Toaster } from '@bchatsign/ui/primitives/toaster';
+import { TooltipProvider } from '@bchatsign/ui/primitives/tooltip';
 import { NuqsAdapter } from 'nuqs/adapters/react-router/v7';
 import {
   data,
@@ -125,7 +125,7 @@ export function LayoutContent({ children }: { children: React.ReactNode }) {
 
   const [theme] = useTheme();
 
-  // Recipient routes (signing pages) put `documenso-branded` on <body> so the
+  // Recipient routes (signing pages) put `bchatsign-branded` on <body> so the
   // <style> block from `RecipientBranding` applies to BOTH the main tree and
   // any portaled content (Radix dialogs/popovers/dropdowns mount outside the
   // route tree, attached directly to document.body).
@@ -161,7 +161,7 @@ export function LayoutContent({ children }: { children: React.ReactNode }) {
           />
         )}
       </head>
-      <body className={isRecipientRoute ? 'documenso-branded' : undefined}>
+      <body className={isRecipientRoute ? 'bchatsign-branded' : undefined}>
         {/* Global license banner currently disabled. Need to wait until after a few releases. */}
         {/* {licenseStatus === '?' && (
           <div className="bg-destructive text-destructive-foreground">

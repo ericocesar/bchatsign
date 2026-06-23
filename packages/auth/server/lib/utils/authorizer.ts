@@ -1,4 +1,4 @@
-import { assertUserNotDisabledById } from '@documenso/lib/server-only/user/assert-user-not-disabled';
+import { assertUserNotDisabledById } from '@bchatsign/lib/server-only/user/assert-user-not-disabled';
 import type { Context } from 'hono';
 
 import type { HonoAuthContext } from '../../types/context';

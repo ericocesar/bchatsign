@@ -3,8 +3,8 @@ import {
   NEXT_PRIVATE_USE_LEGACY_SIGNING_SUBFILTER,
   NEXT_PUBLIC_SIGNING_CONTACT_INFO,
   NEXT_PUBLIC_WEBAPP_URL,
-} from '@documenso/lib/constants/app';
-import { env } from '@documenso/lib/utils/env';
+} from '@bchatsign/lib/constants/app';
+import { env } from '@bchatsign/lib/utils/env';
 import type { PDF, Signer, SignWarning } from '@libpdf/core';
 import { match } from 'ts-pattern';
 

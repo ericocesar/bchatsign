@@ -1,4 +1,4 @@
-import type { TRecipientColor } from '@documenso/ui/lib/recipient-colors';
+import type { TRecipientColor } from '@bchatsign/ui/lib/recipient-colors';
 import type { Field, FieldType, Signature } from '@prisma/client';
 import type Konva from 'konva';
 

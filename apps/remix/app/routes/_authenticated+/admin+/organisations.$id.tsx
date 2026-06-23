@@ -1,19 +1,19 @@
-import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
-import { SUBSCRIPTION_STATUS_MAP } from '@documenso/lib/constants/billing';
-import { AppError } from '@documenso/lib/errors/app-error';
-import { LicenseClient } from '@documenso/lib/server-only/license/license-client';
-import type { TLicenseClaim } from '@documenso/lib/types/license';
-import { SUBSCRIPTION_CLAIM_FEATURE_FLAGS } from '@documenso/lib/types/subscription';
-import { getHighestOrganisationRoleInGroup } from '@documenso/lib/utils/organisations';
-import { trpc } from '@documenso/trpc/react';
-import type { TGetAdminOrganisationResponse } from '@documenso/trpc/server/admin-router/get-admin-organisation.types';
-import { ZUpdateAdminOrganisationRequestSchema } from '@documenso/trpc/server/admin-router/update-admin-organisation.types';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@documenso/ui/primitives/accordion';
-import { Alert, AlertDescription, AlertTitle } from '@documenso/ui/primitives/alert';
-import { Badge } from '@documenso/ui/primitives/badge';
-import { Button } from '@documenso/ui/primitives/button';
-import { Checkbox } from '@documenso/ui/primitives/checkbox';
-import { DataTable, type DataTableColumnDef } from '@documenso/ui/primitives/data-table';
+import { NEXT_PUBLIC_WEBAPP_URL } from '@bchatsign/lib/constants/app';
+import { SUBSCRIPTION_STATUS_MAP } from '@bchatsign/lib/constants/billing';
+import { AppError } from '@bchatsign/lib/errors/app-error';
+import { LicenseClient } from '@bchatsign/lib/server-only/license/license-client';
+import type { TLicenseClaim } from '@bchatsign/lib/types/license';
+import { SUBSCRIPTION_CLAIM_FEATURE_FLAGS } from '@bchatsign/lib/types/subscription';
+import { getHighestOrganisationRoleInGroup } from '@bchatsign/lib/utils/organisations';
+import { trpc } from '@bchatsign/trpc/react';
+import type { TGetAdminOrganisationResponse } from '@bchatsign/trpc/server/admin-router/get-admin-organisation.types';
+import { ZUpdateAdminOrganisationRequestSchema } from '@bchatsign/trpc/server/admin-router/update-admin-organisation.types';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@bchatsign/ui/primitives/accordion';
+import { Alert, AlertDescription, AlertTitle } from '@bchatsign/ui/primitives/alert';
+import { Badge } from '@bchatsign/ui/primitives/badge';
+import { Button } from '@bchatsign/ui/primitives/button';
+import { Checkbox } from '@bchatsign/ui/primitives/checkbox';
+import { DataTable, type DataTableColumnDef } from '@bchatsign/ui/primitives/data-table';
 import {
   Form,
   FormControl,
@@ -22,10 +22,10 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@documenso/ui/primitives/form/form';
-import { Input } from '@documenso/ui/primitives/input';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@documenso/ui/primitives/tooltip';
-import { useToast } from '@documenso/ui/primitives/use-toast';
+} from '@bchatsign/ui/primitives/form/form';
+import { Input } from '@bchatsign/ui/primitives/input';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@bchatsign/ui/primitives/tooltip';
+import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { msg } from '@lingui/core/macro';
 import { Trans, useLingui } from '@lingui/react/macro';
@@ -852,7 +852,7 @@ const OrganisationAdminForm = ({ organisation, licenseFlags }: OrganisationAdmin
                 <span>¹&nbsp;</span>
                 <Trans>Your current license does not include these features.</Trans>{' '}
                 <Link
-                  to="https://docs.documenso.com/users/licenses/enterprise-edition"
+                  to="https://docs.bchatsign.com/users/licenses/enterprise-edition"
                   target="_blank"
                   className="text-foreground underline hover:opacity-80"
                 >

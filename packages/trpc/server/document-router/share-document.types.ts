@@ -1,4 +1,4 @@
-import DocumentShareLinkSchema from '@documenso/prisma/generated/zod/modelSchema/DocumentShareLinkSchema';
+import DocumentShareLinkSchema from '@bchatsign/prisma/generated/zod/modelSchema/DocumentShareLinkSchema';
 import { z } from 'zod';
 
 export const ZShareDocumentRequestSchema = z.object({

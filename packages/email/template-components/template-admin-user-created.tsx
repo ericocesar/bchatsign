@@ -28,7 +28,7 @@ export const TemplateAdminUserCreated = ({ resetPasswordLink, assetBaseUrl }: Te
 
         <Section className="mt-8 mb-6 text-center">
           <Button
-            className="inline-flex items-center justify-center rounded-lg bg-documenso-500 px-6 py-3 text-center font-medium text-black text-sm no-underline"
+            className="inline-flex items-center justify-center rounded-lg bg-bchatsign-500 px-6 py-3 text-center font-medium text-black text-sm no-underline"
             href={resetPasswordLink}
           >
             <Trans>Set Password</Trans>
@@ -44,7 +44,7 @@ export const TemplateAdminUserCreated = ({ resetPasswordLink, assetBaseUrl }: Te
           <Text className="text-center text-slate-400 text-sm">
             <Trans>
               If you didn't expect this account or have any questions, please{' '}
-              <Link href="mailto:support@documenso.com" className="text-documenso-500">
+              <Link href="mailto:support@bchatsign.com" className="text-bchatsign-500">
                 contact support
               </Link>
               .

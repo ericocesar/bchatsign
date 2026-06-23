@@ -1,8 +1,8 @@
-import { authClient } from '@documenso/auth/client';
-import { useOptionalSession } from '@documenso/lib/client-only/providers/session';
-import { EMAIL_VERIFICATION_STATE } from '@documenso/lib/constants/email';
-import { Button } from '@documenso/ui/primitives/button';
-import { useToast } from '@documenso/ui/primitives/use-toast';
+import { authClient } from '@bchatsign/auth/client';
+import { useOptionalSession } from '@bchatsign/lib/client-only/providers/session';
+import { EMAIL_VERIFICATION_STATE } from '@bchatsign/lib/constants/email';
+import { Button } from '@bchatsign/ui/primitives/button';
+import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
@@ -68,7 +68,7 @@ export default function VerifyEmailPage({ loaderData }: Route.ComponentProps) {
   if (isLoading || state === null) {
     return (
       <div className="relative">
-        <Loader className="h-8 w-8 animate-spin text-documenso" />
+        <Loader className="h-8 w-8 animate-spin text-bchatsign" />
       </div>
     );
   }

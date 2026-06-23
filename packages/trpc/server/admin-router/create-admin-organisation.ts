@@ -1,6 +1,6 @@
-import { createOrganisation } from '@documenso/lib/server-only/organisation/create-organisation';
-import { getSubscriptionClaim } from '@documenso/lib/server-only/subscription/get-subscription-claim';
-import { INTERNAL_CLAIM_ID } from '@documenso/lib/types/subscription';
+import { createOrganisation } from '@bchatsign/lib/server-only/organisation/create-organisation';
+import { getSubscriptionClaim } from '@bchatsign/lib/server-only/subscription/get-subscription-claim';
+import { INTERNAL_CLAIM_ID } from '@bchatsign/lib/types/subscription';
 import { OrganisationType } from '@prisma/client';
 import { adminProcedure } from '../trpc';
 import {

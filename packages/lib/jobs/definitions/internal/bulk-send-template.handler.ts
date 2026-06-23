@@ -1,10 +1,10 @@
-import { mailer } from '@documenso/email/mailer';
-import { BulkSendCompleteEmail } from '@documenso/email/templates/bulk-send-complete';
-import { sendDocument } from '@documenso/lib/server-only/document/send-document';
-import { createDocumentFromTemplate } from '@documenso/lib/server-only/template/create-document-from-template';
-import { getTemplateById } from '@documenso/lib/server-only/template/get-template-by-id';
-import { zEmail } from '@documenso/lib/utils/zod';
-import { prisma } from '@documenso/prisma';
+import { mailer } from '@bchatsign/email/mailer';
+import { BulkSendCompleteEmail } from '@bchatsign/email/templates/bulk-send-complete';
+import { sendDocument } from '@bchatsign/lib/server-only/document/send-document';
+import { createDocumentFromTemplate } from '@bchatsign/lib/server-only/template/create-document-from-template';
+import { getTemplateById } from '@bchatsign/lib/server-only/template/get-template-by-id';
+import { zEmail } from '@bchatsign/lib/utils/zod';
+import { prisma } from '@bchatsign/prisma';
 import { msg } from '@lingui/macro';
 import { parse } from 'csv-parse/sync';
 import { createElement } from 'react';

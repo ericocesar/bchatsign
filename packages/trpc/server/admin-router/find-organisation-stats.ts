@@ -1,6 +1,6 @@
-import type { FindResultResponse } from '@documenso/lib/types/search-params';
-import { currentMonthlyPeriod } from '@documenso/lib/universal/monthly-period';
-import { kyselyPrisma, sql } from '@documenso/prisma';
+import type { FindResultResponse } from '@bchatsign/lib/types/search-params';
+import { currentMonthlyPeriod } from '@bchatsign/lib/universal/monthly-period';
+import { kyselyPrisma, sql } from '@bchatsign/prisma';
 import { match } from 'ts-pattern';
 
 import { adminProcedure } from '../trpc';

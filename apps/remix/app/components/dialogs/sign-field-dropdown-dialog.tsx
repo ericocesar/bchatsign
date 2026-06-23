@@ -1,4 +1,4 @@
-import type { TDropdownFieldMeta } from '@documenso/lib/types/field-meta';
+import type { TDropdownFieldMeta } from '@bchatsign/lib/types/field-meta';
 import {
   CommandDialog,
   CommandEmpty,
@@ -6,7 +6,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from '@documenso/ui/primitives/command';
+} from '@bchatsign/ui/primitives/command';
 import { useLingui } from '@lingui/react/macro';
 import { createCallable } from 'react-call';
 

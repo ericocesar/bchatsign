@@ -1,4 +1,4 @@
-import type { Subscription } from '@documenso/prisma/generated/zod/modelSchema/SubscriptionSchema';
+import type { Subscription } from '@bchatsign/prisma/generated/zod/modelSchema/SubscriptionSchema';
 
 import { IS_BILLING_ENABLED } from '../constants/app';
 import { AppError, AppErrorCode } from '../errors/app-error';

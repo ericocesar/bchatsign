@@ -1,4 +1,4 @@
-import { getBaseUrl } from '@documenso/lib/universal/get-base-url';
+import { getBaseUrl } from '@bchatsign/lib/universal/get-base-url';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { httpBatchLink, httpLink, isNonJsonSerializable, splitLink } from '@trpc/client';

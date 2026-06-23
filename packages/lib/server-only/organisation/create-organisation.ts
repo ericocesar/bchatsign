@@ -1,6 +1,6 @@
-import { createCustomer } from '@documenso/ee/server-only/stripe/create-customer';
-import { getSubscriptionClaim } from '@documenso/lib/server-only/subscription/get-subscription-claim';
-import { prisma } from '@documenso/prisma';
+import { createCustomer } from '@bchatsign/ee/server-only/stripe/create-customer';
+import { getSubscriptionClaim } from '@bchatsign/lib/server-only/subscription/get-subscription-claim';
+import { prisma } from '@bchatsign/prisma';
 import { OrganisationMemberRole, OrganisationType, Prisma, type SubscriptionClaim } from '@prisma/client';
 
 import { IS_BILLING_ENABLED } from '../../constants/app';

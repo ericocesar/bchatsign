@@ -1,12 +1,12 @@
-import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
-import { FIELD_SIGNATURE_META_DEFAULT_VALUES } from '@documenso/lib/types/field-meta';
-import { createDocumentAuthOptions } from '@documenso/lib/utils/document-auth';
-import { mapSecondaryIdToTemplateId } from '@documenso/lib/utils/envelope';
-import { formatDirectTemplatePath } from '@documenso/lib/utils/templates';
-import { prisma } from '@documenso/prisma';
-import { seedTeam } from '@documenso/prisma/seed/teams';
-import { seedDirectTemplate, seedTemplate } from '@documenso/prisma/seed/templates';
-import { seedTestEmail, seedUser } from '@documenso/prisma/seed/users';
+import { NEXT_PUBLIC_WEBAPP_URL } from '@bchatsign/lib/constants/app';
+import { FIELD_SIGNATURE_META_DEFAULT_VALUES } from '@bchatsign/lib/types/field-meta';
+import { createDocumentAuthOptions } from '@bchatsign/lib/utils/document-auth';
+import { mapSecondaryIdToTemplateId } from '@bchatsign/lib/utils/envelope';
+import { formatDirectTemplatePath } from '@bchatsign/lib/utils/templates';
+import { prisma } from '@bchatsign/prisma';
+import { seedTeam } from '@bchatsign/prisma/seed/teams';
+import { seedDirectTemplate, seedTemplate } from '@bchatsign/prisma/seed/templates';
+import { seedTestEmail, seedUser } from '@bchatsign/prisma/seed/users';
 import { expect, test } from '@playwright/test';
 import { DocumentSigningOrder, FieldType, RecipientRole } from '@prisma/client';
 import { customAlphabet } from 'nanoid';
@@ -260,7 +260,7 @@ test('[DIRECT_TEMPLATES]: use direct template link with 1 recipient', async ({ p
   await expect(page.getByRole('heading', { name: 'General' })).toBeVisible();
 
   await page.waitForTimeout(100);
-  await page.getByPlaceholder('recipient@documenso.com').fill(seedTestEmail());
+  await page.getByPlaceholder('recipient@bchatsign.com').fill(seedTestEmail());
 
   await page.getByRole('button', { name: 'Continue' }).click();
 
@@ -338,7 +338,7 @@ test('[DIRECT_TEMPLATES]: V1 use direct template link with 2 recipients with nex
   await expect(page.getByRole('heading', { name: 'General' })).toBeVisible();
 
   await page.waitForTimeout(100);
-  await page.getByPlaceholder('recipient@documenso.com').fill(seedTestEmail());
+  await page.getByPlaceholder('recipient@bchatsign.com').fill(seedTestEmail());
 
   await page.getByRole('button', { name: 'Continue' }).click();
 

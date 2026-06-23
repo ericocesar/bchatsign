@@ -1,4 +1,4 @@
-import { seedUser } from '@documenso/prisma/seed/users';
+import { seedUser } from '@bchatsign/prisma/seed/users';
 import { expect, type Page, test } from '@playwright/test';
 
 import { apiSignin } from '../fixtures/authentication';

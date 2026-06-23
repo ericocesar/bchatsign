@@ -1,5 +1,5 @@
-import { OrganisationMemberInviteSchema } from '@documenso/prisma/generated/zod/modelSchema/OrganisationMemberInviteSchema';
-import OrganisationSchema from '@documenso/prisma/generated/zod/modelSchema/OrganisationSchema';
+import { OrganisationMemberInviteSchema } from '@bchatsign/prisma/generated/zod/modelSchema/OrganisationMemberInviteSchema';
+import OrganisationSchema from '@bchatsign/prisma/generated/zod/modelSchema/OrganisationSchema';
 import { OrganisationMemberInviteStatus } from '@prisma/client';
 import { z } from 'zod';
 

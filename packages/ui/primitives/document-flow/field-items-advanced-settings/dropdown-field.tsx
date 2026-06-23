@@ -1,10 +1,10 @@
-import { validateDropdownField } from '@documenso/lib/advanced-fields-validation/validate-dropdown';
-import type { TDropdownFieldMeta as DropdownFieldMeta } from '@documenso/lib/types/field-meta';
-import { Button } from '@documenso/ui/primitives/button';
-import { Input } from '@documenso/ui/primitives/input';
-import { Label } from '@documenso/ui/primitives/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@documenso/ui/primitives/select';
-import { Switch } from '@documenso/ui/primitives/switch';
+import { validateDropdownField } from '@bchatsign/lib/advanced-fields-validation/validate-dropdown';
+import type { TDropdownFieldMeta as DropdownFieldMeta } from '@bchatsign/lib/types/field-meta';
+import { Button } from '@bchatsign/ui/primitives/button';
+import { Input } from '@bchatsign/ui/primitives/input';
+import { Label } from '@bchatsign/ui/primitives/label';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@bchatsign/ui/primitives/select';
+import { Switch } from '@bchatsign/ui/primitives/switch';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';

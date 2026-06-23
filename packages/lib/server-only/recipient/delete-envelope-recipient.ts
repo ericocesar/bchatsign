@@ -1,8 +1,8 @@
-import { mailer } from '@documenso/email/mailer';
-import RecipientRemovedFromDocumentTemplate from '@documenso/email/templates/recipient-removed-from-document';
-import { DOCUMENT_AUDIT_LOG_TYPE } from '@documenso/lib/types/document-audit-logs';
-import type { ApiRequestMetadata } from '@documenso/lib/universal/extract-request-metadata';
-import { prisma } from '@documenso/prisma';
+import { mailer } from '@bchatsign/email/mailer';
+import RecipientRemovedFromDocumentTemplate from '@bchatsign/email/templates/recipient-removed-from-document';
+import { DOCUMENT_AUDIT_LOG_TYPE } from '@bchatsign/lib/types/document-audit-logs';
+import type { ApiRequestMetadata } from '@bchatsign/lib/universal/extract-request-metadata';
+import { prisma } from '@bchatsign/prisma';
 import { msg } from '@lingui/core/macro';
 import { EnvelopeType, SendStatus } from '@prisma/client';
 import { createElement } from 'react';

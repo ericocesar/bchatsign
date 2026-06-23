@@ -1,4 +1,4 @@
-import logo from '@documenso/assets/logotipo2.png';
+import logo from '@bchatsign/assets/logotipo2.png';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';

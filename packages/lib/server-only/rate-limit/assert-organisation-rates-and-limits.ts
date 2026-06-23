@@ -1,4 +1,4 @@
-import { prisma } from '@documenso/prisma';
+import { prisma } from '@bchatsign/prisma';
 import type { OrganisationClaim } from '@prisma/client';
 import { match } from 'ts-pattern';
 import { AppError, AppErrorCode } from '../../errors/app-error';

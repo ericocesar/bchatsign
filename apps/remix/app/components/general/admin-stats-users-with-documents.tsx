@@ -1,4 +1,4 @@
-import type { GetUserWithDocumentMonthlyGrowth } from '@documenso/lib/server-only/admin/get-users-stats';
+import type { GetUserWithDocumentMonthlyGrowth } from '@bchatsign/lib/server-only/admin/get-users-stats';
 import { DateTime } from 'luxon';
 import type { TooltipProps } from 'recharts';
 import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
@@ -22,7 +22,7 @@ const CustomTooltip = ({
     return (
       <div className="z-100 w-60 space-y-1 rounded-md border border-solid bg-white p-2 px-3">
         <p className="">{label}</p>
-        <p className="text-documenso">
+        <p className="text-bchatsign">
           {`${tooltip} : `}
           <span className="text-black">{payload[0].value}</span>
         </p>

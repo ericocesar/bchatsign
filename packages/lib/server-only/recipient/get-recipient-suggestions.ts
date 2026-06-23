@@ -1,5 +1,5 @@
-import { buildTeamWhereQuery } from '@documenso/lib/utils/teams';
-import { prisma } from '@documenso/prisma';
+import { buildTeamWhereQuery } from '@bchatsign/lib/utils/teams';
+import { prisma } from '@bchatsign/prisma';
 import { EnvelopeType, Prisma } from '@prisma/client';
 
 export type GetRecipientSuggestionsOptions = {

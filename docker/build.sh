@@ -21,7 +21,7 @@ docker build -f "$SCRIPT_DIR/Dockerfile" \
     --progress=plain \
     --build-arg NEXT_PRIVATE_TELEMETRY_KEY="${NEXT_PRIVATE_TELEMETRY_KEY:-}" \
     --build-arg NEXT_PRIVATE_TELEMETRY_HOST="${NEXT_PRIVATE_TELEMETRY_HOST:-}" \
-    -t "documenso-base" \
+    -t "bchatsign-base" \
     "$MONOREPO_ROOT"
 
 # Handle repository tagging
@@ -29,28 +29,28 @@ if [ ! -z "$DOCKER_REPOSITORY" ]; then
     echo "Using custom repository: $DOCKER_REPOSITORY"
     
     # Add tags for custom repository
-    docker tag "documenso-base" "$DOCKER_REPOSITORY:latest"
-    docker tag "documenso-base" "$DOCKER_REPOSITORY:$GIT_SHA"
+    docker tag "bchatsign-base" "$DOCKER_REPOSITORY:latest"
+    docker tag "bchatsign-base" "$DOCKER_REPOSITORY:$GIT_SHA"
 
     # Add version tag if available
     if [ ! -z "$APP_VERSION" ] && [ "$APP_VERSION" != "undefined" ]; then
-        docker tag "documenso-base" "$DOCKER_REPOSITORY:$APP_VERSION"
+        docker tag "bchatsign-base" "$DOCKER_REPOSITORY:$APP_VERSION"
     fi
 else
     echo "Using default repositories: dockerhub and ghcr.io"
     
     # Add tags for both default repositories
-    docker tag "documenso-base" "documenso/documenso:latest"
-    docker tag "documenso-base" "documenso/documenso:$GIT_SHA"
-    docker tag "documenso-base" "ghcr.io/documenso/documenso:latest"
-    docker tag "documenso-base" "ghcr.io/documenso/documenso:$GIT_SHA"
+    docker tag "bchatsign-base" "bchatsign/bchatsign:latest"
+    docker tag "bchatsign-base" "bchatsign/bchatsign:$GIT_SHA"
+    docker tag "bchatsign-base" "ghcr.io/bchatsign/bchatsign:latest"
+    docker tag "bchatsign-base" "ghcr.io/bchatsign/bchatsign:$GIT_SHA"
 
     # Add version tags if available
     if [ ! -z "$APP_VERSION" ] && [ "$APP_VERSION" != "undefined" ]; then
-        docker tag "documenso-base" "documenso/documenso:$APP_VERSION"
-        docker tag "documenso-base" "ghcr.io/documenso/documenso:$APP_VERSION"
+        docker tag "bchatsign-base" "bchatsign/bchatsign:$APP_VERSION"
+        docker tag "bchatsign-base" "ghcr.io/bchatsign/bchatsign:$APP_VERSION"
     fi
 fi
 
 # Remove the temporary base tag
-docker rmi "documenso-base"
+docker rmi "bchatsign-base"

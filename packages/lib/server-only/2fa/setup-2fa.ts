@@ -1,10 +1,10 @@
-import { prisma } from '@documenso/prisma';
+import { prisma } from '@bchatsign/prisma';
 import type { User } from '@prisma/client';
 import { base32 } from '@scure/base';
 import crypto from 'crypto';
 import { createTOTPKeyURI } from 'oslo/otp';
 
-import { DOCUMENSO_ENCRYPTION_KEY } from '../../constants/crypto';
+import { BCHATSIGN_ENCRYPTION_KEY } from '../../constants/crypto';
 import { symmetricEncrypt } from '../../universal/crypto';
 
 type SetupTwoFactorAuthenticationOptions = {
@@ -14,7 +14,7 @@ type SetupTwoFactorAuthenticationOptions = {
 const ISSUER = 'BchatSign';
 
 export const setupTwoFactorAuthentication = async ({ user }: SetupTwoFactorAuthenticationOptions) => {
-  const key = DOCUMENSO_ENCRYPTION_KEY;
+  const key = BCHATSIGN_ENCRYPTION_KEY;
 
   if (!key) {
     throw new Error('MISSING_ENCRYPTION_KEY');

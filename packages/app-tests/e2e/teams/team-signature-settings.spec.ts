@@ -1,7 +1,7 @@
-import { mapSecondaryIdToDocumentId, mapSecondaryIdToTemplateId } from '@documenso/lib/utils/envelope';
-import { prisma } from '@documenso/prisma';
-import { seedTeamDocumentWithMeta, seedTeamTemplateWithMeta } from '@documenso/prisma/seed/documents';
-import { seedUser } from '@documenso/prisma/seed/users';
+import { mapSecondaryIdToDocumentId, mapSecondaryIdToTemplateId } from '@bchatsign/lib/utils/envelope';
+import { prisma } from '@bchatsign/prisma';
+import { seedTeamDocumentWithMeta, seedTeamTemplateWithMeta } from '@bchatsign/prisma/seed/documents';
+import { seedUser } from '@bchatsign/prisma/seed/users';
 import { expect, test } from '@playwright/test';
 
 import { apiSignin } from '../fixtures/authentication';

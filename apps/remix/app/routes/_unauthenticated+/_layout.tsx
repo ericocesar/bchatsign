@@ -1,4 +1,4 @@
-import backgroundPattern from '@documenso/assets/images/background-pattern.png';
+import backgroundPattern from '@bchatsign/assets/images/background-pattern.png';
 import { Outlet } from 'react-router';
 
 export default function Layout() {

@@ -1,15 +1,15 @@
 import {
   assertMemberCountWithinCap,
   syncMemberCountWithStripeSeatPlan,
-} from '@documenso/ee/server-only/stripe/update-subscription-item-quantity';
-import { mailer } from '@documenso/email/mailer';
-import { OrganisationInviteEmailTemplate } from '@documenso/email/templates/organisation-invite';
-import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
-import { ORGANISATION_MEMBER_ROLE_PERMISSIONS_MAP } from '@documenso/lib/constants/organisations';
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { isOrganisationRoleWithinUserHierarchy } from '@documenso/lib/utils/organisations';
-import { prisma } from '@documenso/prisma';
-import type { TCreateOrganisationMemberInvitesRequestSchema } from '@documenso/trpc/server/organisation-router/create-organisation-member-invites.types';
+} from '@bchatsign/ee/server-only/stripe/update-subscription-item-quantity';
+import { mailer } from '@bchatsign/email/mailer';
+import { OrganisationInviteEmailTemplate } from '@bchatsign/email/templates/organisation-invite';
+import { NEXT_PUBLIC_WEBAPP_URL } from '@bchatsign/lib/constants/app';
+import { ORGANISATION_MEMBER_ROLE_PERMISSIONS_MAP } from '@bchatsign/lib/constants/organisations';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { isOrganisationRoleWithinUserHierarchy } from '@bchatsign/lib/utils/organisations';
+import { prisma } from '@bchatsign/prisma';
+import type { TCreateOrganisationMemberInvitesRequestSchema } from '@bchatsign/trpc/server/organisation-router/create-organisation-member-invites.types';
 import { msg } from '@lingui/core/macro';
 import type { Organisation, Prisma } from '@prisma/client';
 import { OrganisationMemberInviteStatus } from '@prisma/client';
@@ -212,7 +212,7 @@ export const sendOrganisationMemberInviteEmail = async ({
   await mailer.sendMail({
     to: email,
     from: senderEmail,
-    subject: i18n._(msg`You have been invited to join ${organisation.name} on Documenso`),
+    subject: i18n._(msg`You have been invited to join ${organisation.name} on Bchatsign`),
     html,
     text,
   });

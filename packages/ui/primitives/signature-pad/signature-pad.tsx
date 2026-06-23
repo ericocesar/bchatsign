@@ -1,5 +1,5 @@
-import { DocumentSignatureType } from '@documenso/lib/constants/document';
-import { isBase64Image } from '@documenso/lib/constants/signatures';
+import { DocumentSignatureType } from '@bchatsign/lib/constants/document';
+import { isBase64Image } from '@bchatsign/lib/constants/signatures';
 
 import { Trans } from '@lingui/react/macro';
 import { KeyboardIcon, UploadCloudIcon } from 'lucide-react';

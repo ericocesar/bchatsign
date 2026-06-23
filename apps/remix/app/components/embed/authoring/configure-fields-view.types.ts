@@ -1,5 +1,5 @@
-import { ZFieldMetaSchema } from '@documenso/lib/types/field-meta';
-import { FieldType } from '@documenso/prisma/client';
+import { ZFieldMetaSchema } from '@bchatsign/lib/types/field-meta';
+import { FieldType } from '@bchatsign/prisma/client';
 import { z } from 'zod';
 
 export const ZConfigureFieldsFormSchema = z.object({

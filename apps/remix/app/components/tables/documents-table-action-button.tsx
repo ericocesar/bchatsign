@@ -1,9 +1,9 @@
-import { useSession } from '@documenso/lib/client-only/providers/session';
-import type { TDocumentMany as TDocumentRow } from '@documenso/lib/types/document';
-import { isDocumentCompleted } from '@documenso/lib/utils/document';
-import { findRecipientByEmail } from '@documenso/lib/utils/recipients';
-import { formatDocumentsPath } from '@documenso/lib/utils/teams';
-import { Button } from '@documenso/ui/primitives/button';
+import { useSession } from '@bchatsign/lib/client-only/providers/session';
+import type { TDocumentMany as TDocumentRow } from '@bchatsign/lib/types/document';
+import { isDocumentCompleted } from '@bchatsign/lib/utils/document';
+import { findRecipientByEmail } from '@bchatsign/lib/utils/recipients';
+import { formatDocumentsPath } from '@bchatsign/lib/utils/teams';
+import { Button } from '@bchatsign/ui/primitives/button';
 import { Trans } from '@lingui/react/macro';
 import { DocumentStatus, RecipientRole, SigningStatus } from '@prisma/client';
 import { CheckCircle, Download, Edit, EyeIcon, Pencil } from 'lucide-react';

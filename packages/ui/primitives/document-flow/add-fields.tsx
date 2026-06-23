@@ -1,18 +1,18 @@
-import { getBoundingClientRect } from '@documenso/lib/client-only/get-bounding-client-rect';
-import { useAutoSave } from '@documenso/lib/client-only/hooks/use-autosave';
-import { useDocumentElement } from '@documenso/lib/client-only/hooks/use-document-element';
-import { getPdfPagesCount, PDF_VIEWER_PAGE_SELECTOR } from '@documenso/lib/constants/pdf-viewer';
-import { type TFieldMetaSchema as FieldMeta, ZFieldMetaSchema } from '@documenso/lib/types/field-meta';
-import type { TRecipientLite } from '@documenso/lib/types/recipient';
-import { nanoid } from '@documenso/lib/universal/id';
-import { ADVANCED_FIELD_TYPES_WITH_OPTIONAL_SETTING } from '@documenso/lib/utils/advanced-fields-helpers';
-import { validateFieldsUninserted } from '@documenso/lib/utils/fields';
-import { parseMessageDescriptor } from '@documenso/lib/utils/i18n';
+import { getBoundingClientRect } from '@bchatsign/lib/client-only/get-bounding-client-rect';
+import { useAutoSave } from '@bchatsign/lib/client-only/hooks/use-autosave';
+import { useDocumentElement } from '@bchatsign/lib/client-only/hooks/use-document-element';
+import { getPdfPagesCount, PDF_VIEWER_PAGE_SELECTOR } from '@bchatsign/lib/constants/pdf-viewer';
+import { type TFieldMetaSchema as FieldMeta, ZFieldMetaSchema } from '@bchatsign/lib/types/field-meta';
+import type { TRecipientLite } from '@bchatsign/lib/types/recipient';
+import { nanoid } from '@bchatsign/lib/universal/id';
+import { ADVANCED_FIELD_TYPES_WITH_OPTIONAL_SETTING } from '@bchatsign/lib/utils/advanced-fields-helpers';
+import { validateFieldsUninserted } from '@bchatsign/lib/utils/fields';
+import { parseMessageDescriptor } from '@bchatsign/lib/utils/i18n';
 import {
   canRecipientBeModified,
   canRecipientFieldsBeModified,
   getRecipientsWithMissingFields,
-} from '@documenso/lib/utils/recipients';
+} from '@bchatsign/lib/utils/recipients';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';

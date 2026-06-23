@@ -1,18 +1,18 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
-import { createApiToken } from '@documenso/lib/server-only/public-api/create-api-token';
-import { prisma } from '@documenso/prisma';
-import { DocumentStatus, EnvelopeType, FieldType, RecipientRole } from '@documenso/prisma/client';
-import { seedUser } from '@documenso/prisma/seed/users';
+import { NEXT_PUBLIC_WEBAPP_URL } from '@bchatsign/lib/constants/app';
+import { createApiToken } from '@bchatsign/lib/server-only/public-api/create-api-token';
+import { prisma } from '@bchatsign/prisma';
+import { DocumentStatus, EnvelopeType, FieldType, RecipientRole } from '@bchatsign/prisma/client';
+import { seedUser } from '@bchatsign/prisma/seed/users';
 import type {
   TCreateEnvelopePayload,
   TCreateEnvelopeResponse,
-} from '@documenso/trpc/server/envelope-router/create-envelope.types';
-import type { TDistributeEnvelopeRequest } from '@documenso/trpc/server/envelope-router/distribute-envelope.types';
-import type { TCreateEnvelopeRecipientsRequest } from '@documenso/trpc/server/envelope-router/envelope-recipients/create-envelope-recipients.types';
-import type { TGetEnvelopeResponse } from '@documenso/trpc/server/envelope-router/get-envelope.types';
-import type { TUpdateEnvelopeItemsRequest } from '@documenso/trpc/server/envelope-router/update-envelope-items.types';
+} from '@bchatsign/trpc/server/envelope-router/create-envelope.types';
+import type { TDistributeEnvelopeRequest } from '@bchatsign/trpc/server/envelope-router/distribute-envelope.types';
+import type { TCreateEnvelopeRecipientsRequest } from '@bchatsign/trpc/server/envelope-router/envelope-recipients/create-envelope-recipients.types';
+import type { TGetEnvelopeResponse } from '@bchatsign/trpc/server/envelope-router/get-envelope.types';
+import type { TUpdateEnvelopeItemsRequest } from '@bchatsign/trpc/server/envelope-router/update-envelope-items.types';
 import { type APIRequestContext, expect, test } from '@playwright/test';
 import type { Team, User } from '@prisma/client';
 
@@ -64,7 +64,7 @@ const getEnvelope = async (request: APIRequestContext, authToken: string, envelo
  * signature field and distributing.
  */
 const distributeEnvelope = async (request: APIRequestContext, authToken: string, envelopeId: string) => {
-  const recipientEmail = `signer-${Date.now()}@test.documenso.com`;
+  const recipientEmail = `signer-${Date.now()}@test.bchatsign.com`;
 
   // Create a SIGNER recipient.
   const recipientsRes = await request.post(`${baseUrl}/envelope/recipient/create-many`, {

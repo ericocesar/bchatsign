@@ -1,10 +1,10 @@
-import { DOCUMENT_AUDIT_LOG_TYPE } from '@documenso/lib/types/document-audit-logs';
-import type { TRecipientAccessAuthTypes, TRecipientActionAuthTypes } from '@documenso/lib/types/document-auth';
-import type { ApiRequestMetadata } from '@documenso/lib/universal/extract-request-metadata';
-import { nanoid } from '@documenso/lib/universal/id';
-import { createDocumentAuditLogData } from '@documenso/lib/utils/document-audit-logs';
-import { createRecipientAuthOptions } from '@documenso/lib/utils/document-auth';
-import { prisma } from '@documenso/prisma';
+import { DOCUMENT_AUDIT_LOG_TYPE } from '@bchatsign/lib/types/document-audit-logs';
+import type { TRecipientAccessAuthTypes, TRecipientActionAuthTypes } from '@bchatsign/lib/types/document-auth';
+import type { ApiRequestMetadata } from '@bchatsign/lib/universal/extract-request-metadata';
+import { nanoid } from '@bchatsign/lib/universal/id';
+import { createDocumentAuditLogData } from '@bchatsign/lib/utils/document-audit-logs';
+import { createRecipientAuthOptions } from '@bchatsign/lib/utils/document-auth';
+import { prisma } from '@bchatsign/prisma';
 import { EnvelopeType, RecipientRole, SendStatus, SigningStatus } from '@prisma/client';
 
 import { AppError, AppErrorCode } from '../../errors/app-error';

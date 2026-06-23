@@ -1,8 +1,8 @@
-import { getEnvelopeById } from '@documenso/lib/server-only/envelope/get-envelope-by-id';
-import { getRecipientsForDocument } from '@documenso/lib/server-only/recipient/get-recipients-for-document';
-import { mapSecondaryIdToDocumentId } from '@documenso/lib/utils/envelope';
-import { seedBlankDocument } from '@documenso/prisma/seed/documents';
-import { seedUser } from '@documenso/prisma/seed/users';
+import { getEnvelopeById } from '@bchatsign/lib/server-only/envelope/get-envelope-by-id';
+import { getRecipientsForDocument } from '@bchatsign/lib/server-only/recipient/get-recipients-for-document';
+import { mapSecondaryIdToDocumentId } from '@bchatsign/lib/utils/envelope';
+import { seedBlankDocument } from '@bchatsign/prisma/seed/documents';
+import { seedUser } from '@bchatsign/prisma/seed/users';
 import type { Page } from '@playwright/test';
 import { expect, test } from '@playwright/test';
 import { EnvelopeType } from '@prisma/client';
@@ -34,7 +34,7 @@ const triggerAutosave = async (page: Page) => {
 };
 
 const addSignerAndSave = async (page: Page) => {
-  await page.getByPlaceholder('Email').fill('recipient1@documenso.com');
+  await page.getByPlaceholder('Email').fill('recipient1@bchatsign.com');
   await page.getByPlaceholder('Name').fill('Recipient 1');
 
   await triggerAutosave(page);
@@ -54,7 +54,7 @@ test.describe('AutoSave Signers Step', () => {
       });
 
       expect(retrievedRecipients.length).toBe(1);
-      expect(retrievedRecipients[0].email).toBe('recipient1@documenso.com');
+      expect(retrievedRecipients[0].email).toBe('recipient1@bchatsign.com');
       expect(retrievedRecipients[0].name).toBe('Recipient 1');
     }).toPass();
   });
@@ -88,8 +88,8 @@ test.describe('AutoSave Signers Step', () => {
 
     await addSignerAndSave(page);
 
-    await page.getByPlaceholder('Name').fill('Documenso Manager');
-    await page.getByPlaceholder('Email').fill('manager@documenso.com');
+    await page.getByPlaceholder('Name').fill('Bchatsign Manager');
+    await page.getByPlaceholder('Email').fill('manager@bchatsign.com');
 
     await triggerAutosave(page);
 
@@ -106,8 +106,8 @@ test.describe('AutoSave Signers Step', () => {
       });
 
       expect(retrievedRecipients.length).toBe(1);
-      expect(retrievedRecipients[0].email).toBe('manager@documenso.com');
-      expect(retrievedRecipients[0].name).toBe('Documenso Manager');
+      expect(retrievedRecipients[0].email).toBe('manager@bchatsign.com');
+      expect(retrievedRecipients[0].name).toBe('Bchatsign Manager');
       expect(retrievedRecipients[0].role).toBe('CC');
     }).toPass();
   });
@@ -119,12 +119,12 @@ test.describe('AutoSave Signers Step', () => {
 
     await page.getByRole('button', { name: 'Add signer' }).click();
 
-    await page.getByTestId('signer-email-input').nth(1).fill('recipient2@documenso.com');
+    await page.getByTestId('signer-email-input').nth(1).fill('recipient2@bchatsign.com');
     await page.getByLabel('Name').nth(1).fill('Recipient 2');
 
     await page.getByRole('button', { name: 'Add Signer' }).click();
 
-    await page.getByTestId('signer-email-input').nth(2).fill('recipient3@documenso.com');
+    await page.getByTestId('signer-email-input').nth(2).fill('recipient3@bchatsign.com');
     await page.getByLabel('Name').nth(2).fill('Recipient 3');
 
     await triggerAutosave(page);
@@ -166,9 +166,9 @@ test.describe('AutoSave Signers Step', () => {
       expect(retrievedDocumentData.documentMeta?.allowDictateNextSigner).toBe(true);
       expect(retrievedRecipients.length).toBe(3);
 
-      const firstRecipient = retrievedRecipients.find((r) => r.email === 'recipient1@documenso.com');
-      const secondRecipient = retrievedRecipients.find((r) => r.email === 'recipient2@documenso.com');
-      const thirdRecipient = retrievedRecipients.find((r) => r.email === 'recipient3@documenso.com');
+      const firstRecipient = retrievedRecipients.find((r) => r.email === 'recipient1@bchatsign.com');
+      const secondRecipient = retrievedRecipients.find((r) => r.email === 'recipient2@bchatsign.com');
+      const thirdRecipient = retrievedRecipients.find((r) => r.email === 'recipient3@bchatsign.com');
 
       expect(firstRecipient?.signingOrder).toBe(2);
       expect(secondRecipient?.signingOrder).toBe(3);

@@ -1,8 +1,8 @@
-import { useElementBounds } from '@documenso/lib/client-only/hooks/use-element-bounds';
-import { useIsPageInDom } from '@documenso/lib/client-only/hooks/use-is-page-in-dom';
-import { PDF_VIEWER_PAGE_SELECTOR } from '@documenso/lib/constants/pdf-viewer';
-import type { TFieldMetaSchema } from '@documenso/lib/types/field-meta';
-import { ZCheckboxFieldMeta, ZRadioFieldMeta } from '@documenso/lib/types/field-meta';
+import { useElementBounds } from '@bchatsign/lib/client-only/hooks/use-element-bounds';
+import { useIsPageInDom } from '@bchatsign/lib/client-only/hooks/use-is-page-in-dom';
+import { PDF_VIEWER_PAGE_SELECTOR } from '@bchatsign/lib/constants/pdf-viewer';
+import type { TFieldMetaSchema } from '@bchatsign/lib/types/field-meta';
+import { ZCheckboxFieldMeta, ZRadioFieldMeta } from '@bchatsign/lib/types/field-meta';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
@@ -275,7 +275,7 @@ const FieldItemInner = ({
         <div
           className={cn('absolute -top-16 right-0 left-0 rounded-md p-2 text-center text-gray-700 text-xs', {
             'border border-primary bg-foreground/5': !fieldHasCheckedValues,
-            'border border-primary bg-documenso-200': fieldHasCheckedValues,
+            'border border-primary bg-bchatsign-200': fieldHasCheckedValues,
           })}
         >
           {field.fieldMeta.label}

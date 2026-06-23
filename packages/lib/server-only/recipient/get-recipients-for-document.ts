@@ -1,4 +1,4 @@
-import { prisma } from '@documenso/prisma';
+import { prisma } from '@bchatsign/prisma';
 import { EnvelopeType } from '@prisma/client';
 
 import { getEnvelopeWhereInput } from '../envelope/get-envelope-by-id';

@@ -1,4 +1,4 @@
-import { Button } from '@documenso/ui/primitives/button';
+import { Button } from '@bchatsign/ui/primitives/button';
 import {
   Dialog,
   DialogContent,
@@ -6,7 +6,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@documenso/ui/primitives/dialog';
+} from '@bchatsign/ui/primitives/dialog';
 import { Trans } from '@lingui/react/macro';
 import { DialogClose } from '@radix-ui/react-dialog';
 

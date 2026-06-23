@@ -1,4 +1,4 @@
-import { ZDocumentEmailSettingsSchema } from '@documenso/lib/types/document-email';
+import { ZDocumentEmailSettingsSchema } from '@bchatsign/lib/types/document-email';
 import {
   ZDocumentMetaDateFormatSchema,
   ZDocumentMetaDistributionMethodSchema,
@@ -10,18 +10,18 @@ import {
   ZDocumentMetaTimezoneSchema,
   ZDocumentMetaTypedSignatureEnabledSchema,
   ZDocumentMetaUploadSignatureEnabledSchema,
-} from '@documenso/lib/types/document-meta';
+} from '@bchatsign/lib/types/document-meta';
 import {
   ZFieldHeightSchema,
   ZFieldPageNumberSchema,
   ZFieldPageXSchema,
   ZFieldPageYSchema,
   ZFieldWidthSchema,
-} from '@documenso/lib/types/field';
-import { ZFieldAndMetaSchema } from '@documenso/lib/types/field-meta';
-import { zEmail } from '@documenso/lib/utils/zod';
-import { RecipientRole } from '@documenso/prisma/client';
-import { DocumentSigningOrder } from '@documenso/prisma/generated/types';
+} from '@bchatsign/lib/types/field';
+import { ZFieldAndMetaSchema } from '@bchatsign/lib/types/field-meta';
+import { zEmail } from '@bchatsign/lib/utils/zod';
+import { RecipientRole } from '@bchatsign/prisma/client';
+import { DocumentSigningOrder } from '@bchatsign/prisma/generated/types';
 import { z } from 'zod';
 
 import { ZDocumentExternalIdSchema, ZDocumentTitleSchema } from '../document-router/schema';

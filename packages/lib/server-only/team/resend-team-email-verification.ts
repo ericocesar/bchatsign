@@ -1,7 +1,7 @@
-import { TEAM_MEMBER_ROLE_PERMISSIONS_MAP } from '@documenso/lib/constants/teams';
-import { AppError } from '@documenso/lib/errors/app-error';
-import { createTokenVerification } from '@documenso/lib/utils/token-verification';
-import { prisma } from '@documenso/prisma';
+import { TEAM_MEMBER_ROLE_PERMISSIONS_MAP } from '@bchatsign/lib/constants/teams';
+import { AppError } from '@bchatsign/lib/errors/app-error';
+import { createTokenVerification } from '@bchatsign/lib/utils/token-verification';
+import { prisma } from '@bchatsign/prisma';
 
 import { buildTeamWhereQuery } from '../../utils/teams';
 import { sendTeamEmailVerificationEmail } from './create-team-email-verification';

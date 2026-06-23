@@ -1,4 +1,4 @@
-import { prisma } from '@documenso/prisma';
+import { prisma } from '@bchatsign/prisma';
 import { type RecipientRole, SigningStatus } from '@prisma/client';
 
 export type UpdateRecipientOptions = {

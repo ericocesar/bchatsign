@@ -1,5 +1,5 @@
-import { seedTeam, seedTeamMember } from '@documenso/prisma/seed/teams';
-import { seedTemplate } from '@documenso/prisma/seed/templates';
+import { seedTeam, seedTeamMember } from '@bchatsign/prisma/seed/teams';
+import { seedTemplate } from '@bchatsign/prisma/seed/templates';
 import { expect, test } from '@playwright/test';
 import { TeamMemberRole } from '@prisma/client';
 

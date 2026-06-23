@@ -1,6 +1,6 @@
-import type { FindResultResponse } from '@documenso/lib/types/search-params';
-import { buildTeamWhereQuery } from '@documenso/lib/utils/teams';
-import { prisma } from '@documenso/prisma';
+import type { FindResultResponse } from '@bchatsign/lib/types/search-params';
+import { buildTeamWhereQuery } from '@bchatsign/lib/utils/teams';
+import { prisma } from '@bchatsign/prisma';
 import type { OrganisationGroupType, OrganisationMemberRole } from '@prisma/client';
 import { Prisma } from '@prisma/client';
 import { unique } from 'remeda';

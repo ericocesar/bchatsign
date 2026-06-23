@@ -1,5 +1,5 @@
-import { cn } from '@documenso/ui/lib/utils';
-import { Button } from '@documenso/ui/primitives/button';
+import { cn } from '@bchatsign/ui/lib/utils';
+import { Button } from '@bchatsign/ui/primitives/button';
 import {
   Dialog,
   DialogContent,
@@ -7,8 +7,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@documenso/ui/primitives/dialog';
-import { ScrollArea } from '@documenso/ui/primitives/scroll-area';
+} from '@bchatsign/ui/primitives/dialog';
+import { ScrollArea } from '@bchatsign/ui/primitives/scroll-area';
 import { Trans } from '@lingui/react/macro';
 import { type HTMLAttributes, useState } from 'react';
 
@@ -130,7 +130,7 @@ export const DocumentSigningDisclosure = ({ className, ...props }: DocumentSigni
             <Button
               type="button"
               variant="link"
-              className="h-auto px-0 text-documenso-700 underline underline-offset-2"
+              className="h-auto px-0 text-bchatsign-700 underline underline-offset-2"
             >
               <Trans>Termo de Ciência e Consentimento para Uso de Assinatura Eletrônica</Trans>
             </Button>

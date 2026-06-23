@@ -2,10 +2,10 @@ import type {
   TEnvelopeReminderDurationPeriod,
   TEnvelopeReminderPeriod,
   TEnvelopeReminderSettings,
-} from '@documenso/lib/constants/envelope-reminder';
-import { Input } from '@documenso/ui/primitives/input';
-import { Label } from '@documenso/ui/primitives/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@documenso/ui/primitives/select';
+} from '@bchatsign/lib/constants/envelope-reminder';
+import { Input } from '@bchatsign/ui/primitives/input';
+import { Label } from '@bchatsign/ui/primitives/label';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@bchatsign/ui/primitives/select';
 import { Plural, Trans } from '@lingui/react/macro';
 
 type ReminderMode = 'enabled' | 'disabled' | 'inherit';

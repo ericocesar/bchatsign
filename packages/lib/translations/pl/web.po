@@ -6,13 +6,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: pl\n"
-"Project-Id-Version: documenso-app\n"
+"Project-Id-Version: bchatsign-app\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2026-05-30 16:23\n"
 "Last-Translator: \n"
 "Language-Team: Polish\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
-"X-Crowdin-Project: documenso-app\n"
+"X-Crowdin-Project: bchatsign-app\n"
 "X-Crowdin-Project-ID: 694691\n"
 "X-Crowdin-Language: pl\n"
 "X-Crowdin-File: web.po\n"
@@ -958,8 +958,8 @@ msgstr ""
 
 #. placeholder {0}: team.name
 #: packages/lib/server-only/team/create-team-email-verification.ts
-msgid "A request to use your email has been initiated by {0} on Documenso"
-msgstr "Prośba użycia Twojego adresu e-mail została wysłana przez zespół {0} w Documenso"
+msgid "A request to use your email has been initiated by {0} on Bchatsign"
+msgstr "Prośba użycia Twojego adresu e-mail została wysłana przez zespół {0} w Bchatsign"
 
 #: apps/remix/app/components/dialogs/webhook-create-dialog.tsx
 #: apps/remix/app/components/dialogs/webhook-edit-dialog.tsx
@@ -6079,11 +6079,11 @@ msgid "I am the owner of this document"
 msgstr "Jestem właścicielem tego dokumentu"
 
 #: packages/ui/components/document/document-share-button.tsx
-msgid "I just sent a document in style with @documenso. Check it out!"
+msgid "I just sent a document in style with @bchatsign. Check it out!"
 msgstr ""
 
 #: packages/ui/components/document/document-share-button.tsx
-msgid "I just signed a document in style with @documenso. Check it out!"
+msgid "I just signed a document in style with @bchatsign. Check it out!"
 msgstr ""
 
 #: apps/remix/app/routes/_unauthenticated+/o.$orgUrl.signin.tsx
@@ -6118,8 +6118,8 @@ msgid "Identifying recipients"
 msgstr "Identyfikowanie odbiorców"
 
 #: apps/remix/app/routes/embed+/v2+/authoring+/_layout.tsx
-msgid "If you are using staging, ensure that you have set the host prop on the embedding component to the staging domain (https://stg-app.documenso.com)"
-msgstr "Jeśli korzystasz ze środowiska „staging”, ustaw właściwość host na domenę https://stg-app.documenso.com"
+msgid "If you are using staging, ensure that you have set the host prop on the embedding component to the staging domain (https://stg-app.bchatsign.com)"
+msgstr "Jeśli korzystasz ze środowiska „staging”, ustaw właściwość host na domenę https://stg-app.bchatsign.com"
 
 #: packages/email/template-components/template-admin-user-created.tsx
 msgid "If you didn't expect this account or have any questions, please <0>contact support</0>."
@@ -10421,8 +10421,8 @@ msgstr "Zespół"
 
 #. placeholder {0}: team.name
 #: packages/lib/server-only/team/delete-team.ts
-msgid "Team \"{0}\" has been deleted on Documenso"
-msgstr "Zespół „{0}” został usunięty z Documenso"
+msgid "Team \"{0}\" has been deleted on Bchatsign"
+msgstr "Zespół „{0}” został usunięty z Bchatsign"
 
 #: packages/lib/constants/teams-translations.ts
 msgid "Team Admin"
@@ -13604,8 +13604,8 @@ msgstr "Organizacja <0>{0}</0> zaprasza Cię do dołączenia do nich."
 
 #. placeholder {0}: organisation.name
 #: packages/lib/server-only/organisation/create-organisation-member-invites.ts
-msgid "You have been invited to join {0} on Documenso"
-msgstr "Dołącz do organizacji {0} w Documenso"
+msgid "You have been invited to join {0} on Bchatsign"
+msgstr "Dołącz do organizacji {0} w Bchatsign"
 
 #: packages/email/templates/organisation-invite.tsx
 msgid "You have been invited to join the following organisation"

@@ -1,4 +1,4 @@
-import { ZEmailDomainSchema } from '@documenso/lib/types/email-domain';
+import { ZEmailDomainSchema } from '@bchatsign/lib/types/email-domain';
 import { z } from 'zod';
 
 export const domainRegex = /^(?!https?:\/\/)(?!www\.)([a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$/;

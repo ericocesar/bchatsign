@@ -1,15 +1,15 @@
-import { ZDocumentAccessAuthTypesSchema, ZDocumentActionAuthTypesSchema } from '@documenso/lib/types/document-auth';
-import { ZDocumentMetaUpdateSchema } from '@documenso/lib/types/document-meta';
+import { ZDocumentAccessAuthTypesSchema, ZDocumentActionAuthTypesSchema } from '@bchatsign/lib/types/document-auth';
+import { ZDocumentMetaUpdateSchema } from '@bchatsign/lib/types/document-meta';
 import {
   ZClampedFieldHeightSchema,
   ZClampedFieldPositionXSchema,
   ZClampedFieldPositionYSchema,
   ZClampedFieldWidthSchema,
   ZFieldPageNumberSchema,
-} from '@documenso/lib/types/field';
-import { ZEnvelopeFieldAndMetaSchema } from '@documenso/lib/types/field-meta';
-import { EnvelopeAttachmentSchema } from '@documenso/prisma/generated/zod/modelSchema/EnvelopeAttachmentSchema';
-import { ZSetEnvelopeRecipientSchema } from '@documenso/trpc/server/envelope-router/set-envelope-recipients.types';
+} from '@bchatsign/lib/types/field';
+import { ZEnvelopeFieldAndMetaSchema } from '@bchatsign/lib/types/field-meta';
+import { EnvelopeAttachmentSchema } from '@bchatsign/prisma/generated/zod/modelSchema/EnvelopeAttachmentSchema';
+import { ZSetEnvelopeRecipientSchema } from '@bchatsign/trpc/server/envelope-router/set-envelope-recipients.types';
 import { z } from 'zod';
 import { zfd } from 'zod-form-data';
 

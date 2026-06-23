@@ -2,7 +2,7 @@ import { prisma } from '../packages/prisma';
 
 (async () => {
   const u = await prisma.user.findUnique({
-    where: { email: 'admin@documenso.com' },
+    where: { email: 'admin@bchatsign.com' },
   });
 
   if (!u) {

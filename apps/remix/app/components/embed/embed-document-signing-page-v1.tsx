@@ -1,26 +1,26 @@
-import { useThrottleFn } from '@documenso/lib/client-only/hooks/use-throttle-fn';
-import { APP_I18N_OPTIONS } from '@documenso/lib/constants/i18n';
-import { PDF_VIEWER_PAGE_SELECTOR } from '@documenso/lib/constants/pdf-viewer';
-import { ZSignDocumentEmbedDataSchema } from '@documenso/lib/types/embed-document-sign-schema';
-import { isFieldUnsignedAndRequired } from '@documenso/lib/utils/advanced-fields-helpers';
-import { getDocumentDataUrlForPdfViewer } from '@documenso/lib/utils/envelope-download';
-import { sortFieldsByPosition, validateFieldsInserted } from '@documenso/lib/utils/fields';
-import { dynamicActivate } from '@documenso/lib/utils/i18n';
-import { isSignatureFieldType } from '@documenso/prisma/guards/is-signature-field';
-import type { RecipientWithFields } from '@documenso/prisma/types/recipient-with-fields';
-import { trpc } from '@documenso/trpc/react';
+import { useThrottleFn } from '@bchatsign/lib/client-only/hooks/use-throttle-fn';
+import { APP_I18N_OPTIONS } from '@bchatsign/lib/constants/i18n';
+import { PDF_VIEWER_PAGE_SELECTOR } from '@bchatsign/lib/constants/pdf-viewer';
+import { ZSignDocumentEmbedDataSchema } from '@bchatsign/lib/types/embed-document-sign-schema';
+import { isFieldUnsignedAndRequired } from '@bchatsign/lib/utils/advanced-fields-helpers';
+import { getDocumentDataUrlForPdfViewer } from '@bchatsign/lib/utils/envelope-download';
+import { sortFieldsByPosition, validateFieldsInserted } from '@bchatsign/lib/utils/fields';
+import { dynamicActivate } from '@bchatsign/lib/utils/i18n';
+import { isSignatureFieldType } from '@bchatsign/prisma/guards/is-signature-field';
+import type { RecipientWithFields } from '@bchatsign/prisma/types/recipient-with-fields';
+import { trpc } from '@bchatsign/trpc/react';
 import {
   type DocumentField,
   DocumentReadOnlyFields,
-} from '@documenso/ui/components/document/document-read-only-fields';
-import { FieldToolTip } from '@documenso/ui/components/field/field-tooltip';
-import { Button } from '@documenso/ui/primitives/button';
-import { ElementVisible } from '@documenso/ui/primitives/element-visible';
-import { Input } from '@documenso/ui/primitives/input';
-import { Label } from '@documenso/ui/primitives/label';
-import { RadioGroup, RadioGroupItem } from '@documenso/ui/primitives/radio-group';
-import { SignaturePadDialog } from '@documenso/ui/primitives/signature-pad/signature-pad-dialog';
-import { useToast } from '@documenso/ui/primitives/use-toast';
+} from '@bchatsign/ui/components/document/document-read-only-fields';
+import { FieldToolTip } from '@bchatsign/ui/components/field/field-tooltip';
+import { Button } from '@bchatsign/ui/primitives/button';
+import { ElementVisible } from '@bchatsign/ui/primitives/element-visible';
+import { Input } from '@bchatsign/ui/primitives/input';
+import { Label } from '@bchatsign/ui/primitives/label';
+import { RadioGroup, RadioGroupItem } from '@bchatsign/ui/primitives/radio-group';
+import { SignaturePadDialog } from '@bchatsign/ui/primitives/signature-pad/signature-pad-dialog';
+import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';

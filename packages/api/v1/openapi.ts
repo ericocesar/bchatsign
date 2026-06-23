@@ -1,4 +1,4 @@
-import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
+import { NEXT_PUBLIC_WEBAPP_URL } from '@bchatsign/lib/constants/app';
 import { generateOpenApi } from '@ts-rest/open-api';
 
 import { ApiContractV1 } from './contract';
@@ -11,7 +11,7 @@ export const OpenAPIV1 = Object.assign(
         title: 'BchatSign API',
         version: '1.0.0',
         description:
-          'API V1 is deprecated, but will continue to be supported. For more details, see https://docs.documenso.com/developers/public-api. \n\nThe BchatSign API for retrieving, creating, updating and deleting documents.',
+          'API V1 is deprecated, but will continue to be supported. For more details, see https://docs.bchatsign.com/developers/public-api. \n\nThe BchatSign API for retrieving, creating, updating and deleting documents.',
       },
       servers: [
         {

@@ -1,7 +1,7 @@
-import { getInvoices } from '@documenso/ee/server-only/stripe/get-invoices';
-import { TEAM_MEMBER_ROLE_PERMISSIONS_MAP } from '@documenso/lib/constants/teams';
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { prisma } from '@documenso/prisma';
+import { getInvoices } from '@bchatsign/ee/server-only/stripe/get-invoices';
+import { TEAM_MEMBER_ROLE_PERMISSIONS_MAP } from '@bchatsign/lib/constants/teams';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { prisma } from '@bchatsign/prisma';
 
 export interface FindTeamInvoicesOptions {
   userId: number;

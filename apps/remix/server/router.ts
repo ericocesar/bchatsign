@@ -1,21 +1,21 @@
-import { tsRestHonoApp } from '@documenso/api/hono';
-import { auth } from '@documenso/auth/server';
-import { jobsClient } from '@documenso/lib/jobs/client';
-import { LicenseClient } from '@documenso/lib/server-only/license/license-client';
-import { createRateLimitMiddleware } from '@documenso/lib/server-only/rate-limit/rate-limit-middleware';
+import { tsRestHonoApp } from '@bchatsign/api/hono';
+import { auth } from '@bchatsign/auth/server';
+import { jobsClient } from '@bchatsign/lib/jobs/client';
+import { LicenseClient } from '@bchatsign/lib/server-only/license/license-client';
+import { createRateLimitMiddleware } from '@bchatsign/lib/server-only/rate-limit/rate-limit-middleware';
 import {
   aiRateLimit,
   apiTrpcRateLimit,
   apiV1RateLimit,
   apiV2RateLimit,
   fileUploadRateLimit,
-} from '@documenso/lib/server-only/rate-limit/rate-limits';
-import { TelemetryClient } from '@documenso/lib/server-only/telemetry/telemetry-client';
-import { migrateDeletedAccountServiceAccount } from '@documenso/lib/server-only/user/service-accounts/deleted-account';
-import { migrateLegacyServiceAccount } from '@documenso/lib/server-only/user/service-accounts/legacy-service-account';
-import { env } from '@documenso/lib/utils/env';
-import { logger } from '@documenso/lib/utils/logger';
-import { openApiDocument } from '@documenso/trpc/server/open-api';
+} from '@bchatsign/lib/server-only/rate-limit/rate-limits';
+import { TelemetryClient } from '@bchatsign/lib/server-only/telemetry/telemetry-client';
+import { migrateDeletedAccountServiceAccount } from '@bchatsign/lib/server-only/user/service-accounts/deleted-account';
+import { migrateLegacyServiceAccount } from '@bchatsign/lib/server-only/user/service-accounts/legacy-service-account';
+import { env } from '@bchatsign/lib/utils/env';
+import { logger } from '@bchatsign/lib/utils/logger';
+import { openApiDocument } from '@bchatsign/trpc/server/open-api';
 import { Hono } from 'hono';
 import { contextStorage } from 'hono/context-storage';
 import { cors } from 'hono/cors';
@@ -150,7 +150,7 @@ app.use(`/api/v2-beta/*`, async (c) =>
 );
 
 // Start telemetry client for anonymous usage tracking.
-// Can be disabled by setting DOCUMENSO_DISABLE_TELEMETRY=true
+// Can be disabled by setting BCHATSIGN_DISABLE_TELEMETRY=true
 if (env('NODE_ENV') !== 'development') {
   void TelemetryClient.start();
 }

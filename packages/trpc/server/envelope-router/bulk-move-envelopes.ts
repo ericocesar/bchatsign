@@ -1,8 +1,8 @@
-import { TEAM_DOCUMENT_VISIBILITY_MAP } from '@documenso/lib/constants/teams';
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { getMultipleEnvelopeWhereInput } from '@documenso/lib/server-only/envelope/get-envelopes-by-ids';
-import { buildTeamWhereQuery } from '@documenso/lib/utils/teams';
-import { prisma } from '@documenso/prisma';
+import { TEAM_DOCUMENT_VISIBILITY_MAP } from '@bchatsign/lib/constants/teams';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { getMultipleEnvelopeWhereInput } from '@bchatsign/lib/server-only/envelope/get-envelopes-by-ids';
+import { buildTeamWhereQuery } from '@bchatsign/lib/utils/teams';
+import { prisma } from '@bchatsign/prisma';
 
 import { authenticatedProcedure } from '../trpc';
 import { ZBulkMoveEnvelopesRequestSchema, ZBulkMoveEnvelopesResponseSchema } from './bulk-move-envelopes.types';

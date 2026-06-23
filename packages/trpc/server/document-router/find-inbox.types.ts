@@ -1,7 +1,7 @@
 // import type { OpenApiMeta } from 'trpc-to-openapi';
 
-import { ZDocumentManySchema } from '@documenso/lib/types/document';
-import { ZFindResultResponse, ZFindSearchParamsSchema } from '@documenso/lib/types/search-params';
+import { ZDocumentManySchema } from '@bchatsign/lib/types/document';
+import { ZFindResultResponse, ZFindSearchParamsSchema } from '@bchatsign/lib/types/search-params';
 import type { z } from 'zod';
 
 export const ZFindInboxRequestSchema = ZFindSearchParamsSchema;
