@@ -26,6 +26,8 @@ import { FcGoogle } from 'react-icons/fc';
 import { Link, useNavigate, useSearchParams } from 'react-router';
 import { z } from 'zod';
 
+import { LegalDialog } from '~/components/legal-dialog';
+
 export const ZSignUpFormSchema = z
   .object({
     name: ZNameSchema,
@@ -61,6 +63,8 @@ export type SignUpFormProps = {
   isMicrosoftSignupEnabled?: boolean;
   isOidcSignupEnabled?: boolean;
   returnTo?: string;
+  termsContent?: string;
+  policyContent?: string;
 };
 
 export const SignUpForm = ({
@@ -71,6 +75,8 @@ export const SignUpForm = ({
   isMicrosoftSignupEnabled,
   isOidcSignupEnabled,
   returnTo,
+  termsContent,
+  policyContent,
 }: SignUpFormProps) => {
   const { _ } = useLingui();
   const { toast } = useToast();
@@ -371,22 +377,24 @@ export const SignUpForm = ({
 
       <p className="text-center text-muted-foreground text-xs">
         <Trans>
-          By proceeding, you agree to our{' '}
-          <Link
-            to="https://documen.so/terms"
-            target="_blank"
-            className="text-primary duration-200 hover:opacity-70"
-          >
-            Terms of Service
-          </Link>{' '}
-          and{' '}
-          <Link
-            to="https://documen.so/privacy"
-            target="_blank"
-            className="text-primary duration-200 hover:opacity-70"
-          >
-            Privacy Policy
-          </Link>
+          Ao prosseguir, você concorda com nossos{' '}
+          <LegalDialog title="Termos de Serviço" content={termsContent ?? ''}>
+            <button
+              type="button"
+              className="text-primary duration-200 hover:opacity-70"
+            >
+              Termos de Serviço
+            </button>
+          </LegalDialog>{' '}
+          e{' '}
+          <LegalDialog title="Política de Privacidade" content={policyContent ?? ''}>
+            <button
+              type="button"
+              className="text-primary duration-200 hover:opacity-70"
+            >
+              Política de Privacidade
+            </button>
+          </LegalDialog>
           .
         </Trans>
       </p>

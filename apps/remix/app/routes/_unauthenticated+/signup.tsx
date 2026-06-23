@@ -1,3 +1,6 @@
+import path from 'node:path';
+import fs from 'node:fs';
+
 import {
   IS_GOOGLE_SSO_ENABLED,
   IS_MICROSOFT_SSO_ENABLED,
@@ -33,6 +36,11 @@ export async function loader({ request }: Route.LoaderArgs) {
     throw redirect('/signin');
   }
 
+  const docsDir = path.resolve(process.cwd(), '../../docs/documentos');
+
+  const termsContent = fs.readFileSync(path.join(docsDir, 'terms.md'), 'utf-8');
+  const policyContent = fs.readFileSync(path.join(docsDir, 'policy.md'), 'utf-8');
+
   let returnTo = new URL(request.url).searchParams.get('returnTo') ?? undefined;
 
   returnTo = isValidReturnTo(returnTo) ? normalizeReturnTo(returnTo) : undefined;
@@ -43,6 +51,8 @@ export async function loader({ request }: Route.LoaderArgs) {
     isMicrosoftSignupEnabled,
     isOidcSignupEnabled,
     returnTo,
+    termsContent,
+    policyContent,
   };
 }
 
@@ -70,6 +80,8 @@ export default function SignUp({ loaderData }: Route.ComponentProps) {
     isMicrosoftSignupEnabled,
     isOidcSignupEnabled,
     returnTo,
+    termsContent,
+    policyContent,
   } = loaderData;
 
   return (
@@ -121,6 +133,8 @@ export default function SignUp({ loaderData }: Route.ComponentProps) {
                 isMicrosoftSignupEnabled={isMicrosoftSignupEnabled}
                 isOidcSignupEnabled={isOidcSignupEnabled}
                 returnTo={returnTo}
+                termsContent={termsContent}
+                policyContent={policyContent}
               />
             </motion.div>
           </motion.div>

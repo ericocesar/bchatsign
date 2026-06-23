@@ -1927,6 +1927,10 @@ msgstr "모든 상태"
 msgid "Ao prosseguir com sua assinatura eletrônica, você reconhece e concorda que ela será utilizada para assinar o documento apresentado e terá validade jurídica equivalente à assinatura manuscrita. Ao concluir o processo de assinatura eletrônica, você confirma sua ciência e aceitação dessas condições."
 msgstr ""
 
+#: apps/remix/app/components/forms/signup.tsx
+msgid "Ao prosseguir, você concorda com nossos <0><1>Termos de Serviço</1></0> e <2><3>Política de Privacidade</3></2>."
+msgstr ""
+
 #: apps/remix/app/components/tables/admin-organisation-stats-table.tsx
 msgid "API"
 msgstr ""
@@ -2422,10 +2426,6 @@ msgstr "2단계 인증을 활성화하면 이메일과 비밀번호로 로그인
 #: apps/remix/app/routes/_unauthenticated+/articles.signature-disclosure.tsx
 msgid "By proceeding to use the electronic signature service provided by BchatSign, you affirm that you have read and understood this disclosure. You agree to all terms and conditions related to the use of electronic signatures and electronic transactions as outlined herein."
 msgstr ""
-
-#: apps/remix/app/components/forms/signup.tsx
-msgid "By proceeding, you agree to our <0>Terms of Service</0> and <1>Privacy Policy</1>."
-msgstr "계속 진행함으로써 <0>서비스 이용약관</0>과 <1>개인정보 처리방침</1>에 동의하는 것으로 간주됩니다."
 
 #: apps/remix/app/routes/_unauthenticated+/articles.signature-disclosure.tsx
 msgid "By using the electronic signature feature, you are consenting to conduct transactions and receive disclosures electronically. You acknowledge that your electronic signature on documents is binding and that you accept the terms outlined in the documents you are signing."
@@ -3199,7 +3199,7 @@ msgstr "생성"
 msgid "Create a <0>free account</0> to access your signed documents at any time."
 msgstr "<0>무료 계정</0>을 생성하면 언제든지 서명한 문서에 접근할 수 있습니다."
 
-#: apps/remix/app/components/forms/signup.tsx
+#: apps/remix/app/routes/_unauthenticated+/signup.tsx
 msgid "Create a new account"
 msgstr "새 계정 만들기"
 
@@ -3390,7 +3390,7 @@ msgstr "웹훅 생성"
 msgid "Create your account and start using state-of-the-art document signing."
 msgstr "계정을 만들고 최첨단 전자 서명 서비스를 사용해 보세요."
 
-#: apps/remix/app/components/forms/signup.tsx
+#: apps/remix/app/routes/_unauthenticated+/signup.tsx
 msgid "Create your account and start using state-of-the-art document signing. Open and beautiful signing is within your grasp."
 msgstr "계정을 만들고 최첨단 전자 서명 서비스를 시작하세요. 개방적이고 아름다운 서명이 당신의 손 안에 있습니다."
 
@@ -4427,6 +4427,7 @@ msgstr "문서"
 msgid "Documentos Recentes"
 msgstr ""
 
+#: apps/remix/app/components/brand-hero.tsx
 #: apps/remix/app/components/general/app-command-menu.tsx
 #: apps/remix/app/components/general/app-header.tsx
 #: apps/remix/app/components/general/app-nav-desktop.tsx
@@ -5062,10 +5063,6 @@ msgstr "활성화됨"
 #: apps/remix/app/components/dialogs/admin-user-enable-dialog.tsx
 msgid "Enabling the account results in the user being able to use the account again, and all the related features such as webhooks, teams, and API keys for example."
 msgstr "계정을 활성화하면 사용자가 다시 계정을 사용할 수 있게 되며, 웹후크, 팀, API 키 등 관련 기능도 다시 활성화됩니다."
-
-#: apps/remix/app/routes/_internal+/[__htmltopdf]+/audit-log.tsx
-#~ msgid "Enclosed Document"
-#~ msgstr "동봉 문서"
 
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/audit-log.tsx
 #: packages/lib/server-only/pdf/render-audit-logs.ts
@@ -6260,6 +6257,10 @@ msgstr "삽입됨"
 #: apps/remix/app/routes/_authenticated+/admin+/stats.tsx
 msgid "Instance Stats"
 msgstr "인스턴스 통계"
+
+#: apps/remix/app/components/brand-hero.tsx
+msgid "Intelligent and secure digital signatures for your documents."
+msgstr ""
 
 #: apps/remix/app/components/general/document/document-validation-panel.tsx
 msgid "Internal validation status"
@@ -9284,6 +9285,15 @@ msgstr "이름 또는 이메일로 구성원 검색"
 msgid "Secret"
 msgstr "시크릿"
 
+#: apps/remix/app/components/brand-hero.tsx
+msgid "Secure"
+msgstr ""
+
+#: apps/remix/app/routes/_unauthenticated+/signin.tsx
+#: apps/remix/app/routes/_unauthenticated+/signup.tsx
+msgid "Secure digital signatures powered by BchatSign"
+msgstr ""
+
 #: apps/remix/app/components/general/settings-nav-desktop.tsx
 #: apps/remix/app/components/general/settings-nav-mobile.tsx
 #: apps/remix/app/routes/_authenticated+/settings+/security._index.tsx
@@ -9711,6 +9721,7 @@ msgstr "라이선스 키 표시하기"
 msgid "Show templates in your public profile for your audience to sign and get started quickly"
 msgstr "공개 프로필에 템플릿을 표시해, 사용자가 빠르게 서명하고 시작할 수 있도록 하세요"
 
+#: apps/remix/app/components/brand-hero.tsx
 #: apps/remix/app/components/dialogs/sign-field-signature-dialog.tsx
 #: apps/remix/app/components/general/document-signing/document-signing-auth-2fa.tsx
 #: apps/remix/app/components/general/document-signing/document-signing-auth-passkey.tsx
@@ -12363,10 +12374,6 @@ msgstr "사용자를 찾을 수 없습니다."
 msgid "User Organisations"
 msgstr "사용자 조직"
 
-#: apps/remix/app/components/forms/signup.tsx
-msgid "User profiles are here!"
-msgstr "사용자 프로필이 추가되었습니다!"
-
 #: apps/remix/app/components/general/menu-switcher.tsx
 msgid "User settings"
 msgstr "사용자 설정"
@@ -13133,6 +13140,7 @@ msgstr "다시 오신 것을 환영합니다. 함께하게 되어 기쁩니다."
 msgid "Welcome to {organisationName}"
 msgstr "{organisationName}에 오신 것을 환영합니다"
 
+#: apps/remix/app/components/brand-hero.tsx
 #: packages/lib/jobs/definitions/emails/send-admin-user-created-email.handler.ts
 msgid "Welcome to BchatSign"
 msgstr ""

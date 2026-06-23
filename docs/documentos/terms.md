@@ -1,7 +1,3 @@
-Aqui estão os Termos de Serviço traduzidos para o português do Brasil (pt-BR), com todas as ocorrências de "Documenso" substituídas por "assine.bchat.com.br":
-
----
-
 # Termos de Serviço
 
 **Última modificação: 29/11/2024**

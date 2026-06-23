@@ -1927,6 +1927,10 @@ msgstr "Dowolny status"
 msgid "Ao prosseguir com sua assinatura eletrônica, você reconhece e concorda que ela será utilizada para assinar o documento apresentado e terá validade jurídica equivalente à assinatura manuscrita. Ao concluir o processo de assinatura eletrônica, você confirma sua ciência e aceitação dessas condições."
 msgstr ""
 
+#: apps/remix/app/components/forms/signup.tsx
+msgid "Ao prosseguir, você concorda com nossos <0><1>Termos de Serviço</1></0> e <2><3>Política de Privacidade</3></2>."
+msgstr ""
+
 #: apps/remix/app/components/tables/admin-organisation-stats-table.tsx
 msgid "API"
 msgstr ""
@@ -2422,10 +2426,6 @@ msgstr "Po włączeniu weryfikacji dwuetapowej konieczne będzie wpisanie kodu z
 #: apps/remix/app/routes/_unauthenticated+/articles.signature-disclosure.tsx
 msgid "By proceeding to use the electronic signature service provided by BchatSign, you affirm that you have read and understood this disclosure. You agree to all terms and conditions related to the use of electronic signatures and electronic transactions as outlined herein."
 msgstr ""
-
-#: apps/remix/app/components/forms/signup.tsx
-msgid "By proceeding, you agree to our <0>Terms of Service</0> and <1>Privacy Policy</1>."
-msgstr "Kontynuując, akceptujesz nasz <0>Regulamin</0> i <1>Politykę prywatności</1>."
 
 #: apps/remix/app/routes/_unauthenticated+/articles.signature-disclosure.tsx
 msgid "By using the electronic signature feature, you are consenting to conduct transactions and receive disclosures electronically. You acknowledge that your electronic signature on documents is binding and that you accept the terms outlined in the documents you are signing."
@@ -3199,7 +3199,7 @@ msgstr "Utwórz"
 msgid "Create a <0>free account</0> to access your signed documents at any time."
 msgstr "Utwórz <0>darmowe konto</0>, aby uzyskać dostęp do podpisanych dokumentów w dowolnym momencie."
 
-#: apps/remix/app/components/forms/signup.tsx
+#: apps/remix/app/routes/_unauthenticated+/signup.tsx
 msgid "Create a new account"
 msgstr "Utwórz konto"
 
@@ -3390,7 +3390,7 @@ msgstr "Utwórz webhook"
 msgid "Create your account and start using state-of-the-art document signing."
 msgstr "Utwórz konto i skorzystaj z najnowocześniejszego rozwiązania do podpisywania dokumentów."
 
-#: apps/remix/app/components/forms/signup.tsx
+#: apps/remix/app/routes/_unauthenticated+/signup.tsx
 msgid "Create your account and start using state-of-the-art document signing. Open and beautiful signing is within your grasp."
 msgstr "Utwórz konto i zacznij korzystać z nowoczesnego podpisywania dokumentów. Otwarty i piękny podpis jest w zasięgu ręki."
 
@@ -4427,6 +4427,7 @@ msgstr "Dokumentacja"
 msgid "Documentos Recentes"
 msgstr ""
 
+#: apps/remix/app/components/brand-hero.tsx
 #: apps/remix/app/components/general/app-command-menu.tsx
 #: apps/remix/app/components/general/app-header.tsx
 #: apps/remix/app/components/general/app-nav-desktop.tsx
@@ -5062,10 +5063,6 @@ msgstr "Włączone"
 #: apps/remix/app/components/dialogs/admin-user-enable-dialog.tsx
 msgid "Enabling the account results in the user being able to use the account again, and all the related features such as webhooks, teams, and API keys for example."
 msgstr "Włączenie konta spowoduje, że użytkownik będzie mógł ponownie korzystać z konta i wszystkich powiązanych danych, takich jak webhooki, zespoły i klucze API."
-
-#: apps/remix/app/routes/_internal+/[__htmltopdf]+/audit-log.tsx
-#~ msgid "Enclosed Document"
-#~ msgstr "Załączony dokument"
 
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/audit-log.tsx
 #: packages/lib/server-only/pdf/render-audit-logs.ts
@@ -6260,6 +6257,10 @@ msgstr "Wypełniono"
 #: apps/remix/app/routes/_authenticated+/admin+/stats.tsx
 msgid "Instance Stats"
 msgstr "Statystyki instancji"
+
+#: apps/remix/app/components/brand-hero.tsx
+msgid "Intelligent and secure digital signatures for your documents."
+msgstr ""
 
 #: apps/remix/app/components/general/document/document-validation-panel.tsx
 msgid "Internal validation status"
@@ -9284,6 +9285,15 @@ msgstr "Szukaj nazwy lub adresu e-mail użytkownika"
 msgid "Secret"
 msgstr "Sekret"
 
+#: apps/remix/app/components/brand-hero.tsx
+msgid "Secure"
+msgstr ""
+
+#: apps/remix/app/routes/_unauthenticated+/signin.tsx
+#: apps/remix/app/routes/_unauthenticated+/signup.tsx
+msgid "Secure digital signatures powered by BchatSign"
+msgstr ""
+
 #: apps/remix/app/components/general/settings-nav-desktop.tsx
 #: apps/remix/app/components/general/settings-nav-mobile.tsx
 #: apps/remix/app/routes/_authenticated+/settings+/security._index.tsx
@@ -9711,6 +9721,7 @@ msgstr "Pokaż klucz licencyjny"
 msgid "Show templates in your public profile for your audience to sign and get started quickly"
 msgstr "Pokaż szablony w profilu publicznym, aby szybko podpisać dokument"
 
+#: apps/remix/app/components/brand-hero.tsx
 #: apps/remix/app/components/dialogs/sign-field-signature-dialog.tsx
 #: apps/remix/app/components/general/document-signing/document-signing-auth-2fa.tsx
 #: apps/remix/app/components/general/document-signing/document-signing-auth-passkey.tsx
@@ -12365,10 +12376,6 @@ msgstr "Użytkownik nie został znaleziony."
 msgid "User Organisations"
 msgstr "Organizacje użytkownika"
 
-#: apps/remix/app/components/forms/signup.tsx
-msgid "User profiles are here!"
-msgstr "Profile użytkowników są tutaj!"
-
 #: apps/remix/app/components/general/menu-switcher.tsx
 msgid "User settings"
 msgstr "Ustawienia użytkownika"
@@ -13135,6 +13142,7 @@ msgstr "Witaj ponownie. Mamy szczęście, że Cię mamy."
 msgid "Welcome to {organisationName}"
 msgstr "Witaj w organizacji {organisationName}"
 
+#: apps/remix/app/components/brand-hero.tsx
 #: packages/lib/jobs/definitions/emails/send-admin-user-created-email.handler.ts
 msgid "Welcome to BchatSign"
 msgstr ""

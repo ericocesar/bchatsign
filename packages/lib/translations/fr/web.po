@@ -958,8 +958,8 @@ msgstr ""
 
 #. placeholder {0}: team.name
 #: packages/lib/server-only/team/create-team-email-verification.ts
-msgid "A request to use your email has been initiated by {0} on Documenso"
-msgstr "Une demande pour l'utiliser votre e-mail a été initiée par {0} sur Documenso"
+msgid "A request to use your email has been initiated by {0} on Bchatsign"
+msgstr ""
 
 #: apps/remix/app/components/dialogs/webhook-create-dialog.tsx
 #: apps/remix/app/components/dialogs/webhook-edit-dialog.tsx
@@ -1927,6 +1927,10 @@ msgstr "Tout statut"
 msgid "Ao prosseguir com sua assinatura eletrônica, você reconhece e concorda que ela será utilizada para assinar o documento apresentado e terá validade jurídica equivalente à assinatura manuscrita. Ao concluir o processo de assinatura eletrônica, você confirma sua ciência e aceitação dessas condições."
 msgstr ""
 
+#: apps/remix/app/components/forms/signup.tsx
+msgid "Ao prosseguir, você concorda com nossos <0><1>Termos de Serviço</1></0> e <2><3>Política de Privacidade</3></2>."
+msgstr ""
+
 #: apps/remix/app/components/tables/admin-organisation-stats-table.tsx
 msgid "API"
 msgstr ""
@@ -2422,10 +2426,6 @@ msgstr "En activant l'authentification à deux facteurs, vous devrez entrer un c
 #: apps/remix/app/routes/_unauthenticated+/articles.signature-disclosure.tsx
 msgid "By proceeding to use the electronic signature service provided by BchatSign, you affirm that you have read and understood this disclosure. You agree to all terms and conditions related to the use of electronic signatures and electronic transactions as outlined herein."
 msgstr ""
-
-#: apps/remix/app/components/forms/signup.tsx
-msgid "By proceeding, you agree to our <0>Terms of Service</0> and <1>Privacy Policy</1>."
-msgstr "En poursuivant, vous acceptez nos <0>Conditions d'Utilisation</0> et notre <1>Politique de Confidentialité</1>."
 
 #: apps/remix/app/routes/_unauthenticated+/articles.signature-disclosure.tsx
 msgid "By using the electronic signature feature, you are consenting to conduct transactions and receive disclosures electronically. You acknowledge that your electronic signature on documents is binding and that you accept the terms outlined in the documents you are signing."
@@ -3199,7 +3199,7 @@ msgstr "Créer"
 msgid "Create a <0>free account</0> to access your signed documents at any time."
 msgstr "Créez un <0>compte gratuit</0> pour accéder à vos documents signés à tout moment."
 
-#: apps/remix/app/components/forms/signup.tsx
+#: apps/remix/app/routes/_unauthenticated+/signup.tsx
 msgid "Create a new account"
 msgstr "Créer un nouveau compte"
 
@@ -3390,7 +3390,7 @@ msgstr "Créer un Webhook"
 msgid "Create your account and start using state-of-the-art document signing."
 msgstr "Créez votre compte et commencez à utiliser la signature de documents à la pointe de la technologie."
 
-#: apps/remix/app/components/forms/signup.tsx
+#: apps/remix/app/routes/_unauthenticated+/signup.tsx
 msgid "Create your account and start using state-of-the-art document signing. Open and beautiful signing is within your grasp."
 msgstr "Créez votre compte et commencez à utiliser la signature de documents à la pointe de la technologie. Une signature ouverte et magnifique est à votre portée."
 
@@ -4427,6 +4427,7 @@ msgstr "Documentation"
 msgid "Documentos Recentes"
 msgstr ""
 
+#: apps/remix/app/components/brand-hero.tsx
 #: apps/remix/app/components/general/app-command-menu.tsx
 #: apps/remix/app/components/general/app-header.tsx
 #: apps/remix/app/components/general/app-nav-desktop.tsx
@@ -5062,10 +5063,6 @@ msgstr "Activé"
 #: apps/remix/app/components/dialogs/admin-user-enable-dialog.tsx
 msgid "Enabling the account results in the user being able to use the account again, and all the related features such as webhooks, teams, and API keys for example."
 msgstr "Activer le compte permet à l'utilisateur de pouvoir utiliser le compte à nouveau, ainsi que toutes les fonctionnalités associées telles que les webhooks, les équipes et les clés API par exemple."
-
-#: apps/remix/app/routes/_internal+/[__htmltopdf]+/audit-log.tsx
-#~ msgid "Enclosed Document"
-#~ msgstr "Document joint"
 
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/audit-log.tsx
 #: packages/lib/server-only/pdf/render-audit-logs.ts
@@ -6079,11 +6076,11 @@ msgid "I am the owner of this document"
 msgstr "Je suis le propriétaire de ce document"
 
 #: packages/ui/components/document/document-share-button.tsx
-msgid "I just sent a document in style with @documenso. Check it out!"
+msgid "I just sent a document in style with @bchatsign. Check it out!"
 msgstr ""
 
 #: packages/ui/components/document/document-share-button.tsx
-msgid "I just signed a document in style with @documenso. Check it out!"
+msgid "I just signed a document in style with @bchatsign. Check it out!"
 msgstr ""
 
 #: apps/remix/app/routes/_unauthenticated+/o.$orgUrl.signin.tsx
@@ -6118,8 +6115,8 @@ msgid "Identifying recipients"
 msgstr "Identification des destinataires"
 
 #: apps/remix/app/routes/embed+/v2+/authoring+/_layout.tsx
-msgid "If you are using staging, ensure that you have set the host prop on the embedding component to the staging domain (https://stg-app.documenso.com)"
-msgstr "Si vous utilisez l’environnement de staging, assurez-vous d’avoir défini la propriété host du composant d’intégration sur le domaine de staging (https://stg-app.documenso.com)"
+msgid "If you are using staging, ensure that you have set the host prop on the embedding component to the staging domain (https://stg-app.bchatsign.com)"
+msgstr ""
 
 #: packages/email/template-components/template-admin-user-created.tsx
 msgid "If you didn't expect this account or have any questions, please <0>contact support</0>."
@@ -6260,6 +6257,10 @@ msgstr "Inséré"
 #: apps/remix/app/routes/_authenticated+/admin+/stats.tsx
 msgid "Instance Stats"
 msgstr "Statistiques de l'instance"
+
+#: apps/remix/app/components/brand-hero.tsx
+msgid "Intelligent and secure digital signatures for your documents."
+msgstr ""
 
 #: apps/remix/app/components/general/document/document-validation-panel.tsx
 msgid "Internal validation status"
@@ -9284,6 +9285,15 @@ msgstr "Rechercher des membres par nom ou adresse e-mail"
 msgid "Secret"
 msgstr "Secret"
 
+#: apps/remix/app/components/brand-hero.tsx
+msgid "Secure"
+msgstr ""
+
+#: apps/remix/app/routes/_unauthenticated+/signin.tsx
+#: apps/remix/app/routes/_unauthenticated+/signup.tsx
+msgid "Secure digital signatures powered by BchatSign"
+msgstr ""
+
 #: apps/remix/app/components/general/settings-nav-desktop.tsx
 #: apps/remix/app/components/general/settings-nav-mobile.tsx
 #: apps/remix/app/routes/_authenticated+/settings+/security._index.tsx
@@ -9711,6 +9721,7 @@ msgstr "Afficher la clé de licence"
 msgid "Show templates in your public profile for your audience to sign and get started quickly"
 msgstr "Afficher des modèles dans votre profil public pour que votre audience puisse signer et commencer rapidement"
 
+#: apps/remix/app/components/brand-hero.tsx
 #: apps/remix/app/components/dialogs/sign-field-signature-dialog.tsx
 #: apps/remix/app/components/general/document-signing/document-signing-auth-2fa.tsx
 #: apps/remix/app/components/general/document-signing/document-signing-auth-passkey.tsx
@@ -10421,8 +10432,8 @@ msgstr "Équipe"
 
 #. placeholder {0}: team.name
 #: packages/lib/server-only/team/delete-team.ts
-msgid "Team \"{0}\" has been deleted on Documenso"
-msgstr "L'équipe \"{0}\" a été supprimée sur Documenso"
+msgid "Team \"{0}\" has been deleted on Bchatsign"
+msgstr ""
 
 #: packages/lib/constants/teams-translations.ts
 msgid "Team Admin"
@@ -12363,10 +12374,6 @@ msgstr "Utilisateur non trouvé."
 msgid "User Organisations"
 msgstr "Organisations utilisateur"
 
-#: apps/remix/app/components/forms/signup.tsx
-msgid "User profiles are here!"
-msgstr "Les profils des utilisateurs sont ici !"
-
 #: apps/remix/app/components/general/menu-switcher.tsx
 msgid "User settings"
 msgstr "Paramètres de l'utilisateur"
@@ -13133,6 +13140,7 @@ msgstr "Bon retour, nous sommes heureux de vous retrouver."
 msgid "Welcome to {organisationName}"
 msgstr "Bienvenue chez {organisationName}"
 
+#: apps/remix/app/components/brand-hero.tsx
 #: packages/lib/jobs/definitions/emails/send-admin-user-created-email.handler.ts
 msgid "Welcome to BchatSign"
 msgstr ""
@@ -13602,8 +13610,8 @@ msgstr "Vous avez été invité par <0>{0}</0> à rejoindre leur organisation."
 
 #. placeholder {0}: organisation.name
 #: packages/lib/server-only/organisation/create-organisation-member-invites.ts
-msgid "You have been invited to join {0} on Documenso"
-msgstr "Vous avez été invité à rejoindre {0} sur Documenso"
+msgid "You have been invited to join {0} on Bchatsign"
+msgstr ""
 
 #: packages/email/templates/organisation-invite.tsx
 msgid "You have been invited to join the following organisation"
