@@ -1,5 +1,5 @@
 import { env } from '@bchatsign/lib/utils/env';
-import { ResendTransport } from '@bchatsign/nodemailer-resend';
+import { ResendTransport } from '@documenso/nodemailer-resend';
 import type { Transporter } from 'nodemailer';
 import { createTransport } from 'nodemailer';
 
