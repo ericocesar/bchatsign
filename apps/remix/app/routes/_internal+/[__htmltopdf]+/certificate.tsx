@@ -396,17 +396,25 @@ export default function SigningCertificate({ loaderData }: Route.ComponentProps)
           {validationLink && (
             <div className="flex justify-end">
               <div className="max-w-xs text-right text-black text-sm print:text-xs">
-                <p className="font-medium">Link de validação:</p>
-                <p className="break-all">{validationLink}</p>
+                <p className="font-medium">Para conferir a validade, acesse</p>
+                <p className="break-all">Link de validação: {validationLink}</p>
               </div>
             </div>
           )}
 
-          <div className="flex items-end justify-end gap-x-4">
-            <p className="flex-shrink-0 font-medium text-black text-sm print:text-xs">
-              {_(msg`Signing certificate provided by`)}:
-            </p>
-            <BrandingLogo className="max-h-6 print:max-h-4" />
+          <div className="flex justify-end">
+            <div className="max-w-sm text-right text-black text-sm print:text-xs leading-relaxed">
+              <p>Documento assinado com validade jurídica.</p>
+              <p>
+                Certificado de assinatura fornecido por BchatSign. Documento final selado digitalmente com
+                certificado A1 emitido no âmbito da ICP Brasil.
+              </p>
+              <p>
+                As assinaturas digitais e eletrônicas têm validade jurídica prevista na Medida Provisória nº
+                2200-2/2001.
+              </p>
+              <p>Validação externa: https://validar.iti.gov.br</p>
+            </div>
           </div>
         </div>
       )}

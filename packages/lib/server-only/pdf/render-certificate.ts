@@ -6,6 +6,8 @@ import Konva from 'konva';
 import 'konva/skia-backend';
 import type { Canvas } from 'skia-canvas';
 import { Image as SkiaImage } from 'skia-canvas';
+import fs from 'node:fs';
+
 import { UAParser } from 'ua-parser-js';
 import { renderSVG } from 'uqr';
 
@@ -15,6 +17,7 @@ import type { TDocumentAuditLogBaseSchema } from '../../types/document-audit-log
 import { svgToPng } from '../../utils/images/svg-to-png';
 import { formatEvidenceDateTime } from './format-evidence-date-time';
 import { ensureFontLibrary } from './helpers';
+import { resolvePackageAssetPath } from './resolve-package-asset-path';
 import { reverseGeocode } from './reverse-geocode';
 
 type ColumnWidths = [number, number];
@@ -748,26 +751,27 @@ const renderRow = (options: RenderRowOptions) => {
   return rowGroup;
 };
 
-const renderBranding = async ({ qrToken }: { qrToken: string | null }) => {
+const renderBranding = async ({
+  qrToken,
+  pageWidth,
+  margin,
+}: {
+  qrToken: string | null;
+  pageWidth: number;
+  margin: number;
+}) => {
   const branding = new Konva.Group();
   const validationLink = qrToken ? `${NEXT_PUBLIC_WEBAPP_URL()}/share/${qrToken}` : null;
-  const validationLinkWidth = 180;
-
-  const text = new Konva.Text({
-    x: 0,
-    text: 'Certificado de assinatura fornecido por BchatSign.\nDocumento final selado digitalmente com certificado A1 emitido no âmbito da ICP-Brasil.',
-    fontFamily: certificateFontFamily,
-    fontSize: textSm,
-    width: validationLinkWidth + (qrToken ? 72 : 0),
-    wrap: 'char',
-    lineHeight: 1.4,
-    fill: textMutedForeground,
-  });
+  const contentWidth = pageWidth - margin * 2;
+  const qrSectionWidth = 280;
 
   const qrSize = qrToken ? 72 : 0;
-  const qrSection = new Konva.Group({ x: 0, y: 0 });
+
+  const qrSectionRect = { width: 0, height: 0 };
 
   if (validationLink) {
+    const qrSection = new Konva.Group({ x: contentWidth - qrSectionWidth, y: 0 });
+
     const qrSvg = renderSVG(validationLink, {
       ecc: 'Q',
     });
@@ -780,15 +784,15 @@ const renderBranding = async ({ qrToken }: { qrToken: string | null }) => {
       image: qrSkiaImage,
       height: qrSize,
       width: qrSize,
-      x: validationLinkWidth - qrSize,
+      x: qrSectionWidth - qrSize,
       y: 0,
     });
 
     const validationLabel = new Konva.Text({
       x: 0,
       y: qrSize + 8,
-      text: 'Link de validação:',
-      width: validationLinkWidth,
+      text: 'Para conferir a validade, acesse',
+      width: qrSectionWidth,
       align: 'right',
       fontFamily: certificateFontFamily,
       fontSize: textSm,
@@ -799,8 +803,8 @@ const renderBranding = async ({ qrToken }: { qrToken: string | null }) => {
     const validationValue = new Konva.Text({
       x: 0,
       y: qrSize + 22,
-      text: validationLink,
-      width: validationLinkWidth,
+      text: `Link de validação: ${validationLink}`,
+      width: qrSectionWidth,
       align: 'right',
       fontFamily: certificateFontFamily,
       fontSize: textXs,
@@ -813,31 +817,68 @@ const renderBranding = async ({ qrToken }: { qrToken: string | null }) => {
     qrSection.add(validationLabel);
     qrSection.add(validationValue);
     branding.add(qrSection);
+
+    qrSectionRect.width = qrSection.getClientRect().width;
+    qrSectionRect.height = qrSection.getClientRect().height;
   }
 
-  const logoGroup = new Konva.Group({
-    y: qrSection.getClientRect().height > 0 ? qrSection.getClientRect().height + 16 : 0,
-  });
+  const logoPath = resolvePackageAssetPath('static/icpbrasil.png');
+  const logoBuffer = fs.readFileSync(logoPath);
+  const logoSkiaImage = new SkiaImage(logoBuffer) as unknown as HTMLImageElement;
 
-  const itiText = new Konva.Text({
+  const logoHeight = textSm * 6;
+  const logoAspectRatio = logoSkiaImage.width / logoSkiaImage.height;
+  const logoWidth = logoHeight * logoAspectRatio;
+  const logoGap = 6;
+
+  const titleTextY = qrSectionRect.height > 0 ? qrSectionRect.height + 16 : 0;
+
+  const titleText = new Konva.Text({
     x: 0,
-    y: 0,
-    text: 'Validação externa: https://validar.iti.gov.br/',
+    y: titleTextY,
+    text: 'Documento assinado com validade jurídica.',
     fontFamily: certificateFontFamily,
-    fontSize: textXs,
-    width: validationLinkWidth + (qrToken ? 72 : 0),
+    fontSize: textSm,
+    width: contentWidth,
     wrap: 'char',
     lineHeight: 1.4,
     fill: textMutedForeground,
   });
-  logoGroup.add(itiText);
 
-  text.setAttrs({
-    y: itiText.height() + 4,
+  branding.add(titleText);
+
+  const brandedTextGroup = new Konva.Group({
+    y: titleTextY + titleText.height(),
   });
-  logoGroup.add(text);
 
-  branding.add(logoGroup);
+  const logoImage = new Konva.Image({
+    image: logoSkiaImage,
+    x: 0,
+    y: 0,
+    width: logoWidth,
+    height: logoHeight,
+  });
+
+  brandedTextGroup.add(logoImage);
+
+  const brandedText = new Konva.Text({
+    x: logoWidth + logoGap,
+    y: 0,
+    text:
+      'Certificado de assinatura fornecido por BchatSign.\n' +
+      'Documento final selado digitalmente com certificado A1 emitido no âmbito da ICP Brasil.\n' +
+      'As assinaturas digitais e eletrônicas têm validade jurídica prevista na Medida Provisória nº 22002/2001.\n' +
+      'Validação externa: https://validar.iti.gov.br',
+    fontFamily: certificateFontFamily,
+    fontSize: textSm,
+    width: contentWidth - logoWidth - logoGap,
+    wrap: 'char',
+    lineHeight: 1.4,
+    fill: textMutedForeground,
+  });
+
+  brandedTextGroup.add(brandedText);
+  branding.add(brandedTextGroup);
 
   return branding;
 };
@@ -1022,7 +1063,7 @@ export async function renderCertificate({
 
   const tables = renderTables({ groupedRows, columnWidths, i18n });
 
-  const brandingGroup = await renderBranding({ qrToken });
+  const brandingGroup = await renderBranding({ qrToken, pageWidth, margin });
   const brandingRect = brandingGroup.getClientRect();
   const brandingTopPadding = 24;
 
