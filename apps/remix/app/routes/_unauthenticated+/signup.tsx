@@ -1,12 +1,10 @@
-import path from 'node:path';
-import fs from 'node:fs';
-
 import {
   IS_GOOGLE_SSO_ENABLED,
   IS_MICROSOFT_SSO_ENABLED,
   IS_OIDC_SSO_ENABLED,
   isSignupEnabledForProvider,
 } from '@bchatsign/lib/constants/auth';
+import { TERMS_OF_SERVICE, PRIVACY_POLICY } from '@bchatsign/lib/server-only/legal-content';
 import { isValidReturnTo, normalizeReturnTo } from '@bchatsign/lib/utils/is-valid-return-to';
 import { msg } from '@lingui/core/macro';
 import { Trans } from '@lingui/react/macro';
@@ -36,11 +34,6 @@ export async function loader({ request }: Route.LoaderArgs) {
     throw redirect('/signin');
   }
 
-  const docsDir = path.resolve(process.cwd(), '../../docs/documentos');
-
-  const termsContent = fs.readFileSync(path.join(docsDir, 'terms.md'), 'utf-8');
-  const policyContent = fs.readFileSync(path.join(docsDir, 'policy.md'), 'utf-8');
-
   let returnTo = new URL(request.url).searchParams.get('returnTo') ?? undefined;
 
   returnTo = isValidReturnTo(returnTo) ? normalizeReturnTo(returnTo) : undefined;
@@ -51,8 +44,8 @@ export async function loader({ request }: Route.LoaderArgs) {
     isMicrosoftSignupEnabled,
     isOidcSignupEnabled,
     returnTo,
-    termsContent,
-    policyContent,
+    termsContent: TERMS_OF_SERVICE,
+    policyContent: PRIVACY_POLICY,
   };
 }
 
