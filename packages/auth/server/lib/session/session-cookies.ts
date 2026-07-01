@@ -1,4 +1,5 @@
 import { formatSecureCookieName, getCookieDomain, useSecureCookies } from '@bchatsign/lib/constants/auth';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
 import { appLog } from '@bchatsign/lib/utils/debugger';
 import { env } from '@bchatsign/lib/utils/env';
 import type { Context } from 'hono';
@@ -15,7 +16,10 @@ const getAuthSecret = () => {
   const authSecret = env('NEXTAUTH_SECRET');
 
   if (!authSecret) {
-    throw new Error('NEXTAUTH_SECRET is not set');
+    throw new AppError(AppErrorCode.UNKNOWN_ERROR, {
+      statusCode: 500,
+      message: 'NEXTAUTH_SECRET is not set',
+    });
   }
 
   return authSecret;

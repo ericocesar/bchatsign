@@ -17,8 +17,7 @@ export const FormErrorMessage = ({ error, className }: FormErrorMessageProps) =>
 
   let errorMessage = isErrorWithMessage(error) ? error.message : '';
 
-  // Checks to see if there's a translation for the string, since we're passing IDs for Zod errors.
-  if (typeof errorMessage === 'string' && i18n.t(errorMessage)) {
+  if (typeof errorMessage === 'string' && i18n.messages[errorMessage]) {
     errorMessage = i18n.t(errorMessage);
   }
 

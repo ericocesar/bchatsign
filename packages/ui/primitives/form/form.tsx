@@ -135,8 +135,7 @@ const FormMessage = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<
       return null;
     }
 
-    // Checks to see if there's a translation for the string, since we're passing IDs for Zod errors.
-    if (typeof body === 'string' && i18n.t(body)) {
+    if (typeof body === 'string' && i18n.messages[body]) {
       body = i18n.t(body);
     }
 
