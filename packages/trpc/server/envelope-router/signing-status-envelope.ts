@@ -172,6 +172,13 @@ export const signingStatusEnvelopeRoute = maybeAuthenticatedProcedure
       // #endregion
 
       if (latestSealJob?.status === BackgroundJobStatus.FAILED || isSealJobStuck || isSealJobMissing) {
+        const failureReason =
+          latestSealJob?.status === BackgroundJobStatus.FAILED
+            ? 'SEAL_JOB_FAILED'
+            : isSealJobStuck
+              ? 'SEAL_JOB_STUCK'
+              : 'SEAL_JOB_MISSING';
+
         // #region debug-point E:signing-status-failed
         await reportSigningStatusDebugEvent(
           'E',
@@ -185,12 +192,14 @@ export const signingStatusEnvelopeRoute = maybeAuthenticatedProcedure
             isSealJobStuck,
             isSealJobMissing,
             processingExpiredAt: processingExpiredAt.toISOString(),
+            failureReason,
           },
         );
         // #endregion
 
         return {
           status: 'FAILED',
+          failureReason,
         };
       }
 

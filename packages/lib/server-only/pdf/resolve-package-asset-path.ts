@@ -5,6 +5,9 @@ export const resolvePackageAssetPath = (assetPath: string) => {
   const normalizedAssetPath = assetPath.replace(/^[/\\]+/, '');
 
   const candidates = [
+    path.join(process.cwd(), 'public', normalizedAssetPath),
+    path.join(process.cwd(), 'apps/remix/public', normalizedAssetPath),
+    path.join(process.cwd(), '../../apps/remix/public', normalizedAssetPath),
     path.join(process.cwd(), 'packages/assets', normalizedAssetPath),
     path.join(process.cwd(), '../../packages/assets', normalizedAssetPath),
     path.join(process.cwd(), '../assets', normalizedAssetPath),

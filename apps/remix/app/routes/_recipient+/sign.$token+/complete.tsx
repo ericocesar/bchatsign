@@ -11,6 +11,7 @@ import { getRecipientSignatures } from '@bchatsign/lib/server-only/recipient/get
 import { getUserByEmail } from '@bchatsign/lib/server-only/user/get-user-by-email';
 import { isDocumentCompleted } from '@bchatsign/lib/utils/document';
 import { trpc } from '@bchatsign/trpc/react';
+import { Alert, AlertDescription, AlertTitle } from '@bchatsign/ui/primitives/alert';
 import { DocumentShareButton } from '@bchatsign/ui/components/document/document-share-button';
 import { SigningCard3D } from '@bchatsign/ui/components/signing-card';
 import { cn } from '@bchatsign/ui/lib/utils';
@@ -118,12 +119,16 @@ export default function CompletedSigningPage({ loaderData }: Route.ComponentProp
     branding,
   } = loaderData;
 
+  const canPollSigningStatus = isDocumentAccessValid && Boolean(recipient?.token);
+
   // Poll signing status every few seconds
-  const { data: signingStatusData } = trpc.envelope.signingStatus.useQuery(
+  const { data: signingStatusData, isError: isSigningStatusError } = trpc.envelope.signingStatus.useQuery(
     {
       token: recipient?.token || '',
     },
     {
+      enabled: canPollSigningStatus,
+      retry: false,
       refetchInterval: (query) => {
         const status = query.state.data?.status;
 
@@ -139,6 +144,7 @@ export default function CompletedSigningPage({ loaderData }: Route.ComponentProp
 
   // Use signing status from query if available, otherwise fall back to document status
   const signingStatus = signingStatusData?.status ?? 'PENDING';
+  const signingFailureReason = signingStatusData?.failureReason;
 
   if (!isDocumentAccessValid) {
     return (
@@ -246,10 +252,31 @@ export default function CompletedSigningPage({ loaderData }: Route.ComponentProp
               ))
               .with({ status: 'FAILED' }, () => (
                 <p className="mt-2.5 max-w-[60ch] text-center font-medium text-muted-foreground/60 text-sm md:text-base">
-                  <Trans>
-                    We could not finish processing this document automatically. Please try again later or contact the
-                    document owner for support.
-                  </Trans>
+                  {match(signingFailureReason)
+                    .with('SEAL_JOB_FAILED', () => (
+                      <Trans>
+                        We could not seal this document due to a server processing failure. Please contact the
+                        document owner for support.
+                      </Trans>
+                    ))
+                    .with('SEAL_JOB_STUCK', () => (
+                      <Trans>
+                        Document sealing is taking longer than expected and has timed out. Please contact the document
+                        owner for support.
+                      </Trans>
+                    ))
+                    .with('SEAL_JOB_MISSING', () => (
+                      <Trans>
+                        The final document sealing step did not start correctly. Please contact the document owner for
+                        support.
+                      </Trans>
+                    ))
+                    .otherwise(() => (
+                      <Trans>
+                        We could not finish processing this document automatically. Please try again later or contact
+                        the document owner for support.
+                      </Trans>
+                    ))}
                 </p>
               ))
               .with({ deletedAt: null }, () => (
@@ -264,6 +291,20 @@ export default function CompletedSigningPage({ loaderData }: Route.ComponentProp
                   </Trans>
                 </p>
               ))}
+
+            {isSigningStatusError && (
+              <Alert variant="destructive" className="mt-6 w-full max-w-[60ch]">
+                <AlertTitle>
+                  <Trans>Unable to refresh document status</Trans>
+                </AlertTitle>
+                <AlertDescription>
+                  <Trans>
+                    We could not fetch the latest processing status right now. You can still continue, and this page
+                    will show the current state when refreshed.
+                  </Trans>
+                </AlertDescription>
+              </Alert>
+            )}
 
             <div className="mt-8 flex w-full max-w-xs flex-col items-stretch gap-4 md:w-auto md:max-w-none md:flex-row md:items-center">
               <DocumentShareButton

@@ -123,6 +123,7 @@ COPY --from=installer --chown=nodejs:nodejs /app/apps/remix/build ./apps/remix/b
 COPY --from=installer --chown=nodejs:nodejs /app/apps/remix/public ./apps/remix/public
 COPY --from=installer --chown=nodejs:nodejs /app/packages/assets/logo.svg ./packages/assets/logo.svg
 COPY --from=installer --chown=nodejs:nodejs /app/packages/assets/logodocs.png ./packages/assets/logodocs.png
+COPY --from=installer --chown=nodejs:nodejs /app/packages/assets/static/icpbrasil.png ./packages/assets/static/icpbrasil.png
 
 # Copy the prisma binary, schema and migrations
 COPY --from=installer --chown=nodejs:nodejs /app/packages/prisma/schema.prisma ./packages/prisma/schema.prisma
