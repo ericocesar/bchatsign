@@ -311,8 +311,14 @@ export const renderSignatureFieldElement = (field: FieldToRender, options: Rende
 
   // Handle export mode.
   if (mode === 'export') {
-    // Hide the rectangle.
-    fieldRect.opacity(0);
+    // Keep a solid background in export so underlying template labels/text
+    // (e.g. legacy "Assinatura do cliente") do not bleed through.
+    fieldRect.setAttrs({
+      opacity: 1,
+      fill: '#FFFFFF',
+      strokeEnabled: false,
+      strokeWidth: 0,
+    });
   }
 
   if (color !== 'readOnly' && mode !== 'export') {

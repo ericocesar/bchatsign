@@ -129,6 +129,33 @@ export const insertFieldInPDFV1 = async (pdf: PDFDocument, field: FieldWithSigna
         type: P.union(FieldType.SIGNATURE, FieldType.FREE_SIGNATURE),
       },
       async (field) => {
+        // Clear the full signature area first so template hints/labels under
+        // the field (for example "Assinatura do cliente") are removed.
+        let clearX = fieldX;
+        let clearY = pageHeight - fieldY - fieldHeight;
+
+        if (pageRotationInDegrees !== 0) {
+          const adjustedPosition = adjustPositionForRotation(
+            pageWidth,
+            pageHeight,
+            clearX,
+            clearY,
+            pageRotationInDegrees,
+          );
+
+          clearX = adjustedPosition.xPos;
+          clearY = adjustedPosition.yPos;
+        }
+
+        page.drawRectangle({
+          x: clearX,
+          y: clearY,
+          width: fieldWidth,
+          height: fieldHeight,
+          color: rgb(1, 1, 1),
+          rotate: degrees(pageRotationInDegrees),
+        });
+
         if (field.signature?.signatureImageAsBase64) {
           const image = await pdf.embedPng(field.signature?.signatureImageAsBase64 ?? '');
 
