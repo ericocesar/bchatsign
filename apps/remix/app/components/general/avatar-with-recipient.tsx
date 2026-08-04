@@ -8,7 +8,7 @@ import { cn } from '@bchatsign/ui/lib/utils';
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
-import { DocumentStatus } from '@prisma/client';
+import { DocumentStatus } from '@bchatsign/prisma/generated/types';
 
 import { StackAvatar } from './stack-avatar';
 

@@ -7,7 +7,7 @@ import { Spinner } from '@bchatsign/ui/primitives/spinner';
 import { TooltipProvider } from '@bchatsign/ui/primitives/tooltip';
 import { msg } from '@lingui/core/macro';
 import { Trans } from '@lingui/react/macro';
-import { EnvelopeType } from '@prisma/client';
+import { EnvelopeType } from '@bchatsign/prisma/generated/types';
 import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router';
 

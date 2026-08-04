@@ -7,7 +7,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Input } from '@bchatsign/ui/primitives/input';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Trans } from '@lingui/react/macro';
-import { DocumentDistributionMethod, DocumentSigningOrder, RecipientRole } from '@prisma/client';
+import { DocumentDistributionMethod, DocumentSigningOrder, RecipientRole } from '@bchatsign/prisma/generated/types';
 import { nanoid } from 'nanoid';
 import { useForm } from 'react-hook-form';
 

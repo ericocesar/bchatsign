@@ -15,7 +15,7 @@ import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
 import type { Field } from '@prisma/client';
-import { DocumentDistributionMethod, DocumentStatus, RecipientRole } from '@prisma/client';
+import { DocumentDistributionMethod, DocumentStatus, RecipientRole } from '@bchatsign/prisma/generated/types';
 import { AnimatePresence, motion } from 'framer-motion';
 import { InfoIcon } from 'lucide-react';
 import { useEffect } from 'react';

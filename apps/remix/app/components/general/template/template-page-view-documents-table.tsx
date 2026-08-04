@@ -12,7 +12,7 @@ import type { MessageDescriptor } from '@lingui/core';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { DocumentSource, DocumentStatus as DocumentStatusEnum } from '@prisma/client';
+import { DocumentSource, DocumentStatus as DocumentStatusEnum } from '@bchatsign/prisma/generated/types';
 import { InfoIcon } from 'lucide-react';
 import { DateTime } from 'luxon';
 import { useMemo } from 'react';

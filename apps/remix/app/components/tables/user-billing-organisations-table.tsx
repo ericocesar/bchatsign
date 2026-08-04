@@ -8,7 +8,7 @@ import { Button } from '@bchatsign/ui/primitives/button';
 import type { DataTableColumnDef } from '@bchatsign/ui/primitives/data-table';
 import { DataTable } from '@bchatsign/ui/primitives/data-table';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { SubscriptionStatus } from '@prisma/client';
+import { SubscriptionStatus } from '@bchatsign/prisma/generated/types';
 import { useMemo } from 'react';
 import { Link } from 'react-router';
 import { match } from 'ts-pattern';

@@ -1,6 +1,6 @@
 import { isSignatureFieldType } from '@bchatsign/prisma/guards/is-signature-field';
-import type { Envelope } from '@prisma/client';
-import { type Field, RecipientRole, SigningStatus } from '@prisma/client';
+import { RecipientRole, SigningStatus } from '@bchatsign/prisma/generated/types';
+import type { Envelope, Field } from '@prisma/client';
 
 import { NEXT_PUBLIC_WEBAPP_URL } from '../constants/app';
 import { AppError, AppErrorCode } from '../errors/app-error';

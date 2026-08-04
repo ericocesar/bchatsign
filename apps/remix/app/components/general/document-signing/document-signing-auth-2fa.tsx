@@ -7,7 +7,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { PinInput, PinInputGroup, PinInputSlot } from '@bchatsign/ui/primitives/pin-input';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Trans } from '@lingui/react/macro';
-import { RecipientRole } from '@prisma/client';
+import { RecipientRole } from '@bchatsign/prisma/generated/types';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { match } from 'ts-pattern';

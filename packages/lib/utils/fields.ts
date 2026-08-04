@@ -1,7 +1,8 @@
 import { PDF_VIEWER_CONTENT_SELECTOR } from '@bchatsign/lib/constants/pdf-viewer';
 import type { I18n } from '@lingui/core';
 import { msg } from '@lingui/core/macro';
-import { type Envelope, type Field, FieldType } from '@prisma/client';
+import { FieldType } from '@bchatsign/prisma/generated/types';
+import type { Envelope, Field } from '@prisma/client';
 
 import { extractLegacyIds } from '../universal/id';
 

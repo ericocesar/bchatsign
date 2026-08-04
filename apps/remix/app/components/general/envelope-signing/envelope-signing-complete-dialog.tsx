@@ -8,7 +8,7 @@ import { mapSecondaryIdToDocumentId } from '@bchatsign/lib/utils/envelope';
 import { trpc } from '@bchatsign/trpc/react';
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { useLingui } from '@lingui/react/macro';
-import { FieldType } from '@prisma/client';
+import { FieldType } from '@bchatsign/prisma/generated/types';
 import { useMemo } from 'react';
 import { useNavigate, useRevalidator, useSearchParams } from 'react-router';
 

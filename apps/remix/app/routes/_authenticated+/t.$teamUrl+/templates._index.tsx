@@ -9,7 +9,7 @@ import type { RowSelectionState } from '@bchatsign/ui/primitives/data-table';
 import { Tabs, TabsList, TabsTrigger } from '@bchatsign/ui/primitives/tabs';
 import { msg } from '@lingui/core/macro';
 import { Trans } from '@lingui/react/macro';
-import { EnvelopeType, OrganisationType } from '@prisma/client';
+import { EnvelopeType, OrganisationType } from '@bchatsign/prisma/generated/types';
 import { Bird } from 'lucide-react';
 import { parseAsStringLiteral, useQueryState } from 'nuqs';
 import { useMemo, useState } from 'react';

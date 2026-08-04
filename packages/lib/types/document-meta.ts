@@ -6,7 +6,7 @@ import { isValidRedirectUrl } from '@bchatsign/lib/utils/is-valid-redirect-url';
 import { zEmail } from '@bchatsign/lib/utils/zod';
 import { DocumentMetaSchema } from '@bchatsign/prisma/generated/zod/modelSchema/DocumentMetaSchema';
 import { msg } from '@lingui/core/macro';
-import { DocumentDistributionMethod, DocumentSigningOrder } from '@prisma/client';
+import { DocumentDistributionMethod, DocumentSigningOrder } from '@bchatsign/prisma/generated/types';
 import { z } from 'zod';
 
 import { ZDocumentEmailSettingsSchema } from './document-email';

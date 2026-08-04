@@ -18,7 +18,7 @@ import { Tabs, TabsList, TabsTrigger } from '@bchatsign/ui/primitives/tabs';
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { WebhookCallStatus, WebhookTriggerEvents } from '@prisma/client';
+import { WebhookCallStatus, WebhookTriggerEvents } from '@bchatsign/prisma/generated/types';
 import { CheckCircle2Icon, ChevronRightIcon, PencilIcon, TerminalIcon, XCircleIcon } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useLocation, useNavigate, useSearchParams } from 'react-router';

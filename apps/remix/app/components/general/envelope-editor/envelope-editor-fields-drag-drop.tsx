@@ -11,7 +11,7 @@ import { cn } from '@bchatsign/ui/lib/utils';
 import { FRIENDLY_FIELD_TYPE } from '@bchatsign/ui/primitives/document-flow/types';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react/macro';
-import { FieldType } from '@prisma/client';
+import { FieldType } from '@bchatsign/prisma/generated/types';
 import {
   CalendarIcon,
   CheckSquareIcon,

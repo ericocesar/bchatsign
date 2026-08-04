@@ -1,5 +1,11 @@
+import {
+  DocumentDistributionMethod,
+  ReadStatus,
+  RecipientRole,
+  SendStatus,
+  SigningStatus,
+} from '@bchatsign/prisma/generated/types';
 import type { Recipient } from '@prisma/client';
-import { DocumentDistributionMethod, ReadStatus, RecipientRole, SendStatus, SigningStatus } from '@prisma/client';
 
 type RecipientForType = Pick<Recipient, 'role' | 'signingStatus' | 'readStatus' | 'sendStatus'>;
 

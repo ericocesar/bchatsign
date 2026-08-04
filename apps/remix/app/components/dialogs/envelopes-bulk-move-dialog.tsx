@@ -14,7 +14,7 @@ import { Input } from '@bchatsign/ui/primitives/input';
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Plural, Trans, useLingui } from '@lingui/react/macro';
-import { EnvelopeType } from '@prisma/client';
+import { EnvelopeType } from '@bchatsign/prisma/generated/types';
 import type * as DialogPrimitive from '@radix-ui/react-dialog';
 import { FolderIcon, HomeIcon, Loader2, Search } from 'lucide-react';
 import { useEffect, useState } from 'react';

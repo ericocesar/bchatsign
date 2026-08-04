@@ -17,7 +17,8 @@ import {
   DialogTitle,
 } from '@bchatsign/ui/primitives/dialog';
 import { Trans } from '@lingui/react/macro';
-import { type DocumentData, DocumentStatus, type EnvelopeItem, EnvelopeType } from '@prisma/client';
+import { DocumentStatus, EnvelopeType } from '@bchatsign/prisma/generated/types';
+import type { DocumentData, EnvelopeItem } from '@prisma/client';
 import { DownloadIcon } from 'lucide-react';
 import { DateTime } from 'luxon';
 import { useEffect, useState } from 'react';

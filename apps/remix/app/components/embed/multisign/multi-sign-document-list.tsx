@@ -5,7 +5,7 @@ import { Badge } from '@bchatsign/ui/primitives/badge';
 import { Button } from '@bchatsign/ui/primitives/button';
 import { Progress } from '@bchatsign/ui/primitives/progress';
 import { Trans } from '@lingui/react/macro';
-import { ReadStatus, RecipientRole, SigningStatus } from '@prisma/client';
+import { ReadStatus, RecipientRole, SigningStatus } from '@bchatsign/prisma/generated/types';
 import { ArrowRight, EyeIcon, XCircle } from 'lucide-react';
 import { match } from 'ts-pattern';
 

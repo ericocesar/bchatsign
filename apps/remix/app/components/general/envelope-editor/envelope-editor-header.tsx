@@ -4,7 +4,7 @@ import { Badge } from '@bchatsign/ui/primitives/badge';
 import { Button } from '@bchatsign/ui/primitives/button';
 import { Separator } from '@bchatsign/ui/primitives/separator';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { DocumentStatus, EnvelopeType, TemplateType } from '@prisma/client';
+import { DocumentStatus, EnvelopeType, TemplateType } from '@bchatsign/prisma/generated/types';
 import {
   AlertTriangleIcon,
   Building2Icon,

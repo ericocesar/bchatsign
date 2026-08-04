@@ -21,7 +21,7 @@ import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { RecipientRole } from '@prisma/client';
+import { RecipientRole } from '@bchatsign/prisma/generated/types';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router';
 

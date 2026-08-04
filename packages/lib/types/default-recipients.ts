@@ -1,4 +1,4 @@
-import { RecipientRole } from '@prisma/client';
+import { RecipientRole } from '@bchatsign/prisma/generated/types';
 import { z } from 'zod';
 
 import { zEmail } from '../utils/zod';

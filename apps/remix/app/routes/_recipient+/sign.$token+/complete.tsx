@@ -18,7 +18,7 @@ import { cn } from '@bchatsign/ui/lib/utils';
 import { Badge } from '@bchatsign/ui/primitives/badge';
 import { Button } from '@bchatsign/ui/primitives/button';
 import { Trans } from '@lingui/react/macro';
-import { DocumentStatus, FieldType, RecipientRole } from '@prisma/client';
+import { DocumentStatus, FieldType, RecipientRole } from '@bchatsign/prisma/generated/types';
 import { CheckCircle2, CircleAlert, Clock8, DownloadIcon, Loader2 } from 'lucide-react';
 import { Link } from 'react-router';
 import { match } from 'ts-pattern';

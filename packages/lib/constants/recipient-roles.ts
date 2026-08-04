@@ -1,6 +1,6 @@
 import type { MessageDescriptor } from '@lingui/core';
 import { msg } from '@lingui/core/macro';
-import { RecipientRole } from '@prisma/client';
+import { RecipientRole } from '@bchatsign/prisma/generated/types';
 
 export const RECIPIENT_ROLES_DESCRIPTION = {
   [RecipientRole.APPROVER]: {

@@ -12,7 +12,7 @@ import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Plural, Trans } from '@lingui/react/macro';
 import type { Field, Recipient } from '@prisma/client';
-import { FieldType } from '@prisma/client';
+import { FieldType } from '@bchatsign/prisma/generated/types';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRevalidator } from 'react-router';

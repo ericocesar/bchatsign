@@ -4,7 +4,7 @@ import { isDocumentCompleted } from '@bchatsign/lib/utils/document';
 import { formatDocumentsPath } from '@bchatsign/lib/utils/teams';
 import { Button } from '@bchatsign/ui/primitives/button';
 import { Trans } from '@lingui/react/macro';
-import { DocumentStatus, RecipientRole, SigningStatus } from '@prisma/client';
+import { DocumentStatus, RecipientRole, SigningStatus } from '@bchatsign/prisma/generated/types';
 import { CheckCircle, Download, EyeIcon, Pencil } from 'lucide-react';
 import { Link } from 'react-router';
 import { match } from 'ts-pattern';

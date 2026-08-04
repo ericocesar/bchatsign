@@ -3,7 +3,7 @@ import { MultiSelect, type Option } from '@bchatsign/ui/primitives/multiselect';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { WebhookTriggerEvents } from '@prisma/client';
+import { WebhookTriggerEvents } from '@bchatsign/prisma/generated/types';
 
 type WebhookMultiSelectComboboxProps = {
   listValues: string[];

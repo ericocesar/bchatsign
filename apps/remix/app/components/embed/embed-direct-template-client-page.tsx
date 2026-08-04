@@ -26,14 +26,8 @@ import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import {
-  type DocumentMeta,
-  type EnvelopeItem,
-  type Field,
-  FieldType,
-  type Recipient,
-  type Signature,
-} from '@prisma/client';
+import { FieldType } from '@bchatsign/prisma/generated/types';
+import type { DocumentMeta, EnvelopeItem, Field, Recipient, Signature } from '@prisma/client';
 import { LucideChevronDown, LucideChevronUp } from 'lucide-react';
 import { DateTime } from 'luxon';
 import { useEffect, useLayoutEffect, useState } from 'react';

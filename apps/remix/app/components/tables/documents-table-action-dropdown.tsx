@@ -16,7 +16,7 @@ import {
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { DocumentStatus, EnvelopeType, RecipientRole } from '@prisma/client';
+import { DocumentStatus, EnvelopeType, RecipientRole } from '@bchatsign/prisma/generated/types';
 import {
   CheckCircle,
   Copy,

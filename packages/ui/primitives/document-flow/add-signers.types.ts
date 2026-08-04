@@ -1,7 +1,7 @@
 import { ZRecipientActionAuthTypesSchema } from '@bchatsign/lib/types/document-auth';
 import { zEmail } from '@bchatsign/lib/utils/zod';
 import { msg } from '@lingui/core/macro';
-import { DocumentSigningOrder, RecipientRole } from '@prisma/client';
+import { DocumentSigningOrder, RecipientRole } from '@bchatsign/prisma/generated/types';
 import { z } from 'zod';
 
 export const ZAddSignersFormSchema = z.object({

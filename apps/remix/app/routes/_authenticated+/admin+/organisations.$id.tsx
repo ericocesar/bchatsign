@@ -29,7 +29,7 @@ import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { msg } from '@lingui/core/macro';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { OrganisationMemberRole } from '@prisma/client';
+import { OrganisationMemberRole } from '@bchatsign/prisma/generated/types';
 import { ExternalLinkIcon, InfoIcon, Loader } from 'lucide-react';
 import { useMemo } from 'react';
 import { useForm } from 'react-hook-form';

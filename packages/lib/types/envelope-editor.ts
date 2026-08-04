@@ -7,7 +7,7 @@ import { EnvelopeItemSchema } from '@bchatsign/prisma/generated/zod/modelSchema/
 import { EnvelopeSchema } from '@bchatsign/prisma/generated/zod/modelSchema/EnvelopeSchema';
 import { TeamSchema } from '@bchatsign/prisma/generated/zod/modelSchema/TeamSchema';
 import { TemplateDirectLinkSchema } from '@bchatsign/prisma/generated/zod/modelSchema/TemplateDirectLinkSchema';
-import { EnvelopeType } from '@prisma/client';
+import { EnvelopeType } from '@bchatsign/prisma/generated/types';
 import { z } from 'zod';
 
 /**

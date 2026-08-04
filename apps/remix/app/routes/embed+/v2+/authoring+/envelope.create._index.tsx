@@ -18,7 +18,7 @@ import type { TCreateEnvelopePayload } from '@bchatsign/trpc/server/envelope-rou
 import { Spinner } from '@bchatsign/ui/primitives/spinner';
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { DocumentStatus, EnvelopeType, ReadStatus, SendStatus, SigningStatus } from '@prisma/client';
+import { DocumentStatus, EnvelopeType, ReadStatus, SendStatus, SigningStatus } from '@bchatsign/prisma/generated/types';
 import { CheckCircle2Icon } from 'lucide-react';
 import { useLayoutEffect, useMemo, useState } from 'react';
 

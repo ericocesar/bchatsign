@@ -2,7 +2,7 @@ import { ZRecipientActionAuthTypesSchema, ZRecipientAuthOptionsSchema } from '@b
 import type { TEditorEnvelope } from '@bchatsign/lib/types/envelope-editor';
 import { ZRecipientEmailSchema } from '@bchatsign/lib/types/recipient';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { DocumentSigningOrder, RecipientRole } from '@prisma/client';
+import { DocumentSigningOrder, RecipientRole } from '@bchatsign/prisma/generated/types';
 import { useId } from 'react';
 import type { UseFormReturn } from 'react-hook-form';
 import { useForm } from 'react-hook-form';

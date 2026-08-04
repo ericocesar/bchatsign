@@ -1,17 +1,5 @@
 import type { DocumentMeta, Envelope, Recipient } from '@prisma/client';
-import {
-  DocumentDistributionMethod,
-  DocumentSigningOrder,
-  DocumentSource,
-  DocumentStatus,
-  DocumentVisibility,
-  EnvelopeType,
-  ReadStatus,
-  RecipientRole,
-  SendStatus,
-  SigningStatus,
-  WebhookTriggerEvents,
-} from '@prisma/client';
+import { DocumentDistributionMethod, DocumentSigningOrder, DocumentSource, DocumentStatus, DocumentVisibility, EnvelopeType, ReadStatus, RecipientRole, SendStatus, SigningStatus, WebhookTriggerEvents } from '@bchatsign/prisma/generated/types';
 import { z } from 'zod';
 
 import { mapSecondaryIdToDocumentId, mapSecondaryIdToTemplateId } from '../utils/envelope';

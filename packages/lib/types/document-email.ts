@@ -1,5 +1,5 @@
 import type { DocumentMeta } from '@prisma/client';
-import { DocumentDistributionMethod } from '@prisma/client';
+import { DocumentDistributionMethod } from '@bchatsign/prisma/generated/types';
 import { z } from 'zod';
 
 export enum DocumentEmailEvents {

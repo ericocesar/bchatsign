@@ -1,4 +1,5 @@
-import { type Field, FieldType } from '@prisma/client';
+import { FieldType } from '@bchatsign/prisma/generated/types';
+import type { Field } from '@prisma/client';
 
 import { ZFieldMetaSchema } from '../types/field-meta';
 

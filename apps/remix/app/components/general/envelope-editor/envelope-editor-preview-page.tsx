@@ -14,7 +14,7 @@ import { RecipientSelector } from '@bchatsign/ui/primitives/recipient-selector';
 import { Separator } from '@bchatsign/ui/primitives/separator';
 import type { Faker } from '@faker-js/faker';
 import { Trans } from '@lingui/react/macro';
-import { FieldType, SigningStatus } from '@prisma/client';
+import { FieldType, SigningStatus } from '@bchatsign/prisma/generated/types';
 import { FileTextIcon } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { match } from 'ts-pattern';

@@ -8,7 +8,7 @@ import { formatDocumentsPath } from '@bchatsign/lib/utils/teams';
 import { Button } from '@bchatsign/ui/primitives/button';
 import { Trans } from '@lingui/react/macro';
 import type { Team } from '@prisma/client';
-import { DocumentStatus, EnvelopeType } from '@prisma/client';
+import { DocumentStatus, EnvelopeType } from '@bchatsign/prisma/generated/types';
 import { Link, redirect } from 'react-router';
 
 import { RecipientBranding } from '~/components/general/recipient-branding';

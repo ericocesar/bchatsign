@@ -4,7 +4,7 @@ import { fromCheckboxValue } from '@bchatsign/lib/universal/field-checkbox';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
 import type { DocumentMeta, Signature } from '@prisma/client';
-import { FieldType } from '@prisma/client';
+import { FieldType } from '@bchatsign/prisma/generated/types';
 import { ChevronDown } from 'lucide-react';
 
 import { cn } from '../../lib/utils';

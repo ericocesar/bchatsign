@@ -13,7 +13,7 @@ import {
 } from '@bchatsign/ui/primitives/dialog';
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { EnvelopeType } from '@prisma/client';
+import { EnvelopeType } from '@bchatsign/prisma/generated/types';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 

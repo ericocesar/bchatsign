@@ -5,7 +5,7 @@ import { cn } from '@bchatsign/ui/lib/utils';
 import { Button } from '@bchatsign/ui/primitives/button';
 import { Separator } from '@bchatsign/ui/primitives/separator';
 import { Plural, Trans, useLingui } from '@lingui/react/macro';
-import { EnvelopeType, RecipientRole } from '@prisma/client';
+import { EnvelopeType, RecipientRole } from '@bchatsign/prisma/generated/types';
 import { motion } from 'framer-motion';
 import {
   ArrowLeftIcon,

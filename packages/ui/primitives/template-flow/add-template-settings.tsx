@@ -29,13 +29,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@b
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@bchatsign/ui/primitives/form/form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Trans, useLingui } from '@lingui/react/macro';
-import {
-  DocumentDistributionMethod,
-  DocumentVisibility,
-  type Field,
-  TeamMemberRole,
-  TemplateType,
-} from '@prisma/client';
+import { DocumentDistributionMethod, DocumentVisibility, TeamMemberRole, TemplateType } from '@bchatsign/prisma/generated/types';
+import type { Field } from '@prisma/client';
 import { InfoIcon } from 'lucide-react';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';

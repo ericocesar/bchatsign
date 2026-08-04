@@ -11,7 +11,7 @@ import {
   DropdownMenuTrigger,
 } from '@bchatsign/ui/primitives/dropdown-menu';
 import { Plural, Trans } from '@lingui/react/macro';
-import { FolderType } from '@prisma/client';
+import { FolderType } from '@bchatsign/prisma/generated/types';
 import {
   ArrowRightIcon,
   FolderIcon,

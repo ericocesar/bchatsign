@@ -19,7 +19,7 @@ import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
 import type { Field } from '@prisma/client';
-import { DocumentSigningOrder, RecipientRole, SendStatus } from '@prisma/client';
+import { DocumentSigningOrder, RecipientRole, SendStatus } from '@bchatsign/prisma/generated/types';
 import { motion } from 'framer-motion';
 import { GripVerticalIcon, HelpCircle, Plus, Trash } from 'lucide-react';
 import { useCallback, useId, useMemo, useRef, useState } from 'react';

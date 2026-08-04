@@ -5,7 +5,7 @@ import { TrpcProvider } from '@bchatsign/trpc/react';
 import { Button } from '@bchatsign/ui/primitives/button';
 import { msg } from '@lingui/core/macro';
 import { Trans } from '@lingui/react/macro';
-import { SubscriptionStatus } from '@prisma/client';
+import { SubscriptionStatus } from '@bchatsign/prisma/generated/types';
 import { useMemo } from 'react';
 import { Link, Outlet } from 'react-router';
 

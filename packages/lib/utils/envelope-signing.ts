@@ -19,7 +19,7 @@ import { zEmail } from '@bchatsign/lib/utils/zod';
 import type { TSignEnvelopeFieldValue } from '@bchatsign/trpc/server/envelope-router/sign-envelope-field.types';
 import { checkboxValidationSigns } from '@bchatsign/ui/primitives/document-flow/field-items-advanced-settings/constants';
 import type { Field } from '@prisma/client';
-import { FieldType } from '@prisma/client';
+import { FieldType } from '@bchatsign/prisma/generated/types';
 import { DateTime } from 'luxon';
 import { match, P } from 'ts-pattern';
 import { z } from 'zod';

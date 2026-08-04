@@ -1,7 +1,7 @@
 import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
 import type { TFieldName } from '@bchatsign/lib/types/field';
 import type { TSignEnvelopeFieldValue } from '@bchatsign/trpc/server/envelope-router/sign-envelope-field.types';
-import { FieldType } from '@prisma/client';
+import { FieldType } from '@bchatsign/prisma/generated/types';
 
 import { SignFieldNameDialog } from '~/components/dialogs/sign-field-name-dialog';
 

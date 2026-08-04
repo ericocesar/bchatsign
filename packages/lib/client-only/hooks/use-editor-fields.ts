@@ -4,7 +4,7 @@ import { ZFieldMetaSchema } from '@bchatsign/lib/types/field-meta';
 import { nanoid } from '@bchatsign/lib/universal/id';
 import { zodResolver } from '@hookform/resolvers/zod';
 import type { Field } from '@prisma/client';
-import { FieldType } from '@prisma/client';
+import { FieldType } from '@bchatsign/prisma/generated/types';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
 import { z } from 'zod';

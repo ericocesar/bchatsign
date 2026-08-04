@@ -17,7 +17,7 @@ import { Card, CardContent } from '@bchatsign/ui/primitives/card';
 import { Spinner } from '@bchatsign/ui/primitives/spinner';
 import { msg } from '@lingui/core/macro';
 import { Plural, Trans, useLingui } from '@lingui/react/macro';
-import { DocumentStatus } from '@prisma/client';
+import { DocumentStatus } from '@bchatsign/prisma/generated/types';
 import { ChevronLeft, Users2 } from 'lucide-react';
 import { Link } from 'react-router';
 import { match } from 'ts-pattern';

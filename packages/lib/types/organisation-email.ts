@@ -1,5 +1,5 @@
 import { OrganisationEmailSchema } from '@bchatsign/prisma/generated/zod/modelSchema/OrganisationEmailSchema';
-import { EmailDomainStatus } from '@prisma/client';
+import { EmailDomainStatus } from '@bchatsign/prisma/generated/types';
 import { z } from 'zod';
 
 export const ZOrganisationEmailSchema = OrganisationEmailSchema.pick({

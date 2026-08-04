@@ -15,7 +15,7 @@ import { Stepper } from '@bchatsign/ui/primitives/stepper';
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
-import { DocumentDistributionMethod, DocumentSigningOrder, SigningStatus } from '@prisma/client';
+import { DocumentDistributionMethod, DocumentSigningOrder, SigningStatus } from '@bchatsign/prisma/generated/types';
 import { useLayoutEffect, useMemo, useState } from 'react';
 import { redirect, useLoaderData } from 'react-router';
 

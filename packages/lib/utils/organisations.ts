@@ -1,6 +1,7 @@
 import type { ORGANISATION_MEMBER_ROLE_MAP } from '@bchatsign/lib/constants/organisations-translations';
 import type { Organisation, OrganisationGlobalSettings, Prisma } from '@prisma/client';
-import { DocumentVisibility, type OrganisationGroup, type OrganisationMemberRole } from '@prisma/client';
+import { DocumentVisibility } from '@bchatsign/prisma/generated/types';
+import type { OrganisationGroup, OrganisationMemberRole } from '@prisma/client';
 
 import { DEFAULT_DOCUMENT_DATE_FORMAT } from '../constants/date-formats';
 import { DEFAULT_ENVELOPE_EXPIRATION_PERIOD } from '../constants/envelope-expiration';

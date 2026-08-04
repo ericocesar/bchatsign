@@ -30,7 +30,7 @@ import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
 import type { Field } from '@prisma/client';
-import { FieldType, RecipientRole, SendStatus } from '@prisma/client';
+import { FieldType, RecipientRole, SendStatus } from '@bchatsign/prisma/generated/types';
 import {
   CalendarDays,
   CheckSquare,

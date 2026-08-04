@@ -19,7 +19,7 @@ import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import type { MessageDescriptor } from '@lingui/core';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
-import { FieldType } from '@prisma/client';
+import { FieldType } from '@bchatsign/prisma/generated/types';
 import { forwardRef, useEffect, useState } from 'react';
 import { match } from 'ts-pattern';
 

@@ -1,4 +1,11 @@
-import { DocumentVisibility, OrganisationGroupType, TeamMemberRole } from '@prisma/client';
+import { OrganisationGroupType, TeamMemberRole } from '@bchatsign/prisma/generated/types';
+import type { DocumentVisibility as PrismaDocumentVisibility } from '@prisma/client';
+
+const DocumentVisibility = {
+  ADMIN: 'ADMIN',
+  EVERYONE: 'EVERYONE',
+  MANAGER_AND_ABOVE: 'MANAGER_AND_ABOVE',
+} as const satisfies Record<PrismaDocumentVisibility, PrismaDocumentVisibility>;
 
 export const TEAM_URL_ROOT_REGEX = /^\/t\/[^/]+\/?$/;
 export const TEAM_URL_REGEX = /^\/t\/[^/]+/;
@@ -37,7 +44,7 @@ export const TEAM_DOCUMENT_VISIBILITY_MAP = {
   [TeamMemberRole.ADMIN]: [DocumentVisibility.ADMIN, DocumentVisibility.MANAGER_AND_ABOVE, DocumentVisibility.EVERYONE],
   [TeamMemberRole.MANAGER]: [DocumentVisibility.MANAGER_AND_ABOVE, DocumentVisibility.EVERYONE],
   [TeamMemberRole.MEMBER]: [DocumentVisibility.EVERYONE],
-} satisfies Record<TeamMemberRole, DocumentVisibility[]>;
+} satisfies Record<TeamMemberRole, PrismaDocumentVisibility[]>;
 
 /**
  * A hierarchy of team member roles to determine which role has higher permission than another.

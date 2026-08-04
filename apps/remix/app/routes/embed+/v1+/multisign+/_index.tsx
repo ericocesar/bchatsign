@@ -4,7 +4,7 @@ import { getOrganisationClaimByTeamId } from '@bchatsign/lib/server-only/organis
 import { getRecipientByToken } from '@bchatsign/lib/server-only/recipient/get-recipient-by-token';
 import { ZSignDocumentEmbedDataSchema } from '@bchatsign/lib/types/embed-document-sign-schema';
 import { Trans } from '@lingui/react/macro';
-import { SigningStatus } from '@prisma/client';
+import { SigningStatus } from '@bchatsign/prisma/generated/types';
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { useRevalidator } from 'react-router';
 

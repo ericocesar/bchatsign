@@ -4,7 +4,7 @@
 // data in Prisma.
 //
 /////////////////////////////////////////////////////////////////////////////////////////////
-import { DocumentSource, FieldType } from '@prisma/client';
+import { DocumentSource, FieldType } from '@bchatsign/prisma/generated/types';
 import { z } from 'zod';
 
 import { zEmail } from '../utils/zod';

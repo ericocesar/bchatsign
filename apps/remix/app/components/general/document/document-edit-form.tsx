@@ -21,7 +21,7 @@ import { Stepper } from '@bchatsign/ui/primitives/stepper';
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
-import { DocumentDistributionMethod, DocumentStatus } from '@prisma/client';
+import { DocumentDistributionMethod, DocumentStatus } from '@bchatsign/prisma/generated/types';
 import { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router';
 import { z } from 'zod';

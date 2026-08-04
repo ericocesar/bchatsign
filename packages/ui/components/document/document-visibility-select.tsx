@@ -5,7 +5,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@bchatsign/ui/primitive
 import { t } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { TeamMemberRole } from '@prisma/client';
+import { TeamMemberRole } from '@bchatsign/prisma/generated/types';
 import type { SelectProps } from '@radix-ui/react-select';
 import { InfoIcon } from 'lucide-react';
 import { forwardRef } from 'react';

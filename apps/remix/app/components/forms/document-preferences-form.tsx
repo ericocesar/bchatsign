@@ -39,7 +39,8 @@ import { msg, t } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
 import type { TeamGlobalSettings } from '@prisma/client';
-import { DocumentVisibility, OrganisationType, type RecipientRole } from '@prisma/client';
+import { DocumentVisibility, OrganisationType } from '@bchatsign/prisma/generated/types';
+import type { RecipientRole } from '@prisma/client';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 

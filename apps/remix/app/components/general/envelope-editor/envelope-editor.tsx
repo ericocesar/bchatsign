@@ -8,7 +8,7 @@ import { SpinnerBox } from '@bchatsign/ui/primitives/spinner';
 import type { MessageDescriptor } from '@lingui/core';
 import { msg } from '@lingui/core/macro';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { EnvelopeType } from '@prisma/client';
+import { EnvelopeType } from '@bchatsign/prisma/generated/types';
 import { motion } from 'framer-motion';
 import {
   ArrowLeftIcon,

@@ -17,7 +17,7 @@ import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Plural, Trans } from '@lingui/react/macro';
-import { OrganisationMemberInviteStatus } from '@prisma/client';
+import { OrganisationMemberInviteStatus } from '@bchatsign/prisma/generated/types';
 import { AnimatePresence } from 'framer-motion';
 import { BellIcon } from 'lucide-react';
 

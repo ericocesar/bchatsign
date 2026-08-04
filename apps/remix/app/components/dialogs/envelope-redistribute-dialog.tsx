@@ -21,7 +21,7 @@ import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { msg } from '@lingui/core/macro';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { DocumentStatus, EnvelopeType, SigningStatus } from '@prisma/client';
+import { DocumentStatus, EnvelopeType, SigningStatus } from '@bchatsign/prisma/generated/types';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';

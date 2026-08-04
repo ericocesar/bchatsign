@@ -7,7 +7,7 @@ import { Button } from '@bchatsign/ui/primitives/button';
 import { Sheet, SheetContent, SheetTitle } from '@bchatsign/ui/primitives/sheet';
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { WebhookCallStatus } from '@prisma/client';
+import { WebhookCallStatus } from '@bchatsign/prisma/generated/types';
 import { RotateCwIcon } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { createCallable } from 'react-call';

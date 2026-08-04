@@ -12,7 +12,7 @@ import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { DocumentStatus, RecipientRole, SigningStatus } from '@prisma/client';
+import { DocumentStatus, RecipientRole, SigningStatus } from '@bchatsign/prisma/generated/types';
 import { TooltipArrow } from '@radix-ui/react-tooltip';
 import {
   AlertTriangle,

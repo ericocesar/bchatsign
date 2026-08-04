@@ -12,7 +12,8 @@ import {
 import { Skeleton } from '@bchatsign/ui/primitives/skeleton';
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { DocumentStatus, type EnvelopeItem } from '@prisma/client';
+import { DocumentStatus } from '@bchatsign/prisma/generated/types';
+import type { EnvelopeItem } from '@prisma/client';
 import { DownloadIcon, FileTextIcon } from 'lucide-react';
 import { useMemo, useState } from 'react';
 

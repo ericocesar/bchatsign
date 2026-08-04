@@ -13,7 +13,7 @@ import { Skeleton } from '@bchatsign/ui/primitives/skeleton';
 import { TableCell } from '@bchatsign/ui/primitives/table';
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { EmailDomainStatus } from '@prisma/client';
+import { EmailDomainStatus } from '@bchatsign/prisma/generated/types';
 import { CheckCircle2Icon, ClockIcon } from 'lucide-react';
 import { useMemo } from 'react';
 import { Link, useSearchParams } from 'react-router';

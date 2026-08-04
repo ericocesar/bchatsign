@@ -61,14 +61,7 @@ import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { msg } from '@lingui/core/macro';
 import { Trans, useLingui } from '@lingui/react/macro';
-import {
-  DocumentDistributionMethod,
-  DocumentVisibility,
-  EnvelopeType,
-  RecipientRole,
-  SendStatus,
-  TemplateType,
-} from '@prisma/client';
+import { DocumentDistributionMethod, DocumentVisibility, EnvelopeType, RecipientRole, SendStatus, TemplateType } from '@bchatsign/prisma/generated/types';
 import type * as DialogPrimitive from '@radix-ui/react-dialog';
 import { BadgeCheckIcon, BellRingIcon, InfoIcon, MailIcon, SettingsIcon, ShieldIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';

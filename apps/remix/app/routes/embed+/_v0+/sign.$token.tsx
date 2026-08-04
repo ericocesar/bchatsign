@@ -17,7 +17,7 @@ import { isDocumentCompleted } from '@bchatsign/lib/utils/document';
 import { extractDocumentAuthMethods } from '@bchatsign/lib/utils/document-auth';
 import { isRecipientExpired } from '@bchatsign/lib/utils/recipients';
 import { prisma } from '@bchatsign/prisma';
-import { RecipientRole } from '@prisma/client';
+import { RecipientRole } from '@bchatsign/prisma/generated/types';
 import { data } from 'react-router';
 import { match } from 'ts-pattern';
 

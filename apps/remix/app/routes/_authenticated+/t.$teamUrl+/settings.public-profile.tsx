@@ -11,7 +11,8 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@bchatsign/ui/primitive
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { type TemplateDirectLink, TemplateType } from '@prisma/client';
+import { TemplateType } from '@bchatsign/prisma/generated/types';
+import type { TemplateDirectLink } from '@prisma/client';
 import { useEffect, useMemo, useState } from 'react';
 
 import { ManagePublicTemplateDialog } from '~/components/dialogs/public-profile-template-manage-dialog';

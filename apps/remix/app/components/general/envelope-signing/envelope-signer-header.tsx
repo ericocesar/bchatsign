@@ -9,7 +9,7 @@ import {
 } from '@bchatsign/ui/primitives/dropdown-menu';
 import { Separator } from '@bchatsign/ui/primitives/separator';
 import { Plural, Trans } from '@lingui/react/macro';
-import { EnvelopeType, RecipientRole } from '@prisma/client';
+import { EnvelopeType, RecipientRole } from '@bchatsign/prisma/generated/types';
 import { BanIcon, DownloadCloudIcon } from 'lucide-react';
 import { Link } from 'react-router';
 import { match } from 'ts-pattern';

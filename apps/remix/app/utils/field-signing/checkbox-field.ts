@@ -4,7 +4,7 @@ import type { TFieldCheckbox } from '@bchatsign/lib/types/field';
 import { parseCheckboxCustomText } from '@bchatsign/lib/utils/fields';
 import type { TSignEnvelopeFieldValue } from '@bchatsign/trpc/server/envelope-router/sign-envelope-field.types';
 import { checkboxValidationSigns } from '@bchatsign/ui/primitives/document-flow/field-items-advanced-settings/constants';
-import { FieldType } from '@prisma/client';
+import { FieldType } from '@bchatsign/prisma/generated/types';
 
 import { SignFieldCheckboxDialog } from '~/components/dialogs/sign-field-checkbox-dialog';
 

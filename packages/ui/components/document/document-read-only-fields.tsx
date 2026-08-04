@@ -13,7 +13,7 @@ import { PopoverHover } from '@bchatsign/ui/primitives/popover';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
 import type { DocumentMeta, Field } from '@prisma/client';
-import { SigningStatus } from '@prisma/client';
+import { SigningStatus } from '@bchatsign/prisma/generated/types';
 import { Clock, EyeOffIcon } from 'lucide-react';
 import { useState } from 'react';
 

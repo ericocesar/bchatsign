@@ -4,7 +4,7 @@ import { trpc } from '@bchatsign/trpc/react';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { SubscriptionStatus } from '@prisma/client';
+import { SubscriptionStatus } from '@bchatsign/prisma/generated/types';
 import { Loader } from 'lucide-react';
 import type Stripe from 'stripe';
 import { match, P } from 'ts-pattern';

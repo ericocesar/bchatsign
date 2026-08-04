@@ -15,7 +15,8 @@ import type {
 } from '@bchatsign/trpc/server/field-router/schema';
 import { ElementVisible } from '@bchatsign/ui/primitives/element-visible';
 import type { DocumentMeta } from '@prisma/client';
-import { type Field, FieldType } from '@prisma/client';
+import { FieldType } from '@bchatsign/prisma/generated/types';
+import type { Field } from '@prisma/client';
 import { match } from 'ts-pattern';
 
 import { DocumentSigningCheckboxField } from '~/components/general/document-signing/document-signing-checkbox-field';

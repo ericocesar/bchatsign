@@ -8,7 +8,7 @@ import { ZDocumentMetaDateFormatSchema, ZDocumentMetaTimezoneSchema } from '@bch
 import { isValidRedirectUrl } from '@bchatsign/lib/utils/is-valid-redirect-url';
 import { zEmail } from '@bchatsign/lib/utils/zod';
 import { msg } from '@lingui/core/macro';
-import { DocumentDistributionMethod, DocumentVisibility, TemplateType } from '@prisma/client';
+import { DocumentDistributionMethod, DocumentVisibility, TemplateType } from '@bchatsign/prisma/generated/types';
 import { z } from 'zod';
 
 export const ZAddTemplateSettingsFormSchema = z.object({

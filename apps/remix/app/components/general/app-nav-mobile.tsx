@@ -5,7 +5,7 @@ import { trpc } from '@bchatsign/trpc/react';
 import { Sheet, SheetContent } from '@bchatsign/ui/primitives/sheet';
 import { ThemeSwitcher } from '@bchatsign/ui/primitives/theme-switcher';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { ReadStatus } from '@prisma/client';
+import { ReadStatus } from '@bchatsign/prisma/generated/types';
 import { useMemo } from 'react';
 import { Link } from 'react-router';
 

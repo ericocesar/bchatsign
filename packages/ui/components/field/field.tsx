@@ -3,7 +3,8 @@ import { useFieldPageCoords } from '@bchatsign/lib/client-only/hooks/use-field-p
 import { useIsPageInDom } from '@bchatsign/lib/client-only/hooks/use-is-page-in-dom';
 import { PDF_VIEWER_CONTENT_SELECTOR, PDF_VIEWER_PAGE_SELECTOR } from '@bchatsign/lib/constants/pdf-viewer';
 import { isFieldUnsignedAndRequired } from '@bchatsign/lib/utils/advanced-fields-helpers';
-import { type Field, FieldType } from '@prisma/client';
+import { FieldType } from '@bchatsign/prisma/generated/types';
+import type { Field } from '@prisma/client';
 import React, { useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 

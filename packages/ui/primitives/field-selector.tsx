@@ -1,5 +1,5 @@
 import { Trans } from '@lingui/react/macro';
-import { FieldType } from '@prisma/client';
+import { FieldType } from '@bchatsign/prisma/generated/types';
 import { CalendarDays, CheckSquare, ChevronDown, Contact, Disc, Hash, Mail, Type, User } from 'lucide-react';
 
 import { cn } from '../lib/utils';

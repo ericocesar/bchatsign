@@ -368,11 +368,11 @@ const renderColumnTwo = (options: RenderColumnOptions) => {
     });
     signatureContainer.add(signatureShadow);
 
-    // Documento final selado digitalmente com certificado A1 ICP-Brasil
     const sealLabel = new Konva.Text({
       x: 0,
       y: isRejected ? 0 : signatureHeight + 10,
-      text: 'Documento final selado digitalmente com certificado A1 ICP-Brasil',
+      text:
+        'O presente documento foi assinado eletronicamente pelo(s) signatário(s). Após a conclusão das assinaturas, recebeu selo criptográfico ICP-Brasil emitido em nome da WEBCK COMÉRCIO E SERVIÇOS DE TECNOLOGIA LTDA, exclusivamente para garantir sua integridade, autenticidade técnica e detectabilidade de alterações posteriores. O certificado ICP-Brasil da WEBCK não representa manifestação de vontade nem substitui a assinatura dos signatários.',
       fill: textMutedForeground,
       width: columnWidth,
       fontFamily: certificateFontFamily,
@@ -381,15 +381,6 @@ const renderColumnTwo = (options: RenderColumnOptions) => {
       lineHeight: 1.4,
     });
     column.add(sealLabel);
-
-    // Finalidade do selo
-    const purposeField = renderLabelAndText({
-      label: 'Finalidade do selo',
-      text: 'garantir integridade, autenticidade técnica e verificabilidade do documento eletrônico.',
-      width,
-      y: column.getClientRect().height + 6,
-    });
-    column.add(purposeField);
 
     if (baseDocumentSha256) {
       const hashLabel = new Konva.Text({
@@ -454,11 +445,11 @@ const renderColumnTwo = (options: RenderColumnOptions) => {
     });
     column.add(naText);
 
-    // Still show seal info even without signature
     const sealLabel = new Konva.Text({
       x: 0,
       y: column.getClientRect().height + 6,
-      text: 'Documento final selado digitalmente com certificado A1 ICP-Brasil',
+      text:
+        'O presente documento foi assinado eletronicamente pelo(s) signatário(s). Após a conclusão das assinaturas, recebeu selo criptográfico ICP-Brasil emitido em nome da WEBCK COMÉRCIO E SERVIÇOS DE TECNOLOGIA LTDA, exclusivamente para garantir sua integridade, autenticidade técnica e detectabilidade de alterações posteriores. O certificado ICP-Brasil da WEBCK não representa manifestação de vontade nem substitui a assinatura dos signatários.',
       fill: textMutedForeground,
       width: columnWidth,
       fontFamily: certificateFontFamily,
@@ -467,14 +458,6 @@ const renderColumnTwo = (options: RenderColumnOptions) => {
       lineHeight: 1.4,
     });
     column.add(sealLabel);
-
-    const purposeField = renderLabelAndText({
-      label: 'Finalidade do selo',
-      text: 'garantir integridade, autenticidade técnica e verificabilidade do documento eletrônico.',
-      width,
-      y: column.getClientRect().height + 6,
-    });
-    column.add(purposeField);
 
     if (baseDocumentSha256) {
       const hashLabel = new Konva.Text({

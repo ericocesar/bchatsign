@@ -7,7 +7,7 @@ import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { SubscriptionStatus } from '@prisma/client';
+import { SubscriptionStatus } from '@bchatsign/prisma/generated/types';
 import { AlertTriangle } from 'lucide-react';
 import { Link } from 'react-router';
 import { match } from 'ts-pattern';

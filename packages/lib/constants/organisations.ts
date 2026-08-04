@@ -1,4 +1,4 @@
-import { OrganisationGroupType, OrganisationMemberRole } from '@prisma/client';
+import { OrganisationGroupType, OrganisationMemberRole } from '@bchatsign/prisma/generated/types';
 
 export const ORGANISATION_URL_ROOT_REGEX = /^\/t\/[^/]+\/?$/;
 export const ORGANISATION_URL_REGEX = /^\/t\/[^/]+/;

@@ -1,6 +1,6 @@
 import { ZDocumentEmailSettingsSchema } from '@bchatsign/lib/types/document-email';
 import { zEmail } from '@bchatsign/lib/utils/zod';
-import { DocumentDistributionMethod } from '@prisma/client';
+import { DocumentDistributionMethod } from '@bchatsign/prisma/generated/types';
 import { z } from 'zod';
 
 export const ZAddSubjectFormSchema = z.object({

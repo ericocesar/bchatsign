@@ -16,7 +16,7 @@ import { Input } from '@bchatsign/ui/primitives/input';
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { DocumentStatus, EnvelopeType } from '@prisma/client';
+import { DocumentStatus, EnvelopeType } from '@bchatsign/prisma/generated/types';
 import { useEffect, useState } from 'react';
 import { match, P } from 'ts-pattern';
 

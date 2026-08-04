@@ -1,5 +1,6 @@
 import { FieldSchema } from '@bchatsign/prisma/generated/zod/modelSchema/FieldSchema';
-import { FieldType, Prisma } from '@prisma/client';
+import { FieldType } from '@bchatsign/prisma/generated/types';
+import { Prisma } from '@prisma/client';
 import { z } from 'zod';
 
 import {

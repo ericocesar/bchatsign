@@ -14,7 +14,7 @@ import type { RowSelectionState } from '@bchatsign/ui/primitives/data-table';
 import { Tabs, TabsList, TabsTrigger } from '@bchatsign/ui/primitives/tabs';
 import { msg } from '@lingui/core/macro';
 import { Trans } from '@lingui/react/macro';
-import { EnvelopeType, FolderType, OrganisationType } from '@prisma/client';
+import { EnvelopeType, FolderType, OrganisationType } from '@bchatsign/prisma/generated/types';
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useParams, useSearchParams } from 'react-router';
 import { z } from 'zod';

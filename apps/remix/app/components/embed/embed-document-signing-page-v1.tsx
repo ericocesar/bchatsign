@@ -25,7 +25,8 @@ import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
 import type { DocumentMeta, EnvelopeItem } from '@prisma/client';
-import { type Field, RecipientRole, SigningStatus } from '@prisma/client';
+import { RecipientRole, SigningStatus } from '@bchatsign/prisma/generated/types';
+import type { Field } from '@prisma/client';
 import { LucideChevronDown, LucideChevronUp } from 'lucide-react';
 import { useEffect, useId, useLayoutEffect, useMemo, useState } from 'react';
 

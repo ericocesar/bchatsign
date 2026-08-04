@@ -23,7 +23,7 @@ import { isRecipientExpired } from '@bchatsign/lib/utils/recipients';
 import { prisma } from '@bchatsign/prisma';
 import { SigningCard3D } from '@bchatsign/ui/components/signing-card';
 import { Trans } from '@lingui/react/macro';
-import { DocumentSigningOrder, DocumentStatus, RecipientRole, SigningStatus } from '@prisma/client';
+import { DocumentSigningOrder, DocumentStatus, RecipientRole, SigningStatus } from '@bchatsign/prisma/generated/types';
 import { Clock8 } from 'lucide-react';
 import { Link, redirect } from 'react-router';
 import { getOptionalLoaderContext } from 'server/utils/get-loader-session';

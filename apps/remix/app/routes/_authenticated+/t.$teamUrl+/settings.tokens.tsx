@@ -4,7 +4,7 @@ import { Button } from '@bchatsign/ui/primitives/button';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { TeamMemberRole } from '@prisma/client';
+import { TeamMemberRole } from '@bchatsign/prisma/generated/types';
 import { DateTime } from 'luxon';
 
 import TokenDeleteDialog from '~/components/dialogs/token-delete-dialog';

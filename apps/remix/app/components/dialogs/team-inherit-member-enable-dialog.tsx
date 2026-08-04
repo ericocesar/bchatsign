@@ -13,7 +13,7 @@ import {
 } from '@bchatsign/ui/primitives/dialog';
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { OrganisationGroupType, OrganisationMemberRole, TeamMemberRole } from '@prisma/client';
+import { OrganisationGroupType, OrganisationMemberRole, TeamMemberRole } from '@bchatsign/prisma/generated/types';
 
 import { useCurrentTeam } from '~/providers/team';
 

@@ -17,7 +17,7 @@ import type { TUpdateEmbeddingEnvelopePayload } from '@bchatsign/trpc/server/emb
 import { Spinner } from '@bchatsign/ui/primitives/spinner';
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { EnvelopeType } from '@prisma/client';
+import { EnvelopeType } from '@bchatsign/prisma/generated/types';
 import { CheckCircle2Icon } from 'lucide-react';
 import { useLayoutEffect, useMemo, useState } from 'react';
 import { redirect, type ShouldRevalidateFunctionArgs } from 'react-router';

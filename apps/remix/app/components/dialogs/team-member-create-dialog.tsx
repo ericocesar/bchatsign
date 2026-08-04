@@ -29,7 +29,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@bchatsign/ui/primitive
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { TeamMemberRole } from '@prisma/client';
+import { TeamMemberRole } from '@bchatsign/prisma/generated/types';
 import type * as DialogPrimitive from '@radix-ui/react-dialog';
 import { InfoIcon, UserPlusIcon } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';

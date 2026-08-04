@@ -3,7 +3,7 @@ import { ZSignDocumentEmbedDataSchema } from '@bchatsign/lib/types/embed-documen
 import { mapSecondaryIdToDocumentId } from '@bchatsign/lib/utils/envelope';
 import { dynamicActivate } from '@bchatsign/lib/utils/i18n';
 import { useLingui } from '@lingui/react';
-import { EnvelopeType } from '@prisma/client';
+import { EnvelopeType } from '@bchatsign/prisma/generated/types';
 import { useEffect, useLayoutEffect, useState } from 'react';
 
 import { injectCss } from '~/utils/css-vars';

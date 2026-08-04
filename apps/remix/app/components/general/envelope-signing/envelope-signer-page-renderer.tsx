@@ -19,7 +19,8 @@ import { EnvelopeRecipientFieldTooltip } from '@bchatsign/ui/components/document
 import { EnvelopeFieldToolTip } from '@bchatsign/ui/components/field/envelope-field-tooltip';
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { type Field, FieldType, type Recipient, RecipientRole, type Signature, SigningStatus } from '@prisma/client';
+import { FieldType, RecipientRole, SigningStatus } from '@bchatsign/prisma/generated/types';
+import type { Field, Recipient, Signature } from '@prisma/client';
 import type Konva from 'konva';
 import type { KonvaEventObject } from 'konva/lib/Node';
 import { useEffect, useMemo, useRef } from 'react';

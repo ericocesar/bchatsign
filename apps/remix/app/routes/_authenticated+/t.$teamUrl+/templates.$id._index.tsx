@@ -12,7 +12,7 @@ import { Card, CardContent } from '@bchatsign/ui/primitives/card';
 import { Spinner } from '@bchatsign/ui/primitives/spinner';
 import { msg } from '@lingui/core/macro';
 import { Trans } from '@lingui/react/macro';
-import { DocumentSigningOrder, SigningStatus } from '@prisma/client';
+import { DocumentSigningOrder, SigningStatus } from '@bchatsign/prisma/generated/types';
 import { ChevronLeft, LucideEdit } from 'lucide-react';
 import { Link, useNavigate } from 'react-router';
 

@@ -2,7 +2,7 @@ import { getBoundingClientRect } from '@bchatsign/lib/client-only/get-bounding-c
 import { PDF_VIEWER_PAGE_SELECTOR } from '@bchatsign/lib/constants/pdf-viewer';
 import { Trans, useLingui } from '@lingui/react/macro';
 import type { Field, Recipient } from '@prisma/client';
-import { SigningStatus } from '@prisma/client';
+import { SigningStatus } from '@bchatsign/prisma/generated/types';
 import { ClockIcon, EyeOffIcon, LockIcon } from 'lucide-react';
 import { useCallback, useEffect, useState } from 'react';
 

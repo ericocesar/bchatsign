@@ -13,7 +13,7 @@ import {
   DropdownMenuTrigger,
 } from '@bchatsign/ui/primitives/dropdown-menu';
 import { Trans } from '@lingui/react/macro';
-import { DocumentStatus, EnvelopeType } from '@prisma/client';
+import { DocumentStatus, EnvelopeType } from '@bchatsign/prisma/generated/types';
 import {
   Copy,
   Download,

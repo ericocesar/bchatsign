@@ -2,7 +2,7 @@ import { ZFieldMetaSchema } from '@bchatsign/lib/types/field-meta';
 import { zEmail } from '@bchatsign/lib/utils/zod';
 import type { MessageDescriptor } from '@lingui/core';
 import { msg } from '@lingui/core/macro';
-import { FieldType } from '@prisma/client';
+import { FieldType } from '@bchatsign/prisma/generated/types';
 import { z } from 'zod';
 
 export const ZDocumentFlowFormSchema = z.object({

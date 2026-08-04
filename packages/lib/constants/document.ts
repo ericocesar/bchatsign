@@ -4,7 +4,22 @@
 import { DocumentSignatureType } from '@bchatsign/lib/utils/teams';
 import type { MessageDescriptor } from '@lingui/core';
 import { msg } from '@lingui/core/macro';
-import { DocumentDistributionMethod, DocumentStatus } from '@prisma/client';
+import type {
+  DocumentDistributionMethod as PrismaDocumentDistributionMethod,
+  DocumentStatus as PrismaDocumentStatus,
+} from '@prisma/client';
+
+const DocumentDistributionMethod = {
+  EMAIL: 'EMAIL',
+  NONE: 'NONE',
+} as const satisfies Record<PrismaDocumentDistributionMethod, PrismaDocumentDistributionMethod>;
+
+const DocumentStatus = {
+  COMPLETED: 'COMPLETED',
+  REJECTED: 'REJECTED',
+  DRAFT: 'DRAFT',
+  PENDING: 'PENDING',
+} as const satisfies Record<PrismaDocumentStatus, PrismaDocumentStatus>;
 
 export { DocumentSignatureType };
 
@@ -15,7 +30,7 @@ export { DocumentSignatureType };
 export const STATS_COUNT_CAP = 10_000;
 
 export const DOCUMENT_STATUS: {
-  [status in DocumentStatus]: { description: MessageDescriptor };
+  [status in PrismaDocumentStatus]: { description: MessageDescriptor };
 } = {
   [DocumentStatus.COMPLETED]: {
     description: msg`Completed`,
@@ -32,7 +47,7 @@ export const DOCUMENT_STATUS: {
 };
 
 type DocumentDistributionMethodTypeData = {
-  value: DocumentDistributionMethod;
+  value: PrismaDocumentDistributionMethod;
   description: MessageDescriptor;
 };
 
@@ -45,7 +60,7 @@ export const DOCUMENT_DISTRIBUTION_METHODS: Record<string, DocumentDistributionM
     value: DocumentDistributionMethod.NONE,
     description: msg`None`,
   },
-} satisfies Record<DocumentDistributionMethod, DocumentDistributionMethodTypeData>;
+} satisfies Record<PrismaDocumentDistributionMethod, DocumentDistributionMethodTypeData>;
 
 type DocumentSignatureTypeData = {
   label: MessageDescriptor;

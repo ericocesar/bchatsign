@@ -1,5 +1,5 @@
+import { DocumentDistributionMethod, DocumentSigningOrder, DocumentStatus } from '@bchatsign/prisma/generated/types';
 import type { DocumentMeta, Envelope, OrganisationGlobalSettings, Recipient, Team, User } from '@prisma/client';
-import { DocumentDistributionMethod, DocumentSigningOrder, DocumentStatus } from '@prisma/client';
 
 import { DEFAULT_DOCUMENT_TIME_ZONE } from '../constants/time-zones';
 import type { TDocumentLite, TDocumentMany } from '../types/document';

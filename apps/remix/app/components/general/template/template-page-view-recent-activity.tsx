@@ -2,7 +2,7 @@ import { trpc } from '@bchatsign/trpc/react';
 import { cn } from '@bchatsign/ui/lib/utils';
 import { Button } from '@bchatsign/ui/primitives/button';
 import { Trans } from '@lingui/react/macro';
-import { DocumentSource } from '@prisma/client';
+import { DocumentSource } from '@bchatsign/prisma/generated/types';
 import { Loader } from 'lucide-react';
 import { DateTime } from 'luxon';
 import { Link } from 'react-router';

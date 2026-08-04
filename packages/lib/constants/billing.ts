@@ -1,5 +1,5 @@
 import { msg } from '@lingui/core/macro';
-import { SubscriptionStatus } from '@prisma/client';
+import { SubscriptionStatus } from '@bchatsign/prisma/generated/types';
 
 export enum STRIPE_PLAN_TYPE {
   FREE = 'free',

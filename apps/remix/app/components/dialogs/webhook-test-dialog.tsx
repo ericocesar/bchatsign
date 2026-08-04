@@ -16,7 +16,7 @@ import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Trans, useLingui } from '@lingui/react/macro';
 import type { Webhook } from '@prisma/client';
-import { WebhookTriggerEvents } from '@prisma/client';
+import { WebhookTriggerEvents } from '@bchatsign/prisma/generated/types';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';

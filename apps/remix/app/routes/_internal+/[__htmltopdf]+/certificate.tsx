@@ -14,7 +14,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { EnvelopeType, FieldType, SigningStatus } from '@prisma/client';
+import { EnvelopeType, FieldType, SigningStatus } from '@bchatsign/prisma/generated/types';
 import { DateTime } from 'luxon';
 import { Fragment } from 'react';
 import { redirect } from 'react-router';

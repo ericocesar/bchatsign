@@ -11,7 +11,7 @@ import type { I18n } from '@lingui/core';
 import { msg } from '@lingui/core/macro';
 import { Trans, useLingui } from '@lingui/react/macro';
 import type { Field } from '@prisma/client';
-import { RecipientRole, SendStatus } from '@prisma/client';
+import { RecipientRole, SendStatus } from '@bchatsign/prisma/generated/types';
 import { Check, ChevronsUpDown, Info } from 'lucide-react';
 import { useCallback, useState } from 'react';
 import { sortBy } from 'remeda';

@@ -8,7 +8,8 @@ import { renderField } from '@bchatsign/lib/universal/field-renderer/render-fiel
 import { getClientSideFieldTranslations } from '@bchatsign/lib/utils/fields';
 import { EnvelopeRecipientFieldTooltip } from '@bchatsign/ui/components/document/envelope-recipient-field-tooltip';
 import { useLingui } from '@lingui/react/macro';
-import { DocumentStatus, type Recipient, SigningStatus } from '@prisma/client';
+import { DocumentStatus, SigningStatus } from '@bchatsign/prisma/generated/types';
+import type { Recipient } from '@prisma/client';
 import type Konva from 'konva';
 import { useEffect, useMemo } from 'react';
 

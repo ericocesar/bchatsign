@@ -2,7 +2,7 @@ import { RECIPIENT_ROLES_DESCRIPTION } from '@bchatsign/lib/constants/recipient-
 import type { TRecipientLite } from '@bchatsign/lib/types/recipient';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { RecipientRole, SendStatus, SigningStatus } from '@prisma/client';
+import { RecipientRole, SendStatus, SigningStatus } from '@bchatsign/prisma/generated/types';
 import { Check, ChevronsUpDown, Info } from 'lucide-react';
 import { useCallback, useMemo, useState } from 'react';
 import { sortBy } from 'remeda';

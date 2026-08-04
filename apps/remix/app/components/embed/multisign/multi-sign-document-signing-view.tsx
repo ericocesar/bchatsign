@@ -20,7 +20,7 @@ import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { DocumentStatus, SigningStatus } from '@prisma/client';
+import { DocumentStatus, SigningStatus } from '@bchatsign/prisma/generated/types';
 import { Loader, LucideChevronDown, LucideChevronUp, X } from 'lucide-react';
 import { useState } from 'react';
 import { match, P } from 'ts-pattern';

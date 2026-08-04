@@ -1,7 +1,7 @@
 import { prisma } from '@bchatsign/prisma';
 import { Button } from '@bchatsign/ui/primitives/button';
 import { Trans } from '@lingui/react/macro';
-import { OrganisationMemberInviteStatus } from '@prisma/client';
+import { OrganisationMemberInviteStatus } from '@bchatsign/prisma/generated/types';
 import { Link } from 'react-router';
 
 import type { Route } from './+types/organisation.decline.$token';

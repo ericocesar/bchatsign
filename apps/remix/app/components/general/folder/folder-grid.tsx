@@ -3,7 +3,7 @@ import { trpc } from '@bchatsign/trpc/react';
 import type { TFolderWithSubfolders } from '@bchatsign/trpc/server/folder-router/schema';
 import { Skeleton } from '@bchatsign/ui/primitives/skeleton';
 import { Trans } from '@lingui/react/macro';
-import { FolderType } from '@prisma/client';
+import { FolderType } from '@bchatsign/prisma/generated/types';
 import { FolderIcon, HomeIcon } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router';

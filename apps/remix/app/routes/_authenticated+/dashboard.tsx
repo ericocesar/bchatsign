@@ -7,7 +7,7 @@ import { Button } from '@bchatsign/ui/primitives/button';
 import { Skeleton } from '@bchatsign/ui/primitives/skeleton';
 import { msg } from '@lingui/core/macro';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { DocumentStatus } from '@prisma/client';
+import { DocumentStatus } from '@bchatsign/prisma/generated/types';
 import { motion } from 'framer-motion';
 import { Building2Icon, Clock3Icon, FileTextIcon, LayoutTemplateIcon, MoreVertical, ShieldCheck } from 'lucide-react';
 import { useMemo } from 'react';

@@ -6,7 +6,7 @@ import { ZDocumentAccessAuthTypesSchema, ZDocumentActionAuthTypesSchema } from '
 import { ZDocumentMetaDateFormatSchema, ZDocumentMetaTimezoneSchema } from '@bchatsign/lib/types/document-meta';
 import { isValidRedirectUrl } from '@bchatsign/lib/utils/is-valid-redirect-url';
 import { msg } from '@lingui/core/macro';
-import { DocumentVisibility } from '@prisma/client';
+import { DocumentVisibility } from '@bchatsign/prisma/generated/types';
 import { z } from 'zod';
 
 export const ZAddSettingsFormSchema = z.object({

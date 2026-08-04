@@ -4,7 +4,7 @@ import { Alert, AlertDescription } from '@bchatsign/ui/primitives/alert';
 import { Button } from '@bchatsign/ui/primitives/button';
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@bchatsign/ui/primitives/dialog';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { OrganisationMemberRole, TeamMemberRole } from '@prisma/client';
+import { OrganisationMemberRole, TeamMemberRole } from '@bchatsign/prisma/generated/types';
 import { useState } from 'react';
 
 import { useCurrentTeam } from '~/providers/team';

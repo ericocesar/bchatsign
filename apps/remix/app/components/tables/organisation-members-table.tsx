@@ -21,7 +21,7 @@ import { TableCell } from '@bchatsign/ui/primitives/table';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { OrganisationGroupType } from '@prisma/client';
+import { OrganisationGroupType } from '@bchatsign/prisma/generated/types';
 import { Edit, MoreHorizontal, Trash2 } from 'lucide-react';
 import { useMemo } from 'react';
 import { useSearchParams } from 'react-router';

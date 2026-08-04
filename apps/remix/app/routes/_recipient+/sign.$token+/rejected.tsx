@@ -8,7 +8,7 @@ import { getRecipientByToken } from '@bchatsign/lib/server-only/recipient/get-re
 import { Badge } from '@bchatsign/ui/primitives/badge';
 import { Button } from '@bchatsign/ui/primitives/button';
 import { Trans } from '@lingui/react/macro';
-import { FieldType } from '@prisma/client';
+import { FieldType } from '@bchatsign/prisma/generated/types';
 import { XCircle } from 'lucide-react';
 import { Link } from 'react-router';
 

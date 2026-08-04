@@ -1,4 +1,4 @@
-import { DocumentStatus } from '@prisma/client';
+import { DocumentStatus } from '@bchatsign/prisma/generated/types';
 
 export const ExtendedDocumentStatus = {
   ...DocumentStatus,

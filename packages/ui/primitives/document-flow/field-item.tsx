@@ -6,7 +6,7 @@ import { ZCheckboxFieldMeta, ZRadioFieldMeta } from '@bchatsign/lib/types/field-
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { FieldType } from '@prisma/client';
+import { FieldType } from '@bchatsign/prisma/generated/types';
 import { CopyPlus, Settings2, SquareStack, Trash } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';

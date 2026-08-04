@@ -29,7 +29,8 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { MultiSelectCombobox } from '@bchatsign/ui/primitives/multi-select-combobox';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { DocumentStatus, DocumentVisibility, type Field, SendStatus, TeamMemberRole } from '@prisma/client';
+import { DocumentStatus, DocumentVisibility, SendStatus, TeamMemberRole } from '@bchatsign/prisma/generated/types';
+import type { Field } from '@prisma/client';
 import { InfoIcon } from 'lucide-react';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';

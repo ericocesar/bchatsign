@@ -11,7 +11,7 @@ import { TrpcProvider } from '@bchatsign/trpc/react';
 import type { OrganisationSession } from '@bchatsign/trpc/server/organisation-router/get-organisation-session.types';
 import { Spinner } from '@bchatsign/ui/primitives/spinner';
 import { Trans } from '@lingui/react/macro';
-import { OrganisationMemberRole, OrganisationType, TeamMemberRole } from '@prisma/client';
+import { OrganisationMemberRole, OrganisationType, TeamMemberRole } from '@bchatsign/prisma/generated/types';
 import { useLayoutEffect, useState } from 'react';
 import { isRouteErrorResponse, Outlet, useLoaderData } from 'react-router';
 import { match } from 'ts-pattern';

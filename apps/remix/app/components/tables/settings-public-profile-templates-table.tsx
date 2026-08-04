@@ -14,7 +14,8 @@ import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { type TemplateDirectLink, TemplateType } from '@prisma/client';
+import { TemplateType } from '@bchatsign/prisma/generated/types';
+import type { TemplateDirectLink } from '@prisma/client';
 import { EditIcon, FileIcon, LinkIcon, MoreHorizontalIcon, Trash2Icon } from 'lucide-react';
 import { useMemo, useState } from 'react';
 

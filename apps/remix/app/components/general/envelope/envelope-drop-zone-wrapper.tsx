@@ -15,7 +15,7 @@ import { cn } from '@bchatsign/ui/lib/utils';
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { plural } from '@lingui/core/macro';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { EnvelopeType } from '@prisma/client';
+import { EnvelopeType } from '@bchatsign/prisma/generated/types';
 import { Loader } from 'lucide-react';
 import { type ReactNode, useState } from 'react';
 import { ErrorCode as DropzoneErrorCode, type FileRejection, useDropzone } from 'react-dropzone';

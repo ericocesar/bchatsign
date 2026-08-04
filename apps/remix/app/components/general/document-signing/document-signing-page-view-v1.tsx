@@ -24,7 +24,7 @@ import { Card, CardContent } from '@bchatsign/ui/primitives/card';
 import { ElementVisible } from '@bchatsign/ui/primitives/element-visible';
 import { Trans } from '@lingui/react/macro';
 import type { Field } from '@prisma/client';
-import { FieldType, RecipientRole } from '@prisma/client';
+import { FieldType, RecipientRole } from '@bchatsign/prisma/generated/types';
 import { LucideChevronDown, LucideChevronUp } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router';

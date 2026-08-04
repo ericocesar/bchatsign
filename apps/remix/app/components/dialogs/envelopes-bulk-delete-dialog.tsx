@@ -12,7 +12,7 @@ import {
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { plural } from '@lingui/core/macro';
 import { Plural, Trans, useLingui } from '@lingui/react/macro';
-import { EnvelopeType } from '@prisma/client';
+import { EnvelopeType } from '@bchatsign/prisma/generated/types';
 import type * as DialogPrimitive from '@radix-ui/react-dialog';
 
 export type EnvelopesBulkDeleteDialogProps = {
