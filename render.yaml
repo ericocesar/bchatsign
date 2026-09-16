@@ -15,6 +15,10 @@ services:
       - key: PORT
         value: 10000
 
+      # Runtime
+      - key: NODE_ENV
+        value: production
+
       # Auth
       - key: NEXTAUTH_URL
         fromService:
