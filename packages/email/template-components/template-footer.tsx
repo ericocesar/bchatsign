@@ -15,7 +15,7 @@ export const TemplateFooter = ({ isDocument = true }: TemplateFooterProps) => {
       {isDocument && !branding.brandingHidePoweredBy && (
         <Text className="my-4 text-base text-slate-400">
           <Trans>
-            This document was sent using{' '}
+            Este documento foi enviado usando o{' '}
             <Link className="text-[#7AC455]" href="https://documen.so/mail-footer">
               BchatSign
             </Link>
@@ -39,9 +39,9 @@ export const TemplateFooter = ({ isDocument = true }: TemplateFooterProps) => {
 
       {!branding.brandingEnabled && (
         <Text className="my-8 text-slate-400 text-sm">
-          BchatSign, Inc.
+          BchatSign, Inc. - Bolt 360 Assessoria
           <br />
-          2261 Market Street, #5211, San Francisco, CA 94114, USA
+          Rua Tereza Bezerra Salustino, 1902 - Lagoa Nova, Natal - RN, 59075-225
         </Text>
       )}
     </Section>
