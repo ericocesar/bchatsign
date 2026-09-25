@@ -51,7 +51,10 @@ ARG NEXT_PRIVATE_ENCRYPTION_SECONDARY_KEY="DEADBEEF"
 ENV NEXT_PRIVATE_ENCRYPTION_SECONDARY_KEY="$NEXT_PRIVATE_ENCRYPTION_SECONDARY_KEY"
 
 # Telemetry credentials (optional, baked into image at build time)
+# Non-sensitive telemetry identifier, intentionally embedded — not a credential.
+#trivy:ignore:DS-0031
 ARG NEXT_PRIVATE_TELEMETRY_KEY=""
+#trivy:ignore:DS-0031
 ENV NEXT_PRIVATE_TELEMETRY_KEY="$NEXT_PRIVATE_TELEMETRY_KEY"
 
 ARG NEXT_PRIVATE_TELEMETRY_HOST=""
@@ -95,7 +98,10 @@ ENV HUSKY 0
 ENV DOCKER_OUTPUT 1
 
 # Telemetry credentials (baked into image at build time, can be disabled at runtime)
+# Non-sensitive telemetry identifier, intentionally embedded — not a credential.
+#trivy:ignore:DS-0031
 ARG NEXT_PRIVATE_TELEMETRY_KEY=""
+#trivy:ignore:DS-0031
 ENV NEXT_PRIVATE_TELEMETRY_KEY="$NEXT_PRIVATE_TELEMETRY_KEY"
 
 ARG NEXT_PRIVATE_TELEMETRY_HOST=""
