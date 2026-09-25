@@ -3,13 +3,13 @@ import { useCurrentOrganisation } from '@bchatsign/lib/client-only/providers/org
 import { FolderType } from '@bchatsign/lib/types/folder-type';
 import { formatAvatarUrl } from '@bchatsign/lib/utils/avatars';
 import { formatDocumentsPath, formatTemplatesPath } from '@bchatsign/lib/utils/teams';
+import { EnvelopeType, OrganisationType } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import { Avatar, AvatarFallback, AvatarImage } from '@bchatsign/ui/primitives/avatar';
 import type { RowSelectionState } from '@bchatsign/ui/primitives/data-table';
 import { Tabs, TabsList, TabsTrigger } from '@bchatsign/ui/primitives/tabs';
 import { msg } from '@lingui/core/macro';
 import { Trans } from '@lingui/react/macro';
-import { EnvelopeType, OrganisationType } from '@bchatsign/prisma/generated/types';
 import { Bird } from 'lucide-react';
 import { parseAsStringLiteral, useQueryState } from 'nuqs';
 import { useMemo, useState } from 'react';

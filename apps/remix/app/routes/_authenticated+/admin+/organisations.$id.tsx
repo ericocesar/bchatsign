@@ -5,6 +5,7 @@ import { LicenseClient } from '@bchatsign/lib/server-only/license/license-client
 import type { TLicenseClaim } from '@bchatsign/lib/types/license';
 import { SUBSCRIPTION_CLAIM_FEATURE_FLAGS } from '@bchatsign/lib/types/subscription';
 import { getHighestOrganisationRoleInGroup } from '@bchatsign/lib/utils/organisations';
+import { OrganisationMemberRole } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import type { TGetAdminOrganisationResponse } from '@bchatsign/trpc/server/admin-router/get-admin-organisation.types';
 import { ZUpdateAdminOrganisationRequestSchema } from '@bchatsign/trpc/server/admin-router/update-admin-organisation.types';
@@ -29,7 +30,6 @@ import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { msg } from '@lingui/core/macro';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { OrganisationMemberRole } from '@bchatsign/prisma/generated/types';
 import { ExternalLinkIcon, InfoIcon, Loader } from 'lucide-react';
 import { useMemo } from 'react';
 import { useForm } from 'react-hook-form';

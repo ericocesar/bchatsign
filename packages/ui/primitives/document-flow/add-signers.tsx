@@ -7,6 +7,7 @@ import { ZRecipientAuthOptionsSchema } from '@bchatsign/lib/types/document-auth'
 import type { TRecipientLite } from '@bchatsign/lib/types/recipient';
 import { nanoid } from '@bchatsign/lib/universal/id';
 import { canRecipientBeModified as utilCanRecipientBeModified } from '@bchatsign/lib/utils/recipients';
+import { DocumentSigningOrder, RecipientRole, SendStatus } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import { AnimateGenericFadeInOut } from '@bchatsign/ui/components/animate/animate-generic-fade-in-out';
 import { RecipientActionAuthSelect } from '@bchatsign/ui/components/recipient/recipient-action-auth-select';
@@ -19,7 +20,6 @@ import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
 import type { Field } from '@prisma/client';
-import { DocumentSigningOrder, RecipientRole, SendStatus } from '@bchatsign/prisma/generated/types';
 import { motion } from 'framer-motion';
 import { GripVerticalIcon, HelpCircle, Plus, Trash } from 'lucide-react';
 import { useCallback, useId, useMemo, useRef, useState } from 'react';

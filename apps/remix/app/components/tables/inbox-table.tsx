@@ -1,6 +1,7 @@
 import { useUpdateSearchParams } from '@bchatsign/lib/client-only/hooks/use-update-search-params';
 import { useSession } from '@bchatsign/lib/client-only/providers/session';
 import { isDocumentCompleted } from '@bchatsign/lib/utils/document';
+import { DocumentStatus as DocumentStatusEnum, RecipientRole, SigningStatus } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import type { TFindInboxResponse } from '@bchatsign/trpc/server/document-router/find-inbox.types';
 import { Button } from '@bchatsign/ui/primitives/button';
@@ -13,7 +14,6 @@ import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { DocumentStatus as DocumentStatusEnum, RecipientRole, SigningStatus } from '@bchatsign/prisma/generated/types';
 import { CheckCircleIcon, DownloadIcon, EyeIcon, Loader, PencilIcon } from 'lucide-react';
 import { DateTime } from 'luxon';
 import { useMemo, useTransition } from 'react';

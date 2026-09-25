@@ -4,6 +4,7 @@ import { DO_NOT_INVALIDATE_QUERY_ON_MUTATION } from '@bchatsign/lib/constants/tr
 import { extractDocumentAuthMethods } from '@bchatsign/lib/utils/document-auth';
 import { getRecipientsWithMissingFields } from '@bchatsign/lib/utils/recipients';
 import { zEmail } from '@bchatsign/lib/utils/zod';
+import { DocumentDistributionMethod, DocumentStatus, EnvelopeType } from '@bchatsign/prisma/generated/types';
 import { trpc, trpc as trpcReact } from '@bchatsign/trpc/react';
 import { DocumentSendEmailMessageHelper } from '@bchatsign/ui/components/document/document-send-email-message-helper';
 import { cn } from '@bchatsign/ui/lib/utils';
@@ -29,7 +30,6 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@bchatsign/ui/primitive
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { DocumentDistributionMethod, DocumentStatus, EnvelopeType } from '@bchatsign/prisma/generated/types';
 import { AnimatePresence, motion } from 'framer-motion';
 import { InfoIcon } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';

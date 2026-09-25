@@ -16,10 +16,10 @@ import {
 } from '@bchatsign/lib/types/field-meta';
 import { toCheckboxCustomText, toRadioCustomText } from '@bchatsign/lib/utils/fields';
 import { zEmail } from '@bchatsign/lib/utils/zod';
+import { FieldType } from '@bchatsign/prisma/generated/types';
 import type { TSignEnvelopeFieldValue } from '@bchatsign/trpc/server/envelope-router/sign-envelope-field.types';
 import { checkboxValidationSigns } from '@bchatsign/ui/primitives/document-flow/field-items-advanced-settings/constants';
 import type { Field } from '@prisma/client';
-import { FieldType } from '@bchatsign/prisma/generated/types';
 import { DateTime } from 'luxon';
 import { match, P } from 'ts-pattern';
 import { z } from 'zod';

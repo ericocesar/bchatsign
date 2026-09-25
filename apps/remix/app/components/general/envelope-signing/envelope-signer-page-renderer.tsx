@@ -14,12 +14,12 @@ import { renderField } from '@bchatsign/lib/universal/field-renderer/render-fiel
 import { isFieldUnsignedAndRequired } from '@bchatsign/lib/utils/advanced-fields-helpers';
 import { getClientSideFieldTranslations } from '@bchatsign/lib/utils/fields';
 import { extractInitials } from '@bchatsign/lib/utils/recipient-formatter';
+import { FieldType, RecipientRole, SigningStatus } from '@bchatsign/prisma/generated/types';
 import type { TSignEnvelopeFieldValue } from '@bchatsign/trpc/server/envelope-router/sign-envelope-field.types';
 import { EnvelopeRecipientFieldTooltip } from '@bchatsign/ui/components/document/envelope-recipient-field-tooltip';
 import { EnvelopeFieldToolTip } from '@bchatsign/ui/components/field/envelope-field-tooltip';
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { FieldType, RecipientRole, SigningStatus } from '@bchatsign/prisma/generated/types';
 import type { Field, Recipient, Signature } from '@prisma/client';
 import type Konva from 'konva';
 import type { KonvaEventObject } from 'konva/lib/Node';

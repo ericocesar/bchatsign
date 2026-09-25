@@ -2,6 +2,7 @@ import { DATE_FORMATS } from '@bchatsign/lib/constants/date-formats';
 import { DOCUMENT_SIGNATURE_TYPES } from '@bchatsign/lib/constants/document';
 import { SUPPORTED_LANGUAGES } from '@bchatsign/lib/constants/i18n';
 import { TIME_ZONES } from '@bchatsign/lib/constants/time-zones';
+import { DocumentDistributionMethod } from '@bchatsign/prisma/generated/types';
 import { DocumentEmailCheckboxes } from '@bchatsign/ui/components/document/document-email-checkboxes';
 import { DocumentSendEmailMessageHelper } from '@bchatsign/ui/components/document/document-send-email-message-helper';
 import { Combobox } from '@bchatsign/ui/primitives/combobox';
@@ -22,7 +23,6 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@bchatsign/ui/primitive
 import { t } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { DocumentDistributionMethod } from '@bchatsign/prisma/generated/types';
 import { InfoIcon } from 'lucide-react';
 import type { Control } from 'react-hook-form';
 import { useFormContext } from 'react-hook-form';

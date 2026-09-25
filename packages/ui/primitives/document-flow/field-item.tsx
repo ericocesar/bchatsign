@@ -3,10 +3,10 @@ import { useIsPageInDom } from '@bchatsign/lib/client-only/hooks/use-is-page-in-
 import { PDF_VIEWER_PAGE_SELECTOR } from '@bchatsign/lib/constants/pdf-viewer';
 import type { TFieldMetaSchema } from '@bchatsign/lib/types/field-meta';
 import { ZCheckboxFieldMeta, ZRadioFieldMeta } from '@bchatsign/lib/types/field-meta';
+import { FieldType } from '@bchatsign/prisma/generated/types';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { FieldType } from '@bchatsign/prisma/generated/types';
 import { CopyPlus, Settings2, SquareStack, Trash } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';

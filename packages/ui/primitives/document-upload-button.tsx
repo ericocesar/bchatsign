@@ -4,11 +4,11 @@ import { APP_DOCUMENT_UPLOAD_SIZE_LIMIT, IS_BILLING_ENABLED } from '@bchatsign/l
 import { getAllowedUploadMimeTypes } from '@bchatsign/lib/constants/document-conversion';
 import { megabytesToBytes } from '@bchatsign/lib/universal/unit-convertions';
 import { isPersonalLayout } from '@bchatsign/lib/utils/organisations';
+import { EnvelopeType } from '@bchatsign/prisma/generated/types';
 import type { MessageDescriptor } from '@lingui/core';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { EnvelopeType } from '@bchatsign/prisma/generated/types';
 import { Upload } from 'lucide-react';
 import type { DropEvent, FileRejection } from 'react-dropzone';
 import { useDropzone } from 'react-dropzone';

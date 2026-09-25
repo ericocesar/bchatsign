@@ -1,10 +1,10 @@
+import { RecipientRole } from '@bchatsign/prisma/generated/types';
 import { isSignatureFieldType } from '@bchatsign/prisma/guards/is-signature-field';
 import { Input } from '@bchatsign/ui/primitives/input';
 import { Label } from '@bchatsign/ui/primitives/label';
 import { RadioGroup, RadioGroupItem } from '@bchatsign/ui/primitives/radio-group';
 import { SignaturePadDialog } from '@bchatsign/ui/primitives/signature-pad/signature-pad-dialog';
 import { Plural, Trans } from '@lingui/react/macro';
-import { RecipientRole } from '@bchatsign/prisma/generated/types';
 import { useMemo } from 'react';
 
 import { useEmbedSigningContext } from '~/components/embed/embed-signing-context';

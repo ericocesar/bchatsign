@@ -1,4 +1,5 @@
 import { mapSecondaryIdToDocumentId } from '@bchatsign/lib/utils/envelope';
+import { EnvelopeType, RecipientRole } from '@bchatsign/prisma/generated/types';
 import { Badge } from '@bchatsign/ui/primitives/badge';
 import { Button } from '@bchatsign/ui/primitives/button';
 import {
@@ -9,7 +10,6 @@ import {
 } from '@bchatsign/ui/primitives/dropdown-menu';
 import { Separator } from '@bchatsign/ui/primitives/separator';
 import { Plural, Trans } from '@lingui/react/macro';
-import { EnvelopeType, RecipientRole } from '@bchatsign/prisma/generated/types';
 import { BanIcon, DownloadCloudIcon } from 'lucide-react';
 import { Link } from 'react-router';
 import { match } from 'ts-pattern';

@@ -3,8 +3,8 @@ import { createCustomer } from '@bchatsign/ee/server-only/stripe/create-customer
 import { IS_BILLING_ENABLED, NEXT_PUBLIC_WEBAPP_URL } from '@bchatsign/lib/constants/app';
 import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
 import { createOrganisation } from '@bchatsign/lib/server-only/organisation/create-organisation';
-import { createTeam } from '@bchatsign/lib/server-only/team/create-team';
 import { getSubscriptionClaim } from '@bchatsign/lib/server-only/subscription/get-subscription-claim';
+import { createTeam } from '@bchatsign/lib/server-only/team/create-team';
 import { INTERNAL_CLAIM_ID } from '@bchatsign/lib/types/subscription';
 import { prefixedId } from '@bchatsign/lib/universal/id';
 import { generateStripeOrganisationCreateMetadata } from '@bchatsign/lib/utils/billing';

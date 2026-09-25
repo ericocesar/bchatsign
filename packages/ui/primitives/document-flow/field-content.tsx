@@ -1,10 +1,10 @@
 import { convertToLocalSystemFormat, DEFAULT_DOCUMENT_DATE_FORMAT } from '@bchatsign/lib/constants/date-formats';
 import type { TFieldMetaSchema } from '@bchatsign/lib/types/field-meta';
 import { fromCheckboxValue } from '@bchatsign/lib/universal/field-checkbox';
+import { FieldType } from '@bchatsign/prisma/generated/types';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
 import type { DocumentMeta, Signature } from '@prisma/client';
-import { FieldType } from '@bchatsign/prisma/generated/types';
 import { ChevronDown } from 'lucide-react';
 
 import { cn } from '../../lib/utils';

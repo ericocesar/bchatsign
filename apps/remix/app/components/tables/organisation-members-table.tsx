@@ -4,6 +4,7 @@ import { EXTENDED_ORGANISATION_MEMBER_ROLE_MAP } from '@bchatsign/lib/constants/
 import { ZUrlSearchParamsSchema } from '@bchatsign/lib/types/search-params';
 import { isOrganisationRoleWithinUserHierarchy } from '@bchatsign/lib/utils/organisations';
 import { extractInitials } from '@bchatsign/lib/utils/recipient-formatter';
+import { OrganisationGroupType } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import { AvatarWithText } from '@bchatsign/ui/primitives/avatar';
 import type { DataTableColumnDef } from '@bchatsign/ui/primitives/data-table';
@@ -21,7 +22,6 @@ import { TableCell } from '@bchatsign/ui/primitives/table';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { OrganisationGroupType } from '@bchatsign/prisma/generated/types';
 import { Edit, MoreHorizontal, Trash2 } from 'lucide-react';
 import { useMemo } from 'react';
 import { useSearchParams } from 'react-router';

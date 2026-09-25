@@ -13,12 +13,12 @@ import type { TEnvelopeFieldAndMeta } from '@bchatsign/lib/types/field-meta';
 import { extractDerivedDocumentMeta } from '@bchatsign/lib/utils/document';
 import { buildEmbeddedEditorOptions, buildEmbeddedFeatures } from '@bchatsign/lib/utils/embed-config';
 import { prisma } from '@bchatsign/prisma';
+import { DocumentStatus, EnvelopeType, ReadStatus, SendStatus, SigningStatus } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import type { TCreateEnvelopePayload } from '@bchatsign/trpc/server/envelope-router/create-envelope.types';
 import { Spinner } from '@bchatsign/ui/primitives/spinner';
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { DocumentStatus, EnvelopeType, ReadStatus, SendStatus, SigningStatus } from '@bchatsign/prisma/generated/types';
 import { CheckCircle2Icon } from 'lucide-react';
 import { useLayoutEffect, useMemo, useState } from 'react';
 

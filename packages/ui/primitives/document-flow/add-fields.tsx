@@ -13,12 +13,12 @@ import {
   canRecipientFieldsBeModified,
   getRecipientsWithMissingFields,
 } from '@bchatsign/lib/utils/recipients';
+import { FieldType, RecipientRole, SendStatus } from '@bchatsign/prisma/generated/types';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
 import type { Field } from '@prisma/client';
-import { FieldType, RecipientRole, SendStatus } from '@bchatsign/prisma/generated/types';
 import { Prisma } from '@prisma/client';
 import { CalendarDays, CheckSquare, ChevronDown, Contact, Disc, Hash, Mail, Type, User } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';

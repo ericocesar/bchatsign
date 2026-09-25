@@ -5,8 +5,8 @@ import { DEFAULT_DOCUMENT_TIME_ZONE } from '@bchatsign/lib/constants/time-zones'
 import { ZDocumentAccessAuthTypesSchema, ZDocumentActionAuthTypesSchema } from '@bchatsign/lib/types/document-auth';
 import { ZDocumentMetaDateFormatSchema, ZDocumentMetaTimezoneSchema } from '@bchatsign/lib/types/document-meta';
 import { isValidRedirectUrl } from '@bchatsign/lib/utils/is-valid-redirect-url';
-import { msg } from '@lingui/core/macro';
 import { DocumentVisibility } from '@bchatsign/prisma/generated/types';
+import { msg } from '@lingui/core/macro';
 import { z } from 'zod';
 
 export const ZAddSettingsFormSchema = z.object({

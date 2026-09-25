@@ -15,6 +15,7 @@ import type { CompletedField } from '@bchatsign/lib/types/fields';
 import { isFieldUnsignedAndRequired } from '@bchatsign/lib/utils/advanced-fields-helpers';
 import { getDocumentDataUrlForPdfViewer } from '@bchatsign/lib/utils/envelope-download';
 import { validateFieldsInserted } from '@bchatsign/lib/utils/fields';
+import { FieldType, RecipientRole } from '@bchatsign/prisma/generated/types';
 import type { FieldWithSignatureAndFieldMeta } from '@bchatsign/prisma/types/field-with-signature-and-fieldmeta';
 import type { RecipientWithFields } from '@bchatsign/prisma/types/recipient-with-fields';
 import { trpc } from '@bchatsign/trpc/react';
@@ -24,7 +25,6 @@ import { Card, CardContent } from '@bchatsign/ui/primitives/card';
 import { ElementVisible } from '@bchatsign/ui/primitives/element-visible';
 import { Trans } from '@lingui/react/macro';
 import type { Field } from '@prisma/client';
-import { FieldType, RecipientRole } from '@bchatsign/prisma/generated/types';
 import { LucideChevronDown, LucideChevronUp } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router';
@@ -106,8 +106,9 @@ export const DocumentSigningPageViewV1 = ({
   }) => {
     const { accessAuthOptions, nextSigner, geolocation, directRecipient } = options;
 
-    const recipientOverride =
-      directRecipient?.email ? { email: directRecipient.email, name: directRecipient.name } : undefined;
+    const recipientOverride = directRecipient?.email
+      ? { email: directRecipient.email, name: directRecipient.name }
+      : undefined;
 
     const payload = {
       token: recipient.token,
@@ -251,7 +252,12 @@ export const DocumentSigningPageViewV1 = ({
                           fieldsValidated={fieldsValidated}
                           disabled={!isRecipientsTurn}
                           onSignatureComplete={async (nextSigner, accessAuthOptions, recipientDetails, geolocation) =>
-                            completeDocument({ nextSigner, accessAuthOptions, geolocation, directRecipient: recipientDetails })
+                            completeDocument({
+                              nextSigner,
+                              accessAuthOptions,
+                              geolocation,
+                              directRecipient: recipientDetails,
+                            })
                           }
                           recipient={recipient}
                           geolocationEnabled={document.geolocationEnabled}

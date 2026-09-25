@@ -275,11 +275,7 @@ export const SignUpForm = ({
                         <Trans>Sign Here</Trans>
                       </FormLabel>
                       <FormControl>
-                        <SignaturePadDialog
-                          disabled={isSubmitting}
-                          value={value}
-                          onChange={(v) => onChange(v ?? '')}
-                        />
+                        <SignaturePadDialog disabled={isSubmitting} value={value} onChange={(v) => onChange(v ?? '')} />
                       </FormControl>
 
                       <FormMessage />
@@ -379,19 +375,13 @@ export const SignUpForm = ({
         <Trans>
           Ao prosseguir, você concorda com nossos{' '}
           <LegalDialog title="Termos de Serviço" content={termsContent ?? ''}>
-            <button
-              type="button"
-              className="text-primary duration-200 hover:opacity-70"
-            >
+            <button type="button" className="text-primary duration-200 hover:opacity-70">
               Termos de Serviço
             </button>
           </LegalDialog>{' '}
           e{' '}
           <LegalDialog title="Política de Privacidade" content={policyContent ?? ''}>
-            <button
-              type="button"
-              className="text-primary duration-200 hover:opacity-70"
-            >
+            <button type="button" className="text-primary duration-200 hover:opacity-70">
               Política de Privacidade
             </button>
           </LegalDialog>

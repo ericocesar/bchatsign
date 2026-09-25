@@ -1,5 +1,6 @@
 import { useDebouncedValue } from '@bchatsign/lib/client-only/hooks/use-debounced-value';
 import { useUpdateSearchParams } from '@bchatsign/lib/client-only/hooks/use-update-search-params';
+import { EmailDomainStatus } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import { Badge } from '@bchatsign/ui/primitives/badge';
 import { Button } from '@bchatsign/ui/primitives/button';
@@ -11,7 +12,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { EmailDomainStatus } from '@bchatsign/prisma/generated/types';
 import { CheckCircle2Icon, ClockIcon, Loader } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router';

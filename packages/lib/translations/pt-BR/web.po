@@ -4308,6 +4308,10 @@ msgstr "Documento Rejeitado"
 msgid "Document Renamed"
 msgstr ""
 
+#: apps/remix/app/routes/_recipient+/sign.$token+/complete.tsx
+msgid "Document sealing is taking longer than expected and has timed out. Please contact the document owner for support."
+msgstr ""
+
 #: apps/remix/app/components/general/document/document-edit-form.tsx
 msgid "Document sent"
 msgstr "Documento enviado"
@@ -5320,6 +5324,10 @@ msgstr ""
 #: apps/remix/app/components/embed/authoring/configure-document-upload.tsx
 msgid "Error uploading file"
 msgstr "Erro ao carregar arquivo"
+
+#: packages/email/template-components/template-footer.tsx
+msgid "Este documento foi enviado usando o <0>BchatSign</0>."
+msgstr ""
 
 #: apps/remix/app/components/general/webhook-logs-sheet.tsx
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.webhooks.$id._index.tsx
@@ -9929,10 +9937,6 @@ msgstr "Assinando"
 msgid "Signing Certificate"
 msgstr "Certificado de Assinatura"
 
-#: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
-msgid "Signing certificate provided by"
-msgstr "Certificado de assinatura fornecido por"
-
 #: packages/lib/jobs/definitions/emails/send-document-completed-emails.handler.ts
 #: packages/lib/jobs/definitions/emails/send-document-completed-emails.handler.ts
 msgid "Signing Complete!"
@@ -10920,6 +10924,10 @@ msgstr "Os campos foram atualizados para o novo método de inserção de campo c
 msgid "The file is not a valid PDF."
 msgstr ""
 
+#: apps/remix/app/routes/_recipient+/sign.$token+/complete.tsx
+msgid "The final document sealing step did not start correctly. Please contact the document owner for support."
+msgstr ""
+
 #: apps/remix/app/components/dialogs/folder-delete-dialog.tsx
 msgid "The folder you are trying to delete does not exist."
 msgstr "A pasta que você está tentando excluir não existe."
@@ -11341,10 +11349,6 @@ msgstr "Este documento foi criado por você ou por um membro da equipe usando o 
 #: apps/remix/app/components/general/template/template-page-view-documents-table.tsx
 msgid "This document was created using a direct link."
 msgstr "Este documento foi criado usando um link direto."
-
-#: packages/email/template-components/template-footer.tsx
-msgid "This document was sent using <0>BchatSign</0>."
-msgstr ""
 
 #: apps/remix/app/components/dialogs/envelope-duplicate-dialog.tsx
 msgid "This document will be duplicated."
@@ -11924,6 +11928,10 @@ msgstr "Não foi possível carregar documentos"
 #: apps/remix/app/components/tables/settings-public-profile-templates-table.tsx
 msgid "Unable to load your public profile templates at this time"
 msgstr "Não foi possível carregar seus modelos de perfil público neste momento"
+
+#: apps/remix/app/routes/_recipient+/sign.$token+/complete.tsx
+msgid "Unable to refresh document status"
+msgstr ""
 
 #: apps/remix/app/components/dialogs/team-email-delete-dialog.tsx
 msgid "Unable to remove email verification at this time. Please try again."
@@ -12700,7 +12708,15 @@ msgid "We are unable to update this passkey at the moment. Please try again late
 msgstr "Não conseguimos atualizar esta passkey no momento. Por favor, tente novamente mais tarde."
 
 #: apps/remix/app/routes/_recipient+/sign.$token+/complete.tsx
+msgid "We could not fetch the latest processing status right now. You can still continue, and this page will show the current state when refreshed."
+msgstr ""
+
+#: apps/remix/app/routes/_recipient+/sign.$token+/complete.tsx
 msgid "We could not finish processing this document automatically. Please try again later or contact the document owner for support."
+msgstr ""
+
+#: apps/remix/app/routes/_recipient+/sign.$token+/complete.tsx
+msgid "We could not seal this document due to a server processing failure. Please contact the document owner for support."
 msgstr ""
 
 #: apps/remix/app/components/general/envelope/envelope-drop-zone-wrapper.tsx

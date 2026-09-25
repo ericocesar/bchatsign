@@ -1,4 +1,5 @@
 import { zEmail } from '@bchatsign/lib/utils/zod';
+import { RecipientRole, SigningStatus } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import { Button } from '@bchatsign/ui/primitives/button';
 import type { DataTableColumnDef } from '@bchatsign/ui/primitives/data-table';
@@ -10,7 +11,6 @@ import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { RecipientRole, SigningStatus } from '@bchatsign/prisma/generated/types';
 import type { Field, Recipient, Signature } from '@prisma/client';
 import { useMemo } from 'react';
 import { useForm } from 'react-hook-form';

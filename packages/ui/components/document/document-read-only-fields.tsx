@@ -3,6 +3,7 @@ import { isTemplateRecipientEmailPlaceholder } from '@bchatsign/lib/constants/te
 import type { TRecipientLite } from '@bchatsign/lib/types/recipient';
 import { parseMessageDescriptor } from '@bchatsign/lib/utils/i18n';
 import { extractInitials } from '@bchatsign/lib/utils/recipient-formatter';
+import { SigningStatus } from '@bchatsign/prisma/generated/types';
 import { FieldRootContainer } from '@bchatsign/ui/components/field/field';
 import { SignatureIcon } from '@bchatsign/ui/icons/signature';
 import { Avatar, AvatarFallback } from '@bchatsign/ui/primitives/avatar';
@@ -13,7 +14,6 @@ import { PopoverHover } from '@bchatsign/ui/primitives/popover';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
 import type { DocumentMeta, Field } from '@prisma/client';
-import { SigningStatus } from '@bchatsign/prisma/generated/types';
 import { Clock, EyeOffIcon } from 'lucide-react';
 import { useState } from 'react';
 

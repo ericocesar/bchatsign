@@ -2,8 +2,8 @@ import { APP_I18N_OPTIONS } from '@bchatsign/lib/constants/i18n';
 import { ZSignDocumentEmbedDataSchema } from '@bchatsign/lib/types/embed-document-sign-schema';
 import { mapSecondaryIdToDocumentId } from '@bchatsign/lib/utils/envelope';
 import { dynamicActivate } from '@bchatsign/lib/utils/i18n';
-import { useLingui } from '@lingui/react';
 import { EnvelopeType } from '@bchatsign/prisma/generated/types';
+import { useLingui } from '@lingui/react';
 import { useEffect, useLayoutEffect, useState } from 'react';
 
 import { injectCss } from '~/utils/css-vars';

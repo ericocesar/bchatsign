@@ -1,13 +1,13 @@
 import { EnvelopeEditorProvider } from '@bchatsign/lib/client-only/providers/envelope-editor-provider';
 import { DO_NOT_INVALIDATE_QUERY_ON_MUTATION } from '@bchatsign/lib/constants/trpc';
 import { formatDocumentsPath, formatTemplatesPath } from '@bchatsign/lib/utils/teams';
+import { EnvelopeType } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import { Button } from '@bchatsign/ui/primitives/button';
 import { Spinner } from '@bchatsign/ui/primitives/spinner';
 import { TooltipProvider } from '@bchatsign/ui/primitives/tooltip';
 import { msg } from '@lingui/core/macro';
 import { Trans } from '@lingui/react/macro';
-import { EnvelopeType } from '@bchatsign/prisma/generated/types';
 import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router';
 

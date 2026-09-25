@@ -1,9 +1,9 @@
 import { toFriendlyWebhookEventName } from '@bchatsign/lib/universal/webhook/to-friendly-webhook-event-name';
+import { WebhookTriggerEvents } from '@bchatsign/prisma/generated/types';
 import { MultiSelect, type Option } from '@bchatsign/ui/primitives/multiselect';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { WebhookTriggerEvents } from '@bchatsign/prisma/generated/types';
 
 type WebhookMultiSelectComboboxProps = {
   listValues: string[];

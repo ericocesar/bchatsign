@@ -5,6 +5,7 @@ import {
   formatOrganisationCallbackUrl,
   formatOrganisationLoginUrl,
 } from '@bchatsign/lib/utils/organisation-authentication-portal';
+import { OrganisationMemberRole } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import { domainRegex } from '@bchatsign/trpc/server/enterprise-router/create-organisation-email-domain.types';
 import type { TGetOrganisationAuthenticationPortalResponse } from '@bchatsign/trpc/server/enterprise-router/get-organisation-authentication-portal.types';
@@ -23,7 +24,6 @@ import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { msg } from '@lingui/core/macro';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { OrganisationMemberRole } from '@bchatsign/prisma/generated/types';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 

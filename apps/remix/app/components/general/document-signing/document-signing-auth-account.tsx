@@ -1,10 +1,10 @@
 import { authClient } from '@bchatsign/auth/client';
+import { RecipientRole } from '@bchatsign/prisma/generated/types';
 import { Alert, AlertDescription } from '@bchatsign/ui/primitives/alert';
 import { Button } from '@bchatsign/ui/primitives/button';
 import { DialogFooter } from '@bchatsign/ui/primitives/dialog';
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { RecipientRole } from '@bchatsign/prisma/generated/types';
 import { useState } from 'react';
 import { match } from 'ts-pattern';
 

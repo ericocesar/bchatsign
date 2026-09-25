@@ -1,4 +1,5 @@
 import type { TRecipientLite } from '@bchatsign/lib/types/recipient';
+import { DocumentStatus, EnvelopeType } from '@bchatsign/prisma/generated/types';
 import { trpc as trpcReact } from '@bchatsign/trpc/react';
 import {
   DropdownMenu,
@@ -8,7 +9,6 @@ import {
   DropdownMenuTrigger,
 } from '@bchatsign/ui/primitives/dropdown-menu';
 import { Trans } from '@lingui/react/macro';
-import { DocumentStatus, EnvelopeType } from '@bchatsign/prisma/generated/types';
 import type { TemplateDirectLink } from '@prisma/client';
 import { Copy, Download, Edit, FolderIcon, MoreHorizontal, Pencil, Share2Icon, Trash2, Upload } from 'lucide-react';
 import { useState } from 'react';

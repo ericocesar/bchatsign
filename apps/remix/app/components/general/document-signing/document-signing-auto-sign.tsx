@@ -2,6 +2,7 @@ import { unsafe_useEffectOnce } from '@bchatsign/lib/client-only/hooks/use-effec
 import { AUTO_SIGNABLE_FIELD_TYPES } from '@bchatsign/lib/constants/autosign';
 import { DocumentAuth } from '@bchatsign/lib/types/document-auth';
 import { extractInitials } from '@bchatsign/lib/utils/recipient-formatter';
+import { FieldType } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import { Button } from '@bchatsign/ui/primitives/button';
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@bchatsign/ui/primitives/dialog';
@@ -12,7 +13,6 @@ import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Plural, Trans } from '@lingui/react/macro';
 import type { Field, Recipient } from '@prisma/client';
-import { FieldType } from '@bchatsign/prisma/generated/types';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRevalidator } from 'react-router';

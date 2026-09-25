@@ -3,6 +3,7 @@ import { ORGANISATION_MEMBER_ROLE_HIERARCHY } from '@bchatsign/lib/constants/org
 import { EXTENDED_ORGANISATION_MEMBER_ROLE_MAP } from '@bchatsign/lib/constants/organisations-translations';
 import { TEAM_MEMBER_ROLE_MAP } from '@bchatsign/lib/constants/teams-translations';
 import { AppError } from '@bchatsign/lib/errors/app-error';
+import { OrganisationGroupType, OrganisationMemberRole } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import type { TFindOrganisationGroupsResponse } from '@bchatsign/trpc/server/organisation-router/find-organisation-groups.types';
 import { Button } from '@bchatsign/ui/primitives/button';
@@ -22,7 +23,6 @@ import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { msg } from '@lingui/core/macro';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { OrganisationGroupType, OrganisationMemberRole } from '@bchatsign/prisma/generated/types';
 import { Loader } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';

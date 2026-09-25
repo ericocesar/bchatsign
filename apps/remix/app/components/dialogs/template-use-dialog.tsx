@@ -7,6 +7,7 @@ import { DO_NOT_INVALIDATE_QUERY_ON_MUTATION, SKIP_QUERY_BATCH_META } from '@bch
 import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
 import { type TRecipientLite, ZRecipientEmailSchema } from '@bchatsign/lib/types/recipient';
 import { putPdfFile } from '@bchatsign/lib/universal/upload/put-file';
+import { DocumentDistributionMethod, DocumentSigningOrder } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import { cn } from '@bchatsign/ui/lib/utils';
 import { Button } from '@bchatsign/ui/primitives/button';
@@ -30,7 +31,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { DocumentDistributionMethod, DocumentSigningOrder } from '@bchatsign/prisma/generated/types';
 import { FileTextIcon, InfoIcon, Plus, UploadCloudIcon, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';

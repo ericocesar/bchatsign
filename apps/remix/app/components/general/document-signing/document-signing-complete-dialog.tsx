@@ -3,6 +3,7 @@ import { type TRecipientAccessAuth, ZDocumentAccessAuthSchema } from '@bchatsign
 import { fieldsContainUnsignedRequiredField } from '@bchatsign/lib/utils/advanced-fields-helpers';
 import { env } from '@bchatsign/lib/utils/env';
 import { zEmail } from '@bchatsign/lib/utils/zod';
+import { RecipientRole } from '@bchatsign/prisma/generated/types';
 import { Alert, AlertDescription, AlertTitle } from '@bchatsign/ui/primitives/alert';
 import { Button } from '@bchatsign/ui/primitives/button';
 import {
@@ -19,7 +20,6 @@ import { Input } from '@bchatsign/ui/primitives/input';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Trans, useLingui } from '@lingui/react/macro';
 import type { Field, Recipient } from '@prisma/client';
-import { RecipientRole } from '@bchatsign/prisma/generated/types';
 import { MapPinIcon } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';

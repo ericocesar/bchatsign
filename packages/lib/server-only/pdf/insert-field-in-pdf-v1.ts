@@ -1,6 +1,5 @@
 // https://github.com/Hopding/pdf-lib/issues/20#issuecomment-412852821
-import type { PDFDocument, PDFFont, PDFTextField } from '@cantoo/pdf-lib';
-import { degrees, RotationTypes, radiansToDegrees, rgb, setFontAndSize, TextAlignment } from '@cantoo/pdf-lib';
+
 import {
   DEFAULT_HANDWRITING_FONT_SIZE,
   DEFAULT_STANDARD_FONT_SIZE,
@@ -10,6 +9,8 @@ import {
 import { fromCheckboxValue } from '@bchatsign/lib/universal/field-checkbox';
 import { isSignatureFieldType } from '@bchatsign/prisma/guards/is-signature-field';
 import type { FieldWithSignature } from '@bchatsign/prisma/types/field-with-signature';
+import type { PDFDocument, PDFFont, PDFTextField } from '@cantoo/pdf-lib';
+import { degrees, RotationTypes, radiansToDegrees, rgb, setFontAndSize, TextAlignment } from '@cantoo/pdf-lib';
 import fontkit from '@pdf-lib/fontkit';
 import { FieldType } from '@prisma/client';
 import { match, P } from 'ts-pattern';

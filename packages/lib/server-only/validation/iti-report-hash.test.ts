@@ -1,10 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import {
-  CONFIRMED_SEALED_PDF_SHA256,
-  classifyItiReportHash,
-  normalizeSha256,
-} from './iti-report-hash';
+import { CONFIRMED_SEALED_PDF_SHA256, classifyItiReportHash, normalizeSha256 } from './iti-report-hash';
 
 describe('normalizeSha256', () => {
   it('lowercases the value', () => {
@@ -123,8 +119,6 @@ describe('classifyItiReportHash', () => {
 
 describe('CONFIRMED_SEALED_PDF_SHA256', () => {
   it('matches the known hash from the plan', () => {
-    expect(CONFIRMED_SEALED_PDF_SHA256).toBe(
-      'a5e4475f03b60e0507d70e966c8db64cc6743a53b97bc57d845ec88105f55529',
-    );
+    expect(CONFIRMED_SEALED_PDF_SHA256).toBe('a5e4475f03b60e0507d70e966c8db64cc6743a53b97bc57d845ec88105f55529');
   });
 });

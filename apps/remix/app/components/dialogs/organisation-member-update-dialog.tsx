@@ -1,6 +1,7 @@
 import { ORGANISATION_MEMBER_ROLE_HIERARCHY } from '@bchatsign/lib/constants/organisations';
 import { ORGANISATION_MEMBER_ROLE_MAP } from '@bchatsign/lib/constants/organisations-translations';
 import { isOrganisationRoleWithinUserHierarchy } from '@bchatsign/lib/utils/organisations';
+import { OrganisationMemberRole } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import { Button } from '@bchatsign/ui/primitives/button';
 import {
@@ -19,7 +20,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { OrganisationMemberRole } from '@bchatsign/prisma/generated/types';
 import type * as DialogPrimitive from '@radix-ui/react-dialog';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';

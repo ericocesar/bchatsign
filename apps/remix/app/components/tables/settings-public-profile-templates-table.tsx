@@ -1,5 +1,6 @@
 import { useCopyToClipboard } from '@bchatsign/lib/client-only/hooks/use-copy-to-clipboard';
 import { formatDirectTemplatePath } from '@bchatsign/lib/utils/templates';
+import { TemplateType } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import type { FindTemplateRow } from '@bchatsign/trpc/server/template-router/schema';
 import {
@@ -14,7 +15,6 @@ import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { TemplateType } from '@bchatsign/prisma/generated/types';
 import type { TemplateDirectLink } from '@prisma/client';
 import { EditIcon, FileIcon, LinkIcon, MoreHorizontalIcon, Trash2Icon } from 'lucide-react';
 import { useMemo, useState } from 'react';

@@ -4,11 +4,11 @@ import { NEXT_PUBLIC_WEBAPP_URL } from '@bchatsign/lib/constants/app';
 import { RECIPIENT_ROLES_DESCRIPTION } from '@bchatsign/lib/constants/recipient-roles';
 import type { TRecipientLite } from '@bchatsign/lib/types/recipient';
 import { recipientAbbreviation } from '@bchatsign/lib/utils/recipient-formatter';
+import { DocumentStatus } from '@bchatsign/prisma/generated/types';
 import { cn } from '@bchatsign/ui/lib/utils';
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
-import { DocumentStatus } from '@bchatsign/prisma/generated/types';
 
 import { StackAvatar } from './stack-avatar';
 

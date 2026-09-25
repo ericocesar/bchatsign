@@ -4,6 +4,7 @@ import {
   type EnvelopeEditorConfig,
   type TEditorEnvelope,
 } from '@bchatsign/lib/types/envelope-editor';
+import { EnvelopeType, ReadStatus, SendStatus, SigningStatus } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import type { TSetEnvelopeFieldsResponse } from '@bchatsign/trpc/server/envelope-router/set-envelope-fields.types';
 import type { TSetEnvelopeRecipientsRequest } from '@bchatsign/trpc/server/envelope-router/set-envelope-recipients.types';
@@ -12,7 +13,6 @@ import type { TRecipientColor } from '@bchatsign/ui/lib/recipient-colors';
 import { getRecipientColor } from '@bchatsign/ui/lib/recipient-colors';
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { useLingui } from '@lingui/react/macro';
-import { EnvelopeType, ReadStatus, SendStatus, SigningStatus } from '@bchatsign/prisma/generated/types';
 import { Prisma } from '@prisma/client';
 import type React from 'react';
 import { createContext, useCallback, useContext, useMemo, useRef, useState } from 'react';

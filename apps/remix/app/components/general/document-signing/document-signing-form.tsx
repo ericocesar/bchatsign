@@ -2,6 +2,7 @@ import type { DocumentAndSender } from '@bchatsign/lib/server-only/document/get-
 import type { TRecipientAccessAuth } from '@bchatsign/lib/types/document-auth';
 import { isFieldUnsignedAndRequired } from '@bchatsign/lib/utils/advanced-fields-helpers';
 import { sortFieldsByPosition } from '@bchatsign/lib/utils/fields';
+import { RecipientRole } from '@bchatsign/prisma/generated/types';
 import { isSignatureFieldType } from '@bchatsign/prisma/guards/is-signature-field';
 import type { RecipientWithFields } from '@bchatsign/prisma/types/recipient-with-fields';
 import { FieldToolTip } from '@bchatsign/ui/components/field/field-tooltip';
@@ -14,7 +15,6 @@ import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { RecipientRole } from '@bchatsign/prisma/generated/types';
 import type { Field, Recipient } from '@prisma/client';
 import { useEffect, useId, useMemo, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';

@@ -1,9 +1,9 @@
 import { useDebouncedValue } from '@bchatsign/lib/client-only/hooks/use-debounced-value';
+import { OrganisationGroupType, OrganisationMemberRole } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import { AnimateGenericFadeInOut } from '@bchatsign/ui/components/animate/animate-generic-fade-in-out';
 import { Input } from '@bchatsign/ui/primitives/input';
 import { useLingui } from '@lingui/react/macro';
-import { OrganisationGroupType, OrganisationMemberRole } from '@bchatsign/prisma/generated/types';
 import { useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router';
 

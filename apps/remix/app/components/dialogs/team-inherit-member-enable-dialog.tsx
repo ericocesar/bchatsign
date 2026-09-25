@@ -1,4 +1,5 @@
 import { useCurrentOrganisation } from '@bchatsign/lib/client-only/providers/organisation';
+import { OrganisationGroupType, OrganisationMemberRole, TeamMemberRole } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import { Button } from '@bchatsign/ui/primitives/button';
 import {
@@ -13,7 +14,6 @@ import {
 } from '@bchatsign/ui/primitives/dialog';
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { OrganisationGroupType, OrganisationMemberRole, TeamMemberRole } from '@bchatsign/prisma/generated/types';
 
 import { useCurrentTeam } from '~/providers/team';
 

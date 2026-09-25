@@ -1,9 +1,9 @@
 import { createRequire } from 'node:module';
 import path from 'node:path';
+import { prisma } from '@bchatsign/prisma';
 import { createBullBoard } from '@bull-board/api';
 import { BullMQAdapter } from '@bull-board/api/bullMQAdapter';
 import { HonoAdapter } from '@bull-board/hono';
-import { prisma } from '@bchatsign/prisma';
 import { serveStatic } from '@hono/node-server/serve-static';
 import { sha256 } from '@noble/hashes/sha2';
 import { BackgroundJobStatus, Prisma } from '@prisma/client';

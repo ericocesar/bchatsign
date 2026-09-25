@@ -4,9 +4,9 @@ import type { Field, RecipientRole, Signature } from '@prisma/client';
 import { SigningStatus } from '@prisma/client';
 import Konva from 'konva';
 import 'konva/skia-backend';
+import fs from 'node:fs';
 import type { Canvas } from 'skia-canvas';
 import { Image as SkiaImage } from 'skia-canvas';
-import fs from 'node:fs';
 
 import { UAParser } from 'ua-parser-js';
 import { renderSVG } from 'uqr';
@@ -371,8 +371,7 @@ const renderColumnTwo = (options: RenderColumnOptions) => {
     const sealLabel = new Konva.Text({
       x: 0,
       y: isRejected ? 0 : signatureHeight + 10,
-      text:
-        'O presente documento foi assinado eletronicamente pelo(s) signatário(s). Após a conclusão das assinaturas, recebeu selo criptográfico ICP-Brasil emitido em nome da WEBCK COMÉRCIO E SERVIÇOS DE TECNOLOGIA LTDA, exclusivamente para garantir sua integridade, autenticidade técnica e detectabilidade de alterações posteriores. O certificado ICP-Brasil da WEBCK não representa manifestação de vontade nem substitui a assinatura dos signatários.',
+      text: 'O presente documento foi assinado eletronicamente pelo(s) signatário(s). Após a conclusão das assinaturas, recebeu selo criptográfico ICP-Brasil emitido em nome da WEBCK COMÉRCIO E SERVIÇOS DE TECNOLOGIA LTDA, exclusivamente para garantir sua integridade, autenticidade técnica e detectabilidade de alterações posteriores. O certificado ICP-Brasil da WEBCK não representa manifestação de vontade nem substitui a assinatura dos signatários.',
       fill: textMutedForeground,
       width: columnWidth,
       fontFamily: certificateFontFamily,
@@ -448,8 +447,7 @@ const renderColumnTwo = (options: RenderColumnOptions) => {
     const sealLabel = new Konva.Text({
       x: 0,
       y: column.getClientRect().height + 6,
-      text:
-        'O presente documento foi assinado eletronicamente pelo(s) signatário(s). Após a conclusão das assinaturas, recebeu selo criptográfico ICP-Brasil emitido em nome da WEBCK COMÉRCIO E SERVIÇOS DE TECNOLOGIA LTDA, exclusivamente para garantir sua integridade, autenticidade técnica e detectabilidade de alterações posteriores. O certificado ICP-Brasil da WEBCK não representa manifestação de vontade nem substitui a assinatura dos signatários.',
+      text: 'O presente documento foi assinado eletronicamente pelo(s) signatário(s). Após a conclusão das assinaturas, recebeu selo criptográfico ICP-Brasil emitido em nome da WEBCK COMÉRCIO E SERVIÇOS DE TECNOLOGIA LTDA, exclusivamente para garantir sua integridade, autenticidade técnica e detectabilidade de alterações posteriores. O certificado ICP-Brasil da WEBCK não representa manifestação de vontade nem substitui a assinatura dos signatários.',
       fill: textMutedForeground,
       width: columnWidth,
       fontFamily: certificateFontFamily,

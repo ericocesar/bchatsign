@@ -19,6 +19,14 @@ import { extractDocumentAuthMethods } from '@bchatsign/lib/utils/document-auth';
 import { isValidRedirectUrl } from '@bchatsign/lib/utils/is-valid-redirect-url';
 import { canAccessTeamDocument, DocumentSignatureType, extractTeamSignatureSettings } from '@bchatsign/lib/utils/teams';
 import { zEmail } from '@bchatsign/lib/utils/zod';
+import {
+  DocumentDistributionMethod,
+  DocumentVisibility,
+  EnvelopeType,
+  RecipientRole,
+  SendStatus,
+  TemplateType,
+} from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import { DocumentEmailCheckboxes } from '@bchatsign/ui/components/document/document-email-checkboxes';
 import {
@@ -61,7 +69,6 @@ import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { msg } from '@lingui/core/macro';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { DocumentDistributionMethod, DocumentVisibility, EnvelopeType, RecipientRole, SendStatus, TemplateType } from '@bchatsign/prisma/generated/types';
 import type * as DialogPrimitive from '@radix-ui/react-dialog';
 import { BadgeCheckIcon, BellRingIcon, InfoIcon, MailIcon, SettingsIcon, ShieldIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';

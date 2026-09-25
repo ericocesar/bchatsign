@@ -1,4 +1,5 @@
 import { formatDocumentsPath, formatTemplatesPath } from '@bchatsign/lib/utils/teams';
+import { FolderType } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import type { TFolderWithSubfolders } from '@bchatsign/trpc/server/folder-router/schema';
 import { Button } from '@bchatsign/ui/primitives/button';
@@ -11,7 +12,6 @@ import {
   DropdownMenuTrigger,
 } from '@bchatsign/ui/primitives/dropdown-menu';
 import { Plural, Trans } from '@lingui/react/macro';
-import { FolderType } from '@bchatsign/prisma/generated/types';
 import {
   ArrowRightIcon,
   FolderIcon,

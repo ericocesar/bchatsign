@@ -3,6 +3,7 @@ import type { TEnvelope } from '@bchatsign/lib/types/envelope';
 import { isDocumentCompleted } from '@bchatsign/lib/utils/document';
 import { getEnvelopeItemPermissions, mapSecondaryIdToDocumentId } from '@bchatsign/lib/utils/envelope';
 import { formatDocumentsPath } from '@bchatsign/lib/utils/teams';
+import { DocumentStatus, EnvelopeType } from '@bchatsign/prisma/generated/types';
 import { trpc as trpcReact } from '@bchatsign/trpc/react';
 import { DocumentShareButton } from '@bchatsign/ui/components/document/document-share-button';
 import {
@@ -13,7 +14,6 @@ import {
   DropdownMenuTrigger,
 } from '@bchatsign/ui/primitives/dropdown-menu';
 import { Trans } from '@lingui/react/macro';
-import { DocumentStatus, EnvelopeType } from '@bchatsign/prisma/generated/types';
 import {
   Copy,
   Download,

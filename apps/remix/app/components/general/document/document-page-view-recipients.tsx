@@ -2,6 +2,7 @@ import { RECIPIENT_ROLES_DESCRIPTION } from '@bchatsign/lib/constants/recipient-
 import type { TEnvelope } from '@bchatsign/lib/types/envelope';
 import { isDocumentCompleted } from '@bchatsign/lib/utils/document';
 import { formatSigningLink, isRecipientExpired } from '@bchatsign/lib/utils/recipients';
+import { DocumentStatus, RecipientRole, SigningStatus } from '@bchatsign/prisma/generated/types';
 import { CopyTextButton } from '@bchatsign/ui/components/common/copy-text-button';
 import { SignatureIcon } from '@bchatsign/ui/icons/signature';
 import { AvatarWithText } from '@bchatsign/ui/primitives/avatar';
@@ -12,7 +13,6 @@ import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { DocumentStatus, RecipientRole, SigningStatus } from '@bchatsign/prisma/generated/types';
 import { TooltipArrow } from '@radix-ui/react-tooltip';
 import {
   AlertTriangle,

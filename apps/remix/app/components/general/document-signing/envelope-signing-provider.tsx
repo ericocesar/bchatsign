@@ -6,9 +6,9 @@ import type { EnvelopeForSigningResponse } from '@bchatsign/lib/server-only/enve
 import type { TRecipientActionAuth } from '@bchatsign/lib/types/document-auth';
 import { isFieldUnsignedAndRequired, isRequiredField } from '@bchatsign/lib/utils/advanced-fields-helpers';
 import { extractFieldInsertionValues } from '@bchatsign/lib/utils/envelope-signing';
+import { EnvelopeType, FieldType, RecipientRole, SigningStatus } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import type { TSignEnvelopeFieldValue } from '@bchatsign/trpc/server/envelope-router/sign-envelope-field.types';
-import { EnvelopeType, FieldType, RecipientRole, SigningStatus } from '@bchatsign/prisma/generated/types';
 import type { Field, Recipient } from '@prisma/client';
 import { DateTime } from 'luxon';
 import { createContext, useContext, useMemo, useState } from 'react';

@@ -2,6 +2,7 @@ import { getSession } from '@bchatsign/auth/server/lib/utils/get-session';
 import { useSession } from '@bchatsign/lib/client-only/providers/session';
 import { getTeamByUrl } from '@bchatsign/lib/server-only/team/get-team';
 import { getTeamPublicProfile } from '@bchatsign/lib/server-only/team/get-team-public-profile';
+import { TemplateType } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import type { FindTemplateRow } from '@bchatsign/trpc/server/template-router/schema';
 import { cn } from '@bchatsign/ui/lib/utils';
@@ -11,7 +12,6 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@bchatsign/ui/primitive
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { TemplateType } from '@bchatsign/prisma/generated/types';
 import type { TemplateDirectLink } from '@prisma/client';
 import { useEffect, useMemo, useState } from 'react';
 

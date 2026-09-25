@@ -4,9 +4,9 @@ import { ZEnvelopeReminderSettings } from '@bchatsign/lib/constants/envelope-rem
 import { SUPPORTED_LANGUAGE_CODES } from '@bchatsign/lib/constants/i18n';
 import { isValidRedirectUrl } from '@bchatsign/lib/utils/is-valid-redirect-url';
 import { zEmail } from '@bchatsign/lib/utils/zod';
+import { DocumentDistributionMethod, DocumentSigningOrder } from '@bchatsign/prisma/generated/types';
 import { DocumentMetaSchema } from '@bchatsign/prisma/generated/zod/modelSchema/DocumentMetaSchema';
 import { msg } from '@lingui/core/macro';
-import { DocumentDistributionMethod, DocumentSigningOrder } from '@bchatsign/prisma/generated/types';
 import { z } from 'zod';
 
 import { ZDocumentEmailSettingsSchema } from './document-email';

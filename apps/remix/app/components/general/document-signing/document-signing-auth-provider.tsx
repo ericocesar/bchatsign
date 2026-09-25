@@ -8,8 +8,8 @@ import type {
 } from '@bchatsign/lib/types/document-auth';
 import { DocumentAuth } from '@bchatsign/lib/types/document-auth';
 import { extractDocumentAuthMethods } from '@bchatsign/lib/utils/document-auth';
-import { trpc } from '@bchatsign/trpc/react';
 import { FieldType } from '@bchatsign/prisma/generated/types';
+import { trpc } from '@bchatsign/trpc/react';
 import type { Envelope, Passkey, Recipient } from '@prisma/client';
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 

@@ -15,11 +15,11 @@ import {
   type TTextFieldMeta as TextFieldMeta,
   ZFieldMetaSchema,
 } from '@bchatsign/lib/types/field-meta';
+import { FieldType } from '@bchatsign/prisma/generated/types';
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import type { MessageDescriptor } from '@lingui/core';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
-import { FieldType } from '@bchatsign/prisma/generated/types';
 import { forwardRef, useEffect, useState } from 'react';
 import { match } from 'ts-pattern';
 

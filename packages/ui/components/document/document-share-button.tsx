@@ -106,13 +106,7 @@ export const DocumentShareButton = ({ token, documentId, className, trigger }: D
       mode: 'no-cors',
     });
 
-    window.open(
-      generateTwitterIntent(
-        shareMessage,
-        `${NEXT_PUBLIC_WEBAPP_URL()}/share/${slug}`,
-      ),
-      '_blank',
-    );
+    window.open(generateTwitterIntent(shareMessage, `${NEXT_PUBLIC_WEBAPP_URL()}/share/${slug}`), '_blank');
 
     setIsOpen(false);
   };

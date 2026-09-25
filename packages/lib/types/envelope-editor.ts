@@ -1,13 +1,13 @@
 import { ZBaseEmbedDataSchema } from '@bchatsign/lib/types/embed-base-schemas';
 import { ZEnvelopeFieldSchema } from '@bchatsign/lib/types/field';
 import { ZEnvelopeRecipientLiteSchema } from '@bchatsign/lib/types/recipient';
+import { EnvelopeType } from '@bchatsign/prisma/generated/types';
 import { DocumentMetaSchema } from '@bchatsign/prisma/generated/zod/modelSchema/DocumentMetaSchema';
 import { EnvelopeAttachmentSchema } from '@bchatsign/prisma/generated/zod/modelSchema/EnvelopeAttachmentSchema';
 import { EnvelopeItemSchema } from '@bchatsign/prisma/generated/zod/modelSchema/EnvelopeItemSchema';
 import { EnvelopeSchema } from '@bchatsign/prisma/generated/zod/modelSchema/EnvelopeSchema';
 import { TeamSchema } from '@bchatsign/prisma/generated/zod/modelSchema/TeamSchema';
 import { TemplateDirectLinkSchema } from '@bchatsign/prisma/generated/zod/modelSchema/TemplateDirectLinkSchema';
-import { EnvelopeType } from '@bchatsign/prisma/generated/types';
 import { z } from 'zod';
 
 /**

@@ -9,6 +9,7 @@ import { getDocumentDataUrlForPdfViewer } from '@bchatsign/lib/utils/envelope-do
 import { sortFieldsByPosition, validateFieldsInserted } from '@bchatsign/lib/utils/fields';
 import { dynamicActivate } from '@bchatsign/lib/utils/i18n';
 import { zEmail } from '@bchatsign/lib/utils/zod';
+import { FieldType } from '@bchatsign/prisma/generated/types';
 import { isSignatureFieldType } from '@bchatsign/prisma/guards/is-signature-field';
 import { trpc } from '@bchatsign/trpc/react';
 import type {
@@ -26,7 +27,6 @@ import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { FieldType } from '@bchatsign/prisma/generated/types';
 import type { DocumentMeta, EnvelopeItem, Field, Recipient, Signature } from '@prisma/client';
 import { LucideChevronDown, LucideChevronUp } from 'lucide-react';
 import { DateTime } from 'luxon';

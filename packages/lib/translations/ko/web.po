@@ -4313,6 +4313,10 @@ msgstr "문서가 거부되었습니다"
 msgid "Document Renamed"
 msgstr "문서 이름이 변경되었습니다."
 
+#: apps/remix/app/routes/_recipient+/sign.$token+/complete.tsx
+msgid "Document sealing is taking longer than expected and has timed out. Please contact the document owner for support."
+msgstr ""
+
 #: apps/remix/app/components/general/document/document-edit-form.tsx
 msgid "Document sent"
 msgstr "문서가 발송되었습니다"
@@ -5325,6 +5329,10 @@ msgstr "페이지를 불러오는 중 오류가 발생했습니다."
 #: apps/remix/app/components/embed/authoring/configure-document-upload.tsx
 msgid "Error uploading file"
 msgstr "파일 업로드 중 오류가 발생했습니다."
+
+#: packages/email/template-components/template-footer.tsx
+msgid "Este documento foi enviado usando o <0>BchatSign</0>."
+msgstr ""
 
 #: apps/remix/app/components/general/webhook-logs-sheet.tsx
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.webhooks.$id._index.tsx
@@ -9934,10 +9942,6 @@ msgstr "서명 중"
 msgid "Signing Certificate"
 msgstr "서명 인증서"
 
-#: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
-msgid "Signing certificate provided by"
-msgstr "서명 인증서 제공자"
-
 #: packages/lib/jobs/definitions/emails/send-document-completed-emails.handler.ts
 #: packages/lib/jobs/definitions/emails/send-document-completed-emails.handler.ts
 msgid "Signing Complete!"
@@ -10925,6 +10929,10 @@ msgstr "필드가 새로운 필드 삽입 방식으로 성공적으로 업데이
 msgid "The file is not a valid PDF."
 msgstr "이 파일은 유효한 PDF가 아닙니다."
 
+#: apps/remix/app/routes/_recipient+/sign.$token+/complete.tsx
+msgid "The final document sealing step did not start correctly. Please contact the document owner for support."
+msgstr ""
+
 #: apps/remix/app/components/dialogs/folder-delete-dialog.tsx
 msgid "The folder you are trying to delete does not exist."
 msgstr "삭제하려는 폴더가 존재하지 않습니다."
@@ -11346,10 +11354,6 @@ msgstr "이 문서는 위 템플릿을 사용해 귀하 또는 팀 구성원이 
 #: apps/remix/app/components/general/template/template-page-view-documents-table.tsx
 msgid "This document was created using a direct link."
 msgstr "이 문서는 직접 링크를 사용해 생성되었습니다."
-
-#: packages/email/template-components/template-footer.tsx
-msgid "This document was sent using <0>BchatSign</0>."
-msgstr ""
 
 #: apps/remix/app/components/dialogs/envelope-duplicate-dialog.tsx
 msgid "This document will be duplicated."
@@ -11929,6 +11933,10 @@ msgstr "문서를 불러올 수 없습니다"
 #: apps/remix/app/components/tables/settings-public-profile-templates-table.tsx
 msgid "Unable to load your public profile templates at this time"
 msgstr "현재 공개 프로필 템플릿을 불러올 수 없습니다"
+
+#: apps/remix/app/routes/_recipient+/sign.$token+/complete.tsx
+msgid "Unable to refresh document status"
+msgstr ""
 
 #: apps/remix/app/components/dialogs/team-email-delete-dialog.tsx
 msgid "Unable to remove email verification at this time. Please try again."
@@ -12705,7 +12713,15 @@ msgid "We are unable to update this passkey at the moment. Please try again late
 msgstr "현재 이 패스키를 업데이트할 수 없습니다. 나중에 다시 시도해 주세요."
 
 #: apps/remix/app/routes/_recipient+/sign.$token+/complete.tsx
+msgid "We could not fetch the latest processing status right now. You can still continue, and this page will show the current state when refreshed."
+msgstr ""
+
+#: apps/remix/app/routes/_recipient+/sign.$token+/complete.tsx
 msgid "We could not finish processing this document automatically. Please try again later or contact the document owner for support."
+msgstr ""
+
+#: apps/remix/app/routes/_recipient+/sign.$token+/complete.tsx
+msgid "We could not seal this document due to a server processing failure. Please contact the document owner for support."
 msgstr ""
 
 #: apps/remix/app/components/general/envelope/envelope-drop-zone-wrapper.tsx

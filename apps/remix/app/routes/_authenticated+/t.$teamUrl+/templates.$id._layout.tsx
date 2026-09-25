@@ -3,10 +3,10 @@ import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
 import { getEnvelopeById } from '@bchatsign/lib/server-only/envelope/get-envelope-by-id';
 import { getTeamByUrl } from '@bchatsign/lib/server-only/team/get-team';
 import { getOrganisationTemplateById } from '@bchatsign/lib/server-only/template/get-organisation-template-by-id';
+import { EnvelopeType } from '@bchatsign/prisma/generated/types';
 import { Button } from '@bchatsign/ui/primitives/button';
 import { msg } from '@lingui/core/macro';
 import { Trans } from '@lingui/react/macro';
-import { EnvelopeType } from '@bchatsign/prisma/generated/types';
 import { ChevronLeftIcon } from 'lucide-react';
 import { isRouteErrorResponse, Link, Outlet, redirect, type ShouldRevalidateFunctionArgs } from 'react-router';
 

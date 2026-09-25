@@ -1,4 +1,5 @@
 import { generateEmailDomainRecords } from '@bchatsign/lib/utils/email-domains';
+import { EmailDomainStatus } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import {
   AlertDialog,
@@ -19,7 +20,6 @@ import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { EmailDomainStatus } from '@bchatsign/prisma/generated/types';
 import { CheckCircle2Icon, ClockIcon, CopyIcon, RotateCcwIcon } from 'lucide-react';
 import { DateTime } from 'luxon';
 import { useMemo } from 'react';

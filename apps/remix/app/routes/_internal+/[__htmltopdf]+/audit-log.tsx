@@ -8,9 +8,9 @@ import { getOrganisationClaimByTeamId } from '@bchatsign/lib/server-only/organis
 import { formatDocumentAuditLogAction } from '@bchatsign/lib/utils/document-audit-logs';
 import { mapSecondaryIdToDocumentId } from '@bchatsign/lib/utils/envelope';
 import { getTranslations } from '@bchatsign/lib/utils/i18n';
+import { EnvelopeType } from '@bchatsign/prisma/generated/types';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
-import { EnvelopeType } from '@bchatsign/prisma/generated/types';
 import { DateTime } from 'luxon';
 import { redirect } from 'react-router';
 import { UAParser } from 'ua-parser-js';

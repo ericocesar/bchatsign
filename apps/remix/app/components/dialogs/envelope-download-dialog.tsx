@@ -1,4 +1,5 @@
 import { downloadPDF } from '@bchatsign/lib/client-only/download-pdf';
+import { DocumentStatus } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import { Button } from '@bchatsign/ui/primitives/button';
 import {
@@ -12,7 +13,6 @@ import {
 import { Skeleton } from '@bchatsign/ui/primitives/skeleton';
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { DocumentStatus } from '@bchatsign/prisma/generated/types';
 import type { EnvelopeItem } from '@prisma/client';
 import { DownloadIcon, FileTextIcon } from 'lucide-react';
 import { useMemo, useState } from 'react';

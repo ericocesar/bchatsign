@@ -4,6 +4,7 @@ import { useSession } from '@bchatsign/lib/client-only/providers/session';
 import { TIME_ZONES } from '@bchatsign/lib/constants/time-zones';
 import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
 import { formatDocumentsPath, formatTemplatesPath } from '@bchatsign/lib/utils/teams';
+import { EnvelopeType } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import type { TCreateEnvelopePayload } from '@bchatsign/trpc/server/envelope-router/create-envelope.types';
 import { buildDropzoneRejectionDescription } from '@bchatsign/ui/lib/handle-dropzone-rejection';
@@ -13,7 +14,6 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@bchat
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg, plural } from '@lingui/core/macro';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { EnvelopeType } from '@bchatsign/prisma/generated/types';
 import { useMemo, useState } from 'react';
 import { ErrorCode as DropzoneErrorCode, type FileRejection } from 'react-dropzone';
 import { useNavigate } from 'react-router';

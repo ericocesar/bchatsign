@@ -4,6 +4,7 @@ import { DO_NOT_INVALIDATE_QUERY_ON_MUTATION, SKIP_QUERY_BATCH_META } from '@bch
 import type { TDocument } from '@bchatsign/lib/types/document';
 import { ZDocumentAccessAuthTypesSchema } from '@bchatsign/lib/types/document-auth';
 import { getDocumentDataUrlForPdfViewer } from '@bchatsign/lib/utils/envelope-download';
+import { DocumentDistributionMethod, DocumentStatus } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import { cn } from '@bchatsign/ui/lib/utils';
 import { Card, CardContent } from '@bchatsign/ui/primitives/card';
@@ -21,7 +22,6 @@ import { Stepper } from '@bchatsign/ui/primitives/stepper';
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
-import { DocumentDistributionMethod, DocumentStatus } from '@bchatsign/prisma/generated/types';
 import { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router';
 import { z } from 'zod';

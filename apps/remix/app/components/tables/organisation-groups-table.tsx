@@ -2,6 +2,7 @@ import { useUpdateSearchParams } from '@bchatsign/lib/client-only/hooks/use-upda
 import { useCurrentOrganisation } from '@bchatsign/lib/client-only/providers/organisation';
 import { EXTENDED_ORGANISATION_MEMBER_ROLE_MAP } from '@bchatsign/lib/constants/organisations-translations';
 import { ZUrlSearchParamsSchema } from '@bchatsign/lib/types/search-params';
+import { OrganisationGroupType } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import { Button } from '@bchatsign/ui/primitives/button';
 import type { DataTableColumnDef } from '@bchatsign/ui/primitives/data-table';
@@ -12,7 +13,6 @@ import { TableCell } from '@bchatsign/ui/primitives/table';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { OrganisationGroupType } from '@bchatsign/prisma/generated/types';
 import { useMemo } from 'react';
 import { Link, useSearchParams } from 'react-router';
 

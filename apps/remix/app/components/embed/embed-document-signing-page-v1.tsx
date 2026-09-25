@@ -6,6 +6,7 @@ import { isFieldUnsignedAndRequired } from '@bchatsign/lib/utils/advanced-fields
 import { getDocumentDataUrlForPdfViewer } from '@bchatsign/lib/utils/envelope-download';
 import { sortFieldsByPosition, validateFieldsInserted } from '@bchatsign/lib/utils/fields';
 import { dynamicActivate } from '@bchatsign/lib/utils/i18n';
+import { RecipientRole, SigningStatus } from '@bchatsign/prisma/generated/types';
 import { isSignatureFieldType } from '@bchatsign/prisma/guards/is-signature-field';
 import type { RecipientWithFields } from '@bchatsign/prisma/types/recipient-with-fields';
 import { trpc } from '@bchatsign/trpc/react';
@@ -24,9 +25,7 @@ import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import type { DocumentMeta, EnvelopeItem } from '@prisma/client';
-import { RecipientRole, SigningStatus } from '@bchatsign/prisma/generated/types';
-import type { Field } from '@prisma/client';
+import type { DocumentMeta, EnvelopeItem, Field } from '@prisma/client';
 import { LucideChevronDown, LucideChevronUp } from 'lucide-react';
 import { useEffect, useId, useLayoutEffect, useMemo, useState } from 'react';
 

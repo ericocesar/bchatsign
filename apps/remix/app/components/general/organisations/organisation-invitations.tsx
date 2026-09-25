@@ -1,5 +1,6 @@
 import { useSession } from '@bchatsign/lib/client-only/providers/session';
 import { formatAvatarUrl } from '@bchatsign/lib/utils/avatars';
+import { OrganisationMemberInviteStatus } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import { AnimateGenericFadeInOut } from '@bchatsign/ui/components/animate/animate-generic-fade-in-out';
 import { Alert, AlertDescription } from '@bchatsign/ui/primitives/alert';
@@ -17,7 +18,6 @@ import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Plural, Trans } from '@lingui/react/macro';
-import { OrganisationMemberInviteStatus } from '@bchatsign/prisma/generated/types';
 import { AnimatePresence } from 'framer-motion';
 import { BellIcon } from 'lucide-react';
 

@@ -23,16 +23,10 @@ export {
 } from './iti-report-parser';
 export {
   loadEnvelopeItemForItiReport,
-  uploadItiReport,
   type UploadItiReportOptions,
   type UploadItiReportResult,
+  uploadItiReport,
 } from './iti-report-upload';
-
-export {
-  mintSealedPdfToken,
-  type MintSealedPdfTokenOptions,
-  type MintSealedPdfTokenResult,
-} from './mint-sealed-pdf-token';
 export {
   type BuildPublicValidationMetadataOptions,
   buildBchatValidationUrlFromEnvelope,
@@ -40,6 +34,11 @@ export {
   type PublicValidationEnvelopeItem,
   type PublicValidationMetadata,
 } from './metadata';
+export {
+  type MintSealedPdfTokenOptions,
+  type MintSealedPdfTokenResult,
+  mintSealedPdfToken,
+} from './mint-sealed-pdf-token';
 export {
   type GenerateSealedPdfTokenResult,
   generateSealedPdfToken,

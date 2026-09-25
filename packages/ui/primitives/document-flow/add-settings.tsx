@@ -8,6 +8,7 @@ import type { TDocument } from '@bchatsign/lib/types/document';
 import type { TRecipientLite } from '@bchatsign/lib/types/recipient';
 import { extractDocumentAuthMethods } from '@bchatsign/lib/utils/document-auth';
 import { extractTeamSignatureSettings } from '@bchatsign/lib/utils/teams';
+import { DocumentStatus, DocumentVisibility, SendStatus, TeamMemberRole } from '@bchatsign/prisma/generated/types';
 import {
   DocumentGlobalAuthAccessSelect,
   DocumentGlobalAuthAccessTooltip,
@@ -29,7 +30,6 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { MultiSelectCombobox } from '@bchatsign/ui/primitives/multi-select-combobox';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { DocumentStatus, DocumentVisibility, SendStatus, TeamMemberRole } from '@bchatsign/prisma/generated/types';
 import type { Field } from '@prisma/client';
 import { InfoIcon } from 'lucide-react';
 import { useEffect } from 'react';

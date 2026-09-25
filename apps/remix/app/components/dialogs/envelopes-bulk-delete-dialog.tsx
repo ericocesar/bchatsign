@@ -1,3 +1,4 @@
+import { EnvelopeType } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import { Alert, AlertDescription } from '@bchatsign/ui/primitives/alert';
 import { Button } from '@bchatsign/ui/primitives/button';
@@ -12,7 +13,6 @@ import {
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { plural } from '@lingui/core/macro';
 import { Plural, Trans, useLingui } from '@lingui/react/macro';
-import { EnvelopeType } from '@bchatsign/prisma/generated/types';
 import type * as DialogPrimitive from '@radix-ui/react-dialog';
 
 export type EnvelopesBulkDeleteDialogProps = {

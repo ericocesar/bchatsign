@@ -1,6 +1,7 @@
 import { TEAM_MEMBER_ROLE_HIERARCHY } from '@bchatsign/lib/constants/teams';
 import { EXTENDED_TEAM_MEMBER_ROLE_MAP } from '@bchatsign/lib/constants/teams-translations';
 import { isTeamRoleWithinUserHierarchy } from '@bchatsign/lib/utils/teams';
+import { TeamMemberRole } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import { Alert, AlertDescription } from '@bchatsign/ui/primitives/alert';
 import { Button } from '@bchatsign/ui/primitives/button';
@@ -20,7 +21,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { TeamMemberRole } from '@bchatsign/prisma/generated/types';
 import type * as DialogPrimitive from '@radix-ui/react-dialog';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';

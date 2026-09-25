@@ -10,15 +10,15 @@ import { getRecipientByToken } from '@bchatsign/lib/server-only/recipient/get-re
 import { getRecipientSignatures } from '@bchatsign/lib/server-only/recipient/get-recipient-signatures';
 import { getUserByEmail } from '@bchatsign/lib/server-only/user/get-user-by-email';
 import { isDocumentCompleted } from '@bchatsign/lib/utils/document';
+import { DocumentStatus, FieldType, RecipientRole } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
-import { Alert, AlertDescription, AlertTitle } from '@bchatsign/ui/primitives/alert';
 import { DocumentShareButton } from '@bchatsign/ui/components/document/document-share-button';
 import { SigningCard3D } from '@bchatsign/ui/components/signing-card';
 import { cn } from '@bchatsign/ui/lib/utils';
+import { Alert, AlertDescription, AlertTitle } from '@bchatsign/ui/primitives/alert';
 import { Badge } from '@bchatsign/ui/primitives/badge';
 import { Button } from '@bchatsign/ui/primitives/button';
 import { Trans } from '@lingui/react/macro';
-import { DocumentStatus, FieldType, RecipientRole } from '@bchatsign/prisma/generated/types';
 import { CheckCircle2, CircleAlert, Clock8, DownloadIcon, Loader2 } from 'lucide-react';
 import { Link } from 'react-router';
 import { match } from 'ts-pattern';
@@ -255,8 +255,8 @@ export default function CompletedSigningPage({ loaderData }: Route.ComponentProp
                   {match(signingFailureReason)
                     .with('SEAL_JOB_FAILED', () => (
                       <Trans>
-                        We could not seal this document due to a server processing failure. Please contact the
-                        document owner for support.
+                        We could not seal this document due to a server processing failure. Please contact the document
+                        owner for support.
                       </Trans>
                     ))
                     .with('SEAL_JOB_STUCK', () => (

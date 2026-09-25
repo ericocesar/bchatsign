@@ -2,9 +2,9 @@ import { validateCheckboxLength } from '@bchatsign/lib/advanced-fields-validatio
 import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
 import type { TFieldCheckbox } from '@bchatsign/lib/types/field';
 import { parseCheckboxCustomText } from '@bchatsign/lib/utils/fields';
+import { FieldType } from '@bchatsign/prisma/generated/types';
 import type { TSignEnvelopeFieldValue } from '@bchatsign/trpc/server/envelope-router/sign-envelope-field.types';
 import { checkboxValidationSigns } from '@bchatsign/ui/primitives/document-flow/field-items-advanced-settings/constants';
-import { FieldType } from '@bchatsign/prisma/generated/types';
 
 import { SignFieldCheckboxDialog } from '~/components/dialogs/sign-field-checkbox-dialog';
 

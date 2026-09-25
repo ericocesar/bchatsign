@@ -4,6 +4,7 @@ import { PDF_VIEWER_ERROR_MESSAGES } from '@bchatsign/lib/constants/pdf-viewer-i
 import { mapSecondaryIdToTemplateId } from '@bchatsign/lib/utils/envelope';
 import { getDocumentDataUrlForPdfViewer } from '@bchatsign/lib/utils/envelope-download';
 import { formatDocumentsPath, formatTemplatesPath } from '@bchatsign/lib/utils/teams';
+import { DocumentSigningOrder, SigningStatus } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import { DocumentReadOnlyFields } from '@bchatsign/ui/components/document/document-read-only-fields';
 import { cn } from '@bchatsign/ui/lib/utils';
@@ -12,7 +13,6 @@ import { Card, CardContent } from '@bchatsign/ui/primitives/card';
 import { Spinner } from '@bchatsign/ui/primitives/spinner';
 import { msg } from '@lingui/core/macro';
 import { Trans } from '@lingui/react/macro';
-import { DocumentSigningOrder, SigningStatus } from '@bchatsign/prisma/generated/types';
 import { ChevronLeft, LucideEdit } from 'lucide-react';
 import { Link, useNavigate } from 'react-router';
 

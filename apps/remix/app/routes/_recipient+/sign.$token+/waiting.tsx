@@ -5,10 +5,10 @@ import { getEnvelopeById } from '@bchatsign/lib/server-only/envelope/get-envelop
 import { getRecipientByToken } from '@bchatsign/lib/server-only/recipient/get-recipient-by-token';
 import { getTeamById } from '@bchatsign/lib/server-only/team/get-team';
 import { formatDocumentsPath } from '@bchatsign/lib/utils/teams';
+import { DocumentStatus, EnvelopeType } from '@bchatsign/prisma/generated/types';
 import { Button } from '@bchatsign/ui/primitives/button';
 import { Trans } from '@lingui/react/macro';
 import type { Team } from '@prisma/client';
-import { DocumentStatus, EnvelopeType } from '@bchatsign/prisma/generated/types';
 import { Link, redirect } from 'react-router';
 
 import { RecipientBranding } from '~/components/general/recipient-branding';

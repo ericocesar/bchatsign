@@ -1,12 +1,12 @@
 import type { TRecipientActionAuth } from '@bchatsign/lib/types/document-auth';
 import { ZFieldMetaSchema } from '@bchatsign/lib/types/field-meta';
+import { FieldType } from '@bchatsign/prisma/generated/types';
 import type { FieldWithSignature } from '@bchatsign/prisma/types/field-with-signature';
 import { FieldRootContainer } from '@bchatsign/ui/components/field/field';
 import { getRecipientColorStyles } from '@bchatsign/ui/lib/recipient-colors';
 import { cn } from '@bchatsign/ui/lib/utils';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@bchatsign/ui/primitives/tooltip';
 import { Trans } from '@lingui/react/macro';
-import { FieldType } from '@bchatsign/prisma/generated/types';
 import { TooltipArrow } from '@radix-ui/react-tooltip';
 import { X } from 'lucide-react';
 import type React from 'react';

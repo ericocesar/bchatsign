@@ -4,6 +4,7 @@ import { NEXT_PUBLIC_WEBAPP_URL } from '@bchatsign/lib/constants/app';
 import { RECIPIENT_ROLES_DESCRIPTION } from '@bchatsign/lib/constants/recipient-roles';
 import type { TRecipientLite } from '@bchatsign/lib/types/recipient';
 import { formatSigningLink } from '@bchatsign/lib/utils/recipients';
+import { RecipientRole } from '@bchatsign/prisma/generated/types';
 import { CopyTextButton } from '@bchatsign/ui/components/common/copy-text-button';
 import { AvatarWithText } from '@bchatsign/ui/primitives/avatar';
 import { Button } from '@bchatsign/ui/primitives/button';
@@ -21,7 +22,6 @@ import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { RecipientRole } from '@bchatsign/prisma/generated/types';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router';
 

@@ -1,4 +1,5 @@
 import { toFriendlyWebhookEventName } from '@bchatsign/lib/universal/webhook/to-friendly-webhook-event-name';
+import { WebhookTriggerEvents } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import { Button } from '@bchatsign/ui/primitives/button';
 import {
@@ -16,7 +17,6 @@ import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Trans, useLingui } from '@lingui/react/macro';
 import type { Webhook } from '@prisma/client';
-import { WebhookTriggerEvents } from '@bchatsign/prisma/generated/types';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';

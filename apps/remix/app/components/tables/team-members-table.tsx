@@ -4,6 +4,7 @@ import { EXTENDED_TEAM_MEMBER_ROLE_MAP } from '@bchatsign/lib/constants/teams-tr
 import { ZUrlSearchParamsSchema } from '@bchatsign/lib/types/search-params';
 import { extractInitials } from '@bchatsign/lib/utils/recipient-formatter';
 import { isTeamRoleWithinUserHierarchy } from '@bchatsign/lib/utils/teams';
+import { OrganisationGroupType, OrganisationMemberRole } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import { AnimateGenericFadeInOut } from '@bchatsign/ui/components/animate/animate-generic-fade-in-out';
 import { AvatarWithText } from '@bchatsign/ui/primitives/avatar';
@@ -22,7 +23,6 @@ import { TableCell } from '@bchatsign/ui/primitives/table';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { OrganisationGroupType, OrganisationMemberRole } from '@bchatsign/prisma/generated/types';
 import { EditIcon, MoreHorizontal, Trash2Icon } from 'lucide-react';
 import { useMemo } from 'react';
 import { useSearchParams } from 'react-router';

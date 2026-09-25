@@ -1,6 +1,7 @@
 import { useUpdateSearchParams } from '@bchatsign/lib/client-only/hooks/use-update-search-params';
 import { EXTENDED_TEAM_MEMBER_ROLE_MAP } from '@bchatsign/lib/constants/teams-translations';
 import { ZUrlSearchParamsSchema } from '@bchatsign/lib/types/search-params';
+import { OrganisationGroupType } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import type { DataTableColumnDef } from '@bchatsign/ui/primitives/data-table';
 import { DataTable } from '@bchatsign/ui/primitives/data-table';
@@ -17,7 +18,6 @@ import { TableCell } from '@bchatsign/ui/primitives/table';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { OrganisationGroupType } from '@bchatsign/prisma/generated/types';
 import { EditIcon, MoreHorizontalIcon, Trash2Icon } from 'lucide-react';
 import { useMemo } from 'react';
 import { useSearchParams } from 'react-router';

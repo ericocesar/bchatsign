@@ -1,5 +1,6 @@
 import { AppError } from '@bchatsign/lib/errors/app-error';
 import { DocumentAuth, type TRecipientActionAuth } from '@bchatsign/lib/types/document-auth';
+import { RecipientRole } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import { Alert, AlertDescription, AlertTitle } from '@bchatsign/ui/primitives/alert';
 import { Button } from '@bchatsign/ui/primitives/button';
@@ -10,7 +11,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { RecipientRole } from '@bchatsign/prisma/generated/types';
 import { browserSupportsWebAuthn, startAuthentication } from '@simplewebauthn/browser';
 import { Loader } from 'lucide-react';
 import { useEffect, useState } from 'react';

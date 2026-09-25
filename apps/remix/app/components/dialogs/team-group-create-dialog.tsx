@@ -1,5 +1,6 @@
 import { TEAM_MEMBER_ROLE_HIERARCHY } from '@bchatsign/lib/constants/teams';
 import { TEAM_MEMBER_ROLE_MAP } from '@bchatsign/lib/constants/teams-translations';
+import { TeamMemberRole } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import { Button } from '@bchatsign/ui/primitives/button';
 import {
@@ -25,7 +26,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { TeamMemberRole } from '@bchatsign/prisma/generated/types';
 import type * as DialogPrimitive from '@radix-ui/react-dialog';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';

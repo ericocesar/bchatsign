@@ -9,6 +9,7 @@ import type { TRecipientLite } from '@bchatsign/lib/types/recipient';
 import { nanoid } from '@bchatsign/lib/universal/id';
 import { ADVANCED_FIELD_TYPES_WITH_OPTIONAL_SETTING } from '@bchatsign/lib/utils/advanced-fields-helpers';
 import { parseMessageDescriptor } from '@bchatsign/lib/utils/i18n';
+import { FieldType, RecipientRole, SendStatus } from '@bchatsign/prisma/generated/types';
 import { cn } from '@bchatsign/ui/lib/utils';
 import { Button } from '@bchatsign/ui/primitives/button';
 import { Card, CardContent } from '@bchatsign/ui/primitives/card';
@@ -30,7 +31,6 @@ import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
 import type { Field } from '@prisma/client';
-import { FieldType, RecipientRole, SendStatus } from '@bchatsign/prisma/generated/types';
 import {
   CalendarDays,
   CheckSquare,

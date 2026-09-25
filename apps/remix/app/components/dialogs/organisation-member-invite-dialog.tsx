@@ -5,6 +5,7 @@ import { ORGANISATION_MEMBER_ROLE_HIERARCHY } from '@bchatsign/lib/constants/org
 import { ORGANISATION_MEMBER_ROLE_MAP } from '@bchatsign/lib/constants/organisations-translations';
 import { INTERNAL_CLAIM_ID } from '@bchatsign/lib/types/subscription';
 import { zEmail } from '@bchatsign/lib/utils/zod';
+import { OrganisationMemberRole } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import { ZCreateOrganisationMemberInvitesRequestSchema } from '@bchatsign/trpc/server/organisation-router/create-organisation-member-invites.types';
 import { cn } from '@bchatsign/ui/lib/utils';
@@ -30,7 +31,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { OrganisationMemberRole } from '@bchatsign/prisma/generated/types';
 import type * as DialogPrimitive from '@radix-ui/react-dialog';
 import { Download, Mail, MailIcon, PlusCircle, Trash, Upload, UsersIcon } from 'lucide-react';
 import Papa, { type ParseResult } from 'papaparse';

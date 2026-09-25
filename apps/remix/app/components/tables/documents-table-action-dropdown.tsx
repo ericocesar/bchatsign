@@ -4,6 +4,7 @@ import { isDocumentCompleted } from '@bchatsign/lib/utils/document';
 import { getEnvelopeItemPermissions } from '@bchatsign/lib/utils/envelope';
 import { findRecipientByEmail } from '@bchatsign/lib/utils/recipients';
 import { formatDocumentsPath } from '@bchatsign/lib/utils/teams';
+import { DocumentStatus, EnvelopeType, RecipientRole } from '@bchatsign/prisma/generated/types';
 import { trpc as trpcReact } from '@bchatsign/trpc/react';
 import { DocumentShareButton } from '@bchatsign/ui/components/document/document-share-button';
 import {
@@ -16,7 +17,6 @@ import {
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { DocumentStatus, EnvelopeType, RecipientRole } from '@bchatsign/prisma/generated/types';
 import {
   CheckCircle,
   Copy,

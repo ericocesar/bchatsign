@@ -7,11 +7,11 @@ import { getOrganisationClaimByTeamId } from '@bchatsign/lib/server-only/organis
 import { getTeamSettings } from '@bchatsign/lib/server-only/team/get-team-settings';
 import { ZBaseEmbedDataSchema } from '@bchatsign/lib/types/embed-base-schemas';
 import { dynamicActivate } from '@bchatsign/lib/utils/i18n';
+import { OrganisationMemberRole, OrganisationType, TeamMemberRole } from '@bchatsign/prisma/generated/types';
 import { TrpcProvider } from '@bchatsign/trpc/react';
 import type { OrganisationSession } from '@bchatsign/trpc/server/organisation-router/get-organisation-session.types';
 import { Spinner } from '@bchatsign/ui/primitives/spinner';
 import { Trans } from '@lingui/react/macro';
-import { OrganisationMemberRole, OrganisationType, TeamMemberRole } from '@bchatsign/prisma/generated/types';
 import { useLayoutEffect, useState } from 'react';
 import { isRouteErrorResponse, Outlet, useLoaderData } from 'react-router';
 import { match } from 'ts-pattern';

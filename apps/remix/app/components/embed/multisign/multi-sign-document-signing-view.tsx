@@ -2,6 +2,7 @@ import { PDF_VIEWER_PAGE_SELECTOR } from '@bchatsign/lib/constants/pdf-viewer';
 import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
 import { getDocumentDataUrlForPdfViewer } from '@bchatsign/lib/utils/envelope-download';
 import { sortFieldsByPosition } from '@bchatsign/lib/utils/fields';
+import { DocumentStatus, SigningStatus } from '@bchatsign/prisma/generated/types';
 import { isSignatureFieldType } from '@bchatsign/prisma/guards/is-signature-field';
 import { trpc } from '@bchatsign/trpc/react';
 import type {
@@ -20,7 +21,6 @@ import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { DocumentStatus, SigningStatus } from '@bchatsign/prisma/generated/types';
 import { Loader, LucideChevronDown, LucideChevronUp, X } from 'lucide-react';
 import { useState } from 'react';
 import { match, P } from 'ts-pattern';

@@ -1,8 +1,8 @@
+import { RecipientRole } from '@bchatsign/prisma/generated/types';
 import { ROLE_ICONS } from '@bchatsign/ui/primitives/recipient-role-icons';
 import { Select, SelectContent, SelectItem, SelectTrigger } from '@bchatsign/ui/primitives/select';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@bchatsign/ui/primitives/tooltip';
 import { Trans } from '@lingui/react/macro';
-import { RecipientRole } from '@bchatsign/prisma/generated/types';
 import type { SelectProps } from '@radix-ui/react-select';
 import { InfoIcon } from 'lucide-react';
 import { forwardRef } from 'react';

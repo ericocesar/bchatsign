@@ -14,9 +14,8 @@ import { Trans } from '@lingui/react/macro';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { Link, redirect, useSearchParams } from 'react-router';
-
-import { SignInForm } from '~/components/forms/signin';
 import { BrandHero } from '~/components/brand-hero';
+import { SignInForm } from '~/components/forms/signin';
 import { SIGNUP_ERROR_MESSAGES } from '~/components/forms/signup';
 import { appMetaTags } from '~/utils/meta';
 
@@ -76,14 +75,8 @@ const formItemVariants = {
 } as const;
 
 export default function SignIn({ loaderData }: Route.ComponentProps) {
-  const {
-    isGoogleSSOEnabled,
-    isMicrosoftSSOEnabled,
-    isOIDCSSOEnabled,
-    isSignupEnabled,
-    oidcProviderLabel,
-    returnTo,
-  } = loaderData;
+  const { isGoogleSSOEnabled, isMicrosoftSSOEnabled, isOIDCSSOEnabled, isSignupEnabled, oidcProviderLabel, returnTo } =
+    loaderData;
 
   const { _ } = useLingui();
 
@@ -133,17 +126,11 @@ export default function SignIn({ loaderData }: Route.ComponentProps) {
               </Alert>
             )}
 
-            <motion.h1
-              variants={formItemVariants}
-              className="font-semibold text-2xl"
-            >
+            <motion.h1 variants={formItemVariants} className="font-semibold text-2xl">
               <Trans>Sign in to your account</Trans>
             </motion.h1>
 
-            <motion.p
-              variants={formItemVariants}
-              className="mt-2 text-muted-foreground text-sm"
-            >
+            <motion.p variants={formItemVariants} className="mt-2 text-muted-foreground text-sm">
               <Trans>Welcome back, we are lucky to have you.</Trans>
             </motion.p>
 
@@ -158,18 +145,11 @@ export default function SignIn({ loaderData }: Route.ComponentProps) {
             />
 
             {!isEmbeddedRedirect && isSignupEnabled && (
-              <motion.p
-                variants={formItemVariants}
-                className="mt-6 text-center text-muted-foreground text-sm"
-              >
+              <motion.p variants={formItemVariants} className="mt-6 text-center text-muted-foreground text-sm">
                 <Trans>
                   Don't have an account?{' '}
                   <Link
-                    to={
-                      returnTo
-                        ? `/signup?returnTo=${encodeURIComponent(returnTo)}`
-                        : '/signup'
-                    }
+                    to={returnTo ? `/signup?returnTo=${encodeURIComponent(returnTo)}` : '/signup'}
                     className="text-primary duration-200 hover:opacity-70"
                   >
                     Sign up
@@ -180,10 +160,7 @@ export default function SignIn({ loaderData }: Route.ComponentProps) {
           </motion.div>
 
           {/* Footer */}
-          <motion.p
-            variants={formItemVariants}
-            className="text-center text-muted-foreground text-xs"
-          >
+          <motion.p variants={formItemVariants} className="text-center text-muted-foreground text-xs">
             <Trans>Secure digital signatures powered by BchatSign</Trans>
           </motion.p>
         </motion.div>

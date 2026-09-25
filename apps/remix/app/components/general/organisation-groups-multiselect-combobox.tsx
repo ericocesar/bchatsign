@@ -1,9 +1,9 @@
+import { OrganisationGroupType } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import { MultiSelect, type Option } from '@bchatsign/ui/primitives/multiselect';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { OrganisationGroupType } from '@bchatsign/prisma/generated/types';
 
 export type OrganisationGroupOption = {
   /** Organisation group ID. */

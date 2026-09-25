@@ -18,6 +18,7 @@ import {
 } from '@bchatsign/lib/types/field-meta';
 import { getEnvelopeItemPermissions } from '@bchatsign/lib/utils/envelope';
 import { canRecipientFieldsBeModified } from '@bchatsign/lib/utils/recipients';
+import { DocumentStatus, FieldType, RecipientRole } from '@bchatsign/prisma/generated/types';
 import { AnimateGenericFadeInOut } from '@bchatsign/ui/components/animate/animate-generic-fade-in-out';
 import { cn } from '@bchatsign/ui/lib/utils';
 import { Alert, AlertDescription, AlertTitle } from '@bchatsign/ui/primitives/alert';
@@ -27,7 +28,6 @@ import type { MessageDescriptor } from '@lingui/core';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { DocumentStatus, FieldType, RecipientRole } from '@bchatsign/prisma/generated/types';
 import { FileTextIcon, PencilIcon, SparklesIcon } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useRevalidator, useSearchParams } from 'react-router';

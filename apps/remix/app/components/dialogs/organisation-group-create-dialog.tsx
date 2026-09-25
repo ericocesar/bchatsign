@@ -2,6 +2,7 @@ import { useCurrentOrganisation } from '@bchatsign/lib/client-only/providers/org
 import { ORGANISATION_MEMBER_ROLE_HIERARCHY } from '@bchatsign/lib/constants/organisations';
 import { EXTENDED_ORGANISATION_MEMBER_ROLE_MAP } from '@bchatsign/lib/constants/organisations-translations';
 import { AppError } from '@bchatsign/lib/errors/app-error';
+import { OrganisationMemberRole } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import { ZCreateOrganisationGroupRequestSchema } from '@bchatsign/trpc/server/organisation-router/create-organisation-group.types';
 import { Button } from '@bchatsign/ui/primitives/button';
@@ -28,7 +29,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { OrganisationMemberRole } from '@bchatsign/prisma/generated/types';
 import type * as DialogPrimitive from '@radix-ui/react-dialog';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';

@@ -5,10 +5,10 @@ import { getDocumentAndSenderByToken } from '@bchatsign/lib/server-only/document
 import { isRecipientAuthorized } from '@bchatsign/lib/server-only/document/is-recipient-authorized';
 import { getFieldsForToken } from '@bchatsign/lib/server-only/field/get-fields-for-token';
 import { getRecipientByToken } from '@bchatsign/lib/server-only/recipient/get-recipient-by-token';
+import { FieldType } from '@bchatsign/prisma/generated/types';
 import { Badge } from '@bchatsign/ui/primitives/badge';
 import { Button } from '@bchatsign/ui/primitives/button';
 import { Trans } from '@lingui/react/macro';
-import { FieldType } from '@bchatsign/prisma/generated/types';
 import { XCircle } from 'lucide-react';
 import { Link } from 'react-router';
 

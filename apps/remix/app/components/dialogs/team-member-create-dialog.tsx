@@ -2,6 +2,7 @@ import { useCurrentOrganisation } from '@bchatsign/lib/client-only/providers/org
 import { TEAM_MEMBER_ROLE_HIERARCHY } from '@bchatsign/lib/constants/teams';
 import { TEAM_MEMBER_ROLE_MAP } from '@bchatsign/lib/constants/teams-translations';
 import { canExecuteOrganisationAction } from '@bchatsign/lib/utils/organisations';
+import { TeamMemberRole } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import { Alert, AlertDescription } from '@bchatsign/ui/primitives/alert';
 import { Button } from '@bchatsign/ui/primitives/button';
@@ -29,7 +30,6 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@bchatsign/ui/primitive
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { TeamMemberRole } from '@bchatsign/prisma/generated/types';
 import type * as DialogPrimitive from '@radix-ui/react-dialog';
 import { InfoIcon, UserPlusIcon } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';

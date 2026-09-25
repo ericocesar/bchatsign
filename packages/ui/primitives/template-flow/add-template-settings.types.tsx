@@ -7,8 +7,8 @@ import { ZDocumentEmailSettingsSchema } from '@bchatsign/lib/types/document-emai
 import { ZDocumentMetaDateFormatSchema, ZDocumentMetaTimezoneSchema } from '@bchatsign/lib/types/document-meta';
 import { isValidRedirectUrl } from '@bchatsign/lib/utils/is-valid-redirect-url';
 import { zEmail } from '@bchatsign/lib/utils/zod';
-import { msg } from '@lingui/core/macro';
 import { DocumentDistributionMethod, DocumentVisibility, TemplateType } from '@bchatsign/prisma/generated/types';
+import { msg } from '@lingui/core/macro';
 import { z } from 'zod';
 
 export const ZAddTemplateSettingsFormSchema = z.object({

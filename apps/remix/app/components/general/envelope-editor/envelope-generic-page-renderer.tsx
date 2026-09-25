@@ -6,9 +6,9 @@ import {
 import type { TEnvelope } from '@bchatsign/lib/types/envelope';
 import { renderField } from '@bchatsign/lib/universal/field-renderer/render-field';
 import { getClientSideFieldTranslations } from '@bchatsign/lib/utils/fields';
+import { DocumentStatus, SigningStatus } from '@bchatsign/prisma/generated/types';
 import { EnvelopeRecipientFieldTooltip } from '@bchatsign/ui/components/document/envelope-recipient-field-tooltip';
 import { useLingui } from '@lingui/react/macro';
-import { DocumentStatus, SigningStatus } from '@bchatsign/prisma/generated/types';
 import type { Recipient } from '@prisma/client';
 import type Konva from 'konva';
 import { useEffect, useMemo } from 'react';

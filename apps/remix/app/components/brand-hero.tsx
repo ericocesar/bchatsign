@@ -44,8 +44,7 @@ export function BrandHero() {
       <div
         className="absolute inset-0 opacity-[0.08]"
         style={{
-          backgroundImage:
-            'radial-gradient(circle, currentColor 1px, transparent 1px)',
+          backgroundImage: 'radial-gradient(circle, currentColor 1px, transparent 1px)',
           backgroundSize: '24px 24px',
         }}
       />
@@ -108,35 +107,22 @@ export function BrandHero() {
         <motion.div variants={heroItemVariants} className="mb-10">
           <div className="relative">
             <div className="absolute -inset-8 rounded-full bg-white/10 blur-2xl" />
-            <img
-              src={logo}
-              alt="BchatSign"
-              className="relative h-16 w-auto object-contain drop-shadow-lg"
-            />
+            <img src={logo} alt="BchatSign" className="relative h-16 w-auto object-contain drop-shadow-lg" />
           </div>
         </motion.div>
 
         {/* Headline */}
-        <motion.h1
-          variants={heroItemVariants}
-          className="mb-4 text-3xl font-bold text-white xl:text-4xl"
-        >
+        <motion.h1 variants={heroItemVariants} className="mb-4 font-bold text-3xl text-white xl:text-4xl">
           <Trans>Welcome to BchatSign</Trans>
         </motion.h1>
 
         {/* Subheadline */}
-        <motion.p
-          variants={heroItemVariants}
-          className="max-w-sm text-lg text-white/70"
-        >
+        <motion.p variants={heroItemVariants} className="max-w-sm text-lg text-white/70">
           <Trans>Intelligent and secure digital signatures for your documents.</Trans>
         </motion.p>
 
         {/* Decorative line */}
-        <motion.div
-          variants={heroItemVariants}
-          className="mt-8 h-1 w-16 rounded-full bg-white/30"
-        />
+        <motion.div variants={heroItemVariants} className="mt-8 h-1 w-16 rounded-full bg-white/30" />
 
         {/* Feature highlights */}
         <motion.div variants={heroItemVariants} className="mt-10 flex gap-8">
@@ -149,7 +135,7 @@ export function BrandHero() {
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 backdrop-blur-sm">
                 <Icon className="h-5 w-5 text-white/80" />
               </div>
-              <span className="text-xs text-white/50">{label}</span>
+              <span className="text-white/50 text-xs">{label}</span>
             </div>
           ))}
         </motion.div>

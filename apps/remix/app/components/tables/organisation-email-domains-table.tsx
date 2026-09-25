@@ -1,6 +1,7 @@
 import { useUpdateSearchParams } from '@bchatsign/lib/client-only/hooks/use-update-search-params';
 import { useCurrentOrganisation } from '@bchatsign/lib/client-only/providers/organisation';
 import { ZUrlSearchParamsSchema } from '@bchatsign/lib/types/search-params';
+import { EmailDomainStatus } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import { AnimateGenericFadeInOut } from '@bchatsign/ui/components/animate/animate-generic-fade-in-out';
 import { Alert, AlertDescription, AlertTitle } from '@bchatsign/ui/primitives/alert';
@@ -13,7 +14,6 @@ import { Skeleton } from '@bchatsign/ui/primitives/skeleton';
 import { TableCell } from '@bchatsign/ui/primitives/table';
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { EmailDomainStatus } from '@bchatsign/prisma/generated/types';
 import { CheckCircle2Icon, ClockIcon } from 'lucide-react';
 import { useMemo } from 'react';
 import { Link, useSearchParams } from 'react-router';

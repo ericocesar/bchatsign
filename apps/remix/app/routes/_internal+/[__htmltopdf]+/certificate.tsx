@@ -9,12 +9,12 @@ import { DOCUMENT_AUDIT_LOG_TYPE } from '@bchatsign/lib/types/document-audit-log
 import { extractDocumentAuthMethods } from '@bchatsign/lib/utils/document-auth';
 import { mapSecondaryIdToDocumentId } from '@bchatsign/lib/utils/envelope';
 import { getTranslations } from '@bchatsign/lib/utils/i18n';
+import { EnvelopeType, FieldType, SigningStatus } from '@bchatsign/prisma/generated/types';
 import { Card, CardContent } from '@bchatsign/ui/primitives/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@bchatsign/ui/primitives/table';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { EnvelopeType, FieldType, SigningStatus } from '@bchatsign/prisma/generated/types';
 import { DateTime } from 'luxon';
 import { Fragment } from 'react';
 import { redirect } from 'react-router';
@@ -22,8 +22,6 @@ import { prop, sortBy } from 'remeda';
 import { match } from 'ts-pattern';
 import { UAParser } from 'ua-parser-js';
 import { renderSVG } from 'uqr';
-
-import { BrandingLogo } from '~/components/general/branding-logo';
 
 import type { Route } from './+types/certificate';
 
@@ -403,11 +401,11 @@ export default function SigningCertificate({ loaderData }: Route.ComponentProps)
           )}
 
           <div className="flex justify-end">
-            <div className="max-w-sm text-right text-black text-sm print:text-xs leading-relaxed">
+            <div className="max-w-sm text-right text-black text-sm leading-relaxed print:text-xs">
               <p>Documento assinado com validade jurídica.</p>
               <p>
-                Certificado de assinatura fornecido por BchatSign. Documento final selado digitalmente com
-                certificado A1 emitido no âmbito da ICP Brasil.
+                Certificado de assinatura fornecido por BchatSign. Documento final selado digitalmente com certificado
+                A1 emitido no âmbito da ICP Brasil.
               </p>
               <p>
                 As assinaturas digitais e eletrônicas têm validade jurídica prevista na Medida Provisória nº

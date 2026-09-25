@@ -5,10 +5,10 @@ import { isBase64Image } from '@bchatsign/lib/constants/signatures';
 import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
 import type { TRecipientAccessAuth } from '@bchatsign/lib/types/document-auth';
 import { mapSecondaryIdToDocumentId } from '@bchatsign/lib/utils/envelope';
+import { FieldType } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { useLingui } from '@lingui/react/macro';
-import { FieldType } from '@bchatsign/prisma/generated/types';
 import { useMemo } from 'react';
 import { useNavigate, useRevalidator, useSearchParams } from 'react-router';
 

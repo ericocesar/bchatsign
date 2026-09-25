@@ -5,13 +5,13 @@ import { PDF_VIEWER_PAGE_SELECTOR } from '@bchatsign/lib/constants/pdf-viewer';
 import { FIELD_META_DEFAULT_VALUES } from '@bchatsign/lib/types/field-meta';
 import { nanoid } from '@bchatsign/lib/universal/id';
 import { canRecipientFieldsBeModified } from '@bchatsign/lib/utils/recipients';
+import { FieldType } from '@bchatsign/prisma/generated/types';
 import { SignatureIcon } from '@bchatsign/ui/icons/signature';
 import { getRecipientColorStyles } from '@bchatsign/ui/lib/recipient-colors';
 import { cn } from '@bchatsign/ui/lib/utils';
 import { FRIENDLY_FIELD_TYPE } from '@bchatsign/ui/primitives/document-flow/types';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react/macro';
-import { FieldType } from '@bchatsign/prisma/generated/types';
 import {
   CalendarIcon,
   CheckSquareIcon,

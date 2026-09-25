@@ -6,6 +6,7 @@ import { PDF_VIEWER_ERROR_MESSAGES } from '@bchatsign/lib/constants/pdf-viewer-i
 import { buildBchatValidationUrl } from '@bchatsign/lib/server-only/validation';
 import { getDocumentDataUrlForPdfViewer } from '@bchatsign/lib/utils/envelope-download';
 import { formatDocumentsPath } from '@bchatsign/lib/utils/teams';
+import { DocumentStatus, EnvelopeType } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import { Button } from '@bchatsign/ui/primitives/button';
 import {
@@ -17,7 +18,6 @@ import {
   DialogTitle,
 } from '@bchatsign/ui/primitives/dialog';
 import { Trans } from '@lingui/react/macro';
-import { DocumentStatus, EnvelopeType } from '@bchatsign/prisma/generated/types';
 import type { DocumentData, EnvelopeItem } from '@prisma/client';
 import { DownloadIcon } from 'lucide-react';
 import { DateTime } from 'luxon';

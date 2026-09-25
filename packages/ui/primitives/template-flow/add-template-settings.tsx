@@ -10,6 +10,12 @@ import type { TRecipientLite } from '@bchatsign/lib/types/recipient';
 import type { TTemplate } from '@bchatsign/lib/types/template';
 import { extractDocumentAuthMethods } from '@bchatsign/lib/utils/document-auth';
 import { extractTeamSignatureSettings } from '@bchatsign/lib/utils/teams';
+import {
+  DocumentDistributionMethod,
+  DocumentVisibility,
+  TeamMemberRole,
+  TemplateType,
+} from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import {
   DocumentGlobalAuthAccessSelect,
@@ -29,7 +35,6 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@b
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@bchatsign/ui/primitives/form/form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { DocumentDistributionMethod, DocumentVisibility, TeamMemberRole, TemplateType } from '@bchatsign/prisma/generated/types';
 import type { Field } from '@prisma/client';
 import { InfoIcon } from 'lucide-react';
 import { useEffect } from 'react';

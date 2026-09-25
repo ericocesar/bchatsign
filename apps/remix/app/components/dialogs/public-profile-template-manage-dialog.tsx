@@ -1,3 +1,4 @@
+import { TemplateType } from '@bchatsign/prisma/generated/types';
 import type { Template } from '@bchatsign/prisma/types/template-legacy-schema';
 import { trpc } from '@bchatsign/trpc/react';
 import {
@@ -25,7 +26,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Plural, Trans } from '@lingui/react/macro';
-import { TemplateType } from '@bchatsign/prisma/generated/types';
 import type { TemplateDirectLink } from '@prisma/client';
 import type * as DialogPrimitive from '@radix-ui/react-dialog';
 import { CheckCircle2Icon, CircleIcon } from 'lucide-react';

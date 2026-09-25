@@ -3,6 +3,7 @@ import { useCurrentOrganisation } from '@bchatsign/lib/client-only/providers/org
 import { ORGANISATION_MEMBER_ROLE_MAP } from '@bchatsign/lib/constants/organisations-translations';
 import { ZUrlSearchParamsSchema } from '@bchatsign/lib/types/search-params';
 import { isOrganisationRoleWithinUserHierarchy } from '@bchatsign/lib/utils/organisations';
+import { OrganisationMemberInviteStatus } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import { AvatarWithText } from '@bchatsign/ui/primitives/avatar';
 import type { DataTableColumnDef } from '@bchatsign/ui/primitives/data-table';
@@ -21,7 +22,6 @@ import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { OrganisationMemberInviteStatus } from '@bchatsign/prisma/generated/types';
 import { History, MoreHorizontal, Trash2 } from 'lucide-react';
 import { useMemo } from 'react';
 import { useSearchParams } from 'react-router';

@@ -1,5 +1,6 @@
 import { AppError } from '@bchatsign/lib/errors/app-error';
 import { DocumentAuth, type TRecipientActionAuth } from '@bchatsign/lib/types/document-auth';
+import { RecipientRole } from '@bchatsign/prisma/generated/types';
 import { Alert, AlertDescription, AlertTitle } from '@bchatsign/ui/primitives/alert';
 import { Button } from '@bchatsign/ui/primitives/button';
 import { DialogFooter } from '@bchatsign/ui/primitives/dialog';
@@ -7,7 +8,6 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { PinInput, PinInputGroup, PinInputSlot } from '@bchatsign/ui/primitives/pin-input';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Trans } from '@lingui/react/macro';
-import { RecipientRole } from '@bchatsign/prisma/generated/types';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { match } from 'ts-pattern';

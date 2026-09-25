@@ -1,11 +1,11 @@
 import { useCurrentEnvelopeRender } from '@bchatsign/lib/client-only/providers/envelope-render-provider';
 import { PDF_VIEWER_ERROR_MESSAGES } from '@bchatsign/lib/constants/pdf-viewer-i18n';
 import { mapSecondaryIdToDocumentId } from '@bchatsign/lib/utils/envelope';
+import { EnvelopeType, RecipientRole } from '@bchatsign/prisma/generated/types';
 import { cn } from '@bchatsign/ui/lib/utils';
 import { Button } from '@bchatsign/ui/primitives/button';
 import { Separator } from '@bchatsign/ui/primitives/separator';
 import { Plural, Trans, useLingui } from '@lingui/react/macro';
-import { EnvelopeType, RecipientRole } from '@bchatsign/prisma/generated/types';
 import { motion } from 'framer-motion';
 import {
   ArrowLeftIcon,

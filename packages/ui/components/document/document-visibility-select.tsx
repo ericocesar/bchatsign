@@ -1,11 +1,11 @@
 import { DOCUMENT_VISIBILITY } from '@bchatsign/lib/constants/document-visibility';
 import { DocumentVisibility } from '@bchatsign/lib/types/document-visibility';
+import { TeamMemberRole } from '@bchatsign/prisma/generated/types';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@bchatsign/ui/primitives/select';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@bchatsign/ui/primitives/tooltip';
 import { t } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { TeamMemberRole } from '@bchatsign/prisma/generated/types';
 import type { SelectProps } from '@radix-ui/react-select';
 import { InfoIcon } from 'lucide-react';
 import { forwardRef } from 'react';

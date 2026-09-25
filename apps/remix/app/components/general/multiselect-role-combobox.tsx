@@ -1,9 +1,9 @@
+import { Role } from '@bchatsign/prisma/generated/types';
 import { cn } from '@bchatsign/ui/lib/utils';
 import { Button } from '@bchatsign/ui/primitives/button';
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from '@bchatsign/ui/primitives/command';
 import { Popover, PopoverContent, PopoverTrigger } from '@bchatsign/ui/primitives/popover';
 import { Trans } from '@lingui/react/macro';
-import { Role } from '@bchatsign/prisma/generated/types';
 import { Check, ChevronsUpDown } from 'lucide-react';
 import * as React from 'react';
 

@@ -1,5 +1,6 @@
 import { useSession } from '@bchatsign/lib/client-only/providers/session';
 import { SKIP_QUERY_BATCH_META } from '@bchatsign/lib/constants/trpc';
+import { DocumentStatus } from '@bchatsign/prisma/generated/types';
 import { ExtendedDocumentStatus } from '@bchatsign/prisma/types/extended-document-status';
 import { trpc } from '@bchatsign/trpc/react';
 import type { TFindDocumentsInternalResponse } from '@bchatsign/trpc/server/document-router/find-documents-internal.types';
@@ -7,7 +8,6 @@ import { Button } from '@bchatsign/ui/primitives/button';
 import { Skeleton } from '@bchatsign/ui/primitives/skeleton';
 import { msg } from '@lingui/core/macro';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { DocumentStatus } from '@bchatsign/prisma/generated/types';
 import { motion } from 'framer-motion';
 import { Building2Icon, Clock3Icon, FileTextIcon, LayoutTemplateIcon, MoreVertical, ShieldCheck } from 'lucide-react';
 import { useMemo } from 'react';

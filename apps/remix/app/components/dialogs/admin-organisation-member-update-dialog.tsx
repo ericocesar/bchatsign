@@ -1,4 +1,5 @@
 import { getHighestOrganisationRoleInGroup } from '@bchatsign/lib/utils/organisations';
+import { OrganisationMemberRole } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import type { TGetAdminOrganisationResponse } from '@bchatsign/trpc/server/admin-router/get-admin-organisation.types';
 import { Button } from '@bchatsign/ui/primitives/button';
@@ -16,7 +17,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { OrganisationMemberRole } from '@bchatsign/prisma/generated/types';
 import type * as DialogPrimitive from '@radix-ui/react-dialog';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';

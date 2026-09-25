@@ -1,3 +1,4 @@
+import { DocumentSigningOrder, RecipientRole } from '@bchatsign/prisma/generated/types';
 import { RecipientRoleSelect } from '@bchatsign/ui/components/recipient/recipient-role-select';
 import { cn } from '@bchatsign/ui/lib/utils';
 import { Button } from '@bchatsign/ui/primitives/button';
@@ -10,7 +11,6 @@ import { DragDropContext, Draggable, Droppable } from '@hello-pangea/dnd';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { DocumentSigningOrder, RecipientRole } from '@bchatsign/prisma/generated/types';
 import { motion } from 'framer-motion';
 import { GripVertical, HelpCircle, Plus, Trash } from 'lucide-react';
 import { nanoid } from 'nanoid';

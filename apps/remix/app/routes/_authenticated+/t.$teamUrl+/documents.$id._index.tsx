@@ -5,6 +5,7 @@ import { DO_NOT_INVALIDATE_QUERY_ON_MUTATION } from '@bchatsign/lib/constants/tr
 import { mapSecondaryIdToDocumentId } from '@bchatsign/lib/utils/envelope';
 import { getDocumentDataUrlForPdfViewer } from '@bchatsign/lib/utils/envelope-download';
 import { formatDocumentsPath } from '@bchatsign/lib/utils/teams';
+import { DocumentStatus } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import {
   DocumentReadOnlyFields,
@@ -17,7 +18,6 @@ import { Card, CardContent } from '@bchatsign/ui/primitives/card';
 import { Spinner } from '@bchatsign/ui/primitives/spinner';
 import { msg } from '@lingui/core/macro';
 import { Plural, Trans, useLingui } from '@lingui/react/macro';
-import { DocumentStatus } from '@bchatsign/prisma/generated/types';
 import { ChevronLeft, Users2 } from 'lucide-react';
 import { Link } from 'react-router';
 import { match } from 'ts-pattern';

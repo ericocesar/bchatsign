@@ -1,5 +1,5 @@
-import type { Envelope } from '@prisma/client';
 import { EnvelopeType } from '@bchatsign/prisma/generated/types';
+import type { Envelope } from '@prisma/client';
 import { customAlphabet } from 'nanoid';
 
 import { mapSecondaryIdToDocumentId, mapSecondaryIdToTemplateId } from '../utils/envelope';

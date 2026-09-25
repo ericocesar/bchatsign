@@ -1,11 +1,11 @@
 import { DEFAULT_MINIMUM_ENVELOPE_ITEM_COUNT, PAID_PLAN_LIMITS } from '@bchatsign/ee/server-only/limits/constants';
 import { LimitsProvider } from '@bchatsign/ee/server-only/limits/provider/client';
 import { useOptionalCurrentOrganisation } from '@bchatsign/lib/client-only/providers/organisation';
+import { SubscriptionStatus } from '@bchatsign/prisma/generated/types';
 import { TrpcProvider } from '@bchatsign/trpc/react';
 import { Button } from '@bchatsign/ui/primitives/button';
 import { msg } from '@lingui/core/macro';
 import { Trans } from '@lingui/react/macro';
-import { SubscriptionStatus } from '@bchatsign/prisma/generated/types';
 import { useMemo } from 'react';
 import { Link, Outlet } from 'react-router';
 

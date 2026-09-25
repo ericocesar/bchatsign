@@ -11,6 +11,7 @@ import {
 import type { TTemplate } from '@bchatsign/lib/types/template';
 import { isFieldUnsignedAndRequired } from '@bchatsign/lib/utils/advanced-fields-helpers';
 import { sortFieldsByPosition, validateFieldsInserted } from '@bchatsign/lib/utils/fields';
+import { FieldType } from '@bchatsign/prisma/generated/types';
 import type {
   TRemovedSignedFieldWithTokenMutationSchema,
   TSignFieldWithTokenMutationSchema,
@@ -31,7 +32,6 @@ import { SignaturePadDialog } from '@bchatsign/ui/primitives/signature-pad/signa
 import { useStep } from '@bchatsign/ui/primitives/stepper';
 import { Trans } from '@lingui/react/macro';
 import type { Field, Recipient, Signature } from '@prisma/client';
-import { FieldType } from '@bchatsign/prisma/generated/types';
 import { DateTime } from 'luxon';
 import { useEffect, useMemo, useState } from 'react';
 import { match } from 'ts-pattern';

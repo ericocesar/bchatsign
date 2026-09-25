@@ -6,6 +6,7 @@ import { RECIPIENT_ROLES_DESCRIPTION } from '@bchatsign/lib/constants/recipient-
 import { DIRECT_TEMPLATE_DOCUMENTATION } from '@bchatsign/lib/constants/template';
 import type { TRecipientLite } from '@bchatsign/lib/types/recipient';
 import { formatDirectTemplatePath } from '@bchatsign/lib/utils/templates';
+import { RecipientRole } from '@bchatsign/prisma/generated/types';
 import { trpc as trpcReact } from '@bchatsign/trpc/react';
 import { AnimateGenericFadeInOut } from '@bchatsign/ui/components/animate/animate-generic-fade-in-out';
 import { Alert, AlertDescription, AlertTitle } from '@bchatsign/ui/primitives/alert';
@@ -28,7 +29,6 @@ import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { RecipientRole } from '@bchatsign/prisma/generated/types';
 import type { TemplateDirectLink } from '@prisma/client';
 import { CircleDotIcon, CircleIcon, ClipboardCopyIcon, InfoIcon, LinkIcon, LoaderIcon } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';

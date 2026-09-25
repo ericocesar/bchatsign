@@ -8,6 +8,7 @@ import type { TDetectedRecipientSchema } from '@bchatsign/lib/server-only/ai/env
 import { ZRecipientAuthOptionsSchema } from '@bchatsign/lib/types/document-auth';
 import { nanoid } from '@bchatsign/lib/universal/id';
 import { canRecipientBeModified as utilCanRecipientBeModified } from '@bchatsign/lib/utils/recipients';
+import { DocumentSigningOrder, EnvelopeType, RecipientRole, SendStatus } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import { RecipientActionAuthSelect } from '@bchatsign/ui/components/recipient/recipient-action-auth-select';
 import {
@@ -28,7 +29,6 @@ import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { DragDropContext, Draggable, Droppable, type DropResult, type SensorAPI } from '@hello-pangea/dnd';
 import { plural } from '@lingui/core/macro';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { DocumentSigningOrder, EnvelopeType, RecipientRole, SendStatus } from '@bchatsign/prisma/generated/types';
 import { motion } from 'framer-motion';
 import { GripVerticalIcon, HelpCircleIcon, PlusIcon, SparklesIcon, TrashIcon } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';

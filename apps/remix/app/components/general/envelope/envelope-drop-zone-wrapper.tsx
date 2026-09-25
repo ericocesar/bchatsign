@@ -8,6 +8,7 @@ import { DEFAULT_DOCUMENT_TIME_ZONE, TIME_ZONES } from '@bchatsign/lib/constants
 import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
 import { megabytesToBytes } from '@bchatsign/lib/universal/unit-convertions';
 import { formatDocumentsPath, formatTemplatesPath } from '@bchatsign/lib/utils/teams';
+import { EnvelopeType } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import type { TCreateEnvelopePayload } from '@bchatsign/trpc/server/envelope-router/create-envelope.types';
 import { buildDropzoneRejectionDescription } from '@bchatsign/ui/lib/handle-dropzone-rejection';
@@ -15,7 +16,6 @@ import { cn } from '@bchatsign/ui/lib/utils';
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { plural } from '@lingui/core/macro';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { EnvelopeType } from '@bchatsign/prisma/generated/types';
 import { Loader } from 'lucide-react';
 import { type ReactNode, useState } from 'react';
 import { ErrorCode as DropzoneErrorCode, type FileRejection, useDropzone } from 'react-dropzone';

@@ -1,7 +1,6 @@
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
-import { degrees, PDFDocument } from '@cantoo/pdf-lib';
 import { addRejectionStampToPdf } from '@bchatsign/lib/server-only/pdf/add-rejection-stamp-to-pdf';
 import { generateAuditLogPdf } from '@bchatsign/lib/server-only/pdf/generate-audit-log-pdf';
 import { generateCertificatePdf } from '@bchatsign/lib/server-only/pdf/generate-certificate-pdf';
@@ -9,6 +8,7 @@ import { getLastPageDimensions } from '@bchatsign/lib/server-only/pdf/get-page-s
 import { resolvePublicAssetPath } from '@bchatsign/lib/server-only/pdf/resolve-public-asset-path';
 import { prisma } from '@bchatsign/prisma';
 import { signPdf } from '@bchatsign/signing';
+import { degrees, PDFDocument } from '@cantoo/pdf-lib';
 import { PDF, rgb } from '@libpdf/core';
 import type { DocumentData, Envelope, EnvelopeItem, Field } from '@prisma/client';
 import {

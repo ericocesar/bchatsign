@@ -99,10 +99,7 @@ const buildEnvelope = (items: ReturnType<typeof buildSealedItem>[]) => ({
 });
 
 const setupValidToken = (rawToken: string, overrides: Record<string, unknown> = {}) => {
-  const tokenHash = require('node:crypto')
-    .createHash('sha512')
-    .update(rawToken)
-    .digest('hex');
+  const tokenHash = require('node:crypto').createHash('sha512').update(rawToken).digest('hex');
   return buildSealedItem({
     sealedPdfPublicTokenHash: tokenHash,
     sealedPdfPublicUrlExpiresAt: new Date(Date.now() + 60_000),

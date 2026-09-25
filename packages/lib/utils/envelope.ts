@@ -1,4 +1,10 @@
-import { DocumentStatus, EnvelopeType, RecipientRole, SendStatus, SigningStatus } from '@bchatsign/prisma/generated/types';
+import {
+  DocumentStatus,
+  EnvelopeType,
+  RecipientRole,
+  SendStatus,
+  SigningStatus,
+} from '@bchatsign/prisma/generated/types';
 import type { Envelope, Recipient } from '@prisma/client';
 import { match } from 'ts-pattern';
 import { z } from 'zod';

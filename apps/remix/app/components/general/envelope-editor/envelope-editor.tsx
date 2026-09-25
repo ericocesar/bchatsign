@@ -1,6 +1,7 @@
 import type { EnvelopeEditorStep } from '@bchatsign/lib/client-only/providers/envelope-editor-provider';
 import { useCurrentEnvelopeEditor } from '@bchatsign/lib/client-only/providers/envelope-editor-provider';
 import { mapSecondaryIdToTemplateId } from '@bchatsign/lib/utils/envelope';
+import { EnvelopeType } from '@bchatsign/prisma/generated/types';
 import { cn } from '@bchatsign/ui/lib/utils';
 import { Button } from '@bchatsign/ui/primitives/button';
 import { Separator } from '@bchatsign/ui/primitives/separator';
@@ -8,7 +9,6 @@ import { SpinnerBox } from '@bchatsign/ui/primitives/spinner';
 import type { MessageDescriptor } from '@lingui/core';
 import { msg } from '@lingui/core/macro';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { EnvelopeType } from '@bchatsign/prisma/generated/types';
 import { motion } from 'framer-motion';
 import {
   ArrowLeftIcon,

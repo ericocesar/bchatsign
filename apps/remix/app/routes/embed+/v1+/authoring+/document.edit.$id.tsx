@@ -10,12 +10,12 @@ import {
   ZBaseEmbedAuthoringEditSchema,
 } from '@bchatsign/lib/types/embed-authoring-base-schema';
 import { nanoid } from '@bchatsign/lib/universal/id';
+import { DocumentDistributionMethod, DocumentSigningOrder, SigningStatus } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import { Stepper } from '@bchatsign/ui/primitives/stepper';
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
-import { DocumentDistributionMethod, DocumentSigningOrder, SigningStatus } from '@bchatsign/prisma/generated/types';
 import { useLayoutEffect, useMemo, useState } from 'react';
 import { redirect, useLoaderData } from 'react-router';
 

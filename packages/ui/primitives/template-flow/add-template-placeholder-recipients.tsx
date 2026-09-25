@@ -6,6 +6,7 @@ import { ZRecipientAuthOptionsSchema } from '@bchatsign/lib/types/document-auth'
 import type { TRecipientLite } from '@bchatsign/lib/types/recipient';
 import { nanoid } from '@bchatsign/lib/universal/id';
 import { generateRecipientPlaceholder } from '@bchatsign/lib/utils/templates';
+import { DocumentSigningOrder, RecipientRole } from '@bchatsign/prisma/generated/types';
 import { AnimateGenericFadeInOut } from '@bchatsign/ui/components/animate/animate-generic-fade-in-out';
 import { RecipientActionAuthSelect } from '@bchatsign/ui/components/recipient/recipient-action-auth-select';
 import { RecipientRoleSelect } from '@bchatsign/ui/components/recipient/recipient-role-select';
@@ -20,9 +21,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import type { TemplateDirectLink } from '@prisma/client';
-import { DocumentSigningOrder, RecipientRole } from '@bchatsign/prisma/generated/types';
-import type { Field } from '@prisma/client';
+import type { Field, TemplateDirectLink } from '@prisma/client';
 import { motion } from 'framer-motion';
 import { GripVerticalIcon, HelpCircle, Link2Icon, Plus, Trash } from 'lucide-react';
 import { useCallback, useId, useMemo, useRef, useState } from 'react';

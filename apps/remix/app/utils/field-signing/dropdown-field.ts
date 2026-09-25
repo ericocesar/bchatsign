@@ -1,7 +1,7 @@
 import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
 import type { TFieldDropdown } from '@bchatsign/lib/types/field';
-import type { TSignEnvelopeFieldValue } from '@bchatsign/trpc/server/envelope-router/sign-envelope-field.types';
 import { FieldType } from '@bchatsign/prisma/generated/types';
+import type { TSignEnvelopeFieldValue } from '@bchatsign/trpc/server/envelope-router/sign-envelope-field.types';
 
 import { SignFieldDropdownDialog } from '~/components/dialogs/sign-field-dropdown-dialog';
 

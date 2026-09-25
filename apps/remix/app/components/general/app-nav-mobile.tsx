@@ -1,11 +1,11 @@
 import { authClient } from '@bchatsign/auth/client';
 import { useSession } from '@bchatsign/lib/client-only/providers/session';
 import { isPersonalLayout } from '@bchatsign/lib/utils/organisations';
+import { ReadStatus } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import { Sheet, SheetContent } from '@bchatsign/ui/primitives/sheet';
 import { ThemeSwitcher } from '@bchatsign/ui/primitives/theme-switcher';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { ReadStatus } from '@bchatsign/prisma/generated/types';
 import { useMemo } from 'react';
 import { Link } from 'react-router';
 

@@ -15,6 +15,7 @@ import { type TDocumentMetaDateFormat, ZDocumentMetaTimezoneSchema } from '@bcha
 import { isPersonalLayout } from '@bchatsign/lib/utils/organisations';
 import { recipientAbbreviation } from '@bchatsign/lib/utils/recipient-formatter';
 import { extractTeamSignatureSettings } from '@bchatsign/lib/utils/teams';
+import { DocumentVisibility, OrganisationType } from '@bchatsign/prisma/generated/types';
 import { DocumentSignatureSettingsTooltip } from '@bchatsign/ui/components/document/document-signature-settings-tooltip';
 import { ExpirationPeriodPicker } from '@bchatsign/ui/components/document/expiration-period-picker';
 import { ReminderSettingsPicker } from '@bchatsign/ui/components/document/reminder-settings-picker';
@@ -38,9 +39,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { msg, t } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import type { TeamGlobalSettings } from '@prisma/client';
-import { DocumentVisibility, OrganisationType } from '@bchatsign/prisma/generated/types';
-import type { RecipientRole } from '@prisma/client';
+import type { RecipientRole, TeamGlobalSettings } from '@prisma/client';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 

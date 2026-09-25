@@ -4,7 +4,7 @@ import {
   IS_OIDC_SSO_ENABLED,
   isSignupEnabledForProvider,
 } from '@bchatsign/lib/constants/auth';
-import { TERMS_OF_SERVICE, PRIVACY_POLICY } from '@bchatsign/lib/server-only/legal-content';
+import { PRIVACY_POLICY, TERMS_OF_SERVICE } from '@bchatsign/lib/server-only/legal-content';
 import { isValidReturnTo, normalizeReturnTo } from '@bchatsign/lib/utils/is-valid-return-to';
 import { msg } from '@lingui/core/macro';
 import { Trans } from '@lingui/react/macro';
@@ -107,10 +107,7 @@ export default function SignUp({ loaderData }: Route.ComponentProps) {
               <Trans>Create a new account</Trans>
             </motion.h1>
 
-            <motion.p
-              variants={formItemVariants}
-              className="mt-2 text-muted-foreground text-sm"
-            >
+            <motion.p variants={formItemVariants} className="mt-2 text-muted-foreground text-sm">
               <Trans>
                 Create your account and start using state-of-the-art document signing. Open and beautiful signing is
                 within your grasp.
@@ -133,10 +130,7 @@ export default function SignUp({ loaderData }: Route.ComponentProps) {
           </motion.div>
 
           {/* Footer */}
-          <motion.p
-            variants={formItemVariants}
-            className="text-center text-muted-foreground text-xs"
-          >
+          <motion.p variants={formItemVariants} className="text-center text-muted-foreground text-xs">
             <Trans>Secure digital signatures powered by BchatSign</Trans>
           </motion.p>
         </motion.div>

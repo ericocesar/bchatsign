@@ -1,5 +1,6 @@
 import { useUpdateSearchParams } from '@bchatsign/lib/client-only/hooks/use-update-search-params';
 import { ZUrlSearchParamsSchema } from '@bchatsign/lib/types/search-params';
+import { DocumentSource, DocumentStatus as DocumentStatusEnum } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import type { DataTableColumnDef } from '@bchatsign/ui/primitives/data-table';
 import { DataTable } from '@bchatsign/ui/primitives/data-table';
@@ -12,7 +13,6 @@ import type { MessageDescriptor } from '@lingui/core';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { DocumentSource, DocumentStatus as DocumentStatusEnum } from '@bchatsign/prisma/generated/types';
 import { InfoIcon } from 'lucide-react';
 import { DateTime } from 'luxon';
 import { useMemo } from 'react';

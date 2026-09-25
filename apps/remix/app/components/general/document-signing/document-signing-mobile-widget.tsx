@@ -1,7 +1,6 @@
-import { Button } from '@bchatsign/ui/primitives/button';
-
-import { Plural, Trans } from '@lingui/react/macro';
 import { RecipientRole } from '@bchatsign/prisma/generated/types';
+import { Button } from '@bchatsign/ui/primitives/button';
+import { Plural, Trans } from '@lingui/react/macro';
 import { motion } from 'framer-motion';
 import { LucideChevronDown, LucideChevronUp } from 'lucide-react';
 import { useEffect, useState } from 'react';
