@@ -1,6 +1,8 @@
+# DEPRECATED: não usado pelo deploy atual (scripts/deployportainer.sh usa stack-dev.yml/stack-prod.yml).
+# Mantido para referência. Se reativar, usar digest: ghcr.io/ericocesar/bchatsign@${IMAGE_DIGEST}.
 services:
   bchatsign:
-    image: ghcr.io/ericocesar/bchatsign:${IMAGE_TAG}
+    image: ghcr.io/ericocesar/bchatsign@${IMAGE_DIGEST}
     volumes:
       - /opt/documenso/cert.p12:/opt/documenso/cert.p12:ro
     networks:

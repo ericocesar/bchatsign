@@ -1,6 +1,6 @@
 services:
   bchatsign:
-    image: ghcr.io/ericocesar/bchatsign:${IMAGE_TAG}
+    image: ghcr.io/ericocesar/bchatsign@${IMAGE_DIGEST}
     volumes:
     # - /opt/documenso/cert.p12:/opt/documenso/cert.p12:ro
       - /root/stacks/bchatsign/cert/ERICOCESAR_94138966404.pfx:/opt/documenso/cert.p12:ro

@@ -1,0 +1,16 @@
+{
+  "product": "bchatsign",
+  "stack": "bchatsign",
+  "image": "ghcr.io/ericocesar/bchatsign",
+  "portainer": {
+    "dev": {
+      "url": "https://swdev.webck.com.br",
+      "endpointId": 1
+    },
+    "prod": {
+      "url": "https://swbolt.webck.com.br",
+      "endpointId": 1
+    }
+  },
+  "requiredSecrets": ["PORTAINER_API_KEY"]
+}

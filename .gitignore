@@ -30,6 +30,8 @@ yarn-error.log*
 .env.development.local
 .env.test.local
 .env.production.local
+.env.deploy.*
+.github/infra/.env.deploy.*
 
 # turbo
 .turbo
@@ -77,6 +79,7 @@ tmp/
 
 # dotcontext runtime state
 .context/plans/
+.context/runtime/
 .context/cache/semantic/
 .context/workflow/
 .context/harness/sessions/
