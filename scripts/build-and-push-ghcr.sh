@@ -6,6 +6,10 @@ REGISTRY="${REGISTRY:-ghcr.io}"
 PLATFORM="${PLATFORM:-linux/amd64}" # Fixado para linux/amd64 por padrão (override via env)
 # Dockerfile canônico do monorepo (docker/Dockerfile). Permite override via DOCKERFILE env.
 DOCKERFILE="${DOCKERFILE:-docker/Dockerfile}"
+# Identidade do produto — mesma fonte lida por scripts/deployportainer.sh.
+# Resolvido a partir da raiz do repositório para não depender do cwd.
+REPO_ROOT="$(git rev-parse --show-toplevel 2> /dev/null || pwd)"
+IDENTITY_FILE="${IDENTITY_FILE:-${REPO_ROOT}/.github/infra/identity.json}"
 
 sanitize_component() {
   echo "$1" \
@@ -29,6 +33,19 @@ detect_project_name() {
   # Se vier no formato "@scope/name", usa apenas o nome final
   name="${name##*/}"
   sanitize_component "${name}"
+}
+
+# Lê a imagem canônica de identity.json. O deploy valida a stack contra esse
+# mesmo valor, então o build precisa concordar com ele — derivar o nome do
+# package.json raiz (que é "@bchatsign/root" -> "root") produz uma imagem que
+# o deploy recusa, e um digest que não corresponde à imagem referenciada.
+detect_image_from_identity() {
+  local identity_file="$1"
+
+  [ -f "${identity_file}" ] || return 1
+  command -v jq > /dev/null 2>&1 || return 1
+
+  jq -r '.image // empty' "${identity_file}" 2> /dev/null
 }
 
 detect_namespace() {
@@ -57,7 +74,15 @@ detect_namespace() {
 
 PROJECT_NAME_RESOLVED="$(detect_project_name)"
 IMAGE_NAMESPACE_RESOLVED="$(detect_namespace)"
-IMAGE_NAME="${IMAGE_NAME:-${IMAGE_NAMESPACE_RESOLVED}/${PROJECT_NAME_RESOLVED}}"
+IDENTITY_IMAGE_RESOLVED="$(detect_image_from_identity "${IDENTITY_FILE}" || true)"
+
+# Precedência: IMAGE_NAME explícito > identity.json > derivação do package.json.
+IMAGE_NAME="${IMAGE_NAME:-${IDENTITY_IMAGE_RESOLVED#${REGISTRY}/}}"
+if [[ -z "${IMAGE_NAME}" ]]; then
+  IMAGE_NAME="${IMAGE_NAMESPACE_RESOLVED}/${PROJECT_NAME_RESOLVED}"
+  echo "    ⚠️  identity.json sem .image — derivando do package.json: ${IMAGE_NAME}"
+  echo "        O deploy valida a stack contra identity.json e vai recusar essa imagem."
+fi
 
 GIT_SHA_SHORT="$(git rev-parse --short=7 HEAD)"
 BRANCH="$(git rev-parse --abbrev-ref HEAD | tr '[:upper:]' '[:lower:]' | tr '/' '-')"
