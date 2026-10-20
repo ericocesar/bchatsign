@@ -1,8 +1,8 @@
 import communityCardsImage from '@bchatsign/assets/images/community-cards.png';
 import { authClient } from '@bchatsign/auth/client';
 import { useAnalytics } from '@bchatsign/lib/client-only/hooks/use-analytics';
-import { ZNameSchema } from '@bchatsign/lib/constants/auth';
 import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { ZNameSchema } from '@bchatsign/lib/types/name';
 import { env } from '@bchatsign/lib/utils/env';
 import { zEmail } from '@bchatsign/lib/utils/zod';
 import { ZPasswordSchema } from '@bchatsign/trpc/server/auth-router/schema';
@@ -96,7 +96,7 @@ export const SignUpForm = ({
       password: '',
       signature: '',
     },
-    mode: 'onBlur',
+    mode: 'onChange',
     resolver: zodResolver(ZSignUpFormSchema),
   });
 

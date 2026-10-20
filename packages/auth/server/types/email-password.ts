@@ -1,4 +1,4 @@
-import { ZNameSchema } from '@bchatsign/lib/constants/auth';
+import { ZNameSchema } from '@bchatsign/lib/types/name';
 import { zEmail } from '@bchatsign/lib/utils/zod';
 import { z } from 'zod';
 

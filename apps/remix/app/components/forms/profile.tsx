@@ -1,5 +1,5 @@
 import { useSession } from '@bchatsign/lib/client-only/providers/session';
-import { ZNameSchema } from '@bchatsign/lib/constants/auth';
+import { ZNameSchema } from '@bchatsign/lib/types/name';
 import { trpc } from '@bchatsign/trpc/react';
 import { cn } from '@bchatsign/ui/lib/utils';
 import { Button } from '@bchatsign/ui/primitives/button';

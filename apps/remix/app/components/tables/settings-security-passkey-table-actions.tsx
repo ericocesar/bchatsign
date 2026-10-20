@@ -1,3 +1,4 @@
+import { ZNameSchema } from '@bchatsign/lib/types/name';
 import { trpc } from '@bchatsign/trpc/react';
 import { cn } from '@bchatsign/ui/lib/utils';
 import { Button } from '@bchatsign/ui/primitives/button';
@@ -29,7 +30,7 @@ export type SettingsSecurityPasskeyTableActionsProps = {
 };
 
 const ZUpdatePasskeySchema = z.object({
-  name: z.string(),
+  name: ZNameSchema,
 });
 
 type TUpdatePasskeySchema = z.infer<typeof ZUpdatePasskeySchema>;

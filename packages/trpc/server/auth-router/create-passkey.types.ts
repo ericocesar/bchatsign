@@ -1,8 +1,9 @@
+import { ZNameSchema } from '@bchatsign/lib/types/name';
 import { ZRegistrationResponseJSONSchema } from '@bchatsign/lib/types/webauthn';
 import { z } from 'zod';
 
 export const ZCreatePasskeyRequestSchema = z.object({
-  passkeyName: z.string().trim().min(1),
+  passkeyName: ZNameSchema,
   verificationResponse: ZRegistrationResponseJSONSchema,
 });
 
