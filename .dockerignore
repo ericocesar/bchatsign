@@ -17,6 +17,10 @@ build
 .DS_Store
 *.pem
 
+# signing certificates (contain private keys) — mounted at runtime, never baked into the image
+**/*.pfx
+**/*.p12
+
 # debug
 npm-debug.log*
 yarn-debug.log*

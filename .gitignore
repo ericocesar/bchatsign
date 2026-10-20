@@ -19,6 +19,11 @@ build
 .DS_Store
 *.pem
 
+# signing certificates (contain private keys) — only the public test cert is versioned
+*.pfx
+*.p12
+!apps/remix/example/cert.p12
+
 # debug
 npm-debug.log*
 yarn-debug.log*
