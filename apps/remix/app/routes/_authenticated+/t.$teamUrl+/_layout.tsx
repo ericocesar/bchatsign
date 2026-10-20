@@ -1,6 +1,7 @@
 import { DEFAULT_MINIMUM_ENVELOPE_ITEM_COUNT, PAID_PLAN_LIMITS } from '@bchatsign/ee/server-only/limits/constants';
 import { LimitsProvider } from '@bchatsign/ee/server-only/limits/provider/client';
 import { useOptionalCurrentOrganisation } from '@bchatsign/lib/client-only/providers/organisation';
+import { isOrganisationPendingPayment } from '@bchatsign/lib/utils/billing';
 import { TrpcProvider } from '@bchatsign/trpc/react';
 import { Button } from '@bchatsign/ui/primitives/button';
 import { msg } from '@lingui/core/macro';
@@ -21,7 +22,11 @@ export default function Layout() {
       return undefined;
     }
 
-    if (organisation?.subscription && organisation.subscription.status === SubscriptionStatus.INACTIVE) {
+    const isRestricted =
+      (organisation.subscription && organisation.subscription.status === SubscriptionStatus.INACTIVE) ||
+      isOrganisationPendingPayment(organisation);
+
+    if (isRestricted) {
       return {
         quota: {
           documents: 0,
@@ -42,7 +47,7 @@ export default function Layout() {
       remaining: PAID_PLAN_LIMITS,
       maximumEnvelopeItemCount: DEFAULT_MINIMUM_ENVELOPE_ITEM_COUNT,
     };
-  }, [organisation?.subscription]);
+  }, [organisation]);
 
   if (!team) {
     return (

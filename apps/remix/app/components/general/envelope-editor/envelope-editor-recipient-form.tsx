@@ -16,6 +16,7 @@ import {
 } from '@bchatsign/ui/components/recipient/recipient-autocomplete-input';
 import { RecipientRoleSelect } from '@bchatsign/ui/components/recipient/recipient-role-select';
 import { cn } from '@bchatsign/ui/lib/utils';
+import { Alert, AlertDescription } from '@bchatsign/ui/primitives/alert';
 import { Button } from '@bchatsign/ui/primitives/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@bchatsign/ui/primitives/card';
 import { Checkbox } from '@bchatsign/ui/primitives/checkbox';
@@ -563,6 +564,9 @@ export const EnvelopeEditorRecipientForm = () => {
     }
   }, [formValues]);
 
+  const recipientCountLimit = organisation.organisationClaim.recipientCount;
+  const isOverRecipientLimit = recipientCountLimit > 0 && signers.length > recipientCountLimit;
+
   return (
     <Card backdropBlur={false} className="border">
       <CardHeader className="flex flex-row justify-between">
@@ -627,6 +631,17 @@ export const EnvelopeEditorRecipientForm = () => {
       </CardHeader>
 
       <CardContent>
+        {isOverRecipientLimit && (
+          <Alert variant="destructive" className="mb-4">
+            <AlertDescription>
+              <Trans>
+                This envelope cannot have more than {recipientCountLimit} recipients. Please contact support if you need
+                more.
+              </Trans>
+            </AlertDescription>
+          </Alert>
+        )}
+
         <Form {...form}>
           <div
             className={cn('-mt-2 mb-2 space-y-4 rounded-md bg-accent/50 p-4', {
