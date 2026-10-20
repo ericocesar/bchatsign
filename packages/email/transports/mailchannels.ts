@@ -1,11 +1,28 @@
 import { env } from '@bchatsign/lib/utils/env';
-import type { SentMessageInfo, Transport } from 'nodemailer';
-import type { Address } from 'nodemailer/lib/mailer';
-import type MailMessage from 'nodemailer/lib/mailer/mail-message';
+import type { Address, MailMessage, NodemailerError, SentMessageInfo, Transport } from 'nodemailer';
 
 const VERSION = '1.0.0';
 
-type NodeMailerAddress = string | Address | Array<string | Address> | undefined;
+/**
+ * Addresses as nodemailer accepts them: a string, an address object, or any
+ * nesting of arrays thereof.
+ */
+type NodeMailerAddress = string | Address | NodeMailerAddress[] | undefined;
+
+/**
+ * Callback signature for `Transport.send`, derived from the transport contract
+ * itself so it keeps tracking nodemailer's own typings across versions.
+ */
+type SendCallback = Parameters<Transport<SentMessageInfo>['send']>[1];
+
+/**
+ * Builds the errors this transport reports through nodemailer's callbacks.
+ * `NodemailerError` is a weak type — everything beyond Node's `Error` is
+ * optional — so the cast only attaches the error code nodemailer itself sets
+ * on its failure paths.
+ */
+const transportError = (message: string): NodemailerError =>
+  Object.assign(new Error(message), { code: 'ECONFIG' }) as NodemailerError;
 
 interface MailChannelsAddress {
   email: string;
@@ -44,9 +61,9 @@ export class MailChannelsTransport implements Transport<SentMessageInfo> {
     };
   }
 
-  public send(mail: MailMessage, callback: (_err: Error | null, _info: SentMessageInfo) => void) {
+  public send(mail: MailMessage, callback: SendCallback) {
     if (!mail.data.to || !mail.data.from) {
-      return callback(new Error('Missing required fields "to" or "from"'), null);
+      return callback(transportError('Missing required fields "to" or "from"'));
     }
 
     const mailTo = this.toMailChannelsAddresses(mail.data.to);
@@ -56,7 +73,7 @@ export class MailChannelsTransport implements Transport<SentMessageInfo> {
     const [from] = this.toMailChannelsAddresses(mail.data.from);
 
     if (!from) {
-      return callback(new Error('Missing required field "from"'), null);
+      return callback(transportError('Missing required field "from"'));
     }
 
     const requestHeaders: Record<string, string> = {
@@ -97,13 +114,18 @@ export class MailChannelsTransport implements Transport<SentMessageInfo> {
     })
       .then((res) => {
         if (res.status >= 200 && res.status <= 299) {
+          // Report the addresses the same way they are sent, already flattened
+          // to plain email strings — which is also the shape nodemailer expects
+          // back in an envelope.
+          const to = mailTo.map((address) => address.email);
+
           return callback(null, {
             messageId: '',
             envelope: {
-              from: mail.data.from,
-              to: mail.data.to,
+              from: from.email,
+              to,
             },
-            accepted: mail.data.to,
+            accepted: to,
             rejected: [],
             pending: [],
           });
@@ -111,11 +133,11 @@ export class MailChannelsTransport implements Transport<SentMessageInfo> {
 
         res
           .json()
-          .then((data) => callback(new Error(`MailChannels error: ${data.message}`), null))
-          .catch((err) => callback(err, null));
+          .then((data) => callback(transportError(`MailChannels error: ${data.message}`)))
+          .catch((err) => callback(err));
       })
       .catch((err) => {
-        return callback(err, null);
+        return callback(err);
       });
   }
 
@@ -132,23 +154,9 @@ export class MailChannelsTransport implements Transport<SentMessageInfo> {
     }
 
     if (Array.isArray(address)) {
-      return address.map((address) => {
-        if (typeof address === 'string') {
-          return { email: address };
-        }
-
-        return {
-          email: address.address,
-          name: address.name,
-        };
-      });
+      return address.flatMap((entry) => this.toMailChannelsAddresses(entry));
     }
 
-    return [
-      {
-        email: address.address,
-        name: address.name,
-      },
-    ];
+    return address.address ? [{ email: address.address, name: address.name }] : [];
   }
 }

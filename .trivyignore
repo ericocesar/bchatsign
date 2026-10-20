@@ -1,0 +1,22 @@
+# Trivy suppressions.
+#
+# Each entry needs a reason it is not exploitable here — not just that a fix is
+# inconvenient. Revisit whenever the dependency tree around it changes.
+
+# CVE-2026-93687 — braces: stack exhaustion (DoS) from deeply nested patterns.
+#
+# No fix exists: the advisory covers every published version (`range: "*"`, latest
+# is 3.0.3, released 2024-05-21), so there is no upgrade to take. It reaches the
+# image only through tailwindcss@3 -> micromatch/chokidar -> braces.
+#
+# Not exploitable here:
+#  - tailwindcss@3 is a runtime dependency of packages/email (its renderer loads
+#    @bchatsign/tailwind-config, whose index.cjs requires tailwindcss/defaultTheme),
+#    so it cannot be demoted to devDependencies to drop the chain.
+#  - Nothing in the app calls micromatch, chokidar or braces directly, and the
+#    patterns those tools expand are internal globs, never user input — the DoS
+#    needs an attacker-supplied pattern.
+#  - braces is not in the server bundle (apps/remix/build/server).
+#
+# Remove this once tailwindcss 4 removes the micromatch/chokidar dependency.
+CVE-2026-93687
