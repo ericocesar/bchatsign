@@ -1,1 +1,1 @@
-# @documenso/openpage-api
+# @bchatsign/openpage-api

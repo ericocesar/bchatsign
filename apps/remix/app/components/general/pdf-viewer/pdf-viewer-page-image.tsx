@@ -1,6 +1,6 @@
-import type { ImageLoadingState } from '@documenso/lib/client-only/providers/envelope-render-provider';
-import { cn } from '@documenso/ui/lib/utils';
-import { Spinner } from '@documenso/ui/primitives/spinner';
+import type { ImageLoadingState } from '@bchatsign/lib/client-only/providers/envelope-render-provider';
+import { cn } from '@bchatsign/ui/lib/utils';
+import { Spinner } from '@bchatsign/ui/primitives/spinner';
 import { Trans } from '@lingui/react/macro';
 
 type PdfViewerPageImageProps = {

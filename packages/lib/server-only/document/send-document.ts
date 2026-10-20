@@ -1,9 +1,9 @@
-import { resolveExpiresAt } from '@documenso/lib/constants/envelope-expiration';
-import { DOCUMENT_AUDIT_LOG_TYPE } from '@documenso/lib/types/document-audit-logs';
-import type { ApiRequestMetadata } from '@documenso/lib/universal/extract-request-metadata';
-import { createDocumentAuditLogData } from '@documenso/lib/utils/document-audit-logs';
-import { prisma } from '@documenso/prisma';
-import { checkboxValidationSigns } from '@documenso/ui/primitives/document-flow/field-items-advanced-settings/constants';
+import { resolveExpiresAt } from '@bchatsign/lib/constants/envelope-expiration';
+import { DOCUMENT_AUDIT_LOG_TYPE } from '@bchatsign/lib/types/document-audit-logs';
+import type { ApiRequestMetadata } from '@bchatsign/lib/universal/extract-request-metadata';
+import { createDocumentAuditLogData } from '@bchatsign/lib/utils/document-audit-logs';
+import { prisma } from '@bchatsign/prisma';
+import { checkboxValidationSigns } from '@bchatsign/ui/primitives/document-flow/field-items-advanced-settings/constants';
 import type { DocumentData, Envelope, EnvelopeItem, Field, Recipient } from '@prisma/client';
 import {
   DocumentSigningOrder,

@@ -1,4 +1,4 @@
-import { Alert, AlertDescription } from '@documenso/ui/primitives/alert';
+import { Alert, AlertDescription } from '@bchatsign/ui/primitives/alert';
 import { Trans } from '@lingui/react/macro';
 
 import { SignInForm } from '~/components/forms/signin';

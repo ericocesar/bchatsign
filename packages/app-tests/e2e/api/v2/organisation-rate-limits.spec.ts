@@ -1,14 +1,14 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
-import { createApiToken } from '@documenso/lib/server-only/public-api/create-api-token';
-import { prisma } from '@documenso/prisma';
-import { EnvelopeType, RecipientRole } from '@documenso/prisma/client';
-import { seedUser } from '@documenso/prisma/seed/users';
+import { NEXT_PUBLIC_WEBAPP_URL } from '@bchatsign/lib/constants/app';
+import { createApiToken } from '@bchatsign/lib/server-only/public-api/create-api-token';
+import { prisma } from '@bchatsign/prisma';
+import { EnvelopeType, RecipientRole } from '@bchatsign/prisma/client';
+import { seedUser } from '@bchatsign/prisma/seed/users';
 import type {
   TCreateEnvelopePayload,
   TCreateEnvelopeResponse,
-} from '@documenso/trpc/server/envelope-router/create-envelope.types';
+} from '@bchatsign/trpc/server/envelope-router/create-envelope.types';
 import { type APIRequestContext, type APIResponse, expect, test } from '@playwright/test';
 import type { Organisation, Team, User } from '@prisma/client';
 
@@ -362,7 +362,7 @@ const createEnvelope = async (
     recipients:
       recipientCount > 0
         ? Array.from({ length: recipientCount }, (_, i) => ({
-            email: `rl-${Date.now()}-${i}-${Math.random().toString(36).slice(2)}@test.documenso.com`,
+            email: `rl-${Date.now()}-${i}-${Math.random().toString(36).slice(2)}@test.bchatsign.com`,
             name: `Recipient ${i}`,
             role: RecipientRole.SIGNER,
             signingOrder: i + 1,

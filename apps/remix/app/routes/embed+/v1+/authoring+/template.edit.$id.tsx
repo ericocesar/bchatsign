@@ -1,18 +1,18 @@
-import { DEFAULT_DOCUMENT_DATE_FORMAT, isValidDateFormat } from '@documenso/lib/constants/date-formats';
-import { DocumentSignatureType } from '@documenso/lib/constants/document';
-import { isValidLanguageCode } from '@documenso/lib/constants/i18n';
-import { DEFAULT_DOCUMENT_TIME_ZONE } from '@documenso/lib/constants/time-zones';
-import { verifyEmbeddingPresignToken } from '@documenso/lib/server-only/embedding-presign/verify-embedding-presign-token';
-import { getTemplateById } from '@documenso/lib/server-only/template/get-template-by-id';
-import { ZDocumentEmailSettingsSchema } from '@documenso/lib/types/document-email';
+import { DEFAULT_DOCUMENT_DATE_FORMAT, isValidDateFormat } from '@bchatsign/lib/constants/date-formats';
+import { DocumentSignatureType } from '@bchatsign/lib/constants/document';
+import { isValidLanguageCode } from '@bchatsign/lib/constants/i18n';
+import { DEFAULT_DOCUMENT_TIME_ZONE } from '@bchatsign/lib/constants/time-zones';
+import { verifyEmbeddingPresignToken } from '@bchatsign/lib/server-only/embedding-presign/verify-embedding-presign-token';
+import { getTemplateById } from '@bchatsign/lib/server-only/template/get-template-by-id';
+import { ZDocumentEmailSettingsSchema } from '@bchatsign/lib/types/document-email';
 import {
   type TBaseEmbedAuthoringSchema,
   ZBaseEmbedAuthoringEditSchema,
-} from '@documenso/lib/types/embed-authoring-base-schema';
-import { nanoid } from '@documenso/lib/universal/id';
-import { trpc } from '@documenso/trpc/react';
-import { Stepper } from '@documenso/ui/primitives/stepper';
-import { useToast } from '@documenso/ui/primitives/use-toast';
+} from '@bchatsign/lib/types/embed-authoring-base-schema';
+import { nanoid } from '@bchatsign/lib/universal/id';
+import { trpc } from '@bchatsign/trpc/react';
+import { Stepper } from '@bchatsign/ui/primitives/stepper';
+import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { DocumentDistributionMethod, DocumentSigningOrder, SigningStatus } from '@prisma/client';

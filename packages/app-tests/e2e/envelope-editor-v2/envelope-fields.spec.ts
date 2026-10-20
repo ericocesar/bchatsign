@@ -1,5 +1,5 @@
-import { nanoid } from '@documenso/lib/universal/id';
-import { prisma } from '@documenso/prisma';
+import { nanoid } from '@bchatsign/lib/universal/id';
+import { prisma } from '@bchatsign/prisma';
 import { expect, type Page, test } from '@playwright/test';
 import { FieldType } from '@prisma/client';
 
@@ -29,7 +29,7 @@ type TFieldFlowResult = {
 
 const TEST_FIELD_VALUES = {
   embeddedRecipient: {
-    email: 'embedded-field-recipient@documenso.com',
+    email: 'embedded-field-recipient@bchatsign.com',
     name: 'Embedded Field Recipient',
   },
 };
@@ -199,7 +199,7 @@ type TMultiRecipientFlowResult = {
 
 const MULTI_RECIPIENT_VALUES = {
   secondSigner: {
-    email: 'second-signer@test.documenso.com',
+    email: 'second-signer@test.bchatsign.com',
     name: 'Second Signer',
   },
 };

@@ -1,4 +1,4 @@
-import { findTeamMembers } from '@documenso/lib/server-only/team/find-team-members';
+import { findTeamMembers } from '@bchatsign/lib/server-only/team/find-team-members';
 
 import { authenticatedProcedure } from '../trpc';
 import { ZFindTeamMembersRequestSchema, ZFindTeamMembersResponseSchema } from './find-team-members.types';

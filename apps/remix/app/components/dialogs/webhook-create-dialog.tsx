@@ -1,6 +1,6 @@
-import { trpc } from '@documenso/trpc/react';
-import { ZCreateWebhookRequestSchema } from '@documenso/trpc/server/webhook-router/schema';
-import { Button } from '@documenso/ui/primitives/button';
+import { trpc } from '@bchatsign/trpc/react';
+import { ZCreateWebhookRequestSchema } from '@bchatsign/trpc/server/webhook-router/schema';
+import { Button } from '@bchatsign/ui/primitives/button';
 import {
   Dialog,
   DialogContent,
@@ -9,7 +9,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@documenso/ui/primitives/dialog';
+} from '@bchatsign/ui/primitives/dialog';
 import {
   Form,
   FormControl,
@@ -18,11 +18,11 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@documenso/ui/primitives/form/form';
-import { Input } from '@documenso/ui/primitives/input';
-import { PasswordInput } from '@documenso/ui/primitives/password-input';
-import { Switch } from '@documenso/ui/primitives/switch';
-import { useToast } from '@documenso/ui/primitives/use-toast';
+} from '@bchatsign/ui/primitives/form/form';
+import { Input } from '@bchatsign/ui/primitives/input';
+import { PasswordInput } from '@bchatsign/ui/primitives/password-input';
+import { Switch } from '@bchatsign/ui/primitives/switch';
+import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
@@ -127,7 +127,7 @@ export const WebhookCreateDialog = ({ trigger, ...props }: WebhookCreateDialogPr
                       </FormControl>
 
                       <FormDescription>
-                        <Trans>The URL for Documenso to send webhook events to.</Trans>
+                        <Trans>The URL for Bchatsign to send webhook events to.</Trans>
                       </FormDescription>
 
                       <FormMessage />
@@ -197,7 +197,7 @@ export const WebhookCreateDialog = ({ trigger, ...props }: WebhookCreateDialogPr
                     <FormDescription>
                       <Trans>
                         A secret that will be sent to your URL so you can verify that the request has been sent by
-                        Documenso.
+                        Bchatsign.
                       </Trans>
                     </FormDescription>
                     <FormMessage />

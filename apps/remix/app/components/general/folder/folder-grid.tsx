@@ -1,8 +1,8 @@
-import { useCurrentOrganisation } from '@documenso/lib/client-only/providers/organisation';
-import { formatDocumentsPath, formatTemplatesPath } from '@documenso/lib/utils/teams';
-import { trpc } from '@documenso/trpc/react';
-import type { TFolderWithSubfolders } from '@documenso/trpc/server/folder-router/schema';
-import { Skeleton } from '@documenso/ui/primitives/skeleton';
+import { useCurrentOrganisation } from '@bchatsign/lib/client-only/providers/organisation';
+import { formatDocumentsPath, formatTemplatesPath } from '@bchatsign/lib/utils/teams';
+import { trpc } from '@bchatsign/trpc/react';
+import type { TFolderWithSubfolders } from '@bchatsign/trpc/server/folder-router/schema';
+import { Skeleton } from '@bchatsign/ui/primitives/skeleton';
 import { Trans } from '@lingui/react/macro';
 import { FolderType } from '@prisma/client';
 import { FolderIcon, HomeIcon } from 'lucide-react';

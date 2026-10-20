@@ -1,4 +1,4 @@
-import EnvelopeItemSchema from '@documenso/prisma/generated/zod/modelSchema/EnvelopeItemSchema';
+import EnvelopeItemSchema from '@bchatsign/prisma/generated/zod/modelSchema/EnvelopeItemSchema';
 import { z } from 'zod';
 
 import { ZDocumentTitleSchema } from '../document-router/schema';

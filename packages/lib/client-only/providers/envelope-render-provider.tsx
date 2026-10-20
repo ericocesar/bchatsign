@@ -1,7 +1,7 @@
-import type { DocumentDataVersion } from '@documenso/lib/types/document';
-import { getDocumentDataUrl } from '@documenso/lib/utils/envelope-download';
-import type { TRecipientColor } from '@documenso/ui/lib/recipient-colors';
-import { getRecipientColor } from '@documenso/ui/lib/recipient-colors';
+import type { DocumentDataVersion } from '@bchatsign/lib/types/document';
+import { getDocumentDataUrl } from '@bchatsign/lib/utils/envelope-download';
+import type { TRecipientColor } from '@bchatsign/ui/lib/recipient-colors';
+import { getRecipientColor } from '@bchatsign/ui/lib/recipient-colors';
 import type { Field, Recipient } from '@prisma/client';
 import type React from 'react';
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';

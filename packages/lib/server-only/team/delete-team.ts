@@ -1,8 +1,8 @@
-import { mailer } from '@documenso/email/mailer';
-import { TeamDeleteEmailTemplate } from '@documenso/email/templates/team-delete';
-import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { prisma } from '@documenso/prisma';
+import { mailer } from '@bchatsign/email/mailer';
+import { TeamDeleteEmailTemplate } from '@bchatsign/email/templates/team-delete';
+import { NEXT_PUBLIC_WEBAPP_URL } from '@bchatsign/lib/constants/app';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { prisma } from '@bchatsign/prisma';
 import { msg } from '@lingui/core/macro';
 import { OrganisationGroupType, type Team } from '@prisma/client';
 import { createElement } from 'react';
@@ -138,7 +138,7 @@ export const sendTeamDeleteEmail = async ({ email, team, organisationId }: SendT
   await mailer.sendMail({
     to: email,
     from: senderEmail,
-    subject: i18n._(msg`Team "${team.name}" has been deleted on Documenso`),
+    subject: i18n._(msg`Team "${team.name}" has been deleted on Bchatsign`),
     html,
     text,
   });

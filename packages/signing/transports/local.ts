@@ -1,5 +1,5 @@
 import * as fs from 'node:fs';
-import { env } from '@documenso/lib/utils/env';
+import { env } from '@bchatsign/lib/utils/env';
 import { P12Signer } from '@libpdf/core';
 
 const loadP12 = (): Uint8Array => {

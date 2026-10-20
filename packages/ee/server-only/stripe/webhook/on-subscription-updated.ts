@@ -1,7 +1,7 @@
-import { createOrganisationClaimUpsertData } from '@documenso/lib/server-only/organisation/create-organisation';
-import { type Stripe, stripe } from '@documenso/lib/server-only/stripe';
-import { INTERNAL_CLAIM_ID } from '@documenso/lib/types/subscription';
-import { prisma } from '@documenso/prisma';
+import { createOrganisationClaimUpsertData } from '@bchatsign/lib/server-only/organisation/create-organisation';
+import { type Stripe, stripe } from '@bchatsign/lib/server-only/stripe';
+import { INTERNAL_CLAIM_ID } from '@bchatsign/lib/types/subscription';
+import { prisma } from '@bchatsign/prisma';
 import { OrganisationType, SubscriptionStatus } from '@prisma/client';
 import { match } from 'ts-pattern';
 

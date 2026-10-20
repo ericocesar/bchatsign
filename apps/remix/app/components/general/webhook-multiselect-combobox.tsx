@@ -1,5 +1,5 @@
-import { toFriendlyWebhookEventName } from '@documenso/lib/universal/webhook/to-friendly-webhook-event-name';
-import { MultiSelect, type Option } from '@documenso/ui/primitives/multiselect';
+import { toFriendlyWebhookEventName } from '@bchatsign/lib/universal/webhook/to-friendly-webhook-event-name';
+import { MultiSelect, type Option } from '@bchatsign/ui/primitives/multiselect';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';

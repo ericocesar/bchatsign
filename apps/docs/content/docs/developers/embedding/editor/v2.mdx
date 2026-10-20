@@ -39,7 +39,7 @@ All editor components require a **presign token** for authentication. See the [E
 Use `EmbedCreateEnvelope` to embed envelope creation. The `type` prop determines whether the envelope is created as a document or template.
 
 ```jsx
-import { EmbedCreateEnvelope } from '@documenso/embed-react';
+import { EmbedCreateEnvelope } from '@bchatsign/embed-react';
 
 const EnvelopeCreator = ({ presignToken }) => {
   return (
@@ -78,7 +78,7 @@ To create a template instead of a document, set `type` to `"TEMPLATE"`:
 Use `EmbedUpdateEnvelope` to embed envelope editing:
 
 ```jsx
-import { EmbedUpdateEnvelope } from '@documenso/embed-react';
+import { EmbedUpdateEnvelope } from '@bchatsign/embed-react';
 
 const EnvelopeEditor = ({ presignToken, envelopeId }) => {
   return (
@@ -106,11 +106,11 @@ const EnvelopeEditor = ({ presignToken, envelopeId }) => {
 | ---------------- | --------- | -------- | -------------------------------------------------------- |
 | `presignToken`   | `string`  | Yes      | Authentication token from your backend                   |
 | `externalId`     | `string`  | No       | Your reference ID to link with the envelope              |
-| `host`           | `string`  | No       | Custom host URL. Defaults to `https://app.documenso.com` |
+| `host`           | `string`  | No       | Custom host URL. Defaults to `https://app.bchatsign.com` |
 | `css`            | `string`  | No       | Custom CSS string (Platform Plan)                        |
 | `cssVars`        | `object`  | No       | [CSS variable](/docs/developers/embedding/css-variables) overrides (Platform Plan) |
 | `darkModeDisabled` | `boolean` | No     | Disable dark mode (Platform Plan)                        |
-| `language`       | `string`  | No       | Set the UI language. See [Supported Languages](https://github.com/documenso/documenso/tree/main/packages/lib/constants/locales.ts) |
+| `language`       | `string`  | No       | Set the UI language. See [Supported Languages](https://github.com/bchatsign/bchatsign/tree/main/packages/lib/constants/locales.ts) |
 | `className`      | `string`  | No       | CSS class for the iframe                                 |
 | `user`           | `object`  | No       | Current user info. When provided, enables the "Add Myself" button in the recipients list. Object with optional `email` and `name` fields |
 | `features`       | `object`  | No       | Feature toggles for the editor experience                |
@@ -271,7 +271,7 @@ This example shows a full workflow where users create an envelope and then edit 
 ```tsx
 import { useState } from 'react';
 
-import { EmbedCreateEnvelope, EmbedUpdateEnvelope } from '@documenso/embed-react';
+import { EmbedCreateEnvelope, EmbedUpdateEnvelope } from '@bchatsign/embed-react';
 
 const EnvelopeManager = ({ presignToken }) => {
   const [envelopeId, setEnvelopeId] = useState(null);

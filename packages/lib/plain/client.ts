@@ -1,4 +1,4 @@
-import { env } from '@documenso/lib/utils/env';
+import { env } from '@bchatsign/lib/utils/env';
 import { PlainClient } from '@team-plain/typescript-sdk';
 
 export const plainClient = new PlainClient({

@@ -1,10 +1,10 @@
-import type { TRecipientActionAuth } from '@documenso/lib/types/document-auth';
-import { ZFieldMetaSchema } from '@documenso/lib/types/field-meta';
-import type { FieldWithSignature } from '@documenso/prisma/types/field-with-signature';
-import { FieldRootContainer } from '@documenso/ui/components/field/field';
-import { getRecipientColorStyles } from '@documenso/ui/lib/recipient-colors';
-import { cn } from '@documenso/ui/lib/utils';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@documenso/ui/primitives/tooltip';
+import type { TRecipientActionAuth } from '@bchatsign/lib/types/document-auth';
+import { ZFieldMetaSchema } from '@bchatsign/lib/types/field-meta';
+import type { FieldWithSignature } from '@bchatsign/prisma/types/field-with-signature';
+import { FieldRootContainer } from '@bchatsign/ui/components/field/field';
+import { getRecipientColorStyles } from '@bchatsign/ui/lib/recipient-colors';
+import { cn } from '@bchatsign/ui/lib/utils';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@bchatsign/ui/primitives/tooltip';
 import { Trans } from '@lingui/react/macro';
 import { FieldType } from '@prisma/client';
 import { TooltipArrow } from '@radix-ui/react-tooltip';
@@ -160,7 +160,7 @@ export const DocumentSigningFieldContainer = ({
               'border border-border bg-foreground/5': !field.inserted,
             },
             {
-              'border border-primary bg-documenso-200': field.inserted,
+              'border border-primary bg-bchatsign-200': field.inserted,
             },
           )}
         >

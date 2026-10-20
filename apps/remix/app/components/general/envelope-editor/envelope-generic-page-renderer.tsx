@@ -1,12 +1,12 @@
-import { usePageRenderer } from '@documenso/lib/client-only/hooks/use-page-renderer';
+import { usePageRenderer } from '@bchatsign/lib/client-only/hooks/use-page-renderer';
 import {
   type PageRenderData,
   useCurrentEnvelopeRender,
-} from '@documenso/lib/client-only/providers/envelope-render-provider';
-import type { TEnvelope } from '@documenso/lib/types/envelope';
-import { renderField } from '@documenso/lib/universal/field-renderer/render-field';
-import { getClientSideFieldTranslations } from '@documenso/lib/utils/fields';
-import { EnvelopeRecipientFieldTooltip } from '@documenso/ui/components/document/envelope-recipient-field-tooltip';
+} from '@bchatsign/lib/client-only/providers/envelope-render-provider';
+import type { TEnvelope } from '@bchatsign/lib/types/envelope';
+import { renderField } from '@bchatsign/lib/universal/field-renderer/render-field';
+import { getClientSideFieldTranslations } from '@bchatsign/lib/utils/fields';
+import { EnvelopeRecipientFieldTooltip } from '@bchatsign/ui/components/document/envelope-recipient-field-tooltip';
 import { useLingui } from '@lingui/react/macro';
 import { DocumentStatus, type Recipient, SigningStatus } from '@prisma/client';
 import type Konva from 'konva';

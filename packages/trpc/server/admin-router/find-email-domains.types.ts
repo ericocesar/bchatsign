@@ -1,7 +1,7 @@
-import { ZFindResultResponse, ZFindSearchParamsSchema } from '@documenso/lib/types/search-params';
-import EmailDomainStatusSchema from '@documenso/prisma/generated/zod/inputTypeSchemas/EmailDomainStatusSchema';
-import EmailDomainSchema from '@documenso/prisma/generated/zod/modelSchema/EmailDomainSchema';
-import OrganisationSchema from '@documenso/prisma/generated/zod/modelSchema/OrganisationSchema';
+import { ZFindResultResponse, ZFindSearchParamsSchema } from '@bchatsign/lib/types/search-params';
+import EmailDomainStatusSchema from '@bchatsign/prisma/generated/zod/inputTypeSchemas/EmailDomainStatusSchema';
+import EmailDomainSchema from '@bchatsign/prisma/generated/zod/modelSchema/EmailDomainSchema';
+import OrganisationSchema from '@bchatsign/prisma/generated/zod/modelSchema/OrganisationSchema';
 import { z } from 'zod';
 
 export const ZFindEmailDomainsRequestSchema = ZFindSearchParamsSchema.extend({

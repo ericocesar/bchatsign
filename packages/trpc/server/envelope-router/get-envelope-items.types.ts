@@ -1,5 +1,5 @@
-import DocumentDataSchema from '@documenso/prisma/generated/zod/modelSchema/DocumentDataSchema';
-import EnvelopeItemSchema from '@documenso/prisma/generated/zod/modelSchema/EnvelopeItemSchema';
+import DocumentDataSchema from '@bchatsign/prisma/generated/zod/modelSchema/DocumentDataSchema';
+import EnvelopeItemSchema from '@bchatsign/prisma/generated/zod/modelSchema/EnvelopeItemSchema';
 import { z } from 'zod';
 
 export const ZGetEnvelopeItemsRequestSchema = z.object({

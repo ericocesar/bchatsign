@@ -1,4 +1,4 @@
-import { limitsHandler } from '@documenso/ee/server-only/limits/handler';
+import { limitsHandler } from '@bchatsign/ee/server-only/limits/handler';
 
 import type { Route } from './+types/limits';
 

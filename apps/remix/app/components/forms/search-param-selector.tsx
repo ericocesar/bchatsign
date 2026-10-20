@@ -1,4 +1,4 @@
-import { Select, SelectContent, SelectTrigger, SelectValue } from '@documenso/ui/primitives/select';
+import { Select, SelectContent, SelectTrigger, SelectValue } from '@bchatsign/ui/primitives/select';
 import type React from 'react';
 import { useMemo } from 'react';
 import { useLocation, useNavigate, useSearchParams } from 'react-router';

@@ -1,4 +1,4 @@
-import { searchDocumentsWithKeyword } from '@documenso/lib/server-only/document/search-documents-with-keyword';
+import { searchDocumentsWithKeyword } from '@bchatsign/lib/server-only/document/search-documents-with-keyword';
 
 import { authenticatedProcedure } from '../trpc';
 import { ZSearchDocumentRequestSchema, ZSearchDocumentResponseSchema } from './search-document.types';

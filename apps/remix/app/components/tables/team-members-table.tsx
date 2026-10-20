@@ -1,24 +1,24 @@
-import { useUpdateSearchParams } from '@documenso/lib/client-only/hooks/use-update-search-params';
-import { useCurrentOrganisation } from '@documenso/lib/client-only/providers/organisation';
-import { EXTENDED_TEAM_MEMBER_ROLE_MAP } from '@documenso/lib/constants/teams-translations';
-import { ZUrlSearchParamsSchema } from '@documenso/lib/types/search-params';
-import { extractInitials } from '@documenso/lib/utils/recipient-formatter';
-import { isTeamRoleWithinUserHierarchy } from '@documenso/lib/utils/teams';
-import { trpc } from '@documenso/trpc/react';
-import { AnimateGenericFadeInOut } from '@documenso/ui/components/animate/animate-generic-fade-in-out';
-import { AvatarWithText } from '@documenso/ui/primitives/avatar';
-import type { DataTableColumnDef } from '@documenso/ui/primitives/data-table';
-import { DataTable } from '@documenso/ui/primitives/data-table';
-import { DataTablePagination } from '@documenso/ui/primitives/data-table-pagination';
+import { useUpdateSearchParams } from '@bchatsign/lib/client-only/hooks/use-update-search-params';
+import { useCurrentOrganisation } from '@bchatsign/lib/client-only/providers/organisation';
+import { EXTENDED_TEAM_MEMBER_ROLE_MAP } from '@bchatsign/lib/constants/teams-translations';
+import { ZUrlSearchParamsSchema } from '@bchatsign/lib/types/search-params';
+import { extractInitials } from '@bchatsign/lib/utils/recipient-formatter';
+import { isTeamRoleWithinUserHierarchy } from '@bchatsign/lib/utils/teams';
+import { trpc } from '@bchatsign/trpc/react';
+import { AnimateGenericFadeInOut } from '@bchatsign/ui/components/animate/animate-generic-fade-in-out';
+import { AvatarWithText } from '@bchatsign/ui/primitives/avatar';
+import type { DataTableColumnDef } from '@bchatsign/ui/primitives/data-table';
+import { DataTable } from '@bchatsign/ui/primitives/data-table';
+import { DataTablePagination } from '@bchatsign/ui/primitives/data-table-pagination';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
-} from '@documenso/ui/primitives/dropdown-menu';
-import { Skeleton } from '@documenso/ui/primitives/skeleton';
-import { TableCell } from '@documenso/ui/primitives/table';
+} from '@bchatsign/ui/primitives/dropdown-menu';
+import { Skeleton } from '@bchatsign/ui/primitives/skeleton';
+import { TableCell } from '@bchatsign/ui/primitives/table';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';

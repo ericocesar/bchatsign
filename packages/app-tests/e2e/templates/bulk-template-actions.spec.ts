@@ -1,7 +1,7 @@
-import { FolderType } from '@documenso/prisma/client';
-import { seedBlankFolder } from '@documenso/prisma/seed/folders';
-import { seedBlankTemplate } from '@documenso/prisma/seed/templates';
-import { seedUser } from '@documenso/prisma/seed/users';
+import { FolderType } from '@bchatsign/prisma/client';
+import { seedBlankFolder } from '@bchatsign/prisma/seed/folders';
+import { seedBlankTemplate } from '@bchatsign/prisma/seed/templates';
+import { seedUser } from '@bchatsign/prisma/seed/users';
 import { expect, test } from '@playwright/test';
 
 import { apiSignin } from '../fixtures/authentication';
@@ -220,7 +220,7 @@ test('[BULK_ACTIONS]: can search for folders in move dialog', async ({ page }) =
 test('[BULK_ACTIONS]: can move templates from folder to home (root)', async ({ page }) => {
   const { sender, templates, folder } = await seedBulkActionsTestRequirements();
 
-  const { prisma } = await import('@documenso/prisma');
+  const { prisma } = await import('@bchatsign/prisma');
 
   await prisma.envelope.updateMany({
     where: { id: templates[0].id },

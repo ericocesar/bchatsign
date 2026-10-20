@@ -1,4 +1,4 @@
-import { getResetTokenValidity } from '@documenso/lib/server-only/user/get-reset-token-validity';
+import { getResetTokenValidity } from '@bchatsign/lib/server-only/user/get-reset-token-validity';
 import { msg } from '@lingui/core/macro';
 import { Trans } from '@lingui/react/macro';
 import { Link, redirect } from 'react-router';

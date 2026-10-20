@@ -1,5 +1,5 @@
-import { DOCUMENSO_ENCRYPTION_SECONDARY_KEY } from '@documenso/lib/constants/crypto';
-import { symmetricEncrypt } from '@documenso/lib/universal/crypto';
+import { BCHATSIGN_ENCRYPTION_SECONDARY_KEY } from '@bchatsign/lib/constants/crypto';
+import { symmetricEncrypt } from '@bchatsign/lib/universal/crypto';
 import { z } from 'zod';
 
 export const ZEncryptedDataSchema = z.object({
@@ -24,7 +24,7 @@ export type EncryptDataOptions = {
  * @returns The encrypted data.
  */
 export const encryptSecondaryData = ({ data, expiresAt }: EncryptDataOptions) => {
-  if (!DOCUMENSO_ENCRYPTION_SECONDARY_KEY) {
+  if (!BCHATSIGN_ENCRYPTION_SECONDARY_KEY) {
     throw new Error('Missing encryption key');
   }
 
@@ -34,7 +34,7 @@ export const encryptSecondaryData = ({ data, expiresAt }: EncryptDataOptions) =>
   };
 
   return symmetricEncrypt({
-    key: DOCUMENSO_ENCRYPTION_SECONDARY_KEY,
+    key: BCHATSIGN_ENCRYPTION_SECONDARY_KEY,
     data: JSON.stringify(dataToEncrypt),
   });
 };

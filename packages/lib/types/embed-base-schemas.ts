@@ -1,4 +1,4 @@
-import { ZSupportedLanguageCodeSchema } from '@documenso/lib/constants/locales';
+import { ZSupportedLanguageCodeSchema } from '@bchatsign/lib/constants/locales';
 import { z } from 'zod';
 
 import { ZCssVarsSchema } from './css-vars';

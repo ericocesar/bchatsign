@@ -1,8 +1,8 @@
-import { authClient } from '@documenso/auth/client';
-import { ONE_DAY, ONE_SECOND } from '@documenso/lib/constants/time';
-import { Button } from '@documenso/ui/primitives/button';
-import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@documenso/ui/primitives/dialog';
-import { useToast } from '@documenso/ui/primitives/use-toast';
+import { authClient } from '@bchatsign/auth/client';
+import { ONE_DAY, ONE_SECOND } from '@bchatsign/lib/constants/time';
+import { Button } from '@bchatsign/ui/primitives/button';
+import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@bchatsign/ui/primitives/dialog';
+import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';

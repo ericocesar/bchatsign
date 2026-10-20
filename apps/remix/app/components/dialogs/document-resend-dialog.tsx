@@ -1,12 +1,12 @@
-import { useSession } from '@documenso/lib/client-only/providers/session';
-import { getRecipientType } from '@documenso/lib/client-only/recipient-type';
-import type { TRecipientLite } from '@documenso/lib/types/recipient';
-import { recipientAbbreviation } from '@documenso/lib/utils/recipient-formatter';
-import type { Document } from '@documenso/prisma/types/document-legacy-schema';
-import { trpc as trpcReact } from '@documenso/trpc/react';
-import { cn } from '@documenso/ui/lib/utils';
-import { Button } from '@documenso/ui/primitives/button';
-import { Checkbox } from '@documenso/ui/primitives/checkbox';
+import { useSession } from '@bchatsign/lib/client-only/providers/session';
+import { getRecipientType } from '@bchatsign/lib/client-only/recipient-type';
+import type { TRecipientLite } from '@bchatsign/lib/types/recipient';
+import { recipientAbbreviation } from '@bchatsign/lib/utils/recipient-formatter';
+import type { Document } from '@bchatsign/prisma/types/document-legacy-schema';
+import { trpc as trpcReact } from '@bchatsign/trpc/react';
+import { cn } from '@bchatsign/ui/lib/utils';
+import { Button } from '@bchatsign/ui/primitives/button';
+import { Checkbox } from '@bchatsign/ui/primitives/checkbox';
 import {
   Dialog,
   DialogClose,
@@ -15,10 +15,10 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@documenso/ui/primitives/dialog';
-import { DropdownMenuItem } from '@documenso/ui/primitives/dropdown-menu';
-import { Form, FormControl, FormField, FormItem, FormLabel } from '@documenso/ui/primitives/form/form';
-import { useToast } from '@documenso/ui/primitives/use-toast';
+} from '@bchatsign/ui/primitives/dialog';
+import { DropdownMenuItem } from '@bchatsign/ui/primitives/dropdown-menu';
+import { Form, FormControl, FormField, FormItem, FormLabel } from '@bchatsign/ui/primitives/form/form';
+import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';

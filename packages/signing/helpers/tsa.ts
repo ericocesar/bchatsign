@@ -1,4 +1,4 @@
-import { NEXT_PRIVATE_SIGNING_TIMESTAMP_AUTHORITY } from '@documenso/lib/constants/app';
+import { NEXT_PRIVATE_SIGNING_TIMESTAMP_AUTHORITY } from '@bchatsign/lib/constants/app';
 import { HttpTimestampAuthority } from '@libpdf/core';
 import { once } from 'remeda';
 

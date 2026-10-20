@@ -1,4 +1,4 @@
-import { findUsers } from '@documenso/lib/server-only/user/get-all-users';
+import { findUsers } from '@bchatsign/lib/server-only/user/get-all-users';
 import { Trans } from '@lingui/react/macro';
 
 import { AdminUserCreateDialog } from '~/components/dialogs/admin-user-create-dialog';

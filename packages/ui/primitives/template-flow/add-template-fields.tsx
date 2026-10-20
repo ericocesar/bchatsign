@@ -1,30 +1,30 @@
-import { getBoundingClientRect } from '@documenso/lib/client-only/get-bounding-client-rect';
-import { useAutoSave } from '@documenso/lib/client-only/hooks/use-autosave';
-import { useDocumentElement } from '@documenso/lib/client-only/hooks/use-document-element';
-import { getPdfPagesCount, PDF_VIEWER_PAGE_SELECTOR } from '@documenso/lib/constants/pdf-viewer';
-import { RECIPIENT_ROLES_DESCRIPTION } from '@documenso/lib/constants/recipient-roles';
-import { isTemplateRecipientEmailPlaceholder } from '@documenso/lib/constants/template';
-import { type TFieldMetaSchema as FieldMeta, ZFieldMetaSchema } from '@documenso/lib/types/field-meta';
-import type { TRecipientLite } from '@documenso/lib/types/recipient';
-import { nanoid } from '@documenso/lib/universal/id';
-import { ADVANCED_FIELD_TYPES_WITH_OPTIONAL_SETTING } from '@documenso/lib/utils/advanced-fields-helpers';
-import { parseMessageDescriptor } from '@documenso/lib/utils/i18n';
-import { cn } from '@documenso/ui/lib/utils';
-import { Button } from '@documenso/ui/primitives/button';
-import { Card, CardContent } from '@documenso/ui/primitives/card';
-import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from '@documenso/ui/primitives/command';
+import { getBoundingClientRect } from '@bchatsign/lib/client-only/get-bounding-client-rect';
+import { useAutoSave } from '@bchatsign/lib/client-only/hooks/use-autosave';
+import { useDocumentElement } from '@bchatsign/lib/client-only/hooks/use-document-element';
+import { getPdfPagesCount, PDF_VIEWER_PAGE_SELECTOR } from '@bchatsign/lib/constants/pdf-viewer';
+import { RECIPIENT_ROLES_DESCRIPTION } from '@bchatsign/lib/constants/recipient-roles';
+import { isTemplateRecipientEmailPlaceholder } from '@bchatsign/lib/constants/template';
+import { type TFieldMetaSchema as FieldMeta, ZFieldMetaSchema } from '@bchatsign/lib/types/field-meta';
+import type { TRecipientLite } from '@bchatsign/lib/types/recipient';
+import { nanoid } from '@bchatsign/lib/universal/id';
+import { ADVANCED_FIELD_TYPES_WITH_OPTIONAL_SETTING } from '@bchatsign/lib/utils/advanced-fields-helpers';
+import { parseMessageDescriptor } from '@bchatsign/lib/utils/i18n';
+import { cn } from '@bchatsign/ui/lib/utils';
+import { Button } from '@bchatsign/ui/primitives/button';
+import { Card, CardContent } from '@bchatsign/ui/primitives/card';
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from '@bchatsign/ui/primitives/command';
 import {
   DocumentFlowFormContainerActions,
   DocumentFlowFormContainerContent,
   DocumentFlowFormContainerFooter,
   DocumentFlowFormContainerHeader,
   DocumentFlowFormContainerStep,
-} from '@documenso/ui/primitives/document-flow/document-flow-root';
-import { FieldItem } from '@documenso/ui/primitives/document-flow/field-item';
-import type { DocumentFlowStep } from '@documenso/ui/primitives/document-flow/types';
-import { FRIENDLY_FIELD_TYPE } from '@documenso/ui/primitives/document-flow/types';
-import { Popover, PopoverContent, PopoverTrigger } from '@documenso/ui/primitives/popover';
-import { useToast } from '@documenso/ui/primitives/use-toast';
+} from '@bchatsign/ui/primitives/document-flow/document-flow-root';
+import { FieldItem } from '@bchatsign/ui/primitives/document-flow/field-item';
+import type { DocumentFlowStep } from '@bchatsign/ui/primitives/document-flow/types';
+import { FRIENDLY_FIELD_TYPE } from '@bchatsign/ui/primitives/document-flow/types';
+import { Popover, PopoverContent, PopoverTrigger } from '@bchatsign/ui/primitives/popover';
+import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';

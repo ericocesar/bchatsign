@@ -1,6 +1,6 @@
-import { mailer } from '@documenso/email/mailer';
-import { DocumentCompletedEmailTemplate } from '@documenso/email/templates/document-completed';
-import { prisma } from '@documenso/prisma';
+import { mailer } from '@bchatsign/email/mailer';
+import { DocumentCompletedEmailTemplate } from '@bchatsign/email/templates/document-completed';
+import { prisma } from '@bchatsign/prisma';
 import { msg } from '@lingui/core/macro';
 import { DocumentSource, EnvelopeType } from '@prisma/client';
 import { createElement } from 'react';

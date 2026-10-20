@@ -1,4 +1,4 @@
-import { prisma } from '@documenso/prisma';
+import { prisma } from '@bchatsign/prisma';
 import { DateTime } from 'luxon';
 
 import type { JobRunIO } from '../../client/_internal/job';

@@ -1,9 +1,9 @@
-import { createTeamEmailVerification } from '@documenso/lib/server-only/team/create-team-email-verification';
-import { deleteTeamEmail } from '@documenso/lib/server-only/team/delete-team-email';
-import { deleteTeamEmailVerification } from '@documenso/lib/server-only/team/delete-team-email-verification';
-import { getTeamEmailByEmail } from '@documenso/lib/server-only/team/get-team-email-by-email';
-import { resendTeamEmailVerification } from '@documenso/lib/server-only/team/resend-team-email-verification';
-import { updateTeamEmail } from '@documenso/lib/server-only/team/update-team-email';
+import { createTeamEmailVerification } from '@bchatsign/lib/server-only/team/create-team-email-verification';
+import { deleteTeamEmail } from '@bchatsign/lib/server-only/team/delete-team-email';
+import { deleteTeamEmailVerification } from '@bchatsign/lib/server-only/team/delete-team-email-verification';
+import { getTeamEmailByEmail } from '@bchatsign/lib/server-only/team/get-team-email-by-email';
+import { resendTeamEmailVerification } from '@bchatsign/lib/server-only/team/resend-team-email-verification';
+import { updateTeamEmail } from '@bchatsign/lib/server-only/team/update-team-email';
 
 import { authenticatedProcedure, router } from '../trpc';
 import { createTeamRoute } from './create-team';

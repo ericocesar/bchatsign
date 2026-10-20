@@ -1,5 +1,5 @@
-import { trpc } from '@documenso/trpc/react';
-import { MultiSelect, type Option } from '@documenso/ui/primitives/multiselect';
+import { trpc } from '@bchatsign/trpc/react';
+import { MultiSelect, type Option } from '@bchatsign/ui/primitives/multiselect';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';

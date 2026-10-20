@@ -1,6 +1,6 @@
-import { mailer } from '@documenso/email/mailer';
-import OrganisationJoinEmailTemplate from '@documenso/email/templates/organisation-join';
-import { prisma } from '@documenso/prisma';
+import { mailer } from '@bchatsign/email/mailer';
+import OrganisationJoinEmailTemplate from '@bchatsign/email/templates/organisation-join';
+import { prisma } from '@bchatsign/prisma';
 import { msg } from '@lingui/core/macro';
 import { createElement } from 'react';
 

@@ -1,6 +1,6 @@
-import { useIsMounted } from '@documenso/lib/client-only/hooks/use-is-mounted';
-import type { TEnvelope } from '@documenso/lib/types/envelope';
-import { mapSecondaryIdToDocumentId } from '@documenso/lib/utils/envelope';
+import { useIsMounted } from '@bchatsign/lib/client-only/hooks/use-is-mounted';
+import type { TEnvelope } from '@bchatsign/lib/types/envelope';
+import { mapSecondaryIdToDocumentId } from '@bchatsign/lib/utils/envelope';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';

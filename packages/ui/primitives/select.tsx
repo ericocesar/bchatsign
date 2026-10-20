@@ -1,4 +1,4 @@
-import { AnimateGenericFadeInOut } from '@documenso/ui/components/animate/animate-generic-fade-in-out';
+import { AnimateGenericFadeInOut } from '@bchatsign/ui/components/animate/animate-generic-fade-in-out';
 
 import * as SelectPrimitive from '@radix-ui/react-select';
 import { AnimatePresence } from 'framer-motion';

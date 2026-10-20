@@ -1,15 +1,15 @@
-import { EnvelopeRenderProvider } from '@documenso/lib/client-only/providers/envelope-render-provider';
-import { useSession } from '@documenso/lib/client-only/providers/session';
-import { PDF_VIEWER_ERROR_MESSAGES } from '@documenso/lib/constants/pdf-viewer-i18n';
-import { mapSecondaryIdToTemplateId } from '@documenso/lib/utils/envelope';
-import { getDocumentDataUrlForPdfViewer } from '@documenso/lib/utils/envelope-download';
-import { formatDocumentsPath, formatTemplatesPath } from '@documenso/lib/utils/teams';
-import { trpc } from '@documenso/trpc/react';
-import { DocumentReadOnlyFields } from '@documenso/ui/components/document/document-read-only-fields';
-import { cn } from '@documenso/ui/lib/utils';
-import { Button } from '@documenso/ui/primitives/button';
-import { Card, CardContent } from '@documenso/ui/primitives/card';
-import { Spinner } from '@documenso/ui/primitives/spinner';
+import { EnvelopeRenderProvider } from '@bchatsign/lib/client-only/providers/envelope-render-provider';
+import { useSession } from '@bchatsign/lib/client-only/providers/session';
+import { PDF_VIEWER_ERROR_MESSAGES } from '@bchatsign/lib/constants/pdf-viewer-i18n';
+import { mapSecondaryIdToTemplateId } from '@bchatsign/lib/utils/envelope';
+import { getDocumentDataUrlForPdfViewer } from '@bchatsign/lib/utils/envelope-download';
+import { formatDocumentsPath, formatTemplatesPath } from '@bchatsign/lib/utils/teams';
+import { trpc } from '@bchatsign/trpc/react';
+import { DocumentReadOnlyFields } from '@bchatsign/ui/components/document/document-read-only-fields';
+import { cn } from '@bchatsign/ui/lib/utils';
+import { Button } from '@bchatsign/ui/primitives/button';
+import { Card, CardContent } from '@bchatsign/ui/primitives/card';
+import { Spinner } from '@bchatsign/ui/primitives/spinner';
 import { msg } from '@lingui/core/macro';
 import { Trans } from '@lingui/react/macro';
 import { DocumentSigningOrder, SigningStatus } from '@prisma/client';
@@ -118,7 +118,7 @@ export default function TemplatePage({ params }: Route.ComponentProps) {
   return (
     <div className="mx-auto -mt-4 w-full max-w-screen-xl px-4 md:px-8">
       <div className="flex flex-row justify-between">
-        <Link to={templateRootPath} className="flex items-center text-documenso-700 hover:opacity-80">
+        <Link to={templateRootPath} className="flex items-center text-bchatsign-700 hover:opacity-80">
           <ChevronLeft className="mr-2 inline-block h-5 w-5" />
           <Trans>Templates</Trans>
         </Link>

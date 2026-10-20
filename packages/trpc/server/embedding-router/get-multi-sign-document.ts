@@ -1,9 +1,9 @@
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { getDocumentAndSenderByToken } from '@documenso/lib/server-only/document/get-document-by-token';
-import { viewedDocument } from '@documenso/lib/server-only/document/viewed-document';
-import { getCompletedFieldsForToken } from '@documenso/lib/server-only/field/get-completed-fields-for-token';
-import { getFieldsForToken } from '@documenso/lib/server-only/field/get-fields-for-token';
-import { getRecipientByToken } from '@documenso/lib/server-only/recipient/get-recipient-by-token';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { getDocumentAndSenderByToken } from '@bchatsign/lib/server-only/document/get-document-by-token';
+import { viewedDocument } from '@bchatsign/lib/server-only/document/viewed-document';
+import { getCompletedFieldsForToken } from '@bchatsign/lib/server-only/field/get-completed-fields-for-token';
+import { getFieldsForToken } from '@bchatsign/lib/server-only/field/get-fields-for-token';
+import { getRecipientByToken } from '@bchatsign/lib/server-only/recipient/get-recipient-by-token';
 
 import { procedure } from '../trpc';
 import {

@@ -1,4 +1,4 @@
-import { Progress } from '@documenso/ui/primitives/progress';
+import { Progress } from '@bchatsign/ui/primitives/progress';
 
 import { Trans } from '@lingui/react/macro';
 import type { OrganisationClaim, OrganisationMonthlyStat } from '@prisma/client';

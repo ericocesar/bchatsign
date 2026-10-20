@@ -1,8 +1,8 @@
-import { getSession } from '@documenso/auth/server/lib/utils/get-session';
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { getEnvelopeById } from '@documenso/lib/server-only/envelope/get-envelope-by-id';
-import { getTeamByUrl } from '@documenso/lib/server-only/team/get-team';
-import { Button } from '@documenso/ui/primitives/button';
+import { getSession } from '@bchatsign/auth/server/lib/utils/get-session';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { getEnvelopeById } from '@bchatsign/lib/server-only/envelope/get-envelope-by-id';
+import { getTeamByUrl } from '@bchatsign/lib/server-only/team/get-team';
+import { Button } from '@bchatsign/ui/primitives/button';
 import { msg } from '@lingui/core/macro';
 import { Trans } from '@lingui/react/macro';
 import { EnvelopeType } from '@prisma/client';

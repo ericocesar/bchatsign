@@ -1,4 +1,4 @@
-import type { TeamSession } from '@documenso/trpc/server/organisation-router/get-organisation-session.types';
+import type { TeamSession } from '@bchatsign/trpc/server/organisation-router/get-organisation-session.types';
 import type React from 'react';
 import { createContext, useContext } from 'react';
 

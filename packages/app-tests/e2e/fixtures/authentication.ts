@@ -1,4 +1,4 @@
-import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
+import { NEXT_PUBLIC_WEBAPP_URL } from '@bchatsign/lib/constants/app';
 import type { Page } from '@playwright/test';
 
 type LoginOptions = {
@@ -14,7 +14,7 @@ type LoginOptions = {
 
 export const apiSignin = async ({
   page,
-  email = 'example@documenso.com',
+  email = 'example@bchatsign.com',
   password = 'password',
   redirectPath = '/',
 }: LoginOptions) => {

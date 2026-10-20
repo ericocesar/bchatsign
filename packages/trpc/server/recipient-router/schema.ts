@@ -1,12 +1,12 @@
-import { isTemplateRecipientEmailPlaceholder } from '@documenso/lib/constants/template';
+import { isTemplateRecipientEmailPlaceholder } from '@bchatsign/lib/constants/template';
 import {
   ZRecipientAccessAuthSchema,
   ZRecipientAccessAuthTypesSchema,
   ZRecipientActionAuthSchema,
   ZRecipientActionAuthTypesSchema,
-} from '@documenso/lib/types/document-auth';
-import { ZRecipientLiteSchema, ZRecipientSchema } from '@documenso/lib/types/recipient';
-import { zEmail } from '@documenso/lib/utils/zod';
+} from '@bchatsign/lib/types/document-auth';
+import { ZRecipientLiteSchema, ZRecipientSchema } from '@bchatsign/lib/types/recipient';
+import { zEmail } from '@bchatsign/lib/utils/zod';
 import { RecipientRole } from '@prisma/client';
 import { z } from 'zod';
 

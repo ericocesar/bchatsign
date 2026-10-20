@@ -1,7 +1,7 @@
-import { TeamMemberRole } from '@documenso/prisma/generated/types';
-import OrganisationGlobalSettingsSchema from '@documenso/prisma/generated/zod/modelSchema/OrganisationGlobalSettingsSchema';
-import TeamGlobalSettingsSchema from '@documenso/prisma/generated/zod/modelSchema/TeamGlobalSettingsSchema';
-import TeamSchema from '@documenso/prisma/generated/zod/modelSchema/TeamSchema';
+import { TeamMemberRole } from '@bchatsign/prisma/generated/types';
+import OrganisationGlobalSettingsSchema from '@bchatsign/prisma/generated/zod/modelSchema/OrganisationGlobalSettingsSchema';
+import TeamGlobalSettingsSchema from '@bchatsign/prisma/generated/zod/modelSchema/TeamGlobalSettingsSchema';
+import TeamSchema from '@bchatsign/prisma/generated/zod/modelSchema/TeamSchema';
 import { z } from 'zod';
 
 // export const getTeamMeta: TrpcOpenApiMeta = {

@@ -1,7 +1,7 @@
-import { DOCUMENT_AUTH_TYPES } from '@documenso/lib/constants/document-auth';
-import { DocumentActionAuth, DocumentAuth } from '@documenso/lib/types/document-auth';
-import { MultiSelect, type Option } from '@documenso/ui/primitives/multiselect';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@documenso/ui/primitives/tooltip';
+import { DOCUMENT_AUTH_TYPES } from '@bchatsign/lib/constants/document-auth';
+import { DocumentActionAuth, DocumentAuth } from '@bchatsign/lib/types/document-auth';
+import { MultiSelect, type Option } from '@bchatsign/ui/primitives/multiselect';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@bchatsign/ui/primitives/tooltip';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';

@@ -1,7 +1,7 @@
 // sort-imports-ignore
 import '../konva/skia-backend';
 
-import type { FieldWithSignature } from '@documenso/prisma/types/field-with-signature';
+import type { FieldWithSignature } from '@bchatsign/prisma/types/field-with-signature';
 import Konva from 'konva';
 import type { Canvas } from 'skia-canvas';
 

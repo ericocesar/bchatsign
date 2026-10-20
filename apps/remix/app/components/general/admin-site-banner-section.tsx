@@ -2,10 +2,10 @@ import {
   SITE_SETTINGS_BANNER_ID,
   type TSiteSettingsBannerSchema,
   ZSiteSettingsBannerSchema,
-} from '@documenso/lib/server-only/site-settings/schemas/banner';
-import { trpc as trpcReact } from '@documenso/trpc/react';
-import { Button } from '@documenso/ui/primitives/button';
-import { ColorPicker } from '@documenso/ui/primitives/color-picker';
+} from '@bchatsign/lib/server-only/site-settings/schemas/banner';
+import { trpc as trpcReact } from '@bchatsign/trpc/react';
+import { Button } from '@bchatsign/ui/primitives/button';
+import { ColorPicker } from '@bchatsign/ui/primitives/color-picker';
 import {
   Form,
   FormControl,
@@ -14,10 +14,10 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@documenso/ui/primitives/form/form';
-import { Switch } from '@documenso/ui/primitives/switch';
-import { Textarea } from '@documenso/ui/primitives/textarea';
-import { useToast } from '@documenso/ui/primitives/use-toast';
+} from '@bchatsign/ui/primitives/form/form';
+import { Switch } from '@bchatsign/ui/primitives/switch';
+import { Textarea } from '@bchatsign/ui/primitives/textarea';
+import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';

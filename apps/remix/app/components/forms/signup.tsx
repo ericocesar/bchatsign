@@ -1,18 +1,18 @@
-import communityCardsImage from '@documenso/assets/images/community-cards.png';
-import { authClient } from '@documenso/auth/client';
-import { useAnalytics } from '@documenso/lib/client-only/hooks/use-analytics';
-import { ZNameSchema } from '@documenso/lib/constants/auth';
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { env } from '@documenso/lib/utils/env';
-import { zEmail } from '@documenso/lib/utils/zod';
-import { ZPasswordSchema } from '@documenso/trpc/server/auth-router/schema';
-import { cn } from '@documenso/ui/lib/utils';
-import { Button } from '@documenso/ui/primitives/button';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@documenso/ui/primitives/form/form';
-import { Input } from '@documenso/ui/primitives/input';
-import { PasswordInput } from '@documenso/ui/primitives/password-input';
-import { SignaturePadDialog } from '@documenso/ui/primitives/signature-pad/signature-pad-dialog';
-import { useToast } from '@documenso/ui/primitives/use-toast';
+import communityCardsImage from '@bchatsign/assets/images/community-cards.png';
+import { authClient } from '@bchatsign/auth/client';
+import { useAnalytics } from '@bchatsign/lib/client-only/hooks/use-analytics';
+import { ZNameSchema } from '@bchatsign/lib/constants/auth';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { env } from '@bchatsign/lib/utils/env';
+import { zEmail } from '@bchatsign/lib/utils/zod';
+import { ZPasswordSchema } from '@bchatsign/trpc/server/auth-router/schema';
+import { cn } from '@bchatsign/ui/lib/utils';
+import { Button } from '@bchatsign/ui/primitives/button';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@bchatsign/ui/primitives/form/form';
+import { Input } from '@bchatsign/ui/primitives/input';
+import { PasswordInput } from '@bchatsign/ui/primitives/password-input';
+import { SignaturePadDialog } from '@bchatsign/ui/primitives/signature-pad/signature-pad-dialog';
+import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import type { MessageDescriptor } from '@lingui/core';
 import { msg } from '@lingui/core/macro';
@@ -392,7 +392,7 @@ export const SignUpForm = ({
               <p className="mt-4 text-muted-foreground text-sm">
                 <Trans>
                   Already have an account?{' '}
-                  <Link to="/signin" className="text-documenso-700 duration-200 hover:opacity-70">
+                  <Link to="/signin" className="text-bchatsign-700 duration-200 hover:opacity-70">
                     Sign in instead
                   </Link>
                 </Trans>
@@ -412,7 +412,7 @@ export const SignUpForm = ({
             <Link
               to="https://documen.so/terms"
               target="_blank"
-              className="text-documenso-700 duration-200 hover:opacity-70"
+              className="text-bchatsign-700 duration-200 hover:opacity-70"
             >
               Terms of Service
             </Link>{' '}
@@ -420,7 +420,7 @@ export const SignUpForm = ({
             <Link
               to="https://documen.so/privacy"
               target="_blank"
-              className="text-documenso-700 duration-200 hover:opacity-70"
+              className="text-bchatsign-700 duration-200 hover:opacity-70"
             >
               Privacy Policy
             </Link>

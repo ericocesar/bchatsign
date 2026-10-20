@@ -1,10 +1,10 @@
-import { validateTextField } from '@documenso/lib/advanced-fields-validation/validate-text';
-import type { TTextFieldMeta as TextFieldMeta } from '@documenso/lib/types/field-meta';
-import { Input } from '@documenso/ui/primitives/input';
-import { Label } from '@documenso/ui/primitives/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@documenso/ui/primitives/select';
-import { Switch } from '@documenso/ui/primitives/switch';
-import { Textarea } from '@documenso/ui/primitives/textarea';
+import { validateTextField } from '@bchatsign/lib/advanced-fields-validation/validate-text';
+import type { TTextFieldMeta as TextFieldMeta } from '@bchatsign/lib/types/field-meta';
+import { Input } from '@bchatsign/ui/primitives/input';
+import { Label } from '@bchatsign/ui/primitives/label';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@bchatsign/ui/primitives/select';
+import { Switch } from '@bchatsign/ui/primitives/switch';
+import { Textarea } from '@bchatsign/ui/primitives/textarea';
 import { Trans, useLingui } from '@lingui/react/macro';
 
 type TextFieldAdvancedSettingsProps = {

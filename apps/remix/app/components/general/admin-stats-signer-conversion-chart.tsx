@@ -1,4 +1,4 @@
-import type { GetSignerConversionMonthlyResult } from '@documenso/lib/server-only/user/get-signer-conversion';
+import type { GetSignerConversionMonthlyResult } from '@bchatsign/lib/server-only/user/get-signer-conversion';
 import { DateTime } from 'luxon';
 import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 

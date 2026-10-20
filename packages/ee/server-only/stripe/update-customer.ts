@@ -1,4 +1,4 @@
-import { stripe } from '@documenso/lib/server-only/stripe';
+import { stripe } from '@bchatsign/lib/server-only/stripe';
 
 type UpdateCustomerOptions = {
   customerId: string;

@@ -1,5 +1,5 @@
-import { ZEmailDomainManySchema } from '@documenso/lib/types/email-domain';
-import { ZFindResultResponse, ZFindSearchParamsSchema } from '@documenso/lib/types/search-params';
+import { ZEmailDomainManySchema } from '@bchatsign/lib/types/email-domain';
+import { ZFindResultResponse, ZFindSearchParamsSchema } from '@bchatsign/lib/types/search-params';
 import { EmailDomainStatus } from '@prisma/client';
 import { z } from 'zod';
 

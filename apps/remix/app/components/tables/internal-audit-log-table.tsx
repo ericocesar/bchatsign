@@ -1,8 +1,8 @@
-import { APP_I18N_OPTIONS } from '@documenso/lib/constants/i18n';
-import { DOCUMENT_AUDIT_LOG_TYPE, type TDocumentAuditLog } from '@documenso/lib/types/document-audit-logs';
-import { formatDocumentAuditLogAction } from '@documenso/lib/utils/document-audit-logs';
-import { cn } from '@documenso/ui/lib/utils';
-import { Card, CardContent } from '@documenso/ui/primitives/card';
+import { APP_I18N_OPTIONS } from '@bchatsign/lib/constants/i18n';
+import { DOCUMENT_AUDIT_LOG_TYPE, type TDocumentAuditLog } from '@bchatsign/lib/types/document-audit-logs';
+import { formatDocumentAuditLogAction } from '@bchatsign/lib/utils/document-audit-logs';
+import { cn } from '@bchatsign/ui/lib/utils';
+import { Card, CardContent } from '@bchatsign/ui/primitives/card';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import type { DateTimeFormatOptions } from 'luxon';

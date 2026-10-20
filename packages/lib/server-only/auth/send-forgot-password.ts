@@ -1,6 +1,6 @@
-import { mailer } from '@documenso/email/mailer';
-import { ForgotPasswordTemplate } from '@documenso/email/templates/forgot-password';
-import { prisma } from '@documenso/prisma';
+import { mailer } from '@bchatsign/email/mailer';
+import { ForgotPasswordTemplate } from '@bchatsign/email/templates/forgot-password';
+import { prisma } from '@bchatsign/prisma';
 import { msg } from '@lingui/core/macro';
 import { createElement } from 'react';
 
@@ -54,8 +54,8 @@ export const sendForgotPassword = async ({ userId }: SendForgotPasswordOptions) 
       name: user.name || '',
     },
     from: {
-      name: env('NEXT_PRIVATE_SMTP_FROM_NAME') || 'Documenso',
-      address: env('NEXT_PRIVATE_SMTP_FROM_ADDRESS') || 'noreply@documenso.com',
+      name: env('NEXT_PRIVATE_SMTP_FROM_NAME') || 'Bchatsign',
+      address: env('NEXT_PRIVATE_SMTP_FROM_ADDRESS') || 'noreply@bchatsign.com',
     },
     subject: i18n._(msg`Forgot Password?`),
     html,

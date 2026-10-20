@@ -1,19 +1,19 @@
-import { useCurrentOrganisation } from '@documenso/lib/client-only/providers/organisation';
-import { TEAM_MEMBER_ROLE_MAP } from '@documenso/lib/constants/teams-translations';
-import { formatAvatarUrl } from '@documenso/lib/utils/avatars';
-import { canExecuteOrganisationAction } from '@documenso/lib/utils/organisations';
-import { canExecuteTeamAction, formatTeamUrl } from '@documenso/lib/utils/teams';
-import type { TGetOrganisationSessionResponse } from '@documenso/trpc/server/organisation-router/get-organisation-session.types';
-import { Avatar, AvatarFallback, AvatarImage } from '@documenso/ui/primitives/avatar';
-import { Button } from '@documenso/ui/primitives/button';
-import { Card, CardContent } from '@documenso/ui/primitives/card';
+import { useCurrentOrganisation } from '@bchatsign/lib/client-only/providers/organisation';
+import { TEAM_MEMBER_ROLE_MAP } from '@bchatsign/lib/constants/teams-translations';
+import { formatAvatarUrl } from '@bchatsign/lib/utils/avatars';
+import { canExecuteOrganisationAction } from '@bchatsign/lib/utils/organisations';
+import { canExecuteTeamAction, formatTeamUrl } from '@bchatsign/lib/utils/teams';
+import type { TGetOrganisationSessionResponse } from '@bchatsign/trpc/server/organisation-router/get-organisation-session.types';
+import { Avatar, AvatarFallback, AvatarImage } from '@bchatsign/ui/primitives/avatar';
+import { Button } from '@bchatsign/ui/primitives/button';
+import { Card, CardContent } from '@bchatsign/ui/primitives/card';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@documenso/ui/primitives/dropdown-menu';
+} from '@bchatsign/ui/primitives/dropdown-menu';
 import { Trans, useLingui } from '@lingui/react/macro';
 import {
   ArrowRight,

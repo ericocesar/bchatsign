@@ -1,5 +1,5 @@
-import { currentMonthlyPeriod } from '@documenso/lib/universal/monthly-period';
-import { prisma } from '@documenso/prisma';
+import { currentMonthlyPeriod } from '@bchatsign/lib/universal/monthly-period';
+import { prisma } from '@bchatsign/prisma';
 import type { Prisma } from '@prisma/client';
 import { match } from 'ts-pattern';
 

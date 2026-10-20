@@ -1,7 +1,7 @@
-import { getTeamSettings } from '@documenso/lib/server-only/team/get-team-settings';
-import { sha256 } from '@documenso/lib/universal/crypto';
-import { getFileServerSide } from '@documenso/lib/universal/upload/get-file.server';
-import { loadLogo } from '@documenso/lib/utils/images/logo';
+import { getTeamSettings } from '@bchatsign/lib/server-only/team/get-team-settings';
+import { sha256 } from '@bchatsign/lib/universal/crypto';
+import { getFileServerSide } from '@bchatsign/lib/universal/upload/get-file.server';
+import { loadLogo } from '@bchatsign/lib/utils/images/logo';
 
 import type { Route } from './+types/branding.logo.team.$teamId';
 

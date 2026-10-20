@@ -15,11 +15,11 @@ const COOLDOWN_MS = 30_000;
 
 declare global {
   // eslint-disable-next-line no-var
-  var __documensoConversionCircuitOpenedAt: number | null | undefined;
+  var __bchatsignConversionCircuitOpenedAt: number | null | undefined;
 }
 
 export const isCircuitOpen = (): boolean => {
-  const openedAt = globalThis.__documensoConversionCircuitOpenedAt;
+  const openedAt = globalThis.__bchatsignConversionCircuitOpenedAt;
 
   if (!openedAt) {
     return false;
@@ -29,9 +29,9 @@ export const isCircuitOpen = (): boolean => {
 };
 
 export const recordSuccess = (): void => {
-  globalThis.__documensoConversionCircuitOpenedAt = null;
+  globalThis.__bchatsignConversionCircuitOpenedAt = null;
 };
 
 export const recordFailure = (): void => {
-  globalThis.__documensoConversionCircuitOpenedAt = Date.now();
+  globalThis.__bchatsignConversionCircuitOpenedAt = Date.now();
 };

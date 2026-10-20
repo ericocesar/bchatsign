@@ -1,4 +1,4 @@
-import { prisma } from '@documenso/prisma';
+import { prisma } from '@bchatsign/prisma';
 import { EnvelopeType, type Webhook } from '@prisma/client';
 
 import { mapSecondaryIdToDocumentId } from '../../../utils/envelope';

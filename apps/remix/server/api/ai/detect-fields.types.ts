@@ -1,4 +1,4 @@
-import { ZConfidenceLevel, ZDetectableFieldType } from '@documenso/lib/server-only/ai/envelope/detect-fields/schema';
+import { ZConfidenceLevel, ZDetectableFieldType } from '@bchatsign/lib/server-only/ai/envelope/detect-fields/schema';
 import { z } from 'zod';
 
 export const ZDetectFieldsRequestSchema = z.object({

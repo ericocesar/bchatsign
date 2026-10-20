@@ -1,4 +1,4 @@
-import { Alert, AlertDescription, AlertTitle } from '@documenso/ui/primitives/alert';
+import { Alert, AlertDescription, AlertTitle } from '@bchatsign/ui/primitives/alert';
 import { Trans } from '@lingui/react/macro';
 import type { TeamGroup } from '@prisma/client';
 

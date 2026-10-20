@@ -1,16 +1,16 @@
-import { DO_NOT_INVALIDATE_QUERY_ON_MUTATION } from '@documenso/lib/constants/trpc';
+import { DO_NOT_INVALIDATE_QUERY_ON_MUTATION } from '@bchatsign/lib/constants/trpc';
 import {
   DEFAULT_EDITOR_CONFIG,
   type EnvelopeEditorConfig,
   type TEditorEnvelope,
-} from '@documenso/lib/types/envelope-editor';
-import { trpc } from '@documenso/trpc/react';
-import type { TSetEnvelopeFieldsResponse } from '@documenso/trpc/server/envelope-router/set-envelope-fields.types';
-import type { TSetEnvelopeRecipientsRequest } from '@documenso/trpc/server/envelope-router/set-envelope-recipients.types';
-import type { TUpdateEnvelopeRequest } from '@documenso/trpc/server/envelope-router/update-envelope.types';
-import type { TRecipientColor } from '@documenso/ui/lib/recipient-colors';
-import { getRecipientColor } from '@documenso/ui/lib/recipient-colors';
-import { useToast } from '@documenso/ui/primitives/use-toast';
+} from '@bchatsign/lib/types/envelope-editor';
+import { trpc } from '@bchatsign/trpc/react';
+import type { TSetEnvelopeFieldsResponse } from '@bchatsign/trpc/server/envelope-router/set-envelope-fields.types';
+import type { TSetEnvelopeRecipientsRequest } from '@bchatsign/trpc/server/envelope-router/set-envelope-recipients.types';
+import type { TUpdateEnvelopeRequest } from '@bchatsign/trpc/server/envelope-router/update-envelope.types';
+import type { TRecipientColor } from '@bchatsign/ui/lib/recipient-colors';
+import { getRecipientColor } from '@bchatsign/ui/lib/recipient-colors';
+import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { useLingui } from '@lingui/react/macro';
 import { EnvelopeType, Prisma, ReadStatus, SendStatus, SigningStatus } from '@prisma/client';
 import type React from 'react';

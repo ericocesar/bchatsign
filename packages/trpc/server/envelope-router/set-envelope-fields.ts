@@ -1,5 +1,5 @@
-import { setFieldsForDocument } from '@documenso/lib/server-only/field/set-fields-for-document';
-import { setFieldsForTemplate } from '@documenso/lib/server-only/field/set-fields-for-template';
+import { setFieldsForDocument } from '@bchatsign/lib/server-only/field/set-fields-for-document';
+import { setFieldsForTemplate } from '@bchatsign/lib/server-only/field/set-fields-for-template';
 import { EnvelopeType } from '@prisma/client';
 import { match } from 'ts-pattern';
 

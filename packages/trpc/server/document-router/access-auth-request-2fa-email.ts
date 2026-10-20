@@ -1,10 +1,10 @@
-import { TWO_FACTOR_EMAIL_EXPIRATION_MINUTES } from '@documenso/lib/server-only/2fa/email/constants';
-import { send2FATokenEmail } from '@documenso/lib/server-only/2fa/email/send-2fa-token-email';
-import { assertRateLimit } from '@documenso/lib/server-only/rate-limit/rate-limit-middleware';
-import { request2FAEmailRateLimit } from '@documenso/lib/server-only/rate-limit/rate-limits';
-import { DocumentAuth } from '@documenso/lib/types/document-auth';
-import { extractDocumentAuthMethods } from '@documenso/lib/utils/document-auth';
-import { prisma } from '@documenso/prisma';
+import { TWO_FACTOR_EMAIL_EXPIRATION_MINUTES } from '@bchatsign/lib/server-only/2fa/email/constants';
+import { send2FATokenEmail } from '@bchatsign/lib/server-only/2fa/email/send-2fa-token-email';
+import { assertRateLimit } from '@bchatsign/lib/server-only/rate-limit/rate-limit-middleware';
+import { request2FAEmailRateLimit } from '@bchatsign/lib/server-only/rate-limit/rate-limits';
+import { DocumentAuth } from '@bchatsign/lib/types/document-auth';
+import { extractDocumentAuthMethods } from '@bchatsign/lib/utils/document-auth';
+import { prisma } from '@bchatsign/prisma';
 import { EnvelopeType } from '@prisma/client';
 import { TRPCError } from '@trpc/server';
 import { DateTime } from 'luxon';

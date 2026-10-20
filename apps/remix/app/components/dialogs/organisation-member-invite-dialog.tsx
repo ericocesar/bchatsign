@@ -1,16 +1,16 @@
-import { downloadFile } from '@documenso/lib/client-only/download-file';
-import { useCurrentOrganisation } from '@documenso/lib/client-only/providers/organisation';
-import { IS_BILLING_ENABLED, SUPPORT_EMAIL } from '@documenso/lib/constants/app';
-import { ORGANISATION_MEMBER_ROLE_HIERARCHY } from '@documenso/lib/constants/organisations';
-import { ORGANISATION_MEMBER_ROLE_MAP } from '@documenso/lib/constants/organisations-translations';
-import { INTERNAL_CLAIM_ID } from '@documenso/lib/types/subscription';
-import { zEmail } from '@documenso/lib/utils/zod';
-import { trpc } from '@documenso/trpc/react';
-import { ZCreateOrganisationMemberInvitesRequestSchema } from '@documenso/trpc/server/organisation-router/create-organisation-member-invites.types';
-import { cn } from '@documenso/ui/lib/utils';
-import { Alert, AlertDescription } from '@documenso/ui/primitives/alert';
-import { Button } from '@documenso/ui/primitives/button';
-import { Card, CardContent } from '@documenso/ui/primitives/card';
+import { downloadFile } from '@bchatsign/lib/client-only/download-file';
+import { useCurrentOrganisation } from '@bchatsign/lib/client-only/providers/organisation';
+import { IS_BILLING_ENABLED, SUPPORT_EMAIL } from '@bchatsign/lib/constants/app';
+import { ORGANISATION_MEMBER_ROLE_HIERARCHY } from '@bchatsign/lib/constants/organisations';
+import { ORGANISATION_MEMBER_ROLE_MAP } from '@bchatsign/lib/constants/organisations-translations';
+import { INTERNAL_CLAIM_ID } from '@bchatsign/lib/types/subscription';
+import { zEmail } from '@bchatsign/lib/utils/zod';
+import { trpc } from '@bchatsign/trpc/react';
+import { ZCreateOrganisationMemberInvitesRequestSchema } from '@bchatsign/trpc/server/organisation-router/create-organisation-member-invites.types';
+import { cn } from '@bchatsign/ui/lib/utils';
+import { Alert, AlertDescription } from '@bchatsign/ui/primitives/alert';
+import { Button } from '@bchatsign/ui/primitives/button';
+import { Card, CardContent } from '@bchatsign/ui/primitives/card';
 import {
   Dialog,
   DialogContent,
@@ -19,13 +19,13 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@documenso/ui/primitives/dialog';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@documenso/ui/primitives/form/form';
-import { Input } from '@documenso/ui/primitives/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@documenso/ui/primitives/select';
-import { SpinnerBox } from '@documenso/ui/primitives/spinner';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@documenso/ui/primitives/tabs';
-import { useToast } from '@documenso/ui/primitives/use-toast';
+} from '@bchatsign/ui/primitives/dialog';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@bchatsign/ui/primitives/form/form';
+import { Input } from '@bchatsign/ui/primitives/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@bchatsign/ui/primitives/select';
+import { SpinnerBox } from '@bchatsign/ui/primitives/spinner';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@bchatsign/ui/primitives/tabs';
+import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
@@ -233,9 +233,9 @@ export const OrganisationMemberInviteDialog = ({ trigger, ...props }: Organisati
 
   const downloadTemplate = () => {
     const data = [
-      { email: 'admin@documenso.com', role: 'Admin' },
-      { email: 'manager@documenso.com', role: 'Manager' },
-      { email: 'member@documenso.com', role: 'Member' },
+      { email: 'admin@bchatsign.com', role: 'Admin' },
+      { email: 'manager@bchatsign.com', role: 'Manager' },
+      { email: 'member@bchatsign.com', role: 'Member' },
     ];
 
     const csvContent = 'Email address,Role\n' + data.map((row) => `${row.email},${row.role}`).join('\n');
@@ -245,7 +245,7 @@ export const OrganisationMemberInviteDialog = ({ trigger, ...props }: Organisati
     });
 
     downloadFile({
-      filename: 'documenso-organisation-member-invites-template.csv',
+      filename: 'bchatsign-organisation-member-invites-template.csv',
       data: blob,
     });
   };

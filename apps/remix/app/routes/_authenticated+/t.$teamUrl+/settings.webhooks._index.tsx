@@ -1,16 +1,16 @@
-import { toFriendlyWebhookEventName } from '@documenso/lib/universal/webhook/to-friendly-webhook-event-name';
-import { trpc } from '@documenso/trpc/react';
-import { Badge } from '@documenso/ui/primitives/badge';
-import { DataTable, type DataTableColumnDef } from '@documenso/ui/primitives/data-table';
+import { toFriendlyWebhookEventName } from '@bchatsign/lib/universal/webhook/to-friendly-webhook-event-name';
+import { trpc } from '@bchatsign/trpc/react';
+import { Badge } from '@bchatsign/ui/primitives/badge';
+import { DataTable, type DataTableColumnDef } from '@bchatsign/ui/primitives/data-table';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
-} from '@documenso/ui/primitives/dropdown-menu';
-import { Skeleton } from '@documenso/ui/primitives/skeleton';
-import { TableCell } from '@documenso/ui/primitives/table';
+} from '@bchatsign/ui/primitives/dropdown-menu';
+import { Skeleton } from '@bchatsign/ui/primitives/skeleton';
+import { TableCell } from '@bchatsign/ui/primitives/table';
 import { msg } from '@lingui/core/macro';
 import { Plural, Trans, useLingui } from '@lingui/react/macro';
 import type { Webhook } from '@prisma/client';

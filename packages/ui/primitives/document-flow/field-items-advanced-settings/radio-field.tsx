@@ -1,10 +1,10 @@
-import { validateRadioField } from '@documenso/lib/advanced-fields-validation/validate-radio';
-import type { TRadioFieldMeta as RadioFieldMeta } from '@documenso/lib/types/field-meta';
-import { Button } from '@documenso/ui/primitives/button';
-import { Checkbox } from '@documenso/ui/primitives/checkbox';
-import { Input } from '@documenso/ui/primitives/input';
-import { Label } from '@documenso/ui/primitives/label';
-import { Switch } from '@documenso/ui/primitives/switch';
+import { validateRadioField } from '@bchatsign/lib/advanced-fields-validation/validate-radio';
+import type { TRadioFieldMeta as RadioFieldMeta } from '@bchatsign/lib/types/field-meta';
+import { Button } from '@bchatsign/ui/primitives/button';
+import { Checkbox } from '@bchatsign/ui/primitives/checkbox';
+import { Input } from '@bchatsign/ui/primitives/input';
+import { Label } from '@bchatsign/ui/primitives/label';
+import { Switch } from '@bchatsign/ui/primitives/switch';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
@@ -165,7 +165,7 @@ export const RadioFieldAdvancedSettings = ({
           {values.map((value) => (
             <div key={value.id} className="mt-2 flex items-center gap-4">
               <Checkbox
-                className="h-5 w-5 rounded-full border-foreground/30 data-[state=checked]:bg-documenso data-[state=checked]:ring-1 data-[state=checked]:ring-primary data-[state=checked]:ring-offset-2 data-[state=checked]:ring-offset-white dark:data-[state=checked]:ring-offset-background"
+                className="h-5 w-5 rounded-full border-foreground/30 data-[state=checked]:bg-bchatsign data-[state=checked]:ring-1 data-[state=checked]:ring-primary data-[state=checked]:ring-offset-2 data-[state=checked]:ring-offset-white dark:data-[state=checked]:ring-offset-background"
                 checked={value.checked}
                 onCheckedChange={(checked) => handleCheckedChange(Boolean(checked), value.id)}
               />

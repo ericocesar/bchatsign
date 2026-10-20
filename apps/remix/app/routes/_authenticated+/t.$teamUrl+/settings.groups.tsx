@@ -1,7 +1,7 @@
-import { useDebouncedValue } from '@documenso/lib/client-only/hooks/use-debounced-value';
-import { trpc } from '@documenso/trpc/react';
-import { AnimateGenericFadeInOut } from '@documenso/ui/components/animate/animate-generic-fade-in-out';
-import { Input } from '@documenso/ui/primitives/input';
+import { useDebouncedValue } from '@bchatsign/lib/client-only/hooks/use-debounced-value';
+import { trpc } from '@bchatsign/trpc/react';
+import { AnimateGenericFadeInOut } from '@bchatsign/ui/components/animate/animate-generic-fade-in-out';
+import { Input } from '@bchatsign/ui/primitives/input';
 import { useLingui } from '@lingui/react/macro';
 import { OrganisationGroupType, OrganisationMemberRole } from '@prisma/client';
 import { useEffect, useState } from 'react';

@@ -1,7 +1,7 @@
-import { sha256 } from '@documenso/lib/universal/crypto';
-import { getFileServerSide } from '@documenso/lib/universal/upload/get-file.server';
-import { loadLogo } from '@documenso/lib/utils/images/logo';
-import { prisma } from '@documenso/prisma';
+import { sha256 } from '@bchatsign/lib/universal/crypto';
+import { getFileServerSide } from '@bchatsign/lib/universal/upload/get-file.server';
+import { loadLogo } from '@bchatsign/lib/utils/images/logo';
+import { prisma } from '@bchatsign/prisma';
 
 import type { Route } from './+types/branding.logo.organisation.$orgId';
 

@@ -1,4 +1,4 @@
-import { getDocumentWithDetailsById } from '@documenso/lib/server-only/document/get-document-with-details-by-id';
+import { getDocumentWithDetailsById } from '@bchatsign/lib/server-only/document/get-document-with-details-by-id';
 
 import { authenticatedProcedure } from '../trpc';
 import { getDocumentMeta, ZGetDocumentRequestSchema, ZGetDocumentResponseSchema } from './get-document.types';

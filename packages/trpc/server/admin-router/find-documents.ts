@@ -1,5 +1,5 @@
-import { adminFindDocuments } from '@documenso/lib/server-only/admin/admin-find-documents';
-import { mapEnvelopesToDocumentMany } from '@documenso/lib/utils/document';
+import { adminFindDocuments } from '@bchatsign/lib/server-only/admin/admin-find-documents';
+import { mapEnvelopesToDocumentMany } from '@bchatsign/lib/utils/document';
 
 import { adminProcedure } from '../trpc';
 import { ZFindDocumentsRequestSchema, ZFindDocumentsResponseSchema } from './find-documents.types';

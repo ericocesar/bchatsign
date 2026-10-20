@@ -1,5 +1,5 @@
-import { prisma } from '@documenso/prisma';
-import { extractUserVerificationToken, seedTestEmail, seedUser } from '@documenso/prisma/seed/users';
+import { prisma } from '@bchatsign/prisma';
+import { extractUserVerificationToken, seedTestEmail, seedUser } from '@bchatsign/prisma/seed/users';
 import { expect, type Page, test } from '@playwright/test';
 
 import { signSignaturePad } from '../fixtures/signature';

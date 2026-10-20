@@ -1,5 +1,5 @@
-import { useCurrentEnvelopeRender } from '@documenso/lib/client-only/providers/envelope-render-provider';
-import { cn } from '@documenso/ui/lib/utils';
+import { useCurrentEnvelopeRender } from '@bchatsign/lib/client-only/providers/envelope-render-provider';
+import { cn } from '@bchatsign/ui/lib/utils';
 import { Plural } from '@lingui/react/macro';
 
 type EnvelopeItemSelectorProps = {

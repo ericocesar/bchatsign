@@ -1,14 +1,14 @@
-import { getOptionalSession } from '@documenso/auth/server/lib/utils/get-session';
-import { EnvelopeRenderProvider } from '@documenso/lib/client-only/providers/envelope-render-provider';
-import { IS_BILLING_ENABLED } from '@documenso/lib/constants/app';
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { getEnvelopeForDirectTemplateSigning } from '@documenso/lib/server-only/envelope/get-envelope-for-direct-template-signing';
-import { getEnvelopeRequiredAccessData } from '@documenso/lib/server-only/envelope/get-envelope-required-access-data';
-import { getOrganisationClaimByTeamId } from '@documenso/lib/server-only/organisation/get-organisation-claims';
-import { getTemplateByDirectLinkToken } from '@documenso/lib/server-only/template/get-template-by-direct-link-token';
-import { DocumentAccessAuth } from '@documenso/lib/types/document-auth';
-import { extractDocumentAuthMethods } from '@documenso/lib/utils/document-auth';
-import { prisma } from '@documenso/prisma';
+import { getOptionalSession } from '@bchatsign/auth/server/lib/utils/get-session';
+import { EnvelopeRenderProvider } from '@bchatsign/lib/client-only/providers/envelope-render-provider';
+import { IS_BILLING_ENABLED } from '@bchatsign/lib/constants/app';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { getEnvelopeForDirectTemplateSigning } from '@bchatsign/lib/server-only/envelope/get-envelope-for-direct-template-signing';
+import { getEnvelopeRequiredAccessData } from '@bchatsign/lib/server-only/envelope/get-envelope-required-access-data';
+import { getOrganisationClaimByTeamId } from '@bchatsign/lib/server-only/organisation/get-organisation-claims';
+import { getTemplateByDirectLinkToken } from '@bchatsign/lib/server-only/template/get-template-by-direct-link-token';
+import { DocumentAccessAuth } from '@bchatsign/lib/types/document-auth';
+import { extractDocumentAuthMethods } from '@bchatsign/lib/utils/document-auth';
+import { prisma } from '@bchatsign/prisma';
 import { data } from 'react-router';
 import { match } from 'ts-pattern';
 

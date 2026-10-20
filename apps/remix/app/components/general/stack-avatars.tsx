@@ -1,6 +1,6 @@
-import { getExtraRecipientsType, getRecipientType } from '@documenso/lib/client-only/recipient-type';
-import type { TRecipientLite } from '@documenso/lib/types/recipient';
-import { recipientAbbreviation } from '@documenso/lib/utils/recipient-formatter';
+import { getExtraRecipientsType, getRecipientType } from '@bchatsign/lib/client-only/recipient-type';
+import type { TRecipientLite } from '@bchatsign/lib/types/recipient';
+import { recipientAbbreviation } from '@bchatsign/lib/utils/recipient-formatter';
 
 import { StackAvatar } from './stack-avatar';
 

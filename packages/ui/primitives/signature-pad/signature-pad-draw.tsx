@@ -1,5 +1,5 @@
-import { unsafe_useEffectOnce } from '@documenso/lib/client-only/hooks/use-effect-once';
-import { SIGNATURE_CANVAS_DPI, SIGNATURE_MIN_COVERAGE_THRESHOLD } from '@documenso/lib/constants/signatures';
+import { unsafe_useEffectOnce } from '@bchatsign/lib/client-only/hooks/use-effect-once';
+import { SIGNATURE_CANVAS_DPI, SIGNATURE_MIN_COVERAGE_THRESHOLD } from '@bchatsign/lib/constants/signatures';
 
 import { Trans } from '@lingui/react/macro';
 import { Undo2 } from 'lucide-react';

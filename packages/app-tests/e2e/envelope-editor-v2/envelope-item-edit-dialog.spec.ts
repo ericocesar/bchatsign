@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { nanoid } from '@documenso/lib/universal/id';
-import { prisma } from '@documenso/prisma';
+import { nanoid } from '@bchatsign/lib/universal/id';
+import { prisma } from '@bchatsign/prisma';
 import { expect, type Page, test } from '@playwright/test';
 
 import {

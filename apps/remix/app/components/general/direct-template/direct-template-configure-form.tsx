@@ -1,21 +1,21 @@
-import { useOptionalSession } from '@documenso/lib/client-only/providers/session';
-import type { TTemplate } from '@documenso/lib/types/template';
-import { zEmail } from '@documenso/lib/utils/zod';
+import { useOptionalSession } from '@bchatsign/lib/client-only/providers/session';
+import type { TTemplate } from '@bchatsign/lib/types/template';
+import { zEmail } from '@bchatsign/lib/utils/zod';
 import {
   DocumentReadOnlyFields,
   mapFieldsWithRecipients,
-} from '@documenso/ui/components/document/document-read-only-fields';
+} from '@bchatsign/ui/components/document/document-read-only-fields';
 import {
   DocumentFlowFormContainerActions,
   DocumentFlowFormContainerContent,
   DocumentFlowFormContainerFooter,
   DocumentFlowFormContainerHeader,
   DocumentFlowFormContainerStep,
-} from '@documenso/ui/primitives/document-flow/document-flow-root';
-import type { DocumentFlowStep } from '@documenso/ui/primitives/document-flow/types';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@documenso/ui/primitives/form/form';
-import { Input } from '@documenso/ui/primitives/input';
-import { useStep } from '@documenso/ui/primitives/stepper';
+} from '@bchatsign/ui/primitives/document-flow/document-flow-root';
+import type { DocumentFlowStep } from '@bchatsign/ui/primitives/document-flow/types';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@bchatsign/ui/primitives/form/form';
+import { Input } from '@bchatsign/ui/primitives/input';
+import { useStep } from '@bchatsign/ui/primitives/stepper';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Trans } from '@lingui/react/macro';
 import type { Field, Recipient } from '@prisma/client';
@@ -101,7 +101,7 @@ export const DirectTemplateConfigureForm = ({
                     <Input
                       {...field}
                       disabled={field.disabled || derivedRecipientAccessAuth.length > 0 || user?.email !== undefined}
-                      placeholder="recipient@documenso.com"
+                      placeholder="recipient@bchatsign.com"
                     />
                   </FormControl>
 

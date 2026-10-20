@@ -1,10 +1,10 @@
-import { prisma } from '@documenso/prisma';
-import DocumentMetaSchema from '@documenso/prisma/generated/zod/modelSchema/DocumentMetaSchema';
-import EnvelopeItemSchema from '@documenso/prisma/generated/zod/modelSchema/EnvelopeItemSchema';
-import EnvelopeSchema from '@documenso/prisma/generated/zod/modelSchema/EnvelopeSchema';
-import SignatureSchema from '@documenso/prisma/generated/zod/modelSchema/SignatureSchema';
-import TeamSchema from '@documenso/prisma/generated/zod/modelSchema/TeamSchema';
-import UserSchema from '@documenso/prisma/generated/zod/modelSchema/UserSchema';
+import { prisma } from '@bchatsign/prisma';
+import DocumentMetaSchema from '@bchatsign/prisma/generated/zod/modelSchema/DocumentMetaSchema';
+import EnvelopeItemSchema from '@bchatsign/prisma/generated/zod/modelSchema/EnvelopeItemSchema';
+import EnvelopeSchema from '@bchatsign/prisma/generated/zod/modelSchema/EnvelopeSchema';
+import SignatureSchema from '@bchatsign/prisma/generated/zod/modelSchema/SignatureSchema';
+import TeamSchema from '@bchatsign/prisma/generated/zod/modelSchema/TeamSchema';
+import UserSchema from '@bchatsign/prisma/generated/zod/modelSchema/UserSchema';
 import { DocumentSigningOrder, DocumentStatus, EnvelopeType, SigningStatus } from '@prisma/client';
 import { z } from 'zod';
 

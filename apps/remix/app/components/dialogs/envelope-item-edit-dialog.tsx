@@ -1,13 +1,13 @@
-import { useCurrentEnvelopeEditor } from '@documenso/lib/client-only/providers/envelope-editor-provider';
-import { APP_DOCUMENT_UPLOAD_SIZE_LIMIT } from '@documenso/lib/constants/app';
-import { megabytesToBytes } from '@documenso/lib/universal/unit-convertions';
-import { trpc } from '@documenso/trpc/react';
-import { ZDocumentTitleSchema } from '@documenso/trpc/server/document-router/schema';
-import type { TReplaceEnvelopeItemPdfPayload } from '@documenso/trpc/server/envelope-router/replace-envelope-item-pdf.types';
-import { buildDropzoneRejectionDescription } from '@documenso/ui/lib/handle-dropzone-rejection';
-import { cn } from '@documenso/ui/lib/utils';
-import { Alert, AlertDescription } from '@documenso/ui/primitives/alert';
-import { Button } from '@documenso/ui/primitives/button';
+import { useCurrentEnvelopeEditor } from '@bchatsign/lib/client-only/providers/envelope-editor-provider';
+import { APP_DOCUMENT_UPLOAD_SIZE_LIMIT } from '@bchatsign/lib/constants/app';
+import { megabytesToBytes } from '@bchatsign/lib/universal/unit-convertions';
+import { trpc } from '@bchatsign/trpc/react';
+import { ZDocumentTitleSchema } from '@bchatsign/trpc/server/document-router/schema';
+import type { TReplaceEnvelopeItemPdfPayload } from '@bchatsign/trpc/server/envelope-router/replace-envelope-item-pdf.types';
+import { buildDropzoneRejectionDescription } from '@bchatsign/ui/lib/handle-dropzone-rejection';
+import { cn } from '@bchatsign/ui/lib/utils';
+import { Alert, AlertDescription } from '@bchatsign/ui/primitives/alert';
+import { Button } from '@bchatsign/ui/primitives/button';
 import {
   Dialog,
   DialogClose,
@@ -17,10 +17,10 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@documenso/ui/primitives/dialog';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@documenso/ui/primitives/form/form';
-import { Input } from '@documenso/ui/primitives/input';
-import { useToast } from '@documenso/ui/primitives/use-toast';
+} from '@bchatsign/ui/primitives/dialog';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@bchatsign/ui/primitives/form/form';
+import { Input } from '@bchatsign/ui/primitives/input';
+import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Plural, Trans, useLingui } from '@lingui/react/macro';
 import type * as DialogPrimitive from '@radix-ui/react-dialog';

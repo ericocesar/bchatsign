@@ -1,4 +1,4 @@
-import { prisma } from '@documenso/prisma';
+import { prisma } from '@bchatsign/prisma';
 import type { Passkey } from '@prisma/client';
 import { Prisma } from '@prisma/client';
 

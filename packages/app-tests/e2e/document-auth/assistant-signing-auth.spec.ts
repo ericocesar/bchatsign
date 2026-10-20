@@ -1,5 +1,5 @@
-import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
-import { prisma } from '@documenso/prisma';
+import { NEXT_PUBLIC_WEBAPP_URL } from '@bchatsign/lib/constants/app';
+import { prisma } from '@bchatsign/prisma';
 import { type APIRequestContext, expect, test } from '@playwright/test';
 import { FieldType, SigningStatus } from '@prisma/client';
 
@@ -25,13 +25,13 @@ const seedTwoPendingEnvelopes = async (request: APIRequestContext): Promise<Seed
     title: '[TEST] Envelope A',
     recipients: [
       {
-        email: `assistant-${Date.now()}@documenso.com`,
+        email: `assistant-${Date.now()}@bchatsign.com`,
         name: 'Assistant',
         role: 'ASSISTANT',
         signingOrder: 1,
       },
       {
-        email: `signer-a-${Date.now()}@documenso.com`,
+        email: `signer-a-${Date.now()}@bchatsign.com`,
         name: 'Signer A',
         role: 'SIGNER',
         signingOrder: 2,
@@ -54,7 +54,7 @@ const seedTwoPendingEnvelopes = async (request: APIRequestContext): Promise<Seed
     title: '[TEST] Envelope B',
     recipients: [
       {
-        email: `signer-b-${Date.now()}@documenso.com`,
+        email: `signer-b-${Date.now()}@bchatsign.com`,
         name: 'Signer B',
         role: 'SIGNER',
         signingOrder: 1,

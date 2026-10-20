@@ -1,4 +1,4 @@
-import { prisma } from '@documenso/prisma';
+import { prisma } from '@bchatsign/prisma';
 import { EnvelopeType, Prisma } from '@prisma/client';
 
 type GetAllUsersProps = {

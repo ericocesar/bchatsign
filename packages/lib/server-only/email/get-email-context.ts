@@ -1,16 +1,16 @@
-import type { BrandingSettings } from '@documenso/email/providers/branding';
-import { prisma } from '@documenso/prisma';
+import type { BrandingSettings } from '@bchatsign/email/providers/branding';
+import { prisma } from '@bchatsign/prisma';
 import type {
   DocumentMeta,
   EmailDomain,
   Organisation,
   OrganisationEmail,
   OrganisationType,
-} from '@documenso/prisma/client';
-import { EmailDomainStatus, type OrganisationClaim, type OrganisationGlobalSettings } from '@documenso/prisma/client';
+} from '@bchatsign/prisma/client';
+import { EmailDomainStatus, type OrganisationClaim, type OrganisationGlobalSettings } from '@bchatsign/prisma/client';
 import { match, P } from 'ts-pattern';
 
-import { DOCUMENSO_INTERNAL_EMAIL } from '../../constants/email';
+import { BCHATSIGN_INTERNAL_EMAIL } from '../../constants/email';
 import { AppError, AppErrorCode } from '../../errors/app-error';
 import {
   organisationGlobalSettingsToBranding,
@@ -93,7 +93,7 @@ export const getEmailContext = async (options: GetEmailContextOptions): Promise<
   if (options.emailType === 'INTERNAL') {
     return {
       ...emailContext,
-      senderEmail: DOCUMENSO_INTERNAL_EMAIL,
+      senderEmail: BCHATSIGN_INTERNAL_EMAIL,
       replyToEmail: undefined,
       emailLanguage, // Not sure if we want to use this for internal emails.
     };
@@ -104,7 +104,7 @@ export const getEmailContext = async (options: GetEmailContextOptions): Promise<
   const senderEmailId = match(meta?.emailId)
     .with(P.string, (emailId) => emailId) // Explicit string means to use the provided email ID.
     .with(undefined, () => emailContext.settings.emailId) // Undefined means to use the inherited email ID.
-    .with(null, () => null) // Explicit null means to use the Documenso email.
+    .with(null, () => null) // Explicit null means to use the Bchatsign email.
     .exhaustive();
 
   const foundSenderEmail = emailContext.allowedEmails.find((email) => email.id === senderEmailId);
@@ -119,7 +119,7 @@ export const getEmailContext = async (options: GetEmailContextOptions): Promise<
         name: foundSenderEmail.emailName,
         address: foundSenderEmail.email,
       }
-    : DOCUMENSO_INTERNAL_EMAIL;
+    : BCHATSIGN_INTERNAL_EMAIL;
 
   return {
     ...emailContext,

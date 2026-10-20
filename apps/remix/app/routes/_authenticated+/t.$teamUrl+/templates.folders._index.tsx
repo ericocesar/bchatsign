@@ -1,8 +1,8 @@
-import { FolderType } from '@documenso/lib/types/folder-type';
-import { formatTemplatesPath } from '@documenso/lib/utils/teams';
-import { trpc } from '@documenso/trpc/react';
-import type { TFolderWithSubfolders } from '@documenso/trpc/server/folder-router/schema';
-import { Input } from '@documenso/ui/primitives/input';
+import { FolderType } from '@bchatsign/lib/types/folder-type';
+import { formatTemplatesPath } from '@bchatsign/lib/utils/teams';
+import { trpc } from '@bchatsign/trpc/react';
+import type { TFolderWithSubfolders } from '@bchatsign/trpc/server/folder-router/schema';
+import { Input } from '@bchatsign/ui/primitives/input';
 import { msg } from '@lingui/core/macro';
 import { Trans, useLingui } from '@lingui/react/macro';
 import { FolderIcon, HomeIcon, Loader2, SearchIcon } from 'lucide-react';

@@ -1,6 +1,6 @@
-import { trpc } from '@documenso/trpc/react';
-import { Button } from '@documenso/ui/primitives/button';
-import { Popover, PopoverContent, PopoverTrigger } from '@documenso/ui/primitives/popover';
+import { trpc } from '@bchatsign/trpc/react';
+import { Button } from '@bchatsign/ui/primitives/button';
+import { Popover, PopoverContent, PopoverTrigger } from '@bchatsign/ui/primitives/popover';
 import { Trans } from '@lingui/react/macro';
 import { ExternalLink, PaperclipIcon } from 'lucide-react';
 

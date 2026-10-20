@@ -1,5 +1,5 @@
-import { setDocumentRecipients } from '@documenso/lib/server-only/recipient/set-document-recipients';
-import { setTemplateRecipients } from '@documenso/lib/server-only/recipient/set-template-recipients';
+import { setDocumentRecipients } from '@bchatsign/lib/server-only/recipient/set-document-recipients';
+import { setTemplateRecipients } from '@bchatsign/lib/server-only/recipient/set-template-recipients';
 import { EnvelopeType } from '@prisma/client';
 import { match } from 'ts-pattern';
 

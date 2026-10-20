@@ -1,4 +1,4 @@
-import { getBoundingClientRect } from '@documenso/lib/client-only/get-bounding-client-rect';
+import { getBoundingClientRect } from '@bchatsign/lib/client-only/get-bounding-client-rect';
 import { useCallback } from 'react';
 
 export const useDocumentElement = () => {

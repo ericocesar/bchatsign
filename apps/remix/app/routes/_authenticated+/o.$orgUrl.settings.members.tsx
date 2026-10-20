@@ -1,6 +1,6 @@
-import { useDebouncedValue } from '@documenso/lib/client-only/hooks/use-debounced-value';
-import { Input } from '@documenso/ui/primitives/input';
-import { Tabs, TabsList, TabsTrigger } from '@documenso/ui/primitives/tabs';
+import { useDebouncedValue } from '@bchatsign/lib/client-only/hooks/use-debounced-value';
+import { Input } from '@bchatsign/ui/primitives/input';
+import { Tabs, TabsList, TabsTrigger } from '@bchatsign/ui/primitives/tabs';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';

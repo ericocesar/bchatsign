@@ -1,4 +1,4 @@
-import { type TFieldAndMeta, ZEnvelopeFieldAndMetaSchema } from '@documenso/lib/types/field-meta';
+import { type TFieldAndMeta, ZEnvelopeFieldAndMetaSchema } from '@bchatsign/lib/types/field-meta';
 import { PDF, rgb } from '@libpdf/core';
 import type { FieldType, Recipient } from '@prisma/client';
 

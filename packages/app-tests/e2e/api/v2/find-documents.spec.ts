@@ -1,17 +1,17 @@
-import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
-import { createApiToken } from '@documenso/lib/server-only/public-api/create-api-token';
-import { prisma } from '@documenso/prisma';
-import { DocumentStatus, DocumentVisibility, TeamMemberRole } from '@documenso/prisma/client';
+import { NEXT_PUBLIC_WEBAPP_URL } from '@bchatsign/lib/constants/app';
+import { createApiToken } from '@bchatsign/lib/server-only/public-api/create-api-token';
+import { prisma } from '@bchatsign/prisma';
+import { DocumentStatus, DocumentVisibility, TeamMemberRole } from '@bchatsign/prisma/client';
 import {
   seedBlankDocument,
   seedCompletedDocument,
   seedDocuments,
   seedDraftDocument,
   seedPendingDocument,
-} from '@documenso/prisma/seed/documents';
-import { seedTeam, seedTeamEmail, seedTeamMember } from '@documenso/prisma/seed/teams';
-import { seedUser } from '@documenso/prisma/seed/users';
-import type { TFindDocumentsResponse } from '@documenso/trpc/server/document-router/find-documents.types';
+} from '@bchatsign/prisma/seed/documents';
+import { seedTeam, seedTeamEmail, seedTeamMember } from '@bchatsign/prisma/seed/teams';
+import { seedUser } from '@bchatsign/prisma/seed/users';
+import type { TFindDocumentsResponse } from '@bchatsign/trpc/server/document-router/find-documents.types';
 import { expect, test } from '@playwright/test';
 import type { Team, User } from '@prisma/client';
 
@@ -919,7 +919,7 @@ test.describe('Find Documents API - Team with Team Email', () => {
   }) => {
     const { team, owner } = await seedTeam();
 
-    const teamEmail = `team-email-${team.id}@test.documenso.com`;
+    const teamEmail = `team-email-${team.id}@test.bchatsign.com`;
     await seedTeamEmail({ email: teamEmail, teamId: team.id });
 
     const { user: externalUser, team: externalTeam } = await seedUser();
@@ -968,7 +968,7 @@ test.describe('Find Documents API - Team with Team Email', () => {
   test('team email documents should respect visibility rules with adequate controls', async ({ request }) => {
     const { team } = await seedTeam();
 
-    const teamEmail = `team-vis-email-${team.id}@test.documenso.com`;
+    const teamEmail = `team-vis-email-${team.id}@test.bchatsign.com`;
     await seedTeamEmail({ email: teamEmail, teamId: team.id });
 
     const admin = await seedTeamMember({ teamId: team.id, role: TeamMemberRole.ADMIN });

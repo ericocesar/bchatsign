@@ -1,14 +1,14 @@
-import { mailer } from '@documenso/email/mailer';
-import { OrganisationAccountLinkConfirmationTemplate } from '@documenso/email/templates/organisation-account-link-confirmation';
-import { getI18nInstance } from '@documenso/lib/client-only/providers/i18n-server';
-import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
-import { DOCUMENSO_INTERNAL_EMAIL } from '@documenso/lib/constants/email';
-import { ORGANISATION_ACCOUNT_LINK_VERIFICATION_TOKEN_IDENTIFIER } from '@documenso/lib/constants/organisations';
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { getEmailContext } from '@documenso/lib/server-only/email/get-email-context';
-import type { TOrganisationAccountLinkMetadata } from '@documenso/lib/types/organisation';
-import { renderEmailWithI18N } from '@documenso/lib/utils/render-email-with-i18n';
-import { prisma } from '@documenso/prisma';
+import { mailer } from '@bchatsign/email/mailer';
+import { OrganisationAccountLinkConfirmationTemplate } from '@bchatsign/email/templates/organisation-account-link-confirmation';
+import { getI18nInstance } from '@bchatsign/lib/client-only/providers/i18n-server';
+import { NEXT_PUBLIC_WEBAPP_URL } from '@bchatsign/lib/constants/app';
+import { BCHATSIGN_INTERNAL_EMAIL } from '@bchatsign/lib/constants/email';
+import { ORGANISATION_ACCOUNT_LINK_VERIFICATION_TOKEN_IDENTIFIER } from '@bchatsign/lib/constants/organisations';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { getEmailContext } from '@bchatsign/lib/server-only/email/get-email-context';
+import type { TOrganisationAccountLinkMetadata } from '@bchatsign/lib/types/organisation';
+import { renderEmailWithI18N } from '@bchatsign/lib/utils/render-email-with-i18n';
+import { prisma } from '@bchatsign/prisma';
 import { msg } from '@lingui/core/macro';
 import crypto from 'crypto';
 import { DateTime } from 'luxon';
@@ -106,7 +106,7 @@ export const sendOrganisationAccountLinkConfirmationEmail = async ({
       address: user.email,
       name: user.name || '',
     },
-    from: DOCUMENSO_INTERNAL_EMAIL,
+    from: BCHATSIGN_INTERNAL_EMAIL,
     subject: type === 'create' ? i18n._(msg`Account creation request`) : i18n._(msg`Account linking request`),
     html,
     text,

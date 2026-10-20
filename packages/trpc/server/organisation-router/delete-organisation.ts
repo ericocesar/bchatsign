@@ -1,12 +1,12 @@
 import {
   ORGANISATION_MEMBER_ROLE_PERMISSIONS_MAP,
   ORGANISATION_USER_ACCOUNT_TYPE,
-} from '@documenso/lib/constants/organisations';
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { jobs } from '@documenso/lib/jobs/client';
-import { orphanEnvelopes } from '@documenso/lib/server-only/envelope/orphan-envelopes';
-import { buildOrganisationWhereQuery } from '@documenso/lib/utils/organisations';
-import { prisma } from '@documenso/prisma';
+} from '@bchatsign/lib/constants/organisations';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { jobs } from '@bchatsign/lib/jobs/client';
+import { orphanEnvelopes } from '@bchatsign/lib/server-only/envelope/orphan-envelopes';
+import { buildOrganisationWhereQuery } from '@bchatsign/lib/utils/organisations';
+import { prisma } from '@bchatsign/prisma';
 
 import { authenticatedProcedure } from '../trpc';
 import { ZDeleteOrganisationRequestSchema, ZDeleteOrganisationResponseSchema } from './delete-organisation.types';

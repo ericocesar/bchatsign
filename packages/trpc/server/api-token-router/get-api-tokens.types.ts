@@ -1,4 +1,4 @@
-import ApiTokenSchema from '@documenso/prisma/generated/zod/modelSchema/ApiTokenSchema';
+import ApiTokenSchema from '@bchatsign/prisma/generated/zod/modelSchema/ApiTokenSchema';
 import { z } from 'zod';
 
 export const ZGetApiTokensRequestSchema = z.void();

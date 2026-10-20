@@ -1,4 +1,4 @@
-import { Popover, PopoverContent } from '@documenso/ui/primitives/popover';
+import { Popover, PopoverContent } from '@bchatsign/ui/primitives/popover';
 
 import { Trans } from '@lingui/react/macro';
 import { PopoverAnchor } from '@radix-ui/react-popover';

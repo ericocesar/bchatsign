@@ -1,6 +1,6 @@
-import { createCustomer } from '@documenso/ee/server-only/stripe/create-customer';
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { prisma } from '@documenso/prisma';
+import { createCustomer } from '@bchatsign/ee/server-only/stripe/create-customer';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { prisma } from '@bchatsign/prisma';
 
 import { adminProcedure } from '../trpc';
 import {

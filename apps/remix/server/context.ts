@@ -1,5 +1,5 @@
-import { extractSessionCookieFromHeaders } from '@documenso/auth/server/lib/session/session-cookies';
-import { extractRequestMetadata, type RequestMetadata } from '@documenso/lib/universal/extract-request-metadata';
+import { extractSessionCookieFromHeaders } from '@bchatsign/auth/server/lib/session/session-cookies';
+import { extractRequestMetadata, type RequestMetadata } from '@bchatsign/lib/universal/extract-request-metadata';
 import type { Context, Next } from 'hono';
 
 export type AppContext = {

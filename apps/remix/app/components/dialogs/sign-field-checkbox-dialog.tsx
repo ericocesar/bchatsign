@@ -1,8 +1,8 @@
-import { validateCheckboxLength } from '@documenso/lib/advanced-fields-validation/validate-checkbox';
-import type { TCheckboxFieldMeta } from '@documenso/lib/types/field-meta';
-import { cn } from '@documenso/ui/lib/utils';
-import { Button } from '@documenso/ui/primitives/button';
-import { Checkbox } from '@documenso/ui/primitives/checkbox';
+import { validateCheckboxLength } from '@bchatsign/lib/advanced-fields-validation/validate-checkbox';
+import type { TCheckboxFieldMeta } from '@bchatsign/lib/types/field-meta';
+import { cn } from '@bchatsign/ui/lib/utils';
+import { Button } from '@bchatsign/ui/primitives/button';
+import { Checkbox } from '@bchatsign/ui/primitives/checkbox';
 import {
   Dialog,
   DialogContent,
@@ -10,8 +10,8 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@documenso/ui/primitives/dialog';
-import { Form, FormControl, FormField, FormItem } from '@documenso/ui/primitives/form/form';
+} from '@bchatsign/ui/primitives/dialog';
+import { Form, FormControl, FormField, FormItem } from '@bchatsign/ui/primitives/form/form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { msg } from '@lingui/core/macro';
 import { Plural, Trans } from '@lingui/react/macro';

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const baseConfig = require('@documenso/tailwind-config');
+const baseConfig = require('@bchatsign/tailwind-config');
 const { RECIPIENT_DYNAMIC_CLASS } = require('./lib/recipient-colors');
 
 module.exports = {

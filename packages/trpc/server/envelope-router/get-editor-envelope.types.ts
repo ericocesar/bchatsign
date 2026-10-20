@@ -1,4 +1,4 @@
-import { ZEditorEnvelopeSchema } from '@documenso/lib/types/envelope-editor';
+import { ZEditorEnvelopeSchema } from '@bchatsign/lib/types/envelope-editor';
 import { z } from 'zod';
 
 export const ZGetEditorEnvelopeRequestSchema = z.object({

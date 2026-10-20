@@ -1,9 +1,9 @@
-import { useCurrentOrganisation } from '@documenso/lib/client-only/providers/organisation';
-import { useSession } from '@documenso/lib/client-only/providers/session';
-import { APP_DOCUMENT_UPLOAD_SIZE_LIMIT, IS_BILLING_ENABLED } from '@documenso/lib/constants/app';
-import { getAllowedUploadMimeTypes } from '@documenso/lib/constants/document-conversion';
-import { megabytesToBytes } from '@documenso/lib/universal/unit-convertions';
-import { isPersonalLayout } from '@documenso/lib/utils/organisations';
+import { useCurrentOrganisation } from '@bchatsign/lib/client-only/providers/organisation';
+import { useSession } from '@bchatsign/lib/client-only/providers/session';
+import { APP_DOCUMENT_UPLOAD_SIZE_LIMIT, IS_BILLING_ENABLED } from '@bchatsign/lib/constants/app';
+import { getAllowedUploadMimeTypes } from '@bchatsign/lib/constants/document-conversion';
+import { megabytesToBytes } from '@bchatsign/lib/universal/unit-convertions';
+import { isPersonalLayout } from '@bchatsign/lib/utils/organisations';
 import type { MessageDescriptor } from '@lingui/core';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';

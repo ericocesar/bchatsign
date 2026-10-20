@@ -1,10 +1,10 @@
-import { DATE_FORMATS } from '@documenso/lib/constants/date-formats';
-import { DOCUMENT_SIGNATURE_TYPES } from '@documenso/lib/constants/document';
-import { SUPPORTED_LANGUAGES } from '@documenso/lib/constants/i18n';
-import { TIME_ZONES } from '@documenso/lib/constants/time-zones';
-import { DocumentEmailCheckboxes } from '@documenso/ui/components/document/document-email-checkboxes';
-import { DocumentSendEmailMessageHelper } from '@documenso/ui/components/document/document-send-email-message-helper';
-import { Combobox } from '@documenso/ui/primitives/combobox';
+import { DATE_FORMATS } from '@bchatsign/lib/constants/date-formats';
+import { DOCUMENT_SIGNATURE_TYPES } from '@bchatsign/lib/constants/document';
+import { SUPPORTED_LANGUAGES } from '@bchatsign/lib/constants/i18n';
+import { TIME_ZONES } from '@bchatsign/lib/constants/time-zones';
+import { DocumentEmailCheckboxes } from '@bchatsign/ui/components/document/document-email-checkboxes';
+import { DocumentSendEmailMessageHelper } from '@bchatsign/ui/components/document/document-send-email-message-helper';
+import { Combobox } from '@bchatsign/ui/primitives/combobox';
 import {
   FormControl,
   FormDescription,
@@ -12,13 +12,13 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@documenso/ui/primitives/form/form';
-import { Input } from '@documenso/ui/primitives/input';
-import { MultiSelectCombobox } from '@documenso/ui/primitives/multi-select-combobox';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@documenso/ui/primitives/select';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@documenso/ui/primitives/tabs';
-import { Textarea } from '@documenso/ui/primitives/textarea';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@documenso/ui/primitives/tooltip';
+} from '@bchatsign/ui/primitives/form/form';
+import { Input } from '@bchatsign/ui/primitives/input';
+import { MultiSelectCombobox } from '@bchatsign/ui/primitives/multi-select-combobox';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@bchatsign/ui/primitives/select';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@bchatsign/ui/primitives/tabs';
+import { Textarea } from '@bchatsign/ui/primitives/textarea';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@bchatsign/ui/primitives/tooltip';
 import { t } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';

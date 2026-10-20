@@ -1,7 +1,7 @@
-import { syncMemberCountWithStripeSeatPlan } from '@documenso/ee/server-only/stripe/update-subscription-item-quantity';
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { jobs } from '@documenso/lib/jobs/client';
-import { prisma } from '@documenso/prisma';
+import { syncMemberCountWithStripeSeatPlan } from '@bchatsign/ee/server-only/stripe/update-subscription-item-quantity';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { jobs } from '@bchatsign/lib/jobs/client';
+import { prisma } from '@bchatsign/prisma';
 import { OrganisationMemberInviteStatus } from '@prisma/client';
 
 import { adminProcedure } from '../trpc';

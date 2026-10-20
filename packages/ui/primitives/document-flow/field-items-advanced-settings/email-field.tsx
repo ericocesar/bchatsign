@@ -1,8 +1,8 @@
-import { validateFields as validateEmailFields } from '@documenso/lib/advanced-fields-validation/validate-fields';
-import { DEFAULT_EMAIL_OVERFLOW_MODE, type TEmailFieldMeta as EmailFieldMeta } from '@documenso/lib/types/field-meta';
-import { Input } from '@documenso/ui/primitives/input';
-import { Label } from '@documenso/ui/primitives/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@documenso/ui/primitives/select';
+import { validateFields as validateEmailFields } from '@bchatsign/lib/advanced-fields-validation/validate-fields';
+import { DEFAULT_EMAIL_OVERFLOW_MODE, type TEmailFieldMeta as EmailFieldMeta } from '@bchatsign/lib/types/field-meta';
+import { Input } from '@bchatsign/ui/primitives/input';
+import { Label } from '@bchatsign/ui/primitives/label';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@bchatsign/ui/primitives/select';
 import { Trans, useLingui } from '@lingui/react/macro';
 
 type EmailFieldAdvancedSettingsProps = {

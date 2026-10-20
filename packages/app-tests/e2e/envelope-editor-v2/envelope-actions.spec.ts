@@ -1,17 +1,17 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
-import { createApiToken } from '@documenso/lib/server-only/public-api/create-api-token';
-import { prisma } from '@documenso/prisma';
-import { seedTemplate } from '@documenso/prisma/seed/templates';
-import { seedUser } from '@documenso/prisma/seed/users';
+import { NEXT_PUBLIC_WEBAPP_URL } from '@bchatsign/lib/constants/app';
+import { createApiToken } from '@bchatsign/lib/server-only/public-api/create-api-token';
+import { prisma } from '@bchatsign/prisma';
+import { seedTemplate } from '@bchatsign/prisma/seed/templates';
+import { seedUser } from '@bchatsign/prisma/seed/users';
 import type {
   TCreateEnvelopePayload,
   TCreateEnvelopeResponse,
-} from '@documenso/trpc/server/envelope-router/create-envelope.types';
-import type { TDistributeEnvelopeRequest } from '@documenso/trpc/server/envelope-router/distribute-envelope.types';
-import type { TCreateEnvelopeRecipientsRequest } from '@documenso/trpc/server/envelope-router/envelope-recipients/create-envelope-recipients.types';
-import type { TGetEnvelopeResponse } from '@documenso/trpc/server/envelope-router/get-envelope.types';
+} from '@bchatsign/trpc/server/envelope-router/create-envelope.types';
+import type { TDistributeEnvelopeRequest } from '@bchatsign/trpc/server/envelope-router/distribute-envelope.types';
+import type { TCreateEnvelopeRecipientsRequest } from '@bchatsign/trpc/server/envelope-router/envelope-recipients/create-envelope-recipients.types';
+import type { TGetEnvelopeResponse } from '@bchatsign/trpc/server/envelope-router/get-envelope.types';
 import { expect, type Page, test } from '@playwright/test';
 import { DocumentStatus, EnvelopeType, FieldType, RecipientRole } from '@prisma/client';
 
@@ -57,7 +57,7 @@ const createPendingEnvelopeViaApi = async () => {
     expiresIn: null,
   });
 
-  const recipientEmail = `resend-${Date.now()}@test.documenso.com`;
+  const recipientEmail = `resend-${Date.now()}@test.bchatsign.com`;
 
   // 1. Create envelope with a PDF.
   const payload = {

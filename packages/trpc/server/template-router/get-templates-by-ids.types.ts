@@ -1,4 +1,4 @@
-import { ZTemplateManySchema } from '@documenso/lib/types/template';
+import { ZTemplateManySchema } from '@bchatsign/lib/types/template';
 import { z } from 'zod';
 
 import type { TrpcRouteMeta } from '../trpc';

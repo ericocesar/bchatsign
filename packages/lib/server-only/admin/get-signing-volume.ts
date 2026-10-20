@@ -1,5 +1,5 @@
-import type { DateRange } from '@documenso/lib/types/search-params';
-import { kyselyPrisma, sql } from '@documenso/prisma';
+import type { DateRange } from '@bchatsign/lib/types/search-params';
+import { kyselyPrisma, sql } from '@bchatsign/prisma';
 import { DocumentStatus, EnvelopeType } from '@prisma/client';
 
 export type OrganisationInsights = {

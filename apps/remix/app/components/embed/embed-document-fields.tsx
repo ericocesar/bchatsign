@@ -1,19 +1,19 @@
-import { DEFAULT_DOCUMENT_DATE_FORMAT } from '@documenso/lib/constants/date-formats';
-import { PDF_VIEWER_PAGE_SELECTOR } from '@documenso/lib/constants/pdf-viewer';
-import { DEFAULT_DOCUMENT_TIME_ZONE } from '@documenso/lib/constants/time-zones';
+import { DEFAULT_DOCUMENT_DATE_FORMAT } from '@bchatsign/lib/constants/date-formats';
+import { PDF_VIEWER_PAGE_SELECTOR } from '@bchatsign/lib/constants/pdf-viewer';
+import { DEFAULT_DOCUMENT_TIME_ZONE } from '@bchatsign/lib/constants/time-zones';
 import {
   ZCheckboxFieldMeta,
   ZDropdownFieldMeta,
   ZNumberFieldMeta,
   ZRadioFieldMeta,
   ZTextFieldMeta,
-} from '@documenso/lib/types/field-meta';
-import type { FieldWithSignatureAndFieldMeta } from '@documenso/prisma/types/field-with-signature-and-fieldmeta';
+} from '@bchatsign/lib/types/field-meta';
+import type { FieldWithSignatureAndFieldMeta } from '@bchatsign/prisma/types/field-with-signature-and-fieldmeta';
 import type {
   TRemovedSignedFieldWithTokenMutationSchema,
   TSignFieldWithTokenMutationSchema,
-} from '@documenso/trpc/server/field-router/schema';
-import { ElementVisible } from '@documenso/ui/primitives/element-visible';
+} from '@bchatsign/trpc/server/field-router/schema';
+import { ElementVisible } from '@bchatsign/ui/primitives/element-visible';
 import type { DocumentMeta } from '@prisma/client';
 import { type Field, FieldType } from '@prisma/client';
 import { match } from 'ts-pattern';

@@ -3,7 +3,7 @@ import {
   IS_MICROSOFT_SSO_ENABLED,
   IS_OIDC_SSO_ENABLED,
   OIDC_PROVIDER_LABEL,
-} from '@documenso/lib/constants/auth';
+} from '@bchatsign/lib/constants/auth';
 import { Trans } from '@lingui/react/macro';
 import { isRouteErrorResponse, Outlet, useRouteError } from 'react-router';
 

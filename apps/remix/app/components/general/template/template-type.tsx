@@ -1,4 +1,4 @@
-import { cn } from '@documenso/ui/lib/utils';
+import { cn } from '@bchatsign/ui/lib/utils';
 
 import type { MessageDescriptor } from '@lingui/core';
 import { msg } from '@lingui/core/macro';

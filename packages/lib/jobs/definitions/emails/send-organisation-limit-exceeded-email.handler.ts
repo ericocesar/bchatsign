@@ -1,6 +1,6 @@
-import { mailer } from '@documenso/email/mailer';
-import OrganisationLimitExceededEmailTemplate from '@documenso/email/templates/organisation-limit-exceeded';
-import { prisma } from '@documenso/prisma';
+import { mailer } from '@bchatsign/email/mailer';
+import OrganisationLimitExceededEmailTemplate from '@bchatsign/email/templates/organisation-limit-exceeded';
+import { prisma } from '@bchatsign/prisma';
 import { msg } from '@lingui/core/macro';
 import { createElement } from 'react';
 

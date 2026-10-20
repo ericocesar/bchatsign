@@ -15,7 +15,7 @@ export const TemplateConfirmationEmail = ({ confirmationLink, assetBaseUrl }: Te
 
       <Section className="flex-row items-center justify-center">
         <Text className="mx-auto mb-0 max-w-[80%] text-center font-semibold text-lg text-primary">
-          <Trans>Welcome to Documenso!</Trans>
+          <Trans>Welcome to Bchatsign!</Trans>
         </Text>
 
         <Text className="my-1 text-center text-base text-slate-400">
@@ -24,7 +24,7 @@ export const TemplateConfirmationEmail = ({ confirmationLink, assetBaseUrl }: Te
 
         <Section className="mt-8 mb-6 text-center">
           <Button
-            className="inline-flex items-center justify-center rounded-lg bg-documenso-500 px-6 py-3 text-center font-medium text-black text-sm no-underline"
+            className="inline-flex items-center justify-center rounded-lg bg-bchatsign-500 px-6 py-3 text-center font-medium text-black text-sm no-underline"
             href={confirmationLink}
           >
             <Trans>Confirm email</Trans>

@@ -1,4 +1,4 @@
-import { formatDocumentsPath } from '@documenso/lib/utils/teams';
+import { formatDocumentsPath } from '@bchatsign/lib/utils/teams';
 import { redirect } from 'react-router';
 
 import type { Route } from './+types/_index';

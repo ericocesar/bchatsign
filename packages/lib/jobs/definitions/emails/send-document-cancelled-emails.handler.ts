@@ -1,7 +1,7 @@
-import { mailer } from '@documenso/email/mailer';
-import DocumentCancelTemplate from '@documenso/email/templates/document-cancel';
-import { isRecipientEmailValidForSending } from '@documenso/lib/utils/recipients';
-import { prisma } from '@documenso/prisma';
+import { mailer } from '@bchatsign/email/mailer';
+import DocumentCancelTemplate from '@bchatsign/email/templates/document-cancel';
+import { isRecipientEmailValidForSending } from '@bchatsign/lib/utils/recipients';
+import { prisma } from '@bchatsign/prisma';
 import { msg } from '@lingui/core/macro';
 import { EnvelopeType, ReadStatus, SendStatus, SigningStatus } from '@prisma/client';
 import { createElement } from 'react';

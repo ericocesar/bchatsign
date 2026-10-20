@@ -1,5 +1,5 @@
-import { ZFieldSchema } from '@documenso/lib/types/field';
-import { ZEnvelopeFieldAndMetaSchema } from '@documenso/lib/types/field-meta';
+import { ZFieldSchema } from '@bchatsign/lib/types/field';
+import { ZEnvelopeFieldAndMetaSchema } from '@bchatsign/lib/types/field-meta';
 import { z } from 'zod';
 
 import type { TrpcRouteMeta } from '../../trpc';

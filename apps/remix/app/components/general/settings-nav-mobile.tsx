@@ -1,8 +1,8 @@
-import { useSession } from '@documenso/lib/client-only/providers/session';
-import { IS_BILLING_ENABLED } from '@documenso/lib/constants/app';
-import { canExecuteOrganisationAction, isPersonalLayout } from '@documenso/lib/utils/organisations';
-import { cn } from '@documenso/ui/lib/utils';
-import { Button } from '@documenso/ui/primitives/button';
+import { useSession } from '@bchatsign/lib/client-only/providers/session';
+import { IS_BILLING_ENABLED } from '@bchatsign/lib/constants/app';
+import { canExecuteOrganisationAction, isPersonalLayout } from '@bchatsign/lib/utils/organisations';
+import { cn } from '@bchatsign/ui/lib/utils';
+import { Button } from '@bchatsign/ui/primitives/button';
 import { Trans } from '@lingui/react/macro';
 import {
   BracesIcon,

@@ -1,4 +1,4 @@
-import { isBase64Image } from '@documenso/lib/constants/signatures';
+import { isBase64Image } from '@bchatsign/lib/constants/signatures';
 import { createContext, useContext, useState } from 'react';
 
 export type DocumentSigningContextValue = {

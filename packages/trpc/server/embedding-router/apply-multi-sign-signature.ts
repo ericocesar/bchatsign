@@ -1,9 +1,9 @@
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { getDocumentByToken } from '@documenso/lib/server-only/document/get-document-by-token';
-import { signFieldWithToken } from '@documenso/lib/server-only/field/sign-field-with-token';
-import { getRecipientByToken } from '@documenso/lib/server-only/recipient/get-recipient-by-token';
-import { extractDocumentAuthMethods } from '@documenso/lib/utils/document-auth';
-import { prisma } from '@documenso/prisma';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { getDocumentByToken } from '@bchatsign/lib/server-only/document/get-document-by-token';
+import { signFieldWithToken } from '@bchatsign/lib/server-only/field/sign-field-with-token';
+import { getRecipientByToken } from '@bchatsign/lib/server-only/recipient/get-recipient-by-token';
+import { extractDocumentAuthMethods } from '@bchatsign/lib/utils/document-auth';
+import { prisma } from '@bchatsign/prisma';
 import { FieldType, ReadStatus, SigningStatus } from '@prisma/client';
 
 import { procedure } from '../trpc';

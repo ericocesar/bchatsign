@@ -1,4 +1,4 @@
-import { prisma } from '@documenso/prisma';
+import { prisma } from '@bchatsign/prisma';
 import type { TeamProfile } from '@prisma/client';
 
 import { AppError, AppErrorCode } from '../../errors/app-error';

@@ -1,10 +1,10 @@
-import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
-import { createApiToken } from '@documenso/lib/server-only/public-api/create-api-token';
-import { mapSecondaryIdToDocumentId } from '@documenso/lib/utils/envelope';
-import { prisma } from '@documenso/prisma';
-import { FieldType } from '@documenso/prisma/client';
-import { seedPendingDocumentWithFullFields } from '@documenso/prisma/seed/documents';
-import { seedUser } from '@documenso/prisma/seed/users';
+import { NEXT_PUBLIC_WEBAPP_URL } from '@bchatsign/lib/constants/app';
+import { createApiToken } from '@bchatsign/lib/server-only/public-api/create-api-token';
+import { mapSecondaryIdToDocumentId } from '@bchatsign/lib/utils/envelope';
+import { prisma } from '@bchatsign/prisma';
+import { FieldType } from '@bchatsign/prisma/client';
+import { seedPendingDocumentWithFullFields } from '@bchatsign/prisma/seed/documents';
+import { seedUser } from '@bchatsign/prisma/seed/users';
 import { type APIRequestContext, type APIResponse, expect, test } from '@playwright/test';
 import type { Organisation, Team, User } from '@prisma/client';
 
@@ -364,7 +364,7 @@ const seedRemindableDocument = async ({
     teamId: team.id,
     recipients: Array.from(
       { length: recipientCount },
-      (_, i) => `rl-${Date.now()}-${i}-${Math.random().toString(36).slice(2)}@test.documenso.com`,
+      (_, i) => `rl-${Date.now()}-${i}-${Math.random().toString(36).slice(2)}@test.bchatsign.com`,
     ),
     fields: [FieldType.SIGNATURE],
   });

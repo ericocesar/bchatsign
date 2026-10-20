@@ -3,8 +3,8 @@ import {
   FIELD_DEFAULT_GENERIC_ALIGN,
   type TNameFieldMeta as NameFieldMeta,
   ZNameFieldMeta,
-} from '@documenso/lib/types/field-meta';
-import { Form } from '@documenso/ui/primitives/form/form';
+} from '@bchatsign/lib/types/field-meta';
+import { Form } from '@bchatsign/ui/primitives/form/form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect } from 'react';
 import { useForm, useWatch } from 'react-hook-form';

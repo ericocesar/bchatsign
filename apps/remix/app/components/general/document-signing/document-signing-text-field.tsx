@@ -1,19 +1,19 @@
-import { validateTextField } from '@documenso/lib/advanced-fields-validation/validate-text';
-import { DO_NOT_INVALIDATE_QUERY_ON_MUTATION } from '@documenso/lib/constants/trpc';
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import type { TRecipientActionAuth } from '@documenso/lib/types/document-auth';
-import { ZTextFieldMeta } from '@documenso/lib/types/field-meta';
-import type { FieldWithSignatureAndFieldMeta } from '@documenso/prisma/types/field-with-signature-and-fieldmeta';
-import { trpc } from '@documenso/trpc/react';
+import { validateTextField } from '@bchatsign/lib/advanced-fields-validation/validate-text';
+import { DO_NOT_INVALIDATE_QUERY_ON_MUTATION } from '@bchatsign/lib/constants/trpc';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import type { TRecipientActionAuth } from '@bchatsign/lib/types/document-auth';
+import { ZTextFieldMeta } from '@bchatsign/lib/types/field-meta';
+import type { FieldWithSignatureAndFieldMeta } from '@bchatsign/prisma/types/field-with-signature-and-fieldmeta';
+import { trpc } from '@bchatsign/trpc/react';
 import type {
   TRemovedSignedFieldWithTokenMutationSchema,
   TSignFieldWithTokenMutationSchema,
-} from '@documenso/trpc/server/field-router/schema';
-import { cn } from '@documenso/ui/lib/utils';
-import { Button } from '@documenso/ui/primitives/button';
-import { Dialog, DialogContent, DialogFooter, DialogTitle } from '@documenso/ui/primitives/dialog';
-import { Textarea } from '@documenso/ui/primitives/textarea';
-import { useToast } from '@documenso/ui/primitives/use-toast';
+} from '@bchatsign/trpc/server/field-router/schema';
+import { cn } from '@bchatsign/ui/lib/utils';
+import { Button } from '@bchatsign/ui/primitives/button';
+import { Dialog, DialogContent, DialogFooter, DialogTitle } from '@bchatsign/ui/primitives/dialog';
+import { Textarea } from '@bchatsign/ui/primitives/textarea';
+import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Plural, Trans } from '@lingui/react/macro';

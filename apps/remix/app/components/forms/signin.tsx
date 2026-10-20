@@ -1,18 +1,18 @@
-import { authClient } from '@documenso/auth/client';
-import { AuthenticationErrorCode } from '@documenso/auth/server/lib/errors/error-codes';
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { env } from '@documenso/lib/utils/env';
-import { zEmail } from '@documenso/lib/utils/zod';
-import { trpc } from '@documenso/trpc/react';
-import { ZCurrentPasswordSchema } from '@documenso/trpc/server/auth-router/schema';
-import { cn } from '@documenso/ui/lib/utils';
-import { Button } from '@documenso/ui/primitives/button';
-import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@documenso/ui/primitives/dialog';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@documenso/ui/primitives/form/form';
-import { Input } from '@documenso/ui/primitives/input';
-import { PasswordInput } from '@documenso/ui/primitives/password-input';
-import { PinInput, PinInputGroup, PinInputSlot } from '@documenso/ui/primitives/pin-input';
-import { useToast } from '@documenso/ui/primitives/use-toast';
+import { authClient } from '@bchatsign/auth/client';
+import { AuthenticationErrorCode } from '@bchatsign/auth/server/lib/errors/error-codes';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { env } from '@bchatsign/lib/utils/env';
+import { zEmail } from '@bchatsign/lib/utils/zod';
+import { trpc } from '@bchatsign/trpc/react';
+import { ZCurrentPasswordSchema } from '@bchatsign/trpc/server/auth-router/schema';
+import { cn } from '@bchatsign/ui/lib/utils';
+import { Button } from '@bchatsign/ui/primitives/button';
+import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@bchatsign/ui/primitives/dialog';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@bchatsign/ui/primitives/form/form';
+import { Input } from '@bchatsign/ui/primitives/input';
+import { PasswordInput } from '@bchatsign/ui/primitives/password-input';
+import { PinInput, PinInputGroup, PinInputSlot } from '@bchatsign/ui/primitives/pin-input';
+import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import type { MessageDescriptor } from '@lingui/core';
 import { msg } from '@lingui/core/macro';
@@ -377,7 +377,7 @@ export const SignInForm = ({
             />
           )}
 
-          <Button type="submit" size="lg" loading={isSubmitting} className="dark:bg-documenso dark:hover:opacity-90">
+          <Button type="submit" size="lg" loading={isSubmitting} className="dark:bg-bchatsign dark:hover:opacity-90">
             {isSubmitting ? <Trans>Signing in...</Trans> : <Trans>Sign In</Trans>}
           </Button>
 

@@ -1,16 +1,16 @@
-import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
-import { createApiToken } from '@documenso/lib/server-only/public-api/create-api-token';
-import { prisma } from '@documenso/prisma';
-import { DocumentStatus, DocumentVisibility, EnvelopeType, TeamMemberRole } from '@documenso/prisma/client';
+import { NEXT_PUBLIC_WEBAPP_URL } from '@bchatsign/lib/constants/app';
+import { createApiToken } from '@bchatsign/lib/server-only/public-api/create-api-token';
+import { prisma } from '@bchatsign/prisma';
+import { DocumentStatus, DocumentVisibility, EnvelopeType, TeamMemberRole } from '@bchatsign/prisma/client';
 import {
   seedBlankDocument,
   seedCompletedDocument,
   seedDraftDocument,
   seedPendingDocument,
-} from '@documenso/prisma/seed/documents';
-import { seedTeam, seedTeamEmail, seedTeamMember } from '@documenso/prisma/seed/teams';
-import { seedUser } from '@documenso/prisma/seed/users';
-import type { TFindEnvelopesResponse } from '@documenso/trpc/server/envelope-router/find-envelopes.types';
+} from '@bchatsign/prisma/seed/documents';
+import { seedTeam, seedTeamEmail, seedTeamMember } from '@bchatsign/prisma/seed/teams';
+import { seedUser } from '@bchatsign/prisma/seed/users';
+import type { TFindEnvelopesResponse } from '@bchatsign/trpc/server/envelope-router/find-envelopes.types';
 import { expect, test } from '@playwright/test';
 import type { Team, User } from '@prisma/client';
 
@@ -664,7 +664,7 @@ test.describe('Find Envelopes API - Team Context', () => {
 test.describe('Find Envelopes API - Team Email', () => {
   test('should include envelopes received by team email from external senders', async ({ request }) => {
     const { team, owner } = await seedTeam();
-    const teamEmailAddr = `team-find-env-${team.id}@test.documenso.com`;
+    const teamEmailAddr = `team-find-env-${team.id}@test.bchatsign.com`;
     await seedTeamEmail({ email: teamEmailAddr, teamId: team.id });
 
     const { user: externalUser, team: externalTeam } = await seedUser();
@@ -701,7 +701,7 @@ test.describe('Find Envelopes API - Team Email', () => {
 
   test('should NOT include external noise from other teams when team has team email', async ({ request }) => {
     const { team: teamA, owner: ownerA } = await seedTeam();
-    const teamEmailAddr = `team-noise-${teamA.id}@test.documenso.com`;
+    const teamEmailAddr = `team-noise-${teamA.id}@test.bchatsign.com`;
     await seedTeamEmail({ email: teamEmailAddr, teamId: teamA.id });
 
     const { team: teamB, owner: ownerB } = await seedTeam();
@@ -728,7 +728,7 @@ test.describe('Find Envelopes API - Team Email', () => {
 
   test('team email received docs bypass visibility for managers', async ({ request }) => {
     const { team, owner } = await seedTeam();
-    const teamEmailAddr = `team-vis-env-${team.id}@test.documenso.com`;
+    const teamEmailAddr = `team-vis-env-${team.id}@test.bchatsign.com`;
     await seedTeamEmail({ email: teamEmailAddr, teamId: team.id });
 
     const { user: externalUser, team: externalTeam } = await seedUser();

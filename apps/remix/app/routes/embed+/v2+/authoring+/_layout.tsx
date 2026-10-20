@@ -1,15 +1,15 @@
-import { PAID_PLAN_LIMITS } from '@documenso/ee/server-only/limits/constants';
-import { LimitsProvider } from '@documenso/ee/server-only/limits/provider/client';
-import { OrganisationProvider } from '@documenso/lib/client-only/providers/organisation';
-import { APP_I18N_OPTIONS } from '@documenso/lib/constants/i18n';
-import { verifyEmbeddingPresignToken } from '@documenso/lib/server-only/embedding-presign/verify-embedding-presign-token';
-import { getOrganisationClaimByTeamId } from '@documenso/lib/server-only/organisation/get-organisation-claims';
-import { getTeamSettings } from '@documenso/lib/server-only/team/get-team-settings';
-import { ZBaseEmbedDataSchema } from '@documenso/lib/types/embed-base-schemas';
-import { dynamicActivate } from '@documenso/lib/utils/i18n';
-import { TrpcProvider } from '@documenso/trpc/react';
-import type { OrganisationSession } from '@documenso/trpc/server/organisation-router/get-organisation-session.types';
-import { Spinner } from '@documenso/ui/primitives/spinner';
+import { PAID_PLAN_LIMITS } from '@bchatsign/ee/server-only/limits/constants';
+import { LimitsProvider } from '@bchatsign/ee/server-only/limits/provider/client';
+import { OrganisationProvider } from '@bchatsign/lib/client-only/providers/organisation';
+import { APP_I18N_OPTIONS } from '@bchatsign/lib/constants/i18n';
+import { verifyEmbeddingPresignToken } from '@bchatsign/lib/server-only/embedding-presign/verify-embedding-presign-token';
+import { getOrganisationClaimByTeamId } from '@bchatsign/lib/server-only/organisation/get-organisation-claims';
+import { getTeamSettings } from '@bchatsign/lib/server-only/team/get-team-settings';
+import { ZBaseEmbedDataSchema } from '@bchatsign/lib/types/embed-base-schemas';
+import { dynamicActivate } from '@bchatsign/lib/utils/i18n';
+import { TrpcProvider } from '@bchatsign/trpc/react';
+import type { OrganisationSession } from '@bchatsign/trpc/server/organisation-router/get-organisation-session.types';
+import { Spinner } from '@bchatsign/ui/primitives/spinner';
 import { Trans } from '@lingui/react/macro';
 import { OrganisationMemberRole, OrganisationType, TeamMemberRole } from '@prisma/client';
 import { useLayoutEffect, useState } from 'react';
@@ -184,7 +184,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
               <li>
                 <Trans>
                   If you are using staging, ensure that you have set the host prop on the embedding component to the
-                  staging domain (https://stg-app.documenso.com)
+                  staging domain (https://stg-app.bchatsign.com)
                 </Trans>
               </li>
             </ul>

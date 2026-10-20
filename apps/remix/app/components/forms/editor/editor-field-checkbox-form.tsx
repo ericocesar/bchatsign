@@ -1,20 +1,20 @@
-import { validateCheckboxLength } from '@documenso/lib/advanced-fields-validation/validate-checkbox';
+import { validateCheckboxLength } from '@bchatsign/lib/advanced-fields-validation/validate-checkbox';
 import {
   type TCheckboxFieldMeta as CheckboxFieldMeta,
   DEFAULT_FIELD_FONT_SIZE,
   ZCheckboxFieldMeta,
-} from '@documenso/lib/types/field-meta';
-import { Alert, AlertDescription } from '@documenso/ui/primitives/alert';
-import { Checkbox } from '@documenso/ui/primitives/checkbox';
+} from '@bchatsign/lib/types/field-meta';
+import { Alert, AlertDescription } from '@bchatsign/ui/primitives/alert';
+import { Checkbox } from '@bchatsign/ui/primitives/checkbox';
 import {
   checkboxValidationLength,
   checkboxValidationRules,
   checkboxValidationSigns,
-} from '@documenso/ui/primitives/document-flow/field-items-advanced-settings/constants';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@documenso/ui/primitives/form/form';
-import { Input } from '@documenso/ui/primitives/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@documenso/ui/primitives/select';
-import { Separator } from '@documenso/ui/primitives/separator';
+} from '@bchatsign/ui/primitives/document-flow/field-items-advanced-settings/constants';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@bchatsign/ui/primitives/form/form';
+import { Input } from '@bchatsign/ui/primitives/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@bchatsign/ui/primitives/select';
+import { Separator } from '@bchatsign/ui/primitives/separator';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { t } from '@lingui/core/macro';
 import { Trans } from '@lingui/react/macro';

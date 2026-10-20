@@ -1,10 +1,10 @@
-import { ZDocumentLiteSchema } from '@documenso/lib/types/document';
-import { ZRecipientLiteSchema } from '@documenso/lib/types/recipient';
-import DocumentDataSchema from '@documenso/prisma/generated/zod/modelSchema/DocumentDataSchema';
-import DocumentMetaSchema from '@documenso/prisma/generated/zod/modelSchema/DocumentMetaSchema';
-import EnvelopeItemSchema from '@documenso/prisma/generated/zod/modelSchema/EnvelopeItemSchema';
-import FieldSchema from '@documenso/prisma/generated/zod/modelSchema/FieldSchema';
-import SignatureSchema from '@documenso/prisma/generated/zod/modelSchema/SignatureSchema';
+import { ZDocumentLiteSchema } from '@bchatsign/lib/types/document';
+import { ZRecipientLiteSchema } from '@bchatsign/lib/types/recipient';
+import DocumentDataSchema from '@bchatsign/prisma/generated/zod/modelSchema/DocumentDataSchema';
+import DocumentMetaSchema from '@bchatsign/prisma/generated/zod/modelSchema/DocumentMetaSchema';
+import EnvelopeItemSchema from '@bchatsign/prisma/generated/zod/modelSchema/EnvelopeItemSchema';
+import FieldSchema from '@bchatsign/prisma/generated/zod/modelSchema/FieldSchema';
+import SignatureSchema from '@bchatsign/prisma/generated/zod/modelSchema/SignatureSchema';
 import { z } from 'zod';
 
 export const ZGetMultiSignDocumentRequestSchema = z.object({

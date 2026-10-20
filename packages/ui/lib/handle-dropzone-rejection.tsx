@@ -1,4 +1,4 @@
-import { APP_DOCUMENT_UPLOAD_SIZE_LIMIT } from '@documenso/lib/constants/app';
+import { APP_DOCUMENT_UPLOAD_SIZE_LIMIT } from '@bchatsign/lib/constants/app';
 import { msg } from '@lingui/core/macro';
 import { ErrorCode, type FileRejection } from 'react-dropzone';
 import { match } from 'ts-pattern';

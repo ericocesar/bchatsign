@@ -1,4 +1,4 @@
-import { getCookieDomain, useSecureCookies } from '@documenso/lib/constants/auth';
+import { getCookieDomain, useSecureCookies } from '@bchatsign/lib/constants/auth';
 import { createCookieSessionStorage } from 'react-router';
 import { createThemeSessionResolver } from 'remix-themes';
 

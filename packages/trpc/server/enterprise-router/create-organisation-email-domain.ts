@@ -1,9 +1,9 @@
-import { createEmailDomain } from '@documenso/ee/server-only/lib/create-email-domain';
-import { IS_BILLING_ENABLED } from '@documenso/lib/constants/app';
-import { ORGANISATION_MEMBER_ROLE_PERMISSIONS_MAP } from '@documenso/lib/constants/organisations';
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { buildOrganisationWhereQuery } from '@documenso/lib/utils/organisations';
-import { prisma } from '@documenso/prisma';
+import { createEmailDomain } from '@bchatsign/ee/server-only/lib/create-email-domain';
+import { IS_BILLING_ENABLED } from '@bchatsign/lib/constants/app';
+import { ORGANISATION_MEMBER_ROLE_PERMISSIONS_MAP } from '@bchatsign/lib/constants/organisations';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { buildOrganisationWhereQuery } from '@bchatsign/lib/utils/organisations';
+import { prisma } from '@bchatsign/prisma';
 
 import { authenticatedProcedure } from '../trpc';
 import {

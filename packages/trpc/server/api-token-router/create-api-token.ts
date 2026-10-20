@@ -1,4 +1,4 @@
-import { createApiToken } from '@documenso/lib/server-only/public-api/create-api-token';
+import { createApiToken } from '@bchatsign/lib/server-only/public-api/create-api-token';
 
 import { authenticatedProcedure } from '../trpc';
 import { ZCreateApiTokenRequestSchema, ZCreateApiTokenResponseSchema } from './create-api-token.types';

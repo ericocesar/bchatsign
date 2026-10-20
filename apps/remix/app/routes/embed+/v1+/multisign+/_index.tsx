@@ -1,8 +1,8 @@
-import { getOptionalSession } from '@documenso/auth/server/lib/utils/get-session';
-import { getDocumentAndSenderByToken } from '@documenso/lib/server-only/document/get-document-by-token';
-import { getOrganisationClaimByTeamId } from '@documenso/lib/server-only/organisation/get-organisation-claims';
-import { getRecipientByToken } from '@documenso/lib/server-only/recipient/get-recipient-by-token';
-import { ZSignDocumentEmbedDataSchema } from '@documenso/lib/types/embed-document-sign-schema';
+import { getOptionalSession } from '@bchatsign/auth/server/lib/utils/get-session';
+import { getDocumentAndSenderByToken } from '@bchatsign/lib/server-only/document/get-document-by-token';
+import { getOrganisationClaimByTeamId } from '@bchatsign/lib/server-only/organisation/get-organisation-claims';
+import { getRecipientByToken } from '@bchatsign/lib/server-only/recipient/get-recipient-by-token';
+import { ZSignDocumentEmbedDataSchema } from '@bchatsign/lib/types/embed-document-sign-schema';
 import { Trans } from '@lingui/react/macro';
 import { SigningStatus } from '@prisma/client';
 import { useEffect, useLayoutEffect, useState } from 'react';

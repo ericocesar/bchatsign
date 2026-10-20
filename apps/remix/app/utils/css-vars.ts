@@ -1,4 +1,4 @@
-import { CSS_LENGTH_REGEX, type TCssVarsSchema } from '@documenso/lib/types/css-vars';
+import { CSS_LENGTH_REGEX, type TCssVarsSchema } from '@bchatsign/lib/types/css-vars';
 import { colord } from 'colord';
 import { toKebabCase } from 'remeda';
 

@@ -1,4 +1,4 @@
-import { ZRegistrationResponseJSONSchema } from '@documenso/lib/types/webauthn';
+import { ZRegistrationResponseJSONSchema } from '@bchatsign/lib/types/webauthn';
 import { z } from 'zod';
 
 export const ZCreatePasskeyRequestSchema = z.object({

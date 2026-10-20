@@ -1,4 +1,4 @@
-import { ZDetectedRecipientSchema } from '@documenso/lib/server-only/ai/envelope/detect-recipients/schema';
+import { ZDetectedRecipientSchema } from '@bchatsign/lib/server-only/ai/envelope/detect-recipients/schema';
 import { z } from 'zod';
 
 export const ZDetectRecipientsRequestSchema = z.object({

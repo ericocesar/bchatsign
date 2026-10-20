@@ -1,12 +1,12 @@
-import type { getTeamWithEmail } from '@documenso/lib/server-only/team/get-team-email-by-email';
-import { trpc } from '@documenso/trpc/react';
+import type { getTeamWithEmail } from '@bchatsign/lib/server-only/team/get-team-email-by-email';
+import { trpc } from '@bchatsign/trpc/react';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@documenso/ui/primitives/dropdown-menu';
-import { useToast } from '@documenso/ui/primitives/use-toast';
+} from '@bchatsign/ui/primitives/dropdown-menu';
+import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';

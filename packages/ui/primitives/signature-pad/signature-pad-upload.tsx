@@ -1,5 +1,5 @@
-import { unsafe_useEffectOnce } from '@documenso/lib/client-only/hooks/use-effect-once';
-import { SIGNATURE_CANVAS_DPI } from '@documenso/lib/constants/signatures';
+import { unsafe_useEffectOnce } from '@bchatsign/lib/client-only/hooks/use-effect-once';
+import { SIGNATURE_CANVAS_DPI } from '@bchatsign/lib/constants/signatures';
 import { Trans } from '@lingui/react/macro';
 import { motion } from 'framer-motion';
 import { UploadCloudIcon } from 'lucide-react';

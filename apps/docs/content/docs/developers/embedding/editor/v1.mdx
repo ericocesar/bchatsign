@@ -41,7 +41,7 @@ All editor components require a **presign token** for authentication. See the [E
 ## Creating Documents
 
 ```jsx
-import { EmbedCreateDocumentV1 } from '@documenso/embed-react';
+import { EmbedCreateDocumentV1 } from '@bchatsign/embed-react';
 
 const DocumentCreator = ({ presignToken }) => {
   return (
@@ -64,7 +64,7 @@ const DocumentCreator = ({ presignToken }) => {
 ## Creating Templates
 
 ```jsx
-import { EmbedCreateTemplateV1 } from '@documenso/embed-react';
+import { EmbedCreateTemplateV1 } from '@bchatsign/embed-react';
 
 const TemplateCreator = ({ presignToken }) => {
   return (
@@ -86,7 +86,7 @@ const TemplateCreator = ({ presignToken }) => {
 ## Editing Documents
 
 ```jsx
-import { EmbedUpdateDocumentV1 } from '@documenso/embed-react';
+import { EmbedUpdateDocumentV1 } from '@bchatsign/embed-react';
 
 const DocumentEditor = ({ presignToken, documentId }) => {
   return (
@@ -109,7 +109,7 @@ const DocumentEditor = ({ presignToken, documentId }) => {
 ## Editing Templates
 
 ```jsx
-import { EmbedUpdateTemplateV1 } from '@documenso/embed-react';
+import { EmbedUpdateTemplateV1 } from '@bchatsign/embed-react';
 
 const TemplateEditor = ({ presignToken, templateId }) => {
   return (
@@ -137,11 +137,11 @@ const TemplateEditor = ({ presignToken, templateId }) => {
 | ------------------ | --------- | -------- | -------------------------------------------------------- |
 | `presignToken`     | `string`  | Yes      | Authentication token from your backend                   |
 | `externalId`       | `string`  | No       | Your reference ID to link with the document or template  |
-| `host`             | `string`  | No       | Custom host URL. Defaults to `https://app.documenso.com` |
+| `host`             | `string`  | No       | Custom host URL. Defaults to `https://app.bchatsign.com` |
 | `css`              | `string`  | No       | Custom CSS string (Platform Plan)                        |
 | `cssVars`          | `object`  | No       | [CSS variable](/docs/developers/embedding/css-variables) overrides (Platform Plan) |
 | `darkModeDisabled` | `boolean` | No       | Disable dark mode (Platform Plan)                        |
-| `language`         | `string`  | No       | Set the UI language. See [Supported Languages](https://github.com/documenso/documenso/tree/main/packages/lib/constants/locales.ts) |
+| `language`         | `string`  | No       | Set the UI language. See [Supported Languages](https://github.com/bchatsign/bchatsign/tree/main/packages/lib/constants/locales.ts) |
 | `className`        | `string`  | No       | CSS class for the iframe                                 |
 | `features`         | `object`  | No       | Feature toggles for the editor experience                |
 
@@ -210,7 +210,7 @@ This example shows a full workflow where users create a document and then edit i
 ```tsx
 import { useState } from 'react';
 
-import { EmbedCreateDocumentV1, EmbedUpdateDocumentV1 } from '@documenso/embed-react';
+import { EmbedCreateDocumentV1, EmbedUpdateDocumentV1 } from '@bchatsign/embed-react';
 
 const DocumentManager = ({ presignToken }) => {
   const [documentId, setDocumentId] = useState(null);

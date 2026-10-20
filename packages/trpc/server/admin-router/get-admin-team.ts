@@ -1,7 +1,7 @@
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { getHighestOrganisationRoleInGroup } from '@documenso/lib/utils/organisations';
-import { getHighestTeamRoleInGroup } from '@documenso/lib/utils/teams';
-import { prisma } from '@documenso/prisma';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { getHighestOrganisationRoleInGroup } from '@bchatsign/lib/utils/organisations';
+import { getHighestTeamRoleInGroup } from '@bchatsign/lib/utils/teams';
+import { prisma } from '@bchatsign/prisma';
 import { OrganisationMemberInviteStatus } from '@prisma/client';
 
 import { adminProcedure } from '../trpc';

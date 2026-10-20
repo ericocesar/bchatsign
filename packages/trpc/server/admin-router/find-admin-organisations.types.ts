@@ -1,7 +1,7 @@
-import { ZFindResultResponse, ZFindSearchParamsSchema } from '@documenso/lib/types/search-params';
-import OrganisationSchema from '@documenso/prisma/generated/zod/modelSchema/OrganisationSchema';
-import SubscriptionSchema from '@documenso/prisma/generated/zod/modelSchema/SubscriptionSchema';
-import UserSchema from '@documenso/prisma/generated/zod/modelSchema/UserSchema';
+import { ZFindResultResponse, ZFindSearchParamsSchema } from '@bchatsign/lib/types/search-params';
+import OrganisationSchema from '@bchatsign/prisma/generated/zod/modelSchema/OrganisationSchema';
+import SubscriptionSchema from '@bchatsign/prisma/generated/zod/modelSchema/SubscriptionSchema';
+import UserSchema from '@bchatsign/prisma/generated/zod/modelSchema/UserSchema';
 import { z } from 'zod';
 
 export const ZFindAdminOrganisationsRequestSchema = ZFindSearchParamsSchema.extend({

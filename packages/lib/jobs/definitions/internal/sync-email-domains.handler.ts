@@ -1,6 +1,6 @@
-import { reregisterEmailDomain } from '@documenso/ee/server-only/lib/reregister-email-domain';
-import { verifyEmailDomain } from '@documenso/ee/server-only/lib/verify-email-domain';
-import { prisma } from '@documenso/prisma';
+import { reregisterEmailDomain } from '@bchatsign/ee/server-only/lib/reregister-email-domain';
+import { verifyEmailDomain } from '@bchatsign/ee/server-only/lib/verify-email-domain';
+import { prisma } from '@bchatsign/prisma';
 import { DateTime } from 'luxon';
 
 import type { JobRunIO } from '../../client/_internal/job';

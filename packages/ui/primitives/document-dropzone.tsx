@@ -1,7 +1,7 @@
-import { useCurrentOrganisation } from '@documenso/lib/client-only/providers/organisation';
-import { APP_DOCUMENT_UPLOAD_SIZE_LIMIT, IS_BILLING_ENABLED } from '@documenso/lib/constants/app';
-import { getAllowedUploadMimeTypes } from '@documenso/lib/constants/document-conversion';
-import { megabytesToBytes } from '@documenso/lib/universal/unit-convertions';
+import { useCurrentOrganisation } from '@bchatsign/lib/client-only/providers/organisation';
+import { APP_DOCUMENT_UPLOAD_SIZE_LIMIT, IS_BILLING_ENABLED } from '@bchatsign/lib/constants/app';
+import { getAllowedUploadMimeTypes } from '@bchatsign/lib/constants/document-conversion';
+import { megabytesToBytes } from '@bchatsign/lib/universal/unit-convertions';
 import type { MessageDescriptor } from '@lingui/core';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
@@ -121,26 +121,26 @@ export const DocumentDropzone = ({
             // Non Disabled State
             <div className="flex">
               <motion.div
-                className="a z-10 flex aspect-[3/4] w-24 origin-top-right -rotate-[22deg] flex-col gap-y-1 rounded-lg border border-muted-foreground/20 bg-background/80 px-2 py-4 backdrop-blur-sm group-hover:border-documenso/80"
+                className="a z-10 flex aspect-[3/4] w-24 origin-top-right -rotate-[22deg] flex-col gap-y-1 rounded-lg border border-muted-foreground/20 bg-background/80 px-2 py-4 backdrop-blur-sm group-hover:border-bchatsign/80"
                 variants={DocumentDropzoneCardLeftVariants}
               >
-                <div className="h-2 w-full rounded-[2px] bg-muted-foreground/20 group-hover:bg-documenso" />
-                <div className="h-2 w-5/6 rounded-[2px] bg-muted-foreground/20 group-hover:bg-documenso" />
-                <div className="h-2 w-full rounded-[2px] bg-muted-foreground/20 group-hover:bg-documenso" />
+                <div className="h-2 w-full rounded-[2px] bg-muted-foreground/20 group-hover:bg-bchatsign" />
+                <div className="h-2 w-5/6 rounded-[2px] bg-muted-foreground/20 group-hover:bg-bchatsign" />
+                <div className="h-2 w-full rounded-[2px] bg-muted-foreground/20 group-hover:bg-bchatsign" />
               </motion.div>
               <motion.div
-                className="z-20 flex aspect-[3/4] w-24 flex-col items-center justify-center gap-y-1 rounded-lg border border-muted-foreground/20 bg-background/80 px-2 py-4 backdrop-blur-sm group-hover:border-documenso/80"
+                className="z-20 flex aspect-[3/4] w-24 flex-col items-center justify-center gap-y-1 rounded-lg border border-muted-foreground/20 bg-background/80 px-2 py-4 backdrop-blur-sm group-hover:border-bchatsign/80"
                 variants={DocumentDropzoneCardCenterVariants}
               >
-                <Plus strokeWidth="2px" className="h-12 w-12 text-muted-foreground/20 group-hover:text-documenso" />
+                <Plus strokeWidth="2px" className="h-12 w-12 text-muted-foreground/20 group-hover:text-bchatsign" />
               </motion.div>
               <motion.div
-                className="z-10 flex aspect-[3/4] w-24 origin-top-left rotate-[22deg] flex-col gap-y-1 rounded-lg border border-muted-foreground/20 bg-background/80 px-2 py-4 backdrop-blur-sm group-hover:border-documenso/80"
+                className="z-10 flex aspect-[3/4] w-24 origin-top-left rotate-[22deg] flex-col gap-y-1 rounded-lg border border-muted-foreground/20 bg-background/80 px-2 py-4 backdrop-blur-sm group-hover:border-bchatsign/80"
                 variants={DocumentDropzoneCardRightVariants}
               >
-                <div className="h-2 w-full rounded-[2px] bg-muted-foreground/20 group-hover:bg-documenso" />
-                <div className="h-2 w-5/6 rounded-[2px] bg-muted-foreground/20 group-hover:bg-documenso" />
-                <div className="h-2 w-full rounded-[2px] bg-muted-foreground/20 group-hover:bg-documenso" />
+                <div className="h-2 w-full rounded-[2px] bg-muted-foreground/20 group-hover:bg-bchatsign" />
+                <div className="h-2 w-5/6 rounded-[2px] bg-muted-foreground/20 group-hover:bg-bchatsign" />
+                <div className="h-2 w-full rounded-[2px] bg-muted-foreground/20 group-hover:bg-bchatsign" />
               </motion.div>
             </div>
           )}

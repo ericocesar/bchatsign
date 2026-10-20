@@ -1,5 +1,5 @@
-import { ZDocumentManySchema } from '@documenso/lib/types/document';
-import { ZFindResultResponse, ZFindSearchParamsSchema } from '@documenso/lib/types/search-params';
+import { ZDocumentManySchema } from '@bchatsign/lib/types/document';
+import { ZFindResultResponse, ZFindSearchParamsSchema } from '@bchatsign/lib/types/search-params';
 import { z } from 'zod';
 
 export const ZFindDocumentsRequestSchema = ZFindSearchParamsSchema.extend({

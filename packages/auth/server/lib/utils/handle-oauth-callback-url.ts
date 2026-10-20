@@ -1,16 +1,16 @@
-import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
+import { NEXT_PUBLIC_WEBAPP_URL } from '@bchatsign/lib/constants/app';
 import {
   isDisposableEmail,
   isEmailDomainAllowedForSignup,
   isSignupEnabledForProvider,
-} from '@documenso/lib/constants/auth';
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { getEmailBlocklistDomains } from '@documenso/lib/server-only/site-settings/get-email-blocklist-domains';
-import { onCreateUserHook } from '@documenso/lib/server-only/user/create-user';
-import { deletedServiceAccountEmail } from '@documenso/lib/server-only/user/service-accounts/deleted-account';
-import { legacyServiceAccountEmail } from '@documenso/lib/server-only/user/service-accounts/legacy-service-account';
-import { isValidReturnTo, normalizeReturnTo } from '@documenso/lib/utils/is-valid-return-to';
-import { prisma } from '@documenso/prisma';
+} from '@bchatsign/lib/constants/auth';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { getEmailBlocklistDomains } from '@bchatsign/lib/server-only/site-settings/get-email-blocklist-domains';
+import { onCreateUserHook } from '@bchatsign/lib/server-only/user/create-user';
+import { deletedServiceAccountEmail } from '@bchatsign/lib/server-only/user/service-accounts/deleted-account';
+import { legacyServiceAccountEmail } from '@bchatsign/lib/server-only/user/service-accounts/legacy-service-account';
+import { isValidReturnTo, normalizeReturnTo } from '@bchatsign/lib/utils/is-valid-return-to';
+import { prisma } from '@bchatsign/prisma';
 import { UserSecurityAuditLogType } from '@prisma/client';
 import { decodeIdToken, OAuth2Client } from 'arctic';
 import type { Context } from 'hono';

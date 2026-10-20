@@ -1,4 +1,4 @@
-import { ZNameSchema } from '@documenso/lib/constants/auth';
+import { ZNameSchema } from '@bchatsign/lib/constants/auth';
 import { z } from 'zod';
 
 export const ZCreateUserRequestSchema = z.object({

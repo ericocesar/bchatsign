@@ -1,4 +1,4 @@
-import { prisma } from '@documenso/prisma';
+import { prisma } from '@bchatsign/prisma';
 import { DocumentDistributionMethod, RecipientRole, SendStatus, SigningStatus } from '@prisma/client';
 
 import { resolveNextReminderAt, ZEnvelopeReminderSettings } from '../../constants/envelope-reminder';

@@ -1,6 +1,6 @@
-import { stripe } from '@documenso/lib/server-only/stripe';
-import { INTERNAL_CLAIM_ID, type InternalClaim, internalClaims } from '@documenso/lib/types/subscription';
-import { toHumanPrice } from '@documenso/lib/universal/stripe/to-human-price';
+import { stripe } from '@bchatsign/lib/server-only/stripe';
+import { INTERNAL_CLAIM_ID, type InternalClaim, internalClaims } from '@bchatsign/lib/types/subscription';
+import { toHumanPrice } from '@bchatsign/lib/universal/stripe/to-human-price';
 import { clone } from 'remeda';
 import type Stripe from 'stripe';
 
@@ -20,7 +20,7 @@ export type InternalClaimPlans = {
 };
 
 /**
- * Returns the main Documenso plans from Stripe.
+ * Returns the main Bchatsign plans from Stripe.
  */
 export const getInternalClaimPlans = async (): Promise<InternalClaimPlans> => {
   const { data: prices } = await stripe.prices.search({

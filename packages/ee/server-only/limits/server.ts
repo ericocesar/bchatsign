@@ -1,6 +1,6 @@
-import { IS_BILLING_ENABLED } from '@documenso/lib/constants/app';
-import { INTERNAL_CLAIM_ID } from '@documenso/lib/types/subscription';
-import { prisma } from '@documenso/prisma';
+import { IS_BILLING_ENABLED } from '@bchatsign/lib/constants/app';
+import { INTERNAL_CLAIM_ID } from '@bchatsign/lib/types/subscription';
+import { prisma } from '@bchatsign/prisma';
 import { DocumentSource, EnvelopeType, SubscriptionStatus } from '@prisma/client';
 import { DateTime } from 'luxon';
 

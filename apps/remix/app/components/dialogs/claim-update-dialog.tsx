@@ -1,7 +1,7 @@
-import type { TLicenseClaim } from '@documenso/lib/types/license';
-import { trpc } from '@documenso/trpc/react';
-import type { TFindSubscriptionClaimsResponse } from '@documenso/trpc/server/admin-router/find-subscription-claims.types';
-import { Button } from '@documenso/ui/primitives/button';
+import type { TLicenseClaim } from '@bchatsign/lib/types/license';
+import { trpc } from '@bchatsign/trpc/react';
+import type { TFindSubscriptionClaimsResponse } from '@bchatsign/trpc/server/admin-router/find-subscription-claims.types';
+import { Button } from '@bchatsign/ui/primitives/button';
 import {
   Dialog,
   DialogContent,
@@ -10,8 +10,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@documenso/ui/primitives/dialog';
-import { useToast } from '@documenso/ui/primitives/use-toast';
+} from '@bchatsign/ui/primitives/dialog';
+import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { Trans, useLingui } from '@lingui/react/macro';
 import { useState } from 'react';
 

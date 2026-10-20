@@ -1,12 +1,12 @@
-import { createEnvelopeFields } from '@documenso/lib/server-only/field/create-envelope-fields';
-import { deleteDocumentField } from '@documenso/lib/server-only/field/delete-document-field';
-import { deleteTemplateField } from '@documenso/lib/server-only/field/delete-template-field';
-import { getFieldById } from '@documenso/lib/server-only/field/get-field-by-id';
-import { removeSignedFieldWithToken } from '@documenso/lib/server-only/field/remove-signed-field-with-token';
-import { setFieldsForDocument } from '@documenso/lib/server-only/field/set-fields-for-document';
-import { setFieldsForTemplate } from '@documenso/lib/server-only/field/set-fields-for-template';
-import { signFieldWithToken } from '@documenso/lib/server-only/field/sign-field-with-token';
-import { updateEnvelopeFields } from '@documenso/lib/server-only/field/update-envelope-fields';
+import { createEnvelopeFields } from '@bchatsign/lib/server-only/field/create-envelope-fields';
+import { deleteDocumentField } from '@bchatsign/lib/server-only/field/delete-document-field';
+import { deleteTemplateField } from '@bchatsign/lib/server-only/field/delete-template-field';
+import { getFieldById } from '@bchatsign/lib/server-only/field/get-field-by-id';
+import { removeSignedFieldWithToken } from '@bchatsign/lib/server-only/field/remove-signed-field-with-token';
+import { setFieldsForDocument } from '@bchatsign/lib/server-only/field/set-fields-for-document';
+import { setFieldsForTemplate } from '@bchatsign/lib/server-only/field/set-fields-for-template';
+import { signFieldWithToken } from '@bchatsign/lib/server-only/field/sign-field-with-token';
+import { updateEnvelopeFields } from '@bchatsign/lib/server-only/field/update-envelope-fields';
 import { EnvelopeType } from '@prisma/client';
 
 import { ZGenericSuccessResponse, ZSuccessResponseSchema } from '../schema';

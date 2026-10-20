@@ -1,4 +1,4 @@
-import { getEditorEnvelopeById } from '@documenso/lib/server-only/envelope/get-editor-envelope-by-id';
+import { getEditorEnvelopeById } from '@bchatsign/lib/server-only/envelope/get-editor-envelope-by-id';
 
 import { authenticatedProcedure } from '../trpc';
 import { ZGetEditorEnvelopeRequestSchema, ZGetEditorEnvelopeResponseSchema } from './get-editor-envelope.types';

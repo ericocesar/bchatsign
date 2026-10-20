@@ -1,4 +1,4 @@
-import { prisma } from '@documenso/prisma';
+import { prisma } from '@bchatsign/prisma';
 import { EnvelopeType, type Prisma } from '@prisma/client';
 
 import type { FindResultResponse } from '../../types/search-params';

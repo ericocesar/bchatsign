@@ -1,7 +1,7 @@
-import { onSubscriptionUpdated } from '@documenso/ee/server-only/stripe/webhook/on-subscription-updated';
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { Stripe, stripe } from '@documenso/lib/server-only/stripe';
-import { prisma } from '@documenso/prisma';
+import { onSubscriptionUpdated } from '@bchatsign/ee/server-only/stripe/webhook/on-subscription-updated';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { Stripe, stripe } from '@bchatsign/lib/server-only/stripe';
+import { prisma } from '@bchatsign/prisma';
 
 import { adminProcedure } from '../trpc';
 import {

@@ -1,5 +1,5 @@
-import { jobs } from '@documenso/lib/jobs/client';
-import { prisma } from '@documenso/prisma';
+import { jobs } from '@bchatsign/lib/jobs/client';
+import { prisma } from '@bchatsign/prisma';
 import { DocumentStatus, EnvelopeType, SigningStatus } from '@prisma/client';
 
 import { AppError, AppErrorCode } from '../../errors/app-error';

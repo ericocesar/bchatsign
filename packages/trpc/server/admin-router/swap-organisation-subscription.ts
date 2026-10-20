@@ -1,8 +1,8 @@
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { createOrganisationClaimUpsertData } from '@documenso/lib/server-only/organisation/create-organisation';
-import { getSubscriptionClaim } from '@documenso/lib/server-only/subscription/get-subscription-claim';
-import { INTERNAL_CLAIM_ID } from '@documenso/lib/types/subscription';
-import { prisma } from '@documenso/prisma';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { createOrganisationClaimUpsertData } from '@bchatsign/lib/server-only/organisation/create-organisation';
+import { getSubscriptionClaim } from '@bchatsign/lib/server-only/subscription/get-subscription-claim';
+import { INTERNAL_CLAIM_ID } from '@bchatsign/lib/types/subscription';
+import { prisma } from '@bchatsign/prisma';
 import { SubscriptionStatus } from '@prisma/client';
 
 import { adminProcedure } from '../trpc';

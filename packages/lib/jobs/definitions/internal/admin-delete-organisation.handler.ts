@@ -1,4 +1,4 @@
-import { prisma } from '@documenso/prisma';
+import { prisma } from '@bchatsign/prisma';
 
 import { ORGANISATION_USER_ACCOUNT_TYPE } from '../../../constants/organisations';
 import { getEmailContext } from '../../../server-only/email/get-email-context';

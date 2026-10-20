@@ -1,6 +1,6 @@
-import { getEnvelopeById } from '@documenso/lib/server-only/envelope/get-envelope-by-id';
+import { getEnvelopeById } from '@bchatsign/lib/server-only/envelope/get-envelope-by-id';
 
-import { findAttachmentsByEnvelopeId } from '@documenso/lib/server-only/envelope-attachment/find-attachments-by-envelope-id';
+import { findAttachmentsByEnvelopeId } from '@bchatsign/lib/server-only/envelope-attachment/find-attachments-by-envelope-id';
 import { EnvelopeType } from '@prisma/client';
 
 import { authenticatedProcedure } from '../../trpc';

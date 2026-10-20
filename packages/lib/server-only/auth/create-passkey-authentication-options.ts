@@ -1,4 +1,4 @@
-import { prisma } from '@documenso/prisma';
+import { prisma } from '@bchatsign/prisma';
 import type { Passkey } from '@prisma/client';
 import type { AuthenticatorTransportFuture } from '@simplewebauthn/server';
 import { generateAuthenticationOptions } from '@simplewebauthn/server';

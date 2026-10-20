@@ -1,7 +1,7 @@
-import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
-import { getFileServerSide } from '@documenso/lib/universal/upload/get-file.server';
-import { mapSecondaryIdToDocumentId } from '@documenso/lib/utils/envelope';
-import { prisma } from '@documenso/prisma';
+import { NEXT_PUBLIC_WEBAPP_URL } from '@bchatsign/lib/constants/app';
+import { getFileServerSide } from '@bchatsign/lib/universal/upload/get-file.server';
+import { mapSecondaryIdToDocumentId } from '@bchatsign/lib/utils/envelope';
+import { prisma } from '@bchatsign/prisma';
 import { PDF } from '@libpdf/core';
 import type { APIRequestContext } from '@playwright/test';
 import { expect, test } from '@playwright/test';
@@ -61,8 +61,8 @@ test.describe('API V2 partial signed PDF downloads', () => {
   test('returns a PDF with inserted fields, supports ETag, and rejects after completion', async ({ request }) => {
     const { envelope, token, distributeResult } = await apiSeedPendingDocument(request, {
       recipients: [
-        { email: 'partial-signer-1@test.documenso.com', name: 'Partial Signer 1' },
-        { email: 'partial-signer-2@test.documenso.com', name: 'Partial Signer 2' },
+        { email: 'partial-signer-1@test.bchatsign.com', name: 'Partial Signer 1' },
+        { email: 'partial-signer-2@test.bchatsign.com', name: 'Partial Signer 2' },
       ],
       fieldsPerRecipient: [
         [{ type: FieldType.SIGNATURE, page: 1, positionX: 5, positionY: 5, width: 15, height: 5 }],
@@ -202,7 +202,7 @@ test.describe('API V2 partial signed PDF downloads', () => {
 
   test('rejects draft and legacy pending envelopes', async ({ request }) => {
     const draft = await apiSeedDraftDocument(request, {
-      recipients: [{ email: 'partial-draft@test.documenso.com', name: 'Draft Signer' }],
+      recipients: [{ email: 'partial-draft@test.bchatsign.com', name: 'Draft Signer' }],
     });
     const draftResponse = await request.get(
       `${API_BASE_URL}/envelope/item/${draft.envelope.envelopeItems[0].id}/download?version=pending`,

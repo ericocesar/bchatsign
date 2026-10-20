@@ -1,11 +1,11 @@
 import { CreateEmailIdentityCommand, SESv2Client } from '@aws-sdk/client-sesv2';
-import { DOCUMENSO_ENCRYPTION_KEY } from '@documenso/lib/constants/crypto';
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { symmetricEncrypt } from '@documenso/lib/universal/crypto';
-import { generateDatabaseId } from '@documenso/lib/universal/id';
-import { generateEmailDomainRecords } from '@documenso/lib/utils/email-domains';
-import { env } from '@documenso/lib/utils/env';
-import { prisma } from '@documenso/prisma';
+import { BCHATSIGN_ENCRYPTION_KEY } from '@bchatsign/lib/constants/crypto';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { symmetricEncrypt } from '@bchatsign/lib/universal/crypto';
+import { generateDatabaseId } from '@bchatsign/lib/universal/id';
+import { generateEmailDomainRecords } from '@bchatsign/lib/utils/email-domains';
+import { env } from '@bchatsign/lib/utils/env';
+import { prisma } from '@bchatsign/prisma';
 import { EmailDomainStatus } from '@prisma/client';
 import { generateKeyPair } from 'crypto';
 import { promisify } from 'util';
@@ -61,13 +61,13 @@ type DomainRecord = {
 };
 
 export const createEmailDomain = async ({ domain, organisationId }: CreateEmailDomainOptions) => {
-  const encryptionKey = DOCUMENSO_ENCRYPTION_KEY;
+  const encryptionKey = BCHATSIGN_ENCRYPTION_KEY;
 
   if (!encryptionKey) {
-    throw new Error('Missing DOCUMENSO_ENCRYPTION_KEY');
+    throw new Error('Missing BCHATSIGN_ENCRYPTION_KEY');
   }
 
-  const selector = `documenso-${organisationId}`.replace(/[_.]/g, '-');
+  const selector = `bchatsign-${organisationId}`.replace(/[_.]/g, '-');
   const recordName = `${selector}._domainkey.${domain}`;
 
   // Check if domain already exists

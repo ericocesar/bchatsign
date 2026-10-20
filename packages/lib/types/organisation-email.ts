@@ -1,4 +1,4 @@
-import { OrganisationEmailSchema } from '@documenso/prisma/generated/zod/modelSchema/OrganisationEmailSchema';
+import { OrganisationEmailSchema } from '@bchatsign/prisma/generated/zod/modelSchema/OrganisationEmailSchema';
 import { EmailDomainStatus } from '@prisma/client';
 import { z } from 'zod';
 

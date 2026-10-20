@@ -1,16 +1,16 @@
-import { useCopyToClipboard } from '@documenso/lib/client-only/hooks/use-copy-to-clipboard';
-import { formatDirectTemplatePath } from '@documenso/lib/utils/templates';
-import { trpc } from '@documenso/trpc/react';
-import type { FindTemplateRow } from '@documenso/trpc/server/template-router/schema';
+import { useCopyToClipboard } from '@bchatsign/lib/client-only/hooks/use-copy-to-clipboard';
+import { formatDirectTemplatePath } from '@bchatsign/lib/utils/templates';
+import { trpc } from '@bchatsign/trpc/react';
+import type { FindTemplateRow } from '@bchatsign/trpc/server/template-router/schema';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
-} from '@documenso/ui/primitives/dropdown-menu';
-import { Skeleton } from '@documenso/ui/primitives/skeleton';
-import { useToast } from '@documenso/ui/primitives/use-toast';
+} from '@bchatsign/ui/primitives/dropdown-menu';
+import { Skeleton } from '@bchatsign/ui/primitives/skeleton';
+import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';

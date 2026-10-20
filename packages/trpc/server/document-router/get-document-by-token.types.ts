@@ -1,4 +1,4 @@
-import DocumentDataSchema from '@documenso/prisma/generated/zod/modelSchema/DocumentDataSchema';
+import DocumentDataSchema from '@bchatsign/prisma/generated/zod/modelSchema/DocumentDataSchema';
 import { z } from 'zod';
 
 export const ZGetDocumentByTokenRequestSchema = z.object({

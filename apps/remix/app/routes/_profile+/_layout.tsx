@@ -1,7 +1,7 @@
-import LogoIcon from '@documenso/assets/logo_icon.png';
-import { useOptionalSession } from '@documenso/lib/client-only/providers/session';
-import { cn } from '@documenso/ui/lib/utils';
-import { Button } from '@documenso/ui/primitives/button';
+import LogoIcon from '@bchatsign/assets/logo_icon.png';
+import { useOptionalSession } from '@bchatsign/lib/client-only/providers/session';
+import { cn } from '@bchatsign/ui/lib/utils';
+import { Button } from '@bchatsign/ui/primitives/button';
 import { msg } from '@lingui/core/macro';
 import { Trans } from '@lingui/react/macro';
 import { ChevronLeft, PlusIcon } from 'lucide-react';
@@ -54,7 +54,7 @@ export default function PublicProfileLayout() {
 
               <img
                 src={LogoIcon}
-                alt="Documenso Logo"
+                alt="Bchatsign Logo"
                 width={48}
                 height={48}
                 className="h-10 w-auto sm:hidden dark:invert"

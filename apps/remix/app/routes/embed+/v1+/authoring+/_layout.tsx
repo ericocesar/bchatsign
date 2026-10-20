@@ -1,10 +1,10 @@
-import { APP_I18N_OPTIONS } from '@documenso/lib/constants/i18n';
-import { verifyEmbeddingPresignToken } from '@documenso/lib/server-only/embedding-presign/verify-embedding-presign-token';
-import { getOrganisationClaimByTeamId } from '@documenso/lib/server-only/organisation/get-organisation-claims';
-import { ZBaseEmbedAuthoringSchema } from '@documenso/lib/types/embed-authoring-base-schema';
-import { dynamicActivate } from '@documenso/lib/utils/i18n';
-import { TrpcProvider } from '@documenso/trpc/react';
-import { Spinner } from '@documenso/ui/primitives/spinner';
+import { APP_I18N_OPTIONS } from '@bchatsign/lib/constants/i18n';
+import { verifyEmbeddingPresignToken } from '@bchatsign/lib/server-only/embedding-presign/verify-embedding-presign-token';
+import { getOrganisationClaimByTeamId } from '@bchatsign/lib/server-only/organisation/get-organisation-claims';
+import { ZBaseEmbedAuthoringSchema } from '@bchatsign/lib/types/embed-authoring-base-schema';
+import { dynamicActivate } from '@bchatsign/lib/utils/i18n';
+import { TrpcProvider } from '@bchatsign/trpc/react';
+import { Spinner } from '@bchatsign/ui/primitives/spinner';
 import { Trans } from '@lingui/react/macro';
 import { useLayoutEffect, useState } from 'react';
 import { Outlet, useLoaderData } from 'react-router';

@@ -1,12 +1,12 @@
-import { mailer } from '@documenso/email/mailer';
-import { ConfirmEmailTemplate } from '@documenso/email/templates/confirm-email';
-import { prisma } from '@documenso/prisma';
+import { mailer } from '@bchatsign/email/mailer';
+import { ConfirmEmailTemplate } from '@bchatsign/email/templates/confirm-email';
+import { prisma } from '@bchatsign/prisma';
 import { msg } from '@lingui/core/macro';
 import { createElement } from 'react';
 
 import { getI18nInstance } from '../../client-only/providers/i18n-server';
 import { NEXT_PUBLIC_WEBAPP_URL } from '../../constants/app';
-import { DOCUMENSO_INTERNAL_EMAIL, USER_SIGNUP_VERIFICATION_TOKEN_IDENTIFIER } from '../../constants/email';
+import { BCHATSIGN_INTERNAL_EMAIL, USER_SIGNUP_VERIFICATION_TOKEN_IDENTIFIER } from '../../constants/email';
 import { renderEmailWithI18N } from '../../utils/render-email-with-i18n';
 
 export interface SendConfirmationEmailProps {
@@ -57,7 +57,7 @@ export const sendConfirmationEmail = async ({ userId }: SendConfirmationEmailPro
       address: user.email,
       name: user.name || '',
     },
-    from: DOCUMENSO_INTERNAL_EMAIL,
+    from: BCHATSIGN_INTERNAL_EMAIL,
     subject: i18n._(msg`Please confirm your email`),
     html,
     text,

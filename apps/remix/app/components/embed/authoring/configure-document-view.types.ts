@@ -1,8 +1,8 @@
-import { ZDocumentEmailSettingsSchema } from '@documenso/lib/types/document-email';
-import { ZDocumentMetaDateFormatSchema, ZDocumentMetaLanguageSchema } from '@documenso/lib/types/document-meta';
-import { ZRecipientEmailSchema } from '@documenso/lib/types/recipient';
-import { zEmail } from '@documenso/lib/utils/zod';
-import { DocumentDistributionMethod } from '@documenso/prisma/generated/types';
+import { ZDocumentEmailSettingsSchema } from '@bchatsign/lib/types/document-email';
+import { ZDocumentMetaDateFormatSchema, ZDocumentMetaLanguageSchema } from '@bchatsign/lib/types/document-meta';
+import { ZRecipientEmailSchema } from '@bchatsign/lib/types/recipient';
+import { zEmail } from '@bchatsign/lib/utils/zod';
+import { DocumentDistributionMethod } from '@bchatsign/prisma/generated/types';
 import { z } from 'zod';
 
 // Define the schema for configuration

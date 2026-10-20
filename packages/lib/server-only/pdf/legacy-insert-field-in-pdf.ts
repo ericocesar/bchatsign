@@ -1,15 +1,16 @@
 // https://github.com/Hopding/pdf-lib/issues/20#issuecomment-412852821
-import type { PDFDocument } from '@cantoo/pdf-lib';
-import { degrees, RotationTypes, radiansToDegrees, rgb } from '@cantoo/pdf-lib';
+
 import {
   DEFAULT_HANDWRITING_FONT_SIZE,
   DEFAULT_STANDARD_FONT_SIZE,
   MIN_HANDWRITING_FONT_SIZE,
   MIN_STANDARD_FONT_SIZE,
-} from '@documenso/lib/constants/pdf';
-import { fromCheckboxValue } from '@documenso/lib/universal/field-checkbox';
-import { isSignatureFieldType } from '@documenso/prisma/guards/is-signature-field';
-import type { FieldWithSignature } from '@documenso/prisma/types/field-with-signature';
+} from '@bchatsign/lib/constants/pdf';
+import { fromCheckboxValue } from '@bchatsign/lib/universal/field-checkbox';
+import { isSignatureFieldType } from '@bchatsign/prisma/guards/is-signature-field';
+import type { FieldWithSignature } from '@bchatsign/prisma/types/field-with-signature';
+import type { PDFDocument } from '@cantoo/pdf-lib';
+import { degrees, RotationTypes, radiansToDegrees, rgb } from '@cantoo/pdf-lib';
 import fontkit from '@pdf-lib/fontkit';
 import { FieldType } from '@prisma/client';
 import { match, P } from 'ts-pattern';

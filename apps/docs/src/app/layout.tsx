@@ -10,19 +10,19 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://docs.documenso.com'),
+  metadataBase: new URL('https://docs.bchatsign.com'),
   title: {
-    template: '%s | Documenso Docs',
-    default: 'Documenso Docs',
+    template: '%s | Bchatsign Docs',
+    default: 'Bchatsign Docs',
   },
-  description: 'The official documentation for Documenso, the open-source document signing platform.',
+  description: 'The official documentation for Bchatsign, the open-source document signing platform.',
   openGraph: {
-    siteName: 'Documenso Docs',
+    siteName: 'Bchatsign Docs',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    site: '@documenso',
+    site: '@bchatsign',
   },
 };
 
@@ -30,7 +30,7 @@ export default function Layout({ children }: LayoutProps<'/'>) {
   return (
     <html lang="en" className={inter.className} suppressHydrationWarning>
       <body className="flex min-h-screen flex-col">
-        <PlausibleProvider domain="documenso.com">
+        <PlausibleProvider domain="bchatsign.com">
           <RootProvider>{children}</RootProvider>
         </PlausibleProvider>
       </body>

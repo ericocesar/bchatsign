@@ -1,6 +1,6 @@
-import { INTERNAL_CLAIM_ID, internalClaims } from '@documenso/lib/types/subscription';
+import { INTERNAL_CLAIM_ID, internalClaims } from '@bchatsign/lib/types/subscription';
 
-import { prisma } from '@documenso/prisma';
+import { prisma } from '@bchatsign/prisma';
 import type { SubscriptionClaim } from '@prisma/client';
 import { AppError, AppErrorCode } from '../../errors/app-error';
 

@@ -1,32 +1,32 @@
-import { getServerLimits } from '@documenso/ee/server-only/limits/server';
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { jobs } from '@documenso/lib/jobs/client';
-import { getDocumentWithDetailsById } from '@documenso/lib/server-only/document/get-document-with-details-by-id';
-import { sendDocument } from '@documenso/lib/server-only/document/send-document';
-import { convertToPdf } from '@documenso/lib/server-only/document-conversion';
-import { createDocumentData } from '@documenso/lib/server-only/document-data/create-document-data';
-import { createEnvelope } from '@documenso/lib/server-only/envelope/create-envelope';
-import { duplicateEnvelope } from '@documenso/lib/server-only/envelope/duplicate-envelope';
-import { updateEnvelope } from '@documenso/lib/server-only/envelope/update-envelope';
+import { getServerLimits } from '@bchatsign/ee/server-only/limits/server';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { jobs } from '@bchatsign/lib/jobs/client';
+import { getDocumentWithDetailsById } from '@bchatsign/lib/server-only/document/get-document-with-details-by-id';
+import { sendDocument } from '@bchatsign/lib/server-only/document/send-document';
+import { convertToPdf } from '@bchatsign/lib/server-only/document-conversion';
+import { createDocumentData } from '@bchatsign/lib/server-only/document-data/create-document-data';
+import { createEnvelope } from '@bchatsign/lib/server-only/envelope/create-envelope';
+import { duplicateEnvelope } from '@bchatsign/lib/server-only/envelope/duplicate-envelope';
+import { updateEnvelope } from '@bchatsign/lib/server-only/envelope/update-envelope';
 import {
   createDocumentFromDirectTemplate,
   ZCreateDocumentFromDirectTemplateResponseSchema,
-} from '@documenso/lib/server-only/template/create-document-from-direct-template';
-import { createDocumentFromTemplate } from '@documenso/lib/server-only/template/create-document-from-template';
-import { createTemplateDirectLink } from '@documenso/lib/server-only/template/create-template-direct-link';
-import { deleteTemplate } from '@documenso/lib/server-only/template/delete-template';
-import { deleteTemplateDirectLink } from '@documenso/lib/server-only/template/delete-template-direct-link';
-import { findOrganisationTemplates } from '@documenso/lib/server-only/template/find-organisation-templates';
-import { findTemplates } from '@documenso/lib/server-only/template/find-templates';
-import { getOrganisationTemplateById } from '@documenso/lib/server-only/template/get-organisation-template-by-id';
-import { getTemplateById } from '@documenso/lib/server-only/template/get-template-by-id';
-import { toggleTemplateDirectLink } from '@documenso/lib/server-only/template/toggle-template-direct-link';
-import { putNormalizedPdfFileServerSide } from '@documenso/lib/universal/upload/put-file.server';
-import { getPresignPostUrl } from '@documenso/lib/universal/upload/server-actions';
-import { mapSecondaryIdToTemplateId } from '@documenso/lib/utils/envelope';
-import { mapFieldToLegacyField } from '@documenso/lib/utils/fields';
-import { mapRecipientToLegacyRecipient } from '@documenso/lib/utils/recipients';
-import { mapEnvelopeToTemplateLite } from '@documenso/lib/utils/templates';
+} from '@bchatsign/lib/server-only/template/create-document-from-direct-template';
+import { createDocumentFromTemplate } from '@bchatsign/lib/server-only/template/create-document-from-template';
+import { createTemplateDirectLink } from '@bchatsign/lib/server-only/template/create-template-direct-link';
+import { deleteTemplate } from '@bchatsign/lib/server-only/template/delete-template';
+import { deleteTemplateDirectLink } from '@bchatsign/lib/server-only/template/delete-template-direct-link';
+import { findOrganisationTemplates } from '@bchatsign/lib/server-only/template/find-organisation-templates';
+import { findTemplates } from '@bchatsign/lib/server-only/template/find-templates';
+import { getOrganisationTemplateById } from '@bchatsign/lib/server-only/template/get-organisation-template-by-id';
+import { getTemplateById } from '@bchatsign/lib/server-only/template/get-template-by-id';
+import { toggleTemplateDirectLink } from '@bchatsign/lib/server-only/template/toggle-template-direct-link';
+import { putNormalizedPdfFileServerSide } from '@bchatsign/lib/universal/upload/put-file.server';
+import { getPresignPostUrl } from '@bchatsign/lib/universal/upload/server-actions';
+import { mapSecondaryIdToTemplateId } from '@bchatsign/lib/utils/envelope';
+import { mapFieldToLegacyField } from '@bchatsign/lib/utils/fields';
+import { mapRecipientToLegacyRecipient } from '@bchatsign/lib/utils/recipients';
+import { mapEnvelopeToTemplateLite } from '@bchatsign/lib/utils/templates';
 import type { Envelope } from '@prisma/client';
 import { DocumentDataType, EnvelopeType } from '@prisma/client';
 

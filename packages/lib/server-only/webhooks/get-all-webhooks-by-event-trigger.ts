@@ -1,4 +1,4 @@
-import { prisma } from '@documenso/prisma';
+import { prisma } from '@bchatsign/prisma';
 import type { WebhookTriggerEvents } from '@prisma/client';
 
 import { buildTeamWhereQuery } from '../../utils/teams';

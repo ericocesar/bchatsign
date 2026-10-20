@@ -1,6 +1,6 @@
-import { ZOrganisationEmailLiteSchema } from '@documenso/lib/types/organisation-email';
-import EmailDomainSchema from '@documenso/prisma/generated/zod/modelSchema/EmailDomainSchema';
-import OrganisationSchema from '@documenso/prisma/generated/zod/modelSchema/OrganisationSchema';
+import { ZOrganisationEmailLiteSchema } from '@bchatsign/lib/types/organisation-email';
+import EmailDomainSchema from '@bchatsign/prisma/generated/zod/modelSchema/EmailDomainSchema';
+import OrganisationSchema from '@bchatsign/prisma/generated/zod/modelSchema/OrganisationSchema';
 import { z } from 'zod';
 
 export const ZGetEmailDomainRequestSchema = z.object({

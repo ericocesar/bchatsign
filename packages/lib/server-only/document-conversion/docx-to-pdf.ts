@@ -1,4 +1,4 @@
-import { AppError } from '@documenso/lib/errors/app-error';
+import { AppError } from '@bchatsign/lib/errors/app-error';
 import type { Logger } from 'pino';
 
 import {

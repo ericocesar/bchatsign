@@ -1,16 +1,16 @@
-import { useDebouncedValue } from '@documenso/lib/client-only/hooks/use-debounced-value';
-import { useSession } from '@documenso/lib/client-only/providers/session';
-import { SUPPORTED_LANGUAGES } from '@documenso/lib/constants/i18n';
+import { useDebouncedValue } from '@bchatsign/lib/client-only/hooks/use-debounced-value';
+import { useSession } from '@bchatsign/lib/client-only/providers/session';
+import { SUPPORTED_LANGUAGES } from '@bchatsign/lib/constants/i18n';
 import {
   DOCUMENTS_PAGE_SHORTCUT,
   SETTINGS_PAGE_SHORTCUT,
   TEMPLATES_PAGE_SHORTCUT,
-} from '@documenso/lib/constants/keyboard-shortcuts';
-import { DO_NOT_INVALIDATE_QUERY_ON_MUTATION, SKIP_QUERY_BATCH_META } from '@documenso/lib/constants/trpc';
-import { dynamicActivate } from '@documenso/lib/utils/i18n';
-import { isPersonalLayout } from '@documenso/lib/utils/organisations';
-import { trpc as trpcReact } from '@documenso/trpc/react';
-import { cn } from '@documenso/ui/lib/utils';
+} from '@bchatsign/lib/constants/keyboard-shortcuts';
+import { DO_NOT_INVALIDATE_QUERY_ON_MUTATION, SKIP_QUERY_BATCH_META } from '@bchatsign/lib/constants/trpc';
+import { dynamicActivate } from '@bchatsign/lib/utils/i18n';
+import { isPersonalLayout } from '@bchatsign/lib/utils/organisations';
+import { trpc as trpcReact } from '@bchatsign/trpc/react';
+import { cn } from '@bchatsign/ui/lib/utils';
 import {
   CommandDialog,
   CommandEmpty,
@@ -19,8 +19,8 @@ import {
   CommandItem,
   CommandList,
   CommandShortcut,
-} from '@documenso/ui/primitives/command';
-import { useToast } from '@documenso/ui/primitives/use-toast';
+} from '@bchatsign/ui/primitives/command';
+import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import type { MessageDescriptor } from '@lingui/core';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';

@@ -1,14 +1,14 @@
-import { generateDatabaseId } from '@documenso/lib/universal/id';
-import { prisma } from '@documenso/prisma';
+import { generateDatabaseId } from '@bchatsign/lib/universal/id';
+import { prisma } from '@bchatsign/prisma';
 import {
   seedCompletedDocument,
   seedDocuments,
   seedDraftDocument,
   seedPendingDocument,
-} from '@documenso/prisma/seed/documents';
-import { seedOrganisationMembers } from '@documenso/prisma/seed/organisations';
-import { seedTeam, seedTeamEmail, seedTeamMember } from '@documenso/prisma/seed/teams';
-import { seedUser } from '@documenso/prisma/seed/users';
+} from '@bchatsign/prisma/seed/documents';
+import { seedOrganisationMembers } from '@bchatsign/prisma/seed/organisations';
+import { seedTeam, seedTeamEmail, seedTeamMember } from '@bchatsign/prisma/seed/teams';
+import { seedUser } from '@bchatsign/prisma/seed/users';
 import { expect, test } from '@playwright/test';
 import { DocumentStatus, DocumentVisibility, OrganisationMemberRole, TeamMemberRole } from '@prisma/client';
 
@@ -574,7 +574,7 @@ test.describe('Find Documents UI - Team with Team Email', () => {
   test('should show documents sent TO team email', async ({ page }) => {
     const { team, owner } = await seedTeam();
 
-    const teamEmail = `team-ui-email-${team.id}@test.documenso.com`;
+    const teamEmail = `team-ui-email-${team.id}@test.bchatsign.com`;
     await seedTeamEmail({ email: teamEmail, teamId: team.id });
 
     const { user: externalUser, team: externalTeam } = await seedUser();
@@ -621,7 +621,7 @@ test.describe('Find Documents UI - Team with Team Email', () => {
   test('should NOT show drafts sent TO team email', async ({ page }) => {
     const { team, owner } = await seedTeam();
 
-    const teamEmail = `team-ui-draft-${team.id}@test.documenso.com`;
+    const teamEmail = `team-ui-draft-${team.id}@test.bchatsign.com`;
     await seedTeamEmail({ email: teamEmail, teamId: team.id });
 
     const { user: externalUser, team: externalTeam } = await seedUser();
@@ -652,7 +652,7 @@ test.describe('Find Documents UI - Team with Team Email', () => {
   test('should show inbox count for team email recipients', async ({ page }) => {
     const { team, owner } = await seedTeam();
 
-    const teamEmail = `team-ui-inbox-${team.id}@test.documenso.com`;
+    const teamEmail = `team-ui-inbox-${team.id}@test.bchatsign.com`;
     await seedTeamEmail({ email: teamEmail, teamId: team.id });
 
     const { user: sender1, team: sender1Team } = await seedUser();
@@ -1072,7 +1072,7 @@ test.describe('Find Documents UI - Tab Counts Consistency', () => {
   test('team with team email tab counts should include received documents', async ({ page }) => {
     const { team, owner } = await seedTeam();
 
-    const teamEmail = `team-count-${team.id}@test.documenso.com`;
+    const teamEmail = `team-count-${team.id}@test.bchatsign.com`;
     await seedTeamEmail({ email: teamEmail, teamId: team.id });
 
     const { user: external1, team: ext1Team } = await seedUser();

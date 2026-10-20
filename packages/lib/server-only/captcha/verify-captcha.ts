@@ -1,4 +1,4 @@
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
 
 import { logger } from '../../utils/logger';
 

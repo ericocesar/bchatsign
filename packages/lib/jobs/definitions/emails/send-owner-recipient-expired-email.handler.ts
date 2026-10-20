@@ -1,6 +1,6 @@
-import { mailer } from '@documenso/email/mailer';
-import { RecipientExpiredTemplate } from '@documenso/email/templates/recipient-expired';
-import { prisma } from '@documenso/prisma';
+import { mailer } from '@bchatsign/email/mailer';
+import { RecipientExpiredTemplate } from '@bchatsign/email/templates/recipient-expired';
+import { prisma } from '@bchatsign/prisma';
 import { msg } from '@lingui/core/macro';
 import { createElement } from 'react';
 

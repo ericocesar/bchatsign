@@ -1,6 +1,6 @@
-import { useCurrentOrganisation } from '@documenso/lib/client-only/providers/organisation';
-import { canExecuteOrganisationAction } from '@documenso/lib/utils/organisations';
-import { Alert, AlertDescription, AlertTitle } from '@documenso/ui/primitives/alert';
+import { useCurrentOrganisation } from '@bchatsign/lib/client-only/providers/organisation';
+import { canExecuteOrganisationAction } from '@bchatsign/lib/utils/organisations';
+import { Alert, AlertDescription, AlertTitle } from '@bchatsign/ui/primitives/alert';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';

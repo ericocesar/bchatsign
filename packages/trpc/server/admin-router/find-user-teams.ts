@@ -1,6 +1,6 @@
-import type { FindResultResponse } from '@documenso/lib/types/search-params';
-import { getHighestTeamRoleInGroup } from '@documenso/lib/utils/teams';
-import { prisma } from '@documenso/prisma';
+import type { FindResultResponse } from '@bchatsign/lib/types/search-params';
+import { getHighestTeamRoleInGroup } from '@bchatsign/lib/utils/teams';
+import { prisma } from '@bchatsign/prisma';
 import { Prisma } from '@prisma/client';
 
 import { adminProcedure } from '../trpc';

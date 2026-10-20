@@ -1,10 +1,10 @@
-import { sendOrganisationAccountLinkConfirmationEmail } from '@documenso/ee/server-only/lib/send-organisation-account-link-confirmation-email';
-import { isDisposableEmail, isSignupEnabledForProvider } from '@documenso/lib/constants/auth';
-import { AppError } from '@documenso/lib/errors/app-error';
-import { getEmailBlocklistDomains } from '@documenso/lib/server-only/site-settings/get-email-blocklist-domains';
-import { onCreateUserHook } from '@documenso/lib/server-only/user/create-user';
-import { formatOrganisationLoginUrl } from '@documenso/lib/utils/organisation-authentication-portal';
-import { prisma } from '@documenso/prisma';
+import { sendOrganisationAccountLinkConfirmationEmail } from '@bchatsign/ee/server-only/lib/send-organisation-account-link-confirmation-email';
+import { isDisposableEmail, isSignupEnabledForProvider } from '@bchatsign/lib/constants/auth';
+import { AppError } from '@bchatsign/lib/errors/app-error';
+import { getEmailBlocklistDomains } from '@bchatsign/lib/server-only/site-settings/get-email-blocklist-domains';
+import { onCreateUserHook } from '@bchatsign/lib/server-only/user/create-user';
+import { formatOrganisationLoginUrl } from '@bchatsign/lib/utils/organisation-authentication-portal';
+import { prisma } from '@bchatsign/prisma';
 import type { Context } from 'hono';
 
 import { AuthenticationErrorCode } from '../errors/error-codes';

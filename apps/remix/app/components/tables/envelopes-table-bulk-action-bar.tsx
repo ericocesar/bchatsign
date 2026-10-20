@@ -1,4 +1,4 @@
-import { Button } from '@documenso/ui/primitives/button';
+import { Button } from '@bchatsign/ui/primitives/button';
 import { Trans, useLingui } from '@lingui/react/macro';
 import { FolderInputIcon, Trash2Icon, XIcon } from 'lucide-react';
 

@@ -1,5 +1,5 @@
-import { nanoid } from '@documenso/lib/universal/id';
-import { prisma } from '@documenso/prisma';
+import { nanoid } from '@bchatsign/lib/universal/id';
+import { prisma } from '@bchatsign/prisma';
 import { expect, type Page, test } from '@playwright/test';
 import { DocumentSigningOrder, RecipientRole } from '@prisma/client';
 

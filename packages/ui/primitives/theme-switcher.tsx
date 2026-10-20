@@ -1,4 +1,4 @@
-import { useIsMounted } from '@documenso/lib/client-only/hooks/use-is-mounted';
+import { useIsMounted } from '@bchatsign/lib/client-only/hooks/use-is-mounted';
 import { motion } from 'framer-motion';
 import { Monitor, MoonStar, Sun } from 'lucide-react';
 import { Theme, useTheme } from 'remix-themes';

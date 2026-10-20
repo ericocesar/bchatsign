@@ -1,5 +1,5 @@
-import { ZNameSchema } from '@documenso/lib/constants/auth';
-import { zEmail } from '@documenso/lib/utils/zod';
+import { ZNameSchema } from '@bchatsign/lib/constants/auth';
+import { zEmail } from '@bchatsign/lib/utils/zod';
 import { z } from 'zod';
 
 export const ZCurrentPasswordSchema = z.string().min(6, { message: 'Must be at least 6 characters in length' }).max(72);

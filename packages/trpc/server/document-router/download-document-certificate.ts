@@ -1,9 +1,9 @@
-import { PDF_SIZE_A4_72PPI } from '@documenso/lib/constants/pdf';
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { getEnvelopeWhereInput } from '@documenso/lib/server-only/envelope/get-envelope-by-id';
-import { generateCertificatePdf } from '@documenso/lib/server-only/pdf/generate-certificate-pdf';
-import { isDocumentCompleted } from '@documenso/lib/utils/document';
-import { prisma } from '@documenso/prisma';
+import { PDF_SIZE_A4_72PPI } from '@bchatsign/lib/constants/pdf';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { getEnvelopeWhereInput } from '@bchatsign/lib/server-only/envelope/get-envelope-by-id';
+import { generateCertificatePdf } from '@bchatsign/lib/server-only/pdf/generate-certificate-pdf';
+import { isDocumentCompleted } from '@bchatsign/lib/utils/document';
+import { prisma } from '@bchatsign/prisma';
 import { EnvelopeType } from '@prisma/client';
 
 import { authenticatedProcedure } from '../trpc';

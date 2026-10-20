@@ -1,4 +1,4 @@
-import { createTeamMembers } from '@documenso/trpc/server/team-router/create-team-members';
+import { createTeamMembers } from '@bchatsign/trpc/server/team-router/create-team-members';
 import { TeamMemberRole } from '@prisma/client';
 
 import { prisma } from '..';

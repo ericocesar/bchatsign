@@ -1,11 +1,11 @@
-import { getServerLimits } from '@documenso/ee/server-only/limits/server';
-import { AppError, AppErrorCode } from '@documenso/lib/errors/app-error';
-import { convertToPdf } from '@documenso/lib/server-only/document-conversion';
-import { createEnvelope } from '@documenso/lib/server-only/envelope/create-envelope';
-import { extractPdfPlaceholders } from '@documenso/lib/server-only/pdf/auto-place-fields';
-import { normalizePdf } from '@documenso/lib/server-only/pdf/normalize-pdf';
-import type { ApiRequestMetadata } from '@documenso/lib/universal/extract-request-metadata';
-import { putPdfFileServerSide } from '@documenso/lib/universal/upload/put-file.server';
+import { getServerLimits } from '@bchatsign/ee/server-only/limits/server';
+import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { convertToPdf } from '@bchatsign/lib/server-only/document-conversion';
+import { createEnvelope } from '@bchatsign/lib/server-only/envelope/create-envelope';
+import { extractPdfPlaceholders } from '@bchatsign/lib/server-only/pdf/auto-place-fields';
+import { normalizePdf } from '@bchatsign/lib/server-only/pdf/normalize-pdf';
+import type { ApiRequestMetadata } from '@bchatsign/lib/universal/extract-request-metadata';
+import { putPdfFileServerSide } from '@bchatsign/lib/universal/upload/put-file.server';
 import { EnvelopeType } from '@prisma/client';
 import type { Logger } from 'pino';
 

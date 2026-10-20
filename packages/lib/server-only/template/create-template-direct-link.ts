@@ -1,8 +1,8 @@
 import {
   DIRECT_TEMPLATE_RECIPIENT_EMAIL,
   DIRECT_TEMPLATE_RECIPIENT_NAME,
-} from '@documenso/lib/constants/direct-templates';
-import { prisma } from '@documenso/prisma';
+} from '@bchatsign/lib/constants/direct-templates';
+import { prisma } from '@bchatsign/prisma';
 import { EnvelopeType, type Recipient } from '@prisma/client';
 import { nanoid } from 'nanoid';
 

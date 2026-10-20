@@ -1,6 +1,6 @@
-import { SALT_ROUNDS } from '@documenso/lib/constants/auth';
-import type { RequestMetadata } from '@documenso/lib/universal/extract-request-metadata';
-import { prisma } from '@documenso/prisma';
+import { SALT_ROUNDS } from '@bchatsign/lib/constants/auth';
+import type { RequestMetadata } from '@bchatsign/lib/universal/extract-request-metadata';
+import { prisma } from '@bchatsign/prisma';
 import { compare, hash } from '@node-rs/bcrypt';
 import { UserSecurityAuditLogType } from '@prisma/client';
 

@@ -8,7 +8,7 @@ import { Step, Steps } from 'fumadocs-ui/components/steps';
 
 ## Embedded Signing vs Embedded Editor
 
-Documenso offers two types of embedding:
+Bchatsign offers two types of embedding:
 
 - **Embedded Signing** lets you embed the signing experience in your application. Your users sign documents without leaving your site. Available on Teams Plan and above.
 - **Embedded Editor** lets you embed document and template _creation and editing_ in your application. This is an [Enterprise](/docs/policies/enterprise-edition) feature (also available as a Platform Plan add-on). See the [Editor](/docs/developers/embedding/editor) guide.
@@ -25,7 +25,7 @@ The [Platform Plan](https://documen.so/platform-cta-pricing) adds enhanced custo
 
 - Custom CSS and styling variables
 - Dark mode controls
-- Removal of Documenso branding
+- Removal of Bchatsign branding
 
 ---
 
@@ -40,7 +40,7 @@ Direct templates are evergreen - each time a user completes signing, a new docum
 Use the `EmbedDirectTemplate` component with a template token:
 
 ```jsx
-import { EmbedDirectTemplate } from '@documenso/embed-react';
+import { EmbedDirectTemplate } from '@bchatsign/embed-react';
 
 <EmbedDirectTemplate
   token="your-template-token"
@@ -57,7 +57,7 @@ For advanced integrations where you create documents via the API, you can embed 
 Use the `EmbedSignDocument` component with the recipient's token:
 
 ```jsx
-import { EmbedSignDocument } from '@documenso/embed-react';
+import { EmbedSignDocument } from '@bchatsign/embed-react';
 
 <EmbedSignDocument
   token="recipient-signing-token"
@@ -81,7 +81,7 @@ import { EmbedSignDocument } from '@documenso/embed-react';
 {/* prettier-ignore */}
 <Steps>
 <Step>
-Navigate to your team's templates in Documenso
+Navigate to your team's templates in Bchatsign
 
 ![Team Templates](/embedding/team-templates.png)
 
@@ -89,7 +89,7 @@ Navigate to your team's templates in Documenso
 <Step>
 Click on a direct link template to copy its URL. The token is the last segment of the URL.
 
-For example, `https://app.documenso.com/d/-WoSwWVT-fYOERS2MI37k` has the token `-WoSwWVT-fYOERS2MI37k`.
+For example, `https://app.bchatsign.com/d/-WoSwWVT-fYOERS2MI37k` has the token `-WoSwWVT-fYOERS2MI37k`.
 
 If your template is not a direct link template yet, select **Direct Link** from the three-dot menu on the templates table to enable it.
 
@@ -113,33 +113,33 @@ Pick your framework to get started:
 <Cards>
   <Card
     title="React"
-    description="@documenso/embed-react"
+    description="@bchatsign/embed-react"
     href="/docs/developers/embedding/sdks/react"
   />
-  <Card title="Vue" description="@documenso/embed-vue" href="/docs/developers/embedding/sdks/vue" />
+  <Card title="Vue" description="@bchatsign/embed-vue" href="/docs/developers/embedding/sdks/vue" />
   <Card
     title="Svelte"
-    description="@documenso/embed-svelte"
+    description="@bchatsign/embed-svelte"
     href="/docs/developers/embedding/sdks/svelte"
   />
   <Card
     title="Angular"
-    description="@documenso/embed-angular"
+    description="@bchatsign/embed-angular"
     href="/docs/developers/embedding/sdks/angular"
   />
   <Card
     title="Solid"
-    description="@documenso/embed-solid"
+    description="@bchatsign/embed-solid"
     href="/docs/developers/embedding/sdks/solid"
   />
   <Card
     title="Preact"
-    description="@documenso/embed-preact"
+    description="@bchatsign/embed-preact"
     href="/docs/developers/embedding/sdks/preact"
   />
 </Cards>
 
-A [Web Components](https://developer.mozilla.org/en-US/docs/Web/API/Web_components) SDK (`@documenso/embed-webcomponent`) is also available for use outside of JavaScript frameworks. It works in any environment that supports custom elements.
+A [Web Components](https://developer.mozilla.org/en-US/docs/Web/API/Web_components) SDK (`@bchatsign/embed-webcomponent`) is also available for use outside of JavaScript frameworks. It works in any environment that supports custom elements.
 
 If you prefer not to use any SDK, you can embed signing using [Direct Links](/docs/developers/embedding/direct-links) with a plain iframe or redirect.
 
@@ -152,7 +152,7 @@ If you prefer not to use any SDK, you can embed signing using [Direct Links](/do
 | Prop                  | Type       | Description                                                      |
 | --------------------- | ---------- | ---------------------------------------------------------------- |
 | `token`               | `string`   | **Required.** The direct template token.                         |
-| `host`                | `string`   | Documenso instance URL. Defaults to `https://app.documenso.com`. |
+| `host`                | `string`   | Bchatsign instance URL. Defaults to `https://app.bchatsign.com`. |
 | `name`                | `string`   | Pre-fill the signer's name.                                      |
 | `lockName`            | `boolean`  | Prevent the signer from changing their name.                     |
 | `email`               | `string`   | Pre-fill the signer's email.                                     |
@@ -161,7 +161,7 @@ If you prefer not to use any SDK, you can embed signing using [Direct Links](/do
 | `css`                 | `string`   | Custom CSS string (Platform Plan).                               |
 | `cssVars`             | `object`   | CSS variable overrides for theming (Platform Plan).              |
 | `darkModeDisabled`    | `boolean`  | Disable dark mode in the embed (Platform Plan).                  |
-| `language`            | `string`   | Set the UI language. See [Supported Languages](https://github.com/documenso/documenso/tree/main/packages/lib/constants/locales.ts). |
+| `language`            | `string`   | Set the UI language. See [Supported Languages](https://github.com/bchatsign/bchatsign/tree/main/packages/lib/constants/locales.ts). |
 | `onDocumentReady`     | `function` | Called when the document is loaded and ready.                    |
 | `onDocumentCompleted` | `function` | Called when signing is completed.                                |
 | `onDocumentError`     | `function` | Called when an error occurs.                                     |
@@ -173,10 +173,10 @@ If you prefer not to use any SDK, you can embed signing using [Direct Links](/do
 | Prop                  | Type       | Description                                                      |
 | --------------------- | ---------- | ---------------------------------------------------------------- |
 | `token`               | `string`   | **Required.** The recipient's signing token.                     |
-| `host`                | `string`   | Documenso instance URL. Defaults to `https://app.documenso.com`. |
+| `host`                | `string`   | Bchatsign instance URL. Defaults to `https://app.bchatsign.com`. |
 | `name`                | `string`   | Pre-fill the signer's name.                                      |
 | `lockName`            | `boolean`  | Prevent the signer from changing their name.                     |
-| `language`            | `string`   | Set the UI language. See [Supported Languages](https://github.com/documenso/documenso/tree/main/packages/lib/constants/locales.ts). |
+| `language`            | `string`   | Set the UI language. See [Supported Languages](https://github.com/bchatsign/bchatsign/tree/main/packages/lib/constants/locales.ts). |
 | `onDocumentReady`     | `function` | Called when the document is loaded and ready.                    |
 | `onDocumentCompleted` | `function` | Called when signing is completed.                                |
 | `onDocumentError`     | `function` | Called when an error occurs.                                     |

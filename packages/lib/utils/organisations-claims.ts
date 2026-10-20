@@ -1,7 +1,7 @@
 import {
   DEFAULT_MINIMUM_ENVELOPE_ITEM_COUNT,
   DEFAULT_RECIPIENT_COUNT,
-} from '@documenso/ee/server-only/limits/constants';
+} from '@bchatsign/ee/server-only/limits/constants';
 import type { SubscriptionClaim } from '@prisma/client';
 
 export const generateDefaultSubscriptionClaim = (): Omit<

@@ -1,4 +1,4 @@
-import { TeamMemberRole } from '@documenso/prisma/generated/types';
+import { TeamMemberRole } from '@bchatsign/prisma/generated/types';
 import { z } from 'zod';
 
 export const ZCreateTeamMembersRequestSchema = z.object({
