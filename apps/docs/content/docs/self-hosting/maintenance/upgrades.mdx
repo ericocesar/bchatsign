@@ -165,10 +165,10 @@ See [Backups](/docs/self-hosting/maintenance/backups) for automated backup strat
 ### Pull the new image
 
 ```bash
-docker pull bchatsign/bchatsign:1.6.0
+docker pull bchatsign/bchatsign:<version>
 ```
 
-Replace `1.6.0` with your target version.
+Replace `<version>` with your target version.
 
 </Step>
 <Step>
@@ -189,7 +189,7 @@ docker run -d \
   -p 3000:3000 \
   --env-file .env \
   -v /path/to/cert.p12:/opt/bchatsign/cert.p12:ro \
-  bchatsign/bchatsign:1.6.0
+  bchatsign/bchatsign:<version>
 ```
 
 </Step>
@@ -223,14 +223,14 @@ Edit `compose.yml` or your `.env` file to specify the new version:
 ```yaml
 services:
   bchatsign:
-    image: bchatsign/bchatsign:1.6.0
+    image: bchatsign/bchatsign:<version>
 ```
 
 Or if using environment variable substitution:
 
 ```bash
 # In .env
-BCHATSIGN_VERSION=1.6.0
+BCHATSIGN_VERSION=<version>
 ```
 
 ```yaml
@@ -283,7 +283,7 @@ Edit the deployment directly:
 
 ```bash
 kubectl set image deployment/bchatsign \
-  bchatsign=bchatsign/bchatsign:1.6.0 \
+  bchatsign=bchatsign/bchatsign:<version> \
   -n bchatsign
 ```
 
@@ -295,7 +295,7 @@ spec:
     spec:
       containers:
         - name: bchatsign
-          image: bchatsign/bchatsign:1.6.0
+          image: bchatsign/bchatsign:<version>
 ```
 
 Then apply:
@@ -421,12 +421,12 @@ To run migrations manually before upgrading:
 
 ```bash
 # Pull the new image
-docker pull bchatsign/bchatsign:1.6.0
+docker pull bchatsign/bchatsign:<version>
 
 # Run migrations only
 docker run --rm \
   -e NEXT_PRIVATE_DATABASE_URL="postgresql://user:password@host:5432/bchatsign" \
-  bchatsign/bchatsign:1.6.0 \
+  bchatsign/bchatsign:<version> \
   npx prisma migrate deploy
 ```
 
@@ -516,7 +516,7 @@ docker run -d \
   -p 3000:3000 \
   --env-file .env \
   -v /path/to/cert.p12:/opt/bchatsign/cert.p12:ro \
-  bchatsign/bchatsign:1.5.0
+  bchatsign/bchatsign:<previous-version>
 ```
 
 </Tab>

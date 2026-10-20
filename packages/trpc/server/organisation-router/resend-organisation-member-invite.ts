@@ -1,7 +1,8 @@
 import { ORGANISATION_MEMBER_ROLE_PERMISSIONS_MAP } from '@bchatsign/lib/constants/organisations';
 import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
 import { sendOrganisationMemberInviteEmail } from '@bchatsign/lib/server-only/organisation/create-organisation-member-invites';
-import { buildOrganisationWhereQuery } from '@bchatsign/lib/utils/organisations';
+import { getMemberOrganisationRole } from '@bchatsign/lib/server-only/team/get-member-roles';
+import { buildOrganisationWhereQuery, isOrganisationRoleWithinUserHierarchy } from '@bchatsign/lib/utils/organisations';
 import { prisma } from '@bchatsign/prisma';
 
 import { authenticatedProcedure } from '../trpc';
@@ -94,6 +95,21 @@ export const resendOrganisationMemberInvitation = async ({
   if (!invitation) {
     throw new AppError(AppErrorCode.NOT_FOUND, {
       message: 'Invitation does not exist',
+    });
+  }
+
+  const currentUserOrganisationRole = await getMemberOrganisationRole({
+    organisationId: organisation.id,
+    reference: {
+      type: 'User',
+      id: userId,
+    },
+  });
+
+  // A user cannot interact with an invitation that is not within their own hierarchy.
+  if (!isOrganisationRoleWithinUserHierarchy(currentUserOrganisationRole, invitation.organisationRole)) {
+    throw new AppError(AppErrorCode.UNAUTHORIZED, {
+      message: 'You cannot resend an invite for a member with a higher role',
     });
   }
 

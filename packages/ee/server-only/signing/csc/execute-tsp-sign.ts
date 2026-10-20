@@ -1,6 +1,5 @@
 import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
 import { jobs } from '@bchatsign/lib/jobs/client';
-import { sendPendingEmail } from '@bchatsign/lib/server-only/document/send-pending-email';
 import { getRecipientByToken } from '@bchatsign/lib/server-only/recipient/get-recipient-by-token';
 import { triggerWebhook } from '@bchatsign/lib/server-only/webhooks/trigger/trigger-webhook';
 import { DOCUMENT_AUDIT_LOG_TYPE } from '@bchatsign/lib/types/document-audit-logs';
@@ -474,9 +473,12 @@ export const executeTspSign = async (opts: ExecuteTspSignOptions): Promise<Execu
   });
 
   if (pendingRecipients.length > 0) {
-    await sendPendingEmail({
-      id: { type: 'envelopeId', id: envelope.id },
-      recipientId: recipient.id,
+    await jobs.triggerJob({
+      name: 'send.document.pending.email',
+      payload: {
+        envelopeId: envelope.id,
+        recipientId: recipient.id,
+      },
     });
 
     // TSP envelopes are forced SEQUENTIAL at send-time; this branch always
