@@ -1,7 +1,9 @@
 import { useOptionalSession } from '@bchatsign/lib/client-only/providers/session';
 import { getPublicProfileByUrl } from '@bchatsign/lib/server-only/profile/get-public-profile-by-url';
 import { formatAvatarUrl } from '@bchatsign/lib/utils/avatars';
+import { canExecuteOrganisationAction } from '@bchatsign/lib/utils/organisations';
 import { extractInitials } from '@bchatsign/lib/utils/recipient-formatter';
+import { canExecuteTeamAction } from '@bchatsign/lib/utils/teams';
 import { formatDirectTemplatePath } from '@bchatsign/lib/utils/templates';
 import { Avatar, AvatarFallback, AvatarImage } from '@bchatsign/ui/primitives/avatar';
 import { Button } from '@bchatsign/ui/primitives/button';
@@ -52,6 +54,19 @@ export default function PublicProfilePage({ loaderData }: Route.ComponentProps) 
 
   const { sessionData } = useOptionalSession();
   const user = sessionData?.user;
+
+  const canManageProfileSettings = (sessionData?.organisations ?? []).some((organisation) => {
+    const team = organisation.teams.find((currentTeam) => currentTeam.id === profile.teamId);
+
+    if (!team) {
+      return false;
+    }
+
+    return (
+      canExecuteOrganisationAction('MANAGE_ORGANISATION', organisation.currentOrganisationRole) ||
+      canExecuteTeamAction('MANAGE_TEAM', team.currentTeamRole)
+    );
+  });
 
   return (
     <div className="flex flex-col items-center justify-center py-4 sm:py-32">
@@ -118,11 +133,11 @@ export default function PublicProfilePage({ loaderData }: Route.ComponentProps) 
                 </Trans>
               </span>
             )}
-            {'userId' in profile && user?.id === profile.userId && (
+            {canManageProfileSettings && (
               <span className="mt-2 inline-block">
                 <Trans>
                   Go to your{' '}
-                  <Link to="/settings/public-profile" className="underline">
+                  <Link to={`/t/${publicProfile.url}/settings/public-profile`} className="underline">
                     public profile settings
                   </Link>{' '}
                   to add documents.

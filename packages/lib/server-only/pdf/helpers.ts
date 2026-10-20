@@ -1,8 +1,8 @@
 import path from 'node:path';
 import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { FontLibrary } from '@bchatsign/skia-canvas';
 import type { Recipient } from '@prisma/client';
 import { FieldType } from '@prisma/client';
-import { FontLibrary } from 'skia-canvas';
 import { match } from 'ts-pattern';
 
 /**

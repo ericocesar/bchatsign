@@ -1,4 +1,4 @@
-import { API_V2_BETA_URL, API_V2_URL } from '@bchatsign/lib/constants/app';
+import { API_V2_BETA_URL, API_V2_URL, formatPath } from '@bchatsign/lib/constants/app';
 import { AppError, genericErrorCodeToTrpcErrorCodeMap } from '@bchatsign/lib/errors/app-error';
 import { createTrpcContext } from '@bchatsign/trpc/server/context';
 import { appRouter } from '@bchatsign/trpc/server/router';
@@ -11,8 +11,10 @@ type OpenApiTrpcServerHandlerOptions = {
 };
 
 export const openApiTrpcServerHandler = async (c: Context, { isBeta }: OpenApiTrpcServerHandlerOptions) => {
+  const endpoint = formatPath(isBeta ? API_V2_BETA_URL : API_V2_URL) as `/${string}`;
+
   return createOpenApiFetchHandler<typeof appRouter>({
-    endpoint: isBeta ? API_V2_BETA_URL : API_V2_URL,
+    endpoint,
     router: appRouter,
     createContext: async () => createTrpcContext({ c, requestSource: 'apiV2' }),
     req: c.req.raw,

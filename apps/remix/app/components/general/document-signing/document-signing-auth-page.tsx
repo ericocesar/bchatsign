@@ -1,4 +1,5 @@
 import { authClient } from '@bchatsign/auth/client';
+import { formatPath } from '@bchatsign/lib/constants/app';
 import { Button } from '@bchatsign/ui/primitives/button';
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { msg } from '@lingui/core/macro';
@@ -21,10 +22,10 @@ export const DocumentSigningAuthPageView = ({ email, emailHasAccount }: Document
     try {
       setIsSigningOut(true);
 
-      let redirectPath = '/signin';
+      let redirectPath = formatPath('/signin');
 
       if (email) {
-        redirectPath = emailHasAccount ? `/signin#email=${email}` : `/signup#email=${email}`;
+        redirectPath = emailHasAccount ? formatPath(`/signin#email=${email}`) : formatPath(`/signup#email=${email}`);
       }
 
       await authClient.signOut({

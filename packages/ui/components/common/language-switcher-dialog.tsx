@@ -1,3 +1,4 @@
+import { formatPath } from '@bchatsign/lib/constants/app';
 import { SUPPORTED_LANGUAGES } from '@bchatsign/lib/constants/i18n';
 import { dynamicActivate } from '@bchatsign/lib/utils/i18n';
 import { cn } from '@bchatsign/ui/lib/utils';
@@ -23,7 +24,7 @@ export const LanguageSwitcherDialog = ({ open, setOpen }: LanguageSwitcherDialog
 
     formData.append('lang', lang);
 
-    await fetch('/api/locale', {
+    await fetch(formatPath('/api/locale'), {
       method: 'post',
       body: formData,
     });

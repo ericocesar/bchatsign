@@ -1,7 +1,6 @@
 import LogoImage from '@bchatsign/assets/logo.png';
 import { authClient } from '@bchatsign/auth/client';
 import { useSession } from '@bchatsign/lib/client-only/providers/session';
-import { isPersonalLayout } from '@bchatsign/lib/utils/organisations';
 import { trpc } from '@bchatsign/trpc/react';
 import { Sheet, SheetContent } from '@bchatsign/ui/primitives/sheet';
 import { ThemeSwitcher } from '@bchatsign/ui/primitives/theme-switcher';
@@ -40,8 +39,8 @@ export const AppNavMobile = ({ isMenuOpen, onMenuOpenChange }: AppNavMobileProps
   const menuNavigationLinks = useMemo(() => {
     let teamUrl = currentTeam?.url || null;
 
-    if (!teamUrl && isPersonalLayout(organisations)) {
-      teamUrl = organisations[0].teams[0]?.url || null;
+    if (!teamUrl && organisations.length === 1 && organisations[0].teams.length === 1) {
+      teamUrl = organisations[0].teams[0].url;
     }
 
     if (!teamUrl) {

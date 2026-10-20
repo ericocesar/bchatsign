@@ -5,7 +5,7 @@ import EnvelopeSchema from '@bchatsign/prisma/generated/zod/modelSchema/Envelope
 import SignatureSchema from '@bchatsign/prisma/generated/zod/modelSchema/SignatureSchema';
 import TeamSchema from '@bchatsign/prisma/generated/zod/modelSchema/TeamSchema';
 import UserSchema from '@bchatsign/prisma/generated/zod/modelSchema/UserSchema';
-import { DocumentSigningOrder, DocumentStatus, EnvelopeType, SigningStatus } from '@prisma/client';
+import { DocumentSigningOrder, DocumentStatus, EnvelopeType, RecipientRole, SigningStatus } from '@prisma/client';
 import { z } from 'zod';
 
 import { AppError, AppErrorCode } from '../../errors/app-error';
@@ -266,6 +266,11 @@ export const getEnvelopeForRecipientSigning = async ({
 
   if (envelope.documentMeta.signingOrder === DocumentSigningOrder.SEQUENTIAL && currentRecipientIndex !== -1) {
     for (let i = 0; i < currentRecipientIndex; i++) {
+      // CC recipients have no action to take, so they can never block the flow.
+      if (envelope.recipients[i].role === RecipientRole.CC) {
+        continue;
+      }
+
       if (envelope.recipients[i].signingStatus !== SigningStatus.SIGNED) {
         isRecipientsTurn = false;
         break;

@@ -1,7 +1,7 @@
 import type { InternalClaimPlans } from '@bchatsign/ee/server-only/stripe/get-internal-claim-plans';
 import { useUpdateSearchParams } from '@bchatsign/lib/client-only/hooks/use-update-search-params';
 import { useSession } from '@bchatsign/lib/client-only/providers/session';
-import { IS_BILLING_ENABLED } from '@bchatsign/lib/constants/app';
+import { BCHATSIGN_CLOUD_ENTERPRISE_CTA_URL, IS_BILLING_ENABLED } from '@bchatsign/lib/constants/app';
 import { AppError } from '@bchatsign/lib/errors/app-error';
 import { INTERNAL_CLAIM_ID } from '@bchatsign/lib/types/subscription';
 import { parseMessageDescriptorMacro } from '@bchatsign/lib/utils/i18n';
@@ -380,7 +380,7 @@ const BillingPlanForm = ({ value, onChange, plans, canCreateFreeOrganisation }: 
         ))}
 
         <Link
-          to="https://documen.so/enterprise-cta"
+          to={BCHATSIGN_CLOUD_ENTERPRISE_CTA_URL}
           target="_blank"
           className="flex items-center space-x-2 rounded-md border bg-muted/30 p-4"
         >
