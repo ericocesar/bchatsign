@@ -1,5 +1,6 @@
 import { tsRestHonoApp } from '@bchatsign/api/hono';
 import { auth } from '@bchatsign/auth/server';
+import { csc } from '@bchatsign/ee/server-only/signing/csc/hono';
 import { jobsClient } from '@bchatsign/lib/jobs/client';
 import { LicenseClient } from '@bchatsign/lib/server-only/license/license-client';
 import { createRateLimitMiddleware } from '@bchatsign/lib/server-only/rate-limit/rate-limit-middleware';
@@ -110,6 +111,9 @@ app.route('/api/files', filesRoute);
 // AI route.
 app.use('/api/ai/*', aiRateLimitMiddleware);
 app.route('/api/ai', aiRoute);
+
+// CSC OAuth routes (mounted from @bchatsign/ee).
+app.route('/api/csc', csc);
 
 // API servers.
 app.route('/api/v1', tsRestHonoApp);
