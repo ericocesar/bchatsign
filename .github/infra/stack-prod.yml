@@ -3,7 +3,9 @@ services:
     image: ghcr.io/ericocesar/bchatsign@${IMAGE_DIGEST}
     volumes:
     # - /opt/documenso/cert.p12:/opt/documenso/cert.p12:ro
-      - /root/stacks/bchatsign/cert/ERICOCESAR_94138966404.pfx:/opt/documenso/cert.p12:ro
+    # - /root/stacks/bchatsign/cert/ERICOCESAR_94138966404.pfx:/opt/documenso/cert.p12:ro
+      - /root/docker/stacks/bchatsign/cert/Bolt_certificado.pfx:/opt/documenso/cert.p12:ro
+
     networks:
       - interna
       - externa
