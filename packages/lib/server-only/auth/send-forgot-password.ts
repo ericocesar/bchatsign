@@ -55,7 +55,7 @@ export const sendForgotPassword = async ({ userId }: SendForgotPasswordOptions) 
     },
     from: {
       name: env('NEXT_PRIVATE_SMTP_FROM_NAME') || 'BchatSign',
-      address: env('NEXT_PRIVATE_SMTP_FROM_ADDRESS') || 'noreply@bchatsign.com',
+      address: env('NEXT_PRIVATE_SMTP_FROM_ADDRESS') || 'noreply@bchat.com.br',
     },
     subject: i18n._(msg`Forgot Password?`),
     html,

@@ -38,7 +38,7 @@ export const sendResetPassword = async ({ userId }: SendResetPasswordOptions) =>
     },
     from: {
       name: env('NEXT_PRIVATE_SMTP_FROM_NAME') || 'BchatSign',
-      address: env('NEXT_PRIVATE_SMTP_FROM_ADDRESS') || 'noreply@bchatsign.com',
+      address: env('NEXT_PRIVATE_SMTP_FROM_ADDRESS') || 'noreply@bchat.com.br',
     },
     subject: 'Password Reset Success!',
     html,

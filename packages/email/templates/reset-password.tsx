@@ -60,7 +60,7 @@ export const ResetPasswordTemplate = ({
               <Text className="mt-2 text-base text-slate-400">
                 <Trans>
                   Didn't request a password change? We are here to help you secure your account, just{' '}
-                  <Link className="font-normal text-bchatsign-700" href="mailto:hi@bchatsign.com">
+                  <Link className="font-normal text-bchatsign-700" href="mailto:suporte@bchat.com.br">
                     contact us
                   </Link>
                   .

@@ -1,6 +1,6 @@
 import { env } from '../utils/env';
 
-export const FROM_ADDRESS = env('NEXT_PRIVATE_SMTP_FROM_ADDRESS') || 'noreply@bchatsign.com';
+export const FROM_ADDRESS = env('NEXT_PRIVATE_SMTP_FROM_ADDRESS') || 'noreply@bchat.com.br';
 export const FROM_NAME = env('NEXT_PRIVATE_SMTP_FROM_NAME') || 'BchatSign';
 
 export const BCHATSIGN_INTERNAL_EMAIL = {

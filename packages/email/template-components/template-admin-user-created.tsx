@@ -44,7 +44,7 @@ export const TemplateAdminUserCreated = ({ resetPasswordLink, assetBaseUrl }: Te
           <Text className="text-center text-slate-400 text-sm">
             <Trans>
               If you didn't expect this account or have any questions, please{' '}
-              <Link href="mailto:support@bchatsign.com" className="text-bchatsign-500">
+              <Link href="mailto:suporte@bchat.com.br" className="text-bchatsign-500">
                 contact support
               </Link>
               .

@@ -6893,8 +6893,8 @@ msgid "This document was created using a direct link."
 msgstr "Ky dokument është krijuar duke përdorur një lidhje të drejtpërdrejtë."
 
 #: packages/email/template-components/template-footer.tsx
-msgid "This document was sent using <0>Bchatsign.</0>"
-msgstr "Ky dokument është dërguar duke përdorur <0>Bchatsign.</0>"
+msgid "Este documento foi enviado usando o <0>BchatSign</0>."
+msgstr "Ky dokument është dërguar duke përdorur <0>BchatSign</0>."
 
 #: packages/email/template-components/template-document-rejection-confirmed.tsx
 msgid "This email confirms that you have rejected the document <0>\"{documentName}\"</0> sent by {documentOwnerName}."
