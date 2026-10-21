@@ -34,20 +34,6 @@ services:
     volumes:
       - redis:/data
 
-  minio:
-    image: minio/minio
-    container_name: minio
-    ports:
-      - 9002:9002
-      - 9001:9001
-    volumes:
-      - minio:/data
-    environment:
-      MINIO_ROOT_USER: bchatsign
-      MINIO_ROOT_PASSWORD: password
-    entrypoint: sh
-    command: -c 'mkdir -p /data/bchatsign && minio server /data --console-address ":9001" --address ":9002"'
-
   gotenberg:
     build:
       context: .
@@ -95,6 +81,5 @@ services:
       start_period: 20s
 
 volumes:
-  minio:
   redis:
   bchatsign_database:

@@ -51,7 +51,7 @@ msgstr "“{placeholderEmail}”代表“Team Name”邀请您签署“example d
 
 #: apps/remix/app/components/dialogs/envelope-cancel-dialog.tsx
 msgid "\"{title}\" has been successfully cancelled"
-msgstr ""
+msgstr "“{title}”已成功取消"
 
 #: apps/remix/app/components/dialogs/envelope-delete-dialog.tsx
 msgid "\"{title}\" has been successfully deleted"
@@ -110,7 +110,7 @@ msgstr "{0, plural, other {# 条 CSS 规则在清理过程中被移除。}}"
 #. placeholder {1}: result.failedIds.length
 #: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
 msgid "{0, plural, one {# document cancelled.} other {# documents cancelled.}} {1, plural, one {# document could not be cancelled.} other {# documents could not be cancelled.}}"
-msgstr ""
+msgstr "{0, plural, other {已取消 # 份文档。}} {1, plural, other {有 # 份文档无法取消。}}"
 
 #. placeholder {0}: successfulEnvelopeIds.length
 #: apps/remix/app/components/dialogs/envelopes-bulk-download-dialog.tsx
@@ -120,7 +120,7 @@ msgstr ""
 #. placeholder {0}: result.cancelledCount
 #: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
 msgid "{0, plural, one {# document has been cancelled.} other {# documents have been cancelled.}}"
-msgstr ""
+msgstr "{0, plural, other {已取消 # 份文档。}}"
 
 #. placeholder {0}: successfulEnvelopeIds.length
 #: apps/remix/app/components/dialogs/envelopes-bulk-download-dialog.tsx
@@ -284,7 +284,7 @@ msgstr "{0, plural, other {我们在您的文档中找到了 # 位收件人。}}
 #. placeholder {0}: envelopeIds.length
 #: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
 msgid "{0, plural, one {You are about to cancel the selected document.} other {You are about to cancel # documents.}}"
-msgstr ""
+msgstr "{0, plural, other {您即将取消 # 份文档。}}"
 
 #. placeholder {0}: envelopeIds.length
 #: apps/remix/app/components/dialogs/envelopes-bulk-delete-dialog.tsx
@@ -479,7 +479,7 @@ msgstr "{maximumEnvelopeItemCount, plural, other {每个信封最多只能上传
 
 #: apps/remix/app/components/dialogs/email-transport-delete-dialog.tsx
 msgid "{organisationClaimCount, plural, one {# Organisation claim} other {# Organisation claims}}"
-msgstr ""
+msgstr "{organisationClaimCount, plural, other {# 机构认领}}"
 
 #: apps/remix/app/components/general/direct-template/direct-template-page.tsx
 msgid "{recipientActionVerb} document"
@@ -546,7 +546,7 @@ msgstr "{signerName} 已拒签文档“{documentName}”。"
 
 #: apps/remix/app/components/dialogs/email-transport-delete-dialog.tsx
 msgid "{subscriptionClaimCount, plural, one {# Subscription claim} other {# Subscription claims}}"
-msgstr ""
+msgstr "{subscriptionClaimCount, plural, other {# 订阅认领}}"
 
 #. placeholder {0}: _(actionVerb).toLowerCase()
 #: packages/email/template-components/template-document-invite.tsx
@@ -583,15 +583,15 @@ msgstr "{user} 已批准该文档"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "{user} authenticated with the signing provider"
-msgstr ""
+msgstr "{user} 已通过签名服务提供商完成身份验证"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "{user} authorised the remote signature"
-msgstr ""
+msgstr "{user} 已授权远程签名"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "{user} cancelled the document"
-msgstr ""
+msgstr "{user} 已取消该文档"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "{user} CC'd the document"
@@ -662,7 +662,7 @@ msgstr "{user} 请求了此文档的双重验证 (2FA) 令牌"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "{user} requested a remote signature"
-msgstr ""
+msgstr "{user} 已请求远程签名"
 
 #. placeholder {0}: data.recipientEmail
 #: packages/lib/utils/document-audit-logs.ts
@@ -737,11 +737,11 @@ msgstr "{user} 查看了此文档"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "{user}'s remote signature was applied"
-msgstr ""
+msgstr "已应用 {user} 的远程签名"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "{user}'s signing provider authentication failed"
-msgstr ""
+msgstr "{user} 在签名服务提供商处的身份验证失败"
 
 #: apps/remix/app/components/tables/internal-audit-log-table.tsx
 msgid "{userAgent}"
@@ -772,7 +772,7 @@ msgstr ""
 #: apps/remix/app/routes/_recipient+/sign.$token+/_index.tsx
 #: apps/remix/app/routes/_recipient+/sign.$token+/_index.tsx
 msgid "<0>\"{0}\"</0> is no longer available to sign"
-msgstr ""
+msgstr "<0>“{0}”</0>已不再可供签署"
 
 #: apps/remix/app/routes/_unauthenticated+/organisation.invite.$token.tsx
 msgid "<0>{organisationName}</0> does not have an active subscription. Please contact the organisation administrator to renew their plan before accepting this invitation."
@@ -1414,11 +1414,11 @@ msgstr "为模板添加一个外部 ID。可用于在外部系统中标识。"
 
 #: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
 msgid "Add an optional reason for cancelling these documents"
-msgstr ""
+msgstr "为取消这些文档添加一个可选原因"
 
 #: apps/remix/app/components/dialogs/envelope-cancel-dialog.tsx
 msgid "Add an optional reason for cancelling this document"
-msgstr ""
+msgstr "为取消此文档添加一个可选原因"
 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-upload-page.tsx
 msgid "Add and configure multiple documents"
@@ -1456,7 +1456,7 @@ msgstr "添加邮箱域名"
 
 #: apps/remix/app/components/dialogs/email-transport-create-dialog.tsx
 msgid "Add Email Transport"
-msgstr ""
+msgstr "添加电子邮件传输方式"
 
 #: apps/remix/app/components/dialogs/ai-field-detection-dialog.tsx
 msgid "Add fields"
@@ -1593,7 +1593,7 @@ msgstr "将此 URL 添加到您的身份提供商的允许重定向 URI 中"
 
 #: apps/remix/app/components/dialogs/email-transport-create-dialog.tsx
 msgid "Add transport"
-msgstr ""
+msgstr "添加传输方式"
 
 #: apps/remix/app/components/forms/branding-preferences-form.tsx
 msgid "Additional brand information to display at the bottom of emails"
@@ -1681,7 +1681,7 @@ msgstr "全部"
 #: apps/remix/app/routes/_authenticated+/admin+/organisation-stats._index.tsx
 #: apps/remix/app/routes/_authenticated+/admin+/organisation-stats._index.tsx
 msgid "All claims"
-msgstr ""
+msgstr "所有索赔"
 
 #: apps/remix/app/components/general/app-command-menu.tsx
 msgid "All documents"
@@ -1805,6 +1805,10 @@ msgstr "已经有账号？<0>改为登录</0>"
 msgid "Amount"
 msgstr "金额"
 
+#: packages/lib/jobs/definitions/emails/send-account-disabled-email.handler.ts
+msgid "An account was automatically disabled"
+msgstr ""
+
 #: packages/email/templates/document-super-delete.tsx
 msgid "An admin has deleted your document \"{documentName}\"."
 msgstr "管理员已删除您的文档“{documentName}”。"
@@ -1896,7 +1900,7 @@ msgstr "自动签署文档时发生错误，部分字段可能未签署。请检
 
 #: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
 msgid "An error occurred while cancelling the documents."
-msgstr ""
+msgstr "取消文档时发生错误。"
 
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "An error occurred while creating document from template."
@@ -1924,7 +1928,7 @@ msgstr "禁用用户时发生错误。"
 
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "An error occurred while distributing the document."
-msgstr ""
+msgstr "分发文档时发生错误。"
 
 #: apps/remix/app/components/dialogs/envelopes-bulk-download-dialog.tsx
 #: apps/remix/app/components/dialogs/envelopes-bulk-download-dialog.tsx
@@ -2036,11 +2040,11 @@ msgstr "发生错误。请稍后重试。"
 
 #: packages/lib/jobs/definitions/emails/send-organisation-limit-alert-email.handler.ts
 msgid "An organisation has exceeded their fair use limits"
-msgstr ""
+msgstr "某个组织已超出其公平使用限制"
 
 #: packages/lib/jobs/definitions/emails/send-organisation-limit-alert-email.handler.ts
 msgid "An organisation is nearing their fair use limits"
-msgstr ""
+msgstr "某个组织即将达到其公平使用限制"
 
 #: apps/remix/app/routes/_unauthenticated+/organisation.sso.confirmation.$token.tsx
 msgid "An organisation wants to create an account for you. Please review the details below."
@@ -2162,12 +2166,12 @@ msgstr ""
 #: apps/remix/app/components/general/claim-limit-fields.tsx
 #: apps/remix/app/components/tables/admin-organisation-stats-table.tsx
 msgid "API"
-msgstr ""
+msgstr "API"
 
 #: apps/remix/app/components/forms/email-transport-form.tsx
 #: apps/remix/app/components/forms/email-transport-form.tsx
 msgid "API key"
-msgstr ""
+msgstr "API 密钥"
 
 #: apps/remix/app/components/general/organisation-usage-panel.tsx
 msgid "API requests"
@@ -2175,7 +2179,7 @@ msgstr "API 请求"
 
 #: apps/remix/app/components/general/organisations/organisation-quota-banner.tsx
 msgid "API requests have been temporarily paused"
-msgstr ""
+msgstr "API 请求已被暂时暂停"
 
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.tokens.tsx
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.tokens.tsx
@@ -2185,7 +2189,7 @@ msgstr "API 令牌"
 
 #: apps/remix/app/components/general/organisations/organisation-quota-banner.tsx
 msgid "API usage is approaching fair use limits"
-msgstr ""
+msgstr "API 使用量正接近公平使用限制"
 
 #: apps/remix/app/routes/_authenticated+/admin+/stats.tsx
 msgid "App Version"
@@ -2197,7 +2201,7 @@ msgstr ""
 
 #: apps/remix/app/components/general/document-signing/csc-recipient-signing-in-progress-page.tsx
 msgid "Applying your signature"
-msgstr ""
+msgstr "正在应用您的签名"
 
 #: apps/remix/app/components/general/envelope-signing/envelope-signing-csc-status.tsx
 msgid "Applying your signature..."
@@ -2205,13 +2209,13 @@ msgstr ""
 
 #: apps/remix/app/components/general/organisations/organisation-quota-banner.tsx
 msgid "Approaching fair use limit"
-msgstr ""
+msgstr "即将达到公平使用限制"
 
 #: packages/email/templates/organisation-limit-alert.tsx
 #: packages/email/templates/organisation-limit-alert.tsx
 #: packages/lib/jobs/definitions/emails/send-organisation-limit-alert-email.handler.ts
 msgid "Approaching Your Plan Limits"
-msgstr ""
+msgstr "即将达到您的套餐限制"
 
 #: apps/remix/app/components/general/document-signing/document-signing-complete-dialog.tsx
 #: apps/remix/app/components/general/document-signing/document-signing-complete-dialog.tsx
@@ -2220,7 +2224,7 @@ msgstr ""
 #: apps/remix/app/components/tables/documents-table-action-dropdown.tsx
 #: apps/remix/app/components/tables/inbox-table.tsx
 msgid "Approve"
-msgstr "批准"
+msgstr "审批"
 
 #: packages/lib/constants/recipient-roles.ts
 msgctxt "Recipient role action verb"
@@ -2236,7 +2240,7 @@ msgstr "批准文档"
 
 #: apps/remix/app/components/general/document/document-page-view-recipients.tsx
 msgid "Approved"
-msgstr "已批准"
+msgstr "已审批"
 
 #: packages/lib/constants/recipient-roles.ts
 msgctxt "Recipient role actioned"
@@ -2277,7 +2281,7 @@ msgstr "确定要删除以下声明吗？"
 
 #: apps/remix/app/components/dialogs/email-transport-delete-dialog.tsx
 msgid "Are you sure you want to delete the following transport?"
-msgstr ""
+msgstr "确定要删除以下传输方式吗？"
 
 #: apps/remix/app/components/dialogs/folder-delete-dialog.tsx
 msgid "Are you sure you want to delete this folder?"
@@ -2342,7 +2346,7 @@ msgstr "协助签署"
 
 #: apps/remix/app/components/general/envelope-signing/envelope-signer-header.tsx
 msgid "Assistant"
-msgstr "助手"
+msgstr "助理"
 
 #: packages/lib/constants/recipient-roles.ts
 msgctxt "Recipient role name"
@@ -2501,7 +2505,7 @@ msgstr "后台任务"
 
 #: apps/remix/app/components/dialogs/claim-update-dialog.tsx
 msgid "Backport email transport"
-msgstr ""
+msgstr "回移电子邮件传输方式"
 
 #: apps/remix/app/components/forms/2fa/disable-authenticator-app-dialog.tsx
 #: apps/remix/app/components/forms/2fa/two-factor-code-dialog.tsx
@@ -2553,7 +2557,7 @@ msgstr "账单"
 
 #: apps/remix/app/components/forms/public-profile-form.tsx
 msgid "Bio"
-msgstr ""
+msgstr "个人简介"
 
 #: packages/ui/primitives/signature-pad/signature-pad-color-picker.tsx
 msgid "Black"
@@ -2857,15 +2861,15 @@ msgstr "取消"
 
 #: apps/remix/app/components/dialogs/envelope-cancel-dialog.tsx
 msgid "Cancel document"
-msgstr ""
+msgstr "取消文档"
 
 #: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
 msgid "Cancel documents"
-msgstr ""
+msgstr "取消文档"
 
 #: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
 msgid "Cancel Documents"
-msgstr ""
+msgstr "取消文档"
 
 #: apps/remix/app/components/dialogs/envelopes-bulk-download-dialog.tsx
 #: apps/remix/app/components/general/analytics/analytics-status-breakdown-card.tsx
@@ -2873,7 +2877,7 @@ msgstr ""
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-header.tsx
 #: packages/lib/constants/document.ts
 msgid "Cancelled"
-msgstr ""
+msgstr "已取消"
 
 #: apps/remix/app/components/dialogs/passkey-create-dialog.tsx
 msgid "Cancelled by user"
@@ -2943,7 +2947,7 @@ msgstr ""
 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-fields-page-renderer.tsx
 msgid "Change Field Type"
-msgstr ""
+msgstr "更改字段类型"
 
 #: apps/remix/app/components/general/app-command-menu.tsx
 msgid "Change language"
@@ -3033,7 +3037,7 @@ msgstr "请选择首选认证方式："
 
 #: apps/remix/app/components/tables/admin-organisation-stats-table.tsx
 msgid "Claim"
-msgstr ""
+msgstr "索赔"
 
 #: apps/remix/app/components/general/claim-account.tsx
 msgid "Claim account"
@@ -3286,7 +3290,7 @@ msgstr "配置模板的一般设置。"
 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
 msgid "Configure notification settings for the document."
-msgstr ""
+msgstr "为该文档配置通知设置。"
 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
 msgid "Configure o certificado e o overlay de segurança em todas as páginas."
@@ -4046,7 +4050,7 @@ msgstr "拒绝"
 #: apps/remix/app/routes/_authenticated+/admin+/organisations.$id.tsx
 #: apps/remix/app/routes/_authenticated+/admin+/organisations.$id.tsx
 msgid "Default (system mailer)"
-msgstr ""
+msgstr "默认（系统邮件程序）"
 
 #: apps/remix/app/components/forms/branding-preferences-form.tsx
 msgid "Default border colour."
@@ -4260,7 +4264,7 @@ msgstr "删除邮箱域名"
 
 #: apps/remix/app/components/dialogs/email-transport-delete-dialog.tsx
 msgid "Delete Email Transport"
-msgstr ""
+msgstr "删除电子邮件传输方式"
 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor.tsx
 msgid "Delete Envelope"
@@ -4408,7 +4412,7 @@ msgstr "设备"
 
 #: packages/email/template-components/template-footer.tsx
 msgid "Did not expect this email? <0>Click here to report the sender</0>. Never sign a document you don't recognize or weren't expecting."
-msgstr ""
+msgstr "没有预料到会收到这封邮件？<0>点击此处举报发件人</0>。切勿签署任何你不认识或未预料到的文档。"
 
 #: packages/email/templates/reset-password.tsx
 msgid "Didn't request a password change? We are here to help you secure your account, just <0>contact us</0>."
@@ -4617,12 +4621,12 @@ msgstr "文档已批准"
 #: apps/remix/app/components/general/document/document-status.tsx
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "Document cancelled"
-msgstr ""
+msgstr "文档已被取消"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgctxt "Audit log format"
 msgid "Document cancelled"
-msgstr ""
+msgstr "文档已被取消"
 
 #: apps/remix/app/routes/_recipient+/sign.$token+/_index.tsx
 #: apps/remix/app/routes/_recipient+/sign.$token+/_index.tsx
@@ -4694,7 +4698,7 @@ msgstr "文档创建"
 
 #: apps/remix/app/components/general/organisations/organisation-quota-banner.tsx
 msgid "Document creation has been temporarily paused"
-msgstr ""
+msgstr "文档创建已被暂时暂停"
 
 #: apps/remix/app/components/dialogs/admin-document-delete-dialog.tsx
 #: apps/remix/app/components/dialogs/envelope-delete-dialog.tsx
@@ -4862,7 +4866,7 @@ msgstr "文档已重命名"
 
 #: apps/remix/app/components/dialogs/envelope-redistribute-dialog.tsx
 msgid "Document resent"
-msgstr ""
+msgstr "文档已重新发送"
 
 #: apps/remix/app/routes/_recipient+/sign.$token+/complete.tsx
 msgid "Document sealing is taking longer than expected and has timed out. Please contact the document owner for support."
@@ -4947,7 +4951,7 @@ msgstr "文档已上传"
 
 #: apps/remix/app/components/general/organisations/organisation-quota-banner.tsx
 msgid "Document usage is approaching fair use limits"
-msgstr ""
+msgstr "文档使用量正接近公平使用限制"
 
 #: apps/remix/app/components/general/document/document-validation-panel.tsx
 msgid "Document Validation"
@@ -5021,7 +5025,7 @@ msgstr "与此信封相关的文档和资源。"
 
 #: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
 msgid "Documents cancelled"
-msgstr ""
+msgstr "文档已取消"
 
 #: apps/remix/app/components/tables/organisation-insights-table.tsx
 #: apps/remix/app/components/tables/organisation-insights-table.tsx
@@ -5058,7 +5062,7 @@ msgstr ""
 
 #: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
 msgid "Documents partially cancelled"
-msgstr ""
+msgstr "部分文档已取消"
 
 #: apps/remix/app/components/dialogs/envelopes-bulk-delete-dialog.tsx
 msgid "Documents partially deleted"
@@ -5110,7 +5114,7 @@ msgstr "所有收件人都已签署但文档尚未加盖签章的文档。卡住
 
 #: apps/remix/app/routes/_authenticated+/admin+/organisation-stats._index.tsx
 msgid "Documents, emails and api values may not be accurate since they record the amount of times the action was attempted. Meaning these values may go over the actual quota, get rejected, and will still be recorded."
-msgstr ""
+msgstr "文档、电子邮件和 API 数值可能不够精确，因为它们记录的是尝试执行该操作的次数。这意味着这些数值可能会超过实际配额，即使操作被拒绝，这些尝试也仍然会被记录。"
 
 #: apps/remix/app/components/tables/organisation-email-domains-table.tsx
 #: apps/remix/app/routes/_authenticated+/admin+/email-domains._index.tsx
@@ -5336,7 +5340,7 @@ msgstr ""
 
 #: apps/remix/app/components/forms/email-transport-form.tsx
 msgid "e.g. Resend (free plans)"
-msgstr ""
+msgstr "例如：Resend（免费套餐）"
 
 #: apps/remix/app/components/general/settings-upsell/email-domains-upsell.tsx
 msgid "Easy DNS setup with auto-generated DKIM and SPF records"
@@ -5358,7 +5362,7 @@ msgstr "编辑"
 
 #: apps/remix/app/components/dialogs/email-transport-update-dialog.tsx
 msgid "Edit Email Transport"
-msgstr ""
+msgstr "编辑电子邮件传输方式"
 
 #: apps/remix/app/components/dialogs/envelope-item-edit-dialog.tsx
 msgid "Edit Item"
@@ -5481,7 +5485,7 @@ msgstr "邮箱已创建"
 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
 msgid "Email distribution needs to be enabled in the general settings tab to configure recipient email related settings."
-msgstr ""
+msgstr "要配置收件人电子邮件相关设置，必须先在“常规设置”选项卡中启用电子邮件分发。"
 
 #: apps/remix/app/components/general/admin-global-settings-section.tsx
 msgid "Email document settings"
@@ -5565,7 +5569,7 @@ msgstr "邮件发件人"
 
 #: apps/remix/app/components/general/organisations/organisation-quota-banner.tsx
 msgid "Email sending has been temporarily paused"
-msgstr ""
+msgstr "电子邮件发送已被暂时暂停"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgctxt "Audit log format"
@@ -5603,16 +5607,16 @@ msgstr "如果文档仍在待处理状态，则向签署人发送电子邮件通
 #: apps/remix/app/components/forms/subscription-claim-form.tsx
 #: apps/remix/app/routes/_authenticated+/admin+/organisations.$id.tsx
 msgid "Email transport"
-msgstr ""
+msgstr "电子邮件传输方式"
 
 #: apps/remix/app/routes/_authenticated+/admin+/_layout.tsx
 #: apps/remix/app/routes/_authenticated+/admin+/email-transports._index.tsx
 msgid "Email Transports"
-msgstr ""
+msgstr "电子邮件传输方式"
 
 #: apps/remix/app/components/general/organisations/organisation-quota-banner.tsx
 msgid "Email usage is approaching fair use limits"
-msgstr ""
+msgstr "电子邮件使用量正接近公平使用限制"
 
 #: apps/remix/app/components/general/document-signing/access-auth-2fa-form.tsx
 msgid "Email verification"
@@ -5754,7 +5758,7 @@ msgstr "随附文件"
 
 #: apps/remix/app/components/forms/email-transport-form.tsx
 msgid "Endpoint (optional)"
-msgstr ""
+msgstr "端点（可选）"
 
 #: packages/lib/constants/i18n.ts
 msgid "English"
@@ -6167,7 +6171,7 @@ msgstr "创建支持工单失败"
 
 #: apps/remix/app/components/dialogs/email-transport-create-dialog.tsx
 msgid "Failed to create transport."
-msgstr ""
+msgstr "创建传输方式失败。"
 
 #: apps/remix/app/components/dialogs/folder-delete-dialog.tsx
 msgid "Failed to delete folder"
@@ -6179,7 +6183,7 @@ msgstr "删除订阅声明失败。"
 
 #: apps/remix/app/components/dialogs/email-transport-delete-dialog.tsx
 msgid "Failed to delete transport."
-msgstr ""
+msgstr "删除传输方式失败。"
 
 #: apps/remix/app/routes/_authenticated+/admin+/documents.$id.tsx
 msgid "Failed to download audit logs. Please try again later."
@@ -6227,7 +6231,7 @@ msgstr "保存设置失败。"
 
 #: apps/remix/app/components/dialogs/email-transport-update-dialog.tsx
 msgid "Failed to save transport."
-msgstr ""
+msgstr "保存传输方式失败。"
 
 #: apps/remix/app/components/dialogs/session-logout-all-dialog.tsx
 msgid "Failed to sign out all sessions"
@@ -6239,7 +6243,7 @@ msgstr "许可证同步失败"
 
 #: apps/remix/app/components/dialogs/admin-organisation-sync-subscription-dialog.tsx
 msgid "Failed to sync subscription"
-msgstr ""
+msgstr "同步订阅失败"
 
 #: apps/remix/app/routes/_authenticated+/admin+/unsealed-documents._index.tsx
 msgid "Failed to trigger seal"
@@ -6288,7 +6292,7 @@ msgstr "失败：{failedCount}"
 #: apps/remix/app/components/general/organisations/organisation-quota-banner.tsx
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "Fair use limit exceeded"
-msgstr ""
+msgstr "已超出合理使用限制"
 
 #: apps/remix/app/components/forms/subscription-claim-form.tsx
 #: apps/remix/app/components/tables/admin-claims-table.tsx
@@ -6302,7 +6306,7 @@ msgstr "功能"
 
 #: apps/remix/app/components/dialogs/admin-organisation-sync-subscription-dialog.tsx
 msgid "Fetch the latest subscription data from Stripe and apply it to this organisation."
-msgstr ""
+msgstr "从 Stripe 获取最新订阅数据并应用到此组织。"
 
 #: packages/ui/primitives/document-flow/field-items-advanced-settings/text-field.tsx
 msgid "Field character limit"
@@ -6382,7 +6386,7 @@ msgstr ""
 
 #: apps/remix/app/components/dialogs/email-transport-create-dialog.tsx
 msgid "Fill in the details to create a new email transport."
-msgstr ""
+msgstr "填写详细信息以创建新的电子邮件传输方式。"
 
 #: apps/remix/app/components/dialogs/claim-create-dialog.tsx
 msgid "Fill in the details to create a new subscription claim."
@@ -6488,7 +6492,7 @@ msgstr "免费"
 #: apps/remix/app/components/tables/user-billing-organisations-table.tsx
 msgctxt "Subscription status"
 msgid "Free (Pending)"
-msgstr ""
+msgstr "免费（待处理）"
 
 #: packages/lib/utils/fields.ts
 #: packages/ui/primitives/document-flow/types.ts
@@ -6505,15 +6509,15 @@ msgstr "法语"
 
 #: apps/remix/app/components/tables/admin-email-transports-table.tsx
 msgid "From"
-msgstr ""
+msgstr "发件人"
 
 #: apps/remix/app/components/forms/email-transport-form.tsx
 msgid "From address"
-msgstr ""
+msgstr "发件地址"
 
 #: apps/remix/app/components/forms/email-transport-form.tsx
 msgid "From name"
-msgstr ""
+msgstr "发件人名称"
 
 #: apps/remix/app/components/embed/embed-direct-template-client-page.tsx
 #: apps/remix/app/components/embed/embed-document-signing-page-v1.tsx
@@ -6842,7 +6846,7 @@ msgstr "水平"
 
 #: apps/remix/app/components/forms/email-transport-form.tsx
 msgid "Host"
-msgstr ""
+msgstr "主机"
 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
 msgid "How long recipients have to complete this document after it is sent. Uses the team default when set to inherit."
@@ -6930,9 +6934,13 @@ msgstr "如果您在使用预发布环境，请确保已将嵌入组件的 host 
 msgid "If you believe this is a mistake, please contact the sender directly."
 msgstr ""
 
+#: packages/email/template-components/template-account-disabled.tsx
+msgid "If you believe this was a mistake, contact us at <0>{supportEmail}</0>."
+msgstr ""
+
 #: apps/remix/app/routes/_recipient+/report.$token.tsx
 msgid "If you did not expect this email or believe it is spam, you can report the sender to our team for review."
-msgstr ""
+msgstr "如果你没有预料到会收到这封邮件，或认为它是垃圾邮件，你可以向我们的团队举报该发件人以供审核。"
 
 #: packages/email/template-components/template-admin-user-created.tsx
 msgid "If you didn't expect this account or have any questions, please <0>contact support</0>."
@@ -6952,7 +6960,7 @@ msgstr "如果在收件箱中未找到确认链接，你可以在下方重新请
 
 #: packages/email/templates/organisation-limit-alert.tsx
 msgid "If you expect to need higher limits, please contact support at {SUPPORT_EMAIL} and we will review your account."
-msgstr ""
+msgstr "如果您预计需要更高的限制，请通过 {SUPPORT_EMAIL} 联系支持，我们将对您的账户进行审核。"
 
 #: packages/email/templates/organisation-limits-updated.tsx
 msgid "If you have any questions, please contact support at {SUPPORT_EMAIL}."
@@ -7431,7 +7439,7 @@ msgstr "留空以继承组织设置。"
 
 #: apps/remix/app/components/forms/email-transport-form.tsx
 msgid "Leave blank to keep current"
-msgstr ""
+msgstr "留空则保持当前设置"
 
 #: apps/remix/app/components/dialogs/organisation-leave-dialog.tsx
 msgid "Leave organisation"
@@ -7617,7 +7625,7 @@ msgstr "为您的组织管理自定义 SSO 登录门户。"
 
 #: apps/remix/app/routes/_authenticated+/admin+/email-transports._index.tsx
 msgid "Manage all email transports"
-msgstr ""
+msgstr "管理所有电子邮件传输方式"
 
 #: apps/remix/app/routes/_authenticated+/settings+/organisations.tsx
 msgid "Manage all organisations you are currently associated with."
@@ -7929,7 +7937,7 @@ msgstr "修改收件人"
 
 #: apps/remix/app/components/dialogs/email-transport-update-dialog.tsx
 msgid "Modify the details of the email transport."
-msgstr ""
+msgstr "修改该电子邮件传输方式的详细信息。"
 
 #: apps/remix/app/components/dialogs/claim-update-dialog.tsx
 msgid "Modify the details of the subscription claim."
@@ -8227,7 +8235,7 @@ msgstr "未启用任何功能"
 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-fields-page-renderer.tsx
 msgid "No field type matching this description was found."
-msgstr ""
+msgstr "未找到与此描述匹配的字段类型。"
 
 #: apps/remix/app/components/dialogs/ai-field-detection-dialog.tsx
 msgid "No fields were detected in your document."
@@ -8367,7 +8375,7 @@ msgstr "未找到签名字段"
 
 #: apps/remix/app/components/general/document-signing/csc-recipient-blocked-page.tsx
 msgid "No signing credentials available"
-msgstr ""
+msgstr "没有可用的签名凭证"
 
 #: apps/remix/app/routes/_authenticated+/admin+/organisations.$id.tsx
 msgid "No Stripe customer attached"
@@ -8461,7 +8469,7 @@ msgstr "不支持"
 
 #: apps/remix/app/components/tables/documents-table-empty-state.tsx
 msgid "Nothing cancelled"
-msgstr ""
+msgstr "未取消任何内容"
 
 #: apps/remix/app/components/tables/documents-table-empty-state.tsx
 #: apps/remix/app/components/tables/documents-table-empty-state.tsx
@@ -8470,7 +8478,7 @@ msgstr "暂无待处理事项"
 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
 msgid "Notifications"
-msgstr ""
+msgstr "通知"
 
 #: apps/remix/app/routes/_authenticated+/admin+/organisations.$id.tsx
 msgid "Notify the organisation about limit changes"
@@ -8561,6 +8569,10 @@ msgstr "模板设置完成后，将链接分享到任意位置。打开链接的
 msgid "One of the documents in the current bundle has a signing role that is not compatible with the current signing experience."
 msgstr "当前文档包中的某个文档包含与当前签署体验不兼容的签署角色。"
 
+#: packages/email/template-components/template-account-disabled.tsx
+msgid "One of your signing requests has been reported. As part of keeping signers safe, we've disabled your account for now."
+msgstr ""
+
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "One or more of your required fields have not been saved. Please refresh the page, complete any empty required fields, and try again."
 msgstr ""
@@ -8587,6 +8599,14 @@ msgstr "只允许上传 PDF 文件"
 
 #: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
 msgid "Only pending documents you have permission to manage will be cancelled."
+msgstr "只有你有权限管理的待处理文档会被取消。"
+
+#: packages/email/template-components/template-new-account-warning.tsx
+msgid "Only sign if you know and were expecting this sender."
+msgstr ""
+
+#: packages/email/template-components/template-new-account-warning.tsx
+msgid "Only sign if you know and were expecting this sender. <0>Report sender</0>"
 msgstr ""
 
 #: apps/remix/app/components/general/generic-error-layout.tsx
@@ -8789,7 +8809,7 @@ msgstr "组织 SSO 门户"
 #: apps/remix/app/routes/_authenticated+/admin+/_layout.tsx
 #: apps/remix/app/routes/_authenticated+/admin+/organisation-stats._index.tsx
 msgid "Organisation Stats"
-msgstr ""
+msgstr "组织统计数据"
 
 #: apps/remix/app/routes/_authenticated+/admin+/organisations.$id.tsx
 msgid "Organisation Teams"
@@ -8829,7 +8849,7 @@ msgstr "用户所属的组织。"
 
 #: apps/remix/app/routes/_authenticated+/admin+/organisations.$id.tsx
 msgid "Organisations without a transport use the system default mailer."
-msgstr ""
+msgstr "没有配置传输方式的组织将使用系统默认邮件程序。"
 
 #: apps/remix/app/components/general/folder/folder-card.tsx
 msgid "Organise your documents"
@@ -9122,7 +9142,7 @@ msgstr "每年"
 #: apps/remix/app/components/tables/documents-table-period-filter.tsx
 #: apps/remix/app/routes/_authenticated+/admin+/organisation-stats._index.tsx
 msgid "Period"
-msgstr ""
+msgstr "周期"
 
 #: apps/remix/app/routes/_authenticated+/admin+/organisations.$id.tsx
 msgid "Permanently delete this organisation. Documents will be orphaned (not deleted) so they remain accessible via the deleted-account service account."
@@ -9173,7 +9193,7 @@ msgstr "占位符"
 
 #: apps/remix/app/components/forms/subscription-claim-form.tsx
 msgid "Plans without a transport use the system default mailer."
-msgstr ""
+msgstr "没有配置传输方式的套餐将使用系统默认邮件程序。"
 
 #. placeholder {0}: _(actionVerb).toLowerCase()
 #: packages/email/template-components/template-document-invite.tsx
@@ -9257,7 +9277,7 @@ msgstr "请联系站点所有者以获取进一步帮助。"
 
 #: apps/remix/app/components/general/document-signing/csc-recipient-signing-in-progress-page.tsx
 msgid "Please don't close this tab. The signing provider is finalising your signature."
-msgstr ""
+msgstr "请不要关闭此标签页。签名服务提供商正在完成您的签名。"
 
 #: apps/remix/app/components/dialogs/sign-field-number-dialog.tsx
 msgid "Please enter a number"
@@ -9414,7 +9434,7 @@ msgstr "波兰语"
 
 #: apps/remix/app/components/forms/email-transport-form.tsx
 msgid "Port"
-msgstr ""
+msgstr "端口"
 
 #: packages/lib/constants/i18n.ts
 msgid "Portuguese (Brazil)"
@@ -9663,7 +9683,7 @@ msgstr "原因"
 #: apps/remix/app/components/dialogs/envelope-cancel-dialog.tsx
 #: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
 msgid "Reason (optional)"
-msgstr ""
+msgstr "原因（可选）"
 
 #: packages/email/template-components/template-document-cancel.tsx
 msgid "Reason for cancellation: {cancellationReason}"
@@ -9688,7 +9708,7 @@ msgstr "签署此字段需要重新验证身份"
 #: apps/remix/app/components/general/document-signing/csc-recipient-signing-in-progress-page.tsx
 #: apps/remix/app/components/general/envelope-signing/envelope-signing-csc-status.tsx
 msgid "Reauthorise and retry"
-msgstr ""
+msgstr "重新授权并重试"
 
 #: packages/ui/components/recipient/recipient-role-select.tsx
 msgid "Receives copy"
@@ -9737,11 +9757,11 @@ msgstr "收件人已批准此文档"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "Recipient authenticated with the signing provider"
-msgstr ""
+msgstr "收件人已通过签名服务提供商完成身份验证"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "Recipient authorised the remote signature"
-msgstr ""
+msgstr "收件人已授权远程签名"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "Recipient CC'd the document"
@@ -9775,7 +9795,7 @@ msgstr "收件人已拒绝此文档"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "Recipient rejected the document externally"
-msgstr ""
+msgstr "收件人在外部拒绝了该文档"
 
 #: apps/remix/app/components/dialogs/admin-recipient-delete-dialog.tsx
 #: apps/remix/app/components/general/admin-global-settings-section.tsx
@@ -9792,7 +9812,7 @@ msgstr "收件人请求了此文档的双重验证 (2FA) 令牌"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "Recipient requested a remote signature"
-msgstr ""
+msgstr "收件人已请求远程签名"
 
 #: apps/remix/app/components/general/admin-global-settings-section.tsx
 msgid "Recipient signed"
@@ -9833,11 +9853,11 @@ msgstr "收件人已查看此文档"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "Recipient's remote signature was applied"
-msgstr ""
+msgstr "已应用收件人的远程签名"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "Recipient's signing provider authentication failed"
-msgstr ""
+msgstr "收件人的签名服务提供商身份验证失败"
 
 #: apps/remix/app/components/embed/authoring/configure-document-recipients.tsx
 #: apps/remix/app/components/general/document/document-page-view-recipients.tsx
@@ -9874,7 +9894,7 @@ msgstr "发送后，收件人将能够签署此文档"
 #: apps/remix/app/components/dialogs/envelope-cancel-dialog.tsx
 #: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
 msgid "Recipients will be notified that the document was cancelled"
-msgstr ""
+msgstr "收件人将收到通知，告知该文档已被取消"
 
 #: apps/remix/app/components/dialogs/envelope-delete-dialog.tsx
 msgid "Recipients will still retain their copy of the document"
@@ -10152,16 +10172,16 @@ msgstr ""
 
 #: apps/remix/app/routes/_recipient+/report.$token.tsx
 msgid "Report sender"
-msgstr ""
+msgstr "举报发件人"
 
 #: apps/remix/app/routes/_recipient+/report.$token.tsx
 msgid "Report this sender?"
-msgstr ""
+msgstr "要举报此发件人吗？"
 
 #: apps/remix/app/components/general/organisation-usage-panel.tsx
 #: apps/remix/app/components/tables/admin-organisation-stats-table.tsx
 msgid "Reports"
-msgstr ""
+msgstr "报告"
 
 #: apps/remix/app/components/general/webhook-logs-sheet.tsx
 msgid "Request"
@@ -10457,7 +10477,7 @@ msgstr "另存为模板"
 #: apps/remix/app/components/dialogs/email-transport-update-dialog.tsx
 #: apps/remix/app/components/forms/form-sticky-save-bar.tsx
 msgid "Save changes"
-msgstr ""
+msgstr "保存更改"
 
 #: packages/lib/client-only/providers/envelope-editor-provider.tsx
 #: packages/lib/client-only/providers/envelope-editor-provider.tsx
@@ -10516,7 +10536,7 @@ msgstr "按姓名或邮箱搜索"
 
 #: apps/remix/app/routes/_authenticated+/admin+/email-transports._index.tsx
 msgid "Search by name or from address"
-msgstr ""
+msgstr "按名称或发件地址搜索"
 
 #: apps/remix/app/routes/_authenticated+/admin+/organisations._index.tsx
 msgid "Search by organisation ID, name, customer ID or owner email"
@@ -10528,7 +10548,7 @@ msgstr "按组织名称搜索"
 
 #: apps/remix/app/routes/_authenticated+/admin+/organisation-stats._index.tsx
 msgid "Search by organisation name, URL or ID"
-msgstr ""
+msgstr "按组织名称、URL 或 ID 搜索"
 
 #: apps/remix/app/components/general/app-command-menu.tsx
 msgid "Search documents, users, organisations…"
@@ -10647,7 +10667,7 @@ msgstr "请选择此文件夹的目标位置。"
 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-fields-page-renderer.tsx
 msgid "Select a field type"
-msgstr ""
+msgstr "选择字段类型"
 
 #: apps/remix/app/components/dialogs/organisation-create-dialog.tsx
 msgid "Select a plan"
@@ -10863,7 +10883,7 @@ msgstr "发送"
 
 #: apps/remix/app/components/dialogs/email-transport-send-test-dialog.tsx
 msgid "Send a test email using this transport to verify the configuration."
-msgstr ""
+msgstr "使用此传输方式发送测试电子邮件以验证配置。"
 
 #: apps/remix/app/components/dialogs/webhook-test-dialog.tsx
 msgid "Send a test webhook with sample data to verify your integration is working correctly."
@@ -10935,11 +10955,11 @@ msgstr "发送状态"
 
 #: apps/remix/app/components/tables/admin-email-transports-table.tsx
 msgid "Send test"
-msgstr ""
+msgstr "发送测试"
 
 #: apps/remix/app/components/dialogs/email-transport-send-test-dialog.tsx
 msgid "Send Test Email"
-msgstr ""
+msgstr "发送测试邮件"
 
 #: apps/remix/app/components/tables/documents-table-sender-filter.tsx
 #: apps/remix/app/components/tables/documents-table.tsx
@@ -10954,7 +10974,7 @@ msgstr ""
 
 #: apps/remix/app/routes/_recipient+/report.$token.tsx
 msgid "Sender reported"
-msgstr ""
+msgstr "已举报发件人"
 
 #: apps/remix/app/components/general/settings-upsell/email-domains-upsell.tsx
 msgid "Sending from app.bchatsign.com"
@@ -11092,7 +11112,7 @@ msgstr ""
 
 #: apps/remix/app/routes/_authenticated+/admin+/organisation-stats._index.tsx
 msgid "Show daily averages for documents, emails and API usages"
-msgstr ""
+msgstr "显示文档、电子邮件和 API 使用量的每日平均值"
 
 #: apps/remix/app/components/general/analytics/analytics-no-activity-alert.tsx
 msgid "Show last 12 months"
@@ -11108,11 +11128,11 @@ msgstr "在公开资料中展示模板，方便你的用户快速签署上手"
 
 #: apps/remix/app/routes/_authenticated+/admin+/organisation-stats._index.tsx
 msgid "Show usage"
-msgstr ""
+msgstr "显示使用情况"
 
 #: apps/remix/app/routes/_authenticated+/admin+/organisation-stats._index.tsx
 msgid "Show usage with quotas"
-msgstr ""
+msgstr "显示使用情况和配额"
 
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/analytics._index.tsx
 msgid "Showing {visibleCount} of {totalCount} members"
@@ -11374,7 +11394,7 @@ msgstr "签署中"
 
 #: apps/remix/app/components/general/document-signing/csc-recipient-blocked-page.tsx
 msgid "Signing algorithm is not supported"
-msgstr ""
+msgstr "不支持该签名算法"
 
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
 msgid "Signing Certificate"
@@ -11382,7 +11402,7 @@ msgstr "签署证书"
 
 #: apps/remix/app/components/general/document-signing/csc-recipient-blocked-page.tsx
 msgid "Signing certificate is invalid"
-msgstr ""
+msgstr "签名证书无效"
 
 #: packages/lib/jobs/definitions/emails/send-document-completed-emails.handler.ts
 #: packages/lib/jobs/definitions/emails/send-document-completed-emails.handler.ts
@@ -11395,7 +11415,7 @@ msgstr "签署截止日期已过期"
 
 #: apps/remix/app/components/general/document-signing/csc-recipient-signing-in-progress-page.tsx
 msgid "Signing failed"
-msgstr ""
+msgstr "签名失败"
 
 #: apps/remix/app/components/embed/embed-document-signing-page-v1.tsx
 msgid "Signing for"
@@ -11561,7 +11581,7 @@ msgstr "出错了"
 #: apps/remix/app/components/general/document-signing/csc-recipient-signing-in-progress-page.tsx
 #: apps/remix/app/components/general/envelope-signing/envelope-signing-csc-status.tsx
 msgid "Something went wrong while applying your signature. Please retry."
-msgstr ""
+msgstr "应用您的签名时出现问题。请重试。"
 
 #: apps/remix/app/components/dialogs/ai-field-detection-dialog.tsx
 msgid "Something went wrong while detecting fields."
@@ -11581,7 +11601,7 @@ msgstr "加载通行密钥时出错。"
 
 #: apps/remix/app/components/general/document-signing/csc-recipient-blocked-page.tsx
 msgid "Something went wrong while preparing the remote signature. Please try again."
-msgstr ""
+msgstr "在准备远程签名时出现问题。请重试。"
 
 #: packages/lib/constants/pdf-viewer-i18n.ts
 msgid "Something went wrong while rendering the document, please try again or contact our support."
@@ -11797,7 +11817,7 @@ msgstr "订阅状态"
 
 #: apps/remix/app/components/dialogs/admin-organisation-sync-subscription-dialog.tsx
 msgid "Subscription synced"
-msgstr ""
+msgstr "订阅已同步"
 
 #: apps/remix/app/components/general/use-admin-search-categories.ts
 msgid "Subscriptions"
@@ -11902,7 +11922,7 @@ msgstr "同步"
 
 #: apps/remix/app/components/dialogs/admin-organisation-sync-subscription-dialog.tsx
 msgid "Sync claims. This will overwrite the current claim with the one resolved from the Stripe subscription."
-msgstr ""
+msgstr "同步权益。这将使用从 Stripe 订阅解析出的权益覆盖当前权益。"
 
 #: apps/remix/app/components/tables/organisation-email-domains-table.tsx
 msgid "Sync Email Domains"
@@ -11920,7 +11940,7 @@ msgstr "从服务器同步许可证"
 #: apps/remix/app/components/dialogs/admin-organisation-sync-subscription-dialog.tsx
 #: apps/remix/app/routes/_authenticated+/admin+/organisations.$id.tsx
 msgid "Sync Stripe subscription"
-msgstr ""
+msgstr "同步 Stripe 订阅"
 
 #: packages/lib/utils/document-audit-logs.ts
 #: packages/lib/utils/document-audit-logs.ts
@@ -12184,7 +12204,7 @@ msgstr "模板已重命名"
 
 #: apps/remix/app/components/dialogs/envelope-redistribute-dialog.tsx
 msgid "Template resent"
-msgstr ""
+msgstr "模板已重新发送"
 
 #: apps/remix/app/components/general/template/template-edit-form.tsx
 msgid "Template saved"
@@ -12261,11 +12281,11 @@ msgstr "测试"
 
 #: apps/remix/app/components/dialogs/email-transport-send-test-dialog.tsx
 msgid "Test email sent."
-msgstr ""
+msgstr "测试电子邮件已发送。"
 
 #: apps/remix/app/components/dialogs/email-transport-send-test-dialog.tsx
 msgid "Test failed."
-msgstr ""
+msgstr "测试失败。"
 
 #: apps/remix/app/components/dialogs/webhook-test-dialog.tsx
 msgid "Test Webhook"
@@ -12281,7 +12301,7 @@ msgstr "测试 Webhook 已发送"
 
 #: apps/remix/app/components/dialogs/email-transport-send-test-dialog.tsx
 msgid "test@example.com"
-msgstr ""
+msgstr "test@example.com"
 
 #: apps/remix/app/components/dialogs/ai-field-detection-dialog.tsx
 #: apps/remix/app/components/general/document-signing/document-signing-text-field.tsx
@@ -12326,7 +12346,7 @@ msgstr "感谢您完成签署流程。"
 
 #: apps/remix/app/routes/_recipient+/report.$token.tsx
 msgid "Thank you for letting us know, we have flagged this sender for review. If you have any concerns please feel free to reach out to our <0>support team</0>."
-msgstr ""
+msgstr "感谢你的反馈，我们已将此发件人标记为待审核。如果你有任何疑虑，请随时联系我们的<0>支持团队</0>。"
 
 #: apps/remix/app/routes/_unauthenticated+/articles.signature-disclosure.tsx
 msgid "Thank you for using BchatSign to perform your electronic document signing. The purpose of this disclosure is to inform you about the process, legality, and your rights regarding the use of electronic signatures on our platform. By opting to use an electronic signature, you are agreeing to the terms and conditions outlined below."
@@ -12446,7 +12466,7 @@ msgstr "此文档的所有权已代表 {1} 委派给 {0}"
 #: apps/remix/app/components/dialogs/envelope-cancel-dialog.tsx
 #: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
 msgid "The document signing process will be stopped"
-msgstr ""
+msgstr "文档签署流程将被终止"
 
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "The document was created but could not be sent to recipients."
@@ -12454,20 +12474,20 @@ msgstr "文档已创建，但无法发送给收件人。"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "The document was rejected externally by {onBehalfOf} on behalf of {user}"
-msgstr ""
+msgstr "该文档已被 {onBehalfOf} 在外部拒绝，{onBehalfOf} 代表 {user} 执行了此操作"
 
 #: packages/lib/utils/document-audit-logs.ts
 #: packages/lib/utils/document-audit-logs.ts
 msgid "The document was rejected externally by {onBehalfOf} on behalf of the recipient"
-msgstr ""
+msgstr "该文档已被 {onBehalfOf} 在外部拒绝，{onBehalfOf} 代表收件人执行了此操作"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "The document was rejected externally on behalf of {user}"
-msgstr ""
+msgstr "该文档已在外部被拒绝，代表 {user} 执行"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "The document was rejected externally on behalf of the recipient"
-msgstr ""
+msgstr "该文档已在外部被拒绝，代表收件人执行"
 
 #: apps/remix/app/components/dialogs/envelope-delete-dialog.tsx
 msgid "The document will be hidden from your account"
@@ -12479,7 +12499,7 @@ msgstr "如果勾选，将立即把文档发送给收件人。"
 
 #: apps/remix/app/components/dialogs/envelope-cancel-dialog.tsx
 msgid "The document will remain in your dashboard marked as Cancelled"
-msgstr ""
+msgstr "该文档将保留在你的仪表盘中，并标记为“已取消”"
 
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/documents.$id._layout.tsx
 msgid "The document you are looking for could not be found."
@@ -12496,7 +12516,7 @@ msgstr "文档名称"
 
 #: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
 msgid "The documents will remain in your dashboard marked as Cancelled"
-msgstr ""
+msgstr "这些文档将保留在你的仪表盘中，并标记为“已取消”"
 
 #: apps/remix/app/components/forms/email-preferences-form.tsx
 msgid "The email address which will show up in the \"Reply To\" field in emails"
@@ -12612,7 +12632,7 @@ msgstr "将应用于此组所有成员的组织角色。"
 
 #: apps/remix/app/components/dialogs/admin-organisation-sync-subscription-dialog.tsx
 msgid "The organisation subscription has been synced with Stripe."
-msgstr ""
+msgstr "该组织的订阅已与 Stripe 同步。"
 
 #: apps/remix/app/components/dialogs/admin-organisation-delete-dialog.tsx
 msgid "The organisation will be deleted in the background. Documents will be orphaned, not deleted."
@@ -12718,7 +12738,7 @@ msgstr "签署链接已复制到剪贴板。"
 #: apps/remix/app/components/general/document-signing/csc-recipient-signing-in-progress-page.tsx
 #: apps/remix/app/components/general/envelope-signing/envelope-signing-csc-status.tsx
 msgid "The signing provider did not respond in time. Please retry."
-msgstr ""
+msgstr "签名服务提供商未在规定时间内响应。请重试。"
 
 #: packages/email/templates/recipient-expired.tsx
 msgid "The signing window for \"{recipientName}\" on document \"{documentName}\" has expired."
@@ -12838,7 +12858,7 @@ msgstr "目前没有活动草稿。你可以上传文档开始创建草稿。"
 
 #: apps/remix/app/components/tables/documents-table-empty-state.tsx
 msgid "There are no cancelled documents. Documents you cancel will remain here as a record that they were distributed."
-msgstr ""
+msgstr "目前没有已取消的文档。你取消的文档会保留在这里，作为其曾被分发的记录。"
 
 #: apps/remix/app/components/tables/documents-table-empty-state.tsx
 msgid "There are no completed documents yet. Documents that you have created or received will appear here once completed."
@@ -12947,7 +12967,7 @@ msgstr "此文档无法更改"
 
 #: apps/remix/app/components/dialogs/envelope-cancel-dialog.tsx
 msgid "This document could not be cancelled at this time. Please try again."
-msgstr ""
+msgstr "当前无法取消此文档。请重试。"
 
 #: apps/remix/app/components/dialogs/envelope-delete-dialog.tsx
 msgid "This document could not be deleted at this time. Please try again."
@@ -12976,7 +12996,7 @@ msgstr "此文档已发送给该收件人，您不再能编辑该收件人。"
 
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/documents.$id._index.tsx
 msgid "This document has been cancelled"
-msgstr ""
+msgstr "此文档已被取消"
 
 #: apps/remix/app/routes/_recipient+/sign.$token+/complete.tsx
 msgid "This document has been cancelled by the owner and is no longer available for others to sign."
@@ -13009,7 +13029,7 @@ msgstr ""
 
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "This document has too many recipients. Please remove some recipients or contact support if you need more."
-msgstr ""
+msgstr "此文档的收件人数量过多。请删除部分收件人，或在需要更多收件人时联系支持。"
 
 #: apps/remix/app/components/general/document/document-certificate-qr-view.tsx
 msgid "This document is available in your BchatSign account. You can view more details, recipients, and audit logs there."
@@ -13087,7 +13107,7 @@ msgstr "如果仍有其他收件人尚未签署，将向刚完成签署的收件
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-recipient-form.tsx
 #: packages/ui/primitives/document-flow/add-signers.tsx
 msgid "This envelope cannot have more than {recipientCountLimit} recipients. Please contact support if you need more."
-msgstr ""
+msgstr "此信封的收件人数量不能超过 {recipientCountLimit} 个。如需更多收件人，请联系支持。"
 
 #: apps/remix/app/components/embed/embed-paywall.tsx
 msgid "This feature is not available on your current plan"
@@ -13136,7 +13156,7 @@ msgstr "此链接无效或已过期。请联系你的团队重新发送验证邮
 
 #: apps/remix/app/components/dialogs/team-member-delete-dialog.tsx
 msgid "This member is inherited from a group and cannot be removed from the team directly."
-msgstr ""
+msgstr "此成员是从某个群组继承的，无法直接从团队中移除。"
 
 #: apps/remix/app/routes/_unauthenticated+/organisation.sso.confirmation.$token.tsx
 msgid "This organisation will have administrative control over your account. You can revoke this access later, but they will retain access to any data they've already collected."
@@ -13474,7 +13494,7 @@ msgstr "未找到令牌"
 
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "Too many recipients"
-msgstr ""
+msgstr "收件人数量过多"
 
 #: apps/remix/app/components/dialogs/ai-field-detection-dialog.tsx
 #: apps/remix/app/components/dialogs/ai-recipient-detection-dialog.tsx
@@ -13492,7 +13512,7 @@ msgstr ""
 
 #: apps/remix/app/components/tables/admin-organisation-stats-table.tsx
 msgid "Total"
-msgstr ""
+msgstr "总计"
 
 #: apps/remix/app/routes/_authenticated+/admin+/stats.tsx
 msgid "Total Documents"
@@ -13520,23 +13540,23 @@ msgstr "将文档转移到其他团队"
 
 #: apps/remix/app/components/dialogs/email-transport-create-dialog.tsx
 msgid "Transport created."
-msgstr ""
+msgstr "传输已创建。"
 
 #: apps/remix/app/components/dialogs/email-transport-delete-dialog.tsx
 msgid "Transport deleted."
-msgstr ""
+msgstr "传输已删除。"
 
 #: apps/remix/app/components/forms/email-transport-form.tsx
 msgid "Transport type"
-msgstr ""
+msgstr "传输类型"
 
 #: apps/remix/app/components/forms/email-transport-form.tsx
 msgid "Transport type cannot be changed after creation."
-msgstr ""
+msgstr "传输类型在创建后无法更改。"
 
 #: apps/remix/app/components/dialogs/email-transport-update-dialog.tsx
 msgid "Transport updated."
-msgstr ""
+msgstr "传输已更新。"
 
 #: apps/remix/app/components/dialogs/webhook-create-dialog.tsx
 #: apps/remix/app/components/dialogs/webhook-edit-dialog.tsx
@@ -13601,7 +13621,7 @@ msgstr "双重验证重新验证"
 #: apps/remix/app/components/tables/admin-email-transports-table.tsx
 #: apps/remix/app/components/tables/templates-table.tsx
 msgid "Type"
-msgstr "类型"
+msgstr "键入"
 
 #: packages/lib/constants/document.ts
 #: packages/ui/primitives/signature-pad/signature-pad.tsx
@@ -13719,7 +13739,7 @@ msgstr "无法登录"
 
 #: apps/remix/app/components/general/document-signing/csc-recipient-blocked-page.tsx
 msgid "Unable to start the signing flow"
-msgstr ""
+msgstr "无法启动签名流程"
 
 #: packages/ui/primitives/signature-pad/signature-pad-upload.tsx
 msgid "Unable to upload image"
@@ -14158,7 +14178,7 @@ msgstr "使用您的通行密钥进行认证"
 
 #: apps/remix/app/components/tables/admin-email-transports-table.tsx
 msgid "Used by claims"
-msgstr ""
+msgstr "被声明使用"
 
 #: apps/remix/app/components/tables/admin-document-logs-table.tsx
 #: apps/remix/app/components/tables/document-logs-table.tsx
@@ -14202,7 +14222,7 @@ msgstr "用户组织"
 
 #: apps/remix/app/components/forms/email-transport-form.tsx
 msgid "Username"
-msgstr ""
+msgstr "用户名"
 
 #: apps/remix/app/components/general/use-admin-search-categories.ts
 #: apps/remix/app/components/tables/organisation-insights-table.tsx
@@ -14462,7 +14482,7 @@ msgstr "查看此邮箱域名的 DNS 记录"
 
 #: apps/remix/app/routes/_authenticated+/admin+/organisation-stats._index.tsx
 msgid "View, sort and filter monthly usage stats across organisations"
-msgstr ""
+msgstr "查看、排序和筛选各组织的月度使用统计数据"
 
 #: apps/remix/app/components/embed/multisign/multi-sign-document-list.tsx
 #: apps/remix/app/components/general/document/document-page-view-recipients.tsx
@@ -14542,7 +14562,7 @@ msgstr "想拥有自己的公开资料吗？"
 
 #: apps/remix/app/components/dialogs/email-transport-delete-dialog.tsx
 msgid "Warning, this email transport is currently being used by:"
-msgstr ""
+msgstr "警告，此电子邮件传输当前正被以下主体使用："
 
 #: apps/remix/app/components/general/envelope-editor/recipient-step-list.tsx
 #: packages/ui/primitives/document-flow/add-signers.tsx
@@ -14553,6 +14573,10 @@ msgstr ""
 #: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx
 msgid "Warning: Assistant as last signer"
 msgstr "警告：助理为最后一位签署人"
+
+#: packages/email/template-components/template-new-account-warning.tsx
+msgid "Warning: This was sent from a new account ({senderEmail})"
+msgstr ""
 
 #: apps/remix/app/components/general/organisations/organisation-billing-banner.tsx
 #: apps/remix/app/components/general/organisations/organisation-billing-portal-button.tsx
@@ -14852,7 +14876,7 @@ msgstr "目前无法将你登出。"
 
 #: apps/remix/app/routes/_recipient+/report.$token.tsx
 msgid "We were unable to report this sender at this time. Please try again later."
-msgstr ""
+msgstr "目前无法举报此发件人。请稍后再试。"
 
 #: apps/remix/app/components/forms/password-setup-request-button.tsx
 msgid "We were unable to send the email. Please try again later."
@@ -15182,7 +15206,7 @@ msgstr "你已批准此文档"
 
 #: apps/remix/app/components/dialogs/envelope-cancel-dialog.tsx
 msgid "You are about to cancel <0>\"{title}\"</0>"
-msgstr ""
+msgstr "你即将取消 <0>\"{title}\"</0>"
 
 #: apps/remix/app/components/general/document-signing/document-signing-complete-dialog.tsx
 msgid "You are about to complete approving the following document"
@@ -15369,11 +15393,11 @@ msgstr "您无权为此用户重置双重身份验证。"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "You authenticated with the signing provider"
-msgstr ""
+msgstr "您已通过签名服务提供商完成身份验证"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "You authorised the remote signature"
-msgstr ""
+msgstr "您已授权远程签名"
 
 #: apps/remix/app/components/dialogs/ai-field-detection-dialog.tsx
 msgid "You can add fields manually in the editor."
@@ -15442,7 +15466,7 @@ msgstr "您可以点击下方按钮查看文档及其状态。"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "You cancelled the document"
-msgstr ""
+msgstr "你已取消该文档"
 
 #: apps/remix/app/components/general/envelope-editor/recipient-step-list.tsx
 #: packages/ui/primitives/document-flow/add-signers.tsx
@@ -15472,15 +15496,15 @@ msgstr "你不能修改角色高于你的团队成员。"
 
 #: apps/remix/app/components/dialogs/team-member-delete-dialog.tsx
 msgid "You cannot remove a member with a role higher than your own."
-msgstr ""
+msgstr "你无法移除角色高于你自己的成员。"
 
 #: apps/remix/app/components/dialogs/team-member-delete-dialog.tsx
 msgid "You cannot remove members from this team while the inherit member feature is enabled."
-msgstr ""
+msgstr "在启用继承成员功能时，你无法从该团队中移除成员。"
 
 #: apps/remix/app/components/dialogs/team-member-delete-dialog.tsx
 msgid "You cannot remove the organisation owner from the team."
-msgstr ""
+msgstr "你无法将组织所有者从团队中移除。"
 
 #: packages/ui/primitives/document-dropzone.tsx
 #: packages/ui/primitives/document-upload-button.tsx
@@ -15644,7 +15668,7 @@ msgstr "您本月的文档数量已达到上限。请升级您的套餐。"
 
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "You have reached your document limit for this plan. Please upgrade your plan."
-msgstr ""
+msgstr "您在当前方案中的文档数量已达上限。请升级您的方案。"
 
 #: apps/remix/app/components/general/envelope/envelope-upload-button.tsx
 #: packages/ui/primitives/document-dropzone.tsx
@@ -15884,7 +15908,7 @@ msgstr "你请求了此文档的双重验证 (2FA) 令牌"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "You requested a remote signature"
-msgstr ""
+msgstr "您已请求远程签名"
 
 #. placeholder {0}: data.recipientEmail
 #: packages/lib/utils/document-audit-logs.ts
@@ -15973,6 +15997,10 @@ msgstr "今后登录时，你需要输入验证器应用中的验证码。"
 msgid "You will receive an email copy of the signed document once everyone has signed."
 msgstr "当所有人签署完成后，您将收到一份已签署文档的电子邮件副本。"
 
+#: packages/email/template-components/template-account-disabled.tsx
+msgid "You won't be able to sign in or send documents while it is disabled."
+msgstr ""
+
 #: apps/remix/app/components/dialogs/ai-features-enable-dialog.tsx
 msgid "You're an admin. You can enable AI features for this team right away. Everyone on the team will see AI detection once enabled."
 msgstr "您是管理员，您可以立即为此团队启用 AI 功能。启用后，团队中的所有成员都能看到 AI 检测。"
@@ -15994,6 +16022,10 @@ msgstr ""
 msgid "Your account has been deleted successfully."
 msgstr "你的账号已成功删除。"
 
+#: packages/email/template-components/template-account-disabled.tsx
+msgid "Your account has been disabled"
+msgstr ""
+
 #: apps/remix/app/routes/_authenticated+/settings+/security._index.tsx
 msgid "Your account has no password. Add one to sign in with your email and to sign documents that require it. We'll email you a link."
 msgstr ""
@@ -16005,6 +16037,11 @@ msgstr "头像已成功更新。"
 #: apps/remix/app/components/general/admin-site-banner-section.tsx
 msgid "Your banner has been updated successfully."
 msgstr "横幅已成功更新。"
+
+#: packages/email/templates/account-disabled.tsx
+#: packages/lib/jobs/definitions/emails/send-account-disabled-email.handler.ts
+msgid "Your Bchatsign account has been disabled"
+msgstr ""
 
 #: apps/remix/app/components/forms/branding-preferences-form.tsx
 msgid "Your brand website URL"
@@ -16125,7 +16162,7 @@ msgstr "您的文档已被管理员删除！"
 
 #: apps/remix/app/components/dialogs/envelope-redistribute-dialog.tsx
 msgid "Your document has been resent successfully."
-msgstr ""
+msgstr "您的文档已成功重新发送。"
 
 #: apps/remix/app/components/dialogs/envelope-save-as-template-dialog.tsx
 msgid "Your document has been saved as a template."
@@ -16229,23 +16266,23 @@ msgstr "您的组织已成功更新。"
 
 #: apps/remix/app/components/general/organisations/organisation-quota-banner.tsx
 msgid "Your organisation has exceeded a fair use limit"
-msgstr ""
+msgstr "您的组织已超出合理使用限制"
 
 #: apps/remix/app/components/general/organisations/organisation-quota-banner.tsx
 msgid "Your organisation has exceeded a fair use limit. Please contact <0>support</0> to review your plan's limits."
-msgstr ""
+msgstr "您的组织已超出合理使用限制。请联系<0>支持</0>以查看您方案的限制。"
 
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "Your organisation has reached its plan's fair use limit. Please contact your organisation administrator or support to continue."
-msgstr ""
+msgstr "您的组织已达到当前方案的合理使用限制。要继续使用，请联系您组织的管理员或支持团队。"
 
 #: apps/remix/app/components/general/organisations/organisation-quota-banner.tsx
 msgid "Your organisation is approaching a fair use limit"
-msgstr ""
+msgstr "您的组织正接近公平使用额度上限。"
 
 #: apps/remix/app/components/general/organisations/organisation-quota-banner.tsx
 msgid "Your organisation is approaching a fair use limit. If you expect to need higher limits, please contact <0>support</0> to review your plan's limits."
-msgstr ""
+msgstr "您的组织正接近公平使用额度上限。如果您预计需要更高的额度，请联系<0>支持</0>以评估您当前方案的额度。"
 
 #: packages/email/templates/organisation-limit-alert.tsx
 msgid "Your organisation is generating API requests faster than normal, so some requests are being temporarily throttled."
@@ -16261,15 +16298,15 @@ msgstr "您的组织正在以高于正常的速度发送邮件，因此部分请
 
 #: packages/email/templates/organisation-limit-alert.tsx
 msgid "Your organisation is nearing its fair use limits for creating documents on your current plan. Once the limit is reached, new document activity will be temporarily paused."
-msgstr ""
+msgstr "您的组织在当前方案下创建文档的使用量正接近公平使用额度上限。一旦达到上限，新的文档相关活动将被暂时暂停。"
 
 #: packages/email/templates/organisation-limit-alert.tsx
 msgid "Your organisation is nearing its fair use limits for making API requests on your current plan. Once the limit is reached, new API activity will be temporarily paused."
-msgstr ""
+msgstr "您的组织在当前方案下发起 API 请求的使用量正接近公平使用额度上限。一旦达到上限，新的 API 活动将被暂时暂停。"
 
 #: packages/email/templates/organisation-limit-alert.tsx
 msgid "Your organisation is nearing its fair use limits for sending email on your current plan. Once the limit is reached, new email activity will be temporarily paused."
-msgstr ""
+msgstr "您的组织在当前方案下发送电子邮件的使用量正接近公平使用额度上限。一旦达到上限，新的电子邮件活动将被暂时暂停。"
 
 #: packages/email/templates/organisation-limits-updated.tsx
 msgid "Your organisation limits have been updated"
@@ -16325,16 +16362,16 @@ msgstr ""
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "Your remote signature was applied"
-msgstr ""
+msgstr "您的远程签名已应用"
 
 #: apps/remix/app/components/general/document-signing/csc-recipient-signing-in-progress-page.tsx
 #: apps/remix/app/components/general/envelope-signing/envelope-signing-csc-status.tsx
 msgid "Your signing authorisation expired before the signature could be applied. Please reauthorise to retry."
-msgstr ""
+msgstr "在应用签名前，您的签名授权已过期。请重新授权后重试。"
 
 #: apps/remix/app/components/general/document-signing/csc-recipient-blocked-page.tsx
 msgid "Your signing certificate is invalid, expired, or missing a required key. Contact your administrator or signing provider for assistance."
-msgstr ""
+msgstr "您的签名证书无效、已过期或缺少必需的密钥。请联系您的管理员或签名服务提供商以获取帮助。"
 
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "Your signing link has expired. Please contact the sender to request a new one."
@@ -16342,15 +16379,15 @@ msgstr ""
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "Your signing provider authentication failed"
-msgstr ""
+msgstr "您的签名服务提供商身份验证失败"
 
 #: apps/remix/app/components/general/document-signing/csc-recipient-blocked-page.tsx
 msgid "Your signing provider does not advertise a signing algorithm this document accepts. Contact your administrator or signing provider for assistance."
-msgstr ""
+msgstr "您的签名服务提供商未提供此文档可接受的签名算法信息。请联系您的管理员或签名服务提供商以获取帮助。"
 
 #: apps/remix/app/components/general/document-signing/csc-recipient-blocked-page.tsx
 msgid "Your signing provider returned no usable credentials for this account. Contact your administrator or signing provider for assistance."
-msgstr ""
+msgstr "您的签名服务提供商未为此账户返回任何可用凭据。请联系您的管理员或签名服务提供商以获取帮助。"
 
 #: apps/remix/app/components/embed/embed-recipient-expired.tsx
 msgid "Your signing window for this document has expired. Please contact the sender for a new invitation."
@@ -16379,7 +16416,7 @@ msgstr "您的模板已成功创建"
 
 #: apps/remix/app/components/dialogs/envelope-redistribute-dialog.tsx
 msgid "Your template has been resent successfully."
-msgstr ""
+msgstr "您的模板已成功重新发送。"
 
 #: apps/remix/app/components/dialogs/envelope-duplicate-dialog.tsx
 msgid "Your template has been successfully duplicated."

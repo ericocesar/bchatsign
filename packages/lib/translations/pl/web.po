@@ -31,7 +31,7 @@ msgstr "Adres „{0}” nie jest prawidłowym adresem e-mail."
 #. placeholder {1}: timezone || ''
 #: apps/remix/app/components/general/document-signing/document-signing-date-field.tsx
 msgid "\"{0}\" will appear on the document as it has a timezone of \"{1}\"."
-msgstr "W dokumencie, z racji strefy czasowej „{1}”, pojawi się wartość „{0}”."
+msgstr "Ze względu na strefę czasową „{1}”, w dokumencie pojawi się wartość „{0}”."
 
 #: packages/email/template-components/template-document-super-delete.tsx
 msgid "\"{documentName}\" has been deleted by an admin."
@@ -51,7 +51,7 @@ msgstr "Użytkownik „{placeholderEmail}” z zespołu „Zespół X” zaprosi
 
 #: apps/remix/app/components/dialogs/envelope-cancel-dialog.tsx
 msgid "\"{title}\" has been successfully cancelled"
-msgstr ""
+msgstr "Dokument „{title}” został anulowany"
 
 #: apps/remix/app/components/dialogs/envelope-delete-dialog.tsx
 msgid "\"{title}\" has been successfully deleted"
@@ -69,7 +69,7 @@ msgstr "„Zespół X” zaprosił Cię do podpisania dokumentu „ABC”."
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl.settings.branding.tsx
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.branding.tsx
 msgid "(line {0})"
-msgstr "(wiersz {0})"
+msgstr "(linia {0})"
 
 #: apps/remix/app/components/embed/embed-document-signing-page-v1.tsx
 #: apps/remix/app/components/general/document-signing/document-signing-form.tsx
@@ -104,28 +104,28 @@ msgstr "{0, plural, one {Pozostał # znak} few {Pozostały # znaki} many {Pozost
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl.settings.branding.tsx
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.branding.tsx
 msgid "{0, plural, one {# CSS rule was dropped during sanitisation.} other {# CSS rules were dropped during sanitisation.}}"
-msgstr "{0, plural, one {# reguła CSS została odrzucona podczas oczyszczania.} few {# reguły CSS zostały odrzucone podczas oczyszczania.} many {# reguł CSS zostało odrzuconych podczas oczyszczania.} other {# reguły CSS zostały odrzucone podczas oczyszczania.}}"
+msgstr "{0, plural, one {# reguła CSS została usunięta podczas oczyszczenia kodu.} few {# reguły CSS zostały usunięte podczas oczyszczenia kodu.} many {# reguł CSS zostało usuniętych podczas oczyszczenia kodu.} other {# reguły CSS zostały usunięte podczas oczyszczenia kodu.}}"
 
 #. placeholder {0}: result.cancelledCount
 #. placeholder {1}: result.failedIds.length
 #: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
 msgid "{0, plural, one {# document cancelled.} other {# documents cancelled.}} {1, plural, one {# document could not be cancelled.} other {# documents could not be cancelled.}}"
-msgstr ""
+msgstr "{0, plural, one {Anulowano # dokument.} few {Anulowano # dokumenty.} many {Anulowano # dokumentów.} other {Anulowano # dokumentów.}} {1, plural, one {Nie można było anulować # dokumentu.} few {Nie można było anulować # dokumentów.} many {Nie można było anulować # dokumentów.} other {Nie można było anulować # dokumentów.}}"
 
 #. placeholder {0}: successfulEnvelopeIds.length
 #: apps/remix/app/components/dialogs/envelopes-bulk-download-dialog.tsx
 msgid "{0, plural, one {# document downloaded.} other {# documents downloaded.}} {failedDownloads, plural, one {# document could not be downloaded.} other {# documents could not be downloaded.}}"
-msgstr ""
+msgstr "{0, plural, one {Pobrano # dokument.} few {Pobrano # dokumenty.} many {Pobrano # dokumentów.} other {Pobrano # dokumentów.}} {failedDownloads, plural, one {Nie można było pobrać # dokumentu.} few {Nie można było pobrać # dokumentów.} many {Nie można było pobrać # dokumentów.} other {Nie można było pobrać # dokumentów.}}"
 
 #. placeholder {0}: result.cancelledCount
 #: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
 msgid "{0, plural, one {# document has been cancelled.} other {# documents have been cancelled.}}"
-msgstr ""
+msgstr "{0, plural, one {Anulowano # dokument.} few {Anulowano # dokumenty.} many {Anulowano # dokumentów.} other {Anulowano # dokumentów.}}"
 
 #. placeholder {0}: successfulEnvelopeIds.length
 #: apps/remix/app/components/dialogs/envelopes-bulk-download-dialog.tsx
 msgid "{0, plural, one {# document has been downloaded.} other {# documents have been downloaded.}}"
-msgstr ""
+msgstr "{0, plural, one {Pobrano # dokument.} few {Pobrano # dokumenty.} many {Pobrano # dokumentów.} other {Pobrano # dokumentów.}}"
 
 #. placeholder {0}: folder._count.documents
 #: apps/remix/app/components/general/folder/folder-card.tsx
@@ -199,12 +199,12 @@ msgstr "{0, plural, one {<0>Masz <1>1</1> oczekujące zaproszenie</0>} few {<2>M
 #: apps/remix/app/components/general/document-signing/document-signing-page-view-v2.tsx
 #: apps/remix/app/components/general/envelope-signing/envelope-signer-header.tsx
 msgid "{0, plural, one {1 Field Remaining} other {# Fields Remaining}}"
-msgstr "{0, plural, one {Pozostało 1 pole} few {Pozostały # pola} many {Pozostało # pól} other {Pozostało # pola}}"
+msgstr "{0, plural, one {Pozostało 1 pole} few {Pozostały # pola} many {Pozostało # pól} other {Pozostało # pól}}"
 
 #. placeholder {0}: fieldsOnExcessPages.length
 #: apps/remix/app/components/dialogs/envelope-item-edit-dialog.tsx
 msgid "{0, plural, one {1 field will be deleted because the new PDF has fewer pages than the current one.} other {# fields will be deleted because the new PDF has fewer pages than the current one.}}"
-msgstr "{0, plural, one {1 pole zostanie usunięte, ponieważ nowy plik PDF ma mniejszą liczbę stron niż obecny.} few {# pola zostaną usunięte, ponieważ nowy plik PDF ma mniejszą liczbę stron niż obecny.} many {# pól zostanie usuniętych, ponieważ nowy plik PDF ma mniejszą liczbę stron niż obecny.} other {# pola zostanie usuniętych, ponieważ nowy plik PDF ma mniejszą liczbę stron niż obecny.}}"
+msgstr "{0, plural, one {1 pole zostanie usunięte, ponieważ nowy plik PDF ma mniejszą liczbę stron niż obecny.} few {# pola zostaną usunięte, ponieważ nowy plik PDF ma mniejszą liczbę stron niż obecny.} many {# pól zostanie usuniętych, ponieważ nowy plik PDF ma mniejszą liczbę stron niż obecny.} other {# pól zostanie usuniętych, ponieważ nowy plik PDF ma mniejszą liczbę stron niż obecny.}}"
 
 #. placeholder {0}: fields.filter((field) => field.envelopeItemId === doc.id).length
 #. placeholder {0}: remainingFields.filter((field) => field.envelopeItemId === doc.id).length
@@ -264,7 +264,7 @@ msgstr "{0, plural, one {Wybierz folder, do którego chcesz przenieść zaznaczo
 #. placeholder {0}: envelopes.length
 #: apps/remix/app/components/dialogs/envelopes-bulk-download-dialog.tsx
 msgid "{0, plural, one {Select the version to download for the selected document.} other {Select the version to download for each of the # selected documents.}}"
-msgstr ""
+msgstr "{0, plural, one {Wybierz wersję do pobrania.} few {Wybierz wersję do pobrania dla każdego dokumentu.} many {Wybierz wersję do pobrania dla każdego dokumentu.} other {Wybierz wersję do pobrania dla każdego dokumentu.}}"
 
 #. placeholder {0}: pendingRecipients.length
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/documents.$id._index.tsx
@@ -284,7 +284,7 @@ msgstr "{0, plural, one {Znaleźliśmy # odbiorcę w dokumencie.} few {Znaleźli
 #. placeholder {0}: envelopeIds.length
 #: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
 msgid "{0, plural, one {You are about to cancel the selected document.} other {You are about to cancel # documents.}}"
-msgstr ""
+msgstr "{0, plural, one {Zamierzasz anulować dokument.} few {Zamierzasz anulować # dokumenty.} many {Zamierzasz anulować # dokumentów.} other {Zamierzasz anulować # dokumentów.}}"
 
 #. placeholder {0}: envelopeIds.length
 #: apps/remix/app/components/dialogs/envelopes-bulk-delete-dialog.tsx
@@ -334,7 +334,7 @@ msgstr "Sprawdź i {recipientActionVerb} dokument „{1}” utworzony przez zesp
 #: apps/remix/app/components/general/settings-upsell/branding-upsell.tsx
 #: apps/remix/app/components/general/settings-upsell/email-domains-upsell.tsx
 msgid "{0} has invited you to sign this document."
-msgstr ""
+msgstr "Organizacja {0} zaprosiła Cię do podpisania dokumentu."
 
 #. placeholder {0}: team.name
 #: packages/lib/jobs/definitions/emails/send-signing-email.handler.ts
@@ -351,7 +351,7 @@ msgstr "Pozostało {0} z {1} dokumentów w tym miesiącu."
 #. placeholder {0}: planClaim.name
 #: apps/remix/app/components/general/settings-org-switcher.tsx
 msgid "{0} Plan"
-msgstr ""
+msgstr "Plan {0}"
 
 #. placeholder {0}: currentStepData.order
 #. placeholder {1}: envelopeEditorSteps.length
@@ -427,7 +427,7 @@ msgstr "Użytkownik {inviterName} anulował dokument<0/>„{documentName}”"
 #. placeholder {0}: _(actionVerb).toLowerCase()
 #: packages/email/template-components/template-document-invite.tsx
 msgid "{inviterName} has invited you to {0}<0/>\"{documentName}\""
-msgstr "Sprawdź i {0} dokument „{documentName}}” utworzony przez  użytkownika {inviterName}"
+msgstr "Sprawdź i {0} dokument „{documentName}” utworzony przez użytkownika {inviterName}"
 
 #: packages/email/templates/document-invite.tsx
 msgid "{inviterName} has invited you to {action} {documentName}"
@@ -451,12 +451,12 @@ msgstr "Użytkownik {inviterName} usunął Cię z dokumentu<0/>„{documentName}
 #: packages/lib/jobs/definitions/emails/send-signing-email.handler.ts
 #: packages/lib/server-only/document/resend-document.ts
 msgid "{inviterName} on behalf of \"{0}\" has invited you to {recipientActionVerb} the document \"{1}\"."
-msgstr "Sprawdź i {recipientActionVerb} dokument „{1}” utworzony przez  użytkownika {inviterName} z zespołu „{0}”."
+msgstr "Sprawdź i {recipientActionVerb} dokument „{1}” utworzony przez użytkownika {inviterName} z zespołu „{0}”."
 
 #. placeholder {0}: _(actionVerb).toLowerCase()
 #: packages/email/template-components/template-document-invite.tsx
 msgid "{inviterName} on behalf of \"{teamName}\" has invited you to {0}<0/>\"{documentName}\""
-msgstr "Sprawdź i {0} dokument<0/>„{documentName}” utworzony przez  użytkownika {inviterName} z zespołu „{teamName}”"
+msgstr "Sprawdź i {0} dokument<0/>„{documentName}” utworzony przez użytkownika {inviterName} z zespołu „{teamName}”"
 
 #: packages/email/templates/document-invite.tsx
 msgid "{inviterName} on behalf of \"{teamName}\" has invited you to {action} {documentName}"
@@ -464,7 +464,7 @@ msgstr "Sprawdź i {action} dokument „{documentName}” utworzony przez użytk
 
 #: apps/remix/app/components/dialogs/envelopes-bulk-download-dialog.tsx
 msgid "{MAX_BULK_DOWNLOAD_ENVELOPES, plural, one {You can download up to # document at a time. Deselect some documents to continue.} other {You can download up to # documents at a time. Deselect some documents to continue.}}"
-msgstr ""
+msgstr "{MAX_BULK_DOWNLOAD_ENVELOPES, plural, one {Możesz pobrać jednocześnie # dokument. Odznacz niektóre dokumenty.} few {Możesz pobrać jednocześnie # dokumenty. Odznacz niektóre dokumenty.} many {Możesz pobrać jednocześnie # dokumentów. Odznacz niektóre dokumenty.} other {Możesz pobrać jednocześnie # dokumentów. Odznacz niektóre dokumenty.}}"
 
 #: apps/remix/app/components/dialogs/passkey-create-dialog.tsx
 msgid "{MAXIMUM_PASSKEYS, plural, one {You cannot have more than # passkey.} other {You cannot have more than # passkeys.}}"
@@ -479,7 +479,7 @@ msgstr "{maximumEnvelopeItemCount, plural, one {Nie możesz przesłać więcej n
 
 #: apps/remix/app/components/dialogs/email-transport-delete-dialog.tsx
 msgid "{organisationClaimCount, plural, one {# Organisation claim} other {# Organisation claims}}"
-msgstr ""
+msgstr "{organisationClaimCount, plural, one {# subskrypcję organizacji} few {# subskrypcje organizacji} many {# subskrypcji organizacji} other {# subskrypcji organizacji}}"
 
 #: apps/remix/app/components/general/direct-template/direct-template-page.tsx
 msgid "{recipientActionVerb} document"
@@ -546,7 +546,7 @@ msgstr "Użytkownik {signerName} odrzucił dokument „{documentName}”."
 
 #: apps/remix/app/components/dialogs/email-transport-delete-dialog.tsx
 msgid "{subscriptionClaimCount, plural, one {# Subscription claim} other {# Subscription claims}}"
-msgstr ""
+msgstr "{subscriptionClaimCount, plural, one {# subskrypcję} few {# subskrypcje} many {# subskrypcji} other {# subskrypcji}}"
 
 #. placeholder {0}: _(actionVerb).toLowerCase()
 #: packages/email/template-components/template-document-invite.tsx
@@ -559,11 +559,11 @@ msgstr "Sprawdź i {action} dokument „{documentName}” utworzony przez zespó
 
 #: apps/remix/app/components/general/app-command-menu.tsx
 msgid "{totalVisibleCount, plural, one {# item} other {# items}}"
-msgstr ""
+msgstr "{totalVisibleCount, plural, one {# element} few {# elementy} many {# elementów} other {# elementów}}"
 
 #: apps/remix/app/components/general/app-command-menu.tsx
 msgid "{totalVisibleCount, plural, one {# result} other {# results}}"
-msgstr ""
+msgstr "{totalVisibleCount, plural, one {# wynik} few {# wyniki} many {# wyników} other {# wyników}}"
 
 #: apps/remix/app/components/general/app-command-menu.tsx
 msgid "{totalVisibleCount, plural, one {≥# result} other {≥# results}}"
@@ -583,15 +583,15 @@ msgstr "Użytkownik {user} zatwierdził dokument"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "{user} authenticated with the signing provider"
-msgstr ""
+msgstr "Użytkownik {user} uwierzytelnił się u dostawcy podpisu"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "{user} authorised the remote signature"
-msgstr ""
+msgstr "Użytkownik {user} autoryzował podpis zdalny"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "{user} cancelled the document"
-msgstr ""
+msgstr "Użytkownik {user} anulował dokument"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "{user} CC'd the document"
@@ -662,7 +662,7 @@ msgstr "Użytkownik {user} poprosił o kod weryfikacyjny dla dokumentu"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "{user} requested a remote signature"
-msgstr ""
+msgstr "Użytkownik {user} poprosił o podpis zdalny"
 
 #. placeholder {0}: data.recipientEmail
 #: packages/lib/utils/document-audit-logs.ts
@@ -737,11 +737,11 @@ msgstr "Użytkownik {user} wyświetlił dokument"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "{user}'s remote signature was applied"
-msgstr ""
+msgstr "Użytkownik {user} złożył podpis zdalny"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "{user}'s signing provider authentication failed"
-msgstr ""
+msgstr "Uwierzytelnienie użytkownika {user} u dostawcy podpisu nie powiodło się"
 
 #: apps/remix/app/components/tables/internal-audit-log-table.tsx
 msgid "{userAgent}"
@@ -765,22 +765,22 @@ msgstr "{visibleRows, plural, one {# wynik} few {# wyniki} many {# wyników} oth
 
 #: apps/remix/app/components/general/filter-pill.tsx
 msgid "+{extraCount} more"
-msgstr ""
+msgstr "+{extraCount} więcej"
 
 #. placeholder {0}: document.title
 #. placeholder {0}: envelope.title
 #: apps/remix/app/routes/_recipient+/sign.$token+/_index.tsx
 #: apps/remix/app/routes/_recipient+/sign.$token+/_index.tsx
 msgid "<0>\"{0}\"</0> is no longer available to sign"
-msgstr ""
+msgstr "Dokument <0>„{0}”</0> nie jest już dostępny do podpisu"
 
 #: apps/remix/app/routes/_unauthenticated+/organisation.invite.$token.tsx
 msgid "<0>{organisationName}</0> does not have an active subscription. Please contact the organisation administrator to renew their plan before accepting this invitation."
-msgstr ""
+msgstr "Organizacja <0>{organisationName}</0> nie ma aktywnej subskrypcji. Skontaktuj się z administratorem organizacji, aby odnowić plan przed zaakceptowaniem tego zaproszenia."
 
 #: apps/remix/app/routes/_unauthenticated+/organisation.invite.$token.tsx
 msgid "<0>{organisationName}</0> has reached its member limit. Please contact the organisation administrator to upgrade their plan before accepting this invitation."
-msgstr ""
+msgstr "Osiągnięto maksymalną liczbę użytkowników w organizacji <0>{organisationName}</0>. Skontaktuj się z administratorem organizacji, aby zaktualizować plan przed zaakceptowaniem tego zaproszenia."
 
 #: packages/email/templates/organisation-account-link-confirmation.tsx
 msgid "<0>{organisationName}</0> has requested to create an account on your behalf."
@@ -800,7 +800,7 @@ msgstr ""
 
 #: apps/remix/app/routes/_unauthenticated+/team.verify.email.$token.tsx
 msgid "<0>{teamName}</0> would like to use <1>{email}</1> as their team email."
-msgstr ""
+msgstr "Zespół <0>{teamName}</0> chce użyć adresu <1>{email}</1> jako adresu e-mail zespołu."
 
 #: apps/remix/app/routes/_unauthenticated+/organisation.sso.confirmation.$token.tsx
 msgid "<0>Account management:</0> Modify your account settings, permissions, and preferences"
@@ -1078,7 +1078,7 @@ msgstr ""
 
 #: apps/remix/app/components/dialogs/token-create-dialog.tsx
 msgid "A name to help you identify this token later."
-msgstr ""
+msgstr "Nazwa, która pomoże Ci zidentyfikować token."
 
 #: packages/lib/jobs/definitions/emails/send-organisation-member-joined-email.handler.ts
 msgid "A new member has joined your organisation"
@@ -1263,7 +1263,7 @@ msgstr "Konto"
 #: apps/remix/app/components/general/settings-scope-breadcrumb.tsx
 #: apps/remix/app/components/general/unified-settings-sidebar.tsx
 msgid "Account Settings"
-msgstr ""
+msgstr "Ustawienia konta"
 
 #: apps/remix/app/routes/_authenticated+/settings+/security.linked-accounts.tsx
 msgid "Account unlinked"
@@ -1271,7 +1271,7 @@ msgstr "Konto zostało rozłączone"
 
 #: apps/remix/app/components/general/settings-upsell/sso-portal-upsell.tsx
 msgid "Accounts are automatically added to your organisation on sign-in"
-msgstr ""
+msgstr "Automatyczne dodawanie kont do organizacji podczas logowania"
 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
 msgid "Acesso ao documento"
@@ -1334,7 +1334,7 @@ msgstr "Akcje"
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl.settings.members.tsx
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.general.tsx
 msgid "Active"
-msgstr "Aktywny"
+msgstr "Aktywna"
 
 #: apps/remix/app/components/general/admin-license-card.tsx
 #: apps/remix/app/components/tables/user-billing-organisations-table.tsx
@@ -1384,7 +1384,7 @@ msgstr "Dodaj dokument"
 #: packages/ui/primitives/document-flow/add-settings.tsx
 #: packages/ui/primitives/template-flow/add-template-settings.tsx
 msgid "Add a URL to redirect the user to once the document is signed"
-msgstr "Dodaj adres URL do przekierowania użytkownika po podpisaniu dokumentu"
+msgstr "Dodaj adres URL, na który użytkownik zostanie przekierowany po podpisaniu dokumentu"
 
 #: apps/remix/app/components/general/document/document-edit-form.tsx
 #: apps/remix/app/components/general/template/template-edit-form.tsx
@@ -1414,11 +1414,11 @@ msgstr "Dodaj identyfikator zewnętrzny szablonu. Może być używany do identyf
 
 #: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
 msgid "Add an optional reason for cancelling these documents"
-msgstr ""
+msgstr "Dodaj opcjonalny powód anulowania dokumentów"
 
 #: apps/remix/app/components/dialogs/envelope-cancel-dialog.tsx
 msgid "Add an optional reason for cancelling this document"
-msgstr ""
+msgstr "Dodaj opcjonalny powód anulowania dokumentu"
 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-upload-page.tsx
 msgid "Add and configure multiple documents"
@@ -1456,7 +1456,7 @@ msgstr "Dodaj domenę"
 
 #: apps/remix/app/components/dialogs/email-transport-create-dialog.tsx
 msgid "Add Email Transport"
-msgstr ""
+msgstr "Dodaj dostawcę poczty e-mail"
 
 #: apps/remix/app/components/dialogs/ai-field-detection-dialog.tsx
 msgid "Add fields"
@@ -1529,7 +1529,7 @@ msgstr "Dodaj domyślny tekst"
 
 #: apps/remix/app/components/general/rate-limit-array-input.tsx
 msgid "Add rate limit window"
-msgstr ""
+msgstr "Dodaj limit przepustowości"
 
 #: apps/remix/app/components/dialogs/ai-recipient-detection-dialog.tsx
 msgid "Add recipients"
@@ -1593,7 +1593,7 @@ msgstr "Dodaj ten adres URL do dozwolonych adresów przekierowania Twojego dosta
 
 #: apps/remix/app/components/dialogs/email-transport-create-dialog.tsx
 msgid "Add transport"
-msgstr ""
+msgstr "Dodaj dostawcę poczty e-mail"
 
 #: apps/remix/app/components/forms/branding-preferences-form.tsx
 msgid "Additional brand information to display at the bottom of emails"
@@ -1628,7 +1628,7 @@ msgstr "Tylko dla administratorów"
 
 #: apps/remix/app/components/forms/branding-preferences-form.tsx
 msgid "Advanced — Custom CSS"
-msgstr "Zaawansowane — własny CSS"
+msgstr "Zaawansowane – niestandardowy CSS"
 
 #: packages/ui/primitives/document-flow/add-settings.tsx
 #: packages/ui/primitives/template-flow/add-template-settings.tsx
@@ -1681,7 +1681,7 @@ msgstr "Wszystko"
 #: apps/remix/app/routes/_authenticated+/admin+/organisation-stats._index.tsx
 #: apps/remix/app/routes/_authenticated+/admin+/organisation-stats._index.tsx
 msgid "All claims"
-msgstr ""
+msgstr "Wszystkie subskrypcje"
 
 #: apps/remix/app/components/general/app-command-menu.tsx
 msgid "All documents"
@@ -1760,7 +1760,7 @@ msgstr "Odpowiadanie odbiorcom dokumentu bezpośrednio na ten adres e-mail"
 
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl.settings.sso.tsx
 msgid "Allow Personal Organisations"
-msgstr "Zezwalaj na osobiste organizacje"
+msgstr "Zezwól na osobiste organizacje"
 
 #: apps/remix/app/components/embed/authoring/configure-document-recipients.tsx
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-recipient-form.tsx
@@ -1804,6 +1804,10 @@ msgstr "Masz już konto? <0>Zaloguj się</0>"
 #: apps/remix/app/components/tables/organisation-billing-invoices-table.tsx
 msgid "Amount"
 msgstr "Kwota"
+
+#: packages/lib/jobs/definitions/emails/send-account-disabled-email.handler.ts
+msgid "An account was automatically disabled"
+msgstr ""
 
 #: packages/email/templates/document-super-delete.tsx
 msgid "An admin has deleted your document \"{documentName}\"."
@@ -1896,7 +1900,7 @@ msgstr "Wystąpił błąd podczas automatycznego podpisywania dokumentu. Niektó
 
 #: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
 msgid "An error occurred while cancelling the documents."
-msgstr ""
+msgstr "Wystąpił błąd podczas anulowania dokumentów."
 
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "An error occurred while creating document from template."
@@ -1924,12 +1928,12 @@ msgstr "Wystąpił błąd podczas wyłączania użytkownika."
 
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "An error occurred while distributing the document."
-msgstr ""
+msgstr "Wystąpił błąd podczas wysyłania dokumentu."
 
 #: apps/remix/app/components/dialogs/envelopes-bulk-download-dialog.tsx
 #: apps/remix/app/components/dialogs/envelopes-bulk-download-dialog.tsx
 msgid "An error occurred while downloading the documents."
-msgstr ""
+msgstr "Wystąpił błąd podczas ładowania dokumentów."
 
 #: apps/remix/app/components/dialogs/template-direct-link-dialog.tsx
 msgid "An error occurred while enabling direct link signing."
@@ -2036,11 +2040,11 @@ msgstr "Wystąpił błąd. Spróbuj ponownie później."
 
 #: packages/lib/jobs/definitions/emails/send-organisation-limit-alert-email.handler.ts
 msgid "An organisation has exceeded their fair use limits"
-msgstr ""
+msgstr "Organizacja przekroczyła limit dozwolonego użytkowania"
 
 #: packages/lib/jobs/definitions/emails/send-organisation-limit-alert-email.handler.ts
 msgid "An organisation is nearing their fair use limits"
-msgstr ""
+msgstr "Organizacja zbliża się do limit dozwolonego użytkowania"
 
 #: apps/remix/app/routes/_unauthenticated+/organisation.sso.confirmation.$token.tsx
 msgid "An organisation wants to create an account for you. Please review the details below."
@@ -2162,12 +2166,12 @@ msgstr ""
 #: apps/remix/app/components/general/claim-limit-fields.tsx
 #: apps/remix/app/components/tables/admin-organisation-stats-table.tsx
 msgid "API"
-msgstr ""
+msgstr "API"
 
 #: apps/remix/app/components/forms/email-transport-form.tsx
 #: apps/remix/app/components/forms/email-transport-form.tsx
 msgid "API key"
-msgstr ""
+msgstr "Klucz API"
 
 #: apps/remix/app/components/general/organisation-usage-panel.tsx
 msgid "API requests"
@@ -2175,7 +2179,7 @@ msgstr "Żądania API"
 
 #: apps/remix/app/components/general/organisations/organisation-quota-banner.tsx
 msgid "API requests have been temporarily paused"
-msgstr ""
+msgstr "Żądania API zostały tymczasowo wstrzymane"
 
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.tokens.tsx
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.tokens.tsx
@@ -2185,7 +2189,7 @@ msgstr "Tokeny API"
 
 #: apps/remix/app/components/general/organisations/organisation-quota-banner.tsx
 msgid "API usage is approaching fair use limits"
-msgstr ""
+msgstr "Wykorzystanie API zbliża się do limitu dozwolonego użytkowania"
 
 #: apps/remix/app/routes/_authenticated+/admin+/stats.tsx
 msgid "App Version"
@@ -2197,7 +2201,7 @@ msgstr ""
 
 #: apps/remix/app/components/general/document-signing/csc-recipient-signing-in-progress-page.tsx
 msgid "Applying your signature"
-msgstr ""
+msgstr "Składanie podpisu"
 
 #: apps/remix/app/components/general/envelope-signing/envelope-signing-csc-status.tsx
 msgid "Applying your signature..."
@@ -2205,13 +2209,13 @@ msgstr ""
 
 #: apps/remix/app/components/general/organisations/organisation-quota-banner.tsx
 msgid "Approaching fair use limit"
-msgstr ""
+msgstr "Zbliżasz się do limitu dozwolonego użytkowania"
 
 #: packages/email/templates/organisation-limit-alert.tsx
 #: packages/email/templates/organisation-limit-alert.tsx
 #: packages/lib/jobs/definitions/emails/send-organisation-limit-alert-email.handler.ts
 msgid "Approaching Your Plan Limits"
-msgstr ""
+msgstr "Zbliżasz się do limitu planu"
 
 #: apps/remix/app/components/general/document-signing/document-signing-complete-dialog.tsx
 #: apps/remix/app/components/general/document-signing/document-signing-complete-dialog.tsx
@@ -2277,7 +2281,7 @@ msgstr "Czy na pewno chcesz usunąć następującą subskrypcję?"
 
 #: apps/remix/app/components/dialogs/email-transport-delete-dialog.tsx
 msgid "Are you sure you want to delete the following transport?"
-msgstr ""
+msgstr "Czy na pewno chcesz usunąć następującego dostawcę poczty e-mail?"
 
 #: apps/remix/app/components/dialogs/folder-delete-dialog.tsx
 msgid "Are you sure you want to delete this folder?"
@@ -2360,7 +2364,7 @@ msgstr "Przygotowujący"
 
 #: apps/remix/app/components/embed/multisign/multi-sign-document-list.tsx
 msgid "Assistants and Copy roles are currently not compatible with the multi-sign experience."
-msgstr "Przygotowujący i pobierający kopię nie są kompatybilni z funkcją  wielu podpisów."
+msgstr "Przygotowujący i pobierający kopię nie są kompatybilni z funkcją wielu podpisów."
 
 #: apps/remix/app/components/general/document/document-page-view-recipients.tsx
 msgid "Assisted"
@@ -2501,7 +2505,7 @@ msgstr "Zadania w tle"
 
 #: apps/remix/app/components/dialogs/claim-update-dialog.tsx
 msgid "Backport email transport"
-msgstr ""
+msgstr "Użyj dostawcy poczty e-mail"
 
 #: apps/remix/app/components/forms/2fa/disable-authenticator-app-dialog.tsx
 #: apps/remix/app/components/forms/2fa/two-factor-code-dialog.tsx
@@ -2519,11 +2523,11 @@ msgstr "Baner został zaktualizowany"
 
 #: apps/remix/app/components/forms/branding-preferences-form.tsx
 msgid "Base background colour."
-msgstr "Bazowy kolor tła."
+msgstr "Kolor tła."
 
 #: apps/remix/app/components/forms/branding-preferences-form.tsx
 msgid "Base text colour."
-msgstr "Bazowy kolor tekstu."
+msgstr "Kolor tekstu."
 
 #: apps/remix/app/components/general/admin-license-card.tsx
 msgid "BchatSign License"
@@ -2553,7 +2557,7 @@ msgstr "Płatności"
 
 #: apps/remix/app/components/forms/public-profile-form.tsx
 msgid "Bio"
-msgstr ""
+msgstr "Biografia"
 
 #: packages/ui/primitives/signature-pad/signature-pad-color-picker.tsx
 msgid "Black"
@@ -2561,7 +2565,7 @@ msgstr "Czarny"
 
 #: apps/remix/app/components/general/admin-email-blocklist-section.tsx
 msgid "Block signups from additional email domains on top of the bundled disposable email list. Subdomains are matched automatically (e.g. blocking \"bad.com\" also blocks \"foo.bad.com\")."
-msgstr "Blokuj rejestracje z dodatkowych domen e‑mail ponad dołączoną listę jednorazowych adresów. Subdomeny są dopasowywane automatycznie (np. zablokowanie \"bad.com\" powoduje również zablokowanie \"foo.bad.com\")."
+msgstr "Zablokuj rejestracje z konkretnych domen. Subdomeny są blokowane automatycznie (np. domena.pl spowoduje również zablokowanie subdomena.domena.pl). Domeny tymczasowych adresów e-mail znajdują się na tej liście."
 
 #: apps/remix/app/components/general/organisation-usage-panel.tsx
 msgid "Blocked"
@@ -2581,7 +2585,7 @@ msgstr "Obramowanie"
 
 #: apps/remix/app/components/dialogs/branding-preferences-reset-dialog.tsx
 msgid "Border radius"
-msgstr ""
+msgstr "Zaokrąglenie obramowania"
 
 #: apps/remix/app/components/forms/branding-preferences-form.tsx
 msgid "Border Radius"
@@ -2597,7 +2601,7 @@ msgstr "Dół"
 
 #: apps/remix/app/components/general/settings-upsell/branding-upsell.tsx
 msgid "Brand accent"
-msgstr ""
+msgstr "Kolor marki"
 
 #: apps/remix/app/components/forms/branding-preferences-form.tsx
 msgid "Brand Colours"
@@ -2605,7 +2609,7 @@ msgstr "Kolory marki"
 
 #: apps/remix/app/components/dialogs/branding-preferences-reset-dialog.tsx
 msgid "Brand colours, including background, foreground, primary, and border colours"
-msgstr ""
+msgstr "Kolory marki, w tym kolory tła, przycisków i obramowań"
 
 #: apps/remix/app/components/forms/branding-preferences-form.tsx
 msgid "Brand Details"
@@ -2621,7 +2625,7 @@ msgstr "Strona internetowa marki"
 
 #: apps/remix/app/components/dialogs/branding-preferences-reset-dialog.tsx
 msgid "Brand website and brand details"
-msgstr ""
+msgstr "Strona internetowa i szczegóły marki"
 
 #: apps/remix/app/components/general/admin-global-settings-section.tsx
 #: packages/lib/utils/settings-nav.ts
@@ -2707,11 +2711,11 @@ msgstr "Akceptując prośbę, przyznasz zespołowi {0} następujące uprawnienia
 
 #: packages/email/templates/confirm-team-email.tsx
 msgid "By accepting this request, you will be granting <0>{teamName}</0> access to:"
-msgstr "Akceptując prośbę, umożliwisz zespołowi <0>{teamName}</0> na:"
+msgstr "Akceptując prośbę, umożliwisz zespołowi <0>{teamName}</0>:"
 
 #: apps/remix/app/components/dialogs/envelope-delete-dialog.tsx
 msgid "By deleting this document, the following will occur:"
-msgstr "Usunięcie dokumentu spowoduje następujące skutki:"
+msgstr "Po usunięciu dokumentu:"
 
 #: apps/remix/app/components/general/document-signing/document-signing-auth-2fa.tsx
 msgid "By enabling 2FA, you will be required to enter a code from your authenticator app every time you sign in using email password."
@@ -2857,15 +2861,15 @@ msgstr "Anuluj"
 
 #: apps/remix/app/components/dialogs/envelope-cancel-dialog.tsx
 msgid "Cancel document"
-msgstr ""
+msgstr "Anuluj dokument"
 
 #: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
 msgid "Cancel documents"
-msgstr ""
+msgstr "Anuluj dokumenty"
 
 #: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
 msgid "Cancel Documents"
-msgstr ""
+msgstr "Anuluj dokumenty"
 
 #: apps/remix/app/components/dialogs/envelopes-bulk-download-dialog.tsx
 #: apps/remix/app/components/general/analytics/analytics-status-breakdown-card.tsx
@@ -2873,7 +2877,7 @@ msgstr ""
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-header.tsx
 #: packages/lib/constants/document.ts
 msgid "Cancelled"
-msgstr ""
+msgstr "Anulowano"
 
 #: apps/remix/app/components/dialogs/passkey-create-dialog.tsx
 msgid "Cancelled by user"
@@ -2894,7 +2898,7 @@ msgstr "Nie możesz przesłać elementów po wysłaniu dokumentu"
 
 #: apps/remix/app/routes/_authenticated+/admin+/organisations.$id.tsx
 msgid "Capabilities enabled for this organisation."
-msgstr ""
+msgstr "Funkcje włączone dla organizacji."
 
 #: packages/lib/constants/recipient-roles.ts
 msgctxt "Recipient role name"
@@ -2904,7 +2908,7 @@ msgstr "Pobierający kopię"
 #: packages/lib/constants/recipient-roles.ts
 msgctxt "Recipient role action verb"
 msgid "CC"
-msgstr "Pobierz"
+msgstr "Pobiera"
 
 #: packages/lib/constants/recipient-roles.ts
 msgctxt "Recipient role progressive verb"
@@ -2932,18 +2936,18 @@ msgstr ""
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl.settings.certificates.tsx
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.certificates.tsx
 msgid "Certificate preferences updated"
-msgstr ""
+msgstr "Ustawienia certyfikatu zostały zaktualizowane"
 
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl.settings.certificates.tsx
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.certificates.tsx
 #: packages/lib/utils/settings-nav.ts
 #: packages/lib/utils/settings-nav.ts
 msgid "Certificates"
-msgstr ""
+msgstr "Certyfikaty"
 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-fields-page-renderer.tsx
 msgid "Change Field Type"
-msgstr ""
+msgstr "Zmień rodzaj pola"
 
 #: apps/remix/app/components/general/app-command-menu.tsx
 msgid "Change language"
@@ -3033,7 +3037,7 @@ msgstr "Wybierz metodę uwierzytelniania:"
 
 #: apps/remix/app/components/tables/admin-organisation-stats-table.tsx
 msgid "Claim"
-msgstr ""
+msgstr "Subskrypcja"
 
 #: apps/remix/app/components/general/claim-account.tsx
 msgid "Claim account"
@@ -3045,7 +3049,7 @@ msgstr "Subskrypcje"
 
 #: apps/remix/app/components/general/filter-pill.tsx
 msgid "Clear"
-msgstr ""
+msgstr "Wyczyść"
 
 #: packages/ui/primitives/data-table.tsx
 msgid "Clear filters"
@@ -3067,7 +3071,7 @@ msgstr "Kliknij, aby rozpocząć"
 #: apps/remix/app/components/general/template/template-page-view-recent-activity.tsx
 #: apps/remix/app/components/tables/settings-public-profile-templates-table.tsx
 msgid "Click here to retry"
-msgstr "Kliknij tutaj, aby spróbować ponownie"
+msgstr "Kliknij, aby spróbować ponownie"
 
 #: apps/remix/app/components/dialogs/organisation-member-invite-dialog.tsx
 msgid "Click here to upload"
@@ -3145,7 +3149,7 @@ msgstr "Zwiń panel boczny"
 
 #: apps/remix/app/components/general/admin-email-blocklist-section.tsx
 msgid "Comma-separated list of email domains to block from signing up."
-msgstr "Lista domen e‑mail do zablokowania przy rejestracji, oddzielonych przecinkami."
+msgstr "Lista zablokowanych domen do rejestracji oddzielona przecinkami."
 
 #: apps/remix/app/components/embed/authoring/configure-document-advanced-settings.tsx
 msgid "Communication"
@@ -3153,11 +3157,11 @@ msgstr "Komunikacja"
 
 #: apps/remix/app/components/general/settings-upsell/branding-upsell.tsx
 msgid "Company details"
-msgstr ""
+msgstr "Szczegóły firmy"
 
 #: apps/remix/app/components/general/settings-upsell/branding-upsell.tsx
 msgid "Company details and website in email footers"
-msgstr ""
+msgstr "Szczegóły firmy i strona internetowa w stopkach"
 
 #: apps/remix/app/components/dialogs/organisation-create-dialog.tsx
 msgid "Compare all plans and features in detail"
@@ -3286,7 +3290,7 @@ msgstr "Skonfiguruj ogólne ustawienia szablonu."
 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
 msgid "Configure notification settings for the document."
-msgstr ""
+msgstr "Skonfiguruj ustawienia powiadomień dla dokumentu."
 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
 msgid "Configure o certificado e o overlay de segurança em todas as páginas."
@@ -3294,7 +3298,7 @@ msgstr ""
 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
 msgid "Configure signing reminder settings for the document."
-msgstr "Skonfiguruj przypomnienia o podpisaniu dokumentu."
+msgstr "Skonfiguruj ustawienia przypomnień o podpisaniu dokumentu."
 
 #: apps/remix/app/components/dialogs/public-profile-template-manage-dialog.tsx
 msgid "Configure template"
@@ -3326,7 +3330,7 @@ msgstr "Skonfiguruj role w zespole dla każdego użytkownika"
 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
 msgid "Configure when and how often reminder emails are sent to recipients who have not yet completed signing. Uses the team default when set to inherit."
-msgstr "Skonfiguruj, kiedy i jak często przypomnienia o podpisaniu będą wysyłane do odbiorców, którzy nie zakończyli dokumentu. Opcja dziedziczenia korzysta z domyślnych ustawień zespołu."
+msgstr "Skonfiguruj, kiedy i jak często przypomnienia e-mail są wysyłane do odbiorców, którzy jeszcze nie ukończyli podpisywania. Gdy ustawione na dziedziczenie, używane są domyślne ustawienia zespołu."
 
 #: apps/remix/app/components/dialogs/public-profile-template-manage-dialog.tsx
 #: apps/remix/app/components/dialogs/sign-field-checkbox-dialog.tsx
@@ -3380,7 +3384,7 @@ msgstr "Informacje kontaktowe"
 #: apps/remix/app/components/general/settings-upsell/email-domains-upsell.tsx
 #: apps/remix/app/components/general/settings-upsell/sso-portal-upsell.tsx
 msgid "Contact Sales"
-msgstr ""
+msgstr "Skontaktuj się z działem sprzedaży"
 
 #: apps/remix/app/components/dialogs/organisation-create-dialog.tsx
 msgid "Contact sales here"
@@ -3396,7 +3400,7 @@ msgstr "Skontaktuj się z nami"
 
 #: apps/remix/app/components/general/settings-upsell/settings-upsell-card.tsx
 msgid "Contact your organisation owner to upgrade plans."
-msgstr ""
+msgstr "Skontaktuj się z właścicielem organizacji, aby zaktualizować plan."
 
 #: apps/remix/app/components/general/admin-site-banner-section.tsx
 msgid "Content"
@@ -3471,7 +3475,7 @@ msgstr ""
 
 #: apps/remix/app/components/general/settings-upsell/sso-portal-upsell.tsx
 msgid "Continue with SSO"
-msgstr ""
+msgstr "Logowanie SSO"
 
 #: apps/remix/app/components/forms/reminder-preferences-form.tsx
 msgid "Controls how long recipients have to complete signing before the document expires. After expiration, recipients can no longer sign the document."
@@ -3500,7 +3504,7 @@ msgstr "Wybierz język dokumentu, powiadomień i certyfikatu, który jest dołą
 
 #: apps/remix/app/components/forms/reminder-preferences-form.tsx
 msgid "Controls when and how often reminder emails are sent to recipients who have not yet completed signing."
-msgstr "Skonfiguruj, kiedy i jak często przypomnienia o podpisaniu będą wysyłane do odbiorców, którzy nie zakończyli dokumentu."
+msgstr "Określa, kiedy i jak często przypomnienia e-mail są wysyłane do odbiorców, którzy jeszcze nie ukończyli podpisywania."
 
 #: apps/remix/app/components/forms/certificate-preferences-form.tsx
 msgid "Controls whether the audit logs will be included in the document when it is downloaded. The audit logs can still be downloaded from the logs page separately."
@@ -3561,7 +3565,7 @@ msgstr "Kopiuj"
 
 #: apps/remix/app/components/general/admin-license-card.tsx
 msgid "Copy license key"
-msgstr ""
+msgstr "Kopiuj klucz licencyjny"
 
 #: packages/ui/components/document/document-share-button.tsx
 msgid "Copy Link"
@@ -3594,7 +3598,7 @@ msgstr "Kopiuj wartość"
 
 #: apps/remix/app/components/dialogs/token-create-dialog.tsx
 msgid "Copy your token now. For security reasons you will not be able to see it again."
-msgstr ""
+msgstr "Skopiuj token. Ze względów bezpieczeństwa nie będzie można go ponownie wyświetlić."
 
 #: apps/remix/app/routes/embed+/auth+/popup.tsx
 msgid "Could not connect to the Bchatsign embed. Close this window and try again."
@@ -3602,7 +3606,7 @@ msgstr ""
 
 #: apps/remix/app/components/general/organisation-usage-reset-button.tsx
 msgid "Counter reset."
-msgstr "Licznik zresetowany."
+msgstr "Licznik został zresetowany."
 
 #: apps/remix/app/components/dialogs/admin-organisation-create-dialog.tsx
 #: apps/remix/app/components/dialogs/admin-user-create-dialog.tsx
@@ -3634,7 +3638,7 @@ msgstr "Utwórz nową organizację z planem {planName}. Zachowaj obecną organiz
 
 #: apps/remix/app/components/dialogs/admin-user-create-dialog.tsx
 msgid "Create a new user. A welcome email will be sent with a link to set their password."
-msgstr "Utwórz nowego użytkownika. Zostanie wysłany e‑mail powitalny z łączem do ustawienia hasła."
+msgstr "Utwórz nowego użytkownika. Wiadomość powitalna zostanie wysłana z linkiem do ustawienia hasła."
 
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl.support.tsx
 msgid "Create a support ticket"
@@ -3668,7 +3672,7 @@ msgstr ""
 
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.tokens.tsx
 msgid "Create and manage API tokens. See our <0>documentation</0> for more information."
-msgstr ""
+msgstr "Tworzenie i zarządzanie tokenami API. Sprawdź <0>dokumentację</0>, aby uzyskać więcej informacji."
 
 #: apps/remix/app/components/dialogs/template-use-dialog.tsx
 msgid "Create and send"
@@ -3676,7 +3680,7 @@ msgstr "Utwórz i wyślij"
 
 #: apps/remix/app/components/dialogs/token-create-dialog.tsx
 msgid "Create API token"
-msgstr ""
+msgstr "Utwórz token API"
 
 #: apps/remix/app/components/dialogs/template-use-dialog.tsx
 msgid "Create as draft"
@@ -3881,7 +3885,7 @@ msgstr ""
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl.settings.branding.tsx
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.branding.tsx
 msgid "CSS rules were dropped during sanitisation"
-msgstr "Niektóre reguły CSS zostały odrzucone podczas oczyszczania"
+msgstr "Reguły CSS zostały usunięte podczas oczyszczenia kodu"
 
 #: apps/remix/app/components/dialogs/template-bulk-send-dialog.tsx
 msgid "CSV Structure"
@@ -3905,7 +3909,7 @@ msgstr "Obecni odbiorcy:"
 
 #: apps/remix/app/routes/_authenticated+/admin+/organisations.$id.tsx
 msgid "Current usage against organisation limits."
-msgstr "Obecne użycie względem limitów organizacji."
+msgstr "Obecne wykorzystanie względem limitów organizacji."
 
 #: apps/remix/app/components/general/teams/team-inherit-member-alert.tsx
 msgid "Currently all organisation members can access this team"
@@ -3927,15 +3931,15 @@ msgstr "Niestandardowy plik {0} MB"
 
 #: apps/remix/app/components/dialogs/branding-preferences-reset-dialog.tsx
 msgid "Custom branding enabled setting"
-msgstr ""
+msgstr "Niestandardowe ustawienia marki"
 
 #: apps/remix/app/components/dialogs/branding-preferences-reset-dialog.tsx
 msgid "Custom CSS"
-msgstr ""
+msgstr "Niestandardowy CSS"
 
 #: apps/remix/app/components/forms/branding-preferences-form.tsx
 msgid "Custom CSS is sanitised on save. Layout-breaking properties, remote URLs, and pseudo-elements are stripped automatically. Any rules dropped during sanitisation will be shown after you save."
-msgstr "Niestandardowy kod CSS jest czyszczony podczas zapisywania. Właściwości mogące zepsuć układ, zdalne adresy URL oraz pseudo‑elementy są automatycznie usuwane. Wszystkie reguły odrzucone w trakcie czyszczenia zostaną wyświetlone po zapisaniu."
+msgstr "Niestandardowy CSS jest oczyszczany podczas zapisywania. Właściwości psujące układ graficzny, zdalne adresy URL oraz pseudoelementy są automatycznie usuwane. Reguły usunięte podczas oczyszczania kodu zostaną wyświetlone po zapisaniu zmian."
 
 #: apps/remix/app/components/forms/branding-preferences-form.tsx
 msgid "Custom CSS must be less than 10,000 characters"
@@ -3951,7 +3955,7 @@ msgstr "Niestandardowy czas"
 
 #: packages/ui/components/document/reminder-settings-picker.tsx
 msgid "Custom interval"
-msgstr "Niestandardowy czas"
+msgstr "Własny interwał"
 
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl.settings.groups._index.tsx
 msgid "Custom Organisation Groups"
@@ -3959,7 +3963,7 @@ msgstr "Niestandardowe grupy w organizacji"
 
 #: apps/remix/app/components/general/settings-org-switcher.tsx
 msgid "Custom Plan"
-msgstr ""
+msgstr "Niestandardowy plan"
 
 #: apps/remix/app/utils/analytics.ts
 msgid "Custom range"
@@ -3971,7 +3975,7 @@ msgstr ""
 
 #: apps/remix/app/components/forms/branding-preferences-form.tsx
 msgid "Customise the colours used on your signing pages."
-msgstr "Dostosuj kolory używane na stronach podpisywania."
+msgstr "Dostosuj kolory na stronach podpisywania."
 
 #: apps/remix/app/components/general/analytics/analytics-documents-over-time-card.tsx
 msgid "Daily"
@@ -3979,7 +3983,7 @@ msgstr ""
 
 #: apps/remix/app/routes/_authenticated+/admin+/organisations.$id.tsx
 msgid "Danger Zone"
-msgstr "Strefa zagrożenia"
+msgstr "Niebezpieczna strefa"
 
 #: apps/remix/app/components/general/app-command-menu.tsx
 msgid "Dark Mode"
@@ -4046,15 +4050,15 @@ msgstr "Odrzuć"
 #: apps/remix/app/routes/_authenticated+/admin+/organisations.$id.tsx
 #: apps/remix/app/routes/_authenticated+/admin+/organisations.$id.tsx
 msgid "Default (system mailer)"
-msgstr ""
+msgstr "Domyślny (systemowy)"
 
 #: apps/remix/app/components/forms/branding-preferences-form.tsx
 msgid "Default border colour."
-msgstr "Domyślny kolor obramowania."
+msgstr "Kolor obramowania."
 
 #: apps/remix/app/components/dialogs/document-preferences-reset-dialog.tsx
 msgid "Default date format"
-msgstr ""
+msgstr "Domyślny format daty"
 
 #: apps/remix/app/components/forms/document-preferences-form.tsx
 msgid "Default Date Format"
@@ -4062,7 +4066,7 @@ msgstr "Domyślny format daty"
 
 #: apps/remix/app/components/dialogs/document-preferences-reset-dialog.tsx
 msgid "Default document language"
-msgstr ""
+msgstr "Domyślny język dokumentu"
 
 #: apps/remix/app/components/forms/document-preferences-form.tsx
 msgid "Default Document Language"
@@ -4070,7 +4074,7 @@ msgstr "Domyślny język dokumentu"
 
 #: apps/remix/app/components/dialogs/document-preferences-reset-dialog.tsx
 msgid "Default document visibility"
-msgstr ""
+msgstr "Domyślna widoczność dokumentu"
 
 #: apps/remix/app/components/forms/document-preferences-form.tsx
 msgid "Default Document Visibility"
@@ -4082,7 +4086,7 @@ msgstr "Domyślny adres e-mail"
 
 #: apps/remix/app/components/forms/email-preferences-form.tsx
 msgid "Default Email Settings"
-msgstr "Domyślne ustawienia powiadomień"
+msgstr "Domyślne ustawienia adresu e-mail"
 
 #: apps/remix/app/components/forms/reminder-preferences-form.tsx
 msgid "Default Envelope Expiration"
@@ -4098,7 +4102,7 @@ msgstr "Domyślna rola w organizacji dla nowych użytkowników"
 
 #: apps/remix/app/components/dialogs/document-preferences-reset-dialog.tsx
 msgid "Default recipients"
-msgstr ""
+msgstr "Domyślni odbiorcy"
 
 #: apps/remix/app/components/forms/document-preferences-form.tsx
 msgid "Default Recipients"
@@ -4114,7 +4118,7 @@ msgstr "Domyślne ustawienia zespołu. Zespoły dziedziczą domyślne ustawienia
 
 #: apps/remix/app/components/dialogs/document-preferences-reset-dialog.tsx
 msgid "Default signature settings"
-msgstr ""
+msgstr "Domyślne ustawienia podpisu"
 
 #: apps/remix/app/components/forms/document-preferences-form.tsx
 msgid "Default Signature Settings"
@@ -4126,7 +4130,7 @@ msgstr "Domyślne przypomnienia o podpisaniu"
 
 #: apps/remix/app/components/dialogs/document-preferences-reset-dialog.tsx
 msgid "Default time zone"
-msgstr ""
+msgstr "Domyślna strefa czasowa"
 
 #: apps/remix/app/components/forms/document-preferences-form.tsx
 msgid "Default Time Zone"
@@ -4260,7 +4264,7 @@ msgstr "Usuń domenę"
 
 #: apps/remix/app/components/dialogs/email-transport-delete-dialog.tsx
 msgid "Delete Email Transport"
-msgstr ""
+msgstr "Usuń dostawcę poczty e-mail"
 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor.tsx
 msgid "Delete Envelope"
@@ -4318,7 +4322,7 @@ msgstr "Usuń konto użytkownika i wszystkie jego dane. Ta akcja jest nieodwraca
 
 #: apps/remix/app/components/dialogs/token-delete-dialog.tsx
 msgid "Delete token"
-msgstr ""
+msgstr "Usuń token"
 
 #: apps/remix/app/components/dialogs/webhook-delete-dialog.tsx
 msgid "Delete Webhook"
@@ -4340,7 +4344,7 @@ msgstr "Usuwanie konta..."
 
 #: apps/remix/app/components/dialogs/admin-organisation-delete-dialog.tsx
 msgid "Deletion scheduled"
-msgstr "Usunięcie zaplanowane"
+msgstr "Usunięcie zostało zaplanowane"
 
 #: apps/remix/app/components/general/webhook-logs-sheet.tsx
 msgid "Destination"
@@ -4408,7 +4412,7 @@ msgstr "Urządzenie"
 
 #: packages/email/template-components/template-footer.tsx
 msgid "Did not expect this email? <0>Click here to report the sender</0>. Never sign a document you don't recognize or weren't expecting."
-msgstr ""
+msgstr "Wiadomość nie była przez Ciebie oczekiwana? <0>Kliknij, aby zgłosić nadawcę</0>. Nigdy nie podpisuj dokumentu, którego nie rozpoznajesz."
 
 #: packages/email/templates/reset-password.tsx
 msgid "Didn't request a password change? We are here to help you secure your account, just <0>contact us</0>."
@@ -4471,7 +4475,7 @@ msgstr "Bezpośredni link do szablonu został usunięty"
 #. placeholder {1}: quota.directTemplates
 #: apps/remix/app/components/dialogs/template-direct-link-dialog.tsx
 msgid "Direct template link usage exceeded ({0}/{1})"
-msgstr "Przekroczono limit użycia bezpośrednich linków do szablonu ({0} / {1})"
+msgstr "Przekroczono limit wykorzystania bezpośrednich linków do szablonu ({0} / {1})"
 
 #: apps/remix/app/components/forms/editor/editor-field-checkbox-form.tsx
 #: apps/remix/app/components/forms/editor/editor-field-radio-form.tsx
@@ -4538,7 +4542,7 @@ msgstr "Wyświetlać Twoją nazwę i adres e-mail w dokumentach"
 
 #: apps/remix/app/components/forms/signup.tsx
 msgid "Disposable email addresses are not allowed. Please sign up with a permanent email address."
-msgstr "Adresy e‑mail jednorazowego użytku nie są dozwolone. Zarejestruj się, używając stałego adresu e‑mail."
+msgstr "Tymczasowe adresy e-mail nie są dozwolone. Zarejestruj się za pomocą standardowego adresu e-mail."
 
 #: apps/remix/app/components/general/document/document-edit-form.tsx
 msgid "Distribute Document"
@@ -4559,7 +4563,7 @@ msgstr "Rekordy DNS"
 
 #: apps/remix/app/routes/_unauthenticated+/team.verify.email.$token.tsx
 msgid "Do not proceed if you are unsure about this request."
-msgstr ""
+msgstr "Nie kontynuuj, jeśli nie masz pewności co do tej prośby."
 
 #: apps/remix/app/components/general/template/template-page-view-documents-table.tsx
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/documents.$id.logs.tsx
@@ -4603,11 +4607,11 @@ msgstr "Wszystkie dokumenty"
 
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "Document already completed"
-msgstr ""
+msgstr "Dokument został już zakończony"
 
 #: apps/remix/app/components/general/envelope-signing/envelope-signing-complete-dialog.tsx
 msgid "Document already signed"
-msgstr ""
+msgstr "Dokument został już podpisany"
 
 #: apps/remix/app/routes/_recipient+/sign.$token+/complete.tsx
 msgid "Document Approved"
@@ -4617,12 +4621,12 @@ msgstr "Dokument został zatwierdzony"
 #: apps/remix/app/components/general/document/document-status.tsx
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "Document cancelled"
-msgstr ""
+msgstr "Anulowano dokument"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgctxt "Audit log format"
 msgid "Document cancelled"
-msgstr ""
+msgstr "Anulowano dokument"
 
 #: apps/remix/app/routes/_recipient+/sign.$token+/_index.tsx
 #: apps/remix/app/routes/_recipient+/sign.$token+/_index.tsx
@@ -4654,11 +4658,11 @@ msgstr "Wiadomość potwierdzająca zakończenie"
 
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "Document conversion is temporarily unavailable. Please try again shortly or upload a PDF."
-msgstr "Konwersja dokumentów jest tymczasowo niedostępna. Spróbuj ponownie za chwilę lub prześlij plik PDF."
+msgstr "Konwertowanie dokumentu jest niedostępne. Spróbuj ponownie później lub prześlij plik PDF."
 
 #: apps/remix/app/components/dialogs/template-use-dialog.tsx
 msgid "Document created"
-msgstr "Dokument został utworzony"
+msgstr "Utworzono dokument"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgctxt "Audit log format"
@@ -4694,7 +4698,7 @@ msgstr "Tworzenie dokumentu"
 
 #: apps/remix/app/components/general/organisations/organisation-quota-banner.tsx
 msgid "Document creation has been temporarily paused"
-msgstr ""
+msgstr "Tworzenie dokumentów zostało tymczasowo wstrzymane"
 
 #: apps/remix/app/components/dialogs/admin-document-delete-dialog.tsx
 #: apps/remix/app/components/dialogs/envelope-delete-dialog.tsx
@@ -4737,7 +4741,7 @@ msgstr "Edytor dokumentu"
 
 #: apps/remix/app/components/general/document/document-status.tsx
 msgid "Document expired"
-msgstr ""
+msgstr "Dokument wygasł"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgctxt "Audit log format"
@@ -4805,7 +4809,7 @@ msgstr ""
 
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "Document no longer available"
-msgstr ""
+msgstr "Dokument nie jest już dostępny"
 
 #: apps/remix/app/routes/_recipient+/sign.$token+/complete.tsx
 msgid "Document no longer available to sign"
@@ -4813,7 +4817,7 @@ msgstr "Dokument nie jest już dostępny do podpisania"
 
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "Document not ready"
-msgstr ""
+msgstr "Dokument nie jest gotowy"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgctxt "Audit log format"
@@ -4862,7 +4866,7 @@ msgstr "Zmieniono nazwę dokumentu"
 
 #: apps/remix/app/components/dialogs/envelope-redistribute-dialog.tsx
 msgid "Document resent"
-msgstr ""
+msgstr "Wysłano ponownie dokument"
 
 #: apps/remix/app/routes/_recipient+/sign.$token+/complete.tsx
 msgid "Document sealing is taking longer than expected and has timed out. Please contact the document owner for support."
@@ -4870,7 +4874,7 @@ msgstr ""
 
 #: apps/remix/app/components/general/document/document-edit-form.tsx
 msgid "Document sent"
-msgstr "Dokument został wysłany"
+msgstr "Wysłano dokument"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgctxt "Audit log format"
@@ -4893,7 +4897,7 @@ msgstr "Zaktualizowano metodę uwierzytelniania odbiorcy do dokumentu"
 
 #: apps/remix/app/components/dialogs/envelope-delete-dialog.tsx
 msgid "Document signing process will be cancelled"
-msgstr "Proces podpisywania dokumentu zostanie anulowany"
+msgstr "Podpisywanie dokumentu zostanie anulowane"
 
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/documents.$id.logs.tsx
 msgid "Document status"
@@ -4947,7 +4951,7 @@ msgstr "Dokument został przesłany"
 
 #: apps/remix/app/components/general/organisations/organisation-quota-banner.tsx
 msgid "Document usage is approaching fair use limits"
-msgstr ""
+msgstr "Wykorzystanie dokumentów zbliża się do limitu dozwolonego użytkowania"
 
 #: apps/remix/app/components/general/document/document-validation-panel.tsx
 msgid "Document Validation"
@@ -5021,7 +5025,7 @@ msgstr "Dokumenty i zasoby powiązane z kopertą."
 
 #: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
 msgid "Documents cancelled"
-msgstr ""
+msgstr "Dokumenty zostały anulowane"
 
 #: apps/remix/app/components/tables/organisation-insights-table.tsx
 #: apps/remix/app/components/tables/organisation-insights-table.tsx
@@ -5054,11 +5058,11 @@ msgstr "Dokumenty zostały usunięte"
 
 #: apps/remix/app/components/dialogs/envelopes-bulk-download-dialog.tsx
 msgid "Documents downloaded"
-msgstr ""
+msgstr "Dokumenty zostały pobrane"
 
 #: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
 msgid "Documents partially cancelled"
-msgstr ""
+msgstr "Dokumenty zostały częściowo anulowane"
 
 #: apps/remix/app/components/dialogs/envelopes-bulk-delete-dialog.tsx
 msgid "Documents partially deleted"
@@ -5066,7 +5070,7 @@ msgstr "Dokumenty zostały częściowo usunięte"
 
 #: apps/remix/app/components/dialogs/envelopes-bulk-download-dialog.tsx
 msgid "Documents partially downloaded"
-msgstr ""
+msgstr "Dokumenty zostały częściowo pobrane"
 
 #: apps/remix/app/routes/_authenticated+/admin+/stats.tsx
 msgid "Documents Received"
@@ -5110,7 +5114,7 @@ msgstr "Dokumenty, które zostały podpisane przez wszystkich odbiorców, ale ni
 
 #: apps/remix/app/routes/_authenticated+/admin+/organisation-stats._index.tsx
 msgid "Documents, emails and api values may not be accurate since they record the amount of times the action was attempted. Meaning these values may go over the actual quota, get rejected, and will still be recorded."
-msgstr ""
+msgstr "Wartości dokumentów, wiadomości i API mogą nie być dokładne, ponieważ rejestrują liczbę prób wykonania danej akcji. Oznacza to, że wartości te mogą przekroczyć rzeczywisty limit, zostać odrzucone, a mimo to nadal będą rejestrowane."
 
 #: apps/remix/app/components/tables/organisation-email-domains-table.tsx
 #: apps/remix/app/routes/_authenticated+/admin+/email-domains._index.tsx
@@ -5149,7 +5153,7 @@ msgstr "Nie przenoś (usuń wszystkie dokumenty)"
 
 #: apps/remix/app/components/dialogs/token-create-dialog.tsx
 msgid "Done"
-msgstr ""
+msgstr "Gotowe"
 
 #: apps/remix/app/components/dialogs/envelopes-bulk-download-dialog.tsx
 #: apps/remix/app/components/forms/2fa/enable-authenticator-app-dialog.tsx
@@ -5180,7 +5184,7 @@ msgstr "Pobierz certyfikat"
 
 #: apps/remix/app/components/dialogs/envelopes-bulk-download-dialog.tsx
 msgid "Download Documents"
-msgstr ""
+msgstr "Pobierz dokumenty"
 
 #: apps/remix/app/components/dialogs/envelope-download-dialog.tsx
 msgid "Download Files"
@@ -5204,12 +5208,12 @@ msgstr "Pobierz szablon CSV"
 #. placeholder {0}: envelope.title
 #: apps/remix/app/components/dialogs/envelopes-bulk-download-dialog.tsx
 msgid "Download version for {0}"
-msgstr ""
+msgstr "Pobierz wersję dla {0}"
 
 #. placeholder {0}: envelopes.length
 #: apps/remix/app/components/dialogs/envelopes-bulk-download-dialog.tsx
 msgid "Downloading {progress} / {0}..."
-msgstr ""
+msgstr "Pobieranie {progress} / {0}..."
 
 #: apps/remix/app/components/dialogs/envelopes-bulk-download-dialog.tsx
 #: apps/remix/app/components/general/analytics/analytics-status-breakdown-card.tsx
@@ -5230,7 +5234,7 @@ msgstr "Szkice dokumentów"
 
 #: packages/ui/primitives/document-dropzone.tsx
 msgid "Drag & drop your document here."
-msgstr "Przeciągnij i upuść tutaj swój dokument."
+msgstr "Przeciągnij i upuść dokument."
 
 #: apps/remix/app/components/embed/authoring/configure-document-upload.tsx
 msgid "Drag and drop or click to upload"
@@ -5238,7 +5242,7 @@ msgstr "Przeciągnij i upuść lub kliknij, aby przesłać"
 
 #: apps/remix/app/components/general/envelope/envelope-drop-zone-wrapper.tsx
 msgid "Drag and drop your document here"
-msgstr "Przeciągnij i upuść tutaj swój dokument"
+msgstr "Przeciągnij i upuść dokument"
 
 #: packages/lib/constants/document.ts
 #: packages/ui/primitives/signature-pad/signature-pad.tsx
@@ -5336,11 +5340,11 @@ msgstr ""
 
 #: apps/remix/app/components/forms/email-transport-form.tsx
 msgid "e.g. Resend (free plans)"
-msgstr ""
+msgstr "np. Resend (plan darmowy)"
 
 #: apps/remix/app/components/general/settings-upsell/email-domains-upsell.tsx
 msgid "Easy DNS setup with auto-generated DKIM and SPF records"
-msgstr ""
+msgstr "Łatwa konfiguracja DNS z automatycznie generowanymi rekordami DKIM i SPF"
 
 #: apps/remix/app/components/general/document/document-page-view-button.tsx
 #: apps/remix/app/components/general/document/document-page-view-dropdown.tsx
@@ -5358,7 +5362,7 @@ msgstr "Edytuj"
 
 #: apps/remix/app/components/dialogs/email-transport-update-dialog.tsx
 msgid "Edit Email Transport"
-msgstr ""
+msgstr "Edytuj dostawcę poczty e-mail"
 
 #: apps/remix/app/components/dialogs/envelope-item-edit-dialog.tsx
 msgid "Edit Item"
@@ -5461,15 +5465,15 @@ msgstr "Adres e-mail już istnieje"
 
 #: apps/remix/app/routes/_unauthenticated+/team.verify.email.$token.tsx
 msgid "Email already in use"
-msgstr ""
+msgstr "Adres e-mail jest już zajęty"
 
 #: apps/remix/app/components/general/admin-email-blocklist-section.tsx
 msgid "Email Blocklist"
-msgstr "Bloklista e‑mail"
+msgstr "Lista zablokowanych domen"
 
 #: apps/remix/app/components/general/admin-email-blocklist-section.tsx
 msgid "Email Blocklist Updated"
-msgstr "Zaktualizowano bloklistę e‑mail"
+msgstr "Lista została zaktualizowana"
 
 #: apps/remix/app/routes/_unauthenticated+/verify-email.$token.tsx
 msgid "Email Confirmed!"
@@ -5481,11 +5485,11 @@ msgstr "Adres e-mail został utworzony"
 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
 msgid "Email distribution needs to be enabled in the general settings tab to configure recipient email related settings."
-msgstr ""
+msgstr "Aby skonfigurować wiadomości, musisz włączyć dystrybucję dokumentu za pomocą poczty e-mail."
 
 #: apps/remix/app/components/general/admin-global-settings-section.tsx
 msgid "Email document settings"
-msgstr "Ustawienia powiadomień"
+msgstr "Ustawienia wysyłki dokumentu e‑mailem"
 
 #: apps/remix/app/routes/_authenticated+/admin+/email-domains.$id.tsx
 msgid "Email Domain"
@@ -5565,7 +5569,7 @@ msgstr "Adres e-mail nadawcy"
 
 #: apps/remix/app/components/general/organisations/organisation-quota-banner.tsx
 msgid "Email sending has been temporarily paused"
-msgstr ""
+msgstr "Wysyłanie wiadomości zostało tymczasowo wstrzymane"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgctxt "Audit log format"
@@ -5582,7 +5586,7 @@ msgstr "Ustawienia adresu e-mail"
 
 #: apps/remix/app/components/dialogs/admin-organisation-delete-dialog.tsx
 msgid "Email the organisation owner to notify them of the deletion."
-msgstr "Wyślij e-mail do właściciela organizacji, aby powiadomić go o usunięciu."
+msgstr "Wyślij właścicielowi organizacji powiadomienie o usunięciu."
 
 #: packages/ui/components/document/document-email-checkboxes.tsx
 msgid "Email the owner when a document is created from a direct template"
@@ -5603,16 +5607,16 @@ msgstr "Wyślij podpisującemu wiadomość, jeśli dokument jest nadal oczekują
 #: apps/remix/app/components/forms/subscription-claim-form.tsx
 #: apps/remix/app/routes/_authenticated+/admin+/organisations.$id.tsx
 msgid "Email transport"
-msgstr ""
+msgstr "Dostawca poczty e-mail"
 
 #: apps/remix/app/routes/_authenticated+/admin+/_layout.tsx
 #: apps/remix/app/routes/_authenticated+/admin+/email-transports._index.tsx
 msgid "Email Transports"
-msgstr ""
+msgstr "Dostawcy poczty e-mail"
 
 #: apps/remix/app/components/general/organisations/organisation-quota-banner.tsx
 msgid "Email usage is approaching fair use limits"
-msgstr ""
+msgstr "Wykorzystanie wiadomości zbliża się do limitu dozwolonego użytkowania"
 
 #: apps/remix/app/components/general/document-signing/access-auth-2fa-form.tsx
 msgid "Email verification"
@@ -5654,7 +5658,7 @@ msgstr "Puste pole"
 
 #: apps/remix/app/components/general/claim-limit-fields.tsx
 msgid "Empty quota means unlimited, 0 blocks the resource. Rate limit windows accept values like 5m, 1h or 24h."
-msgstr ""
+msgstr "Pusty limit oznacza brak ograniczeń, a wartość 0 blokuje dostęp do zasobu. W polach limitu przepustowości możesz wpisać wartości, takie jak np. 5 min, 1 godz."
 
 #: apps/remix/app/components/dialogs/team-inherit-member-enable-dialog.tsx
 msgid "Enable"
@@ -5754,7 +5758,7 @@ msgstr "Załączniki"
 
 #: apps/remix/app/components/forms/email-transport-form.tsx
 msgid "Endpoint (optional)"
-msgstr ""
+msgstr "Punkt końcowy (opcjonalnie)"
 
 #: packages/lib/constants/i18n.ts
 msgid "English"
@@ -5778,7 +5782,7 @@ msgstr ""
 
 #: apps/remix/app/components/general/rate-limit-array-input.tsx
 msgid "Enter a max request count greater than 0"
-msgstr ""
+msgstr "Wpisz wartość większą niż 0"
 
 #: apps/remix/app/components/dialogs/folder-create-dialog.tsx
 msgid "Enter a name for your new folder. Folders help you organise your items."
@@ -5790,7 +5794,7 @@ msgstr "Wpisz nowy tytuł"
 
 #: apps/remix/app/components/general/rate-limit-array-input.tsx
 msgid "Enter a window, e.g. 5m"
-msgstr ""
+msgstr "Wpisz przedział czasowy, np. 5 min"
 
 #: apps/remix/app/components/forms/subscription-claim-form.tsx
 msgid "Enter claim name"
@@ -6044,7 +6048,7 @@ msgstr "Wystąpił błąd podczas przesyłania pliku"
 
 #: apps/remix/app/components/general/app-command-menu.tsx
 msgid "esc"
-msgstr ""
+msgstr "esc"
 
 #: packages/email/template-components/template-footer.tsx
 msgid "Este documento foi enviado usando o <0>BchatSign</0>."
@@ -6079,7 +6083,7 @@ msgstr "Wszyscy podpisali! Otrzymasz wiadomość z podpisanym dokumentem."
 
 #: apps/remix/app/components/general/organisation-usage-panel.tsx
 msgid "Exceeded"
-msgstr ""
+msgstr "Przekroczono"
 
 #: apps/remix/app/components/dialogs/passkey-create-dialog.tsx
 msgid "Exceeded timeout"
@@ -6108,7 +6112,7 @@ msgstr "Wygaśnięcie"
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.general.tsx
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.tokens.tsx
 msgid "Expired"
-msgstr "Wygasł"
+msgstr "Wygasła"
 
 #: apps/remix/app/components/general/admin-license-card.tsx
 msgctxt "Subscription status"
@@ -6127,7 +6131,7 @@ msgstr "Wygasa {0}"
 
 #: apps/remix/app/components/dialogs/token-create-dialog.tsx
 msgid "Expires in"
-msgstr ""
+msgstr "Wygaśnie za"
 
 #. placeholder {0}: DateTime.fromMillis(Math.max(millisecondsRemaining, 0)).toFormat('mm:ss')
 #: apps/remix/app/components/general/document-signing/access-auth-2fa-form.tsx
@@ -6167,7 +6171,7 @@ msgstr "Nie udało się utworzyć zgłoszenia"
 
 #: apps/remix/app/components/dialogs/email-transport-create-dialog.tsx
 msgid "Failed to create transport."
-msgstr ""
+msgstr "Nie udało się utworzyć dostawcy poczty e-mail."
 
 #: apps/remix/app/components/dialogs/folder-delete-dialog.tsx
 msgid "Failed to delete folder"
@@ -6179,7 +6183,7 @@ msgstr "Nie udało się usunąć subskrypcji."
 
 #: apps/remix/app/components/dialogs/email-transport-delete-dialog.tsx
 msgid "Failed to delete transport."
-msgstr ""
+msgstr "Nie udało się usunąć dostawcy poczty e-mail."
 
 #: apps/remix/app/routes/_authenticated+/admin+/documents.$id.tsx
 msgid "Failed to download audit logs. Please try again later."
@@ -6227,7 +6231,7 @@ msgstr "Nie udało się zapisać ustawień."
 
 #: apps/remix/app/components/dialogs/email-transport-update-dialog.tsx
 msgid "Failed to save transport."
-msgstr ""
+msgstr "Nie udało się zapisać dostawcy poczty e-mail."
 
 #: apps/remix/app/components/dialogs/session-logout-all-dialog.tsx
 msgid "Failed to sign out all sessions"
@@ -6239,7 +6243,7 @@ msgstr "Nie udało się zsynchronizować licencji"
 
 #: apps/remix/app/components/dialogs/admin-organisation-sync-subscription-dialog.tsx
 msgid "Failed to sync subscription"
-msgstr ""
+msgstr "Nie udało się zsynchronizować subskrypcji"
 
 #: apps/remix/app/routes/_authenticated+/admin+/unsealed-documents._index.tsx
 msgid "Failed to trigger seal"
@@ -6288,7 +6292,7 @@ msgstr "Niepowodzenie: {failedCount}"
 #: apps/remix/app/components/general/organisations/organisation-quota-banner.tsx
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "Fair use limit exceeded"
-msgstr ""
+msgstr "Przekroczono limit dozwolonego użytkowania"
 
 #: apps/remix/app/components/forms/subscription-claim-form.tsx
 #: apps/remix/app/components/tables/admin-claims-table.tsx
@@ -6302,7 +6306,7 @@ msgstr "Funkcje"
 
 #: apps/remix/app/components/dialogs/admin-organisation-sync-subscription-dialog.tsx
 msgid "Fetch the latest subscription data from Stripe and apply it to this organisation."
-msgstr ""
+msgstr "Pobierz najnowsze dane subskrypcji z Stripe i zastosuj je w organizacji."
 
 #: packages/ui/primitives/document-flow/field-items-advanced-settings/text-field.tsx
 msgid "Field character limit"
@@ -6382,7 +6386,7 @@ msgstr ""
 
 #: apps/remix/app/components/dialogs/email-transport-create-dialog.tsx
 msgid "Fill in the details to create a new email transport."
-msgstr ""
+msgstr "Uzupełnił szczegóły, aby utworzyć nowego dostawcę poczty e-mail."
 
 #: apps/remix/app/components/dialogs/claim-create-dialog.tsx
 msgid "Fill in the details to create a new subscription claim."
@@ -6394,7 +6398,7 @@ msgstr "Filtruj według statusu"
 
 #: apps/remix/app/components/forms/branding-preferences-form.tsx
 msgid "Focus ring colour."
-msgstr "Kolor obramowania aktywnego elementu (focus ring)."
+msgstr "Kolor obramowania zaznaczenia."
 
 #: apps/remix/app/components/dialogs/envelopes-bulk-move-dialog.tsx
 msgid "Folder"
@@ -6454,7 +6458,7 @@ msgstr "Na przykład, jeśli subskrypcja ma nową flagę „FLAG_1” ustawioną
 
 #: apps/remix/app/components/forms/branding-preferences-form.tsx
 msgid "Foreground"
-msgstr "Kolor pierwszego planu"
+msgstr "Tekst"
 
 #: apps/remix/app/routes/_unauthenticated+/check-email.tsx
 msgid "Forgot password"
@@ -6477,7 +6481,7 @@ msgstr "Nie pamiętasz hasła?"
 #: apps/remix/app/components/dialogs/organisation-create-dialog.tsx
 msgctxt "Plan price"
 msgid "Free"
-msgstr "Darmowy"
+msgstr "Darmowa"
 
 #: apps/remix/app/components/tables/admin-organisations-table.tsx
 #: apps/remix/app/components/tables/user-billing-organisations-table.tsx
@@ -6488,7 +6492,7 @@ msgstr "Darmowa"
 #: apps/remix/app/components/tables/user-billing-organisations-table.tsx
 msgctxt "Subscription status"
 msgid "Free (Pending)"
-msgstr ""
+msgstr "Darmowa (oczekująca)"
 
 #: packages/lib/utils/fields.ts
 #: packages/ui/primitives/document-flow/types.ts
@@ -6505,15 +6509,15 @@ msgstr "Francuski"
 
 #: apps/remix/app/components/tables/admin-email-transports-table.tsx
 msgid "From"
-msgstr ""
+msgstr "Od"
 
 #: apps/remix/app/components/forms/email-transport-form.tsx
 msgid "From address"
-msgstr ""
+msgstr "Adres nadawcy"
 
 #: apps/remix/app/components/forms/email-transport-form.tsx
 msgid "From name"
-msgstr ""
+msgstr "Nazwa nadawcy"
 
 #: apps/remix/app/components/embed/embed-direct-template-client-page.tsx
 #: apps/remix/app/components/embed/embed-document-signing-page-v1.tsx
@@ -6542,7 +6546,7 @@ msgstr "Ogólne"
 
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.general.tsx
 msgid "General settings"
-msgstr ""
+msgstr "Ogólne ustawienia"
 
 #: apps/remix/app/components/general/document/document-validation-panel.tsx
 msgid "Generate a new temporary link from the document owner's account."
@@ -6575,12 +6579,12 @@ msgstr "Niemiecki"
 
 #: apps/remix/app/components/general/settings-upsell/sso-portal-upsell.tsx
 msgid "Give your members a dedicated single sign-on portal. The SSO portal is available on the Enterprise plan."
-msgstr ""
+msgstr "Zapewnij swoim użytkownikom logowanie SSO. Funkcja dostępna w planie Enterprise."
 
 #: apps/remix/app/components/general/app-command-menu.tsx
 #: apps/remix/app/components/general/app-command-menu.tsx
 msgid "Global"
-msgstr ""
+msgstr "Domyślne"
 
 #: packages/ui/components/document/document-global-auth-action-select.tsx
 msgid "Global recipient action authentication"
@@ -6665,7 +6669,7 @@ msgstr "Przejdź do <0>ustawień profilu publicznego</0>, aby dodać dokumenty."
 
 #: apps/remix/app/components/general/unified-settings-layout.tsx
 msgid "Go to your settings"
-msgstr ""
+msgstr "Przejdź do ustawień"
 
 #: packages/ui/primitives/signature-pad/signature-pad-color-picker.tsx
 msgid "Green"
@@ -6739,7 +6743,7 @@ msgstr "Tutaj możesz edytować szczegóły konta."
 
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.general.tsx
 msgid "Here you can edit your team's details."
-msgstr ""
+msgstr "Tutaj możesz edytować szczegóły zespołu."
 
 #: apps/remix/app/routes/_authenticated+/settings+/security._index.tsx
 msgid "Here you can manage your password and security settings."
@@ -6755,11 +6759,11 @@ msgstr "Tutaj możesz ustawić branding dla swojego zespołu."
 
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl.settings.certificates.tsx
 msgid "Here you can set certificate and audit log preferences for your organisation. Teams will inherit these settings by default."
-msgstr ""
+msgstr "Tutaj możesz ustawić certyfikat i ustawienia dziennika logów dla swojej organizacji. Zespoły odziedziczą domyślne ustawienia."
 
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.certificates.tsx
 msgid "Here you can set certificate and audit log preferences for your team."
-msgstr ""
+msgstr "Tutaj możesz ustawić certyfikat i ustawienia dziennika logów dla swojego zespołu."
 
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl.settings.document.tsx
 msgid "Here you can set document preferences for your organisation. Teams will inherit these settings by default."
@@ -6767,11 +6771,11 @@ msgstr "Tutaj możesz ustawić ustawienia dokumentów dla swojej organizacji. Ze
 
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl.settings.reminders.tsx
 msgid "Here you can set expiration and signing reminder preferences for your organisation. Teams will inherit these settings by default."
-msgstr ""
+msgstr "Tutaj możesz skonfigurować ustawienia przypomnień o podpisaniu i wygasaniu dla swojej organizacji. Zespoły odziedziczą domyślne ustawienia."
 
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.reminders.tsx
 msgid "Here you can set expiration and signing reminder preferences for your team."
-msgstr ""
+msgstr "Tutaj możesz skonfigurować ustawienia przypomnień o podpisaniu i wygasaniu dla swojego zespołu."
 
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.branding.tsx
 msgid "Here you can set preferences and defaults for branding."
@@ -6791,11 +6795,11 @@ msgstr "Cześć, jestem Timur"
 
 #: packages/email/template-components/template-document-reminder.tsx
 msgid "Hi {recipientName},"
-msgstr "Cześć {recipientName},"
+msgstr "Cześć, {recipientName},"
 
 #: packages/email/templates/bulk-send-complete.tsx
 msgid "Hi {userName},"
-msgstr "Cześć {userName},"
+msgstr "Cześć, {userName}"
 
 #: packages/email/template-components/template-access-auth-2fa.tsx
 msgid "Hi {userName}, you need to enter a verification code to complete the document \"{documentTitle}\"."
@@ -6803,7 +6807,7 @@ msgstr "Cześć {userName}, wpisz kod weryfikacyjny, aby zakończyć dokument �
 
 #: packages/email/templates/reset-password.tsx
 msgid "Hi, {userName} <0>({userEmail})</0>"
-msgstr "Cześć {userName} <0>({userEmail})</0>"
+msgstr "Cześć, {userName} <0>({userEmail})</0>"
 
 #: apps/remix/app/components/dialogs/envelope-delete-dialog.tsx
 #: apps/remix/app/components/tables/admin-document-recipient-item-table.tsx
@@ -6814,7 +6818,7 @@ msgstr "Ukryj"
 
 #: packages/ui/components/document/envelope-recipient-field-tooltip.tsx
 msgid "Hide field"
-msgstr ""
+msgstr "Ukryj pole"
 
 #: apps/remix/app/components/general/admin-license-card.tsx
 msgid "Hide license key"
@@ -6842,7 +6846,7 @@ msgstr "Poziomo"
 
 #: apps/remix/app/components/forms/email-transport-form.tsx
 msgid "Host"
-msgstr ""
+msgstr "Host"
 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
 msgid "How long recipients have to complete this document after it is sent. Uses the team default when set to inherit."
@@ -6852,7 +6856,7 @@ msgstr "Czas, w którym odbiorcy muszą zakończyć dokument. Opcja dziedziczeni
 #: apps/remix/app/components/forms/signup.tsx
 #: apps/remix/app/components/general/claim-account.tsx
 msgid "Human verification required"
-msgstr "Wymagana weryfikacja za pomocą CAPTCHA"
+msgstr "Weryfikacja antyspamowa jest wymagana"
 
 #: apps/remix/app/routes/_unauthenticated+/organisation.sso.confirmation.$token.tsx
 msgid "I agree to link my account with this organization"
@@ -6881,7 +6885,7 @@ msgstr "Muszę otrzymać kopię dokumentu"
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
 #: packages/lib/server-only/pdf/render-certificate.ts
 msgid "I am the owner of this document"
-msgstr "Jestem właścicielem tego dokumentu"
+msgstr "Jestem właścicielem dokumentu"
 
 #: packages/ui/components/document/document-share-button.tsx
 msgid "I just sent a document in style with @bchatsign. Check it out!"
@@ -6930,13 +6934,17 @@ msgstr "Jeśli korzystasz ze środowiska „staging”, ustaw właściwość hos
 msgid "If you believe this is a mistake, please contact the sender directly."
 msgstr ""
 
+#: packages/email/template-components/template-account-disabled.tsx
+msgid "If you believe this was a mistake, contact us at <0>{supportEmail}</0>."
+msgstr ""
+
 #: apps/remix/app/routes/_recipient+/report.$token.tsx
 msgid "If you did not expect this email or believe it is spam, you can report the sender to our team for review."
-msgstr ""
+msgstr "Jeśli wiadomość nie była przez Ciebie oczekiwana lub uważasz, że jest to spam, zgłoś nadawcę do naszego zespołu."
 
 #: packages/email/template-components/template-admin-user-created.tsx
 msgid "If you didn't expect this account or have any questions, please <0>contact support</0>."
-msgstr "Jeśli nie spodziewałeś(-aś) się tego konta lub masz jakiekolwiek pytania, <0>skontaktuj się z pomocą techniczną</0>."
+msgstr "Jeśli utworzenie konta jest błędem lub masz pytania, <0>skontaktuj się z pomocą techniczną</0>."
 
 #: packages/email/template-components/template-access-auth-2fa.tsx
 msgid "If you didn't request this verification code, you can safely ignore this email."
@@ -6952,7 +6960,7 @@ msgstr "Jeśli nie znajdziesz wiadomości z linkiem potwierdzającym, możesz po
 
 #: packages/email/templates/organisation-limit-alert.tsx
 msgid "If you expect to need higher limits, please contact support at {SUPPORT_EMAIL} and we will review your account."
-msgstr ""
+msgstr "Jeśli potrzebujesz wyższych limitów, skontaktuj się z pomocą techniczną pod adresem {SUPPORT_EMAIL}."
 
 #: packages/email/templates/organisation-limits-updated.tsx
 msgid "If you have any questions, please contact support at {SUPPORT_EMAIL}."
@@ -7109,7 +7117,7 @@ msgstr "Kod jest nieprawidłowy. Spróbuj ponownie."
 #: apps/remix/app/components/general/direct-template/direct-template-invalid-page.tsx
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-invalid-direct-template-alert.tsx
 msgid "Invalid direct link template"
-msgstr ""
+msgstr "Szablon bezpośredniego linku jest nieprawidłowy"
 
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl.settings.sso.tsx
 msgid "Invalid domains"
@@ -7163,7 +7171,7 @@ msgstr "Zaproszenie zostało zaakceptowane!"
 
 #: apps/remix/app/routes/_unauthenticated+/organisation.invite.$token.tsx
 msgid "Invitation already accepted"
-msgstr ""
+msgstr "Zaproszenie zostało już zaakceptowane"
 
 #: apps/remix/app/components/general/organisations/organisation-invitations.tsx
 #: apps/remix/app/routes/_unauthenticated+/organisation.invite.$token.tsx
@@ -7231,7 +7239,7 @@ msgstr "Adres IP"
 
 #: apps/remix/app/routes/_authenticated+/admin+/organisations.$id.tsx
 msgid "Irreversible actions for this organisation"
-msgstr "Nieodwracalne działania dla tej organizacji"
+msgstr "Nieodwracalne akcje dla organizacji"
 
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl.settings.sso.tsx
 msgid "Issuer URL"
@@ -7268,7 +7276,7 @@ msgstr "To nie jest Twoja kolej na podpisanie dokumentu. Gdy nadejdzie Twoja kol
 
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "It's not your turn to sign yet"
-msgstr ""
+msgstr "To nie jest Twoja kolej na podpisanie dokumentu"
 
 #: packages/lib/constants/i18n.ts
 msgid "Italian"
@@ -7294,7 +7302,7 @@ msgstr "Dołączył"
 
 #: apps/remix/app/components/general/unified-settings-sidebar-mobile.tsx
 msgid "Jump to"
-msgstr ""
+msgstr "Przejdź do"
 
 #: apps/remix/app/routes/_authenticated+/admin+/teams.$id.tsx
 msgid "Key identifiers and relationships for this team."
@@ -7399,7 +7407,7 @@ msgstr "Użyto"
 
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.tokens.tsx
 msgid "Last Used"
-msgstr ""
+msgstr "Użyto"
 
 #: apps/remix/app/routes/_authenticated+/admin+/email-domains._index.tsx
 #: apps/remix/app/routes/_authenticated+/admin+/email-domains.$id.tsx
@@ -7431,7 +7439,7 @@ msgstr "Pozostaw puste, aby odziedziczyć z organizacji."
 
 #: apps/remix/app/components/forms/email-transport-form.tsx
 msgid "Leave blank to keep current"
-msgstr ""
+msgstr "Pozostaw puste, aby nie zmieniać"
 
 #: apps/remix/app/components/dialogs/organisation-leave-dialog.tsx
 msgid "Leave organisation"
@@ -7492,7 +7500,7 @@ msgstr "Czy chcesz mieć własny profil publiczny z umowami?"
 
 #: apps/remix/app/components/general/organisation-usage-panel.tsx
 msgid "Limit reached"
-msgstr ""
+msgstr "Limit został osiągnięty"
 
 #: apps/remix/app/components/general/claim-limit-fields.tsx
 msgid "Limits"
@@ -7617,7 +7625,7 @@ msgstr "Zarządzaj niestandardowym logowaniem SSO dla swojej organizacji."
 
 #: apps/remix/app/routes/_authenticated+/admin+/email-transports._index.tsx
 msgid "Manage all email transports"
-msgstr ""
+msgstr "Zarządzaj wszystkimi dostawcami poczty e-mail"
 
 #: apps/remix/app/routes/_authenticated+/settings+/organisations.tsx
 msgid "Manage all organisations you are currently associated with."
@@ -7808,11 +7816,11 @@ msgstr "MAU (zalogowani)"
 #: apps/remix/app/components/forms/editor/editor-field-number-form.tsx
 #: packages/ui/primitives/document-flow/field-items-advanced-settings/number-field.tsx
 msgid "Max"
-msgstr "Max"
+msgstr "Maks."
 
 #: apps/remix/app/components/general/rate-limit-array-input.tsx
 msgid "Max requests"
-msgstr ""
+msgstr "Maksymalna liczba żądań"
 
 #: apps/remix/app/components/dialogs/template-bulk-send-dialog.tsx
 msgid "Maximum file size: 4MB. Maximum 100 rows per upload. Blank values will use template defaults."
@@ -7821,7 +7829,7 @@ msgstr "Maksymalny rozmiar pliku to 4 MB. Możesz przesłać maksymalnie 100 wie
 #: apps/remix/app/components/forms/subscription-claim-form.tsx
 #: apps/remix/app/routes/_authenticated+/admin+/organisations.$id.tsx
 msgid "Maximum number of recipients per document allowed. 0 = Unlimited"
-msgstr "Maksymalna dozwolona liczba odbiorców na dokument. 0 = Bez limitu"
+msgstr "Maksymalna dozwolona liczba odbiorców dokumentu. 0 = bez ograniczeń"
 
 #: apps/remix/app/components/forms/subscription-claim-form.tsx
 #: apps/remix/app/routes/_authenticated+/admin+/organisations.$id.tsx
@@ -7907,7 +7915,7 @@ msgstr "Środek"
 #: apps/remix/app/components/forms/editor/editor-field-number-form.tsx
 #: packages/ui/primitives/document-flow/field-items-advanced-settings/number-field.tsx
 msgid "Min"
-msgstr "Min"
+msgstr "Min."
 
 #: apps/remix/app/components/general/admin-license-status-banner.tsx
 msgid "Missing License - Your BchatSign instance is using features that require a license."
@@ -7920,7 +7928,7 @@ msgstr "Brak odbiorców"
 #: apps/remix/app/utils/toast-error-messages.ts
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "Missing signature fields"
-msgstr ""
+msgstr "Brak pól podpisu"
 
 #: apps/remix/app/components/general/document/document-page-view-recipients.tsx
 #: apps/remix/app/components/general/template/template-page-view-recipients.tsx
@@ -7929,7 +7937,7 @@ msgstr "Edytuj odbiorców"
 
 #: apps/remix/app/components/dialogs/email-transport-update-dialog.tsx
 msgid "Modify the details of the email transport."
-msgstr ""
+msgstr "Edytuj szczegóły dostawcy poczty e-mail."
 
 #: apps/remix/app/components/dialogs/claim-update-dialog.tsx
 msgid "Modify the details of the subscription claim."
@@ -7951,11 +7959,11 @@ msgstr "Miesięczna liczba aktywnych użytkowników: Użytkownicy, którzy zako�
 
 #: apps/remix/app/components/general/claim-limit-fields.tsx
 msgid "Monthly quota"
-msgstr ""
+msgstr "Miesięczny limit"
 
 #: apps/remix/app/components/general/organisation-usage-panel.tsx
 msgid "Monthly usage"
-msgstr ""
+msgstr "Miesięczne wykorzystanie"
 
 #: apps/remix/app/components/dialogs/envelopes-bulk-move-dialog.tsx
 #: apps/remix/app/components/dialogs/folder-move-dialog.tsx
@@ -8058,19 +8066,19 @@ msgstr "Ustawienia nazwy"
 
 #: apps/remix/app/components/general/settings-upsell/email-domains-upsell.tsx
 msgid "Named senders with defaults per team, template or document"
-msgstr ""
+msgstr "Zdefiniowani nadawcy z domyślnymi ustawieniami dla zespołu, szablonu lub dokumentu"
 
 #: apps/remix/app/components/general/app-command-menu.tsx
 msgid "Navigate"
-msgstr ""
+msgstr "Nawiguj"
 
 #: apps/remix/app/components/general/organisation-usage-panel.tsx
 msgid "Near limit"
-msgstr ""
+msgstr "Blisko limitu"
 
 #: apps/remix/app/routes/_recipient+/sign.$token+/complete.tsx
 msgid "Need to sign documents?"
-msgstr "Potrzebujesz podpisać dokumenty?"
+msgstr "Potrzebujesz podpisywać dokumenty?"
 
 #: packages/ui/components/recipient/recipient-role-select.tsx
 msgid "Needs to approve"
@@ -8219,7 +8227,7 @@ msgstr "Brak skonfigurowanych adresów dla tej domeny."
 
 #: apps/remix/app/components/tables/documents-table-empty-state.tsx
 msgid "No expired documents"
-msgstr ""
+msgstr "Brak wygasłych dokumentów"
 
 #: apps/remix/app/components/general/admin-license-card.tsx
 msgid "No features enabled"
@@ -8227,7 +8235,7 @@ msgstr "Brak włączonych funkcji"
 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-fields-page-renderer.tsx
 msgid "No field type matching this description was found."
-msgstr ""
+msgstr "Nie znaleziono pola pasującego do tego opisu."
 
 #: apps/remix/app/components/dialogs/ai-field-detection-dialog.tsx
 msgid "No fields were detected in your document."
@@ -8262,7 +8270,7 @@ msgstr "Nie znaleziono grup"
 
 #: apps/remix/app/routes/_authenticated+/admin+/organisations.$id.tsx
 msgid "No inherited claim"
-msgstr ""
+msgstr "Brak odziedziczonych subskrypcji"
 
 #: apps/remix/app/components/general/admin-license-card.tsx
 msgid "No License Configured"
@@ -8338,7 +8346,7 @@ msgstr "Brak odbiorców z tą rolą"
 
 #: apps/remix/app/components/tables/documents-table-empty-state.tsx
 msgid "No rejected documents"
-msgstr ""
+msgstr "Brak odrzuconych dokumentów"
 
 #: packages/ui/components/document/reminder-settings-picker.tsx
 msgid "No reminders"
@@ -8351,7 +8359,7 @@ msgstr "Brak ograniczeń"
 
 #: apps/remix/app/components/general/app-command-menu.tsx
 msgid "No results for “{trimmedSearch}”"
-msgstr ""
+msgstr "Brak wyników dla „{trimmedSearch}”"
 
 #: packages/ui/primitives/data-table.tsx
 msgid "No results found"
@@ -8367,7 +8375,7 @@ msgstr "Nie znaleziono pola podpisu"
 
 #: apps/remix/app/components/general/document-signing/csc-recipient-blocked-page.tsx
 msgid "No signing credentials available"
-msgstr ""
+msgstr "Brak dostępnych certyfikatów podpisu"
 
 #: apps/remix/app/routes/_authenticated+/admin+/organisations.$id.tsx
 msgid "No Stripe customer attached"
@@ -8461,7 +8469,7 @@ msgstr "Nieobsługiwane"
 
 #: apps/remix/app/components/tables/documents-table-empty-state.tsx
 msgid "Nothing cancelled"
-msgstr ""
+msgstr "Nic nie anulowano"
 
 #: apps/remix/app/components/tables/documents-table-empty-state.tsx
 #: apps/remix/app/components/tables/documents-table-empty-state.tsx
@@ -8470,7 +8478,7 @@ msgstr "Nie masz nic do zrobienia"
 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
 msgid "Notifications"
-msgstr ""
+msgstr "Powiadomienia"
 
 #: apps/remix/app/routes/_authenticated+/admin+/organisations.$id.tsx
 msgid "Notify the organisation about limit changes"
@@ -8498,12 +8506,12 @@ msgstr "Liczba musi być w formacie {numberFormat}"
 #: apps/remix/app/components/forms/subscription-claim-form.tsx
 #: apps/remix/app/routes/_authenticated+/admin+/organisations.$id.tsx
 msgid "Number of members allowed. 0 = Unlimited"
-msgstr "Liczba dozwolonych użytkowników. 0 = Bez ograniczeń"
+msgstr "Liczba dozwolonych użytkowników. 0 = bez ograniczeń"
 
 #: apps/remix/app/components/forms/subscription-claim-form.tsx
 #: apps/remix/app/routes/_authenticated+/admin+/organisations.$id.tsx
 msgid "Number of teams allowed. 0 = Unlimited"
-msgstr "Liczba dozwolonych zespołów. 0 = Bez ograniczeń"
+msgstr "Liczba dozwolonych zespołów. 0 = bez ograniczeń"
 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-fields-page.tsx
 msgid "Number Settings"
@@ -8532,14 +8540,14 @@ msgstr "Na tej stronie możesz utworzyć nowe webhooki i zarządzać obecnymi."
 #: apps/remix/app/components/dialogs/branding-preferences-reset-dialog.tsx
 #: apps/remix/app/components/dialogs/document-preferences-reset-dialog.tsx
 msgid "Once confirmed, the following will be reset:"
-msgstr ""
+msgstr "Po potwierdzeniu zresetowane zostaną:"
 
 #: apps/remix/app/components/dialogs/envelope-cancel-dialog.tsx
 #: apps/remix/app/components/dialogs/envelope-delete-dialog.tsx
 #: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
 #: apps/remix/app/components/dialogs/envelopes-bulk-delete-dialog.tsx
 msgid "Once confirmed, the following will occur:"
-msgstr "Potwierdzenie akcji spowoduje następujące skutki:"
+msgstr "Po potwierdzeniu:"
 
 #: packages/lib/constants/template.ts
 msgid "Once enabled, you can select any active recipient to be a direct link signing recipient, or create a new one. This recipient type cannot be edited or deleted."
@@ -8561,9 +8569,13 @@ msgstr "Udostępnij link w dowolnym miejscu. Osoba, która otworzy link, będzie
 msgid "One of the documents in the current bundle has a signing role that is not compatible with the current signing experience."
 msgstr "Jeden z dokumentów ma niezgodną rolę w procesie podpisywania."
 
+#: packages/email/template-components/template-account-disabled.tsx
+msgid "One of your signing requests has been reported. As part of keeping signers safe, we've disabled your account for now."
+msgstr ""
+
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "One or more of your required fields have not been saved. Please refresh the page, complete any empty required fields, and try again."
-msgstr ""
+msgstr "Co najmniej jedno z wymaganych pól nie zostało zapisane. Odśwież stronę, uzupełnij wymagane pola i spróbuj ponownie."
 
 #: apps/remix/app/components/forms/branding-preferences-form.tsx
 msgid "Only .jpg, .png, and .webp files are accepted"
@@ -8587,6 +8599,14 @@ msgstr "Dozwolone są tylko pliki PDF"
 
 #: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
 msgid "Only pending documents you have permission to manage will be cancelled."
+msgstr "Tylko oczekujące dokumenty, do których masz uprawnienia, zostaną anulowane."
+
+#: packages/email/template-components/template-new-account-warning.tsx
+msgid "Only sign if you know and were expecting this sender."
+msgstr ""
+
+#: packages/email/template-components/template-new-account-warning.tsx
+msgid "Only sign if you know and were expecting this sender. <0>Report sender</0>"
 msgstr ""
 
 #: apps/remix/app/components/general/generic-error-layout.tsx
@@ -8599,7 +8619,7 @@ msgstr "Ups! Coś poszło nie tak."
 
 #: apps/remix/app/components/general/app-command-menu.tsx
 msgid "Open"
-msgstr ""
+msgstr "Otwórz"
 
 #: apps/remix/app/routes/_authenticated+/dashboard.tsx
 msgid "Open documents"
@@ -8677,7 +8697,7 @@ msgstr "Organizacja"
 
 #: packages/lib/server-only/organisation/delete-organisation-email.ts
 msgid "Organisation \"{organisationName}\" has been deleted"
-msgstr "Organizacja \"{organisationName}\" została usunięta"
+msgstr "Organizacja „{organisationName}” została usunięta"
 
 #: packages/lib/constants/organisations-translations.ts
 msgid "Organisation Admin"
@@ -8762,7 +8782,7 @@ msgstr "Organizacja nie została znaleziona"
 #: packages/email/templates/organisation-limit-alert.tsx
 #: packages/lib/jobs/definitions/emails/send-organisation-limit-alert-email.handler.ts
 msgid "Organisation Review Required"
-msgstr "Wymagana weryfikacja organizacji"
+msgstr "Weryfikacja organizacji jest wymagana"
 
 #: apps/remix/app/components/dialogs/organisation-group-create-dialog.tsx
 #: apps/remix/app/routes/_authenticated+/admin+/teams.$id.tsx
@@ -8789,7 +8809,7 @@ msgstr "Logowanie SSO organizacji"
 #: apps/remix/app/routes/_authenticated+/admin+/_layout.tsx
 #: apps/remix/app/routes/_authenticated+/admin+/organisation-stats._index.tsx
 msgid "Organisation Stats"
-msgstr ""
+msgstr "Statystyki organizacji"
 
 #: apps/remix/app/routes/_authenticated+/admin+/organisations.$id.tsx
 msgid "Organisation Teams"
@@ -8810,11 +8830,11 @@ msgstr "Adres URL organizacji"
 
 #: apps/remix/app/routes/_authenticated+/admin+/organisations.$id.tsx
 msgid "Organisation usage"
-msgstr "Użycie organizacji"
+msgstr "Wykorzystanie organizacji"
 
 #: apps/remix/app/routes/_authenticated+/admin+/teams.$id.tsx
 msgid "Organisation-level pending invites for this team's parent organisation."
-msgstr "Oczekujące zaproszenia na poziomie organizacji zespołu."
+msgstr "Oczekujące zaproszenia na poziomie organizacji dla organizacji nadrzędnej tego zespołu."
 
 #: apps/remix/app/components/general/use-admin-search-categories.ts
 #: apps/remix/app/routes/_authenticated+/admin+/_layout.tsx
@@ -8829,7 +8849,7 @@ msgstr "Organizacje użytkownika."
 
 #: apps/remix/app/routes/_authenticated+/admin+/organisations.$id.tsx
 msgid "Organisations without a transport use the system default mailer."
-msgstr ""
+msgstr "Organizacje bez dostawcy poczty e-mail używają domyślnego systemu wysyłki."
 
 #: apps/remix/app/components/general/folder/folder-card.tsx
 msgid "Organise your documents"
@@ -8866,11 +8886,11 @@ msgstr "W przeciwnym razie dokument zostanie utworzony jako wersja robocza."
 #: apps/remix/app/components/dialogs/envelope-distribute-dialog.tsx
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-fields-page.tsx
 msgid "Overlapping fields detected"
-msgstr ""
+msgstr "Wykryto nakładające się pola"
 
 #: apps/remix/app/components/forms/inheritable-field.tsx
 msgid "Override"
-msgstr ""
+msgstr "Nadpisz"
 
 #: apps/remix/app/components/forms/document-preferences-form.tsx
 #: apps/remix/app/components/forms/email-preferences-form.tsx
@@ -8894,15 +8914,15 @@ msgstr "Właściciel"
 
 #: apps/remix/app/components/general/admin-global-settings-section.tsx
 msgid "Owner document completed"
-msgstr "Powiadomiono właściciela o zakończeniu dokumentu"
+msgstr "Dokument właściciela zakończony"
 
 #: apps/remix/app/components/general/admin-global-settings-section.tsx
 msgid "Owner document created"
-msgstr "Powiadomiono właściciela o utworzeniu dokumentu"
+msgstr "Dokument właściciela utworzony"
 
 #: apps/remix/app/components/general/admin-global-settings-section.tsx
 msgid "Owner recipient expired"
-msgstr "Powiadomiono właściciela o minięciu czasu na podpisanie dokumentu"
+msgstr "Odbiorca właściciela wygasł"
 
 #: apps/remix/app/components/dialogs/admin-organisation-member-update-dialog.tsx
 msgid "Ownership transferred to {organisationMemberName}."
@@ -8931,7 +8951,7 @@ msgstr ""
 #: apps/remix/app/components/dialogs/envelopes-bulk-download-dialog.tsx
 msgctxt "Partially signed document (adjective)"
 msgid "Partial"
-msgstr "Częściowo podpisany"
+msgstr "Częściowy"
 
 #: apps/remix/app/components/forms/signin.tsx
 #: apps/remix/app/components/general/document-signing/document-signing-auth-dialog.tsx
@@ -9086,7 +9106,7 @@ msgstr "Oczekujące dokumenty"
 
 #: apps/remix/app/components/dialogs/envelopes-bulk-delete-dialog.tsx
 msgid "Pending documents will have their signing process cancelled"
-msgstr "Proces podpisywania oczekujących dokumentów zostanie anulowany"
+msgstr "Podpisywanie oczekujących dokumentów zostanie anulowane"
 
 #: apps/remix/app/components/general/organisations/organisation-invitations.tsx
 msgid "Pending invitations"
@@ -9106,7 +9126,7 @@ msgstr "Oczekuje od"
 
 #: apps/remix/app/routes/_authenticated+/admin+/organisations.$id.tsx
 msgid "People with access to this organisation."
-msgstr ""
+msgstr "Użytkownicy z dostępem do organizacji."
 
 #: apps/remix/app/components/dialogs/organisation-create-dialog.tsx
 #: apps/remix/app/components/general/billing-plans.tsx
@@ -9122,11 +9142,11 @@ msgstr "rocznie"
 #: apps/remix/app/components/tables/documents-table-period-filter.tsx
 #: apps/remix/app/routes/_authenticated+/admin+/organisation-stats._index.tsx
 msgid "Period"
-msgstr ""
+msgstr "Okres"
 
 #: apps/remix/app/routes/_authenticated+/admin+/organisations.$id.tsx
 msgid "Permanently delete this organisation. Documents will be orphaned (not deleted) so they remain accessible via the deleted-account service account."
-msgstr "Trwale usuń tę organizację. Dokumenty staną się osierocone (nieusunięte), aby pozostały dostępne za pośrednictwem konta serwisowego usuniętego konta."
+msgstr "Usuń trwale organizację. Dokumenty zostaną osierocone (nie usunięte), więc będą przypisane do konta serwisowego usuniętego konta."
 
 #: apps/remix/app/routes/_authenticated+/inbox.tsx
 #: apps/remix/app/routes/_authenticated+/inbox.tsx
@@ -9173,7 +9193,7 @@ msgstr "Domyślny tekst"
 
 #: apps/remix/app/components/forms/subscription-claim-form.tsx
 msgid "Plans without a transport use the system default mailer."
-msgstr ""
+msgstr "Plany bez dostawcy poczty e-mail używają domyślnego systemu wysyłki."
 
 #. placeholder {0}: _(actionVerb).toLowerCase()
 #: packages/email/template-components/template-document-invite.tsx
@@ -9218,7 +9238,7 @@ msgstr "Wybierz nowe hasło"
 #: apps/remix/app/components/forms/signup.tsx
 #: apps/remix/app/components/general/claim-account.tsx
 msgid "Please complete the CAPTCHA challenge before signing in."
-msgstr "Przed zalogowaniem się dokończ wyzwanie CAPTCHA."
+msgstr "Zakończ weryfikację CAPTCHA przed logowaniem."
 
 #: apps/remix/app/components/general/document-signing/document-signing-mobile-widget.tsx
 #: apps/remix/app/components/general/document-signing/document-signing-mobile-widget.tsx
@@ -9245,7 +9265,7 @@ msgstr "Jeśli masz pytania, skontaktuj się z <0>pomocą techniczną</0>."
 
 #: packages/email/templates/organisation-limit-alert.tsx
 msgid "Please contact support at {SUPPORT_EMAIL} and we will review your account."
-msgstr "Skontaktuj się z pomocą techniczną pod adresem {SUPPORT_EMAIL}, a my zweryfikujemy Twoje konto."
+msgstr "Skontaktuj się z pomocą techniczną {SUPPORT_EMAIL}. Sprawdzimy Twoje konto."
 
 #: apps/remix/app/components/dialogs/envelope-delete-dialog.tsx
 msgid "Please contact support if you would like to revert this action."
@@ -9257,7 +9277,7 @@ msgstr "Skontaktuj się z właścicielem dokumentu, aby uzyskać pomoc."
 
 #: apps/remix/app/components/general/document-signing/csc-recipient-signing-in-progress-page.tsx
 msgid "Please don't close this tab. The signing provider is finalising your signature."
-msgstr ""
+msgstr "Nie zamykaj karty. Dostawca podpisu finalizuje podpis."
 
 #: apps/remix/app/components/dialogs/sign-field-number-dialog.tsx
 msgid "Please enter a number"
@@ -9371,7 +9391,7 @@ msgstr "Wybierz, w jaki sposób chcesz otrzymać swój kod weryfikacyjny."
 #: apps/remix/app/components/general/settings-upsell/branding-upsell.tsx
 #: apps/remix/app/components/general/settings-upsell/email-domains-upsell.tsx
 msgid "Please sign: Example.pdf"
-msgstr ""
+msgstr "Podpisz dokument: umowa.pdf"
 
 #: apps/remix/app/components/dialogs/organisation-email-domain-create-dialog.tsx
 msgid "Please try a different domain."
@@ -9383,7 +9403,7 @@ msgstr "Spróbuj ponownie i upewnij się, że adres e-mail jest prawidłowy."
 
 #: apps/remix/app/components/general/pdf-viewer/pdf-viewer-states.tsx
 msgid "Please try again or contact our support."
-msgstr "Spróbuj ponownie lub skontaktuj się z naszym wsparciem."
+msgstr "Spróbuj ponownie lub skontaktuj się z pomocą techniczną"
 
 #. placeholder {0}: `'${t(deleteMessage)}'`
 #: apps/remix/app/components/dialogs/envelope-delete-dialog.tsx
@@ -9406,7 +9426,7 @@ msgstr "Prześlij logo"
 
 #: packages/ui/primitives/signature-pad/signature-pad-upload.tsx
 msgid "Please upload a valid image file."
-msgstr ""
+msgstr "Prześlij prawidłową grafikę."
 
 #: packages/lib/constants/i18n.ts
 msgid "Polish"
@@ -9414,7 +9434,7 @@ msgstr "Polski"
 
 #: apps/remix/app/components/forms/email-transport-form.tsx
 msgid "Port"
-msgstr ""
+msgstr "Port"
 
 #: packages/lib/constants/i18n.ts
 msgid "Portuguese (Brazil)"
@@ -9479,15 +9499,15 @@ msgstr "Podgląd podpisanego dokumentu z domyślnymi opcjami"
 #: apps/remix/app/components/forms/branding-preferences-form.tsx
 #: apps/remix/app/components/general/app-sidebar.tsx
 msgid "Primary"
-msgstr "Kolor główny"
+msgstr "Główny"
 
 #: apps/remix/app/components/forms/branding-preferences-form.tsx
 msgid "Primary action colour."
-msgstr "Kolor głównej akcji."
+msgstr "Kolor akcji."
 
 #: apps/remix/app/components/forms/branding-preferences-form.tsx
 msgid "Primary Foreground"
-msgstr "Kolor pierwszego planu dla koloru głównego"
+msgstr "Tekst przycisków"
 
 #: apps/remix/app/components/general/app-sidebar.tsx
 msgid "Primary navigation"
@@ -9578,7 +9598,7 @@ msgstr "Szablony publiczne są powiązane z Twoim profilem publicznym. Wszelkie 
 
 #: apps/remix/app/components/general/settings-upsell/branding-upsell.tsx
 msgid "Put your own brand on every document you send. Branding is available on the Teams plan and above."
-msgstr ""
+msgstr "Umieść swoje logo na każdym wysyłanym dokumencie. Branding jest dostępny w planie Teams i wyższym."
 
 #: apps/remix/app/components/embed/embed-document-signing-page-v1.tsx
 #: apps/remix/app/components/embed/multisign/multi-sign-document-signing-view.tsx
@@ -9663,7 +9683,7 @@ msgstr "Rola"
 #: apps/remix/app/components/dialogs/envelope-cancel-dialog.tsx
 #: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
 msgid "Reason (optional)"
-msgstr ""
+msgstr "Powód (opcjonalnie)"
 
 #: packages/email/template-components/template-document-cancel.tsx
 msgid "Reason for cancellation: {cancellationReason}"
@@ -9688,7 +9708,7 @@ msgstr "Aby podpisać pole, wymagane jest ponowne uwierzytelnianie"
 #: apps/remix/app/components/general/document-signing/csc-recipient-signing-in-progress-page.tsx
 #: apps/remix/app/components/general/envelope-signing/envelope-signing-csc-status.tsx
 msgid "Reauthorise and retry"
-msgstr ""
+msgstr "Spróbuj ponownie"
 
 #: packages/ui/components/recipient/recipient-role-select.tsx
 msgid "Receives copy"
@@ -9737,11 +9757,11 @@ msgstr "Odbiorca zatwierdził dokument"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "Recipient authenticated with the signing provider"
-msgstr ""
+msgstr "Odbiorca uwierzytelnił się u dostawcy podpisu"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "Recipient authorised the remote signature"
-msgstr ""
+msgstr "Odbiorca autoryzował podpis zdalny"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "Recipient CC'd the document"
@@ -9775,7 +9795,7 @@ msgstr "Odbiorca odrzucił dokument"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "Recipient rejected the document externally"
-msgstr ""
+msgstr "Odbiorca odrzucił dokument w zewnętrznej usłudze"
 
 #: apps/remix/app/components/dialogs/admin-recipient-delete-dialog.tsx
 #: apps/remix/app/components/general/admin-global-settings-section.tsx
@@ -9792,7 +9812,7 @@ msgstr "Odbiorca poprosił o kod weryfikacyjny dla dokumentu"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "Recipient requested a remote signature"
-msgstr ""
+msgstr "Odbiorca poprosił o podpis zdalny"
 
 #: apps/remix/app/components/general/admin-global-settings-section.tsx
 msgid "Recipient signed"
@@ -9808,7 +9828,7 @@ msgstr "Odbiorca podpisał dokument"
 
 #: apps/remix/app/components/general/admin-global-settings-section.tsx
 msgid "Recipient signing request"
-msgstr "Poproszono odbiorcę o podpisanie"
+msgstr "Wysłano prośbę do odbiorcy o podpisanie"
 
 #: packages/ui/components/document/document-email-checkboxes.tsx
 msgid "Recipient signing request email"
@@ -9833,11 +9853,11 @@ msgstr "Odbiorca wyświetlił dokument"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "Recipient's remote signature was applied"
-msgstr ""
+msgstr "Odbiorca złożył podpis zdalny"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "Recipient's signing provider authentication failed"
-msgstr ""
+msgstr "Uwierzytelnienie odbiorcy u dostawcy podpisu nie powiodło się"
 
 #: apps/remix/app/components/embed/authoring/configure-document-recipients.tsx
 #: apps/remix/app/components/general/document/document-page-view-recipients.tsx
@@ -9857,7 +9877,7 @@ msgstr ""
 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-invalid-direct-template-alert.tsx
 msgid "Recipients cannot use this direct link template because the following signers are missing a signature field"
-msgstr ""
+msgstr "Odbiorcy nie mogą używać tego szablonu bezpośredniego linku, ponieważ brakuje w nim pola podpisu dla następujących podpisujących"
 
 #: apps/remix/app/routes/_authenticated+/admin+/stats.tsx
 msgid "Recipients metrics"
@@ -9874,7 +9894,7 @@ msgstr "Odbiorcy będą mogli podpisać dokument po jego wysłaniu"
 #: apps/remix/app/components/dialogs/envelope-cancel-dialog.tsx
 #: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
 msgid "Recipients will be notified that the document was cancelled"
-msgstr ""
+msgstr "Odbiorcy zostaną powiadomieni o anulowaniu dokumentu"
 
 #: apps/remix/app/components/dialogs/envelope-delete-dialog.tsx
 msgid "Recipients will still retain their copy of the document"
@@ -9926,11 +9946,11 @@ msgstr "Przekierowywanie"
 #. placeholder {0}: oidcProviderLabel || 'OIDC'
 #: apps/remix/app/routes/_unauthenticated+/signin.tsx
 msgid "Redirecting to {0}..."
-msgstr ""
+msgstr "Przekierowywanie do {0}..."
 
 #: apps/remix/app/components/general/settings-upsell/sso-portal-upsell.tsx
 msgid "Redirecting to your identity provider"
-msgstr ""
+msgstr "Przekierowywanie do dostawcy tożsamości"
 
 #: apps/remix/app/routes/embed+/auth+/popup.tsx
 msgid "Redirecting to your sign in provider..."
@@ -9989,11 +10009,11 @@ msgstr "Pamiętasz hasło? <0>Zaloguj się</0>"
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl.settings.reminders.tsx
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.reminders.tsx
 msgid "Reminder preferences updated"
-msgstr ""
+msgstr "Ustawienia przypomnień zostały zaktualizowane"
 
 #: packages/email/templates/document-reminder.tsx
 msgid "Reminder to {action} {documentName}"
-msgstr "Sprawdź i {action} dokument {documentName}"
+msgstr "Przypomnienie, aby {action} dokument „{documentName}”"
 
 #. placeholder {0}: envelope.documentMeta.subject
 #: packages/lib/jobs/definitions/internal/process-signing-reminder.handler.ts
@@ -10082,7 +10102,7 @@ msgstr "Usuń użytkownika organizacji"
 
 #: apps/remix/app/components/general/rate-limit-array-input.tsx
 msgid "Remove rate limit"
-msgstr ""
+msgstr "Usuń limit przepustowości"
 
 #: apps/remix/app/components/dialogs/ai-recipient-detection-dialog.tsx
 msgid "Remove recipient"
@@ -10152,16 +10172,16 @@ msgstr ""
 
 #: apps/remix/app/routes/_recipient+/report.$token.tsx
 msgid "Report sender"
-msgstr ""
+msgstr "Zgłoś nadawcę"
 
 #: apps/remix/app/routes/_recipient+/report.$token.tsx
 msgid "Report this sender?"
-msgstr ""
+msgstr "Zgłosić nadawcę?"
 
 #: apps/remix/app/components/general/organisation-usage-panel.tsx
 #: apps/remix/app/components/tables/admin-organisation-stats-table.tsx
 msgid "Reports"
-msgstr ""
+msgstr "Zgłoszenia"
 
 #: apps/remix/app/components/general/webhook-logs-sheet.tsx
 msgid "Request"
@@ -10255,11 +10275,11 @@ msgstr "Resetowanie weryfikacji dwuetapowej"
 
 #: apps/remix/app/components/dialogs/branding-preferences-reset-dialog.tsx
 msgid "Reset branding preferences"
-msgstr ""
+msgstr "Zresetuj ustawienia brandingu"
 
 #: apps/remix/app/components/dialogs/document-preferences-reset-dialog.tsx
 msgid "Reset document preferences"
-msgstr ""
+msgstr "Zresetuj ustawienia dokumentu"
 
 #: apps/remix/app/components/forms/forgot-password.tsx
 msgid "Reset email sent"
@@ -10283,7 +10303,7 @@ msgstr "Zresetuj weryfikację dwuetapową użytkownika. Ta akcja jest nieodwraca
 #: apps/remix/app/components/dialogs/document-preferences-reset-dialog.tsx
 #: apps/remix/app/components/dialogs/document-preferences-reset-dialog.tsx
 msgid "Reset to defaults"
-msgstr ""
+msgstr "Zresetuj ustawienia"
 
 #: apps/remix/app/components/dialogs/admin-user-reset-two-factor-dialog.tsx
 msgid "Reset Two Factor Authentication"
@@ -10299,7 +10319,7 @@ msgstr "Rozwiąż płatność"
 
 #: apps/remix/app/components/general/organisation-usage-panel.tsx
 msgid "Resource blocked"
-msgstr ""
+msgstr "Zasób został zablokowany"
 
 #: apps/remix/app/components/general/webhook-logs-sheet.tsx
 msgid "Response"
@@ -10319,7 +10339,7 @@ msgstr "Zapewniamy, że Twój dokument jest poufny i nigdy nie zostanie udostęp
 
 #: apps/remix/app/components/general/settings-upsell/sso-portal-upsell.tsx
 msgid "Restrict sign-ins by email domain and choose the default role"
-msgstr ""
+msgstr "Ogranicz logowanie do wybranych domen i przypisz domyślną rolę"
 
 #: apps/remix/app/components/general/organisations/organisation-billing-banner.tsx
 msgid "Restricted Access"
@@ -10394,7 +10414,7 @@ msgstr "Wyrównaj do lewej"
 
 #: apps/remix/app/components/forms/branding-preferences-form.tsx
 msgid "Ring"
-msgstr "Obramowanie (ring)"
+msgstr "Obramowanie zaznaczenia"
 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
 msgid "Rodapé"
@@ -10457,7 +10477,7 @@ msgstr "Zapisz jako szablon"
 #: apps/remix/app/components/dialogs/email-transport-update-dialog.tsx
 #: apps/remix/app/components/forms/form-sticky-save-bar.tsx
 msgid "Save changes"
-msgstr ""
+msgstr "Zapisz zmiany"
 
 #: packages/lib/client-only/providers/envelope-editor-provider.tsx
 #: packages/lib/client-only/providers/envelope-editor-provider.tsx
@@ -10500,7 +10520,7 @@ msgstr "Szukaj identyfikatora lub nazwy"
 
 #: apps/remix/app/routes/_authenticated+/admin+/documents._index.tsx
 msgid "Search by document title, recipient:123, team:123 or user:123"
-msgstr ""
+msgstr "Szukaj tytułu dokumentu, odbiorcy, zespołu lub użytkownika"
 
 #: apps/remix/app/routes/_authenticated+/admin+/email-domains._index.tsx
 msgid "Search by domain or organisation name"
@@ -10516,7 +10536,7 @@ msgstr "Szukaj nazwy lub adresu e-mail"
 
 #: apps/remix/app/routes/_authenticated+/admin+/email-transports._index.tsx
 msgid "Search by name or from address"
-msgstr ""
+msgstr "Szukaj nazwy lub adresu e-mail"
 
 #: apps/remix/app/routes/_authenticated+/admin+/organisations._index.tsx
 msgid "Search by organisation ID, name, customer ID or owner email"
@@ -10528,11 +10548,11 @@ msgstr "Szukaj nazwy organizacji"
 
 #: apps/remix/app/routes/_authenticated+/admin+/organisation-stats._index.tsx
 msgid "Search by organisation name, URL or ID"
-msgstr ""
+msgstr "Szukaj nazwy organizacji, adresu URL lub identyfikatora"
 
 #: apps/remix/app/components/general/app-command-menu.tsx
 msgid "Search documents, users, organisations…"
-msgstr ""
+msgstr "Szukaj dokumentów, użytkowników, organizacji…"
 
 #: apps/remix/app/components/general/document/document-search.tsx
 msgid "Search documents..."
@@ -10555,7 +10575,7 @@ msgstr "Szukaj języków..."
 
 #: apps/remix/app/components/general/app-command-menu.tsx
 msgid "Search languages…"
-msgstr ""
+msgstr "Szukaj języków…"
 
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/analytics._index.tsx
 msgid "Search members"
@@ -10568,11 +10588,11 @@ msgstr "Szukaj nazwy lub adresu e-mail użytkownika"
 #: apps/remix/app/components/tables/documents-table-sender-filter.tsx
 #: apps/remix/app/components/tables/templates-table-owner-filter.tsx
 msgid "Search members..."
-msgstr ""
+msgstr "Szukaj użytkowników..."
 
 #: apps/remix/app/components/general/settings-org-switcher.tsx
 msgid "Search organisations…"
-msgstr ""
+msgstr "Szukaj organizacji…"
 
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl.analytics._index.tsx
 msgid "Search teams"
@@ -10580,7 +10600,7 @@ msgstr ""
 
 #: apps/remix/app/components/general/settings-team-switcher.tsx
 msgid "Search teams…"
-msgstr ""
+msgstr "Szukaj zespołów…"
 
 #: apps/remix/app/components/general/template/template-search.tsx
 msgid "Search templates..."
@@ -10588,7 +10608,7 @@ msgstr ""
 
 #: apps/remix/app/components/general/app-command-menu.tsx
 msgid "Search themes…"
-msgstr ""
+msgstr "Szukaj motywów…"
 
 #: apps/remix/app/components/dialogs/webhook-create-dialog.tsx
 msgid "Secret"
@@ -10616,7 +10636,7 @@ msgstr "Aktywność bezpieczeństwa"
 
 #: apps/remix/app/components/general/admin-license-status-banner.tsx
 msgid "See Documentation"
-msgstr "Zobacz dokumentację"
+msgstr "Sprawdź dokumentację"
 
 #: apps/remix/app/routes/_authenticated+/admin+/documents.$id.tsx
 msgid "See the background jobs tab for the status"
@@ -10647,7 +10667,7 @@ msgstr "Wybierz miejsce docelowe dla tego folderu."
 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-fields-page-renderer.tsx
 msgid "Select a field type"
-msgstr ""
+msgstr "Wybierz rodzaj pola"
 
 #: apps/remix/app/components/dialogs/organisation-create-dialog.tsx
 msgid "Select a plan"
@@ -10663,7 +10683,7 @@ msgstr "Wybierz odbiorcę"
 
 #: apps/remix/app/components/general/unified-settings-sidebar-mobile.tsx
 msgid "Select a section"
-msgstr ""
+msgstr "Wybierz sekcję"
 
 #: apps/remix/app/components/dialogs/public-profile-template-manage-dialog.tsx
 msgid "Select a template you'd like to display on your public profile"
@@ -10828,7 +10848,7 @@ msgstr "Wybierz widoczność"
 
 #: apps/remix/app/components/tables/envelopes-table-bulk-action-bar.tsx
 msgid "selected"
-msgstr ""
+msgstr "zaznaczono"
 
 #: apps/remix/app/components/dialogs/envelopes-bulk-delete-dialog.tsx
 msgid "Selected documents will be permanently deleted"
@@ -10863,7 +10883,7 @@ msgstr "Wyślij"
 
 #: apps/remix/app/components/dialogs/email-transport-send-test-dialog.tsx
 msgid "Send a test email using this transport to verify the configuration."
-msgstr ""
+msgstr "Wyślij wiadomość testową przy pomocy dostawcy poczty e-mail."
 
 #: apps/remix/app/components/dialogs/webhook-test-dialog.tsx
 msgid "Send a test webhook with sample data to verify your integration is working correctly."
@@ -10886,7 +10906,7 @@ msgstr "Wyślij dokument"
 
 #: apps/remix/app/components/general/settings-upsell/email-domains-upsell.tsx
 msgid "Send documents from your own domain. Email domains are available on the Enterprise plan."
-msgstr ""
+msgstr "Wysyłaj dokumenty ze swojej domeny. Domeny są dostępne w planie Enterprise."
 
 #: packages/email/templates/confirm-team-email.tsx
 msgid "Send documents on behalf of the team using the email address"
@@ -10898,7 +10918,7 @@ msgstr "Wyślij dokumenty do odbiorców natychmiast"
 
 #: apps/remix/app/components/general/settings-upsell/email-domains-upsell.tsx
 msgid "Send emails to recipients from your domain"
-msgstr ""
+msgstr "Wysyłaj wiadomości ze swojej domeny"
 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor.tsx
 msgid "Send Envelope"
@@ -10906,7 +10926,7 @@ msgstr "Wyślij kopertę"
 
 #: packages/ui/components/document/reminder-settings-picker.tsx
 msgid "Send first reminder after"
-msgstr "Wyślij pierwsze przypomnienie za"
+msgstr "Wyślij pierwsze przypomnienie po"
 
 #: apps/remix/app/components/forms/email-preferences-form.tsx
 msgid "Send on Behalf of Team"
@@ -10935,11 +10955,11 @@ msgstr "Status wysyłki"
 
 #: apps/remix/app/components/tables/admin-email-transports-table.tsx
 msgid "Send test"
-msgstr ""
+msgstr "Wyślij wiadomość testową"
 
 #: apps/remix/app/components/dialogs/email-transport-send-test-dialog.tsx
 msgid "Send Test Email"
-msgstr ""
+msgstr "Wyślij wiadomość testową"
 
 #: apps/remix/app/components/tables/documents-table-sender-filter.tsx
 #: apps/remix/app/components/tables/documents-table.tsx
@@ -10954,15 +10974,15 @@ msgstr ""
 
 #: apps/remix/app/routes/_recipient+/report.$token.tsx
 msgid "Sender reported"
-msgstr ""
+msgstr "Nadawca został zgłoszony"
 
 #: apps/remix/app/components/general/settings-upsell/email-domains-upsell.tsx
 msgid "Sending from app.bchatsign.com"
-msgstr ""
+msgstr "Wysyłanie z app.bchatsign.com"
 
 #: apps/remix/app/components/general/settings-upsell/email-domains-upsell.tsx
 msgid "Sending from your domain"
-msgstr ""
+msgstr "Wysyłanie z Twojej domeny"
 
 #: apps/remix/app/components/forms/forgot-password.tsx
 msgid "Sending Reset Email..."
@@ -10982,11 +11002,11 @@ msgstr "Wysłano"
 
 #: apps/remix/app/components/general/organisation-usage-panel.tsx
 msgid "Sent this period"
-msgstr ""
+msgstr "Wysłano w tym okresie"
 
 #: apps/remix/app/components/general/settings-upsell/branding-upsell.tsx
 msgid "Separate branding per team"
-msgstr ""
+msgstr "Oddzielny branding dla zespołów"
 
 #: apps/remix/app/routes/_authenticated+/settings+/security.sessions.tsx
 msgid "Session revoked"
@@ -11092,7 +11112,7 @@ msgstr ""
 
 #: apps/remix/app/routes/_authenticated+/admin+/organisation-stats._index.tsx
 msgid "Show daily averages for documents, emails and API usages"
-msgstr ""
+msgstr "Pokaż średnie dzienne wykorzystanie dokumentów, wiadomości i API"
 
 #: apps/remix/app/components/general/analytics/analytics-no-activity-alert.tsx
 msgid "Show last 12 months"
@@ -11108,11 +11128,11 @@ msgstr "Pokaż szablony w profilu publicznym, aby szybko podpisać dokument"
 
 #: apps/remix/app/routes/_authenticated+/admin+/organisation-stats._index.tsx
 msgid "Show usage"
-msgstr ""
+msgstr "Pokaż użycie"
 
 #: apps/remix/app/routes/_authenticated+/admin+/organisation-stats._index.tsx
 msgid "Show usage with quotas"
-msgstr ""
+msgstr "Pokaż limity użycia"
 
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/analytics._index.tsx
 msgid "Showing {visibleCount} of {totalCount} members"
@@ -11327,12 +11347,12 @@ msgstr "Liczba podpisów"
 #: packages/ui/components/document/document-read-only-fields.tsx
 #: packages/ui/components/document/envelope-recipient-field-tooltip.tsx
 msgid "Signed"
-msgstr "Podpisano"
+msgstr "Podpisany"
 
 #: packages/lib/constants/recipient-roles.ts
 msgctxt "Recipient role actioned"
 msgid "Signed"
-msgstr "Podpisano"
+msgstr "Podpisany"
 
 #: apps/remix/app/components/dialogs/envelope-download-dialog.tsx
 #: apps/remix/app/components/dialogs/envelopes-bulk-download-dialog.tsx
@@ -11342,7 +11362,7 @@ msgstr "Podpisany"
 
 #: apps/remix/app/components/general/settings-upsell/sso-portal-upsell.tsx
 msgid "Signed in"
-msgstr ""
+msgstr "Zalogowano"
 
 #: apps/remix/app/components/general/envelope-signing/envelope-signer-header.tsx
 msgid "Signer"
@@ -11374,7 +11394,7 @@ msgstr "Podpisuje"
 
 #: apps/remix/app/components/general/document-signing/csc-recipient-blocked-page.tsx
 msgid "Signing algorithm is not supported"
-msgstr ""
+msgstr "Algorytm podpisywania nie jest obsługiwany"
 
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
 msgid "Signing Certificate"
@@ -11382,7 +11402,7 @@ msgstr "Certyfikat podpisu"
 
 #: apps/remix/app/components/general/document-signing/csc-recipient-blocked-page.tsx
 msgid "Signing certificate is invalid"
-msgstr ""
+msgstr "Certyfikat podpisu jest nieprawidłowy"
 
 #: packages/lib/jobs/definitions/emails/send-document-completed-emails.handler.ts
 #: packages/lib/jobs/definitions/emails/send-document-completed-emails.handler.ts
@@ -11395,7 +11415,7 @@ msgstr "Czas na podpisanie minął"
 
 #: apps/remix/app/components/general/document-signing/csc-recipient-signing-in-progress-page.tsx
 msgid "Signing failed"
-msgstr ""
+msgstr "Podpisywanie nie powiodło się"
 
 #: apps/remix/app/components/embed/embed-document-signing-page-v1.tsx
 msgid "Signing for"
@@ -11408,7 +11428,7 @@ msgstr "Logowanie..."
 
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "Signing link expired"
-msgstr ""
+msgstr "Link do podpisywania wygasł"
 
 #: apps/remix/app/components/general/document/document-page-view-dropdown.tsx
 #: apps/remix/app/components/tables/documents-table-action-dropdown.tsx
@@ -11476,7 +11496,7 @@ msgstr "Od {0}"
 
 #: apps/remix/app/components/general/settings-upsell/sso-portal-upsell.tsx
 msgid "Single sign-on"
-msgstr ""
+msgstr "Logowanie SSO"
 
 #: apps/remix/app/components/general/admin-site-banner-section.tsx
 msgid "Site Banner"
@@ -11495,15 +11515,15 @@ msgstr "Pomiń"
 #: apps/remix/app/components/dialogs/envelope-distribute-dialog.tsx
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-fields-page.tsx
 msgid "Some fields are placed on top of each other. This may complicate the signing process or cause fields to not work as expected."
-msgstr ""
+msgstr "Niektóre pola są umieszczone jedno nad drugim. Może to utrudnić podpisywanie lub spowodować, że pola nie będą działać zgodnie z oczekiwaniami."
 
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "Some fields were not saved"
-msgstr ""
+msgstr "Niektóre pola nie zostały zapisane"
 
 #: apps/remix/app/components/general/app-command-menu.tsx
 msgid "Some searches failed — results may be incomplete."
-msgstr ""
+msgstr "Niektóre wyszukiwania nie powiodły się. Wyniki mogą być niekompletne."
 
 #: packages/ui/primitives/document-flow/missing-signature-field-dialog.tsx
 msgid "Some signers have not been assigned a signature field. Please assign at least 1 signature field to each signer before proceeding."
@@ -11561,7 +11581,7 @@ msgstr "Coś poszło nie tak"
 #: apps/remix/app/components/general/document-signing/csc-recipient-signing-in-progress-page.tsx
 #: apps/remix/app/components/general/envelope-signing/envelope-signing-csc-status.tsx
 msgid "Something went wrong while applying your signature. Please retry."
-msgstr ""
+msgstr "Coś poszło nie tak podczas składania podpisu. Spróbuj ponownie."
 
 #: apps/remix/app/components/dialogs/ai-field-detection-dialog.tsx
 msgid "Something went wrong while detecting fields."
@@ -11581,11 +11601,11 @@ msgstr "Coś poszło nie tak podczas ładowania kluczy dostępu."
 
 #: apps/remix/app/components/general/document-signing/csc-recipient-blocked-page.tsx
 msgid "Something went wrong while preparing the remote signature. Please try again."
-msgstr ""
+msgstr "Coś poszło nie tak podczas przygotowywania podpisu zdalnego. Spróbuj ponownie."
 
 #: packages/lib/constants/pdf-viewer-i18n.ts
 msgid "Something went wrong while rendering the document, please try again or contact our support."
-msgstr "Coś poszło nie tak podczas renderowania dokumentu. Spróbuj ponownie lub skontaktuj się z naszym wsparciem."
+msgstr "Coś poszło nie tak podczas renderowania dokumentu. Spróbuj ponownie lub skontaktuj się z pomocą techniczną."
 
 #: packages/lib/constants/pdf-viewer-i18n.ts
 #: packages/lib/constants/pdf-viewer-i18n.ts
@@ -11718,7 +11738,7 @@ msgstr "Krok <0>{step} z {maxStep}</0>"
 
 #: apps/remix/app/components/dialogs/envelopes-bulk-download-dialog.tsx
 msgid "Stop"
-msgstr ""
+msgstr "Zatrzymaj"
 
 #: apps/remix/app/components/embed/embed-popup-auth.tsx
 msgid "Storage access was denied, so we cannot keep you signed in inside this embed. Please try again."
@@ -11797,11 +11817,11 @@ msgstr "Status subskrypcji"
 
 #: apps/remix/app/components/dialogs/admin-organisation-sync-subscription-dialog.tsx
 msgid "Subscription synced"
-msgstr ""
+msgstr "Subskrypcja została zsynchronizowana"
 
 #: apps/remix/app/components/general/use-admin-search-categories.ts
 msgid "Subscriptions"
-msgstr ""
+msgstr "Subskrypcje"
 
 #: apps/remix/app/components/dialogs/admin-organisation-create-dialog.tsx
 #: apps/remix/app/components/dialogs/admin-organisation-member-delete-dialog.tsx
@@ -11902,7 +11922,7 @@ msgstr "Synchronizuj"
 
 #: apps/remix/app/components/dialogs/admin-organisation-sync-subscription-dialog.tsx
 msgid "Sync claims. This will overwrite the current claim with the one resolved from the Stripe subscription."
-msgstr ""
+msgstr "Synchronizuj subskrypcję. Spowoduje to nadpisanie ustawień Stripe."
 
 #: apps/remix/app/components/tables/organisation-email-domains-table.tsx
 msgid "Sync Email Domains"
@@ -11920,7 +11940,7 @@ msgstr "Synchronizuj licencję z serwera"
 #: apps/remix/app/components/dialogs/admin-organisation-sync-subscription-dialog.tsx
 #: apps/remix/app/routes/_authenticated+/admin+/organisations.$id.tsx
 msgid "Sync Stripe subscription"
-msgstr ""
+msgstr "Synchronizuj subskrypcję Stripe"
 
 #: packages/lib/utils/document-audit-logs.ts
 #: packages/lib/utils/document-audit-logs.ts
@@ -12120,7 +12140,7 @@ msgstr "Zespoły pomagają organizować pracę i współpracować z innymi. Utw�
 
 #: apps/remix/app/routes/_authenticated+/admin+/organisations.$id.tsx
 msgid "Teams that belong to this organisation."
-msgstr ""
+msgstr "Zespoły, które należą do organizacji."
 
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl.settings.groups.$id.tsx
 msgid "Teams that this organisation group is currently assigned to"
@@ -12184,7 +12204,7 @@ msgstr "Zmieniono nazwę szablonu"
 
 #: apps/remix/app/components/dialogs/envelope-redistribute-dialog.tsx
 msgid "Template resent"
-msgstr ""
+msgstr "Wysłano ponownie szablon"
 
 #: apps/remix/app/components/general/template/template-edit-form.tsx
 msgid "Template saved"
@@ -12261,11 +12281,11 @@ msgstr "Testuj"
 
 #: apps/remix/app/components/dialogs/email-transport-send-test-dialog.tsx
 msgid "Test email sent."
-msgstr ""
+msgstr "Wiadomość testowa została wysłana."
 
 #: apps/remix/app/components/dialogs/email-transport-send-test-dialog.tsx
 msgid "Test failed."
-msgstr ""
+msgstr "Wiadomość testowa nie powiodła się."
 
 #: apps/remix/app/components/dialogs/webhook-test-dialog.tsx
 msgid "Test Webhook"
@@ -12281,7 +12301,7 @@ msgstr "Testowy webhook został wysłany"
 
 #: apps/remix/app/components/dialogs/email-transport-send-test-dialog.tsx
 msgid "test@example.com"
-msgstr ""
+msgstr "test@przyklad.com"
 
 #: apps/remix/app/components/dialogs/ai-field-detection-dialog.tsx
 #: apps/remix/app/components/general/document-signing/document-signing-text-field.tsx
@@ -12310,7 +12330,7 @@ msgstr "Kolor tekstu"
 
 #: apps/remix/app/components/forms/branding-preferences-form.tsx
 msgid "Text colour on primary buttons."
-msgstr "Kolor tekstu na głównych przyciskach."
+msgstr "Kolor tekstu na przyciskach."
 
 #: apps/remix/app/components/dialogs/sign-field-text-dialog.tsx
 msgid "Text is required"
@@ -12326,7 +12346,7 @@ msgstr "Podpisywanie zostało zakończone."
 
 #: apps/remix/app/routes/_recipient+/report.$token.tsx
 msgid "Thank you for letting us know, we have flagged this sender for review. If you have any concerns please feel free to reach out to our <0>support team</0>."
-msgstr ""
+msgstr "Dziękujemy za zgłoszenie nadawcy. Zweryfikujemy go. Jeśli masz pytania, skontaktuj się z naszą <0>pomocą techniczną</0>."
 
 #: apps/remix/app/routes/_unauthenticated+/articles.signature-disclosure.tsx
 msgid "Thank you for using BchatSign to perform your electronic document signing. The purpose of this disclosure is to inform you about the process, legality, and your rights regarding the use of electronic signatures on our platform. By opting to use an electronic signature, you are agreeing to the terms and conditions outlined below."
@@ -12390,7 +12410,7 @@ msgstr "Domyślny adres e-mail do wysyłania wiadomości do odbiorców"
 
 #: apps/remix/app/components/dialogs/admin-organisation-delete-dialog.tsx
 msgid "The deletion will run in the background, and can take up to a few minutes to complete. Do not re-run this deletion."
-msgstr "Usunięcie zostanie wykonane w tle i może zająć do kilku minut. Nie uruchamiaj ponownie tego procesu usuwania."
+msgstr "Usunięcie zostanie uruchomione w tle. Może to potrwać do kilku minut. Nie uruchamiaj ponownie operacji."
 
 #: apps/remix/app/components/dialogs/template-direct-link-dialog.tsx
 #: apps/remix/app/components/general/template/template-direct-link-badge.tsx
@@ -12405,11 +12425,11 @@ msgstr "Nazwa wyświetlana dla adresu e-mail"
 
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "The document could not be created because of missing or invalid information. Please review the template's recipients and fields."
-msgstr "Nie udało się utworzyć dokumentu z powodu brakujących lub nieprawidłowych danych. Sprawdź listę odbiorców i pola w szablonie."
+msgstr "Nie można było utworzyć dokumentu z powodu brakujących lub nieprawidłowych informacji. Sprawdź odbiorców i pola szablonu."
 
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "The document could not be sent because some signers do not have a signature field. Please edit the template and add a signature field for each signer."
-msgstr ""
+msgstr "Nie można wysłać dokumentu, ponieważ niektórzy podpisujący nie mają pola podpisu. Edytuj szablon i dodaj pola podpisu dla wszystkich podpisujących."
 
 #: apps/remix/app/components/dialogs/admin-document-delete-dialog.tsx
 msgid "The Document has been deleted successfully."
@@ -12446,7 +12466,7 @@ msgstr "Zmieniono właściciela dokumentu na {0} z zespołu {1}"
 #: apps/remix/app/components/dialogs/envelope-cancel-dialog.tsx
 #: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
 msgid "The document signing process will be stopped"
-msgstr ""
+msgstr "Podpisywanie dokumentu zostanie zatrzymane"
 
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "The document was created but could not be sent to recipients."
@@ -12454,24 +12474,24 @@ msgstr "Dokument został utworzony, ale nie mógł zostać wysłany do odbiorcó
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "The document was rejected externally by {onBehalfOf} on behalf of {user}"
-msgstr ""
+msgstr "Dokument został odrzucony w zewnętrznej usłudze przez użytkownika {onBehalfOf} w imieniu użytkownika {user}"
 
 #: packages/lib/utils/document-audit-logs.ts
 #: packages/lib/utils/document-audit-logs.ts
 msgid "The document was rejected externally by {onBehalfOf} on behalf of the recipient"
-msgstr ""
+msgstr "Dokument został odrzucony w zewnętrznej usłudze przez użytkownika {onBehalfOf} w imieniu odbiorcy"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "The document was rejected externally on behalf of {user}"
-msgstr ""
+msgstr "Dokument został odrzucony w zewnętrznej usłudze w imieniu użytkownika {user}"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "The document was rejected externally on behalf of the recipient"
-msgstr ""
+msgstr "Dokument został odrzucony w zewnętrznej usłudze w imieniu odbiorcy"
 
 #: apps/remix/app/components/dialogs/envelope-delete-dialog.tsx
 msgid "The document will be hidden from your account"
-msgstr "Dokument zostanie ukryty w Twoim koncie"
+msgstr "Dokument zostanie ukryty na Twoim koncie"
 
 #: apps/remix/app/components/dialogs/template-use-dialog.tsx
 msgid "The document will be immediately sent to recipients if this is checked."
@@ -12479,7 +12499,7 @@ msgstr "Dokument zostanie natychmiast wysłany do odbiorców."
 
 #: apps/remix/app/components/dialogs/envelope-cancel-dialog.tsx
 msgid "The document will remain in your dashboard marked as Cancelled"
-msgstr ""
+msgstr "Dokument pozostanie na pulpicie oznaczony jako anulowany"
 
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/documents.$id._layout.tsx
 msgid "The document you are looking for could not be found."
@@ -12496,7 +12516,7 @@ msgstr "Nazwa dokumentu"
 
 #: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
 msgid "The documents will remain in your dashboard marked as Cancelled"
-msgstr ""
+msgstr "Dokumenty pozostaną na pulpicie oznaczone jako anulowane"
 
 #: apps/remix/app/components/forms/email-preferences-form.tsx
 msgid "The email address which will show up in the \"Reply To\" field in emails"
@@ -12504,7 +12524,7 @@ msgstr "Adres e-mail, który pojawi się w polu „Odpowiedz do” w wiadomości
 
 #: apps/remix/app/components/general/admin-email-blocklist-section.tsx
 msgid "The email blocklist has been updated successfully."
-msgstr "Bloklista e‑mail została pomyślnie zaktualizowana."
+msgstr "Lista zablokowanych domen została zaktualizowana."
 
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl.settings.email-domains.$id.tsx
 msgid "The email domain you are looking for may have been removed, renamed or may have never existed."
@@ -12550,11 +12570,11 @@ msgstr "Wystąpiły następujące błędy:"
 
 #: packages/email/templates/organisation-delete.tsx
 msgid "The following organisation has been deleted by an administrator. You and your members will no longer be able to access this organisation, its teams, or its associated data."
-msgstr "Poniższa organizacja została usunięta przez administratora. Ty i członkowie Twojej organizacji nie będziecie już mieli dostępu do tej organizacji, jej zespołów ani powiązanych z nią danych."
+msgstr "Organizacja została usunięta przez administratora. Użytkownicy organizacji nie będą mieli już do niej dostępu, w tym do jej zespołów i powiązanych danych."
 
 #: packages/email/templates/organisation-delete.tsx
 msgid "The following organisation has been deleted. You and your members will no longer be able to access this organisation, its teams, or its associated data."
-msgstr "Poniższa organizacja została usunięta. Ty i członkowie Twojej organizacji nie będziecie już mieli dostępu do tej organizacji, jej zespołów ani powiązanych z nią danych."
+msgstr "Organizacja została usunięta. Użytkownicy organizacji nie będą mieli już do niej dostępu, w tym do jej zespołów i powiązanych danych."
 
 #: apps/remix/app/components/dialogs/envelope-distribute-dialog.tsx
 msgid "The following recipients require an email address:"
@@ -12570,15 +12590,15 @@ msgstr "Następujący zespół został usunięty. Nie będziesz mógł już uzys
 
 #: packages/ui/primitives/signature-pad/signature-pad-upload.tsx
 msgid "The image could not be loaded. Please try again."
-msgstr ""
+msgstr "Nie można załadować grafiki. Spróbuj ponownie."
 
 #: packages/ui/primitives/signature-pad/signature-pad-upload.tsx
 msgid "The image must be smaller than 5MB."
-msgstr ""
+msgstr "Maksymalny rozmiar grafiki to 5 MB."
 
 #: apps/remix/app/components/general/admin-license-card.tsx
 msgid "The license key has been copied to your clipboard"
-msgstr ""
+msgstr "Klucz licencyjny został skopiowany do schowka"
 
 #. placeholder {0}: form.watch('name')
 #. placeholder {1}: form.watch('email')
@@ -12612,11 +12632,11 @@ msgstr "Rola w organizacji, która zostanie zastosowana dla wszystkich użytkown
 
 #: apps/remix/app/components/dialogs/admin-organisation-sync-subscription-dialog.tsx
 msgid "The organisation subscription has been synced with Stripe."
-msgstr ""
+msgstr "Subskrypcja organizacji została zsynchronizowana z Stripe."
 
 #: apps/remix/app/components/dialogs/admin-organisation-delete-dialog.tsx
 msgid "The organisation will be deleted in the background. Documents will be orphaned, not deleted."
-msgstr "Organizacja zostanie usunięta w tle. Dokumenty staną się osierocone, nieusunięte."
+msgstr "Organizacja zostanie usunięta w tle. Dokumenty zostaną osierocone, ale nie usunięte."
 
 #: apps/remix/app/routes/_authenticated+/_layout.tsx
 #: apps/remix/app/routes/_authenticated+/admin+/organisations.$id.tsx
@@ -12718,7 +12738,7 @@ msgstr "Link do podpisywania został skopiowany do schowka."
 #: apps/remix/app/components/general/document-signing/csc-recipient-signing-in-progress-page.tsx
 #: apps/remix/app/components/general/envelope-signing/envelope-signing-csc-status.tsx
 msgid "The signing provider did not respond in time. Please retry."
-msgstr ""
+msgstr "Dostawca podpisu nie odpowiedział na czas. Spróbuj ponownie."
 
 #: packages/email/templates/recipient-expired.tsx
 msgid "The signing window for \"{recipientName}\" on document \"{documentName}\" has expired."
@@ -12745,7 +12765,7 @@ msgstr "Zespół, którego szukasz, mógł zostać usunięty, zmieniony lub móg
 
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "The template or one of its recipients could not be found."
-msgstr "Szablon lub jeden z jego odbiorców nie został znaleziony."
+msgstr "Nie można odnaleźć szablonu lub jednego z jego odbiorców."
 
 #: apps/remix/app/components/dialogs/public-profile-template-manage-dialog.tsx
 msgid "The template will be removed from your profile"
@@ -12826,7 +12846,7 @@ msgstr "Webhook, którego szukasz, mógł zostać usunięty, zmieniony lub móg�
 
 #: apps/remix/app/components/general/app-command-menu.tsx
 msgid "Theme"
-msgstr ""
+msgstr "Motyw"
 
 #: packages/ui/components/document/reminder-settings-picker.tsx
 msgid "Then repeat every"
@@ -12838,7 +12858,7 @@ msgstr "Brak aktywnych szkiców. Prześlij, aby utworzyć."
 
 #: apps/remix/app/components/tables/documents-table-empty-state.tsx
 msgid "There are no cancelled documents. Documents you cancel will remain here as a record that they were distributed."
-msgstr ""
+msgstr "Brak anulowanych dokumentów. Anulowane dokumenty pozostaną tutaj jako dowód ich wcześniejszej dystrybucji."
 
 #: apps/remix/app/components/tables/documents-table-empty-state.tsx
 msgid "There are no completed documents yet. Documents that you have created or received will appear here once completed."
@@ -12846,11 +12866,11 @@ msgstr "Brak zakończonych dokumentów. Utworzone lub odebrane dokumenty pojawi�
 
 #: apps/remix/app/components/tables/documents-table-empty-state.tsx
 msgid "There are no documents with expired signing links. You can redistribute a document to renew its expiration."
-msgstr ""
+msgstr "Brak dokumentów z wygasłymi linkami do podpisania. Możesz ponownie udostępnić dokument, aby przedłużyć jego ważność."
 
 #: apps/remix/app/components/tables/documents-table-empty-state.tsx
 msgid "There are no rejected documents. Documents that a recipient declines to sign will appear here."
-msgstr ""
+msgstr "Brak odrzuconych dokumentów. Tutaj pojawią się dokumenty do podpisu odrzucone przez odbiorców."
 
 #: packages/email/template-components/template-recipient-removed-by-admin.tsx
 msgid "There is no action required on your side. If you believe this was a mistake, please contact the document sender."
@@ -12882,7 +12902,7 @@ msgstr "W Twoim imieniu mogą:"
 
 #: apps/remix/app/routes/_unauthenticated+/team.verify.email.$token.tsx
 msgid "They will be able to view documents associated with this email."
-msgstr ""
+msgstr "Będą oni mogli przeglądać dokumenty powiązane z tym adresem."
 
 #: apps/remix/app/components/forms/signin.tsx
 msgid "This account has been disabled. Please contact support."
@@ -12923,11 +12943,11 @@ msgstr ""
 
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "This direct link template cannot be used because one or more signers do not have a signature field assigned."
-msgstr ""
+msgstr "Szablon bezpośredniego linku nie może zostać użyty, ponieważ co najmniej jeden podpisujący nie ma przypisanego pola podpisu."
 
 #: apps/remix/app/components/general/direct-template/direct-template-invalid-page.tsx
 msgid "This direct link template cannot be used because one or more signers do not have a signature field assigned. Please contact the sender to update the template."
-msgstr ""
+msgstr "Szablon bezpośredniego linku nie może zostać użyty, ponieważ co najmniej jeden podpisujący nie ma przypisanego pola podpisu. Skontaktuj się z nadawcą, aby zaktualizował szablon."
 
 #: apps/remix/app/components/general/document/document-validation-panel.tsx
 msgid "This document can be validated through the VALIDAR/ITI service by uploading the sealed PDF, using a public URL or by scanning its QR Code. The final PDF was digitally sealed with an A1 ICP-Brasil certificate and its integrity can be verified through the SHA-256 hash below."
@@ -12935,7 +12955,7 @@ msgstr ""
 
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "This document can no longer be signed. It may have been removed by the sender, or your signing access may have been revoked. Please contact the sender for a new signing link."
-msgstr ""
+msgstr "Nie można podpisać dokumentu. Być może został on usunięty przez nadawcę lub Twoje uprawnienia do podpisywania zostały unieważnione. Skontaktuj się z nadawcą, aby uzyskać nowy link do podpisywania."
 
 #: packages/email/template-components/template-document-super-delete.tsx
 msgid "This document can not be recovered, if you would like to dispute the reason for future documents please contact support."
@@ -12947,7 +12967,7 @@ msgstr "Nie można zmienić dokumentu"
 
 #: apps/remix/app/components/dialogs/envelope-cancel-dialog.tsx
 msgid "This document could not be cancelled at this time. Please try again."
-msgstr ""
+msgstr "Nie można anulować dokumentu. Spróbuj ponownie."
 
 #: apps/remix/app/components/dialogs/envelope-delete-dialog.tsx
 msgid "This document could not be deleted at this time. Please try again."
@@ -12967,7 +12987,7 @@ msgstr "Nie można zapisać dokumentu jako szablonu. Spróbuj ponownie."
 
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "This document has already been completed and no further signatures can be added."
-msgstr ""
+msgstr "Dokument został już zakończony i nie wymaga kolejnych podpisów."
 
 #: apps/remix/app/components/general/envelope-editor/envelope-recipient-selector.tsx
 #: packages/ui/primitives/recipient-selector.tsx
@@ -12976,7 +12996,7 @@ msgstr "Dokument został już wysłany do odbiorcy, więc nie możesz go już ed
 
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/documents.$id._index.tsx
 msgid "This document has been cancelled"
-msgstr ""
+msgstr "Dokument został anulowany"
 
 #: apps/remix/app/routes/_recipient+/sign.$token+/complete.tsx
 msgid "This document has been cancelled by the owner and is no longer available for others to sign."
@@ -12989,7 +13009,7 @@ msgstr "Dokument został anulowany przez właściciela."
 
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "This document has been cancelled by the sender and can no longer be signed. Please contact the sender if you believe this is a mistake."
-msgstr ""
+msgstr "Dokument został anulowany przez nadawcę i nie można go już podpisać. Jeśli uważasz to za błąd, skontaktuj się z nadawcą."
 
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/documents.$id._index.tsx
 msgid "This document has been rejected by a recipient"
@@ -12997,7 +13017,7 @@ msgstr "Dokument został odrzucony przez odbiorcę"
 
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "This document has been rejected by a recipient and can no longer be signed."
-msgstr ""
+msgstr "Dokument został odrzucony przez odbiorcę i nie można go już podpisać."
 
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/documents.$id._index.tsx
 msgid "This document has been signed by all recipients"
@@ -13005,11 +13025,11 @@ msgstr "Dokument został podpisany przez wszystkich odbiorców"
 
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "This document has not been sent for signing yet. Please wait for the sender to send it before signing."
-msgstr ""
+msgstr "Dokument nie został jeszcze wysłany do podpisania. Poczekaj na wysłanie go przez nadawcę."
 
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "This document has too many recipients. Please remove some recipients or contact support if you need more."
-msgstr ""
+msgstr "Dokument ma zbyt wielu odbiorców. Usuń niektórych odbiorców lub skontaktuj się z pomocą techniczną, jeśli potrzebujesz więcej."
 
 #: apps/remix/app/components/general/document/document-certificate-qr-view.tsx
 msgid "This document is available in your BchatSign account. You can view more details, recipients, and audit logs there."
@@ -13026,7 +13046,7 @@ msgstr ""
 
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "This document is signed in a set order and other recipients must sign before you. You will receive an email when it is your turn."
-msgstr ""
+msgstr "Dokument jest podpisywany zgodnie z ustaloną kolejnością. Gdy nadejdzie Twoja kolej, otrzymasz wiadomość."
 
 #: apps/remix/app/components/general/legacy-field-warning-popover.tsx
 msgid "This document is using legacy field insertion, we recommend using the new field insertion method for more accurate results."
@@ -13038,7 +13058,7 @@ msgstr ""
 
 #: apps/remix/app/components/general/envelope-signing/envelope-signing-complete-dialog.tsx
 msgid "This document was already signed and no further action was taken."
-msgstr ""
+msgstr "Dokument został już podpisany. Nie musisz nic więcej robić."
 
 #: apps/remix/app/components/general/template/template-page-view-documents-table.tsx
 msgid "This document was created by you or a team member using the template above."
@@ -13058,7 +13078,7 @@ msgstr "Potwierdzamy odrzucenie dokumentu <0>„{documentName}”</0> wysłanego
 
 #: apps/remix/app/routes/_unauthenticated+/team.verify.email.$token.tsx
 msgid "This email is already being used as a team email. Please contact your team for assistance."
-msgstr ""
+msgstr "Ten adres e-mail jest już używany jako adres e-mail zespołu. Skontaktuj się z zespołem, aby uzyskać pomoc."
 
 #: apps/remix/app/components/dialogs/team-email-add-dialog.tsx
 msgid "This email is already being used by another team."
@@ -13087,11 +13107,11 @@ msgstr "Zostanie wysłana do odbiorcy, który właśnie podpisał dokument, gdy 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-recipient-form.tsx
 #: packages/ui/primitives/document-flow/add-signers.tsx
 msgid "This envelope cannot have more than {recipientCountLimit} recipients. Please contact support if you need more."
-msgstr ""
+msgstr "Koperta nie może więcej niż {recipientCountLimit} odbiorców. Skontaktuj się z pomocą techniczną, jeśli potrzebujesz więcej."
 
 #: apps/remix/app/components/embed/embed-paywall.tsx
 msgid "This feature is not available on your current plan"
-msgstr "Funkcja nie jest dostępna w Twoim planie"
+msgstr "Ta funkcja nie jest dostępna w Twoim obecnym planie."
 
 #: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx
 msgid "This field cannot be modified or deleted. When you share this template's direct link or add it to your public profile, anyone who accesses it can input their name and email, and fill in the fields assigned to them."
@@ -13099,7 +13119,7 @@ msgstr "Pole nie może być modyfikowane ani usuwane. Gdy udostępnisz bezpośre
 
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "This file type isn't supported. Please upload a PDF or Word document."
-msgstr "Ten typ pliku nie jest obsługiwany. Prześlij plik PDF lub dokument programu Word."
+msgstr "Typ pliku nie jest obsługiwany. Prześlij dokument PDF lub Word."
 
 #: apps/remix/app/components/dialogs/folder-delete-dialog.tsx
 msgid "This folder contains multiple items. Deleting it will remove all subfolders and move all nested documents and templates to the root folder."
@@ -13107,7 +13127,7 @@ msgstr "Folder zawiera wiele elementów. Usunięcie go spowoduje przeniesienie w
 
 #: packages/ui/primitives/signature-pad/signature-pad-upload.tsx
 msgid "This image is invalid, please upload a valid image file."
-msgstr ""
+msgstr "Grafika jest nieprawidłowa. Prześlij prawidłowy plik."
 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
 #: packages/ui/primitives/template-flow/add-template-settings.tsx
@@ -13136,7 +13156,7 @@ msgstr "Link jest nieprawidłowy lub wygasł. Skontaktuj się ze swoim zespołem
 
 #: apps/remix/app/components/dialogs/team-member-delete-dialog.tsx
 msgid "This member is inherited from a group and cannot be removed from the team directly."
-msgstr ""
+msgstr "Użytkownik jest odziedziczony z grupy i nie może zostać usunięty bezpośrednio z zespołu."
 
 #: apps/remix/app/routes/_unauthenticated+/organisation.sso.confirmation.$token.tsx
 msgid "This organisation will have administrative control over your account. You can revoke this access later, but they will retain access to any data they've already collected."
@@ -13220,9 +13240,7 @@ msgstr "Zostanie wysłana do właściciela po zakończeniu dokumentu."
 
 #: packages/ui/components/document/document-email-checkboxes.tsx
 msgid "This will be sent to the document owner when a recipient's signing window has expired."
-msgstr ""
-"Zostanie wysłana do właściciela dokumentu, gdy minie czas na podpisanie przez odbiorcę\n"
-""
+msgstr "Zostanie wysłana do właściciela dokumentu, gdy minie czas na podpisanie przez odbiorcę"
 
 #: apps/remix/app/components/tables/organisation-email-domains-table.tsx
 msgid "This will check and sync the status of all email domains for this organisation"
@@ -13248,11 +13266,11 @@ msgstr "Spowoduje to usunięcie wszystkich adresów e-mail powiązanych z domen�
 
 #: apps/remix/app/components/dialogs/branding-preferences-reset-dialog.tsx
 msgid "This will reset all branding preferences to their default values and save the changes immediately."
-msgstr ""
+msgstr "Spowoduje to zresetowanie ustawień brandingu do wartości domyślnych."
 
 #: apps/remix/app/components/dialogs/document-preferences-reset-dialog.tsx
 msgid "This will reset all document preferences to their default values and save the changes immediately."
-msgstr ""
+msgstr "Spowoduje to zresetowanie ustawień dokumentu do wartości domyślnych."
 
 #: apps/remix/app/components/dialogs/session-logout-all-dialog.tsx
 msgid "This will sign you out of all other devices. You will need to sign in again on those devices to continue using your account."
@@ -13378,7 +13396,7 @@ msgstr "Aby uzyskać dostęp do konta, potwierdź adres e-mail, klikając na lin
 
 #: packages/email/template-components/template-admin-user-created.tsx
 msgid "To get started, please set your password by clicking the button below:"
-msgstr "Aby rozpocząć, ustaw swoje hasło, klikając przycisk poniżej:"
+msgstr "Ustaw hasło, klikając przycisk poniżej:"
 
 #. placeholder {0}: recipient.email
 #: apps/remix/app/components/general/document-signing/document-signing-auth-account.tsx
@@ -13476,7 +13494,7 @@ msgstr "Token nie został znaleziony"
 
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "Too many recipients"
-msgstr ""
+msgstr "Zbyt wielu odbiorców"
 
 #: apps/remix/app/components/dialogs/ai-field-detection-dialog.tsx
 #: apps/remix/app/components/dialogs/ai-recipient-detection-dialog.tsx
@@ -13494,7 +13512,7 @@ msgstr ""
 
 #: apps/remix/app/components/tables/admin-organisation-stats-table.tsx
 msgid "Total"
-msgstr ""
+msgstr "Łącznie"
 
 #: apps/remix/app/routes/_authenticated+/admin+/stats.tsx
 msgid "Total Documents"
@@ -13522,23 +13540,23 @@ msgstr "Przenieś dokumenty do innego zespołu"
 
 #: apps/remix/app/components/dialogs/email-transport-create-dialog.tsx
 msgid "Transport created."
-msgstr ""
+msgstr "Dostawca poczty e-mail został utworzony."
 
 #: apps/remix/app/components/dialogs/email-transport-delete-dialog.tsx
 msgid "Transport deleted."
-msgstr ""
+msgstr "Dostawca poczty e-mail został usunięty."
 
 #: apps/remix/app/components/forms/email-transport-form.tsx
 msgid "Transport type"
-msgstr ""
+msgstr "Rodzaj dostawcy poczty e-mail"
 
 #: apps/remix/app/components/forms/email-transport-form.tsx
 msgid "Transport type cannot be changed after creation."
-msgstr ""
+msgstr "Nie można zmienić rodzaju dostawcy poczty e-mail po jego utworzeniu."
 
 #: apps/remix/app/components/dialogs/email-transport-update-dialog.tsx
 msgid "Transport updated."
-msgstr ""
+msgstr "Dostawca poczty e-mail został zaktualizowany."
 
 #: apps/remix/app/components/dialogs/webhook-create-dialog.tsx
 #: apps/remix/app/components/dialogs/webhook-edit-dialog.tsx
@@ -13547,7 +13565,7 @@ msgstr "Wyzwalacze"
 
 #: apps/remix/app/components/general/app-command-menu.tsx
 msgid "Try a different search or switch category."
-msgstr ""
+msgstr "Spróbuj innego zapytania lub zmień kategorię."
 
 #: apps/remix/app/components/general/analytics/analytics-no-activity-alert.tsx
 msgid "Try a longer range."
@@ -13603,7 +13621,7 @@ msgstr "Weryfikacja dwuetapowa"
 #: apps/remix/app/components/tables/admin-email-transports-table.tsx
 #: apps/remix/app/components/tables/templates-table.tsx
 msgid "Type"
-msgstr "Rodzaj"
+msgstr "Pisany"
 
 #: packages/lib/constants/document.ts
 #: packages/ui/primitives/signature-pad/signature-pad.tsx
@@ -13721,11 +13739,11 @@ msgstr "Nie można się zalogować"
 
 #: apps/remix/app/components/general/document-signing/csc-recipient-blocked-page.tsx
 msgid "Unable to start the signing flow"
-msgstr ""
+msgstr "Nie można rozpocząć procesu podpisywania"
 
 #: packages/ui/primitives/signature-pad/signature-pad-upload.tsx
 msgid "Unable to upload image"
-msgstr ""
+msgstr "Nie można przesłać grafiki"
 
 #: apps/remix/app/components/general/document-signing/document-signing-auth-2fa.tsx
 #: apps/remix/app/components/general/document-signing/document-signing-auth-passkey.tsx
@@ -13784,7 +13802,7 @@ msgstr ""
 #: apps/remix/app/components/general/organisation-usage-panel.tsx
 #: apps/remix/app/components/tables/admin-claims-table.tsx
 msgid "Unlimited"
-msgstr "Nieograniczone"
+msgstr "Bez ograniczeń"
 
 #: apps/remix/app/components/dialogs/organisation-create-dialog.tsx
 msgid "Unlimited documents, API and more"
@@ -13797,15 +13815,15 @@ msgstr "Rozłącz"
 
 #: apps/remix/app/components/general/settings-upsell/branding-upsell.tsx
 msgid "Unlock Branding Preferences"
-msgstr ""
+msgstr "Odblokuj ustawienia brandingu"
 
 #: apps/remix/app/components/general/settings-upsell/email-domains-upsell.tsx
 msgid "Unlock Email Domains"
-msgstr ""
+msgstr "Odblokuj domeny"
 
 #: apps/remix/app/components/general/settings-upsell/sso-portal-upsell.tsx
 msgid "Unlock the Organisation SSO Portal"
-msgstr ""
+msgstr "Odblokuj logowanie SSO organizacji"
 
 #: apps/remix/app/components/general/folder/folder-card.tsx
 msgid "Unpin"
@@ -13813,7 +13831,7 @@ msgstr "Odepnij"
 
 #: apps/remix/app/components/forms/form-sticky-save-bar.tsx
 msgid "Unsaved changes"
-msgstr ""
+msgstr "Niezapisane zmiany"
 
 #: apps/remix/app/routes/_authenticated+/admin+/_layout.tsx
 #: apps/remix/app/routes/_authenticated+/admin+/unsealed-documents._index.tsx
@@ -13862,7 +13880,7 @@ msgstr "Zaktualizuj płatności"
 
 #: apps/remix/app/components/general/admin-email-blocklist-section.tsx
 msgid "Update Blocklist"
-msgstr "Zaktualizuj listę blokowanych adresów e-mail"
+msgstr "Zaktualizuj listę zablokowanych domen"
 
 #: apps/remix/app/components/dialogs/claim-update-dialog.tsx
 msgid "Update Claim"
@@ -13988,7 +14006,7 @@ msgstr "Ulepsz organizację <0>{0}</0> do planu {planName}"
 
 #: apps/remix/app/components/general/settings-upsell/settings-upsell-card.tsx
 msgid "Upgrade Plan"
-msgstr ""
+msgstr "Ulepsz plan"
 
 #: apps/remix/app/components/general/envelope/envelope-drop-zone-wrapper.tsx
 msgid "Upgrade your plan to upload more documents"
@@ -14055,7 +14073,7 @@ msgstr "Przesyłanie nie powiodło się"
 
 #: packages/ui/primitives/signature-pad/signature-pad-upload.tsx
 msgid "Upload New Image"
-msgstr ""
+msgstr "Prześlij nową grafikę"
 
 #: apps/remix/app/components/general/admin-global-settings-section.tsx
 msgid "Upload signature"
@@ -14115,15 +14133,15 @@ msgstr "Użyj"
 
 #: apps/remix/app/components/general/rate-limit-array-input.tsx
 msgid "Use a duration with a unit, e.g. 5m, 1h, or 24h"
-msgstr ""
+msgstr "Użyj czasu trwania z jednostką, np. 5 min, 1 godz."
 
 #: apps/remix/app/components/general/rate-limit-array-input.tsx
 msgid "Use a unique window for each rate limit"
-msgstr ""
+msgstr "Użyj unikalnego przedziału czasowego dla każdego limitu przepustowości"
 
 #: apps/remix/app/components/dialogs/token-create-dialog.tsx
 msgid "Use API tokens to authenticate with the Bchatsign API."
-msgstr ""
+msgstr "Użyj tokenów API do uwierzytelniania połączenia z interfejsem Bchatsign."
 
 #: apps/remix/app/components/forms/2fa/disable-authenticator-app-dialog.tsx
 #: apps/remix/app/components/forms/2fa/two-factor-code-dialog.tsx
@@ -14160,7 +14178,7 @@ msgstr "Użyj klucza dostępu do uwierzytelniania"
 
 #: apps/remix/app/components/tables/admin-email-transports-table.tsx
 msgid "Used by claims"
-msgstr ""
+msgstr "Liczba powiązań"
 
 #: apps/remix/app/components/tables/admin-document-logs-table.tsx
 #: apps/remix/app/components/tables/document-logs-table.tsx
@@ -14176,7 +14194,7 @@ msgstr "User agent"
 
 #: apps/remix/app/components/dialogs/admin-user-create-dialog.tsx
 msgid "User created and welcome email sent"
-msgstr "Użytkownik został utworzony i wysłano wiadomość powitalną"
+msgstr "Użytkownik został utworzony. Wiadomość powitalna została wysłana."
 
 #: apps/remix/app/components/forms/password.tsx
 msgid "User has no password."
@@ -14204,7 +14222,7 @@ msgstr "Organizacje użytkownika"
 
 #: apps/remix/app/components/forms/email-transport-form.tsx
 msgid "Username"
-msgstr ""
+msgstr "Nazwa użytkownika"
 
 #: apps/remix/app/components/general/use-admin-search-categories.ts
 #: apps/remix/app/components/tables/organisation-insights-table.tsx
@@ -14266,7 +14284,7 @@ msgstr "Zweryfikuj domenę"
 
 #: apps/remix/app/routes/_unauthenticated+/team.verify.email.$token.tsx
 msgid "Verify email"
-msgstr ""
+msgstr "Zweryfikuj adres e-mail"
 
 #: apps/remix/app/routes/_unauthenticated+/verify-email._index.tsx
 msgid "Verify Email"
@@ -14274,7 +14292,7 @@ msgstr "Zweryfikuj adres e-mail"
 
 #: apps/remix/app/routes/_unauthenticated+/team.verify.email.$token.tsx
 msgid "Verify team email"
-msgstr ""
+msgstr "Zweryfikuj adres e-mail zespołu"
 
 #: apps/remix/app/components/general/verify-email-banner.tsx
 msgid "Verify your email address to unlock all features. We sent a confirmation email to <0>{email}</0>."
@@ -14347,7 +14365,7 @@ msgstr "Wyświetl powiązane dokumenty"
 
 #: apps/remix/app/components/general/use-admin-search-categories.ts
 msgid "View all results"
-msgstr ""
+msgstr "Wyświetl wszystkie wyniki"
 
 #: apps/remix/app/routes/_authenticated+/settings+/security.activity.tsx
 msgid "View all security activity related to your account."
@@ -14464,7 +14482,7 @@ msgstr "Wyświetl rekordy DNS dla tej domeny"
 
 #: apps/remix/app/routes/_authenticated+/admin+/organisation-stats._index.tsx
 msgid "View, sort and filter monthly usage stats across organisations"
-msgstr ""
+msgstr "Sprawdź miesięczne statystyki wykorzystania organizacji"
 
 #: apps/remix/app/components/embed/multisign/multi-sign-document-list.tsx
 #: apps/remix/app/components/general/document/document-page-view-recipients.tsx
@@ -14522,7 +14540,7 @@ msgstr "Oczekiwanie na innych"
 
 #: packages/lib/jobs/definitions/emails/send-document-pending-email.handler.ts
 msgid "Waiting for others to complete signing"
-msgstr ""
+msgstr "Oczekiwanie na zakończenie podpisywania przez innych"
 
 #: apps/remix/app/routes/_recipient+/sign.$token+/complete.tsx
 msgid "Waiting for others to sign"
@@ -14544,7 +14562,7 @@ msgstr "Chcesz mieć profil publiczny?"
 
 #: apps/remix/app/components/dialogs/email-transport-delete-dialog.tsx
 msgid "Warning, this email transport is currently being used by:"
-msgstr ""
+msgstr "Ten dostawca poczty e-mail jest używany przez:"
 
 #: apps/remix/app/components/general/envelope-editor/recipient-step-list.tsx
 #: packages/ui/primitives/document-flow/add-signers.tsx
@@ -14555,6 +14573,10 @@ msgstr ""
 #: packages/ui/primitives/template-flow/add-template-placeholder-recipients.tsx
 msgid "Warning: Assistant as last signer"
 msgstr "Ostrzeżenie: Asystent jako ostatni podpisujący"
+
+#: packages/email/template-components/template-new-account-warning.tsx
+msgid "Warning: This was sent from a new account ({senderEmail})"
+msgstr ""
 
 #: apps/remix/app/components/general/organisations/organisation-billing-banner.tsx
 #: apps/remix/app/components/general/organisations/organisation-billing-portal-button.tsx
@@ -14583,11 +14605,11 @@ msgstr ""
 
 #: apps/remix/app/components/general/app-command-menu.tsx
 msgid "We couldn’t complete the search. Try again."
-msgstr ""
+msgstr "Wyszukiwanie nie powiodło się. Spróbuj ponownie."
 
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "We couldn't convert this file. Please check it's a valid Word document or upload a PDF instead."
-msgstr "Nie udało się przekonwertować tego pliku. Sprawdź, czy jest to prawidłowy dokument programu Word, lub zamiast tego prześlij plik PDF."
+msgstr "Nie możemy przekonwertować tego pliku. Sprawdź, czy plik Word jest prawidłowy lub prześlij plik PDF."
 
 #: apps/remix/app/routes/_authenticated+/admin+/organisations.$id.tsx
 msgid "We couldn't create a Stripe customer. Please try again."
@@ -14617,7 +14639,7 @@ msgstr "Nie mogliśmy zaktualizować dostawcy. Spróbuj ponownie."
 
 #: apps/remix/app/components/dialogs/admin-organisation-delete-dialog.tsx
 msgid "We encountered an error while attempting to delete this organisation. Please try again later."
-msgstr "Wystąpił błąd podczas próby usunięcia tej organizacji. Spróbuj ponownie później."
+msgstr "Wystąpił błąd podczas próby usunięcia organizacji. Spróbuj ponownie później."
 
 #: packages/lib/client-only/providers/envelope-editor-provider.tsx
 #: packages/lib/client-only/providers/envelope-editor-provider.tsx
@@ -14769,7 +14791,7 @@ msgstr "Wystąpił nieznany błąd podczas próby zaktualizowania baneru. Sprób
 
 #: apps/remix/app/components/general/admin-email-blocklist-section.tsx
 msgid "We encountered an unknown error while attempting to update the email blocklist. Please try again later."
-msgstr "Wystąpił nieznany błąd podczas próby zaktualizowania listy blokowanych adresów e-mail. Spróbuj ponownie później."
+msgstr "Wystąpił nieznany błąd podczas próby zaktualizowania listy zablokowanych domen. Spróbuj ponownie później."
 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
 msgid "We encountered an unknown error while attempting to update the envelope. Please try again later."
@@ -14828,7 +14850,7 @@ msgstr "Potrzebujemy Twojego podpisu, aby podpisywać dokumenty"
 
 #: apps/remix/app/routes/_unauthenticated+/organisation.invite.$token.tsx
 msgid "We were unable to add you to <0>{organisationName}</0> at this time. Please try again later, or contact the organisation administrator."
-msgstr ""
+msgstr "Nie mogliśmy dodać Cię do organizacji <0>{organisationName}</0>. Spróbuj ponownie później lub skontaktuj się z administratorem organizacji."
 
 #: apps/remix/app/components/forms/2fa/recovery-code-list.tsx
 msgid "We were unable to copy your recovery code to your clipboard. Please try again."
@@ -14854,7 +14876,7 @@ msgstr "Nie mogliśmy Cię wylogować."
 
 #: apps/remix/app/routes/_recipient+/report.$token.tsx
 msgid "We were unable to report this sender at this time. Please try again later."
-msgstr ""
+msgstr "Nie mogliśmy zgłosić nadawcę. Spróbuj ponownie później."
 
 #: apps/remix/app/components/forms/password-setup-request-button.tsx
 msgid "We were unable to send the email. Please try again later."
@@ -14890,7 +14912,7 @@ msgstr "Nie mogliśmy zaktualizować ustawień brandingu. Spróbuj ponownie pó�
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl.settings.certificates.tsx
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.certificates.tsx
 msgid "We were unable to update your certificate preferences at this time, please try again later"
-msgstr ""
+msgstr "Nie mogliśmy zaktualizować ustawień certyfikatu. Spróbuj ponownie później"
 
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl.settings.document.tsx
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.document.tsx
@@ -14905,7 +14927,7 @@ msgstr "Nie mogliśmy zaktualizować ustawień adresu e-mail. Spróbuj ponownie 
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl.settings.reminders.tsx
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.reminders.tsx
 msgid "We were unable to update your reminder preferences at this time, please try again later"
-msgstr ""
+msgstr "Nie mogliśmy zaktualizować ustawień przypomnień. Spróbuj ponownie później"
 
 #: apps/remix/app/components/forms/signin.tsx
 msgid "We were unable to verify that you're human. Please try again."
@@ -14913,7 +14935,7 @@ msgstr "Nie mogliśmy potwierdzić, że jesteś człowiekiem. Spróbuj ponownie.
 
 #: apps/remix/app/routes/_unauthenticated+/team.verify.email.$token.tsx
 msgid "We were unable to verify this email at this time. Please try again later."
-msgstr ""
+msgstr "Nie mogliśmy zweryfikować adresu e-mail. Spróbuj ponownie później."
 
 #: apps/remix/app/components/general/document-signing/document-signing-auth-2fa.tsx
 #: apps/remix/app/components/general/document-signing/document-signing-auth-passkey.tsx
@@ -14964,7 +14986,7 @@ msgstr "Pusto"
 
 #: packages/email/template-components/template-document-pending.tsx
 msgid "We're still waiting for other signers to sign this document.<0/>We'll notify you as soon as it's ready."
-msgstr "Wciąż czekamy na podpisy pozostałych podpisujących.<0/>Powiadomimy Cię, gdy dokument będzie gotowy."
+msgstr "Wciąż czekamy na podpisy pozostałych osób.<0/>Powiadomimy Cię, gdy dokument będzie gotowy."
 
 #: packages/email/templates/reset-password.tsx
 msgid "We've changed your password as you asked. You can now sign in with your new password."
@@ -14972,15 +14994,15 @@ msgstr "Zmieniliśmy Twoje hasło. Możesz zalogować się za pomocą nowego has
 
 #: packages/email/templates/organisation-limit-alert.tsx
 msgid "We've noticed API activity on your account that exceeds the fair use limits of your current plan. As a precaution, new API activity has been temporarily paused pending review."
-msgstr "Zauważyliśmy aktywność API na Twoim koncie, która przekracza limity uczciwego korzystania w Twoim obecnym planie. W ramach środka ostrożności nowa aktywność API została tymczasowo wstrzymana do czasu weryfikacji."
+msgstr "Zauważyliśmy na Twoim koncie aktywność API, która przekracza limity dozwolonego użytkowania w ramach obecnego planu. Nowa aktywność API została tymczasowo wstrzymana do czasu przeprowadzenia weryfikacji."
 
 #: packages/email/templates/organisation-limit-alert.tsx
 msgid "We've noticed document activity on your account that exceeds the fair use limits of your current plan. As a precaution, new document activity has been temporarily paused pending review."
-msgstr "Zauważyliśmy aktywność związaną z dokumentami na Twoim koncie, która przekracza limity uczciwego korzystania w Twoim obecnym planie. W ramach środka ostrożności nowa aktywność związana z dokumentami została tymczasowo wstrzymana do czasu weryfikacji."
+msgstr "Zauważyliśmy na Twoim koncie aktywność dokumentów, która przekracza limity dozwolonego użytkowania w ramach obecnego planu. Nowa aktywność została tymczasowo wstrzymana do czasu przeprowadzenia weryfikacji."
 
 #: packages/email/templates/organisation-limit-alert.tsx
 msgid "We've noticed email sending activity on your account that exceeds the fair use limits of your current plan. As a precaution, new email activity has been temporarily paused pending review."
-msgstr "Zauważyliśmy wysyłkę e‑maili z Twojego konta, która przekracza limity uczciwego korzystania w Twoim obecnym planie. W ramach środka ostrożności nowa aktywność e‑mailowa została tymczasowo wstrzymana do czasu weryfikacji."
+msgstr "Zauważyliśmy na Twoim koncie aktywność wiadomości, która przekracza limity dozwolonego użytkowania w ramach obecnego planu. Nowa aktywność została tymczasowo wstrzymana do czasu przeprowadzenia weryfikacji."
 
 #: apps/remix/app/components/general/document-signing/access-auth-2fa-form.tsx
 msgid "We've sent a 6-digit verification code to your email. Please enter it below to complete the document."
@@ -15058,7 +15080,7 @@ msgstr "Witaj ponownie. Mamy szczęście, że Cię mamy."
 #. placeholder {0}: organisation.name
 #: apps/remix/app/components/general/settings-upsell/sso-portal-upsell.tsx
 msgid "Welcome to {0}"
-msgstr ""
+msgstr "Witaj w organizacji {0}"
 
 #: apps/remix/app/routes/_unauthenticated+/o.$orgUrl.signin.tsx
 msgid "Welcome to {organisationName}"
@@ -15095,7 +15117,7 @@ msgstr "Podpisujący mogą wybrać, kto powinien podpisać jako następny w kole
 
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl.settings.sso.tsx
 msgid "When enabled, users signing in via SSO for the first time will also receive their own personal organisation."
-msgstr "Użytkownicy logujący się po raz pierwszy za pomocą logowania SSO otrzymają również własną osobistą organizację."
+msgstr "Po włączeniu tej opcji użytkownicy logujący się po raz pierwszy za pomocą SSO otrzymają również własną osobistą organizację."
 
 #: apps/remix/app/components/dialogs/passkey-create-dialog.tsx
 msgid "When you click continue, you will be prompted to add the first available authenticator on your system."
@@ -15128,7 +15150,7 @@ msgstr "Szerokość:"
 
 #: apps/remix/app/components/general/rate-limit-array-input.tsx
 msgid "Window"
-msgstr ""
+msgstr "Przedział czasowy"
 
 #: apps/remix/app/routes/_unauthenticated+/articles.signature-disclosure.tsx
 msgid "Withdrawing Consent"
@@ -15136,11 +15158,11 @@ msgstr "Wycofanie zgody"
 
 #: apps/remix/app/components/general/organisation-usage-panel.tsx
 msgid "Within limit"
-msgstr ""
+msgstr "W ramach limitu"
 
 #: apps/remix/app/components/general/settings-upsell/sso-portal-upsell.tsx
 msgid "Works with any OIDC provider — Okta, Entra ID, Google and more"
-msgstr ""
+msgstr "Działa z dowolnym dostawcą OIDC: Okta, Entra ID, Google i więcej"
 
 #: apps/remix/app/components/general/app-sidebar.tsx
 msgid "Workspace"
@@ -15184,7 +15206,7 @@ msgstr "Zatwierdziłeś dokument"
 
 #: apps/remix/app/components/dialogs/envelope-cancel-dialog.tsx
 msgid "You are about to cancel <0>\"{title}\"</0>"
-msgstr ""
+msgstr "Zamierzasz anulować dokument <0>„{title}”</0>"
 
 #: apps/remix/app/components/general/document-signing/document-signing-complete-dialog.tsx
 msgid "You are about to complete approving the following document"
@@ -15213,7 +15235,7 @@ msgstr "Zamierzasz usunąć organizację <0>{0}</0>. Wszystkie dane powiązane z
 
 #: apps/remix/app/components/dialogs/admin-organisation-delete-dialog.tsx
 msgid "You are about to delete <0>{organisationName}</0>. This action is not reversible. All teams will be removed and all documents will be orphaned to the deleted-account service account."
-msgstr "Za chwilę usuniesz <0>{organisationName}</0>. Tej operacji nie można cofnąć. Wszystkie zespoły zostaną usunięte, a wszystkie dokumenty zostaną przypisane do konta usługi usuniętego konta."
+msgstr "Zamierzasz usunąć organizację <0>{organisationName}</0>. Ta akcja jest nieodwracalna. Wszystkie zespoły zostaną usunięcie, a dokumenty zostaną przypisane do konta serwisowego usuniętego konta."
 
 #: apps/remix/app/components/dialogs/team-email-delete-dialog.tsx
 msgid "You are about to delete the following team email from <0>{teamName}</0>."
@@ -15257,7 +15279,7 @@ msgstr "Zamierzasz usunąć następujący adres e-mail z organizacji <0>{0}</0>.
 #: apps/remix/app/components/dialogs/organisation-group-delete-dialog.tsx
 msgctxt "Removing group from organisation"
 msgid "You are about to remove the following group from <0>{0}</0>."
-msgstr "Zamierzasz usunąć następującą grupę z organizacji <0>{0}</0>."
+msgstr "Zamierzasz usunąć następującą grupę z zespołu <0>{0}</0>."
 
 #. placeholder {0}: team.name
 #: apps/remix/app/components/dialogs/team-group-delete-dialog.tsx
@@ -15299,7 +15321,7 @@ msgstr "Zamierzasz zasubskrybować plan {planName}"
 #. placeholder {0}: data.organisationName
 #: apps/remix/app/routes/_unauthenticated+/organisation.invite.$token.tsx
 msgid "You are already a member of <0>{0}</0>."
-msgstr ""
+msgstr "Należysz już do organizacji <0>{0}</0>."
 
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl.settings.billing.tsx
 msgid "You are currently on the <0>Free Plan</0>."
@@ -15371,11 +15393,11 @@ msgstr "Nie masz uprawnień do zresetowania weryfikacji dwuetapowej tego użytko
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "You authenticated with the signing provider"
-msgstr ""
+msgstr "Uwierzytelniłeś się u dostawcy podpisu"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "You authorised the remote signature"
-msgstr ""
+msgstr "Autoryzowałeś podpis zdalny"
 
 #: apps/remix/app/components/dialogs/ai-field-detection-dialog.tsx
 msgid "You can add fields manually in the editor."
@@ -15391,7 +15413,7 @@ msgstr "Możesz także skopiować i wkleić link do przeglądarki: {confirmation
 
 #: packages/email/template-components/template-admin-user-created.tsx
 msgid "You can also copy and paste this link into your browser: {resetPasswordLink} (link expires in 24 hours)"
-msgstr "Możesz także skopiować i wkleić ten link do przeglądarki: {resetPasswordLink} (link wygaśnie za 24 godziny)"
+msgstr "Możesz także skopiować i wkleić link do przeglądarki: {resetPasswordLink} (link wygaśnie za 24 godziny)"
 
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.public-profile.tsx
 msgid "You can choose to enable or disable the profile for public view."
@@ -15444,7 +15466,7 @@ msgstr "Możesz wyświetlić dokument i jego status, klikając przycisk poniżej
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "You cancelled the document"
-msgstr ""
+msgstr "Anulowałeś dokument"
 
 #: apps/remix/app/components/general/envelope-editor/recipient-step-list.tsx
 #: packages/ui/primitives/document-flow/add-signers.tsx
@@ -15474,15 +15496,15 @@ msgstr "Nie możesz edytować użytkownika zespołu, który ma wyższą rolę ni
 
 #: apps/remix/app/components/dialogs/team-member-delete-dialog.tsx
 msgid "You cannot remove a member with a role higher than your own."
-msgstr ""
+msgstr "Nie możesz usunąć użytkownika o roli wyższej niż Twoja."
 
 #: apps/remix/app/components/dialogs/team-member-delete-dialog.tsx
 msgid "You cannot remove members from this team while the inherit member feature is enabled."
-msgstr ""
+msgstr "Nie możesz usunąć użytkowników zespołu, jeśli funkcja odziedziczenia użytkownika jest włączona."
 
 #: apps/remix/app/components/dialogs/team-member-delete-dialog.tsx
 msgid "You cannot remove the organisation owner from the team."
-msgstr ""
+msgstr "Nie możesz usunąć właściciela organizacji z zespołu."
 
 #: packages/ui/primitives/document-dropzone.tsx
 #: packages/ui/primitives/document-upload-button.tsx
@@ -15543,7 +15565,7 @@ msgstr "Nie masz uprawnień do utworzenia tokena dla tego zespołu."
 
 #: apps/remix/app/components/general/unified-settings-sidebar.tsx
 msgid "You don't have permission to manage this organisation. Switch to another one above, or continue in your team settings below."
-msgstr ""
+msgstr "Nie masz uprawnień do zarządzania organizacją. Wybierz inną organizację lub kontynuuj w ustawieniach swojego zespołu."
 
 #: apps/remix/app/components/tables/user-billing-organisations-table.tsx
 msgid "You don't manage billing for any organisations."
@@ -15559,7 +15581,7 @@ msgstr "Nie zweryfikowałeś kodu weryfikacyjnego dla dokumentu"
 
 #: apps/remix/app/routes/_unauthenticated+/organisation.invite.$token.tsx
 msgid "You have accepted an invitation from <0>{organisationName}</0> to join their organisation."
-msgstr ""
+msgstr "Zaproszenie do organizacji <0>{organisationName}</0> zostało zaakceptowane."
 
 #. placeholder {0}: data.teamName
 #: apps/remix/app/routes/_unauthenticated+/team.verify.email.$token.tsx
@@ -15568,7 +15590,7 @@ msgstr "Adres e-mail zespołu <0>{0}</0> został już zweryfikowany."
 
 #: apps/remix/app/routes/_unauthenticated+/organisation.invite.$token.tsx
 msgid "You have been invited by <0>{organisationName}</0> to join their organisation."
-msgstr ""
+msgstr "Organizacja <0>{organisationName}</0> zaprasza Cię do dołączenia do nich."
 
 #. placeholder {0}: organisation.name
 #: packages/lib/server-only/organisation/create-organisation-member-invites.ts
@@ -15577,7 +15599,7 @@ msgstr "Dołącz do organizacji {0} w Bchatsign"
 
 #: apps/remix/app/routes/_unauthenticated+/organisation.invite.$token.tsx
 msgid "You have been invited to join <0>{organisationName}</0> on Bchatsign."
-msgstr ""
+msgstr "Dołącz do organizacji <0>{organisationName}</0> w Bchatsign."
 
 #: packages/email/templates/organisation-invite.tsx
 msgid "You have been invited to join the following organisation"
@@ -15603,17 +15625,17 @@ msgstr "Sprawdź każdy dokument i podpisz je."
 
 #: apps/remix/app/routes/_unauthenticated+/organisation.invite.$token.tsx
 msgid "You have declined the invitation from <0>{organisationName}</0> to join their organisation."
-msgstr ""
+msgstr "Odrzucono zaproszenie dołączenia do organizacji <0>{organisationName}</0>."
 
 #. placeholder {0}: `"${envelope.title}"`
 #: packages/lib/jobs/definitions/emails/send-signing-email.handler.ts
 #: packages/lib/server-only/document/resend-document.ts
 msgid "You have initiated the document {0} that requires you to {recipientActionVerb} it."
-msgstr "Sprawdź i {recipientActionVerb} dokument utworzony przez Ciebie."
+msgstr "Sprawdź i {recipientActionVerb} dokument „{0}” utworzony przez Ciebie."
 
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.tokens.tsx
 msgid "You have no API tokens yet. Your tokens will be shown here once you create them."
-msgstr ""
+msgstr "Nie masz jeszcze żadnych tokenów API. Twoje tokeny API zostaną tutaj wyświetlone."
 
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.webhooks._index.tsx
 msgid "You have no webhooks yet. Your webhooks will be shown here once you create them."
@@ -15646,7 +15668,7 @@ msgstr "Osiągnięto maksymalną miesięczną liczbę dokumentów. Zaktualizuj p
 
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "You have reached your document limit for this plan. Please upgrade your plan."
-msgstr ""
+msgstr "Osiągnięto maksymalną liczbę dokumentów. Zaktualizuj plan."
 
 #: apps/remix/app/components/general/envelope/envelope-upload-button.tsx
 #: packages/ui/primitives/document-dropzone.tsx
@@ -15717,7 +15739,7 @@ msgstr "Masz prawo wycofać swoją zgodę na używanie podpisów elektronicznych
 
 #: apps/remix/app/components/forms/form-sticky-save-bar.tsx
 msgid "You have unsaved changes"
-msgstr ""
+msgstr "Masz niezapisane zmiany"
 
 #: apps/remix/app/components/dialogs/team-member-update-dialog.tsx
 msgid "You have updated {memberName}."
@@ -15733,7 +15755,7 @@ msgstr "Grupa zespołu została zaktualizowana."
 
 #: apps/remix/app/routes/_unauthenticated+/team.verify.email.$token.tsx
 msgid "You have verified your email address for <0>{teamName}</0>."
-msgstr ""
+msgstr "Adres e-mail zespołu <0>{teamName}</0> został zweryfikowany."
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "You moved the document to team"
@@ -15886,7 +15908,7 @@ msgstr "Poprosiłeś o kod weryfikacyjny dla dokumentu"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "You requested a remote signature"
-msgstr ""
+msgstr "Poprosiłeś o podpis zdalny"
 
 #. placeholder {0}: data.recipientEmail
 #: packages/lib/utils/document-audit-logs.ts
@@ -15975,6 +15997,10 @@ msgstr "Kod z aplikacji uwierzytelniającej będzie wymagany podczas logowania."
 msgid "You will receive an email copy of the signed document once everyone has signed."
 msgstr "Otrzymasz kopię dokumentu, gdy wszyscy go podpiszą."
 
+#: packages/email/template-components/template-account-disabled.tsx
+msgid "You won't be able to sign in or send documents while it is disabled."
+msgstr ""
+
 #: apps/remix/app/components/dialogs/ai-features-enable-dialog.tsx
 msgid "You're an admin. You can enable AI features for this team right away. Everyone on the team will see AI detection once enabled."
 msgstr "Jesteś administratorem. Możesz od razu włączyć funkcje AI dla zespołu. Po włączeniu funkcji użytkownicy zespołu będą widzieć wykryte przez AI treści."
@@ -15996,6 +16022,10 @@ msgstr ""
 msgid "Your account has been deleted successfully."
 msgstr "Twoje konto zostało pomyślnie usunięte."
 
+#: packages/email/template-components/template-account-disabled.tsx
+msgid "Your account has been disabled"
+msgstr ""
+
 #: apps/remix/app/routes/_authenticated+/settings+/security._index.tsx
 msgid "Your account has no password. Add one to sign in with your email and to sign documents that require it. We'll email you a link."
 msgstr ""
@@ -16007,6 +16037,11 @@ msgstr "Awatar został pomyślnie zaktualizowany."
 #: apps/remix/app/components/general/admin-site-banner-section.tsx
 msgid "Your banner has been updated successfully."
 msgstr "Baner został pomyślnie zaktualizowany."
+
+#: packages/email/templates/account-disabled.tsx
+#: packages/lib/jobs/definitions/emails/send-account-disabled-email.handler.ts
+msgid "Your Bchatsign account has been disabled"
+msgstr ""
 
 #: apps/remix/app/components/forms/branding-preferences-form.tsx
 msgid "Your brand website URL"
@@ -16077,7 +16112,7 @@ msgstr "Zbiorcza wysyłka szablonu „{templateName}” została zakończona."
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl.settings.certificates.tsx
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.certificates.tsx
 msgid "Your certificate preferences have been updated"
-msgstr ""
+msgstr "Ustawienia certyfikatu zostały zaktualizowane"
 
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl.settings.billing.tsx
 msgid "Your current {currentProductName} plan is past due. Please update your payment information."
@@ -16127,7 +16162,7 @@ msgstr "Dokument został usunięty przez administratora!"
 
 #: apps/remix/app/components/dialogs/envelope-redistribute-dialog.tsx
 msgid "Your document has been resent successfully."
-msgstr ""
+msgstr "Dokument został ponownie wysłany."
 
 #: apps/remix/app/components/dialogs/envelope-save-as-template-dialog.tsx
 msgid "Your document has been saved as a template."
@@ -16197,7 +16232,7 @@ msgstr "Koperta została ponownie wysłana."
 
 #: apps/remix/app/components/general/settings-upsell/branding-upsell.tsx
 msgid "Your logo on signing pages and emails"
-msgstr ""
+msgstr "Twoje logo na stronach podpisywania i w wiadomościach"
 
 #: apps/remix/app/components/general/document-signing/document-signing-complete-dialog.tsx
 msgid "Your Name"
@@ -16205,7 +16240,7 @@ msgstr "Twoja nazwa"
 
 #: apps/remix/app/components/dialogs/token-create-dialog.tsx
 msgid "Your new API token"
-msgstr ""
+msgstr "Nowy token API"
 
 #: apps/remix/app/components/forms/password.tsx
 #: apps/remix/app/components/forms/reset-password.tsx
@@ -16219,7 +16254,7 @@ msgstr "Organizacja została utworzona."
 #: packages/email/templates/organisation-delete.tsx
 #: packages/email/templates/organisation-delete.tsx
 msgid "Your organisation has been deleted"
-msgstr "Twoja organizacja została usunięta"
+msgstr "Organizacja została usunięta"
 
 #: apps/remix/app/components/dialogs/organisation-delete-dialog.tsx
 msgid "Your organisation has been successfully deleted."
@@ -16231,47 +16266,47 @@ msgstr "Organizacja została zaktualizowana."
 
 #: apps/remix/app/components/general/organisations/organisation-quota-banner.tsx
 msgid "Your organisation has exceeded a fair use limit"
-msgstr ""
+msgstr "Organizacja przekroczyła limit dozwolonego użytkowania"
 
 #: apps/remix/app/components/general/organisations/organisation-quota-banner.tsx
 msgid "Your organisation has exceeded a fair use limit. Please contact <0>support</0> to review your plan's limits."
-msgstr ""
+msgstr "Organizacja przekroczyła limit dozwolonego użytkowania. Skontaktuj się z <0>pomocą techniczną</0>, aby przeprowadzić weryfikację."
 
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "Your organisation has reached its plan's fair use limit. Please contact your organisation administrator or support to continue."
-msgstr ""
+msgstr "Organizacja przekroczyła limit dozwolonego użytkowania. Skontaktuj się z administratorem organizacji."
 
 #: apps/remix/app/components/general/organisations/organisation-quota-banner.tsx
 msgid "Your organisation is approaching a fair use limit"
-msgstr ""
+msgstr "Organizacja zbliża się do limitu dozwolonego użytkowania"
 
 #: apps/remix/app/components/general/organisations/organisation-quota-banner.tsx
 msgid "Your organisation is approaching a fair use limit. If you expect to need higher limits, please contact <0>support</0> to review your plan's limits."
-msgstr ""
+msgstr "Organizacja zbliża się do limitu dozwolonego użytkowania. Jeśli potrzebujesz wyższych limitów, skontaktuj się z <0>pomocą techniczną</0>."
 
 #: packages/email/templates/organisation-limit-alert.tsx
 msgid "Your organisation is generating API requests faster than normal, so some requests are being temporarily throttled."
-msgstr "Twoja organizacja generuje żądania API szybciej niż zwykle, więc część żądań jest tymczasowo ograniczana (throttling)."
+msgstr "Twoja organizacja generuje żądania API szybciej niż zwykle, więc niektóre żądania zostały tymczasowo ograniczane."
 
 #: packages/email/templates/organisation-limit-alert.tsx
 msgid "Your organisation is generating documents faster than normal, so some requests are being temporarily throttled."
-msgstr "Twoja organizacja generuje dokumenty szybciej niż zwykle, więc część żądań jest tymczasowo ograniczana (throttling)."
+msgstr "Twoja organizacja generuje dokumenty szybciej niż zwykle, więc niektóre żądania zostały tymczasowo ograniczane."
 
 #: packages/email/templates/organisation-limit-alert.tsx
 msgid "Your organisation is generating emails faster than normal, so some requests are being temporarily throttled."
-msgstr "Twoja organizacja generuje e‑maile szybciej niż zwykle, więc część żądań jest tymczasowo ograniczana (throttling)."
+msgstr "Twoja organizacja generuje wiadomości szybciej niż zwykle, więc niektóre żądania zostały tymczasowo ograniczane."
 
 #: packages/email/templates/organisation-limit-alert.tsx
 msgid "Your organisation is nearing its fair use limits for creating documents on your current plan. Once the limit is reached, new document activity will be temporarily paused."
-msgstr ""
+msgstr "Organizacja zbliża się do limitu dozwolonego użytkowania dokumentów. Po przekroczeniu limitu tworzenie nowych dokumentów zostanie wstrzymane."
 
 #: packages/email/templates/organisation-limit-alert.tsx
 msgid "Your organisation is nearing its fair use limits for making API requests on your current plan. Once the limit is reached, new API activity will be temporarily paused."
-msgstr ""
+msgstr "Organizacja zbliża się do limitu dozwolonego użytkowania API. Po przekroczeniu limitu nowe żądania API zostaną wstrzymane."
 
 #: packages/email/templates/organisation-limit-alert.tsx
 msgid "Your organisation is nearing its fair use limits for sending email on your current plan. Once the limit is reached, new email activity will be temporarily paused."
-msgstr ""
+msgstr "Organizacja zbliża się do limitu dozwolonego użytkowania wiadomości. Po przekroczeniu limitu tworzenie nowych wiadomości zostanie wstrzymane."
 
 #: packages/email/templates/organisation-limits-updated.tsx
 msgid "Your organisation limits have been updated"
@@ -16323,36 +16358,36 @@ msgstr "To są Twoje kody odzyskiwania. Przechowuj je w bezpiecznym miejscu."
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl.settings.reminders.tsx
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.reminders.tsx
 msgid "Your reminder preferences have been updated"
-msgstr ""
+msgstr "Ustawienia przypomnień zostały zaktualizowane"
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "Your remote signature was applied"
-msgstr ""
+msgstr "Złożyłeś podpis zdalny"
 
 #: apps/remix/app/components/general/document-signing/csc-recipient-signing-in-progress-page.tsx
 #: apps/remix/app/components/general/envelope-signing/envelope-signing-csc-status.tsx
 msgid "Your signing authorisation expired before the signature could be applied. Please reauthorise to retry."
-msgstr ""
+msgstr "Autoryzacja podpisu wygasła przed jego złożeniem. Spróbuj ponownie."
 
 #: apps/remix/app/components/general/document-signing/csc-recipient-blocked-page.tsx
 msgid "Your signing certificate is invalid, expired, or missing a required key. Contact your administrator or signing provider for assistance."
-msgstr ""
+msgstr "Certyfikat podpisu jest nieważny, wygasł lub brakuje w nim wymaganego klucza. Skontaktuj się z administratorem lub dostawcą podpisu."
 
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "Your signing link has expired. Please contact the sender to request a new one."
-msgstr ""
+msgstr "Twój link do podpisywania wygasł. Skontaktuj się z nadawcą, aby otrzymać nowy link."
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "Your signing provider authentication failed"
-msgstr ""
+msgstr "Twoje uwierzytelnienie u dostawcy podpisu nie powiodło się"
 
 #: apps/remix/app/components/general/document-signing/csc-recipient-blocked-page.tsx
 msgid "Your signing provider does not advertise a signing algorithm this document accepts. Contact your administrator or signing provider for assistance."
-msgstr ""
+msgstr "Dostawca podpisu nie obsługuje wymaganego algorytmu podpisywania. Skontaktuj się z administratorem lub dostawcą podpisu."
 
 #: apps/remix/app/components/general/document-signing/csc-recipient-blocked-page.tsx
 msgid "Your signing provider returned no usable credentials for this account. Contact your administrator or signing provider for assistance."
-msgstr ""
+msgstr "Dostawca podpisu nie zwrócił żadnych użytecznych certyfikatów. Skontaktuj się z administratorem lub dostawcą podpisu."
 
 #: apps/remix/app/components/embed/embed-recipient-expired.tsx
 msgid "Your signing window for this document has expired. Please contact the sender for a new invitation."
@@ -16381,7 +16416,7 @@ msgstr "Twój szablon został pomyślnie utworzony"
 
 #: apps/remix/app/components/dialogs/envelope-redistribute-dialog.tsx
 msgid "Your template has been resent successfully."
-msgstr ""
+msgstr "Szablon został ponownie wysłany."
 
 #: apps/remix/app/components/dialogs/envelope-duplicate-dialog.tsx
 msgid "Your template has been successfully duplicated."
@@ -16422,14 +16457,14 @@ msgstr "Twój kod weryfikacyjny:"
 
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl.settings.sso.tsx
 msgid "your-domain.com another-domain.com"
-msgstr "your-domain.com another-domain.com"
+msgstr "twoja-domena.pl inna-domena.pl"
 
 #: packages/ui/primitives/signature-pad/signature-pad-upload.tsx
 #: packages/ui/primitives/signature-pad/signature-pad-upload.tsx
 msgid "Zoom in"
-msgstr ""
+msgstr "Powiększ"
 
 #: packages/ui/primitives/signature-pad/signature-pad-upload.tsx
 #: packages/ui/primitives/signature-pad/signature-pad-upload.tsx
 msgid "Zoom out"
-msgstr ""
+msgstr "Pomniejsz"

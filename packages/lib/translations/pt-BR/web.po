@@ -1800,6 +1800,10 @@ msgstr "Já tem uma conta? <0>Faça login</0>"
 msgid "Amount"
 msgstr "Valor"
 
+#: packages/lib/jobs/definitions/emails/send-account-disabled-email.handler.ts
+msgid "An account was automatically disabled"
+msgstr "Uma conta foi desativada automaticamente"
+
 #: packages/email/templates/document-super-delete.tsx
 msgid "An admin has deleted your document \"{documentName}\"."
 msgstr "Um administrador excluiu seu documento \"{documentName}\"."
@@ -6925,6 +6929,10 @@ msgstr ""
 msgid "If you believe this is a mistake, please contact the sender directly."
 msgstr "Se você acredita que isso é um erro, entre em contato diretamente com o remetente."
 
+#: packages/email/template-components/template-account-disabled.tsx
+msgid "If you believe this was a mistake, contact us at <0>{supportEmail}</0>."
+msgstr "Se você acredita que isso foi um erro, entre em contato conosco em <0>{supportEmail}</0>."
+
 #: apps/remix/app/routes/_recipient+/report.$token.tsx
 msgid "If you did not expect this email or believe it is spam, you can report the sender to our team for review."
 msgstr "Se você não esperava este e-mail ou acha que é spam, pode denunciar o remetente para a nossa equipe analisar."
@@ -7516,7 +7524,7 @@ msgstr "Link enviado"
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.public-profile.tsx
 msgctxt "Action button to link template to public profile"
 msgid "Link template"
-msgstr ""
+msgstr "Vincular modelo"
 
 #: packages/email/templates/organisation-account-link-confirmation.tsx
 msgid "Link your BchatSign account"
@@ -8556,6 +8564,10 @@ msgstr "Assim que seu modelo estiver configurado, compartilhe o link onde quiser
 msgid "One of the documents in the current bundle has a signing role that is not compatible with the current signing experience."
 msgstr "Um dos documentos no pacote atual tem uma função de assinatura que não é compatível com a experiência de assinatura atual."
 
+#: packages/email/template-components/template-account-disabled.tsx
+msgid "One of your signing requests has been reported. As part of keeping signers safe, we've disabled your account for now."
+msgstr "Uma das suas solicitações de assinatura foi denunciada. Para manter os signatários seguros, desativamos sua conta por enquanto."
+
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "One or more of your required fields have not been saved. Please refresh the page, complete any empty required fields, and try again."
 msgstr "Um ou mais campos obrigatórios não foram salvos. Atualize a página, preencha os campos obrigatórios vazios e tente novamente."
@@ -8583,6 +8595,14 @@ msgstr "Apenas arquivos PDF são permitidos"
 #: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
 msgid "Only pending documents you have permission to manage will be cancelled."
 msgstr "Somente documentos pendentes que você tem permissão para gerenciar serão cancelados."
+
+#: packages/email/template-components/template-new-account-warning.tsx
+msgid "Only sign if you know and were expecting this sender."
+msgstr "Assine somente se você conhece este remetente e esperava este documento."
+
+#: packages/email/template-components/template-new-account-warning.tsx
+msgid "Only sign if you know and were expecting this sender. <0>Report sender</0>"
+msgstr "Assine somente se você conhece este remetente e esperava este documento. <0>Denunciar remetente</0>"
 
 #: apps/remix/app/components/general/generic-error-layout.tsx
 #: apps/remix/app/components/general/generic-error-layout.tsx
@@ -14549,6 +14569,10 @@ msgstr "Atenção, este transporte de e-mail está sendo usado por:"
 msgid "Warning: Assistant as last signer"
 msgstr "Aviso: Assistente como último signatário"
 
+#: packages/email/template-components/template-new-account-warning.tsx
+msgid "Warning: This was sent from a new account ({senderEmail})"
+msgstr "Aviso: este documento foi enviado a partir de uma conta nova ({senderEmail})"
+
 #: apps/remix/app/components/general/organisations/organisation-billing-banner.tsx
 #: apps/remix/app/components/general/organisations/organisation-billing-portal-button.tsx
 msgid "We are unable to proceed to the billing portal at this time. Please try again, or contact support."
@@ -15968,6 +15992,10 @@ msgstr "Agora será necessário inserir um código do seu aplicativo autenticado
 msgid "You will receive an email copy of the signed document once everyone has signed."
 msgstr "Você receberá uma cópia por e-mail do documento assinado assim que todos assinarem."
 
+#: packages/email/template-components/template-account-disabled.tsx
+msgid "You won't be able to sign in or send documents while it is disabled."
+msgstr "Você não poderá entrar nem enviar documentos enquanto ela estiver desativada."
+
 #: apps/remix/app/components/dialogs/ai-features-enable-dialog.tsx
 msgid "You're an admin. You can enable AI features for this team right away. Everyone on the team will see AI detection once enabled."
 msgstr ""
@@ -15989,6 +16017,10 @@ msgstr "Sua conta não tem senha e o login com senha está desativado nesta inst
 msgid "Your account has been deleted successfully."
 msgstr "Sua conta foi excluída com sucesso."
 
+#: packages/email/template-components/template-account-disabled.tsx
+msgid "Your account has been disabled"
+msgstr "Sua conta foi desativada"
+
 #: apps/remix/app/routes/_authenticated+/settings+/security._index.tsx
 msgid "Your account has no password. Add one to sign in with your email and to sign documents that require it. We'll email you a link."
 msgstr "Sua conta não tem senha. Adicione uma para entrar com seu e-mail e para assinar documentos que exigem isso. Enviaremos um link por e-mail."
@@ -16000,6 +16032,11 @@ msgstr "Seu avatar foi atualizado com sucesso."
 #: apps/remix/app/components/general/admin-site-banner-section.tsx
 msgid "Your banner has been updated successfully."
 msgstr "Seu banner foi atualizado com sucesso."
+
+#: packages/email/templates/account-disabled.tsx
+#: packages/lib/jobs/definitions/emails/send-account-disabled-email.handler.ts
+msgid "Your Bchatsign account has been disabled"
+msgstr "Sua conta Bchatsign foi desativada"
 
 #: apps/remix/app/components/forms/branding-preferences-form.tsx
 msgid "Your brand website URL"
