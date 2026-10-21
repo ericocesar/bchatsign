@@ -1,4 +1,4 @@
-import { ZNameSchema } from '@bchatsign/lib/constants/auth';
+import { ZNameSchema } from '@bchatsign/lib/types/name';
 import { z } from 'zod';
 
 export const ZFindUserSecurityAuditLogsSchema = z.object({

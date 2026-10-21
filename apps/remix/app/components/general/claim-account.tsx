@@ -1,6 +1,7 @@
 import { authClient } from '@bchatsign/auth/client';
 import { useAnalytics } from '@bchatsign/lib/client-only/hooks/use-analytics';
 import { AppError } from '@bchatsign/lib/errors/app-error';
+import { ZNameSchema } from '@bchatsign/lib/types/name';
 import { env } from '@bchatsign/lib/utils/env';
 import { zEmail } from '@bchatsign/lib/utils/zod';
 import { ZPasswordSchema } from '@bchatsign/trpc/server/auth-router/schema';
@@ -19,7 +20,6 @@ import { useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
 import { z } from 'zod';
-
 import { SIGNUP_ERROR_MESSAGES } from '~/components/forms/signup';
 
 export type ClaimAccountProps = {
@@ -30,7 +30,7 @@ export type ClaimAccountProps = {
 
 export const ZClaimAccountFormSchema = z
   .object({
-    name: z.string().trim().min(1, { message: msg`Please enter a valid name.`.id }),
+    name: ZNameSchema,
     email: zEmail().min(1),
     password: ZPasswordSchema,
   })

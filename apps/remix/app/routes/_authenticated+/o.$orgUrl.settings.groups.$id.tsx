@@ -3,6 +3,7 @@ import { ORGANISATION_MEMBER_ROLE_HIERARCHY } from '@bchatsign/lib/constants/org
 import { EXTENDED_ORGANISATION_MEMBER_ROLE_MAP } from '@bchatsign/lib/constants/organisations-translations';
 import { TEAM_MEMBER_ROLE_MAP } from '@bchatsign/lib/constants/teams-translations';
 import { AppError } from '@bchatsign/lib/errors/app-error';
+import { ZNameSchema } from '@bchatsign/lib/types/name';
 import { OrganisationGroupType, OrganisationMemberRole } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import type { TFindOrganisationGroupsResponse } from '@bchatsign/trpc/server/organisation-router/find-organisation-groups.types';
@@ -28,7 +29,6 @@ import { useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router';
 import { z } from 'zod';
-
 import { OrganisationGroupDeleteDialog } from '~/components/dialogs/organisation-group-delete-dialog';
 import { GenericErrorLayout } from '~/components/general/generic-error-layout';
 import {
@@ -36,7 +36,6 @@ import {
   OrganisationMembersMultiSelectCombobox,
 } from '~/components/general/organisation-members-multiselect-combobox';
 import { SettingsHeader } from '~/components/general/settings-header';
-
 import type { Route } from './+types/o.$orgUrl.settings.groups.$id';
 
 export default function OrganisationGroupSettingsPage({ params }: Route.ComponentProps) {
@@ -113,7 +112,7 @@ export default function OrganisationGroupSettingsPage({ params }: Route.Componen
 }
 
 const ZUpdateOrganisationGroupFormSchema = z.object({
-  name: z.string().min(1, msg`Name is required`.id),
+  name: ZNameSchema,
   organisationRole: z.nativeEnum(OrganisationMemberRole),
   memberIds: z.array(z.string()),
 });

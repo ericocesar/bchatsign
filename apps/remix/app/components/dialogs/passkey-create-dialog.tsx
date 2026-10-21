@@ -1,5 +1,6 @@
 import { MAXIMUM_PASSKEYS } from '@bchatsign/lib/constants/auth';
 import { AppError } from '@bchatsign/lib/errors/app-error';
+import { ZNameSchema } from '@bchatsign/lib/types/name';
 import { trpc } from '@bchatsign/trpc/react';
 import { Alert, AlertDescription, AlertTitle } from '@bchatsign/ui/primitives/alert';
 import { Button } from '@bchatsign/ui/primitives/button';
@@ -25,14 +26,13 @@ import { useForm } from 'react-hook-form';
 import { match } from 'ts-pattern';
 import { UAParser } from 'ua-parser-js';
 import { z } from 'zod';
-
 export type PasskeyCreateDialogProps = {
   trigger?: React.ReactNode;
   onSuccess?: () => void;
 } & Omit<DialogPrimitive.DialogProps, 'children'>;
 
 const ZCreatePasskeyFormSchema = z.object({
-  passkeyName: z.string().min(3),
+  passkeyName: ZNameSchema,
 });
 
 type TCreatePasskeyFormSchema = z.infer<typeof ZCreatePasskeyFormSchema>;
