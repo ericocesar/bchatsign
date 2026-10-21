@@ -1,4 +1,4 @@
-import { getOptionalSession } from '@bchatsign/auth/server/lib/utils/get-session';
+import { getOptionalNonEmbedSession } from '@bchatsign/auth/server/lib/session/embed-session-restrictions';
 import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
 import { verifyEmbeddingPresignToken } from '@bchatsign/lib/server-only/embedding-presign/verify-embedding-presign-token';
 import { generatePartialSignedPdf } from '@bchatsign/lib/server-only/pdf/generate-partial-signed-pdf';
@@ -29,7 +29,7 @@ type DocumentDataInput = {
 };
 
 export const resolveFileUploadUserId = async (c: Context<HonoEnv>): Promise<number | null> => {
-  const session = await getOptionalSession(c);
+  const session = await getOptionalNonEmbedSession(c);
 
   if (session.user?.id) {
     return session.user.id;

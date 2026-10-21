@@ -8,6 +8,7 @@ import { getRecipientById } from '@bchatsign/lib/server-only/recipient/get-recip
 import { setDocumentRecipients } from '@bchatsign/lib/server-only/recipient/set-document-recipients';
 import { setTemplateRecipients } from '@bchatsign/lib/server-only/recipient/set-template-recipients';
 import { updateEnvelopeRecipients } from '@bchatsign/lib/server-only/recipient/update-envelope-recipients';
+import { assertSenderNotDisabled } from '@bchatsign/lib/server-only/user/assert-user-not-disabled';
 import { isTspEnvelope } from '@bchatsign/lib/types/signature-level';
 import { unsafeBuildEnvelopeIdQuery } from '@bchatsign/lib/utils/envelope';
 import { prisma } from '@bchatsign/prisma';
@@ -608,7 +609,7 @@ export const recipientRouter = router({
             ...unsafeBuildEnvelopeIdQuery({ type: 'documentId', id: documentId }, EnvelopeType.DOCUMENT),
             recipients: { some: { token } },
           },
-          select: { signatureLevel: true, internalVersion: true },
+          select: { signatureLevel: true, internalVersion: true, userId: true },
         });
 
         // The most common cause is a stale signing page: the document was
@@ -620,6 +621,10 @@ export const recipientRouter = router({
             statusCode: 404,
           });
         }
+
+        // Checked here as well as inside `completeDocumentWithToken` so the
+        // TSP branch below is covered.
+        await assertSenderNotDisabled({ userId: envelope.userId });
 
         if (isTspEnvelope(envelope)) {
           return await prepareCscRecipientSigning({

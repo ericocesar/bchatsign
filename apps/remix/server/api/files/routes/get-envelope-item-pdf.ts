@@ -1,4 +1,4 @@
-import { getOptionalSession } from '@bchatsign/auth/server/lib/utils/get-session';
+import { getOptionalNonEmbedSession } from '@bchatsign/auth/server/lib/session/embed-session-restrictions';
 import { verifyEmbeddingPresignToken } from '@bchatsign/lib/server-only/embedding-presign/verify-embedding-presign-token';
 import type { DocumentDataVersion } from '@bchatsign/lib/types/document';
 import { sha256 } from '@bchatsign/lib/universal/crypto';
@@ -37,7 +37,7 @@ route.get(
 
     const { presignToken } = c.req.valid('query');
 
-    const session = await getOptionalSession(c);
+    const session = await getOptionalNonEmbedSession(c);
 
     let userId = session.user?.id;
 

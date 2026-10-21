@@ -19,6 +19,7 @@ import {
   ZFieldWidthSchema,
 } from '@bchatsign/lib/types/field';
 import { ZFieldAndMetaSchema } from '@bchatsign/lib/types/field-meta';
+import { ZRecipientSigningOrderSchema } from '@bchatsign/lib/types/recipient';
 import { zEmail } from '@bchatsign/lib/utils/zod';
 import { DocumentSigningOrder, RecipientRole } from '@bchatsign/prisma/generated/types';
 import { z } from 'zod';
@@ -35,7 +36,7 @@ export const ZUpdateEmbeddingDocumentRequestSchema = z.object({
       email: zEmail(),
       name: z.string(),
       role: z.nativeEnum(RecipientRole),
-      signingOrder: z.number().optional(),
+      signingOrder: ZRecipientSigningOrderSchema.optional(),
       // We have an any cast so any changes here you need to update it in the embeding document edit page
       // Search: "map<any>" to find it
       fields: ZFieldAndMetaSchema.and(

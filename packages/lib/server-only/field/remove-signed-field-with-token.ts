@@ -1,6 +1,8 @@
+import { assertSenderNotDisabled } from '@bchatsign/lib/server-only/user/assert-user-not-disabled';
 import { DOCUMENT_AUDIT_LOG_TYPE } from '@bchatsign/lib/types/document-audit-logs';
 import type { RequestMetadata } from '@bchatsign/lib/universal/extract-request-metadata';
 import { createDocumentAuditLogData } from '@bchatsign/lib/utils/document-audit-logs';
+import { getRecipientFieldsWhereInput } from '@bchatsign/lib/utils/recipient-queries';
 import { assertRecipientNotExpired } from '@bchatsign/lib/utils/recipients';
 import { prisma } from '@bchatsign/prisma';
 import { DocumentStatus, RecipientRole, SigningStatus } from '@prisma/client';
@@ -25,21 +27,10 @@ export const removeSignedFieldWithToken = async ({
   const field = await prisma.field.findFirstOrThrow({
     where: {
       id: fieldId,
-      recipient: {
-        ...(recipient.role !== RecipientRole.ASSISTANT
-          ? {
-              id: recipient.id,
-            }
-          : {
-              signingOrder: {
-                gte: recipient.signingOrder ?? 0,
-              },
-              signingStatus: {
-                not: SigningStatus.SIGNED,
-              },
-              envelopeId: recipient.envelopeId,
-            }),
-      },
+      recipient: getRecipientFieldsWhereInput({
+        recipient,
+        allowAssistantAccessToOtherRecipients: true,
+      }),
     },
     include: {
       envelope: true,
@@ -52,6 +43,8 @@ export const removeSignedFieldWithToken = async ({
   if (!envelope) {
     throw new Error(`Document not found for field ${field.id}`);
   }
+
+  await assertSenderNotDisabled({ userId: envelope.userId });
 
   if (envelope.status !== DocumentStatus.PENDING) {
     throw new Error(`Document ${envelope.id} must be pending`);

@@ -1,5 +1,6 @@
 import { tsRestHonoApp } from '@bchatsign/api/hono';
 import { auth } from '@bchatsign/auth/server';
+import { rejectEmbedSessionMiddleware } from '@bchatsign/auth/server/lib/session/embed-session-restrictions';
 import { csc } from '@bchatsign/ee/server-only/signing/csc/hono';
 import { jobsClient } from '@bchatsign/lib/jobs/client';
 import { LicenseClient } from '@bchatsign/lib/server-only/license/license-client';
@@ -28,6 +29,7 @@ import { aiRoute } from './api/ai/route';
 import { downloadRoute } from './api/download/download';
 import { filesRoute } from './api/files/files';
 import { type AppContext, appContext } from './context';
+import { csrfMiddleware } from './csrf-middleware';
 import { appMiddleware } from './middleware';
 import { securityHeadersMiddleware } from './security-headers';
 import { openApiTrpcServerHandler } from './trpc/hono-trpc-open-api';
@@ -93,6 +95,21 @@ app.use(async (c, next) => {
 
   await next();
 });
+
+// CSRF: mount on every route that accepts a session cookie. Must run after the logger.
+// Not mounted on `/api/v1` (Authorization header only, see `authenticatedMiddleware`),
+// `/api/jobs` (signature auth) or `/api/csc` (GET only).
+app.use('/api/auth/*', csrfMiddleware);
+app.use('/api/trpc/*', csrfMiddleware);
+app.use('/api/v2/*', csrfMiddleware);
+app.use('/api/v2-beta/*', csrfMiddleware);
+app.use('/api/files/*', csrfMiddleware);
+app.use('/api/ai/*', csrfMiddleware);
+
+// Embed sessions are signing-only. `/api/files` instead ignores them per route
+// (`getOptionalNonEmbedSession`) so embedded authoring on a host that also ran
+// embedded signing still falls through to its presign token.
+app.use('/api/ai/*', rejectEmbedSessionMiddleware);
 
 // Apply cors and rate limits to API routes.
 app.use(`/api/v1/*`, cors());
