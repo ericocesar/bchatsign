@@ -2,6 +2,7 @@ import { getOptionalSession } from '@bchatsign/auth/server/lib/utils/get-session
 import { EnvelopeRenderProvider } from '@bchatsign/lib/client-only/providers/envelope-render-provider';
 import { IS_BILLING_ENABLED } from '@bchatsign/lib/constants/app';
 import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { captureServerEvent } from '@bchatsign/lib/server-only/analytics/capture-server-event';
 import { getDocumentAndSenderByToken } from '@bchatsign/lib/server-only/document/get-document-by-token';
 import { viewedDocument } from '@bchatsign/lib/server-only/document/viewed-document';
 import { getEnvelopeForRecipientSigning } from '@bchatsign/lib/server-only/envelope/get-envelope-for-recipient-signing';
@@ -13,6 +14,7 @@ import { getIsRecipientsTurnToSign } from '@bchatsign/lib/server-only/recipient/
 import { getRecipientByToken } from '@bchatsign/lib/server-only/recipient/get-recipient-by-token';
 import { getRecipientsForAssistant } from '@bchatsign/lib/server-only/recipient/get-recipients-for-assistant';
 import { DocumentAccessAuth } from '@bchatsign/lib/types/document-auth';
+import { fireAndForget } from '@bchatsign/lib/universal/fire-and-forget';
 import { isDocumentCompleted } from '@bchatsign/lib/utils/document';
 import { extractDocumentAuthMethods } from '@bchatsign/lib/utils/document-auth';
 import { isRecipientExpired } from '@bchatsign/lib/utils/recipients';
@@ -138,6 +140,30 @@ async function handleV1Loader({ params, request }: Route.LoaderArgs) {
           token,
         })
       : [];
+
+  fireAndForget(async () => {
+    const team = await prisma.team.findFirst({
+      where: {
+        id: document.teamId,
+      },
+      select: {
+        organisationId: true,
+      },
+    });
+
+    captureServerEvent({
+      event: 'App: Embed Session Started',
+      userId: user?.id,
+      organisationId: team?.organisationId,
+      teamId: document.teamId,
+      properties: {
+        type: 'signing',
+        version: 'v0',
+        recipientId: recipient.id,
+        envelopeId: document.envelopeId,
+      },
+    });
+  });
 
   return {
     token,
@@ -271,6 +297,30 @@ async function handleV2Loader({ params, request }: Route.LoaderArgs) {
     requestMetadata,
     recipientAccessAuth: derivedRecipientAccessAuth,
   }).catch(() => null);
+
+  fireAndForget(async () => {
+    const team = await prisma.team.findFirst({
+      where: {
+        id: envelope.teamId,
+      },
+      select: {
+        organisationId: true,
+      },
+    });
+
+    captureServerEvent({
+      event: 'App: Embed Session Started',
+      userId: user?.id,
+      organisationId: team?.organisationId,
+      teamId: envelope.teamId,
+      properties: {
+        type: 'signing',
+        version: 'v0',
+        recipientId: recipient.id,
+        envelopeId: envelope.id,
+      },
+    });
+  });
 
   return {
     token,

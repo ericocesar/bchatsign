@@ -14,7 +14,7 @@ let SkiaImage: any;
 
 void (async () => {
   if (typeof window === 'undefined') {
-    const mod = await import('@bchatsign/skia-canvas');
+    const mod = await import('skia-canvas');
     SkiaImage = mod.Image;
   }
 })();

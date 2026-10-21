@@ -1,3 +1,4 @@
+import { useAnalytics } from '@bchatsign/lib/client-only/hooks/use-analytics';
 import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
 import { type TRecipientAccessAuth, ZDocumentAccessAuthSchema } from '@bchatsign/lib/types/document-auth';
 import { fieldsContainUnsignedRequiredField } from '@bchatsign/lib/utils/advanced-fields-helpers';
@@ -88,6 +89,7 @@ export const DocumentSigningCompleteDialog = ({
   position,
   disableNameInput = false,
 }: DocumentSigningCompleteDialogProps) => {
+  const analytics = useAnalytics();
   const { t, i18n } = useLingui();
   const { toast } = useToast();
 
@@ -178,6 +180,11 @@ export const DocumentSigningCompleteDialog = ({
 
         return;
       }
+
+      analytics.captureException(error, {
+        source: 'signing',
+        location: 'complete_document',
+      });
 
       // This dialog owns the completion error toast for every signing surface
       // so the user gets a specific, actionable message. Callers should run

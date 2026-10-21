@@ -1,5 +1,6 @@
 import { EnvelopeEditorProvider } from '@bchatsign/lib/client-only/providers/envelope-editor-provider';
 import type { SupportedLanguageCodes } from '@bchatsign/lib/constants/i18n';
+import { captureServerEvent } from '@bchatsign/lib/server-only/analytics/capture-server-event';
 import { verifyEmbeddingPresignToken } from '@bchatsign/lib/server-only/embedding-presign/verify-embedding-presign-token';
 import { getTeamSettings } from '@bchatsign/lib/server-only/team/get-team-settings';
 import { ZDefaultRecipientsSchema } from '@bchatsign/lib/types/default-recipients';
@@ -10,6 +11,7 @@ import {
   ZEmbedCreateEnvelopeAuthoringSchema,
 } from '@bchatsign/lib/types/envelope-editor';
 import type { TEnvelopeFieldAndMeta } from '@bchatsign/lib/types/field-meta';
+import { fireAndForget } from '@bchatsign/lib/universal/fire-and-forget';
 import { extractDerivedDocumentMeta } from '@bchatsign/lib/utils/document';
 import { buildEmbeddedEditorOptions, buildEmbeddedFeatures } from '@bchatsign/lib/utils/embed-config';
 import { prisma } from '@bchatsign/prisma';
@@ -74,6 +76,30 @@ export const loader = async ({ request }: Route.LoaderArgs) => {
       id: true,
       email: true,
     },
+  });
+
+  fireAndForget(async () => {
+    const team = result.teamId
+      ? await prisma.team.findFirst({
+          where: {
+            id: result.teamId,
+          },
+          select: {
+            organisationId: true,
+          },
+        })
+      : null;
+
+    captureServerEvent({
+      event: 'App: Embed Session Started',
+      userId: result.userId,
+      organisationId: team?.organisationId,
+      teamId: result.teamId ?? undefined,
+      properties: {
+        type: 'authoring',
+        version: 'v2',
+      },
+    });
   });
 
   return superLoaderJson({

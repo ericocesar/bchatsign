@@ -3,14 +3,14 @@ import '../konva/skia-backend';
 
 import fs from 'node:fs';
 import path from 'node:path';
-import type { Canvas } from '@bchatsign/skia-canvas';
-import { Image as SkiaImage } from '@bchatsign/skia-canvas';
 import type { I18n } from '@lingui/core';
 import { msg } from '@lingui/core/macro';
 import type { Field, RecipientRole, Signature } from '@prisma/client';
 import { SigningStatus } from '@prisma/client';
 import Konva from 'konva';
 import { DateTime } from 'luxon';
+import type { Canvas } from 'skia-canvas';
+import { Image as SkiaImage } from 'skia-canvas';
 import { UAParser } from 'ua-parser-js';
 import { renderSVG } from 'uqr';
 
