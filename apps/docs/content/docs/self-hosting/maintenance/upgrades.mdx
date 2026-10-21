@@ -426,8 +426,9 @@ docker pull bchatsign/bchatsign:<version>
 # Run migrations only
 docker run --rm \
   -e NEXT_PRIVATE_DATABASE_URL="postgresql://user:password@host:5432/bchatsign" \
+  -e NEXT_PRIVATE_DIRECT_DATABASE_URL="postgresql://user:password@host:5432/bchatsign" \
   bchatsign/bchatsign:<version> \
-  npx prisma migrate deploy
+  npx prisma migrate deploy --schema ../../packages/prisma/schema.prisma
 ```
 
 <Callout type="warn">

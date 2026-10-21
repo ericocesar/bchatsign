@@ -1,9 +1,11 @@
 import { isBase64Image } from '@bchatsign/lib/constants/signatures';
 import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
 import { validateFieldAuth } from '@bchatsign/lib/server-only/document/validate-field-auth';
+import { assertSenderNotDisabled } from '@bchatsign/lib/server-only/user/assert-user-not-disabled';
 import { DOCUMENT_AUDIT_LOG_TYPE } from '@bchatsign/lib/types/document-audit-logs';
 import { createDocumentAuditLogData } from '@bchatsign/lib/utils/document-audit-logs';
 import { extractFieldInsertionValues } from '@bchatsign/lib/utils/envelope-signing';
+import { getRecipientFieldsWhereInput } from '@bchatsign/lib/utils/recipient-queries';
 import { assertRecipientNotExpired } from '@bchatsign/lib/utils/recipients';
 import { prisma } from '@bchatsign/prisma';
 import { DocumentStatus, FieldType, RecipientRole, SigningStatus } from '@prisma/client';
@@ -39,20 +41,10 @@ export const signEnvelopeFieldRoute = procedure
     const field = await prisma.field.findFirst({
       where: {
         id: fieldId,
-        recipient:
-          recipient.role === RecipientRole.ASSISTANT
-            ? {
-                signingStatus: {
-                  not: SigningStatus.SIGNED,
-                },
-                signingOrder: {
-                  gte: recipient.signingOrder ?? 0,
-                },
-                envelopeId: recipient.envelopeId,
-              }
-            : {
-                id: recipient.id,
-              },
+        recipient: getRecipientFieldsWhereInput({
+          recipient,
+          allowAssistantAccessToOtherRecipients: true,
+        }),
       },
       include: {
         envelope: {
@@ -73,6 +65,8 @@ export const signEnvelopeFieldRoute = procedure
 
     const { envelope } = field;
     const { documentMeta } = envelope;
+
+    await assertSenderNotDisabled({ userId: envelope.userId });
 
     if (envelope.internalVersion !== 2) {
       throw new AppError(AppErrorCode.NOT_FOUND, {

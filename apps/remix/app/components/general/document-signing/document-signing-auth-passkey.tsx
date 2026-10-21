@@ -1,3 +1,4 @@
+import { useIsFramed } from '@bchatsign/lib/client-only/hooks/use-is-framed';
 import { AppError } from '@bchatsign/lib/errors/app-error';
 import { DocumentAuth, type TRecipientActionAuth } from '@bchatsign/lib/types/document-auth';
 import { RecipientRole } from '@bchatsign/prisma/generated/types';
@@ -64,6 +65,9 @@ export const DocumentSigningAuthPasskey = ({
     trpc.auth.passkey.createAuthenticationOptions.useMutation();
 
   const [formErrorCode, setFormErrorCode] = useState<string | null>(null);
+  const [isBlockedByEmbed, setIsBlockedByEmbed] = useState(false);
+
+  const isFramed = useIsFramed();
 
   const onFormSubmit = async ({ passkeyId }: TPasskeyAuthFormSchema) => {
     try {
@@ -89,6 +93,11 @@ export const DocumentSigningAuthPasskey = ({
       setIsCurrentlyAuthenticating(false);
 
       if (err.name === 'NotAllowedError') {
+        // Inside an iframe this is most likely a missing `allow="publickey-credentials-get"`.
+        if (isFramed) {
+          setIsBlockedByEmbed(true);
+        }
+
         return;
       }
 
@@ -105,6 +114,7 @@ export const DocumentSigningAuthPasskey = ({
     });
 
     setFormErrorCode(null);
+    setIsBlockedByEmbed(false);
   }, [open, form, preferredPasskeyId]);
 
   if (!browserSupportsWebAuthn()) {
@@ -280,6 +290,17 @@ export const DocumentSigningAuthPasskey = ({
                 </FormItem>
               )}
             />
+
+            {isBlockedByEmbed && (
+              <Alert variant="warning">
+                <AlertDescription>
+                  <Trans>
+                    Passkeys could not be used here. If this document is embedded in another site, that site needs to
+                    allow passkeys for the embed.
+                  </Trans>
+                </AlertDescription>
+              </Alert>
+            )}
 
             {formErrorCode && (
               <Alert variant="destructive">

@@ -1,4 +1,5 @@
 import { getOptionalSession } from '@bchatsign/auth/server/lib/utils/get-session';
+import { assertEmbedCscServiceSession } from '@bchatsign/ee/server-only/signing/csc/assert-embed-service-session';
 import { EnvelopeRenderProvider } from '@bchatsign/lib/client-only/providers/envelope-render-provider';
 import { IS_BILLING_ENABLED } from '@bchatsign/lib/constants/app';
 import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
@@ -13,13 +14,14 @@ import { getOrganisationClaimByTeamId } from '@bchatsign/lib/server-only/organis
 import { getIsRecipientsTurnToSign } from '@bchatsign/lib/server-only/recipient/get-is-recipient-turn';
 import { getRecipientByToken } from '@bchatsign/lib/server-only/recipient/get-recipient-by-token';
 import { getRecipientsForAssistant } from '@bchatsign/lib/server-only/recipient/get-recipients-for-assistant';
+import { assertSenderNotDisabled } from '@bchatsign/lib/server-only/user/assert-user-not-disabled';
 import { DocumentAccessAuth } from '@bchatsign/lib/types/document-auth';
 import { fireAndForget } from '@bchatsign/lib/universal/fire-and-forget';
 import { isDocumentCompleted } from '@bchatsign/lib/utils/document';
 import { extractDocumentAuthMethods } from '@bchatsign/lib/utils/document-auth';
 import { isRecipientExpired } from '@bchatsign/lib/utils/recipients';
 import { prisma } from '@bchatsign/prisma';
-import { RecipientRole } from '@bchatsign/prisma/generated/types';
+import { RecipientRole, SigningStatus } from '@bchatsign/prisma/generated/types';
 import { data } from 'react-router';
 import { match } from 'ts-pattern';
 
@@ -80,7 +82,11 @@ async function handleV1Loader({ params, request }: Route.LoaderArgs) {
     );
   }
 
-  if (isRecipientExpired(recipient)) {
+  const isCompleted = recipient.signingStatus === SigningStatus.SIGNED || isDocumentCompleted(document.status);
+  const isRejected = recipient.signingStatus === SigningStatus.REJECTED;
+  const hasRecipientActioned = isCompleted || isRejected;
+
+  if (!hasRecipientActioned && isRecipientExpired(recipient)) {
     throw data(
       {
         type: 'embed-recipient-expired',
@@ -106,8 +112,7 @@ async function handleV1Loader({ params, request }: Route.LoaderArgs) {
     throw data(
       {
         type: 'embed-authentication-required',
-        email: user?.email || recipient.email,
-        returnTo: `/embed/sign/${token}`,
+        email: recipient.email,
       },
       {
         status: 401,
@@ -115,7 +120,7 @@ async function handleV1Loader({ params, request }: Route.LoaderArgs) {
     );
   }
 
-  const isRecipientsTurnToSign = await getIsRecipientsTurnToSign({ token });
+  const isRecipientsTurnToSign = hasRecipientActioned || (await getIsRecipientsTurnToSign({ token }));
 
   if (!isRecipientsTurnToSign) {
     throw data(
@@ -133,6 +138,8 @@ async function handleV1Loader({ params, request }: Route.LoaderArgs) {
     requestMetadata,
     recipientAccessAuth: derivedRecipientAccessAuth,
   });
+
+  await assertEmbedCscServiceSession({ request, token, envelope: document, isCompleted, isRejected });
 
   const allRecipients =
     recipient.role === RecipientRole.ASSISTANT
@@ -173,6 +180,8 @@ async function handleV1Loader({ params, request }: Route.LoaderArgs) {
     recipient,
     fields,
     completedFields,
+    isCompleted,
+    isRejected,
     hidePoweredBy,
     allowEmbedSigningWhitelabel,
   };
@@ -219,7 +228,6 @@ async function handleV2Loader({ params, request }: Route.LoaderArgs) {
       {
         type: 'embed-authentication-required',
         email: envelopeForSigning.recipientEmail,
-        returnTo: `/embed/sign/${token}`,
       },
       {
         status: 401,
@@ -227,7 +235,7 @@ async function handleV2Loader({ params, request }: Route.LoaderArgs) {
     );
   }
 
-  const { envelope, recipient, isRecipientsTurn, isExpired } = envelopeForSigning;
+  const { envelope, recipient, isRecipientsTurn, isExpired, isCompleted, isRejected } = envelopeForSigning;
 
   const organisationClaim = await getOrganisationClaimByTeamId({ teamId: envelope.teamId });
 
@@ -283,8 +291,7 @@ async function handleV2Loader({ params, request }: Route.LoaderArgs) {
     throw data(
       {
         type: 'embed-authentication-required',
-        email: user?.email || recipient.email,
-        returnTo: `/embed/sign/${token}`,
+        email: recipient.email,
       },
       {
         status: 401,
@@ -297,6 +304,8 @@ async function handleV2Loader({ params, request }: Route.LoaderArgs) {
     requestMetadata,
     recipientAccessAuth: derivedRecipientAccessAuth,
   }).catch(() => null);
+
+  await assertEmbedCscServiceSession({ request, token, envelope, isCompleted, isRejected });
 
   fireAndForget(async () => {
     const team = await prisma.team.findFirst({
@@ -347,6 +356,7 @@ export async function loader(loaderArgs: Route.LoaderArgs) {
       envelope: {
         select: {
           internalVersion: true,
+          userId: true,
         },
       },
     },
@@ -354,6 +364,23 @@ export async function loader(loaderArgs: Route.LoaderArgs) {
 
   if (!foundRecipient) {
     throw new Response('Not Found', { status: 404 });
+  }
+
+  try {
+    await assertSenderNotDisabled({ userId: foundRecipient.envelope.userId });
+  } catch (e) {
+    if (AppError.parseError(e).code === AppErrorCode.SENDER_DISABLED) {
+      throw data(
+        {
+          type: 'embed-sender-disabled',
+        },
+        {
+          status: 403,
+        },
+      );
+    }
+
+    throw e;
   }
 
   if (foundRecipient.envelope.internalVersion === 2) {
@@ -392,6 +419,8 @@ const EmbedSignDocumentPageV1 = ({ data }: { data: Awaited<ReturnType<typeof han
     recipient,
     fields,
     completedFields,
+    isCompleted,
+    isRejected,
     hidePoweredBy,
     allowEmbedSigningWhitelabel,
   } = data;
@@ -415,7 +444,8 @@ const EmbedSignDocumentPageV1 = ({ data }: { data: Awaited<ReturnType<typeof han
           fields={fields}
           completedFields={completedFields}
           metadata={document.documentMeta}
-          isCompleted={isDocumentCompleted(document.status)}
+          isCompleted={isCompleted}
+          isRejected={isRejected}
           hidePoweredBy={hidePoweredBy}
           allowWhitelabelling={allowEmbedSigningWhitelabel}
           allRecipients={allRecipients}

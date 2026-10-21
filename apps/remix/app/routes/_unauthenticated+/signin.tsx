@@ -30,7 +30,10 @@ export function meta() {
 }
 
 export async function loader({ request }: Route.LoaderArgs) {
-  const { isAuthenticated } = await getOptionalSession(request);
+  const { session } = await getOptionalSession(request);
+
+  // Embed sessions are rejected by the authenticated tree, so treat them as signed out here.
+  const isAuthenticated = session !== null && !session.isEmbed;
 
   // SSR env variables.
   const isEmailPasswordSigninEnabled = isSigninEnabledForProvider('email');

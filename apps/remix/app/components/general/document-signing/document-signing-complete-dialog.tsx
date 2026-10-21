@@ -23,6 +23,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Trans, useLingui } from '@lingui/react/macro';
 import type { Field, Recipient } from '@prisma/client';
 import { MapPinIcon } from 'lucide-react';
+import type { ReactNode } from 'react';
 import { useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { match } from 'ts-pattern';
@@ -68,6 +69,11 @@ export type DocumentSigningCompleteDialogProps = {
   position?: 'start' | 'end' | 'center';
   disableNameInput?: boolean;
   geolocationEnabled?: boolean;
+
+  /** When provided, replaces the confirmation form (and 2FA step) as the dialog body. */
+  children?: ReactNode;
+
+  onOpenChange?: (open: boolean) => void;
 };
 
 const ZNextSignerFormSchema = z.object({
@@ -100,6 +106,8 @@ export const DocumentSigningCompleteDialog = ({
   position,
   disableNameInput = false,
   geolocationEnabled = true,
+  children,
+  onOpenChange,
 }: DocumentSigningCompleteDialogProps) => {
   const analytics = useAnalytics();
   const { t, i18n } = useLingui();
@@ -172,8 +180,10 @@ export const DocumentSigningCompleteDialog = ({
 
   const { isNameLocked, isEmailLocked } = useEmbedSigningContext() || {};
 
+  const canDictateNextSigner = allowDictateNextSigner && Boolean(defaultNextSigner);
+
   const form = useForm<TNextSignerFormSchema>({
-    resolver: allowDictateNextSigner ? zodResolver(ZNextSignerFormSchema) : undefined,
+    resolver: canDictateNextSigner ? zodResolver(ZNextSignerFormSchema) : undefined,
     defaultValues: {
       name: defaultNextSigner?.name ?? '',
       email: defaultNextSigner?.email ?? '',
@@ -210,6 +220,7 @@ export const DocumentSigningCompleteDialog = ({
     }
 
     setShowDialog(open);
+    onOpenChange?.(open);
   };
 
   const onFormSubmit = async (data: TNextSignerFormSchema) => {
@@ -349,75 +360,36 @@ export const DocumentSigningCompleteDialog = ({
           <p className="font-medium text-muted-foreground text-sm">{documentTitle}</p>
         </div>
 
-        {!showTwoFactorForm && (
-          <fieldset disabled={form.formState.isSubmitting || isResolvingGeolocation} className="border-none p-0">
-            {recipientPayload && !recipientPayload.email && (
-              <Form {...recipientForm}>
-                <div className="mb-4 flex flex-col gap-4">
-                  <div className="flex flex-col gap-4 md:flex-row">
-                    <FormField
-                      control={recipientForm.control}
-                      name="name"
-                      render={({ field }) => (
-                        <FormItem className="flex-1">
-                          <FormLabel>
-                            <Trans>Your Name</Trans>
-                          </FormLabel>
-                          <FormControl>
-                            <Input
-                              {...field}
-                              className="mt-2"
-                              placeholder={t`Enter your name`}
-                              disabled={isNameLocked || disableNameInput}
-                            />
-                          </FormControl>
-
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-
-                    <FormField
-                      control={recipientForm.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem className="flex-1">
-                          <FormLabel>
-                            <Trans>Your Email</Trans>
-                          </FormLabel>
-                          <FormControl>
-                            <Input
-                              {...field}
-                              type="email"
-                              className="mt-2"
-                              placeholder={t`Enter your email`}
-                              disabled={!!field.value && isEmailLocked}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-                </div>
-              </Form>
-            )}
-
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(onFormSubmit)}>
-                {allowDictateNextSigner && defaultNextSigner && (
+        {match({ hasChildren: Boolean(children), showTwoFactorForm })
+          .with({ hasChildren: true }, () => children)
+          .with({ showTwoFactorForm: true }, () => (
+            <AccessAuth2FAForm
+              token={recipient.token}
+              error={twoFactorValidationError}
+              onSubmit={onTwoFactorFormSubmit}
+            />
+          ))
+          .otherwise(() => (
+            <fieldset disabled={form.formState.isSubmitting || isResolvingGeolocation} className="border-none p-0">
+              {recipientPayload && !recipientPayload.email && (
+                <Form {...recipientForm}>
                   <div className="mb-4 flex flex-col gap-4">
                     <div className="flex flex-col gap-4 md:flex-row">
                       <FormField
-                        control={form.control}
+                        control={recipientForm.control}
                         name="name"
                         render={({ field }) => (
                           <FormItem className="flex-1">
                             <FormLabel>
-                              <Trans>Next Recipient Name</Trans>
+                              <Trans>Your Name</Trans>
                             </FormLabel>
                             <FormControl>
-                              <Input {...field} className="mt-2" placeholder={t`Enter the next signer's name`} />
+                              <Input
+                                {...field}
+                                className="mt-2"
+                                placeholder={t`Enter your name`}
+                                disabled={isNameLocked || disableNameInput}
+                              />
                             </FormControl>
 
                             <FormMessage />
@@ -426,19 +398,20 @@ export const DocumentSigningCompleteDialog = ({
                       />
 
                       <FormField
-                        control={form.control}
+                        control={recipientForm.control}
                         name="email"
                         render={({ field }) => (
                           <FormItem className="flex-1">
                             <FormLabel>
-                              <Trans>Next Recipient Email</Trans>
+                              <Trans>Your Email</Trans>
                             </FormLabel>
                             <FormControl>
                               <Input
                                 {...field}
                                 type="email"
                                 className="mt-2"
-                                placeholder={t`Enter the next signer's email`}
+                                placeholder={t`Enter your email`}
+                                disabled={!!field.value && isEmailLocked}
                               />
                             </FormControl>
                             <FormMessage />
@@ -447,82 +420,121 @@ export const DocumentSigningCompleteDialog = ({
                       />
                     </div>
                   </div>
-                )}
+                </Form>
+              )}
 
-                {requiresGeolocation && (
-                  <Alert className="mb-4" variant="default">
-                    <MapPinIcon className="h-4 w-4" />
-                    <AlertTitle>
-                      <Trans>Autorização de geolocalização</Trans>
-                    </AlertTitle>
-                    <AlertDescription>
-                      <Trans>
-                        Para reforçar a segurança e a trilha de auditoria da assinatura eletrônica, solicitaremos sua
-                        geolocalização. Ao clicar em Assinar, selecione Permitir no aviso do navegador para concluir o
-                        processo.
-                      </Trans>
-                    </AlertDescription>
-                  </Alert>
-                )}
+              <Form {...form}>
+                <form onSubmit={form.handleSubmit(onFormSubmit)}>
+                  {canDictateNextSigner && (
+                    <div className="mb-4 flex flex-col gap-4">
+                      <div className="flex flex-col gap-4 md:flex-row">
+                        <FormField
+                          control={form.control}
+                          name="name"
+                          render={({ field }) => (
+                            <FormItem className="flex-1">
+                              <FormLabel>
+                                <Trans>Next Recipient Name</Trans>
+                              </FormLabel>
+                              <FormControl>
+                                <Input {...field} className="mt-2" placeholder={t`Enter the next signer's name`} />
+                              </FormControl>
 
-                {isGeolocationDisabledByEnv && recipient.role === RecipientRole.SIGNER && geolocationEnabled && (
-                  <Alert className="mb-4" variant="warning">
-                    <AlertTitle>
-                      <Trans>Geolocalização desativada (ambiente de desenvolvimento)</Trans>
-                    </AlertTitle>
-                    <AlertDescription>
-                      <Trans>
-                        A captura de geolocalização foi ignorada porque a variável NEXT_PUBLIC_DISABLE_GEOLOCATION está
-                        definida. Não use esta configuração em produção.
-                      </Trans>
-                    </AlertDescription>
-                  </Alert>
-                )}
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
 
-                {geolocationError && (
-                  <Alert className="mb-4" variant="destructive">
-                    <AlertDescription>{geolocationError}</AlertDescription>
-                  </Alert>
-                )}
+                        <FormField
+                          control={form.control}
+                          name="email"
+                          render={({ field }) => (
+                            <FormItem className="flex-1">
+                              <FormLabel>
+                                <Trans>Next Recipient Email</Trans>
+                              </FormLabel>
+                              <FormControl>
+                                <Input
+                                  {...field}
+                                  type="email"
+                                  className="mt-2"
+                                  placeholder={t`Enter the next signer's email`}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                    </div>
+                  )}
 
-                <DocumentSigningDisclosure />
+                  {requiresGeolocation && (
+                    <Alert className="mb-4" variant="default">
+                      <MapPinIcon className="h-4 w-4" />
+                      <AlertTitle>
+                        <Trans>Autorização de geolocalização</Trans>
+                      </AlertTitle>
+                      <AlertDescription>
+                        <Trans>
+                          Para reforçar a segurança e a trilha de auditoria da assinatura eletrônica, solicitaremos sua
+                          geolocalização. Ao clicar em Assinar, selecione Permitir no aviso do navegador para concluir o
+                          processo.
+                        </Trans>
+                      </AlertDescription>
+                    </Alert>
+                  )}
 
-                <DialogFooter className="mt-4">
-                  <Button
-                    type="button"
-                    variant="secondary"
-                    onClick={() => setShowDialog(false)}
-                    disabled={form.formState.isSubmitting || isResolvingGeolocation}
-                  >
-                    <Trans>Cancel</Trans>
-                  </Button>
+                  {isGeolocationDisabledByEnv && recipient.role === RecipientRole.SIGNER && geolocationEnabled && (
+                    <Alert className="mb-4" variant="warning">
+                      <AlertTitle>
+                        <Trans>Geolocalização desativada (ambiente de desenvolvimento)</Trans>
+                      </AlertTitle>
+                      <AlertDescription>
+                        <Trans>
+                          A captura de geolocalização foi ignorada porque a variável NEXT_PUBLIC_DISABLE_GEOLOCATION está
+                          definida. Não use esta configuração em produção.
+                        </Trans>
+                      </AlertDescription>
+                    </Alert>
+                  )}
 
-                  <Button
-                    type="submit"
-                    disabled={!isComplete}
-                    loading={form.formState.isSubmitting || isResolvingGeolocation}
-                  >
-                    {match(recipient.role)
-                      .with(RecipientRole.VIEWER, () => <Trans>Mark as Viewed</Trans>)
-                      .with(RecipientRole.SIGNER, () => <Trans>Sign</Trans>)
-                      .with(RecipientRole.APPROVER, () => <Trans>Approve</Trans>)
-                      .with(RecipientRole.CC, () => <Trans>Mark as Viewed</Trans>)
-                      .with(RecipientRole.ASSISTANT, () => <Trans>Complete</Trans>)
-                      .exhaustive()}
-                  </Button>
-                </DialogFooter>
-              </form>
-            </Form>
-          </fieldset>
-        )}
+                  {geolocationError && (
+                    <Alert className="mb-4" variant="destructive">
+                      <AlertDescription>{geolocationError}</AlertDescription>
+                    </Alert>
+                  )}
 
-        {showTwoFactorForm && (
-          <AccessAuth2FAForm
-            token={recipient.token}
-            error={twoFactorValidationError}
-            onSubmit={onTwoFactorFormSubmit}
-          />
-        )}
+                  <DocumentSigningDisclosure />
+
+                  <DialogFooter className="mt-4">
+                    <Button
+                      type="button"
+                      variant="secondary"
+                      onClick={() => setShowDialog(false)}
+                      disabled={form.formState.isSubmitting || isResolvingGeolocation}
+                    >
+                      <Trans>Cancel</Trans>
+                    </Button>
+
+                    <Button
+                      type="submit"
+                      disabled={!isComplete}
+                      loading={form.formState.isSubmitting || isResolvingGeolocation}
+                    >
+                      {match(recipient.role)
+                        .with(RecipientRole.VIEWER, () => <Trans>Mark as Viewed</Trans>)
+                        .with(RecipientRole.SIGNER, () => <Trans>Sign</Trans>)
+                        .with(RecipientRole.APPROVER, () => <Trans>Approve</Trans>)
+                        .with(RecipientRole.CC, () => <Trans>Mark as Viewed</Trans>)
+                        .with(RecipientRole.ASSISTANT, () => <Trans>Complete</Trans>)
+                        .exhaustive()}
+                    </Button>
+                  </DialogFooter>
+                </form>
+              </Form>
+            </fieldset>
+          ))}
       </DialogContent>
     </Dialog>
   );

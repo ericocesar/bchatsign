@@ -1,7 +1,9 @@
+import { formatDocumentAuditLogAction } from '@bchatsign/lib/utils/document-audit-logs';
 import { zEmail } from '@bchatsign/lib/utils/zod';
 import { RecipientRole, SigningStatus } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import { Button } from '@bchatsign/ui/primitives/button';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@bchatsign/ui/primitives/collapsible';
 import type { DataTableColumnDef } from '@bchatsign/ui/primitives/data-table';
 import { DataTable } from '@bchatsign/ui/primitives/data-table';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@bchatsign/ui/primitives/form/form';
@@ -12,10 +14,13 @@ import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
 import type { Field, Recipient, Signature } from '@prisma/client';
-import { useMemo } from 'react';
+import { DateTime } from 'luxon';
+import { useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRevalidator } from 'react-router';
 import { z } from 'zod';
+
+import { AdminRecipientDeleteDialog } from '~/components/dialogs/admin-recipient-delete-dialog';
 
 const RECIPIENT_ROLE_LABELS: Record<RecipientRole, string> = {
   [RecipientRole.SIGNER]: 'Signer',
@@ -34,6 +39,8 @@ const ZAdminUpdateRecipientFormSchema = z.object({
 type TAdminUpdateRecipientFormSchema = z.infer<typeof ZAdminUpdateRecipientFormSchema>;
 
 export type RecipientItemProps = {
+  envelopeId: string;
+  isDocumentCompleted: boolean;
   recipient: Recipient & {
     fields: Array<
       Field & {
@@ -43,10 +50,20 @@ export type RecipientItemProps = {
   };
 };
 
-export const AdminDocumentRecipientItemTable = ({ recipient }: RecipientItemProps) => {
+export const AdminDocumentRecipientItemTable = ({ envelopeId, isDocumentCompleted, recipient }: RecipientItemProps) => {
   const { _ } = useLingui();
   const { toast } = useToast();
   const { revalidate } = useRevalidator();
+
+  const isRecipientSigned = recipient.signingStatus === SigningStatus.SIGNED;
+
+  let removeDisabledReason: string | undefined;
+
+  if (isDocumentCompleted) {
+    removeDisabledReason = _(msg`Recipients cannot be removed from a completed document.`);
+  } else if (isRecipientSigned) {
+    removeDisabledReason = _(msg`This recipient has already signed and cannot be removed.`);
+  }
 
   const form = useForm<TAdminUpdateRecipientFormSchema>({
     defaultValues: {
@@ -126,6 +143,38 @@ export const AdminDocumentRecipientItemTable = ({ recipient }: RecipientItemProp
 
   return (
     <div>
+      <div className="mb-4 grid grid-cols-4 gap-4 text-sm">
+        <div>
+          <span className="text-muted-foreground">
+            <Trans>Send Status</Trans>
+          </span>
+          <p className="font-medium">{recipient.sendStatus}</p>
+        </div>
+
+        <div>
+          <span className="text-muted-foreground">
+            <Trans>Read Status</Trans>
+          </span>
+          <p className="font-medium">{recipient.readStatus}</p>
+        </div>
+
+        <div>
+          <span className="text-muted-foreground">
+            <Trans>Signing Status</Trans>
+          </span>
+          <p className="font-medium">{recipient.signingStatus}</p>
+        </div>
+
+        <div>
+          <span className="text-muted-foreground">
+            <Trans>Signing Order</Trans>
+          </span>
+          <p className="font-medium">{recipient.signingOrder ?? '-'}</p>
+        </div>
+      </div>
+
+      <hr className="mb-4" />
+
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onUpdateRecipientFormSubmit)}>
           <fieldset
@@ -183,7 +232,7 @@ export const AdminDocumentRecipientItemTable = ({ recipient }: RecipientItemProp
                       onValueChange={field.onChange}
                       disabled={form.formState.isSubmitting || recipient.signingStatus === SigningStatus.SIGNED}
                     >
-                      <SelectTrigger>
+                      <SelectTrigger className="bg-background">
                         <SelectValue />
                       </SelectTrigger>
 
@@ -201,13 +250,24 @@ export const AdminDocumentRecipientItemTable = ({ recipient }: RecipientItemProp
                 </FormItem>
               )}
             />
-
-            <div>
-              <Button type="submit" loading={form.formState.isSubmitting}>
-                <Trans>Update Recipient</Trans>
-              </Button>
-            </div>
           </fieldset>
+
+          <div className="mt-4 flex gap-x-4">
+            <Button
+              type="submit"
+              loading={form.formState.isSubmitting}
+              disabled={form.formState.isSubmitting || isRecipientSigned}
+            >
+              <Trans>Update Recipient</Trans>
+            </Button>
+
+            <AdminRecipientDeleteDialog
+              recipientId={recipient.id}
+              recipientName={recipient.name}
+              recipientEmail={recipient.email}
+              disabledReason={removeDisabledReason}
+            />
+          </div>
         </form>
       </Form>
 
@@ -217,7 +277,67 @@ export const AdminDocumentRecipientItemTable = ({ recipient }: RecipientItemProp
         <Trans>Fields</Trans>
       </h2>
 
-      <DataTable columns={columns} data={recipient.fields} />
+      <DataTable className="bg-background" columns={columns} data={recipient.fields} />
+
+      <hr className="my-4" />
+
+      <RecipientActivity envelopeId={envelopeId} recipientId={recipient.id} />
     </div>
+  );
+};
+
+const RecipientActivity = ({ envelopeId, recipientId }: { envelopeId: string; recipientId: number }) => {
+  const { _, i18n } = useLingui();
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const { data, isLoading } = trpc.admin.document.findAuditLogs.useQuery(
+    { envelopeId, recipientId, perPage: 50 },
+    { enabled: isOpen },
+  );
+
+  const columns = useMemo(() => {
+    return [
+      {
+        header: _(msg`Date`),
+        accessorKey: 'createdAt',
+        cell: ({ row }) => i18n.date(row.original.createdAt, DateTime.DATETIME_MED),
+      },
+      {
+        header: _(msg`Action`),
+        accessorKey: 'type',
+        cell: ({ row }) => formatDocumentAuditLogAction(i18n, row.original).description,
+      },
+      {
+        header: _(msg`IP Address`),
+        accessorKey: 'ipAddress',
+        cell: ({ row }) => row.original.ipAddress ?? '-',
+      },
+    ] satisfies DataTableColumnDef<NonNullable<typeof data>['data'][number]>[];
+  }, []);
+
+  return (
+    <Collapsible open={isOpen} onOpenChange={setIsOpen}>
+      <div className="mb-4 flex items-center justify-between">
+        <h2 className="font-semibold text-lg">
+          <Trans>Activity</Trans>
+        </h2>
+
+        <CollapsibleTrigger asChild>
+          <Button variant="outline" size="sm">
+            {isOpen ? <Trans>Hide</Trans> : <Trans>Show</Trans>}
+          </Button>
+        </CollapsibleTrigger>
+      </div>
+
+      <CollapsibleContent>
+        <DataTable
+          className="bg-background"
+          columns={columns}
+          data={data?.data ?? []}
+          skeleton={{ enable: isLoading, rows: 3 }}
+        />
+      </CollapsibleContent>
+    </Collapsible>
   );
 };

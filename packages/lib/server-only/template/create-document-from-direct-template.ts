@@ -40,13 +40,20 @@ import {
   extractDocumentAuthMethods,
 } from '../../utils/document-auth';
 import { mapSecondaryIdToTemplateId } from '../../utils/envelope';
-import { getRecipientsWithMissingFields } from '../../utils/recipients';
+import { getRecipientsInActiveSigningStep } from '../../utils/recipient-groups';
+import {
+  getRecipientsWithMissingFields,
+  isRecipientBefore,
+  sortRecipientsBySigningPosition,
+} from '../../utils/recipients';
 import { sendDocument } from '../document/send-document';
 import { validateFieldAuth } from '../document/validate-field-auth';
 import { incrementDocumentId } from '../envelope/increment-id';
 import { assertOrganisationRatesAndLimits } from '../rate-limit/assert-organisation-rates-and-limits';
+import { assignOmittedRecipientSigningOrders } from '../recipient/assign-omitted-recipient-signing-orders';
 import { resolveSignatureLevel } from '../signature-level/resolve-signature-level';
 import { getTeamSettings } from '../team/get-team-settings';
+import { assertSenderNotDisabled } from '../user/assert-user-not-disabled';
 import { triggerWebhook } from '../webhooks/trigger/trigger-webhook';
 
 export type CreateDocumentFromDirectTemplateOptions = {
@@ -145,6 +152,8 @@ export const createDocumentFromDirectTemplate = async ({
     throw new AppError(AppErrorCode.INVALID_REQUEST, { message: 'Invalid or missing template' });
   }
 
+  await assertSenderNotDisabled({ userId: directTemplateEnvelope.userId });
+
   if (
     nextSigner &&
     (!directTemplateEnvelope.documentMeta?.allowDictateNextSigner ||
@@ -215,6 +224,16 @@ export const createDocumentFromDirectTemplate = async ({
   const nonDirectTemplateRecipients = directTemplateEnvelope.recipients.filter(
     (recipient) => recipient.id !== directTemplateRecipient.id,
   );
+
+  // Number unordered recipients by template position since the copies get new ids.
+  const signingOrderByTemplateRecipientId = new Map(
+    assignOmittedRecipientSigningOrders({
+      recipients: sortRecipientsBySigningPosition(recipients),
+    }).map((recipient) => [recipient.id, recipient.signingOrder]),
+  );
+
+  const resolveSigningOrder = (templateRecipientId: number) =>
+    signingOrderByTemplateRecipientId.get(templateRecipientId) ?? null;
 
   // Carry the template's level forward, coercing if the instance mode has
   // changed since the template was created. ZSignatureLevelSchema parses the
@@ -419,7 +438,7 @@ export const createDocumentFromDirectTemplate = async ({
                 }),
                 sendStatus: recipient.role === RecipientRole.CC ? SendStatus.SENT : SendStatus.NOT_SENT,
                 signingStatus: recipient.role === RecipientRole.CC ? SigningStatus.SIGNED : SigningStatus.NOT_SIGNED,
-                signingOrder: recipient.signingOrder,
+                signingOrder: resolveSigningOrder(recipient.id),
                 token: nanoid(),
               };
             }),
@@ -491,7 +510,7 @@ export const createDocumentFromDirectTemplate = async ({
         signingStatus: SigningStatus.SIGNED,
         sendStatus: SendStatus.SENT,
         signedAt: initialRequestTime,
-        signingOrder: directTemplateRecipient.signingOrder,
+        signingOrder: resolveSigningOrder(directTemplateRecipient.id),
         fields: {
           createMany: {
             data: directTemplateNonSignatureFields.map(({ templateField, customText }) => {
@@ -692,6 +711,7 @@ export const createDocumentFromDirectTemplate = async ({
         select: {
           id: true,
           signingOrder: true,
+          signingStatus: true,
           name: true,
           email: true,
           role: true,
@@ -710,9 +730,20 @@ export const createDocumentFromDirectTemplate = async ({
         orderBy: [{ signingOrder: { sort: 'asc', nulls: 'last' } }, { id: 'asc' }],
       });
 
-      const nextRecipient = pendingRecipients[0];
+      const nextRecipients = getRecipientsInActiveSigningStep(pendingRecipients);
 
-      if (nextRecipient) {
+      // The direct recipient can share a step with other recipients (a signing
+      // group). Those peers are still pending, so without this check they would
+      // look like the "next" step and be dictated over — dictation may only
+      // affect a strictly later step.
+      const hasCompletedCurrentStep = nextRecipients.every((pendingRecipient) =>
+        isRecipientBefore(createdDirectRecipient, pendingRecipient),
+      );
+
+      // Dictation can only apply when the next step is a single recipient.
+      const nextRecipient = hasCompletedCurrentStep && nextRecipients.length === 1 ? nextRecipients[0] : null;
+
+      if (nextRecipient && documentMeta.allowDictateNextSigner) {
         auditLogsToCreate.push(
           createDocumentAuditLogData({
             type: DOCUMENT_AUDIT_LOG_TYPE.RECIPIENT_UPDATED,
@@ -746,12 +777,8 @@ export const createDocumentFromDirectTemplate = async ({
         await tx.recipient.update({
           where: { id: nextRecipient.id },
           data: {
-            ...(nextSigner && documentMeta?.allowDictateNextSigner
-              ? {
-                  name: nextSigner.name,
-                  email: nextSigner.email,
-                }
-              : {}),
+            name: nextSigner.name,
+            email: nextSigner.email,
           },
         });
       }
