@@ -1,5 +1,6 @@
 import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
 import { reportSenderRateLimit } from '@bchatsign/lib/server-only/rate-limit/rate-limits';
+import { disableReportedSender } from '@bchatsign/lib/server-only/user/disable-reported-sender';
 import { generateDatabaseId } from '@bchatsign/lib/universal/id';
 import { currentMonthlyPeriod } from '@bchatsign/lib/universal/monthly-period';
 import { prisma } from '@bchatsign/prisma';
@@ -91,5 +92,14 @@ export const reportRecipientRoute = procedure
 
     ctx.logger.info({
       msg: `Email reported. Recipient: ${recipient.id}. Envelope: ${recipient.envelopeId}.`,
+    });
+
+    // Fail soft so the recipient still sees their report as accepted.
+    await disableReportedSender({ envelopeId: recipient.envelopeId }).catch((error) => {
+      ctx.logger.error({
+        msg: 'Failed to disable reported sender',
+        envelopeId: recipient.envelopeId,
+        error,
+      });
     });
   });
