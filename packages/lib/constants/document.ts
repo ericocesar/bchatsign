@@ -19,6 +19,7 @@ const DocumentStatus = {
   REJECTED: 'REJECTED',
   DRAFT: 'DRAFT',
   PENDING: 'PENDING',
+  CANCELLED: 'CANCELLED',
 } as const satisfies Record<PrismaDocumentStatus, PrismaDocumentStatus>;
 
 export { DocumentSignatureType };
@@ -37,6 +38,9 @@ export const DOCUMENT_STATUS: {
   },
   [DocumentStatus.REJECTED]: {
     description: msg`Rejected`,
+  },
+  [DocumentStatus.CANCELLED]: {
+    description: msg`Cancelled`,
   },
   [DocumentStatus.DRAFT]: {
     description: msg`Draft`,

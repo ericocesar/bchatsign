@@ -10,6 +10,7 @@ import {
 } from '@bchatsign/lib/server-only/validation';
 import { getFileServerSide } from '@bchatsign/lib/universal/upload/get-file.server';
 import { prisma } from '@bchatsign/prisma';
+import type { DocumentStatus } from '@bchatsign/prisma/generated/types';
 import { type Context, Hono } from 'hono';
 
 import type { HonoEnv } from '../../router';
@@ -22,7 +23,7 @@ type EnvelopeItemWithDocumentData = PublicValidationEnvelopeItem & {
 
 type SealedEnvelopeRow = {
   id: string;
-  status: 'DRAFT' | 'PENDING' | 'COMPLETED' | 'REJECTED';
+  status: DocumentStatus;
   qrToken: string | null;
   completedAt: Date | null;
   envelopeItems: EnvelopeItemWithDocumentData[];

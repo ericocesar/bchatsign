@@ -6,6 +6,7 @@ import { FIELD_META_TEST_FIELDS } from '@bchatsign/app-tests/constants/field-met
 import { OVERFLOW_TEST_FIELDS } from '@bchatsign/app-tests/constants/field-overflow-pdf';
 import { isBase64Image } from '@bchatsign/lib/constants/signatures';
 import { incrementDocumentId, incrementTemplateId } from '@bchatsign/lib/server-only/envelope/increment-id';
+import { SignatureLevel } from '@bchatsign/lib/types/signature-level';
 import { nanoid, prefixedId } from '@bchatsign/lib/universal/id';
 import { DIRECT_TEMPLATE_RECIPIENT_EMAIL, DIRECT_TEMPLATE_RECIPIENT_NAME } from '../../lib/constants/direct-templates';
 import { prisma } from '..';
@@ -93,6 +94,7 @@ export const seedDatabase = async () => {
         id: prefixedId('envelope'),
         secondaryId: documentId.formattedDocumentId,
         internalVersion: 1,
+        signatureLevel: SignatureLevel.SES,
         type: EnvelopeType.DOCUMENT,
         documentMetaId: documentMeta.id,
         source: DocumentSource.DOCUMENT,
@@ -132,6 +134,7 @@ export const seedDatabase = async () => {
         id: prefixedId('envelope'),
         secondaryId: documentId.formattedDocumentId,
         internalVersion: 1,
+        signatureLevel: SignatureLevel.SES,
         type: EnvelopeType.DOCUMENT,
         source: DocumentSource.DOCUMENT,
         title: `Document ${i}`,
@@ -329,6 +332,7 @@ export const seedAlignmentTestDocument = async ({
       id: prefixedId('envelope'),
       secondaryId,
       internalVersion: 2,
+      signatureLevel: SignatureLevel.SES,
       type,
       documentMetaId: documentMeta.id,
       source: DocumentSource.DOCUMENT,
@@ -491,6 +495,7 @@ export const seedOverflowTestDocument = async ({
       id: prefixedId('envelope'),
       secondaryId,
       internalVersion: 2,
+      signatureLevel: SignatureLevel.SES,
       type: EnvelopeType.DOCUMENT,
       documentMetaId: documentMeta.id,
       source: DocumentSource.DOCUMENT,

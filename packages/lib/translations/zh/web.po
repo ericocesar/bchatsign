@@ -49,6 +49,10 @@ msgstr "“{documentName}”已由所有签署人签署"
 msgid "\"{placeholderEmail}\" on behalf of \"Team Name\" has invited you to sign \"example document\"."
 msgstr "“{placeholderEmail}”代表“Team Name”邀请您签署“example document”。"
 
+#: apps/remix/app/components/dialogs/envelope-cancel-dialog.tsx
+msgid "\"{title}\" has been successfully cancelled"
+msgstr ""
+
 #: apps/remix/app/components/dialogs/envelope-delete-dialog.tsx
 msgid "\"{title}\" has been successfully deleted"
 msgstr "“{title}”已成功删除"
@@ -101,6 +105,17 @@ msgstr "{0, plural, other {# 个剩余字符}}"
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.branding.tsx
 msgid "{0, plural, one {# CSS rule was dropped during sanitisation.} other {# CSS rules were dropped during sanitisation.}}"
 msgstr "{0, plural, other {# 条 CSS 规则在清理过程中被移除。}}"
+
+#. placeholder {0}: result.cancelledCount
+#. placeholder {1}: result.failedIds.length
+#: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
+msgid "{0, plural, one {# document cancelled.} other {# documents cancelled.}} {1, plural, one {# document could not be cancelled.} other {# documents could not be cancelled.}}"
+msgstr ""
+
+#. placeholder {0}: result.cancelledCount
+#: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
+msgid "{0, plural, one {# document has been cancelled.} other {# documents have been cancelled.}}"
+msgstr ""
 
 #. placeholder {0}: folder._count.documents
 #: apps/remix/app/components/general/folder/folder-card.tsx
@@ -240,6 +255,11 @@ msgstr "{0, plural, other {我们在您的文档中找到了 # 个字段。}}"
 #: apps/remix/app/components/dialogs/ai-recipient-detection-dialog.tsx
 msgid "{0, plural, one {We found # recipient in your document.} other {We found # recipients in your document.}}"
 msgstr "{0, plural, other {我们在您的文档中找到了 # 位收件人。}}"
+
+#. placeholder {0}: envelopeIds.length
+#: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
+msgid "{0, plural, one {You are about to cancel the selected document.} other {You are about to cancel # documents.}}"
+msgstr ""
 
 #. placeholder {0}: envelopeIds.length
 #: apps/remix/app/components/dialogs/envelopes-bulk-delete-dialog.tsx
@@ -477,6 +497,18 @@ msgid "{user} approved the document"
 msgstr "{user} 已批准该文档"
 
 #: packages/lib/utils/document-audit-logs.ts
+msgid "{user} authenticated with the signing provider"
+msgstr ""
+
+#: packages/lib/utils/document-audit-logs.ts
+msgid "{user} authorised the remote signature"
+msgstr ""
+
+#: packages/lib/utils/document-audit-logs.ts
+msgid "{user} cancelled the document"
+msgstr ""
+
+#: packages/lib/utils/document-audit-logs.ts
 msgid "{user} CC'd the document"
 msgstr "{user} 已对该文档添加抄送"
 
@@ -538,6 +570,10 @@ msgstr "{user} 已替换信封条目 {0} 的 PDF"
 #: packages/lib/utils/document-audit-logs.ts
 msgid "{user} requested a 2FA token for the document"
 msgstr "{user} 请求了此文档的双重验证 (2FA) 令牌"
+
+#: packages/lib/utils/document-audit-logs.ts
+msgid "{user} requested a remote signature"
+msgstr ""
 
 #. placeholder {0}: data.recipientEmail
 #: packages/lib/utils/document-audit-logs.ts
@@ -609,6 +645,14 @@ msgstr "{user} 验证了此文档的双重验证 (2FA) 令牌"
 #: packages/lib/utils/document-audit-logs.ts
 msgid "{user} viewed the document"
 msgstr "{user} 查看了此文档"
+
+#: packages/lib/utils/document-audit-logs.ts
+msgid "{user}'s remote signature was applied"
+msgstr ""
+
+#: packages/lib/utils/document-audit-logs.ts
+msgid "{user}'s signing provider authentication failed"
+msgstr ""
 
 #: apps/remix/app/components/tables/internal-audit-log-table.tsx
 msgid "{userAgent}"
@@ -1227,6 +1271,14 @@ msgstr "为文档添加一个外部 ID。可用于在外部系统中标识该文
 msgid "Add an external ID to the template. This can be used to identify in external systems."
 msgstr "为模板添加一个外部 ID。可用于在外部系统中标识。"
 
+#: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
+msgid "Add an optional reason for cancelling these documents"
+msgstr ""
+
+#: apps/remix/app/components/dialogs/envelope-cancel-dialog.tsx
+msgid "Add an optional reason for cancelling this document"
+msgstr ""
+
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-upload-page.tsx
 msgid "Add and configure multiple documents"
 msgstr "添加并配置多个文档"
@@ -1694,6 +1746,10 @@ msgstr "自动保存模板设置时发生错误。"
 msgid "An error occurred while auto-signing the document, some fields may not be signed. Please review and manually sign any remaining fields."
 msgstr "自动签署文档时发生错误，部分字段可能未签署。请检查并手动签署所有剩余字段。"
 
+#: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
+msgid "An error occurred while cancelling the documents."
+msgstr ""
+
 #: apps/remix/app/components/general/document-signing/document-signing-form.tsx
 msgid "An error occurred while completing the document. Please try again."
 msgstr "完成文档时发生错误。请重试。"
@@ -1989,6 +2045,10 @@ msgstr ""
 msgid "App Version"
 msgstr "应用版本"
 
+#: apps/remix/app/components/general/document-signing/csc-recipient-signing-in-progress-page.tsx
+msgid "Applying your signature"
+msgstr ""
+
 #: apps/remix/app/components/general/organisations/organisation-quota-banner.tsx
 msgid "Approaching fair use limit"
 msgstr ""
@@ -2089,6 +2149,7 @@ msgstr "您确定要删除此组织吗？"
 msgid "Are you sure you wish to delete this team?"
 msgstr "确定要删除此团队吗？"
 
+#: apps/remix/app/components/dialogs/envelope-cancel-dialog.tsx
 #: apps/remix/app/components/dialogs/envelope-delete-dialog.tsx
 #: apps/remix/app/components/dialogs/envelope-item-delete-dialog.tsx
 #: apps/remix/app/components/dialogs/organisation-email-delete-dialog.tsx
@@ -2520,6 +2581,7 @@ msgstr "找不到某个人？"
 #: apps/remix/app/components/dialogs/email-transport-delete-dialog.tsx
 #: apps/remix/app/components/dialogs/email-transport-send-test-dialog.tsx
 #: apps/remix/app/components/dialogs/email-transport-update-dialog.tsx
+#: apps/remix/app/components/dialogs/envelope-cancel-dialog.tsx
 #: apps/remix/app/components/dialogs/envelope-delete-dialog.tsx
 #: apps/remix/app/components/dialogs/envelope-distribute-dialog.tsx
 #: apps/remix/app/components/dialogs/envelope-duplicate-dialog.tsx
@@ -2528,6 +2590,7 @@ msgstr "找不到某个人？"
 #: apps/remix/app/components/dialogs/envelope-redistribute-dialog.tsx
 #: apps/remix/app/components/dialogs/envelope-rename-dialog.tsx
 #: apps/remix/app/components/dialogs/envelope-save-as-template-dialog.tsx
+#: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
 #: apps/remix/app/components/dialogs/envelopes-bulk-delete-dialog.tsx
 #: apps/remix/app/components/dialogs/envelopes-bulk-move-dialog.tsx
 #: apps/remix/app/components/dialogs/folder-create-dialog.tsx
@@ -2599,6 +2662,8 @@ msgstr "找不到某个人？"
 #: apps/remix/app/components/general/document/embedded-editor-attachment-popover.tsx
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-settings-dialog.tsx
 #: apps/remix/app/components/general/teams/team-email-usage.tsx
+#: apps/remix/app/components/tables/documents-table-action-dropdown.tsx
+#: apps/remix/app/components/tables/envelopes-table-bulk-action-bar.tsx
 #: apps/remix/app/components/tables/settings-security-passkey-table-actions.tsx
 #: apps/remix/app/components/tables/settings-security-passkey-table-actions.tsx
 #: apps/remix/app/routes/_authenticated+/admin+/email-domains.$id.tsx
@@ -2608,6 +2673,24 @@ msgstr "找不到某个人？"
 #: packages/ui/primitives/signature-pad/signature-pad-dialog.tsx
 msgid "Cancel"
 msgstr "取消"
+
+#: apps/remix/app/components/dialogs/envelope-cancel-dialog.tsx
+msgid "Cancel document"
+msgstr ""
+
+#: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
+msgid "Cancel documents"
+msgstr ""
+
+#: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
+msgid "Cancel Documents"
+msgstr ""
+
+#: apps/remix/app/components/general/document/document-status.tsx
+#: apps/remix/app/components/general/envelope-editor/envelope-editor-header.tsx
+#: packages/lib/constants/document.ts
+msgid "Cancelled"
+msgstr ""
 
 #: apps/remix/app/components/dialogs/passkey-create-dialog.tsx
 msgid "Cancelled by user"
@@ -4176,6 +4259,16 @@ msgstr "文档全部"
 msgid "Document Approved"
 msgstr "文档已批准"
 
+#: apps/remix/app/components/dialogs/envelope-cancel-dialog.tsx
+#: apps/remix/app/components/general/document/document-status.tsx
+msgid "Document cancelled"
+msgstr ""
+
+#: packages/lib/utils/document-audit-logs.ts
+msgctxt "Audit log format"
+msgid "Document cancelled"
+msgstr ""
+
 #: apps/remix/app/routes/_recipient+/sign.$token+/_index.tsx
 #: apps/remix/app/routes/_recipient+/sign.$token+/_index.tsx
 #: packages/lib/server-only/admin/admin-super-delete-document.ts
@@ -4551,6 +4644,10 @@ msgstr "文档"
 msgid "Documents and resources related to this envelope."
 msgstr "与此信封相关的文档和资源。"
 
+#: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
+msgid "Documents cancelled"
+msgstr ""
+
 #: apps/remix/app/components/tables/organisation-insights-table.tsx
 #: apps/remix/app/components/tables/organisation-insights-table.tsx
 msgid "Documents Completed"
@@ -4567,6 +4664,10 @@ msgstr "由模板创建的文档"
 #: apps/remix/app/components/dialogs/envelopes-bulk-delete-dialog.tsx
 msgid "Documents deleted"
 msgstr "文档已删除"
+
+#: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
+msgid "Documents partially cancelled"
+msgstr ""
 
 #: apps/remix/app/components/dialogs/envelopes-bulk-delete-dialog.tsx
 msgid "Documents partially deleted"
@@ -5369,6 +5470,7 @@ msgstr ""
 #: apps/remix/app/components/dialogs/document-move-to-folder-dialog.tsx
 #: apps/remix/app/components/dialogs/document-move-to-folder-dialog.tsx
 #: apps/remix/app/components/dialogs/document-move-to-folder-dialog.tsx
+#: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
 #: apps/remix/app/components/dialogs/envelopes-bulk-delete-dialog.tsx
 #: apps/remix/app/components/dialogs/session-logout-all-dialog.tsx
 #: apps/remix/app/components/dialogs/template-bulk-send-dialog.tsx
@@ -7590,6 +7692,10 @@ msgstr "未找到结果。"
 msgid "No signature field found"
 msgstr "未找到签名字段"
 
+#: apps/remix/app/components/general/document-signing/csc-recipient-blocked-page.tsx
+msgid "No signing credentials available"
+msgstr ""
+
 #: apps/remix/app/routes/_authenticated+/admin+/organisations.$id.tsx
 msgid "No Stripe customer attached"
 msgstr "未关联 Stripe 客户"
@@ -7669,6 +7775,10 @@ msgid "Not supported"
 msgstr "不支持"
 
 #: apps/remix/app/components/tables/documents-table-empty-state.tsx
+msgid "Nothing cancelled"
+msgstr ""
+
+#: apps/remix/app/components/tables/documents-table-empty-state.tsx
 #: apps/remix/app/components/tables/documents-table-empty-state.tsx
 msgid "Nothing to do"
 msgstr "暂无待处理事项"
@@ -7730,7 +7840,9 @@ msgstr "在此页面，您可以创建和管理 API 令牌。更多信息请参�
 msgid "On this page, you can create new Webhooks and manage the existing ones."
 msgstr "在此页面，你可以创建新的 Webhook 并管理现有的 Webhook。"
 
+#: apps/remix/app/components/dialogs/envelope-cancel-dialog.tsx
 #: apps/remix/app/components/dialogs/envelope-delete-dialog.tsx
+#: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
 #: apps/remix/app/components/dialogs/envelopes-bulk-delete-dialog.tsx
 msgid "Once confirmed, the following will occur:"
 msgstr "一旦确认，将会发生以下情况："
@@ -7770,6 +7882,10 @@ msgstr "一次只能上传一个文件"
 #: packages/ui/lib/handle-dropzone-rejection.tsx
 msgid "Only PDF files are allowed"
 msgstr "只允许上传 PDF 文件"
+
+#: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
+msgid "Only pending documents you have permission to manage will be cancelled."
+msgstr ""
 
 #: apps/remix/app/components/general/generic-error-layout.tsx
 #: apps/remix/app/components/general/generic-error-layout.tsx
@@ -8376,6 +8492,10 @@ msgstr "如需撤销此操作，请联系支持。"
 msgid "Please contact the site owner for further assistance."
 msgstr "请联系站点所有者以获取进一步帮助。"
 
+#: apps/remix/app/components/general/document-signing/csc-recipient-signing-in-progress-page.tsx
+msgid "Please don't close this tab. The signing provider is finalising your signature."
+msgstr ""
+
 #: apps/remix/app/components/forms/token.tsx
 msgid "Please enter a meaningful name for your token. This will help you identify it later."
 msgstr "请输入一个有意义的令牌名称，以便日后识别。"
@@ -8757,6 +8877,11 @@ msgstr "就绪"
 msgid "Reason"
 msgstr "原因"
 
+#: apps/remix/app/components/dialogs/envelope-cancel-dialog.tsx
+#: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
+msgid "Reason (optional)"
+msgstr ""
+
 #: packages/email/template-components/template-document-cancel.tsx
 msgid "Reason for cancellation: {cancellationReason}"
 msgstr "取消原因：{cancellationReason}"
@@ -8776,6 +8901,10 @@ msgstr "理由必须少于 500 个字符"
 #: apps/remix/app/components/general/document-signing/document-signing-auth-dialog.tsx
 msgid "Reauthentication is required to sign this field"
 msgstr "签署此字段需要重新验证身份"
+
+#: apps/remix/app/components/general/document-signing/csc-recipient-signing-in-progress-page.tsx
+msgid "Reauthorise and retry"
+msgstr ""
 
 #: packages/ui/components/recipient/recipient-role-select.tsx
 msgid "Receives copy"
@@ -8816,6 +8945,14 @@ msgstr "收件人操作认证"
 #: packages/lib/utils/document-audit-logs.ts
 msgid "Recipient approved the document"
 msgstr "收件人已批准此文档"
+
+#: packages/lib/utils/document-audit-logs.ts
+msgid "Recipient authenticated with the signing provider"
+msgstr ""
+
+#: packages/lib/utils/document-audit-logs.ts
+msgid "Recipient authorised the remote signature"
+msgstr ""
 
 #: packages/lib/utils/document-audit-logs.ts
 msgid "Recipient CC'd the document"
@@ -8859,6 +8996,10 @@ msgstr "收件人移除邮件"
 msgid "Recipient requested a 2FA token for the document"
 msgstr "收件人请求了此文档的双重验证 (2FA) 令牌"
 
+#: packages/lib/utils/document-audit-logs.ts
+msgid "Recipient requested a remote signature"
+msgstr ""
+
 #: apps/remix/app/components/general/admin-global-settings-section.tsx
 msgid "Recipient signed"
 msgstr "收件人已签署"
@@ -8896,6 +9037,14 @@ msgstr "收件人已验证此文档的双重验证 (2FA) 令牌"
 msgid "Recipient viewed the document"
 msgstr "收件人已查看此文档"
 
+#: packages/lib/utils/document-audit-logs.ts
+msgid "Recipient's remote signature was applied"
+msgstr ""
+
+#: packages/lib/utils/document-audit-logs.ts
+msgid "Recipient's signing provider authentication failed"
+msgstr ""
+
 #: apps/remix/app/components/embed/authoring/configure-document-recipients.tsx
 #: apps/remix/app/components/general/document/document-page-view-recipients.tsx
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-recipient-form.tsx
@@ -8918,6 +9067,11 @@ msgstr "将自动添加到新文档中的收件人。"
 #: apps/remix/app/components/dialogs/envelope-distribute-dialog.tsx
 msgid "Recipients will be able to sign the document once sent"
 msgstr "发送后，收件人将能够签署此文档"
+
+#: apps/remix/app/components/dialogs/envelope-cancel-dialog.tsx
+#: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
+msgid "Recipients will be notified that the document was cancelled"
+msgstr ""
 
 #: apps/remix/app/components/dialogs/envelope-delete-dialog.tsx
 msgid "Recipients will still retain their copy of the document"
@@ -10212,9 +10366,17 @@ msgctxt "Recipient role progressive verb"
 msgid "Signing"
 msgstr "签署中"
 
+#: apps/remix/app/components/general/document-signing/csc-recipient-blocked-page.tsx
+msgid "Signing algorithm is not supported"
+msgstr ""
+
 #: apps/remix/app/routes/_internal+/[__htmltopdf]+/certificate.tsx
 msgid "Signing Certificate"
 msgstr "签署证书"
+
+#: apps/remix/app/components/general/document-signing/csc-recipient-blocked-page.tsx
+msgid "Signing certificate is invalid"
+msgstr ""
 
 #: packages/lib/jobs/definitions/emails/send-document-completed-emails.handler.ts
 #: packages/lib/jobs/definitions/emails/send-document-completed-emails.handler.ts
@@ -10224,6 +10386,10 @@ msgstr "签署完成！"
 #: apps/remix/app/routes/_recipient+/sign.$token+/expired.tsx
 msgid "Signing Deadline Expired"
 msgstr "签署截止日期已过期"
+
+#: apps/remix/app/components/general/document-signing/csc-recipient-signing-in-progress-page.tsx
+msgid "Signing failed"
+msgstr ""
 
 #: apps/remix/app/components/embed/embed-document-signing-page-v1.tsx
 msgid "Signing for"
@@ -10304,6 +10470,7 @@ msgstr "跳过"
 msgid "Some signers have not been assigned a signature field. Please assign at least 1 signature field to each signer before proceeding."
 msgstr "部分签署人尚未被分配签名字段。请在继续前为每位签署人至少分配 1 个签名字段。"
 
+#: apps/remix/app/components/dialogs/envelope-cancel-dialog.tsx
 #: apps/remix/app/components/dialogs/envelope-delete-dialog.tsx
 #: apps/remix/app/components/dialogs/envelope-download-dialog.tsx
 #: apps/remix/app/components/dialogs/envelope-duplicate-dialog.tsx
@@ -10351,6 +10518,10 @@ msgstr "部分签署人尚未被分配签名字段。请在继续前为每位签
 msgid "Something went wrong"
 msgstr "出错了"
 
+#: apps/remix/app/components/general/document-signing/csc-recipient-signing-in-progress-page.tsx
+msgid "Something went wrong while applying your signature. Please retry."
+msgstr ""
+
 #. placeholder {0}: data.teamName
 #: apps/remix/app/routes/_unauthenticated+/team.verify.email.$token.tsx
 msgid "Something went wrong while attempting to verify your email address for <0>{0}</0>. Please try again later."
@@ -10371,6 +10542,10 @@ msgstr "加载文档时出现问题。"
 #: apps/remix/app/components/general/document-signing/document-signing-auth-passkey.tsx
 msgid "Something went wrong while loading your passkeys."
 msgstr "加载通行密钥时出错。"
+
+#: apps/remix/app/components/general/document-signing/csc-recipient-blocked-page.tsx
+msgid "Something went wrong while preparing the remote signature. Please try again."
+msgstr ""
 
 #: packages/lib/constants/pdf-viewer-i18n.ts
 msgid "Something went wrong while rendering the document, please try again or contact our support."
@@ -11163,6 +11338,11 @@ msgctxt "Audit log format"
 msgid "The document ownership was delegated to {0} on behalf of {1}"
 msgstr "此文档的所有权已代表 {1} 委派给 {0}"
 
+#: apps/remix/app/components/dialogs/envelope-cancel-dialog.tsx
+#: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
+msgid "The document signing process will be stopped"
+msgstr ""
+
 #: apps/remix/app/utils/toast-error-messages.ts
 msgid "The document was created but could not be sent to recipients."
 msgstr "文档已创建，但无法发送给收件人。"
@@ -11174,6 +11354,10 @@ msgstr "该文档将在你的账号中被隐藏"
 #: apps/remix/app/components/dialogs/template-use-dialog.tsx
 msgid "The document will be immediately sent to recipients if this is checked."
 msgstr "如果勾选，将立即把文档发送给收件人。"
+
+#: apps/remix/app/components/dialogs/envelope-cancel-dialog.tsx
+msgid "The document will remain in your dashboard marked as Cancelled"
+msgstr ""
 
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/documents.$id._layout.tsx
 msgid "The document you are looking for could not be found."
@@ -11187,6 +11371,10 @@ msgstr "您要查找的文档可能已被删除、重命名，或从未存在。
 #: packages/ui/components/document/document-send-email-message-helper.tsx
 msgid "The document's name"
 msgstr "文档名称"
+
+#: apps/remix/app/components/dialogs/envelopes-bulk-cancel-dialog.tsx
+msgid "The documents will remain in your dashboard marked as Cancelled"
+msgstr ""
 
 #: apps/remix/app/components/forms/email-preferences-form.tsx
 msgid "The email address which will show up in the \"Reply To\" field in emails"
@@ -11396,6 +11584,10 @@ msgstr "此文档的签署截止日期已过。若您需要新的签署副本，
 msgid "The signing link has been copied to your clipboard."
 msgstr "签署链接已复制到剪贴板。"
 
+#: apps/remix/app/components/general/document-signing/csc-recipient-signing-in-progress-page.tsx
+msgid "The signing provider did not respond in time. Please retry."
+msgstr ""
+
 #: packages/email/templates/recipient-expired.tsx
 msgid "The signing window for \"{recipientName}\" on document \"{documentName}\" has expired."
 msgstr "收件人 “{recipientName}” 在文档 “{documentName}” 的签署时间窗口已过期。"
@@ -11513,6 +11705,10 @@ msgid "There are no active drafts at the current moment. You can upload a docume
 msgstr "目前没有活动草稿。你可以上传文档开始创建草稿。"
 
 #: apps/remix/app/components/tables/documents-table-empty-state.tsx
+msgid "There are no cancelled documents. Documents you cancel will remain here as a record that they were distributed."
+msgstr ""
+
+#: apps/remix/app/components/tables/documents-table-empty-state.tsx
 msgid "There are no completed documents yet. Documents that you have created or received will appear here once completed."
 msgstr "目前还没有已完成的文档。你创建或接收到的文档在完成后会显示在这里。"
 
@@ -11581,6 +11777,10 @@ msgstr "此文档无法恢复。若您希望对未来文档的删除原因提出
 msgid "This document cannot be changed"
 msgstr "此文档无法更改"
 
+#: apps/remix/app/components/dialogs/envelope-cancel-dialog.tsx
+msgid "This document could not be cancelled at this time. Please try again."
+msgstr ""
+
 #: apps/remix/app/components/dialogs/envelope-delete-dialog.tsx
 msgid "This document could not be deleted at this time. Please try again."
 msgstr "当前无法删除此文档。请重试。"
@@ -11601,6 +11801,10 @@ msgstr "当前无法将此文档保存为模板。请重试。"
 #: packages/ui/primitives/recipient-selector.tsx
 msgid "This document has already been sent to this recipient. You can no longer edit this recipient."
 msgstr "此文档已发送给该收件人，您不再能编辑该收件人。"
+
+#: apps/remix/app/routes/_authenticated+/t.$teamUrl+/documents.$id._index.tsx
+msgid "This document has been cancelled"
+msgstr ""
 
 #: apps/remix/app/routes/_recipient+/sign.$token+/complete.tsx
 msgid "This document has been cancelled by the owner and is no longer available for others to sign."
@@ -12121,6 +12325,7 @@ msgstr "触发条件"
 #: apps/remix/app/components/dialogs/ai-field-detection-dialog.tsx
 #: apps/remix/app/components/dialogs/ai-recipient-detection-dialog.tsx
 #: apps/remix/app/components/dialogs/ai-recipient-detection-dialog.tsx
+#: apps/remix/app/components/general/document-signing/csc-recipient-blocked-page.tsx
 msgid "Try again"
 msgstr "重试"
 
@@ -12277,6 +12482,10 @@ msgstr "无法设置双重验证"
 msgid "Unable to sign in"
 msgstr "无法登录"
 
+#: apps/remix/app/components/general/document-signing/csc-recipient-blocked-page.tsx
+msgid "Unable to start the signing flow"
+msgstr ""
+
 #: apps/remix/app/components/general/document-signing/document-signing-auth-2fa.tsx
 #: apps/remix/app/components/general/document-signing/document-signing-auth-passkey.tsx
 #: apps/remix/app/components/general/document-signing/document-signing-auth-password.tsx
@@ -12370,6 +12579,7 @@ msgstr "未命名组"
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl.settings.email-domains.$id.tsx
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl.settings.groups.$id.tsx
 #: apps/remix/app/routes/_authenticated+/o.$orgUrl.settings.sso.tsx
+#: packages/ui/primitives/document-flow/add-subject.tsx
 #: packages/ui/primitives/document-flow/add-subject.tsx
 #: packages/ui/primitives/document-flow/add-subject.tsx
 msgid "Update"
@@ -12865,6 +13075,7 @@ msgstr "查看文档"
 #: packages/email/template-components/template-document-rejected.tsx
 #: packages/email/template-components/template-document-reminder.tsx
 #: packages/email/template-components/template-recipient-expired.tsx
+#: packages/ui/primitives/document-flow/add-subject.tsx
 #: packages/ui/primitives/document-flow/add-subject.tsx
 #: packages/ui/primitives/document-flow/add-subject.tsx
 #: packages/ui/primitives/document-flow/add-subject.tsx
@@ -13588,6 +13799,10 @@ msgstr "你添加了一个收件人"
 msgid "You approved the document"
 msgstr "你已批准此文档"
 
+#: apps/remix/app/components/dialogs/envelope-cancel-dialog.tsx
+msgid "You are about to cancel <0>\"{title}\"</0>"
+msgstr ""
+
 #: apps/remix/app/components/general/document-signing/document-signing-complete-dialog.tsx
 msgid "You are about to complete approving the following document"
 msgstr "您即将完成以下文档的批准"
@@ -13767,6 +13982,14 @@ msgstr "您无权启用此用户。"
 msgid "You are not authorized to reset two factor authentcation for this user."
 msgstr "您无权为此用户重置双重身份验证。"
 
+#: packages/lib/utils/document-audit-logs.ts
+msgid "You authenticated with the signing provider"
+msgstr ""
+
+#: packages/lib/utils/document-audit-logs.ts
+msgid "You authorised the remote signature"
+msgstr ""
+
 #: apps/remix/app/components/dialogs/ai-field-detection-dialog.tsx
 msgid "You can add fields manually in the editor."
 msgstr "您可以在编辑器中手动添加字段。"
@@ -13827,6 +14050,10 @@ msgstr "您可以在控制台的“由模板创建的文档”部分查看创建
 #: packages/email/template-components/template-document-rejected.tsx
 msgid "You can view the document and its status by clicking the button below."
 msgstr "您可以点击下方按钮查看文档及其状态。"
+
+#: packages/lib/utils/document-audit-logs.ts
+msgid "You cancelled the document"
+msgstr ""
 
 #: apps/remix/app/components/general/envelope-editor/envelope-editor-recipient-form.tsx
 #: packages/ui/primitives/document-flow/add-signers.tsx
@@ -14237,6 +14464,10 @@ msgstr "您已替换信封项目 {0} 的 PDF"
 msgid "You requested a 2FA token for the document"
 msgstr "你请求了此文档的双重验证 (2FA) 令牌"
 
+#: packages/lib/utils/document-audit-logs.ts
+msgid "You requested a remote signature"
+msgstr ""
+
 #. placeholder {0}: data.recipientEmail
 #: packages/lib/utils/document-audit-logs.ts
 msgid "You resent an email to {0}"
@@ -14630,6 +14861,30 @@ msgstr "你的恢复代码已复制到剪贴板。"
 #: apps/remix/app/components/forms/2fa/view-recovery-codes-dialog.tsx
 msgid "Your recovery codes are listed below. Please store them in a safe place."
 msgstr "你的恢复代码列在下方。请妥善保存。"
+
+#: packages/lib/utils/document-audit-logs.ts
+msgid "Your remote signature was applied"
+msgstr ""
+
+#: apps/remix/app/components/general/document-signing/csc-recipient-signing-in-progress-page.tsx
+msgid "Your signing authorisation expired before the signature could be applied. Please reauthorise to retry."
+msgstr ""
+
+#: apps/remix/app/components/general/document-signing/csc-recipient-blocked-page.tsx
+msgid "Your signing certificate is invalid, expired, or missing a required key. Contact your administrator or signing provider for assistance."
+msgstr ""
+
+#: packages/lib/utils/document-audit-logs.ts
+msgid "Your signing provider authentication failed"
+msgstr ""
+
+#: apps/remix/app/components/general/document-signing/csc-recipient-blocked-page.tsx
+msgid "Your signing provider does not advertise a signing algorithm this document accepts. Contact your administrator or signing provider for assistance."
+msgstr ""
+
+#: apps/remix/app/components/general/document-signing/csc-recipient-blocked-page.tsx
+msgid "Your signing provider returned no usable credentials for this account. Contact your administrator or signing provider for assistance."
+msgstr ""
 
 #: apps/remix/app/components/embed/embed-recipient-expired.tsx
 msgid "Your signing window for this document has expired. Please contact the sender for a new invitation."
