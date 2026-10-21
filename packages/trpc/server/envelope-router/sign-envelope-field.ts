@@ -4,6 +4,7 @@ import { validateFieldAuth } from '@bchatsign/lib/server-only/document/validate-
 import { DOCUMENT_AUDIT_LOG_TYPE } from '@bchatsign/lib/types/document-audit-logs';
 import { createDocumentAuditLogData } from '@bchatsign/lib/utils/document-audit-logs';
 import { extractFieldInsertionValues } from '@bchatsign/lib/utils/envelope-signing';
+import { assertRecipientNotExpired } from '@bchatsign/lib/utils/recipients';
 import { prisma } from '@bchatsign/prisma';
 import { DocumentStatus, FieldType, RecipientRole, SigningStatus } from '@prisma/client';
 import { match } from 'ts-pattern';
@@ -107,6 +108,12 @@ export const signEnvelopeFieldRoute = procedure
         message: `Document ${envelope.id} must be pending for signing`,
       });
     }
+
+    // Both are checked because an assistant may insert values into a field belonging to
+    // another recipient, and neither signing window may have closed. For every other
+    // role these reference the same recipient.
+    assertRecipientNotExpired(recipient);
+    assertRecipientNotExpired(field.recipient);
 
     if (recipient.signingStatus === SigningStatus.SIGNED || field.recipient.signingStatus === SigningStatus.SIGNED) {
       throw new AppError(AppErrorCode.INVALID_REQUEST, {

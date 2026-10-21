@@ -1,5 +1,6 @@
 import { getOptionalSession } from '@bchatsign/auth/server/lib/utils/get-session';
 import { SessionProvider } from '@bchatsign/lib/client-only/providers/session';
+import { getBasePath } from '@bchatsign/lib/constants/app';
 import { APP_I18N_OPTIONS, type SupportedLanguageCodes } from '@bchatsign/lib/constants/i18n';
 import { createPublicEnv } from '@bchatsign/lib/utils/env';
 import { extractLocaleData } from '@bchatsign/lib/utils/i18n';
@@ -35,10 +36,6 @@ export const links: Route.LinksFunction = () => [
     href: 'https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap',
   },
   { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-  { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
-  { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
-  { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
-  { rel: 'manifest', href: '/site.webmanifest' },
 ];
 
 export function meta() {
@@ -84,6 +81,7 @@ export async function loader({ context, request }: Route.LoaderArgs) {
       lang,
       theme: getTheme(),
       disableAnimations,
+      basePath: getBasePath(),
       // Surface the per-request CSP nonce produced by `securityHeadersMiddleware` so all
       // SSR-rendered <script>/<style> elements in this layout (and child
       // routes that need it) can carry the matching nonce attribute.
@@ -111,17 +109,24 @@ export async function loader({ context, request }: Route.LoaderArgs) {
 }
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const { theme } = useLoaderData<typeof loader>() || {};
+  const { theme, basePath } = useLoaderData<typeof loader>() || {};
 
   return (
-    <ThemeProvider specifiedTheme={theme} themeAction="/api/theme">
+    <ThemeProvider specifiedTheme={theme} themeAction={`${basePath ?? ''}/api/theme`}>
       <LayoutContent>{children}</LayoutContent>
     </ThemeProvider>
   );
 }
 
 export function LayoutContent({ children }: { children: React.ReactNode }) {
-  const { publicEnv, session, lang, disableAnimations, nonce: cspNonce } = useLoaderData<typeof loader>() || {};
+  const {
+    publicEnv,
+    session,
+    lang,
+    disableAnimations,
+    nonce: cspNonce,
+    basePath,
+  } = useLoaderData<typeof loader>() || {};
 
   const [theme] = useTheme();
 
@@ -146,6 +151,10 @@ export function LayoutContent({ children }: { children: React.ReactNode }) {
     >
       <head>
         <meta charSet="utf-8" />
+        <link rel="apple-touch-icon" sizes="180x180" href={`${basePath ?? ''}/apple-touch-icon.png`} />
+        <link rel="icon" type="image/png" sizes="32x32" href={`${basePath ?? ''}/favicon-32x32.png`} />
+        <link rel="icon" type="image/png" sizes="16x16" href={`${basePath ?? ''}/favicon-16x16.png`} />
+        <link rel="manifest" href={`${basePath ?? ''}/site.webmanifest`} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="color-scheme" content="light dark" />
         {/* Per-request CSP nonce surfaced for the client entry to read before

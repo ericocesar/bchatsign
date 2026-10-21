@@ -42,8 +42,8 @@ Bchatsign is an open-source document signing platform built as a **monorepo** us
 | Package                    | Description                                              | Port |
 | -------------------------- | -------------------------------------------------------- | ---- |
 | `@bchatsign/remix`         | Main application - React Router (Remix) with Hono server | 3000 |
-| `@bchatsign/documentation` | Documentation site (Next.js + Nextra)                    | 3002 |
 | `@bchatsign/openpage-api`  | Public analytics API                                     | 3003 |
+| `@bchatsign/docs`          | Documentation site                                       | 3004 |
 
 ### Core Packages (`packages/`)
 

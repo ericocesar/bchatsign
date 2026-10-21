@@ -2,6 +2,7 @@
  * !: This is a workaround to fix the memory leak in the skia-canvas library.
  * !: Internals are ported from the original `konva/skia-backend.js` file.
  */
+
 import { Konva } from 'konva/lib/_CoreInternals';
 import { Canvas, DOMMatrix, Image, Path2D } from 'skia-canvas';
 

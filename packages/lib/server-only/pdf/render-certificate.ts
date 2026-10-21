@@ -3,7 +3,7 @@ import { msg } from '@lingui/core/macro';
 import type { Field, RecipientRole, Signature } from '@prisma/client';
 import { SigningStatus } from '@prisma/client';
 import Konva from 'konva';
-import 'konva/skia-backend';
+import '../konva/skia-backend';
 import fs from 'node:fs';
 import type { Canvas } from 'skia-canvas';
 import { Image as SkiaImage } from 'skia-canvas';

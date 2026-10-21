@@ -1,7 +1,6 @@
 import { useCurrentOrganisation } from '@bchatsign/lib/client-only/providers/organisation';
-import { useSession } from '@bchatsign/lib/client-only/providers/session';
-import { IS_BILLING_ENABLED } from '@bchatsign/lib/constants/app';
-import { canExecuteOrganisationAction, isPersonalLayout } from '@bchatsign/lib/utils/organisations';
+import { IS_BCHATSIGN_CLOUD, IS_BILLING_ENABLED } from '@bchatsign/lib/constants/app';
+import { canExecuteOrganisationAction } from '@bchatsign/lib/utils/organisations';
 import type { SanitizeBrandingCssWarning } from '@bchatsign/lib/utils/sanitize-branding-css';
 import { trpc } from '@bchatsign/trpc/react';
 import { Alert, AlertDescription, AlertTitle } from '@bchatsign/ui/primitives/alert';
@@ -18,6 +17,7 @@ import {
   type TBrandingPreferencesFormSchema,
 } from '~/components/forms/branding-preferences-form';
 import { SettingsHeader } from '~/components/general/settings-header';
+import { BrandingUpsell } from '~/components/general/settings-upsell/branding-upsell';
 import { useOptionalCurrentTeam } from '~/providers/team';
 import { appMetaTags } from '~/utils/meta';
 
@@ -26,15 +26,11 @@ export function meta() {
 }
 
 export default function OrganisationSettingsBrandingPage() {
-  const { organisations } = useSession();
-
   const organisation = useCurrentOrganisation();
   const team = useOptionalCurrentTeam();
 
   const { t } = useLingui();
   const { toast } = useToast();
-
-  const isPersonalLayoutMode = isPersonalLayout(organisations);
 
   const [cssWarnings, setCssWarnings] = useState<SanitizeBrandingCssWarning[]>([]);
 
@@ -122,17 +118,22 @@ export default function OrganisationSettingsBrandingPage() {
 
   const settingsHeaderText = t`Branding Preferences`;
 
-  const settingsHeaderSubtitle = isPersonalLayoutMode
-    ? t`Here you can set your general branding preferences.`
-    : team
-      ? t`Here you can set branding preferences for your team.`
-      : t`Here you can set branding preferences for your organisation. Teams will inherit these settings by default.`;
+  const settingsHeaderSubtitle = team
+    ? t`Here you can set branding preferences for your team.`
+    : t`Here you can set branding preferences for your organisation. Teams will inherit these settings by default.`;
+
+  const brandingPreferencesFormEnabled =
+    organisationWithSettings.organisationClaim.flags.allowCustomBranding || !IS_BILLING_ENABLED();
 
   return (
-    <div className="max-w-2xl">
-      <SettingsHeader title={settingsHeaderText} subtitle={settingsHeaderSubtitle} />
+    <div>
+      <SettingsHeader
+        title={settingsHeaderText}
+        subtitle={settingsHeaderSubtitle}
+        hideDivider={!brandingPreferencesFormEnabled}
+      />
 
-      {organisationWithSettings.organisationClaim.flags.allowCustomBranding || !IS_BILLING_ENABLED() ? (
+      {brandingPreferencesFormEnabled ? (
         <section>
           <BrandingPreferencesForm
             context="Organisation"
@@ -167,6 +168,8 @@ export default function OrganisationSettingsBrandingPage() {
             </Alert>
           )}
         </section>
+      ) : IS_BCHATSIGN_CLOUD() ? (
+        <BrandingUpsell />
       ) : (
         <Alert className="mt-8 flex flex-col justify-between p-6 sm:flex-row sm:items-center" variant="neutral">
           <div className="mb-4 sm:mb-0">
@@ -181,7 +184,7 @@ export default function OrganisationSettingsBrandingPage() {
 
           {canExecuteOrganisationAction('MANAGE_BILLING', organisation.currentOrganisationRole) && (
             <Button asChild variant="outline">
-              <Link to={isPersonalLayoutMode ? '/settings/billing' : `/o/${organisation.url}/settings/billing`}>
+              <Link to={`/o/${organisation.url}/settings/billing`}>
                 <Trans>Update Billing</Trans>
               </Link>
             </Button>

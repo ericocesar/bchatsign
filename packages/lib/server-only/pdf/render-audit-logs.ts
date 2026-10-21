@@ -3,7 +3,7 @@ import { msg } from '@lingui/core/macro';
 import type { DocumentMeta, Envelope, RecipientRole } from '@prisma/client';
 import Konva from 'konva';
 import { DateTime } from 'luxon';
-import 'konva/skia-backend';
+import '../konva/skia-backend';
 import fs from 'node:fs';
 import type { Canvas } from 'skia-canvas';
 import { Image as SkiaImage } from 'skia-canvas';

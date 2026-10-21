@@ -19,9 +19,11 @@ import { BrandingLogo } from '~/components/general/branding-logo';
 
 export type HeaderProps = HTMLAttributes<HTMLDivElement> & {
   teamUrl?: string | null;
+  /** Keep the bottom border visible even when the page is not scrolled (used by full-height settings layouts). */
+  fullWidth?: boolean;
 };
 
-export const Header = ({ teamUrl, className, ...props }: HeaderProps) => {
+export const Header = ({ teamUrl, className, fullWidth = false, ...props }: HeaderProps) => {
   const [scrollY, setScrollY] = useState(0);
   const { pathname } = useLocation();
 
@@ -62,7 +64,7 @@ export const Header = ({ teamUrl, className, ...props }: HeaderProps) => {
     <header
       className={cn(
         'app-topbar border-transparent border-b transition-colors duration-200',
-        scrollY > 5 && 'border-border/70 shadow-soft-sm',
+        (scrollY > 5 || fullWidth) && 'border-border/70 shadow-soft-sm',
         className,
       )}
       {...props}

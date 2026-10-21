@@ -17,6 +17,7 @@ import {
 } from '@bchatsign/ui/primitives/dialog';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@bchatsign/ui/primitives/form/form';
 import { Input } from '@bchatsign/ui/primitives/input';
+import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Trans, useLingui } from '@lingui/react/macro';
 import type { Field, Recipient } from '@prisma/client';
@@ -35,6 +36,8 @@ import {
   isBrowserSecureContext,
   resolveGeolocation,
 } from '~/components/general/document-signing/document-signing-geolocation';
+
+import { getSigningCompletionErrorMessage } from '~/utils/toast-error-messages';
 
 import { useRequiredDocumentSigningAuthContext } from './document-signing-auth-provider';
 
@@ -97,7 +100,8 @@ export const DocumentSigningCompleteDialog = ({
   disableNameInput = false,
   geolocationEnabled = true,
 }: DocumentSigningCompleteDialogProps) => {
-  const { t } = useLingui();
+  const { t, i18n } = useLingui();
+  const { toast } = useToast();
 
   const [showDialog, setShowDialog] = useState(false);
 
@@ -255,6 +259,18 @@ export const DocumentSigningCompleteDialog = ({
 
         return;
       }
+
+      // This dialog owns the completion error toast for every signing surface
+      // so the user gets a specific, actionable message. Callers should run
+      // their own side effects (e.g. embeds posting document-error) and
+      // rethrow rather than toasting themselves.
+      const toastMessage = getSigningCompletionErrorMessage(err.code);
+
+      toast({
+        title: i18n._(toastMessage.title),
+        description: i18n._(toastMessage.description),
+        variant: 'destructive',
+      });
     }
   };
 

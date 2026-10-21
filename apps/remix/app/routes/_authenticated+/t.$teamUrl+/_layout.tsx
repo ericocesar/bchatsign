@@ -1,9 +1,11 @@
 import { DEFAULT_MINIMUM_ENVELOPE_ITEM_COUNT, PAID_PLAN_LIMITS } from '@bchatsign/ee/server-only/limits/constants';
 import { LimitsProvider } from '@bchatsign/ee/server-only/limits/provider/client';
+import { useChildRouteFlags } from '@bchatsign/lib/client-only/hooks/use-child-route-flags';
 import { useOptionalCurrentOrganisation } from '@bchatsign/lib/client-only/providers/organisation';
 import { isOrganisationPendingPayment } from '@bchatsign/lib/utils/billing';
 import { SubscriptionStatus } from '@bchatsign/prisma/generated/types';
 import { TrpcProvider } from '@bchatsign/trpc/react';
+import { cn } from '@bchatsign/ui/lib/utils';
 import { Button } from '@bchatsign/ui/primitives/button';
 import { msg } from '@lingui/core/macro';
 import { Trans } from '@lingui/react/macro';
@@ -16,6 +18,8 @@ import { useOptionalCurrentTeam } from '~/providers/team';
 export default function Layout() {
   const team = useOptionalCurrentTeam();
   const organisation = useOptionalCurrentOrganisation();
+
+  const { layoutMode } = useChildRouteFlags();
 
   const limits = useMemo(() => {
     if (!organisation) {
@@ -78,7 +82,7 @@ export default function Layout() {
   // Note: We use a key to force a re-render if the team context changes.
   // This is required otherwise you would see the wrong page content.
   return (
-    <div key={team.url}>
+    <div key={team.url} className={cn({ 'md:flex md:min-h-0 md:flex-1 md:flex-col': layoutMode === 'settings' })}>
       <TrpcProvider headers={trpcHeaders}>
         <LimitsProvider initialValue={limits} teamId={team.id}>
           <Outlet />

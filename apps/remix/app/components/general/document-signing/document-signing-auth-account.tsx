@@ -1,4 +1,5 @@
 import { authClient } from '@bchatsign/auth/client';
+import { formatPath } from '@bchatsign/lib/constants/app';
 import { RecipientRole } from '@bchatsign/prisma/generated/types';
 import { Alert, AlertDescription } from '@bchatsign/ui/primitives/alert';
 import { Button } from '@bchatsign/ui/primitives/button';
@@ -34,7 +35,9 @@ export const DocumentSigningAuthAccount = ({
       const currentPath = `${window.location.pathname}${window.location.search}${window.location.hash}`;
 
       await authClient.signOut({
-        redirectPath: `/signin?returnTo=${encodeURIComponent(currentPath)}#embedded=true&email=${isDirectTemplate ? '' : email}`,
+        redirectPath: formatPath(
+          `/signin?returnTo=${encodeURIComponent(currentPath)}#embedded=true&email=${isDirectTemplate ? '' : email}`,
+        ),
       });
     } catch {
       setIsSigningOut(false);

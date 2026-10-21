@@ -1,5 +1,6 @@
 import { authClient } from '@bchatsign/auth/client';
 import { AuthenticationErrorCode } from '@bchatsign/auth/server/lib/errors/error-codes';
+import { formatPath } from '@bchatsign/lib/constants/app';
 import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
 import { env } from '@bchatsign/lib/utils/env';
 import { zEmail } from '@bchatsign/lib/utils/zod';
@@ -44,7 +45,7 @@ const handleFallbackErrorMessages = (code: string) => {
   return message;
 };
 
-const LOGIN_REDIRECT_PATH = '/';
+const LOGIN_REDIRECT_PATH = formatPath('/');
 
 export const ZSignInFormSchema = z.object({
   email: zEmail().min(1),

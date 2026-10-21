@@ -1,4 +1,5 @@
 import { sendOrganisationAccountLinkConfirmationEmail } from '@bchatsign/ee/server-only/lib/send-organisation-account-link-confirmation-email';
+import { formatPath } from '@bchatsign/lib/constants/app';
 import { isDisposableEmail, isSignupEnabledForProvider } from '@bchatsign/lib/constants/auth';
 import { AppError } from '@bchatsign/lib/errors/app-error';
 import { getEmailBlocklistDomains } from '@bchatsign/lib/server-only/site-settings/get-email-blocklist-domains';
@@ -56,7 +57,7 @@ export const handleOAuthOrganisationCallbackUrl = async (options: HandleOAuthOrg
   if (existingAccount) {
     await onAuthorize({ userId: existingAccount.user.id }, c);
 
-    return c.redirect(`/o/${orgUrl}`, 302);
+    return c.redirect(formatPath(`/o/${orgUrl}`), 302);
   }
 
   let userToLink = await prisma.user.findFirst({

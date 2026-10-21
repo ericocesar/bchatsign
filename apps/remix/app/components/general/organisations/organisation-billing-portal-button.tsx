@@ -1,6 +1,5 @@
 import { useCurrentOrganisation } from '@bchatsign/lib/client-only/providers/organisation';
-import { useSession } from '@bchatsign/lib/client-only/providers/session';
-import { canExecuteOrganisationAction, isPersonalLayout } from '@bchatsign/lib/utils/organisations';
+import { canExecuteOrganisationAction } from '@bchatsign/lib/utils/organisations';
 import { trpc } from '@bchatsign/trpc/react';
 import { Button } from '@bchatsign/ui/primitives/button';
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
@@ -13,8 +12,6 @@ export type OrganisationBillingPortalButtonProps = {
 };
 
 export const OrganisationBillingPortalButton = ({ buttonProps }: OrganisationBillingPortalButtonProps) => {
-  const { organisations } = useSession();
-
   const organisation = useCurrentOrganisation();
 
   const { _ } = useLingui();
@@ -28,11 +25,10 @@ export const OrganisationBillingPortalButton = ({ buttonProps }: OrganisationBil
     try {
       const { redirectUrl } = await manageSubscription({
         organisationId: organisation.id,
-        isPersonalLayoutMode: isPersonalLayout(organisations),
       });
 
       window.open(redirectUrl, '_blank');
-    } catch (err) {
+    } catch (_err) {
       toast({
         title: _(msg`Something went wrong`),
         description: _(

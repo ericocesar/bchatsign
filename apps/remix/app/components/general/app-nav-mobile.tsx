@@ -1,6 +1,5 @@
 import { authClient } from '@bchatsign/auth/client';
 import { useSession } from '@bchatsign/lib/client-only/providers/session';
-import { isPersonalLayout } from '@bchatsign/lib/utils/organisations';
 import { ReadStatus } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import { Sheet, SheetContent } from '@bchatsign/ui/primitives/sheet';
@@ -40,8 +39,8 @@ export const AppNavMobile = ({ isMenuOpen, onMenuOpenChange }: AppNavMobileProps
   const menuNavigationLinks = useMemo(() => {
     let teamUrl = currentTeam?.url || null;
 
-    if (!teamUrl && isPersonalLayout(organisations)) {
-      teamUrl = organisations[0].teams[0]?.url || null;
+    if (!teamUrl && organisations.length === 1 && organisations[0].teams.length === 1) {
+      teamUrl = organisations[0].teams[0].url;
     }
 
     if (!teamUrl) {

@@ -2,7 +2,6 @@ import { IS_BILLING_ENABLED } from '@bchatsign/lib/constants/app';
 import type { Stripe } from '@bchatsign/lib/server-only/stripe';
 import { stripe } from '@bchatsign/lib/server-only/stripe';
 import { env } from '@bchatsign/lib/utils/env';
-
 import { syncStripeCustomerSubscription } from '../sync-stripe-customer-subscription';
 
 type StripeWebhookResponse = {

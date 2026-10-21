@@ -1,5 +1,4 @@
 import { useSession } from '@bchatsign/lib/client-only/providers/session';
-import { isPersonalLayout } from '@bchatsign/lib/utils/organisations';
 import { cn } from '@bchatsign/ui/lib/utils';
 import { Button } from '@bchatsign/ui/primitives/button';
 import { msg } from '@lingui/core/macro';
@@ -37,8 +36,8 @@ export const AppNavDesktop = ({ className, setIsCommandMenuOpen, ...props }: App
   const menuNavigationLinks = useMemo(() => {
     let teamUrl = currentTeam?.url || null;
 
-    if (!teamUrl && isPersonalLayout(organisations)) {
-      teamUrl = organisations[0].teams[0]?.url || null;
+    if (!teamUrl && organisations.length === 1 && organisations[0].teams.length === 1) {
+      teamUrl = organisations[0].teams[0].url;
     }
 
     if (!teamUrl) {

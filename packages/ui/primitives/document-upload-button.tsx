@@ -1,9 +1,7 @@
 import { useCurrentOrganisation } from '@bchatsign/lib/client-only/providers/organisation';
-import { useSession } from '@bchatsign/lib/client-only/providers/session';
 import { APP_DOCUMENT_UPLOAD_SIZE_LIMIT, IS_BILLING_ENABLED } from '@bchatsign/lib/constants/app';
 import { getAllowedUploadMimeTypes } from '@bchatsign/lib/constants/document-conversion';
 import { megabytesToBytes } from '@bchatsign/lib/universal/unit-convertions';
-import { isPersonalLayout } from '@bchatsign/lib/utils/organisations';
 import { EnvelopeType } from '@bchatsign/prisma/generated/types';
 import type { MessageDescriptor } from '@lingui/core';
 import { msg } from '@lingui/core/macro';
@@ -45,11 +43,7 @@ export const DocumentUploadButton = ({
 }: DocumentUploadButtonProps) => {
   const { _ } = useLingui();
 
-  const { organisations } = useSession();
-
   const organisation = useCurrentOrganisation();
-
-  const isPersonalLayoutMode = isPersonalLayout(organisations);
 
   const { getRootProps, getInputProps } = useDropzone({
     accept: getAllowedUploadMimeTypes(),
@@ -76,7 +70,7 @@ export const DocumentUploadButton = ({
         <Tooltip>
           <TooltipTrigger asChild>
             <Button className="bg-warning hover:bg-warning/80" asChild>
-              <Link to={isPersonalLayoutMode ? `/settings/billing` : `/o/${organisation.url}/settings/billing`}>
+              <Link to={`/o/${organisation.url}/settings/billing`}>
                 <Trans>Upgrade</Trans>
               </Link>
             </Button>

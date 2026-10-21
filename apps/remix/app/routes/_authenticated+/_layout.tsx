@@ -1,4 +1,5 @@
 import { getOptionalSession } from '@bchatsign/auth/server/lib/utils/get-session';
+import { useChildRouteFlags } from '@bchatsign/lib/client-only/hooks/use-child-route-flags';
 import { OrganisationProvider } from '@bchatsign/lib/client-only/providers/organisation';
 import { useSession } from '@bchatsign/lib/client-only/providers/session';
 import { getSiteSettings } from '@bchatsign/lib/server-only/site-settings/get-site-settings';
@@ -45,6 +46,8 @@ export default function Layout({ loaderData, params, matches }: Route.ComponentP
   const { banner } = loaderData;
 
   const { user, organisations } = useSession();
+
+  const { layoutMode } = useChildRouteFlags();
 
   const teamUrl = params.teamUrl;
   const orgUrl = params.orgUrl;
@@ -118,10 +121,18 @@ export default function Layout({ loaderData, params, matches }: Route.ComponentP
         {banner && !hideHeader && <AppBanner banner={banner} />}
 
         {!hideHeader ? (
-          <div className="flex min-h-screen w-full flex-col">
-            <Header teamUrl={fallbackTeamUrl} />
+          <div
+            className={cn('flex min-h-screen w-full flex-col', {
+              'md:h-dvh md:overflow-hidden': layoutMode === 'settings',
+            })}
+          >
+            <Header teamUrl={fallbackTeamUrl} fullWidth={layoutMode === 'settings'} />
 
-            <main className={cn('flex-1 pb-10 md:pb-16')}>
+            <main
+              className={cn('flex-1 pb-10 md:pb-16', {
+                'md:flex md:min-h-0 md:flex-1 md:flex-col': layoutMode === 'settings',
+              })}
+            >
               <Outlet />
             </main>
           </div>
