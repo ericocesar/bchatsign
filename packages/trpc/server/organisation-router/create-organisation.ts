@@ -7,9 +7,8 @@ import { getSubscriptionClaim } from '@bchatsign/lib/server-only/subscription/ge
 import { createTeam } from '@bchatsign/lib/server-only/team/create-team';
 import { INTERNAL_CLAIM_ID } from '@bchatsign/lib/types/subscription';
 import { prefixedId } from '@bchatsign/lib/universal/id';
-import { generateStripeOrganisationCreateMetadata } from '@bchatsign/lib/utils/billing';
 import { prisma } from '@bchatsign/prisma';
-import { OrganisationType } from '@prisma/client';
+import { OrganisationType, SubscriptionStatus } from '@prisma/client';
 import { authenticatedProcedure } from '../trpc';
 import { ZCreateOrganisationRequestSchema, ZCreateOrganisationResponseSchema } from './create-organisation.types';
 
@@ -45,18 +44,67 @@ export const createOrganisationRoute = authenticatedProcedure
       }
     }
 
-    // Create checkout session for payment.
+    // Create the organisation upfront, then redirect to checkout for payment.
+    // The webhook sync will attach the real subscription and claim after payment.
     if (IS_BILLING_ENABLED() && priceId) {
-      const customer = await createCustomer({
-        email: user.email,
-        name: user.name || user.email,
+      const pendingOrganisation = await prisma.organisation.findFirst({
+        where: {
+          ownerUserId: user.id,
+          type: OrganisationType.ORGANISATION,
+          OR: [
+            {
+              subscription: {
+                is: null,
+              },
+            },
+            {
+              subscription: {
+                status: SubscriptionStatus.INACTIVE,
+              },
+            },
+          ],
+        },
       });
+
+      if (pendingOrganisation) {
+        throw new AppError(AppErrorCode.LIMIT_EXCEEDED, {
+          message: 'You have a pending organisation awaiting payment. Complete or remove it before creating a new one.',
+        });
+      }
+
+      const freeSubscriptionClaim = await getSubscriptionClaim(INTERNAL_CLAIM_ID.FREE);
+
+      const organisation = await createOrganisation({
+        userId: user.id,
+        name,
+        type: OrganisationType.ORGANISATION,
+        claim: freeSubscriptionClaim,
+      });
+
+      let customerId = organisation.customerId;
+
+      if (!customerId) {
+        const customer = await createCustomer({
+          email: user.email,
+          name: user.name || user.email,
+        });
+
+        customerId = customer.id;
+
+        await prisma.organisation.update({
+          where: {
+            id: organisation.id,
+          },
+          data: {
+            customerId,
+          },
+        });
+      }
 
       const checkoutUrl = await createCheckoutSession({
         priceId,
-        customerId: customer.id,
-        returnUrl: `${NEXT_PUBLIC_WEBAPP_URL()}/settings/organisations`,
-        subscriptionMetadata: generateStripeOrganisationCreateMetadata(name, user.id),
+        customerId,
+        returnUrl: `${NEXT_PUBLIC_WEBAPP_URL()}/o/${organisation.url}/settings/billing`,
       });
 
       return {

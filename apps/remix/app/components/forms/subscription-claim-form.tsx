@@ -1,5 +1,6 @@
 import type { TLicenseClaim } from '@bchatsign/lib/types/license';
 import { SUBSCRIPTION_CLAIM_FEATURE_FLAGS } from '@bchatsign/lib/types/subscription';
+import { trpc } from '@bchatsign/trpc/react';
 import { ZCreateSubscriptionClaimRequestSchema } from '@bchatsign/trpc/server/admin-router/create-subscription-claim.types';
 import { Alert, AlertDescription } from '@bchatsign/ui/primitives/alert';
 import { Checkbox } from '@bchatsign/ui/primitives/checkbox';
@@ -13,6 +14,7 @@ import {
   FormMessage,
 } from '@bchatsign/ui/primitives/form/form';
 import { Input } from '@bchatsign/ui/primitives/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@bchatsign/ui/primitives/select';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Trans, useLingui } from '@lingui/react/macro';
 import type { SubscriptionClaim } from '@prisma/client';
@@ -59,8 +61,13 @@ export const SubscriptionClaimForm = ({
       emailQuota: subscriptionClaim.emailQuota,
       apiRateLimits: subscriptionClaim.apiRateLimits,
       apiQuota: subscriptionClaim.apiQuota,
+      emailTransportId: subscriptionClaim.emailTransportId ?? null,
     },
   });
+
+  const { data: transportsData } = trpc.admin.emailTransport.find.useQuery({ perPage: 100 });
+  const transports = transportsData?.data ?? [];
+  const NONE_VALUE = '__none__';
 
   return (
     <Form {...form}>
@@ -237,6 +244,40 @@ export const SubscriptionClaimForm = ({
           </div>
 
           <ClaimLimitFields control={form.control} disabled={form.formState.isSubmitting} />
+
+          <FormField
+            control={form.control}
+            name="emailTransportId"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>
+                  <Trans>Email transport</Trans>
+                </FormLabel>
+                <Select
+                  value={field.value ?? NONE_VALUE}
+                  onValueChange={(value) => field.onChange(value === NONE_VALUE ? null : value)}
+                >
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder={t`Default (system mailer)`} />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value={NONE_VALUE}>{t`Default (system mailer)`}</SelectItem>
+                    {transports.map((transport) => (
+                      <SelectItem key={transport.id} value={transport.id}>
+                        {transport.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <FormDescription>
+                  <Trans>Plans without a transport use the system default mailer.</Trans>
+                </FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
           {formSubmitTrigger}
         </fieldset>

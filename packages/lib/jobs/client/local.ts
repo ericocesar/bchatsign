@@ -263,14 +263,6 @@ export class LocalJobProvider extends BaseJobProvider {
         return c.text('Unauthorized', 401);
       }
 
-      if (definition.trigger.schema) {
-        const result = definition.trigger.schema.safeParse(options.payload);
-
-        if (!result.success) {
-          return c.text('Bad request', 400);
-        }
-      }
-
       const result = await this.processJob({
         jobId,
         jobDefinitionId: definition.id,
@@ -321,15 +313,19 @@ export class LocalJobProvider extends BaseJobProvider {
       return { message: 'Job not found', status: 404 };
     }
 
+    let payload = data.payload;
+
     if (definition.trigger.schema) {
-      const result = definition.trigger.schema.safeParse(data.payload);
+      const result = definition.trigger.schema.safeParse(payload);
 
       if (!result.success) {
         return { message: 'Bad request', status: 400 };
       }
+
+      payload = result.data;
     }
 
-    console.log(`[JOBS]: Triggering job ${data.name} with payload`, data.payload);
+    console.log(`[JOBS]: Triggering job ${data.name} with payload`, payload);
 
     let backgroundJob = await prisma.backgroundJob
       .update({
@@ -353,7 +349,7 @@ export class LocalJobProvider extends BaseJobProvider {
 
     try {
       await definition.handler({
-        payload: data.payload,
+        payload,
         io: this.createJobRunIO(jobId),
       });
 

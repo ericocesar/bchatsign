@@ -1,4 +1,5 @@
 import { getRecipientType } from '@bchatsign/lib/client-only/recipient-type';
+import { AppError } from '@bchatsign/lib/errors/app-error';
 import type { TEnvelope } from '@bchatsign/lib/types/envelope';
 import type { TEnvelopeRecipientLite } from '@bchatsign/lib/types/recipient';
 import { recipientAbbreviation } from '@bchatsign/lib/utils/recipient-formatter';
@@ -25,7 +26,7 @@ import { Trans, useLingui } from '@lingui/react/macro';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
-
+import { getDistributeErrorMessage } from '~/utils/toast-error-messages';
 import { StackAvatar } from '../general/stack-avatar';
 
 export type EnvelopeRedistributeDialogProps = {
@@ -47,7 +48,7 @@ export const EnvelopeRedistributeDialog = ({ envelope, trigger }: EnvelopeRedist
   const recipients = envelope.recipients;
 
   const { toast } = useToast();
-  const { t } = useLingui();
+  const { t, i18n } = useLingui();
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -77,9 +78,12 @@ export const EnvelopeRedistributeDialog = ({ envelope, trigger }: EnvelopeRedist
 
       setIsOpen(false);
     } catch (err) {
+      const error = AppError.parseError(err);
+      const errorMessage = getDistributeErrorMessage(error.code);
+
       toast({
-        title: t`Something went wrong`,
-        description: t`This envelope could not be resent at this time. Please try again.`,
+        title: i18n._(errorMessage.title),
+        description: i18n._(errorMessage.description),
         variant: 'destructive',
         duration: 7500,
       });
