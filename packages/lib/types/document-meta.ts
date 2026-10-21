@@ -2,7 +2,7 @@ import { VALID_DATE_FORMAT_VALUES } from '@bchatsign/lib/constants/date-formats'
 import { ZEnvelopeExpirationPeriod } from '@bchatsign/lib/constants/envelope-expiration';
 import { ZEnvelopeReminderSettings } from '@bchatsign/lib/constants/envelope-reminder';
 import { SUPPORTED_LANGUAGE_CODES } from '@bchatsign/lib/constants/i18n';
-import { isValidRedirectUrl } from '@bchatsign/lib/utils/is-valid-redirect-url';
+import { isHttpUrl } from '@bchatsign/lib/utils/is-http-url';
 import { zEmail } from '@bchatsign/lib/utils/zod';
 import { DocumentMetaSchema } from '@bchatsign/prisma/generated/zod/modelSchema/DocumentMetaSchema';
 import { msg } from '@lingui/core/macro';
@@ -71,7 +71,7 @@ export type TDocumentMetaDateFormat = z.infer<typeof ZDocumentMetaDateFormatSche
 export const ZDocumentMetaRedirectUrlSchema = z
   .string()
   .describe('The URL to which the recipient should be redirected after signing the document.')
-  .refine((value) => value === undefined || value === '' || isValidRedirectUrl(value), {
+  .refine((value) => value === undefined || value === '' || isHttpUrl(value), {
     message: 'Please enter a valid URL, make sure you include http:// or https:// part of the url.',
   });
 

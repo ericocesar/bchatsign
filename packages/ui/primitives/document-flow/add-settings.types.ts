@@ -4,7 +4,7 @@ import { SUPPORTED_LANGUAGE_CODES } from '@bchatsign/lib/constants/i18n';
 import { DEFAULT_DOCUMENT_TIME_ZONE } from '@bchatsign/lib/constants/time-zones';
 import { ZDocumentAccessAuthTypesSchema, ZDocumentActionAuthTypesSchema } from '@bchatsign/lib/types/document-auth';
 import { ZDocumentMetaDateFormatSchema, ZDocumentMetaTimezoneSchema } from '@bchatsign/lib/types/document-meta';
-import { isValidRedirectUrl } from '@bchatsign/lib/utils/is-valid-redirect-url';
+import { isHttpUrl } from '@bchatsign/lib/utils/is-http-url';
 import { msg } from '@lingui/core/macro';
 import { DocumentVisibility } from '@prisma/client';
 import { z } from 'zod';
@@ -25,7 +25,7 @@ export const ZAddSettingsFormSchema = z.object({
     redirectUrl: z
       .string()
       .optional()
-      .refine((value) => value === undefined || value === '' || isValidRedirectUrl(value), {
+      .refine((value) => value === undefined || value === '' || isHttpUrl(value), {
         message: 'Please enter a valid URL, make sure you include http:// or https:// part of the url.',
       }),
     language: z

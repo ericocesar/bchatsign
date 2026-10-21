@@ -16,7 +16,7 @@ import {
   ZDocumentMetaTimezoneSchema,
 } from '@bchatsign/lib/types/document-meta';
 import { extractDocumentAuthMethods } from '@bchatsign/lib/utils/document-auth';
-import { isValidRedirectUrl } from '@bchatsign/lib/utils/is-valid-redirect-url';
+import { isHttpUrl } from '@bchatsign/lib/utils/is-http-url';
 import { canAccessTeamDocument, DocumentSignatureType, extractTeamSignatureSettings } from '@bchatsign/lib/utils/teams';
 import { zEmail } from '@bchatsign/lib/utils/zod';
 import { trpc } from '@bchatsign/trpc/react';
@@ -97,7 +97,7 @@ export const ZAddSettingsFormSchema = z.object({
     redirectUrl: z
       .string()
       .optional()
-      .refine((value) => value === undefined || value === '' || isValidRedirectUrl(value), {
+      .refine((value) => value === undefined || value === '' || isHttpUrl(value), {
         message: 'Please enter a valid URL, make sure you include http:// or https:// part of the url.',
       }),
     language: z
