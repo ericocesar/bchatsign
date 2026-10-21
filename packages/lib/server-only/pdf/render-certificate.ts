@@ -12,6 +12,7 @@ import { UAParser } from 'ua-parser-js';
 import { renderSVG } from 'uqr';
 
 import { NEXT_PUBLIC_WEBAPP_URL } from '../../constants/app';
+import { getSignatureFontFamily } from '../../constants/pdf';
 import { RECIPIENT_ROLE_SIGNING_REASONS, RECIPIENT_ROLES_DESCRIPTION } from '../../constants/recipient-roles';
 import type { TDocumentAuditLogBaseSchema } from '../../types/document-audit-logs';
 import { svgToPng } from '../../utils/images/svg-to-png';
@@ -323,7 +324,7 @@ const renderColumnTwo = (options: RenderColumnOptions) => {
         x: 2,
         text: recipient.signatureField?.signature?.typedSignature,
         padding: 4,
-        fontFamily: 'Caveat',
+        fontFamily: getSignatureFontFamily(recipient.signatureField?.signature?.typedSignature),
         fontSize: 16,
         align: 'center',
         verticalAlign: 'middle',

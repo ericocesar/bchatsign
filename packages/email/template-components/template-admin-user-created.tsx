@@ -22,18 +22,18 @@ export const TemplateAdminUserCreated = ({ resetPasswordLink, assetBaseUrl }: Te
           <Trans>An administrator has created a BchatSign account for you.</Trans>
         </Text>
 
-        <Text className="my-1 text-center text-base text-slate-400">
+        <Text className="my-1 text-center text-base text-muted-foreground">
           <Trans>To get started, please set your password by clicking the button below:</Trans>
         </Text>
 
         <Section className="mt-8 mb-6 text-center">
           <Button
-            className="inline-flex items-center justify-center rounded-lg bg-bchatsign-500 px-6 py-3 text-center font-medium text-black text-sm no-underline"
+            className="inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-center font-medium text-primary-foreground text-sm no-underline"
             href={resetPasswordLink}
           >
             <Trans>Set Password</Trans>
           </Button>
-          <Text className="mt-8 text-center text-slate-400 text-sm italic">
+          <Text className="mt-8 text-center text-muted-foreground text-sm italic">
             <Trans>
               You can also copy and paste this link into your browser: {resetPasswordLink} (link expires in 24 hours)
             </Trans>
@@ -41,7 +41,7 @@ export const TemplateAdminUserCreated = ({ resetPasswordLink, assetBaseUrl }: Te
         </Section>
 
         <Section className="mt-8">
-          <Text className="text-center text-slate-400 text-sm">
+          <Text className="text-center text-muted-foreground text-sm">
             <Trans>
               If you didn't expect this account or have any questions, please{' '}
               <Link href="mailto:suporte@bchat.com.br" className="text-bchatsign-500">
