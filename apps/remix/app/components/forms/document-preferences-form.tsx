@@ -11,10 +11,10 @@ import { isValidLanguageCode, SUPPORTED_LANGUAGE_CODES, SUPPORTED_LANGUAGES } fr
 import { TIME_ZONES } from '@bchatsign/lib/constants/time-zones';
 import type { TDefaultRecipients } from '@bchatsign/lib/types/default-recipients';
 import { ZDefaultRecipientsSchema } from '@bchatsign/lib/types/default-recipients';
-import { type TDocumentMetaDateFormat, ZDocumentMetaTimezoneSchema } from '@bchatsign/lib/types/document-meta';
-import { isPersonalLayout } from '@bchatsign/lib/utils/organisations';
+import { type TDocumentMetaDateFormat, ZDocumentMetaDateFormatSchema } from '@bchatsign/lib/types/document-meta';
+import { generateDefaultOrganisationSettings, isPersonalLayout } from '@bchatsign/lib/utils/organisations';
 import { recipientAbbreviation } from '@bchatsign/lib/utils/recipient-formatter';
-import { extractTeamSignatureSettings } from '@bchatsign/lib/utils/teams';
+import { extractTeamSignatureSettings, generateDefaultTeamSettings } from '@bchatsign/lib/utils/teams';
 import { DocumentVisibility, OrganisationType } from '@bchatsign/prisma/generated/types';
 import { DocumentSignatureSettingsTooltip } from '@bchatsign/ui/components/document/document-signature-settings-tooltip';
 import { ExpirationPeriodPicker } from '@bchatsign/ui/components/document/expiration-period-picker';
@@ -42,6 +42,7 @@ import type { RecipientRole, TeamGlobalSettings } from '@prisma/client';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
+import { DocumentPreferencesResetDialog } from '~/components/dialogs/document-preferences-reset-dialog';
 import { useOptionalCurrentTeam } from '~/providers/team';
 
 import { DefaultRecipientsMultiSelectCombobox } from '../general/default-recipients-multiselect-combobox';
@@ -93,6 +94,26 @@ export type DocumentPreferencesFormProps = {
   onFormSubmit: (data: TDocumentPreferencesFormSchema) => Promise<void>;
 };
 
+const getDocumentPreferencesFormValues = (settings: SettingsSubset): TDocumentPreferencesFormSchema => {
+  const parsedDocumentDateFormat = ZDocumentMetaDateFormatSchema.safeParse(settings.documentDateFormat);
+
+  return {
+    documentVisibility: settings.documentVisibility,
+    documentLanguage: isValidLanguageCode(settings.documentLanguage) ? settings.documentLanguage : null,
+    documentTimezone: settings.documentTimezone,
+    documentDateFormat: parsedDocumentDateFormat.success ? parsedDocumentDateFormat.data : null,
+    includeSenderDetails: settings.includeSenderDetails,
+    includeSigningCertificate: settings.includeSigningCertificate,
+    includeAuditLog: settings.includeAuditLog,
+    signatureTypes: extractTeamSignatureSettings({ ...settings }),
+    defaultRecipients: settings.defaultRecipients ? ZDefaultRecipientsSchema.parse(settings.defaultRecipients) : null,
+    delegateDocumentOwnership: settings.delegateDocumentOwnership,
+    aiFeaturesEnabled: settings.aiFeaturesEnabled,
+    envelopeExpirationPeriod: settings.envelopeExpirationPeriod ?? null,
+    reminderSettings: settings.reminderSettings ?? null,
+  };
+};
+
 export const DocumentPreferencesForm = ({
   settings,
   onFormSubmit,
@@ -113,7 +134,7 @@ export const DocumentPreferencesForm = ({
     documentVisibility: z.nativeEnum(DocumentVisibility).nullable(),
     documentLanguage: z.enum(SUPPORTED_LANGUAGE_CODES).nullable(),
     documentTimezone: z.string().nullable(),
-    documentDateFormat: ZDocumentMetaTimezoneSchema.nullable(),
+    documentDateFormat: ZDocumentMetaDateFormatSchema.nullable(),
     includeSenderDetails: z.boolean().nullable(),
     includeSigningCertificate: z.boolean().nullable(),
     includeAuditLog: z.boolean().nullable(),
@@ -127,25 +148,32 @@ export const DocumentPreferencesForm = ({
     reminderSettings: ZEnvelopeReminderSettings.nullable(),
   });
 
+  const defaultValues = getDocumentPreferencesFormValues(settings);
+  const defaultSettings = canInherit ? generateDefaultTeamSettings() : generateDefaultOrganisationSettings();
+  const baseResetValues = getDocumentPreferencesFormValues(defaultSettings);
+  const resetValues = {
+    ...baseResetValues,
+    aiFeaturesEnabled: isAiFeaturesConfigured ? baseResetValues.aiFeaturesEnabled : defaultValues.aiFeaturesEnabled,
+  };
+
   const form = useForm<TDocumentPreferencesFormSchema>({
-    defaultValues: {
-      documentVisibility: settings.documentVisibility,
-      documentLanguage: isValidLanguageCode(settings.documentLanguage) ? settings.documentLanguage : null,
-      documentTimezone: settings.documentTimezone,
-      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-      documentDateFormat: settings.documentDateFormat as TDocumentMetaDateFormat | null,
-      includeSenderDetails: settings.includeSenderDetails,
-      includeSigningCertificate: settings.includeSigningCertificate,
-      includeAuditLog: settings.includeAuditLog,
-      signatureTypes: extractTeamSignatureSettings({ ...settings }),
-      defaultRecipients: settings.defaultRecipients ? ZDefaultRecipientsSchema.parse(settings.defaultRecipients) : null,
-      delegateDocumentOwnership: settings.delegateDocumentOwnership,
-      aiFeaturesEnabled: settings.aiFeaturesEnabled,
-      envelopeExpirationPeriod: settings.envelopeExpirationPeriod ?? null,
-      reminderSettings: settings.reminderSettings ?? null,
-    },
+    defaultValues,
     resolver: zodResolver(ZDocumentPreferencesFormSchema),
   });
+
+  // Parse both sides through the schema so we compare canonical representations
+  const parsedCurrentValues = ZDocumentPreferencesFormSchema.safeParse(defaultValues);
+  const parsedResetValues = ZDocumentPreferencesFormSchema.safeParse(resetValues);
+
+  const isResetToDefaultsVisible =
+    !parsedCurrentValues.success ||
+    !parsedResetValues.success ||
+    JSON.stringify(parsedCurrentValues.data) !== JSON.stringify(parsedResetValues.data);
+
+  const handleResetToDefaults = async () => {
+    await onFormSubmit(resetValues);
+    form.reset(resetValues);
+  };
 
   const handleFormSubmit = form.handleSubmit(async (data) => {
     try {
@@ -772,6 +800,17 @@ export const DocumentPreferencesForm = ({
             isDirty={form.formState.isDirty}
             isSubmitting={form.formState.isSubmitting}
             onReset={() => form.reset()}
+            resetToDefaults={
+              isResetToDefaultsVisible ? (
+                <DocumentPreferencesResetDialog
+                  isSubmitting={form.formState.isSubmitting}
+                  onReset={handleResetToDefaults}
+                  showAiFeatures={isAiFeaturesConfigured}
+                  showDocumentVisibility={!isPersonalLayoutMode}
+                  showIncludeSenderDetails={!isPersonalLayoutMode && !isPersonalOrganisation}
+                />
+              ) : undefined
+            }
           />
         </fieldset>
       </form>

@@ -38,6 +38,15 @@ const readCspNonce = (): void => {
   }
 };
 
+/**
+ * Initialised imperatively (not as a component inside `hydrateRoot`) because
+ * rendering extra client-only siblings changes the React tree structure
+ * relative to the server render in `entry.server.tsx`. That shifts every
+ * `useId` value (used by Radix for `id`/`htmlFor`/`aria-*`), causing hydration
+ * mismatches which can abort hydration entirely when the user interacts with
+ * the page early, leaving dead event handlers (broken dropdowns, native form
+ * submits).
+ */
 function initPosthog() {
   const postHogConfig = extractPostHogConfig();
 

@@ -133,6 +133,10 @@ export function LayoutContent({ children }: { children: React.ReactNode }) {
   const isRecipientRoute = matches.some((m) => m.id?.startsWith('routes/_recipient+'));
 
   return (
+    // `suppressHydrationWarning` because `remix-themes` intentionally mutates
+    // `data-theme`/`class` on <html> before hydration (PreventFlashOnWrongTheme),
+    // so the server-rendered attributes never match the client render when the
+    // theme is resolved from the system preference. Attribute-only, one level deep.
     <html
       translate="no"
       lang={lang ?? APP_I18N_OPTIONS.defaultLocale}
@@ -190,7 +194,11 @@ export function LayoutContent({ children }: { children: React.ReactNode }) {
           nonce={cspNonce}
           suppressHydrationWarning
           dangerouslySetInnerHTML={{
-            __html: `window.__ENV__ = ${JSON.stringify(publicEnv)}`,
+            // `__webpack_nonce__` is read by `get-nonce` (used by
+            // react-remove-scroll / react-style-singleton inside Radix menus and
+            // dialogs) to stamp runtime-injected <style> elements. Without it the
+            // strict `style-src-elem` CSP blocks the scroll-lock styles.
+            __html: `window.__ENV__ = ${JSON.stringify(publicEnv)}; window.__webpack_nonce__ = ${JSON.stringify(cspNonce ?? '')}`,
           }}
         />
 
