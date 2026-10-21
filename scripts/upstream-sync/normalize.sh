@@ -32,9 +32,11 @@ git ls-files -z -- '*package.json' | xargs -0 perl -pi -e \
 
 # 2. Texto: documenso → bchatsign, preservando a caixa.
 #    @documenso/nodemailer-resend fica como está: o fork mantém esse pacote no escopo original.
+#    @documenso/skia-canvas vira skia-canvas, em código e em package.json: o fork publica o
+#    pacote público sem escopo (ver o passo 1). Sem essa regra, imports viram @bchatsign/skia-canvas.
 git grep -Il -z -i documenso -- . "${EXCLUDE[@]}" | xargs -0 perl -pi -e \
-  's{(\@documenso/nodemailer-resend)|documenso|Documenso|DOCUMENSO}{
-     defined $1 ? $1 : $& eq "documenso" ? "bchatsign" : $& eq "Documenso" ? "Bchatsign" : "BCHATSIGN"
+  's{(\@documenso/nodemailer-resend)|(\@documenso/skia-canvas)|documenso|Documenso|DOCUMENSO}{
+     defined $1 ? $1 : defined $2 ? "skia-canvas" : $& eq "documenso" ? "bchatsign" : $& eq "Documenso" ? "Bchatsign" : "BCHATSIGN"
    }ge'
 
 # 3. Caminhos com documenso no nome.
