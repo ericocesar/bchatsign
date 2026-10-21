@@ -1,5 +1,6 @@
 import { Img, Link } from '../components';
 import { useBranding } from '../providers/branding';
+import { getEmailAssetUrl } from '../utils/asset-url';
 import { getSafeBrandingUrl } from '../utils/branding-url';
 
 export type TemplateBrandingLogoProps = {
@@ -20,7 +21,7 @@ export const TemplateBrandingLogo = ({ assetBaseUrl, className = 'mb-4 h-6' }: T
   const hasCustomBrandingLogo = branding.brandingEnabled && Boolean(branding.brandingLogo);
 
   if (!hasCustomBrandingLogo) {
-    const bchatsignLogoUrl = new URL('/static/logo.png', assetBaseUrl).toString();
+    const bchatsignLogoUrl = getEmailAssetUrl(assetBaseUrl, 'static/logo.png');
 
     return <Img src={bchatsignLogoUrl} alt="BchatSign Logo" className={className} />;
   }

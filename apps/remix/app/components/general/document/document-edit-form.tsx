@@ -467,7 +467,6 @@ export const DocumentEditForm = ({ className, initialDocument, documentRootPath 
 
             <AddSignersFormPartial
               key={document.id}
-              cspNonce={cspNonce}
               documentFlow={documentFlow.signers}
               recipients={recipients}
               signingOrder={document.documentMeta?.signingOrder}
@@ -476,6 +475,7 @@ export const DocumentEditForm = ({ className, initialDocument, documentRootPath 
               onSubmit={onAddSignersFormSubmit}
               onAutoSave={onAddSignersFormAutoSave}
               isDocumentPdfLoaded={isDocumentPdfLoaded}
+              nonce={cspNonce}
             />
 
             <AddFieldsFormPartial

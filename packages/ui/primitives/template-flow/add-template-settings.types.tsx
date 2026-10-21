@@ -5,7 +5,7 @@ import { DEFAULT_DOCUMENT_TIME_ZONE } from '@bchatsign/lib/constants/time-zones'
 import { ZDocumentAccessAuthTypesSchema, ZDocumentActionAuthTypesSchema } from '@bchatsign/lib/types/document-auth';
 import { ZDocumentEmailSettingsSchema } from '@bchatsign/lib/types/document-email';
 import { ZDocumentMetaDateFormatSchema, ZDocumentMetaTimezoneSchema } from '@bchatsign/lib/types/document-meta';
-import { isValidRedirectUrl } from '@bchatsign/lib/utils/is-valid-redirect-url';
+import { isHttpUrl } from '@bchatsign/lib/utils/is-http-url';
 import { zEmail } from '@bchatsign/lib/utils/zod';
 import { DocumentDistributionMethod, DocumentVisibility, TemplateType } from '@bchatsign/prisma/generated/types';
 import { msg } from '@lingui/core/macro';
@@ -31,7 +31,7 @@ export const ZAddTemplateSettingsFormSchema = z.object({
     redirectUrl: z
       .string()
       .optional()
-      .refine((value) => value === undefined || value === '' || isValidRedirectUrl(value), {
+      .refine((value) => value === undefined || value === '' || isHttpUrl(value), {
         message: 'Please enter a valid URL, make sure you include http:// or https:// part of the url.',
       }),
     language: z

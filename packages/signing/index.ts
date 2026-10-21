@@ -1,5 +1,6 @@
 import { X509Certificate } from 'node:crypto';
 import {
+  NEXT_PRIVATE_SIGNING_REASON,
   NEXT_PRIVATE_SIGNING_TRANSPORT,
   NEXT_PRIVATE_USE_LEGACY_SIGNING_SUBFILTER,
   NEXT_PUBLIC_SIGNING_CONTACT_INFO,
@@ -113,7 +114,7 @@ export const signPdf = async ({ pdf }: SignOptions): Promise<SignPdfResult> => {
 
   const { bytes, warnings } = await pdf.sign({
     signer,
-    reason: 'Signed by BchatSign',
+    reason: NEXT_PRIVATE_SIGNING_REASON(),
     location: NEXT_PUBLIC_WEBAPP_URL(),
     contactInfo: NEXT_PUBLIC_SIGNING_CONTACT_INFO(),
     subFilter: NEXT_PRIVATE_USE_LEGACY_SIGNING_SUBFILTER() ? 'adbe.pkcs7.detached' : 'ETSI.CAdES.detached',

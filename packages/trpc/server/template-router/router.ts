@@ -36,6 +36,7 @@ import { DocumentDataType, EnvelopeType } from '@prisma/client';
 
 import { ZGenericSuccessResponse, ZSuccessResponseSchema } from '../schema';
 import { authenticatedProcedure, maybeAuthenticatedProcedure, router } from '../trpc';
+import { findTemplatesInternalRoute } from './find-templates-internal';
 import { getTemplatesByIdsRoute } from './get-templates-by-ids';
 import {
   ZBulkSendTemplateMutationSchema,
@@ -146,6 +147,11 @@ export const templateRouter = router({
         data: mappedData,
       };
     }),
+
+  /**
+   * @private
+   */
+  findTemplatesInternal: findTemplatesInternalRoute,
 
   /**
    * @private

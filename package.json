@@ -5,7 +5,7 @@
     "apps/*",
     "packages/*"
   ],
-  "version": "2.18.0",
+  "version": "2.19.0",
   "scripts": {
     "postinstall": "patch-package",
     "build": "turbo run build",
@@ -49,6 +49,21 @@
     "npm": ">=11.17.0",
     "node": ">=24.0.0"
   },
+  "allowScripts": {
+    "skia-canvas": true,
+    "@playwright/browser-chromium": true,
+    "@prisma/client": true,
+    "@prisma/engines": true,
+    "aws-crt": true,
+    "esbuild": true,
+    "fsevents": true,
+    "inngest-cli": true,
+    "prisma": true,
+    "@datadog/pprof": false,
+    "core-js": false,
+    "msgpackr-extract": false,
+    "protobufjs": false
+  },
   "devDependencies": {
     "@biomejs/biome": "2.4.8",
     "@types/react": "^19.2.17",
@@ -70,7 +85,7 @@
     "esbuild": "^0.28.1",
     "husky": "^9.1.7",
     "inngest": "^3.54.0",
-    "inngest-cli": "^1.17.9",
+    "inngest-cli": "^1.44.0",
     "lint-staged": "^16.2.7",
     "nanoid": "^5.1.16",
     "nodemailer": "^10.0.6",
@@ -94,7 +109,7 @@
   "dependencies": {
     "@ai-sdk/google-vertex": "5.0.48",
     "@bchatsign/prisma": "*",
-    "@libpdf/core": "^0.4.2",
+    "@libpdf/core": "^0.5.1",
     "@lingui/conf": "^5.6.0",
     "@lingui/core": "^5.6.0",
     "@marsidev/react-turnstile": "^1.5.0",

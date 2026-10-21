@@ -332,7 +332,6 @@ export const TemplateEditForm = ({ initialTemplate, className, templateRootPath 
 
             <AddTemplatePlaceholderRecipientsFormPartial
               key={template.id}
-              cspNonce={cspNonce}
               documentFlow={documentFlow.signers}
               recipients={recipients}
               fields={fields}
@@ -342,6 +341,7 @@ export const TemplateEditForm = ({ initialTemplate, className, templateRootPath 
               onSubmit={onAddTemplatePlaceholderFormSubmit}
               onAutoSave={onAddTemplatePlaceholderFormAutoSave}
               isDocumentPdfLoaded={isDocumentPdfLoaded}
+              nonce={cspNonce}
             />
 
             <AddTemplateFieldsFormPartial

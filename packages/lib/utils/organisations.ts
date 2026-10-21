@@ -1,12 +1,6 @@
 import type { ORGANISATION_MEMBER_ROLE_MAP } from '@bchatsign/lib/constants/organisations-translations';
-import { DocumentVisibility } from '@bchatsign/prisma/generated/types';
-import type {
-  Organisation,
-  OrganisationGlobalSettings,
-  OrganisationGroup,
-  OrganisationMemberRole,
-  Prisma,
-} from '@prisma/client';
+import { DocumentVisibility, OrganisationMemberRole } from '@bchatsign/prisma/generated/types';
+import type { Organisation, OrganisationGlobalSettings, OrganisationGroup, Prisma } from '@prisma/client';
 
 import { DEFAULT_DOCUMENT_DATE_FORMAT } from '../constants/date-formats';
 import { DEFAULT_ENVELOPE_EXPIRATION_PERIOD } from '../constants/envelope-expiration';
@@ -34,6 +28,18 @@ export const canExecuteOrganisationAction = (
   role: keyof typeof ORGANISATION_MEMBER_ROLE_MAP,
 ) => {
   return ORGANISATION_MEMBER_ROLE_PERMISSIONS_MAP[action].some((i) => i === role);
+};
+
+/**
+ * Organisation analytics are restricted to organisation admins, unlike organisation
+ * settings which managers can also access.
+ */
+export const canAccessOrganisationAnalytics = (role: keyof typeof ORGANISATION_MEMBER_ROLE_MAP) => {
+  return role === OrganisationMemberRole.ADMIN;
+};
+
+export const formatOrganisationAnalyticsPath = (organisationUrl: string) => {
+  return `/o/${organisationUrl}/analytics`;
 };
 
 /**

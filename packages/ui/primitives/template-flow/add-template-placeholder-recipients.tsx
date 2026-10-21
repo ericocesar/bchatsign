@@ -58,7 +58,12 @@ export type AddTemplatePlaceholderRecipientsFormProps = {
   onSubmit: (_data: TAddTemplatePlacholderRecipientsFormSchema) => void;
   onAutoSave: (_data: TAddTemplatePlacholderRecipientsFormSchema) => Promise<AutoSaveResponse>;
   isDocumentPdfLoaded: boolean;
-  cspNonce?: string;
+  /**
+   * CSP nonce forwarded to `@hello-pangea/dnd`, which injects its drag styles
+   * as runtime `<style>` elements that would otherwise be blocked by the
+   * strict `style-src-elem` policy.
+   */
+  nonce?: string;
 };
 
 export const AddTemplatePlaceholderRecipientsFormPartial = ({
@@ -71,7 +76,7 @@ export const AddTemplatePlaceholderRecipientsFormPartial = ({
   isDocumentPdfLoaded,
   onSubmit,
   onAutoSave,
-  cspNonce,
+  nonce,
 }: AddTemplatePlaceholderRecipientsFormProps) => {
   const initialId = useId();
   const $sensorApi = useRef<SensorAPI | null>(null);
@@ -527,7 +532,7 @@ export const AddTemplatePlaceholderRecipientsFormPartial = ({
 
             {/* Drag and drop context */}
             <DragDropContext
-              nonce={cspNonce}
+              nonce={nonce}
               onDragEnd={onDragEnd}
               sensors={[
                 (api: SensorAPI) => {
