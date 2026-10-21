@@ -1,4 +1,5 @@
 import { getSession } from '@bchatsign/auth/server/lib/utils/get-session';
+import { useAnalytics } from '@bchatsign/lib/client-only/hooks/use-analytics';
 import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
 import { getEnvelopeById } from '@bchatsign/lib/server-only/envelope/get-envelope-by-id';
 import { getTeamByUrl } from '@bchatsign/lib/server-only/team/get-team';
@@ -7,6 +8,7 @@ import { Button } from '@bchatsign/ui/primitives/button';
 import { msg } from '@lingui/core/macro';
 import { Trans } from '@lingui/react/macro';
 import { ChevronLeftIcon } from 'lucide-react';
+import { useEffect } from 'react';
 import type { ShouldRevalidateFunctionArgs } from 'react-router';
 import { isRouteErrorResponse, Link, Outlet, redirect } from 'react-router';
 
@@ -66,7 +68,17 @@ export default function DocumentsLayout() {
 }
 
 export function ErrorBoundary({ error, params }: Route.ErrorBoundaryProps) {
+  const analytics = useAnalytics();
+
   const errorCode = isRouteErrorResponse(error) ? error.status : 500;
+
+  useEffect(() => {
+    analytics.captureException(error, {
+      source: 'editor',
+      location: 'editor_layout_boundary',
+      envelopeId: params.id,
+    });
+  }, [error]);
 
   const errorCodeMap = {
     404: {

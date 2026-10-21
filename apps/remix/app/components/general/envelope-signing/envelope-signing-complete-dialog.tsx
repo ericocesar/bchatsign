@@ -120,12 +120,6 @@ export const EnvelopeSignerCompleteDialog = () => {
           title: t`Document already signed`,
           description: t`This document was already signed and no further action was taken.`,
         });
-      } else {
-        analytics.capture('App: Recipient has completed signing', {
-          signerId: recipient.id,
-          documentId: envelope.id,
-          timestamp: new Date().toISOString(),
-        });
       }
 
       if (onDocumentCompleted) {
@@ -150,6 +144,13 @@ export const EnvelopeSignerCompleteDialog = () => {
       const error = AppError.parseError(err);
 
       if (error.code !== AppErrorCode.TWO_FACTOR_AUTH_FAILED) {
+        analytics.captureException(err, {
+          source: 'signing',
+          location: 'complete_document',
+          recipientId: recipient.id,
+          envelopeId: envelope.id,
+        });
+
         onDocumentError?.();
       }
 
@@ -224,6 +225,13 @@ export const EnvelopeSignerCompleteDialog = () => {
       }
     } catch (err) {
       console.log('err', err);
+
+      analytics.captureException(err, {
+        source: 'signing',
+        location: 'complete_document_next_signer',
+        recipientId: recipient.id,
+        envelopeId: envelope.id,
+      });
 
       onDocumentError?.();
 

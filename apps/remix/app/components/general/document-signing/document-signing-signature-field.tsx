@@ -1,3 +1,4 @@
+import { useAnalytics } from '@bchatsign/lib/client-only/hooks/use-analytics';
 import { DO_NOT_INVALIDATE_QUERY_ON_MUTATION } from '@bchatsign/lib/constants/trpc';
 import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
 import type { TRecipientActionAuth } from '@bchatsign/lib/types/document-auth';
@@ -47,6 +48,7 @@ export const DocumentSigningSignatureField = ({
   const { _ } = useLingui();
   const { toast } = useToast();
   const { revalidate } = useRevalidator();
+  const analytics = useAnalytics();
 
   const { recipient } = useDocumentSigningRecipientContext();
 
@@ -157,6 +159,13 @@ export const DocumentSigningSignatureField = ({
 
       console.error(err);
 
+      analytics.captureException(err, {
+        source: 'signing',
+        location: 'sign_field',
+        fieldType: field.type,
+        recipientId: field.recipientId,
+      });
+
       toast({
         title: _(msg`Error`),
         description: _(msg`An error occurred while signing the document.`),
@@ -182,6 +191,13 @@ export const DocumentSigningSignatureField = ({
       await revalidate();
     } catch (err) {
       console.error(err);
+
+      analytics.captureException(err, {
+        source: 'signing',
+        location: 'remove_field',
+        fieldType: field.type,
+        recipientId: field.recipientId,
+      });
 
       toast({
         title: _(msg`Error`),

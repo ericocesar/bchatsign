@@ -1,7 +1,7 @@
 ###########################
 #     BASE CONTAINER      #
 ###########################
-FROM node:22-alpine3.22 AS base
+FROM node:24-alpine3.23 AS base
 
 RUN apk add --no-cache openssl
 RUN apk add --no-cache font-freefont
@@ -19,7 +19,10 @@ WORKDIR /app
 
 COPY . .
 
-RUN npm install -g "turbo@^2.10.0"
+# Install the exact turbo version resolved in the lockfile, without installing
+# the rest of the dependency tree (prune must run before any npm ci).
+RUN TURBO_VERSION="$(jq -r '.packages["node_modules/turbo"].version' package-lock.json)" \
+    && npm install -g "turbo@${TURBO_VERSION}"
 
 # Outputs to the /out folder
 # source: https://turbo.build/repo/docs/reference/command-line-reference/prune#--docker
@@ -39,9 +42,9 @@ RUN apk add --no-cache make cmake g++ openssl bash
 WORKDIR /app
 
 # Disable husky from installing hooks
-ENV HUSKY 0
-ENV DOCKER_OUTPUT 1
-ENV NEXT_TELEMETRY_DISABLED 1
+ENV HUSKY=0
+ENV DOCKER_OUTPUT=1
+ENV NEXT_TELEMETRY_DISABLED=1
 
 # Encryption keys
 ARG NEXT_PRIVATE_ENCRYPTION_KEY="CAFEBABE"
@@ -79,6 +82,7 @@ COPY --from=builder /app/out/json/ .
 COPY --from=builder /app/out/package-lock.json ./package-lock.json
 
 COPY --from=builder /app/lingui.config.ts ./lingui.config.ts
+COPY --from=builder /app/patches ./patches
 
 RUN npm ci
 
@@ -87,20 +91,20 @@ COPY --from=builder /app/out/full/ .
 # Finally copy the turbo.json file so that we can run turbo commands
 COPY turbo.json turbo.json
 
-RUN npm install -g "turbo@^2.10.0"
+ENV NODE_OPTIONS="--max-old-space-size=8192"
 
 # Compile Lingui translation catalogs (.po -> .js)
 RUN ./node_modules/.bin/lingui compile
 
-RUN turbo run build --filter=@bchatsign/remix...
+RUN npx turbo run build --filter=@bchatsign/remix...
 
 ###########################
 #     RUNNER CONTAINER    #
 ###########################
 FROM base AS runner
 
-ENV HUSKY 0
-ENV DOCKER_OUTPUT 1
+ENV HUSKY=0
+ENV DOCKER_OUTPUT=1
 
 # Telemetry credentials (baked into image at build time, can be disabled at runtime)
 # Non-sensitive telemetry identifier, intentionally embedded — not a credential.
@@ -123,8 +127,19 @@ WORKDIR /app
 COPY --from=builder --chown=nodejs:nodejs /app/out/json/ .
 # Copy the tailwind config files across
 COPY --from=builder --chown=nodejs:nodejs /app/out/full/packages/tailwind-config ./packages/tailwind-config
+# Copy the patches across
+COPY --from=builder --chown=nodejs:nodejs /app/patches ./patches
 
-RUN npm ci --only=production
+RUN npm ci --omit=dev --no-audit --no-fund && npm cache clean --force
+
+# Strip build-time residue that ships as production dependencies but is never
+# executed at runtime.
+RUN rm -rf \
+    node_modules/react-email/dist/cli \
+    node_modules/esbuild \
+    node_modules/@esbuild \
+    node_modules/.bin/esbuild \
+    node_modules/.bin/email
 
 # Automatically leverage output traces to reduce image size
 # https://nodejs.org/docs/advanced-features/output-file-tracing
@@ -138,8 +153,9 @@ COPY --from=installer --chown=nodejs:nodejs /app/packages/assets/static/icpbrasi
 COPY --from=installer --chown=nodejs:nodejs /app/packages/prisma/schema.prisma ./packages/prisma/schema.prisma
 COPY --from=installer --chown=nodejs:nodejs /app/packages/prisma/migrations ./packages/prisma/migrations
 
-# Generate the prisma client again
-RUN npx prisma generate --schema ./packages/prisma/schema.prisma
+# Generate the prisma client again, this time only targeting the client generator
+RUN npx prisma generate --schema ./packages/prisma/schema.prisma --generator client \
+    && npm cache clean --force
 
 
 # Get the start script from docker/

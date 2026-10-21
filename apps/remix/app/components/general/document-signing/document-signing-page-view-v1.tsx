@@ -1,4 +1,3 @@
-import { useAnalytics } from '@bchatsign/lib/client-only/hooks/use-analytics';
 import { DEFAULT_DOCUMENT_DATE_FORMAT } from '@bchatsign/lib/constants/date-formats';
 import { PDF_VIEWER_PAGE_SELECTOR } from '@bchatsign/lib/constants/pdf-viewer';
 import { DEFAULT_DOCUMENT_TIME_ZONE } from '@bchatsign/lib/constants/time-zones';
@@ -83,8 +82,6 @@ export const DocumentSigningPageViewV1 = ({
     ? authUser.twoFactorEnabled && authUser.email === recipient.email
     : false;
 
-  const analytics = useAnalytics();
-
   const [selectedSignerId, setSelectedSignerId] = useState<number | null>(allRecipients?.[0]?.id);
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -125,12 +122,6 @@ export const DocumentSigningPageViewV1 = ({
     };
 
     await completeDocumentWithToken(payload);
-
-    analytics.capture('App: Recipient has completed signing', {
-      signerId: recipient.id,
-      documentId: document.id,
-      timestamp: new Date().toISOString(),
-    });
 
     if (documentMeta?.redirectUrl) {
       window.location.href = documentMeta.redirectUrl;

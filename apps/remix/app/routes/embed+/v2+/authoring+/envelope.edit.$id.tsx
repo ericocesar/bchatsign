@@ -1,5 +1,6 @@
 import { EnvelopeEditorProvider } from '@bchatsign/lib/client-only/providers/envelope-editor-provider';
 import type { SupportedLanguageCodes } from '@bchatsign/lib/constants/i18n';
+import { captureServerEvent } from '@bchatsign/lib/server-only/analytics/capture-server-event';
 import { verifyEmbeddingPresignToken } from '@bchatsign/lib/server-only/embedding-presign/verify-embedding-presign-token';
 import { getEditorEnvelopeById } from '@bchatsign/lib/server-only/envelope/get-editor-envelope-by-id';
 import { getTeamSettings } from '@bchatsign/lib/server-only/team/get-team-settings';
@@ -93,6 +94,18 @@ export const loader = async ({ request, params }: Route.LoaderArgs) => {
   if (settings.brandingEnabled && settings.brandingLogo) {
     brandingLogo = settings.brandingLogo;
   }
+
+  captureServerEvent({
+    event: 'App: Embed Session Started',
+    userId: result.userId,
+    organisationId: envelope.team.organisationId,
+    teamId: result.teamId ?? undefined,
+    properties: {
+      type: 'authoring',
+      version: 'v2',
+      envelopeId: envelope.id,
+    },
+  });
 
   return superLoaderJson({
     token,

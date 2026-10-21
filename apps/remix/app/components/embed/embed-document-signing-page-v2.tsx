@@ -1,3 +1,4 @@
+import { useAnalytics } from '@bchatsign/lib/client-only/hooks/use-analytics';
 import { APP_I18N_OPTIONS } from '@bchatsign/lib/constants/i18n';
 import { ZSignDocumentEmbedDataSchema } from '@bchatsign/lib/types/embed-document-sign-schema';
 import { mapSecondaryIdToDocumentId } from '@bchatsign/lib/utils/envelope';
@@ -25,6 +26,7 @@ export const EmbedSignDocumentV2ClientPage = ({
   allowWhitelabelling = false,
 }: EmbedSignDocumentV2ClientPageProps) => {
   const { _ } = useLingui();
+  const analytics = useAnalytics();
 
   const { envelope, recipient, envelopeData, setFullName, setEmail, fullName, email } =
     useRequiredEnvelopeSigningContext();
@@ -170,6 +172,14 @@ export const EmbedSignDocumentV2ClientPage = ({
       }
     } catch (err) {
       console.error(err);
+
+      analytics.captureException(err, {
+        source: 'embed',
+        location: 'embed_init',
+        recipientId: recipient.id,
+        envelopeId: envelope.id,
+      });
+
       setHasFinishedInit(true);
     }
 
