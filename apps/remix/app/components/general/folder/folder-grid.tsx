@@ -1,9 +1,9 @@
 import { formatDocumentsPath, formatTemplatesPath } from '@bchatsign/lib/utils/teams';
-import { FolderType } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import type { TFolderWithSubfolders } from '@bchatsign/trpc/server/folder-router/schema';
 import { Skeleton } from '@bchatsign/ui/primitives/skeleton';
 import { Trans } from '@lingui/react/macro';
+import { FolderType } from '@prisma/client';
 import { FolderIcon, HomeIcon } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router';
@@ -12,8 +12,8 @@ import { FolderCreateDialog } from '~/components/dialogs/folder-create-dialog';
 import { FolderDeleteDialog } from '~/components/dialogs/folder-delete-dialog';
 import { FolderMoveDialog } from '~/components/dialogs/folder-move-dialog';
 import { FolderUpdateDialog } from '~/components/dialogs/folder-update-dialog';
-
 import { FolderCard } from '~/components/general/folder/folder-card';
+import { FolderSortDropdown, useFolderSort } from '~/components/general/folder/folder-sort-dropdown';
 import { useCurrentTeam } from '~/providers/team';
 
 import { EnvelopeUploadButton } from '../envelope/envelope-upload-button';
@@ -32,6 +32,8 @@ export const FolderGrid = ({ type, parentId }: FolderGridProps) => {
   const [folderToDelete, setFolderToDelete] = useState<TFolderWithSubfolders | null>(null);
   const [isSettingsFolderOpen, setIsSettingsFolderOpen] = useState(false);
   const [folderToSettings, setFolderToSettings] = useState<TFolderWithSubfolders | null>(null);
+
+  const { sortFolders } = useFolderSort();
 
   const { data: foldersData, isPending } = trpc.folder.getFolders.useQuery({
     type,
@@ -58,8 +60,9 @@ export const FolderGrid = ({ type, parentId }: FolderGridProps) => {
     return type === FolderType.DOCUMENT ? formatDocumentsPath(team.url) : formatTemplatesPath(team.url);
   };
 
-  const pinnedFolders = foldersData?.folders.filter((folder) => folder.pinned) || [];
-  const unpinnedFolders = foldersData?.folders.filter((folder) => !folder.pinned) || [];
+  const sortedFolders = sortFolders(foldersData?.folders ?? []);
+  const pinnedFolders = sortedFolders.filter((folder) => folder.pinned);
+  const unpinnedFolders = sortedFolders.filter((folder) => !folder.pinned);
 
   return (
     <div>
@@ -95,8 +98,24 @@ export const FolderGrid = ({ type, parentId }: FolderGridProps) => {
         <div className="flex gap-4 sm:flex-row sm:justify-end">
           <EnvelopeUploadButton type={type} folderId={parentId || undefined} />
 
+          {/* If you delete this, delete the component as well. */}
+
           <FolderCreateDialog type={type} />
         </div>
+      </div>
+
+      <div className="mt-10 mb-4 flex items-center justify-between gap-4">
+        <h2 className="flex items-baseline gap-2 font-semibold text-base">
+          <Trans>Folders</Trans>
+
+          {isPending ? (
+            <Skeleton className="h-4 w-2 self-center" />
+          ) : sortedFolders.length > 0 ? (
+            <span className="font-normal text-muted-foreground text-sm">{sortedFolders.length}</span>
+          ) : null}
+        </h2>
+
+        {isPending ? <Skeleton className="h-4 w-16" /> : <FolderSortDropdown />}
       </div>
 
       {isPending ? (

@@ -1,3 +1,4 @@
+import { ZEnvelopeContentSchema } from '@bchatsign/lib/types/envelope-content';
 import { ZEnvelopeFieldSchema } from '@bchatsign/lib/types/field';
 import EnvelopeItemSchema from '@bchatsign/prisma/generated/zod/modelSchema/EnvelopeItemSchema';
 import { z } from 'zod';
@@ -34,6 +35,7 @@ export const ZReplaceEnvelopeItemPdfResponseSchema = z.object({
    * Done this way to reduce number of queries.
    */
   fields: ZEnvelopeFieldSchema.array().optional(),
+  contents: ZEnvelopeContentSchema.array().optional(),
 });
 
 export type TReplaceEnvelopeItemPdfPayload = z.infer<typeof ZReplaceEnvelopeItemPdfPayloadSchema>;

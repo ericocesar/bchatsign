@@ -11,7 +11,7 @@ import { prisma } from '@bchatsign/prisma';
 import { signPdf } from '@bchatsign/signing';
 import { degrees, PDFDocument } from '@cantoo/pdf-lib';
 import { PDF, rgb } from '@libpdf/core';
-import type { DocumentData, Envelope, EnvelopeItem, Field } from '@prisma/client';
+import type { DocumentData, Envelope, EnvelopeContent, EnvelopeItem, Field } from '@prisma/client';
 import {
   DocumentStatus,
   EnvelopeType,
@@ -25,10 +25,10 @@ import {
   WebhookTriggerEvents,
 } from '@prisma/client';
 import { nanoid } from 'nanoid';
-import { groupBy } from 'remeda';
 import { renderSVG } from 'uqr';
 import { NEXT_PUBLIC_WEBAPP_URL } from '../../../constants/app';
 import { AppError, AppErrorCode } from '../../../errors/app-error';
+import { loadContentImages } from '../../../server-only/data-content/load-content-images';
 import type { CertificateOverlayCommand } from '../../../server-only/pdf/certificate-summary-overlay';
 import {
   getCertificateOverlayDrawCommands,
@@ -36,7 +36,7 @@ import {
 } from '../../../server-only/pdf/certificate-summary-overlay';
 import { EVIDENCE_TIME_ZONE } from '../../../server-only/pdf/format-evidence-date-time';
 import { insertFieldInPDFV1 } from '../../../server-only/pdf/insert-field-in-pdf-v1';
-import { insertFieldInPDFV2 } from '../../../server-only/pdf/insert-field-in-pdf-v2';
+import { insertPageOverlays } from '../../../server-only/pdf/insert-page-overlay';
 import { legacy_insertFieldInPDF } from '../../../server-only/pdf/legacy-insert-field-in-pdf';
 import { getTeamSettings } from '../../../server-only/team/get-team-settings';
 import { generateSealedPdfToken, SEALED_PDF_TOKEN_TTL_MS } from '../../../server-only/validation';
@@ -87,6 +87,7 @@ export const run = async ({ payload, io }: { payload: TSealDocumentJobDefinition
                 signature: true,
               },
             },
+            contents: true,
           },
         },
       },
@@ -229,11 +230,18 @@ export const run = async ({ payload, io }: { payload: TSealDocumentJobDefinition
     const newDocumentData: DecoratedDocumentData[] = [];
 
     for (const { envelopeItem, pdfData } of prefetchedItems) {
-      const envelopeItemFields = envelope.envelopeItems.find((item) => item.id === envelopeItem.id)?.field;
+      const originalEnvelopeItem = envelope.envelopeItems.find((item) => item.id === envelopeItem.id);
 
-      if (!envelopeItemFields) {
+      if (!originalEnvelopeItem) {
         throw new Error(`Envelope item fields not found for envelope item ${envelopeItem.id}`);
       }
+
+      const envelopeItemFields = originalEnvelopeItem.field;
+
+      // Contents are inserted into the PDF when the envelope is sent, so the
+      // current bytes already carry them and must not be drawn again. Only a
+      // reseal starts over from the `initialData` and has to reinsert them.
+      const envelopeItemContents = isResealing ? originalEnvelopeItem.contents : [];
 
       let makeCertificatePdf: DecorateAndSignPdfOptions['makeCertificatePdf'] = null;
       let makeAuditLogPdf: DecorateAndSignPdfOptions['makeAuditLogPdf'] = null;
@@ -293,6 +301,7 @@ export const run = async ({ payload, io }: { payload: TSealDocumentJobDefinition
         },
         envelopeItem,
         envelopeItemFields,
+        envelopeItemContents,
         isRejected,
         rejectionReason,
         pdfData,
@@ -441,6 +450,7 @@ type DecorateAndSignPdfOptions = {
   >;
   envelopeItem: EnvelopeItem & { documentData: DocumentData };
   envelopeItemFields: Field[];
+  envelopeItemContents: EnvelopeContent[];
   isRejected: boolean;
   rejectionReason: string;
   pdfData: Uint8Array;
@@ -476,6 +486,7 @@ const decorateAndSignPdf = async ({
   envelope,
   envelopeItem,
   envelopeItemFields,
+  envelopeItemContents,
   isRejected,
   rejectionReason,
   pdfData,
@@ -489,10 +500,8 @@ const decorateAndSignPdf = async ({
   // Upgrade to PDF 1.7 for better compatibility with signing
   pdfDoc.upgradeVersion('1.7');
 
-  // Add rejection stamp if the document is rejected
-  if (isRejected) {
-    await addRejectionStampToPdf(pdfDoc, rejectionReason);
-  }
+  // Taken before the certificate and audit log pages are appended.
+  const documentPageCount = pdfDoc.getPageCount();
 
   // Add per-page certificate overlay if enabled
   if (envelope.certificateAllPages) {
@@ -591,56 +600,19 @@ const decorateAndSignPdf = async ({
 
   // Handle V2 envelope insertions.
   if (envelope.internalVersion === 2) {
-    const fieldsGroupedByPage = groupBy(envelopeItemFields, (field) => field.page);
+    const images = await loadContentImages(envelopeItemContents);
 
-    for (const [pageNumber, fields] of Object.entries(fieldsGroupedByPage)) {
-      const page = pdfDoc.getPage(Number(pageNumber) - 1);
+    await insertPageOverlays({
+      pdfDoc,
+      fields: envelopeItemFields,
+      contents: envelopeItemContents,
+      images,
+    });
+  }
 
-      if (!page) {
-        throw new Error(`Page ${pageNumber} does not exist`);
-      }
-
-      const pageWidth = page.width;
-      const pageHeight = page.height;
-
-      const overlayBytes = await insertFieldInPDFV2({
-        pageWidth,
-        pageHeight,
-        fields,
-      });
-
-      const overlayPdf = await PDF.load(overlayBytes);
-
-      const embeddedPage = await pdfDoc.embedPage(overlayPdf, 0);
-
-      // Rotate the page to the orientation that the react-pdf renders on the frontend.
-      let translateX = 0;
-      let translateY = 0;
-
-      switch (page.rotation) {
-        case 90:
-          translateX = pageHeight;
-          translateY = 0;
-          break;
-        case 180:
-          translateX = pageWidth;
-          translateY = pageHeight;
-          break;
-        case 270:
-          translateX = 0;
-          translateY = pageWidth;
-          break;
-      }
-
-      // Draw the overlay on the page
-      page.drawPage(embeddedPage, {
-        x: translateX,
-        y: translateY,
-        rotate: {
-          angle: page.rotation,
-        },
-      });
-    }
+  // Stamped after the fields and contents so opaque contents cannot hide it.
+  if (isRejected) {
+    await addRejectionStampToPdf(pdfDoc, rejectionReason, { pageCount: documentPageCount });
   }
 
   // Re-flatten the form to handle our checkbox and radio fields that

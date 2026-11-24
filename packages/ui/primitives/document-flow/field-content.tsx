@@ -1,4 +1,4 @@
-import { convertToLocalSystemFormat, DEFAULT_DOCUMENT_DATE_FORMAT } from '@bchatsign/lib/constants/date-formats';
+import { convertToLocalSystemFormat } from '@bchatsign/lib/constants/date-formats';
 import type { TFieldMetaSchema } from '@bchatsign/lib/types/field-meta';
 import { fromCheckboxValue } from '@bchatsign/lib/universal/field-checkbox';
 import { FieldType } from '@bchatsign/prisma/generated/types';
@@ -24,7 +24,7 @@ type FieldIconProps = {
     fieldMeta?: TFieldMetaSchema | null;
     signature?: Signature | null;
   };
-  documentMeta?: Pick<DocumentMeta, 'dateFormat'>;
+  documentMeta?: Pick<DocumentMeta, 'dateFormat' | 'timezone'>;
 };
 
 /**
@@ -151,10 +151,11 @@ export const FieldContent = ({ field, documentMeta }: FieldIconProps) => {
     }
 
     if (field.type === FieldType.DATE) {
-      textToDisplay = convertToLocalSystemFormat(
-        field.customText ?? '',
-        documentMeta?.dateFormat ?? DEFAULT_DOCUMENT_DATE_FORMAT,
-      );
+      textToDisplay = convertToLocalSystemFormat({
+        customText: field.customText ?? '',
+        dateFormat: documentMeta?.dateFormat,
+        timezone: documentMeta?.timezone,
+      });
     }
 
     if (isSignatureField && field.signature?.typedSignature) {

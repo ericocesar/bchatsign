@@ -159,9 +159,22 @@ export class MailChannelsTransport implements Transport<SentMessageInfo> {
     }
 
     if (Array.isArray(address)) {
-      return address.flatMap((entry) => this.toMailChannelsAddresses(entry));
+      return address.flatMap((item) => this.toMailChannelsAddresses(item));
     }
 
-    return address.address ? [{ email: address.address, name: address.name }] : [];
+    if (address.group) {
+      return this.toMailChannelsAddresses(address.group);
+    }
+
+    if (!address.address) {
+      return [];
+    }
+
+    return [
+      {
+        email: address.address,
+        name: address.name,
+      },
+    ];
   }
 }

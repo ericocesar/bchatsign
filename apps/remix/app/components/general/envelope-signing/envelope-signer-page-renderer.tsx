@@ -10,6 +10,7 @@ import { isBase64Image } from '@bchatsign/lib/constants/signatures';
 import type { TRecipientActionAuth } from '@bchatsign/lib/types/document-auth';
 import type { TEnvelope } from '@bchatsign/lib/types/envelope';
 import { ZFullFieldSchema } from '@bchatsign/lib/types/field';
+import { renderStaticContents } from '@bchatsign/lib/universal/content-renderer/render-static-contents';
 import {
   createFieldCanvasStyleCache,
   type FieldCanvasStyleCache,
@@ -17,14 +18,15 @@ import {
 import { createSpinner } from '@bchatsign/lib/universal/field-renderer/field-generic-items';
 import { renderField } from '@bchatsign/lib/universal/field-renderer/render-field';
 import { isFieldUnsignedAndRequired } from '@bchatsign/lib/utils/advanced-fields-helpers';
+import { areContentsImprinted } from '@bchatsign/lib/utils/envelope';
 import { getClientSideFieldTranslations } from '@bchatsign/lib/utils/fields';
-import { extractInitials } from '@bchatsign/lib/utils/recipient-formatter';
-import { FieldType, RecipientRole, SigningStatus } from '@bchatsign/prisma/generated/types';
+import { extractFullInitials } from '@bchatsign/lib/utils/recipient-formatter';
 import type { TSignEnvelopeFieldValue } from '@bchatsign/trpc/server/envelope-router/sign-envelope-field.types';
 import { EnvelopeRecipientFieldTooltip } from '@bchatsign/ui/components/document/envelope-recipient-field-tooltip';
 import { EnvelopeFieldToolTip } from '@bchatsign/ui/components/field/envelope-field-tooltip';
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { Trans, useLingui } from '@lingui/react/macro';
+import { FieldType, RecipientRole, SigningStatus } from '@bchatsign/prisma/generated/types';
 import type { Field, Recipient, Signature } from '@prisma/client';
 import type Konva from 'konva';
 import type { KonvaEventObject } from 'konva/lib/Node';
@@ -50,7 +52,7 @@ type GenericLocalField = TEnvelope['fields'][number] & {
 
 export const EnvelopeSignerPageRenderer = ({ pageData }: { pageData: PageRenderData }) => {
   const { t, i18n } = useLingui();
-  const { currentEnvelopeItem, setRenderError } = useCurrentEnvelopeRender();
+  const { currentEnvelopeItem, contentImages, setRenderError } = useCurrentEnvelopeRender();
   const { sessionData } = useOptionalSession();
 
   const { executeActionAuthProcedure } = useRequiredDocumentSigningAuthContext();
@@ -89,7 +91,7 @@ export const EnvelopeSignerPageRenderer = ({ pageData }: { pageData: PageRenderD
   const cachedRenderFields = useRef<Map<number, Field & { signature?: Signature | null }>>(new Map());
   const prevShowPendingFieldTooltip = useRef(showPendingFieldTooltip);
 
-  const { onFieldSigned, onFieldUnsigned } = useEmbedSigningContext() || {};
+  const { onFieldSigned, onFieldUnsigned, onSignatureChanged } = useEmbedSigningContext() || {};
 
   const { stage, pageLayer, konvaContainer, unscaledViewport } = usePageRenderer(
     ({ stage, pageLayer }) => createPageCanvas(stage, pageLayer),
@@ -316,7 +318,7 @@ export const EnvelopeSignerPageRenderer = ({ pageData }: { pageData: PageRenderD
          * INITIALS FIELD.
          */
         .with({ type: FieldType.INITIALS }, (field) => {
-          const initials = localFullName ? extractInitials(localFullName) : null;
+          const initials = localFullName ? extractFullInitials(localFullName) : null;
 
           void handleInitialsFieldClick({ field, initials })
             .then(async (payload) => {
@@ -406,6 +408,7 @@ export const EnvelopeSignerPageRenderer = ({ pageData }: { pageData: PageRenderD
                 });
 
                 setSignature(payload.value);
+                onSignatureChanged?.(payload.value);
               } else {
                 await signField(field.id, payload);
               }
@@ -417,8 +420,10 @@ export const EnvelopeSignerPageRenderer = ({ pageData }: { pageData: PageRenderD
         .exhaustive();
     };
 
-    fieldGroup.off('pointerdown');
-    fieldGroup.on('pointerdown', handleFieldGroupClick);
+    // Not pointerdown: the dialog would mount and focus its input, then the browser's mousedown
+    // default action would move focus to <body>.
+    fieldGroup.off('pointerclick');
+    fieldGroup.on('pointerclick', handleFieldGroupClick);
   };
 
   const renderFieldOnLayer = (
@@ -536,10 +541,36 @@ export const EnvelopeSignerPageRenderer = ({ pageData }: { pageData: PageRenderD
     }
   };
 
+  // Direct templates are signed without being sent, so their contents are not
+  // imprinted in the PDF yet and must still be rendered.
+  const renderContents = () => {
+    if (!pageLayer.current || areContentsImprinted(envelope.status)) {
+      return;
+    }
+
+    try {
+      renderStaticContents({
+        contents: envelope.contents.filter(
+          (content) => content.contentMeta.page === pageNumber && content.envelopeItemId === currentEnvelopeItem?.id,
+        ),
+        pageLayer: pageLayer.current,
+        pageWidth: unscaledViewport.width,
+        pageHeight: unscaledViewport.height,
+        scale,
+        mode: 'sign',
+        images: contentImages.images,
+      });
+    } catch (err) {
+      console.error(err);
+      setRenderError(true);
+    }
+  };
+
   /**
    * Initialize the Konva page canvas and all fields and interactions.
    */
   const createPageCanvas = (currentStage: Konva.Stage, currentPageLayer: Konva.Layer) => {
+    renderContents();
     renderFields();
     currentPageLayer.batchDraw();
   };
@@ -578,6 +609,7 @@ export const EnvelopeSignerPageRenderer = ({ pageData }: { pageData: PageRenderD
     pageLayer.current.destroyChildren();
     cachedRenderFields.current.clear();
 
+    renderContents();
     renderFields();
 
     pageLayer.current.batchDraw();

@@ -59,7 +59,15 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@bchatsign/ui/primitives/dialog';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@bchatsign/ui/primitives/form/form';
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@bchatsign/ui/primitives/form/form';
 import { Input } from '@bchatsign/ui/primitives/input';
 import { MultiSelectCombobox } from '@bchatsign/ui/primitives/multi-select-combobox';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@bchatsign/ui/primitives/select';
@@ -978,6 +986,10 @@ export const EnvelopeEditorSettingsDialog = ({ trigger, ...props }: EnvelopeEdit
                                   onValueChange={field.onChange}
                                 />
                               </FormControl>
+
+                              <FormDescription>
+                                <Trans>The document owner and assigned recipients will always have access.</Trans>
+                              </FormDescription>
                             </FormItem>
                           )}
                         />

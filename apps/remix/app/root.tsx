@@ -28,10 +28,13 @@ import { nonceMiddleware } from '~/middleware/nonce';
 import type { Route } from './+types/root';
 import stylesheet from './app.css?url';
 import { GenericErrorLayout } from './components/general/generic-error-layout';
+import { UserPreferencesProvider } from './providers/user-preferences';
 import { langCookie } from './storage/lang-cookie.server';
 import { themeSessionResolver } from './storage/theme-session.server';
+import { userPreferencesCookie } from './storage/user-preferences-cookie.server';
 import { appMetaTags } from './utils/meta';
 import { nonce, nonceContext } from './utils/nonce';
+import { parseUserPreferences } from './utils/user-preferences';
 
 export const middleware = [nonceMiddleware];
 
@@ -76,6 +79,8 @@ export async function loader({ context, request }: Route.LoaderArgs) {
 
   const disableAnimations = cookieHeader.includes('__disable_animations=true');
 
+  const userPreferences = parseUserPreferences(await userPreferencesCookie.parse(cookieHeader));
+
   let organisations = null;
 
   if (session.isAuthenticated) {
@@ -87,6 +92,7 @@ export async function loader({ context, request }: Route.LoaderArgs) {
       lang,
       theme: getTheme(),
       disableAnimations,
+      userPreferences,
       basePath: getBasePath(),
       // Surface the per-request CSP nonce produced by `securityHeadersMiddleware` so all
       // SSR-rendered <script>/<style> elements in this layout (and child
@@ -130,6 +136,7 @@ export function LayoutContent({ children }: { children: React.ReactNode }) {
     session,
     lang,
     disableAnimations,
+    userPreferences,
     nonce: cspNonce,
     basePath,
   } = useLoaderData<typeof loader>() || {};
@@ -196,11 +203,13 @@ export function LayoutContent({ children }: { children: React.ReactNode }) {
         <NuqsAdapter>
           <TooltipProvider>
             <SessionProvider initialSession={session}>
-              <TrpcProvider>
-                {children}
+              <UserPreferencesProvider initialPreferences={userPreferences ?? {}}>
+                <TrpcProvider>
+                  {children}
 
-                <Toaster />
-              </TrpcProvider>
+                  <Toaster />
+                </TrpcProvider>
+              </UserPreferencesProvider>
             </SessionProvider>
           </TooltipProvider>
         </NuqsAdapter>

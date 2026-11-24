@@ -32,7 +32,15 @@ import {
 } from '@bchatsign/ui/components/document/document-visibility-select';
 import { TemplateTypeSelect, TemplateTypeTooltip } from '@bchatsign/ui/components/template/template-type-select';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@bchatsign/ui/primitives/accordion';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@bchatsign/ui/primitives/form/form';
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@bchatsign/ui/primitives/form/form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Trans, useLingui } from '@lingui/react/macro';
 import type { Field } from '@prisma/client';
@@ -293,6 +301,10 @@ export const AddTemplateSettingsFormPartial = ({
                         }}
                       />
                     </FormControl>
+
+                    <FormDescription>
+                      <Trans>The document owner and assigned recipients will always have access.</Trans>
+                    </FormDescription>
                   </FormItem>
                 )}
               />
