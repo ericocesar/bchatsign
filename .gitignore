@@ -96,3 +96,6 @@ tmp/
 .context/harness/datasets/
 .context/**/archive/
 
+
+# scratch do subagent-driven-development
+.superpowers/
