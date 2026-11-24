@@ -1,6 +1,7 @@
 import { getOptionalSession } from '@bchatsign/auth/server/lib/utils/get-session';
 import { useOptionalSession } from '@bchatsign/lib/client-only/providers/session';
 import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
+import { findUserByProvidedEmail } from '@bchatsign/lib/server-only/user/find-user-by-provided-email';
 import { prisma } from '@bchatsign/prisma';
 import { trpc } from '@bchatsign/trpc/react';
 import { Button } from '@bchatsign/ui/primitives/button';
@@ -59,17 +60,7 @@ export async function loader({ params, request }: Route.LoaderArgs) {
     } as const;
   }
 
-  const user = await prisma.user.findFirst({
-    where: {
-      email: {
-        equals: organisationMemberInvite.email,
-        mode: 'insensitive',
-      },
-    },
-    select: {
-      id: true,
-    },
-  });
+  const user = await findUserByProvidedEmail({ email: organisationMemberInvite.email });
 
   return {
     state: 'Pending',

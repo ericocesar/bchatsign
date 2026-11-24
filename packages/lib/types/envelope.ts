@@ -4,7 +4,7 @@ import { EnvelopeSchema } from '@bchatsign/prisma/generated/zod/modelSchema/Enve
 import { TeamSchema } from '@bchatsign/prisma/generated/zod/modelSchema/TeamSchema';
 import TemplateDirectLinkSchema from '@bchatsign/prisma/generated/zod/modelSchema/TemplateDirectLinkSchema';
 import { z } from 'zod';
-
+import { ZEnvelopeContentSchema } from './envelope-content';
 import { ZEnvelopeFieldSchema } from './field';
 import { ZEnvelopeRecipientLiteSchema } from './recipient';
 
@@ -58,6 +58,7 @@ export const ZEnvelopeSchema = EnvelopeSchema.pick({
   }),
   recipients: ZEnvelopeRecipientLiteSchema.array(),
   fields: ZEnvelopeFieldSchema.array(),
+  contents: ZEnvelopeContentSchema.array(),
   envelopeItems: EnvelopeItemSchema.pick({
     envelopeId: true,
     documentDataId: true,

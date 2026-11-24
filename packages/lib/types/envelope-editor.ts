@@ -1,4 +1,5 @@
 import { ZBaseEmbedDataSchema } from '@bchatsign/lib/types/embed-base-schemas';
+import { ZEnvelopeContentSchema } from '@bchatsign/lib/types/envelope-content';
 import { ZEnvelopeFieldSchema } from '@bchatsign/lib/types/field';
 import { ZEnvelopeRecipientLiteSchema } from '@bchatsign/lib/types/recipient';
 import { DocumentMetaSchema } from '@bchatsign/prisma/generated/zod/modelSchema/DocumentMetaSchema';
@@ -52,6 +53,7 @@ export const ZEnvelopeEditorSettingsSchema = z.object({
    * Action related configurations.
    */
   actions: z.object({
+    allowContents: z.boolean(),
     allowAttachments: z.boolean(),
     allowDistributing: z.boolean(),
     allowDirectLink: z.boolean(),
@@ -127,6 +129,7 @@ export const DEFAULT_EDITOR_CONFIG: EnvelopeEditorConfig = {
     allowConfigureEmailReplyTo: true,
   },
   actions: {
+    allowContents: true,
     allowAttachments: true,
     allowDistributing: true,
     allowDirectLink: true,
@@ -186,6 +189,7 @@ export const DEFAULT_EMBEDDED_EDITOR_CONFIG = {
     allowConfigureEmailReplyTo: true,
   },
   actions: {
+    allowContents: true,
     allowAttachments: true,
     allowDistributing: false, // These are not supported for embeds, and are directly excluded in the embedded repo.
     allowDirectLink: false, // These are not supported for embeds, and are directly excluded in the embedded repo.
@@ -289,6 +293,10 @@ export const ZEditorEnvelopeSchema = EnvelopeSchema.pick({
   }),
   recipients: ZEnvelopeRecipientLiteSchema.array(),
   fields: ZEnvelopeFieldSchema.array(),
+  contents: ZEnvelopeContentSchema.extend({
+    // Only used for embedded.
+    data: z.instanceof(File).optional(),
+  }).array(),
   envelopeItems: EnvelopeItemSchema.pick({
     envelopeId: true,
     id: true,

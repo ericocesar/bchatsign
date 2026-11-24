@@ -1,4 +1,5 @@
 import { APP_DOCUMENT_UPLOAD_SIZE_LIMIT } from '@bchatsign/lib/constants/app';
+import { formatFileSize } from '@bchatsign/lib/universal/unit-convertions';
 import { buildDropzoneRejectionDescription } from '@bchatsign/ui/lib/handle-dropzone-rejection';
 import { cn } from '@bchatsign/ui/lib/utils';
 import { Button } from '@bchatsign/ui/primitives/button';
@@ -96,16 +97,6 @@ export const ConfigureDocumentUpload = ({ isSubmitting = false }: ConfigureDocum
     }
 
     form.unregister('documentData');
-  };
-
-  const formatFileSize = (bytes: number) => {
-    if (bytes === 0) {
-      return '0 Bytes';
-    }
-
-    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
-    const i = Math.floor(Math.log(bytes) / Math.log(1024));
-    return `${parseFloat((bytes / 1024 ** i).toFixed(2))} ${sizes[i]}`;
   };
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({

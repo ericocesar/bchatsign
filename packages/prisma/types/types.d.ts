@@ -1,9 +1,12 @@
 /* eslint-disable @typescript-eslint/no-namespace */
+
+import type { TDataContentMeta } from '@bchatsign/lib/types/data-content-meta';
 import type { TDefaultRecipient } from '@bchatsign/lib/types/default-recipients';
 import type { TDocumentAuthOptions, TRecipientAuthOptions } from '@bchatsign/lib/types/document-auth';
 import type { TDocumentEmailSettings } from '@bchatsign/lib/types/document-email';
 import type { TDocumentFormValues } from '@bchatsign/lib/types/document-form-values';
 import type { TEnvelopeAttachmentType } from '@bchatsign/lib/types/envelope-attachment';
+import type { TEnvelopeContentMeta } from '@bchatsign/lib/types/envelope-content-meta';
 import type { TFieldMetaNotOptionalSchema } from '@bchatsign/lib/types/field-meta';
 import type { TClaimFlags } from '@bchatsign/lib/types/subscription';
 
@@ -22,6 +25,8 @@ declare global {
     type RecipientAuthOptions = TRecipientAuthOptions;
 
     type FieldMeta = TFieldMetaNotOptionalSchema;
+    type EnvelopeContentMeta = TEnvelopeContentMeta;
+    type DataContentMeta = TDataContentMeta;
 
     type EnvelopeAttachmentType = TEnvelopeAttachmentType;
 

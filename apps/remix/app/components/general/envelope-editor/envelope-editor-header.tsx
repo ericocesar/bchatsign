@@ -1,5 +1,5 @@
 import { useCurrentEnvelopeEditor } from '@bchatsign/lib/client-only/providers/envelope-editor-provider';
-import { getEnvelopeItemPermissions, mapSecondaryIdToTemplateId } from '@bchatsign/lib/utils/envelope';
+import { getEnvelopeItemPermissions } from '@bchatsign/lib/utils/envelope';
 import { Badge } from '@bchatsign/ui/primitives/badge';
 import { Button } from '@bchatsign/ui/primitives/button';
 import { Separator } from '@bchatsign/ui/primitives/separator';
@@ -222,7 +222,6 @@ export default function EnvelopeEditorHeader() {
             .with({ isEmbedded: false, isTemplate: true, allowDistributing: true }, () => (
               <TemplateUseDialog
                 envelopeId={envelope.id}
-                templateId={mapSecondaryIdToTemplateId(envelope.secondaryId)}
                 templateSigningOrder={envelope.documentMeta?.signingOrder}
                 recipients={envelope.recipients}
                 documentRootPath={relativePath.documentRootPath}
