@@ -1,8 +1,8 @@
 import type { TEditorEnvelope } from '@bchatsign/lib/types/envelope-editor';
 import { ZFieldMetaSchema } from '@bchatsign/lib/types/field-meta';
 import { clampPercentageBox } from '@bchatsign/lib/utils/geometry';
-import type { Field } from '@prisma/client';
 import { FieldType } from '@bchatsign/prisma/generated/types';
+import type { Field } from '@prisma/client';
 import { useCallback, useMemo, useState } from 'react';
 import { z } from 'zod';
 import { EDITOR_DUPLICATE_ITEM_OFFSET } from '../../constants/envelope-editor';

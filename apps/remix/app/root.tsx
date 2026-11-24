@@ -33,7 +33,7 @@ import { langCookie } from './storage/lang-cookie.server';
 import { themeSessionResolver } from './storage/theme-session.server';
 import { userPreferencesCookie } from './storage/user-preferences-cookie.server';
 import { appMetaTags } from './utils/meta';
-import { nonce, nonceContext } from './utils/nonce';
+import { nonceContext } from './utils/nonce';
 import { parseUserPreferences } from './utils/user-preferences';
 
 export const middleware = [nonceMiddleware];

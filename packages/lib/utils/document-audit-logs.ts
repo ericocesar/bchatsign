@@ -1,7 +1,7 @@
+import { RecipientRole } from '@bchatsign/prisma/generated/types';
 import type { I18n } from '@lingui/core';
 import { msg } from '@lingui/core/macro';
 import type { DocumentAuditLog, DocumentMeta, Field, Recipient } from '@prisma/client';
-import { RecipientRole } from '@bchatsign/prisma/generated/types';
 import { isDeepEqual, unique } from 'remeda';
 import { match } from 'ts-pattern';
 

@@ -8,9 +8,9 @@ import { isFieldUnsignedAndRequired, isRequiredField } from '@bchatsign/lib/util
 import { extractFieldInsertionValues } from '@bchatsign/lib/utils/envelope-signing';
 import { getNextDictatableRecipient } from '@bchatsign/lib/utils/recipient-groups';
 import { isRecipientBefore } from '@bchatsign/lib/utils/recipients';
+import { EnvelopeType, FieldType, RecipientRole, SigningStatus } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import type { TSignEnvelopeFieldValue } from '@bchatsign/trpc/server/envelope-router/sign-envelope-field.types';
-import { EnvelopeType, FieldType, RecipientRole, SigningStatus } from '@bchatsign/prisma/generated/types';
 import type { Field, Recipient } from '@prisma/client';
 import { DateTime } from 'luxon';
 import { createContext, useContext, useMemo, useState } from 'react';

@@ -9,10 +9,10 @@ import { AppError, AppErrorCode } from '@bchatsign/lib/errors/app-error';
 import type { TRecipientAccessAuth } from '@bchatsign/lib/types/document-auth';
 import { isTspEnvelope } from '@bchatsign/lib/types/signature-level';
 import { mapSecondaryIdToDocumentId } from '@bchatsign/lib/utils/envelope';
+import { FieldType } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { useLingui } from '@lingui/react/macro';
-import { FieldType } from '@bchatsign/prisma/generated/types';
 import { useMemo, useState } from 'react';
 import { useNavigate, useRevalidator, useSearchParams } from 'react-router';
 

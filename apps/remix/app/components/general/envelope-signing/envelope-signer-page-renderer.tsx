@@ -21,12 +21,12 @@ import { isFieldUnsignedAndRequired } from '@bchatsign/lib/utils/advanced-fields
 import { areContentsImprinted } from '@bchatsign/lib/utils/envelope';
 import { getClientSideFieldTranslations } from '@bchatsign/lib/utils/fields';
 import { extractFullInitials } from '@bchatsign/lib/utils/recipient-formatter';
+import { FieldType, RecipientRole, SigningStatus } from '@bchatsign/prisma/generated/types';
 import type { TSignEnvelopeFieldValue } from '@bchatsign/trpc/server/envelope-router/sign-envelope-field.types';
 import { EnvelopeRecipientFieldTooltip } from '@bchatsign/ui/components/document/envelope-recipient-field-tooltip';
 import { EnvelopeFieldToolTip } from '@bchatsign/ui/components/field/envelope-field-tooltip';
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { Trans, useLingui } from '@lingui/react/macro';
-import { FieldType, RecipientRole, SigningStatus } from '@bchatsign/prisma/generated/types';
 import type { Field, Recipient, Signature } from '@prisma/client';
 import type Konva from 'konva';
 import type { KonvaEventObject } from 'konva/lib/Node';

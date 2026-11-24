@@ -1,6 +1,5 @@
 import { FieldType } from '@bchatsign/prisma/generated/types';
 import type { TRecipientColor } from '@bchatsign/ui/lib/recipient-colors';
-import type { Field, Signature } from '@prisma/client';
 import type Konva from 'konva';
 import { match } from 'ts-pattern';
 

@@ -6,6 +6,7 @@ import {
 import { DO_NOT_INVALIDATE_QUERY_ON_MUTATION, SKIP_QUERY_BATCH_META } from '@bchatsign/lib/constants/trpc';
 import { AppError } from '@bchatsign/lib/errors/app-error';
 import { type TRecipientLite, ZRecipientEmailSchema } from '@bchatsign/lib/types/recipient';
+import { DocumentDistributionMethod, DocumentSigningOrder } from '@bchatsign/prisma/generated/types';
 import { trpc } from '@bchatsign/trpc/react';
 import { DOCUMENT_TITLE_MAX_LENGTH } from '@bchatsign/trpc/server/document-router/schema';
 import type { TUseEnvelopePayload } from '@bchatsign/trpc/server/envelope-router/use-envelope.types';
@@ -32,7 +33,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 import { Trans } from '@lingui/react/macro';
-import { DocumentDistributionMethod, DocumentSigningOrder } from '@bchatsign/prisma/generated/types';
 import { FileTextIcon, InfoIcon, Plus, UploadCloudIcon, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';

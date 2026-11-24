@@ -8,9 +8,9 @@ import { ZSignDocumentEmbedDataSchema } from '@bchatsign/lib/types/embed-documen
 import { isTspEnvelope } from '@bchatsign/lib/types/signature-level';
 import { fireAndForget } from '@bchatsign/lib/universal/fire-and-forget';
 import { prisma } from '@bchatsign/prisma';
+import { SigningStatus } from '@bchatsign/prisma/generated/types';
 import { Alert, AlertDescription } from '@bchatsign/ui/primitives/alert';
 import { Trans } from '@lingui/react/macro';
-import { SigningStatus } from '@bchatsign/prisma/generated/types';
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { useRevalidator } from 'react-router';
 

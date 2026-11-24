@@ -2,7 +2,7 @@ import { useSessionStorage } from '@bchatsign/lib/client-only/hooks/use-session-
 import { SKIP_QUERY_BATCH_META } from '@bchatsign/lib/constants/trpc';
 import { formatAvatarUrl } from '@bchatsign/lib/utils/avatars';
 import { formatDocumentsPath } from '@bchatsign/lib/utils/teams';
-import { EnvelopeType, FolderType, OrganisationType } from '@bchatsign/prisma/generated/types';
+import { EnvelopeType, FolderType } from '@bchatsign/prisma/generated/types';
 import { ExtendedDocumentStatus } from '@bchatsign/prisma/types/extended-document-status';
 import { trpc } from '@bchatsign/trpc/react';
 import type { TFindDocumentsInternalResponse } from '@bchatsign/trpc/server/document-router/find-documents-internal.types';

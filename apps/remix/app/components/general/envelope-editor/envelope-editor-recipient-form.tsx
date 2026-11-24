@@ -11,6 +11,7 @@ import { ZRecipientAuthOptionsSchema } from '@bchatsign/lib/types/document-auth'
 import { nanoid } from '@bchatsign/lib/universal/id';
 import { normalizeGroupedSigningOrders } from '@bchatsign/lib/utils/recipient-groups';
 import { canEditorRecipientBeModified } from '@bchatsign/lib/utils/recipients';
+import { DocumentSigningOrder, RecipientRole, SendStatus } from '@bchatsign/prisma/generated/types';
 import { cn } from '@bchatsign/ui/lib/utils';
 import { Alert, AlertDescription } from '@bchatsign/ui/primitives/alert';
 import { Button } from '@bchatsign/ui/primitives/button';
@@ -23,7 +24,6 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@bchatsign/ui/primitive
 import { useToast } from '@bchatsign/ui/primitives/use-toast';
 import { plural } from '@lingui/core/macro';
 import { Trans } from '@lingui/react/macro';
-import { DocumentSigningOrder, RecipientRole, SendStatus } from '@bchatsign/prisma/generated/types';
 import { HelpCircleIcon, PlusIcon, SparklesIcon } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useFieldArray, useWatch } from 'react-hook-form';

@@ -492,8 +492,8 @@ export const DocumentSigningCompleteDialog = ({
                       </AlertTitle>
                       <AlertDescription>
                         <Trans>
-                          A captura de geolocalização foi ignorada porque a variável NEXT_PUBLIC_DISABLE_GEOLOCATION está
-                          definida. Não use esta configuração em produção.
+                          A captura de geolocalização foi ignorada porque a variável NEXT_PUBLIC_DISABLE_GEOLOCATION
+                          está definida. Não use esta configuração em produção.
                         </Trans>
                       </AlertDescription>
                     </Alert>

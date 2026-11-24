@@ -11,7 +11,7 @@ import { type TDocumentMetaDateFormat, ZDocumentMetaDateFormatSchema } from '@bc
 import { generateDefaultOrganisationSettings, isPersonalLayout } from '@bchatsign/lib/utils/organisations';
 import { recipientAbbreviation } from '@bchatsign/lib/utils/recipient-formatter';
 import { extractTeamSignatureSettings, generateDefaultTeamSettings } from '@bchatsign/lib/utils/teams';
-import { DocumentVisibility, OrganisationType } from '@bchatsign/prisma/generated/types';
+import { DocumentVisibility } from '@bchatsign/prisma/generated/types';
 import { DocumentSignatureSettingsTooltip } from '@bchatsign/ui/components/document/document-signature-settings-tooltip';
 import { RecipientRoleSelect } from '@bchatsign/ui/components/recipient/recipient-role-select';
 import { AvatarWithText } from '@bchatsign/ui/primitives/avatar';
