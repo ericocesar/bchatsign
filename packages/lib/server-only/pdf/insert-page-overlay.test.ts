@@ -92,7 +92,7 @@ const createBlueImageOverlay = async (): Promise<Overlay> => {
  */
 const RENDER_WIDTH = 2400;
 
-const FIXTURE = path.join(__dirname, '../../../assets/bchatsign-supporter-pledge.pdf');
+const FIXTURE = path.join(__dirname, '../../../assets/documenso-supporter-pledge.pdf');
 
 /**
  * The fonts are resolved relative to the working directory of the app.
