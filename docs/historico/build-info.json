@@ -1,0 +1,9 @@
+{
+  "image": "ghcr.io/ericocesar/bchatsign",
+  "tag_sha": "sha-3078802",
+  "tag_branch": "develop",
+  "digest": "sha256:9a57d55994a06a5a817915618bb55d45bcdb5776d108f59b5b0d7d2188572a73",
+  "git_sha": "307880201e12cfa6459ef18db173486adf77a681",
+  "platform": "linux/amd64",
+  "dockerfile": "docker/Dockerfile"
+}
