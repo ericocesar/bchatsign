@@ -1,10 +1,10 @@
 services:
   bchatsign:
-    image: ghcr.io/ericocesar/bchatsign@${IMAGE_DIGEST}
+    image: ghcr.io/ericocesar/bchatsign@sha256:9b8725bc419be198f9853534657363afe352d1fd51ca146d5eaa4bb9e3c60c2c
     volumes:
     # - /opt/documenso/cert.p12:/opt/documenso/cert.p12:ro
     # - /root/stacks/bchatsign/cert/ERICOCESAR_94138966404.pfx:/opt/documenso/cert.p12:ro
-      - /root/docker/stacks/bchatsign/cert/Bolt_certificado.pfx:/opt/documenso/cert.p12:ro
+      - /root/docker/stacks/bchatsign/cert/webck_cert.pfx:/opt/documenso/cert.p12:ro
 
     networks:
       - interna
@@ -53,7 +53,7 @@ services:
       - NEXT_PUBLIC_DISABLE_SIGNUP=false
       - NEXT_PRIVATE_SIGNING_TRANSPORT=local
       - NEXT_PRIVATE_SIGNING_LOCAL_FILE_PATH=/opt/documenso/cert.p12
-      - NEXT_PRIVATE_SIGNING_PASSPHRASE=Er94049569@
+      - NEXT_PRIVATE_SIGNING_PASSPHRASE=123456
       # - NEXT_PUBLIC_DISABLE_GEOLOCATION=true 
       - NEXT_PRIVATE_GOOGLE_MAPS_API_KEY=AIzaSyD6P-EKvdeNWYP312Fu68V_ZdFY4aEct9E
 

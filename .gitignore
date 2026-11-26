@@ -37,6 +37,8 @@ yarn-error.log*
 .env.production.local
 .env.deploy.*
 .github/infra/.env.deploy.*
+.env.deploy.prod
+.env.deploy.dev
 
 # turbo
 .turbo

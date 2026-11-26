@@ -1,18 +1,19 @@
 services:
   bchatsign:
-    image: ghcr.io/ericocesar/bchatsign@${IMAGE_DIGEST}
+    image: ghcr.io/ericocesar/bchatsign@sha256:fc46d4f5bf326cb779cb3564b8ac67175201e96b21265ba9e6a01cc8c13cd43e
     volumes:
     # - /opt/documenso/cert.p12:/opt/documenso/cert.p12:ro
-      - /root/stacks/bchatsign/cert/ERICOCESAR_94138966404.pfx:/opt/documenso/cert.p12:ro
+    # - /root/stacks/bchatsign/cert/ERICOCESAR_94138966404.pfx:/opt/documenso/cert.p12:ro
+      - /root/volumes/bchatsign/webck_cert.pfx:/opt/documenso/cert.p12:ro
     networks:
       - interna
       - externa
     environment:
     ## 🔐 Dados de Acesso
       - PORT=3000
-      - NEXTAUTH_URL=https://assine.bchat.com.br
-      - NEXT_PUBLIC_WEBAPP_URL=https://assine.bchat.com.br
-      - NEXT_PUBLIC_MARKETING_URL=https://assine.bchat.com.br
+      - NEXTAUTH_URL=https://assine.swdev.webck.com.br
+      - NEXT_PUBLIC_WEBAPP_URL=https://assine.swdev.webck.com.br
+      - NEXT_PUBLIC_MARKETING_URL=https://assine.swdev.webck.com.br
 
     ## 🔑 Secret Keys
       - NEXTAUTH_SECRET=406a3eeedf053de2b4864eca26d1ae77
@@ -24,8 +25,8 @@ services:
       #- NEXT_PRIVATE_GOOGLE_CLIENT_SECRET=
 
     ## 🐘 Dados Postgres
-      - NEXT_PRIVATE_DATABASE_URL=postgresql://postgres:D57A4D868ECCABF423F1F3D142F41@postgres:5432/bchatsign
-      - NEXT_PRIVATE_DIRECT_DATABASE_URL=postgresql://postgres:D57A4D868ECCABF423F1F3D142F41@postgres:5432/bchatsign
+      - NEXT_PRIVATE_DATABASE_URL=postgresql://postgres:D57A4D868ECCABF423F1F3D142F41BoltDev@postgres:5432/bchatsign
+      - NEXT_PRIVATE_DIRECT_DATABASE_URL=postgresql://postgres:D57A4D868ECCABF423F1F3D142F41BoltDev@postgres:5432/bchatsign
 
     ## 🗄️ Configurações MinIO
       - NEXT_PUBLIC_UPLOAD_TRANSPORT=s3
@@ -51,7 +52,6 @@ services:
       - NEXT_PUBLIC_DISABLE_SIGNUP=false
       - NEXT_PRIVATE_SIGNING_TRANSPORT=local
       - NEXT_PRIVATE_SIGNING_LOCAL_FILE_PATH=/opt/documenso/cert.p12
-      # - NEXT_PRIVATE_SIGNING_PASSPHRASE=Er94049569@
       - NEXT_PRIVATE_SIGNING_PASSPHRASE=123456
       # - NEXT_PUBLIC_DISABLE_GEOLOCATION=true 
       - NEXT_PRIVATE_GOOGLE_MAPS_API_KEY=AIzaSyD6P-EKvdeNWYP312Fu68V_ZdFY4aEct9E
@@ -68,11 +68,11 @@ services:
           memory: 1024M
       labels:
         - traefik.enable=true
-        - traefik.docker.network=interna
-        - traefik.http.routers.bchatsign.rule=Host(`assine.bchat.com.br`)
+        - traefik.docker.network=externa
+        - traefik.http.routers.bchatsign.rule=Host(`assine.swdev.webck.com.br`)
         - traefik.http.services.bchatsign.loadbalancer.server.port=3000
         - traefik.http.routers.bchatsign.service=bchatsign
-        - traefik.http.routers.bchatsign.tls.certresolver=letsencryptresolver
+        - traefik.http.routers.bchatsign.tls.certresolver=le
         - traefik.http.routers.bchatsign.entrypoints=websecure
         - traefik.http.routers.bchatsign.tls=true
 

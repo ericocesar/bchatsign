@@ -227,7 +227,7 @@ trivy fs \
   --severity HIGH,CRITICAL \
   --exit-code 1 \
   --skip-version-check \
-  --skip-dirs '.git,.venv,node_modules,.mimocode,dist,build,backups,.context,.turbo,.pytest_cache,.extracted,.agent,.agents,.claude,.worktrees,.dbg,.gemini,.trae,.vscode,scratch,public' \
+  --skip-dirs '.git,.venv,node_modules,.mimocode,dist,build,backups,.context,.turbo,.pytest_cache,.extracted,.agent,.agents,.claude,.opencode,.worktrees,.dbg,.gemini,.trae,.vscode,scratch,public' \
   . || TRIVY_EXIT_CODE=$?
 
 if [[ "${TRIVY_EXIT_CODE}" -ne 0 ]]; then
