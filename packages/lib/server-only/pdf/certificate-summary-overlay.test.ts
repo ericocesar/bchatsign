@@ -19,12 +19,12 @@ describe('certificate summary overlay', () => {
     expect(lines.join('\n')).not.toMatch(/hash|sha-256/i);
   });
 
-  it('anchors left overlays to the left margin instead of page center', () => {
+  it('places left overlays in two lines closer to the left margin', () => {
     const commands = getCertificateOverlayDrawCommands({
       position: 'LEFT',
       pageWidth: 595,
       pageHeight: 842,
-      lines: ['Linha 1', 'Linha 2'],
+      lines: ['Linha 1', 'Linha 2', 'Linha 3'],
       fontSize: 8,
       getTextWidth: (text) => text.length * 4,
     });
@@ -32,8 +32,8 @@ describe('certificate summary overlay', () => {
     expect(commands).toEqual([
       {
         kind: 'text',
-        text: 'Linha 1',
-        x: 15,
+        text: 'Linha 1 Linha 2',
+        x: 7.5,
         y: 15,
         rotate: {
           angle: 90,
@@ -41,8 +41,8 @@ describe('certificate summary overlay', () => {
       },
       {
         kind: 'text',
-        text: 'Linha 2',
-        x: 25,
+        text: 'Linha 3',
+        x: 17.5,
         y: 15,
         rotate: {
           angle: 90,

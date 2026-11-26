@@ -47,6 +47,7 @@ export type CertificateOverlayCommand =
   | CertificateOverlayVerticalLabelCommand;
 
 const CERTIFICATE_OVERLAY_MARGIN = 15;
+const CERTIFICATE_OVERLAY_LEFT_MARGIN = CERTIFICATE_OVERLAY_MARGIN / 2;
 const CERTIFICATE_OVERLAY_LINE_GAP = 2;
 
 export const getCertificateOverlayLines = ({
@@ -121,10 +122,12 @@ export const getCertificateOverlayDrawCommands = ({
   }
 
   if (position === 'LEFT') {
-    return lines.map((line, index) => ({
+    const leftLines = lines.length > 1 ? [`${lines[0]} ${lines[1]}`, ...lines.slice(2)] : lines;
+
+    return leftLines.map((line, index) => ({
       kind: 'text' as const,
       text: line,
-      x: CERTIFICATE_OVERLAY_MARGIN + index * lineHeight,
+      x: CERTIFICATE_OVERLAY_LEFT_MARGIN + index * lineHeight,
       y: CERTIFICATE_OVERLAY_MARGIN,
       rotate: {
         angle: 90,
